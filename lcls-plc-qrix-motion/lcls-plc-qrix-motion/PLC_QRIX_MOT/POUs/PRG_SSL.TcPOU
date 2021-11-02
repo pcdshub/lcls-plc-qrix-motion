@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="PRG_SSL" Id="{35c5b597-c1e5-471b-bc57-49572aa20da4}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM PRG_SSL
+VAR
+	fb_SSL_Motor : FB_MotionStage;
+	(*EPS Limit switches*)
+	{attribute 'TcLinkTo' := 'TIIB[DRL02-E23 (EL7041)]^STM Status^Status^Digital input 1'}
+	bLimitBackwardEnable AT %I* :BOOL;
+	{attribute 'TcLinkTo' := 'TIIB[DRL02-E21 (EL7041)]^STM Status^Status^Digital input 1'}
+	bLimitForwardEnable AT %I* :BOOL;
+	bInit : BOOl := TRUE;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+IF ( bInit) THEN
+	bInit := FALSE;
+	Main.M1.bPowerSelf := TRUE;
+	Main.M1.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+	Main.M1.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+END_IF
+
+Main.M1.bHardwareEnable := TRUE;
+fb_SSL_Motor(stMotionStage:=Main.M1);]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>
