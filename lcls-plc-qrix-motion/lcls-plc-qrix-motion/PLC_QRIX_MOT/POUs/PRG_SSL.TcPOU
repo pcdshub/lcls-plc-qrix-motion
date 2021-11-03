@@ -20,7 +20,7 @@ IF ( bInit) THEN
 	Main.M1.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
 	Main.M1.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
 END_IF
-
+//EPS needs to be implemented and coupling of axes servo and wheel from spectometer arm
 Main.M1.bHardwareEnable := TRUE;
 fb_SSL_Motor(stMotionStage:=Main.M1);]]></ST>
     </Implementation>
