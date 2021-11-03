@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="PRG_SDS" Id="{e8b6628f-8c08-4322-8d03-c947275863d3}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM PRG_SDS
+VAR
+	fb_SDS_ROT_V : FB_MotionStage;
+	fb_SDS_X : FB_MotionStage;
+	fb_SDS_Y : FB_MotionStage;
+	fb_SDS_Z : FB_MotionStage;
+	fb_SDS_ROT_H : FB_MotionStage;
+	fb_SDS_H : FB_MotionStage;
+	bInit : BOOl := TRUE;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF ( bInit) THEN
+	bInit := FALSE;
+	Main.M19.bHardwareEnable := TRUE;
+	Main.M19.bPowerSelf := TRUE;
+	Main.M19.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+	Main.M19.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+	
+	Main.M20.bHardwareEnable := TRUE;
+	Main.M20.bPowerSelf := TRUE;
+	Main.M20.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+	Main.M20.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+	
+	Main.M21.bHardwareEnable := TRUE;
+	Main.M21.bPowerSelf := TRUE;
+	Main.M21.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+	Main.M21.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+	
+	Main.M22.bHardwareEnable := TRUE;
+	Main.M22.bPowerSelf := TRUE;
+	Main.M22.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+	Main.M22.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+	
+	Main.M23.bHardwareEnable := TRUE;
+	Main.M23.bPowerSelf := TRUE;
+	Main.M23.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+	Main.M23.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+	
+	Main.M24.bHardwareEnable := TRUE;
+	Main.M24.bPowerSelf := TRUE;
+	Main.M24.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+	Main.M24.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+	
+END_IF
+//EPS??
+
+
+fb_SDS_ROT_V(stMotionStage:=Main.M19);
+fb_SDS_X(stMotionStage:=Main.M20);
+fb_SDS_Y(stMotionStage:=Main.M21);
+fb_SDS_Z(stMotionStage:=Main.M22);
+fb_SDS_ROT_H(stMotionStage:=Main.M23);
+fb_SDS_H(stMotionStage:=Main.M24);]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

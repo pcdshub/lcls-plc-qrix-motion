@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="PRG_Cryo" Id="{d8649ca7-c26e-4e28-a279-17f291a3cb8e}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM PRG_Cryo
+VAR
+	fb_Cryo_ROT : FB_MotionStage;
+	fb_Cryo_X : FB_MotionStage;
+	fb_Cryo_Y : FB_MotionStage;
+	fb_Cryo_Z : FB_MotionStage;
+	bInit : BOOl := TRUE;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF ( bInit) THEN
+	bInit := FALSE;	
+	Main.M13.bHardwareEnable := TRUE;
+	Main.M13.bPowerSelf := TRUE;
+	Main.M13.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+	Main.M13.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+	
+	Main.M14.bHardwareEnable := TRUE;
+	Main.M14.bPowerSelf := TRUE;
+	Main.M14.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+	Main.M14.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+	
+	Main.M15.bHardwareEnable := TRUE;
+	Main.M15.bPowerSelf := TRUE;
+	Main.M15.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+	Main.M15.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+	
+	Main.M16.bHardwareEnable := TRUE;
+	Main.M16.bPowerSelf := TRUE;
+	Main.M16.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+	Main.M16.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+	
+END_IF
+//EPS??
+
+
+fb_Cryo_ROT(stMotionStage:=Main.M13);
+fb_Cryo_X(stMotionStage:=Main.M14);
+fb_Cryo_Y(stMotionStage:=Main.M15);
+fb_Cryo_Z(stMotionStage:=Main.M16);]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>
