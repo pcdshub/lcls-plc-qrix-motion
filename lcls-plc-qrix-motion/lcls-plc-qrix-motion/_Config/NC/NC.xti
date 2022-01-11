@@ -29,6 +29,7 @@
 		<Axis File="M5 - Diff 2Theta Y.xti" Id="5"/>
 		<Axis File="M6 - Diff Phi.xti" Id="6"/>
 		<Axis File="M7 - Diff Chi.xti" Id="7"/>
-		<Axis File="M8 - Diff 2Theta.xti" Id="8"/>
+		<Axis File="M8 - Diff Theta.xti" Id="9"/>
+		<Axis File="M9 - Diff 2Theta.xti" Id="8"/>
 	</NC>
 </TcSmItem>
