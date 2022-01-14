@@ -18,10 +18,10 @@ VAR_GLOBAL
     {attribute 'pytmc' := 'pv: QRIX:SC:SSL:MMS'}
     {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SSL-EL7041]^STM Status^Status^Digital input 1;
                               .bLimitBackwardEnable := TIIB[SSL-EL7041]^STM Status^Status^Digital input 2;
-                              .nRawEncoderULINT     := TIIB[IM1K3-EL5042]^FB Inputs Channel 1^Position'}
+                              {.nRawEncoderULINT     := TIIB[SSL-EL5042]^FB Inputs Channel 1^Position'}
     M1: DUT_MotionStage := (sName := 'QRIX:SC_SSL:MMS');
 	
-	// Diffractoneter -  8 axes
+	// Diffractometer -  8 axes
     {attribute 'pytmc' := 'pv: QRIX:DIFF:MMS:X'}
     {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SSL-EL7041]^STM Status^Status^Digital input 1;
                               .bLimitBackwardEnable := TIIB[SSL-EL7041]^STM Status^Status^Digital input 2;

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <DUT Name="DUT_Sensor" Id="{5e4e9a12-8121-4b27-a1b4-c219761879b3}">
+    <Declaration><![CDATA[TYPE DUT_Sensor :
+STRUCT 
+	fCntsInEGU:			REAL;
+	sEGU:				STRING;
+	sName:				STRING;
+	fValue:				REAL;
+	iRawCnts AT %I*:	INT;
+	iOffset:			INT;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

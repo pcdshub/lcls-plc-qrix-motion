@@ -14,6 +14,18 @@
     <LibraryReferences>{8cf74047-d834-494f-9acc-d498e2d4e57a}</LibraryReferences>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Devices\FB_2AxesTrans.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Devices\FB_3AxesJack.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\DUT_Sensor.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\DUT_SensorHGS.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="GVLs\GVL_PMPS.TcGVL">
       <SubType>Code</SubType>
       <LinkAlways>true</LinkAlways>
@@ -56,6 +68,7 @@
   <ItemGroup>
     <Folder Include="DUTs" />
     <Folder Include="GVLs" />
+    <Folder Include="Devices" />
     <Folder Include="VISUs" />
     <Folder Include="POUs" />
   </ItemGroup>

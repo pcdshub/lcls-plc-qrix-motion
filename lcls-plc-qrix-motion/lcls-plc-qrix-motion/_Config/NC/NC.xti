@@ -22,6 +22,11 @@
 		<AxisFolder Name="SDS"/>
 		<AxisFolder Name="Cryo"/>
 		<AxisFolder Name="Questar"/>
+		<AxisFolder Name="2 Theta Arm"/>
+		<AxisFolder Name="OPTICS"/>
+		<AxisFolder Name="DET_FRAME"/>
+		<AxisFolder Name="DET_CHAMBER"/>
+		<AxisFolder Name="DET_ARM"/>
 		<Axis File="M1 - SSL Sliding seal.xti" Id="1"/>
 		<Axis File="M2 - Diff X.xti" Id="2"/>
 		<Axis File="M3 - Diff Y.xti" Id="3"/>
