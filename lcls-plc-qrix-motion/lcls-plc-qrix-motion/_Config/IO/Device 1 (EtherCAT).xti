@@ -36,6 +36,12 @@
 		<Box File="B950-233-WALL-S-R01-DRL-01.xti" Id="7">
 			<EtherCAT PortABoxInfo="#x01000006"/>
 		</Box>
+		<Box File="B950-233-WALL-S-R01-DRL-02.xti" Id="27">
+			<EtherCAT PortABoxInfo="#x02000007"/>
+		</Box>
+		<Box File="B950-233-WALL-S-R01-DRL-03.xti" Id="28">
+			<EtherCAT PortABoxInfo="#x0200001b"/>
+		</Box>
 		<EtherCAT/>
 	</Device>
 </TcSmItem>
