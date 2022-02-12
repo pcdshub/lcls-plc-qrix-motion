@@ -31,11 +31,8 @@
 		<Box File="EL5042_02_08.xti" Id="15">
 			<EtherCAT PortABoxInfo="#x0100000e"/>
 		</Box>
-		<Box File="EL7031_02_08.xti" Id="16">
-			<EtherCAT PortABoxInfo="#x0100000f"/>
-		</Box>
 		<Box File="EL7031_02_09.xti" Id="17">
-			<EtherCAT PortABoxInfo="#x01000010"/>
+			<EtherCAT PortABoxInfo="#x0100000f"/>
 		</Box>
 		<Box File="EL1004_02_10.xti" Id="18">
 			<EtherCAT PortABoxInfo="#x01000011"/>

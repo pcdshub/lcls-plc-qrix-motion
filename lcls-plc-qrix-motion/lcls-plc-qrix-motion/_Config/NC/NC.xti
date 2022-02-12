@@ -36,5 +36,8 @@
 		<Axis File="M7 - Diff Chi.xti" Id="7"/>
 		<Axis File="M8 - Diff Theta.xti" Id="9"/>
 		<Axis File="M9 - Diff 2Theta.xti" Id="8"/>
+		<Axis File="M10 - LAS IR VIS.xti" Id="10"/>
+		<Axis File="M11 - LAS IR H.xti" Id="11"/>
+		<Axis File="M12 - LAS IR V.xti" Id="12"/>
 	</NC>
 </TcSmItem>
