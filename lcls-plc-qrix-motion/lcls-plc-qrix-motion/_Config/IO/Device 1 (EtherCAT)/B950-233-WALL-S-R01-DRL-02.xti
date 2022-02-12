@@ -61,13 +61,10 @@
 		<Box File="EL7047_03_18.xti" Id="46">
 			<EtherCAT PortABoxInfo="#x0100002d"/>
 		</Box>
-		<Box File="EL1088_03_19.xti" Id="47">
+		<Box File="EL3314_03_19.xti" Id="48">
 			<EtherCAT PortABoxInfo="#x0100002e"/>
 		</Box>
-		<Box File="EL3314_03_20.xti" Id="48">
-			<EtherCAT PortABoxInfo="#x0100002f"/>
-		</Box>
-		<Box File="EL3314_03_21.xti" Id="49">
+		<Box File="EL3314_03_20.xti" Id="49">
 			<EtherCAT PortABoxInfo="#x01000030"/>
 		</Box>
 	</Box>

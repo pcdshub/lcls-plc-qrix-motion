@@ -5,9 +5,9 @@
 VAR
 	fb_SSL_Motor : FB_MotionStage;
 	(*EPS Limit switches*)
-	{attribute 'TcLinkTo' := 'TIIB[DRL02-E23 (EL7041)]^STM Status^Status^Digital input 1'}
+	{attribute 'TcLinkTo' := 'TIIB[EL1004_02_03]^Channel 1^Input'}
 	bLimitBackwardEnable AT %I* :BOOL;
-	{attribute 'TcLinkTo' := 'TIIB[DRL02-E21 (EL7041)]^STM Status^Status^Digital input 1'}
+	{attribute 'TcLinkTo' := 'TIIB[EL1004_02_03]^Channel 2^Input'}
 	bLimitForwardEnable AT %I* :BOOL;
 	bInit : BOOl := TRUE;
 END_VAR
@@ -21,7 +21,7 @@ IF ( bInit) THEN
 	Main.M1.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
 END_IF
 //EPS needs to be implemented and coupling of axes servo and wheel from spectometer arm
-Main.M1.bHardwareEnable := TRUE;
+Main.M1.bHardwareEnable := bLimitBackwardEnable AND bLimitForwardEnable; //Include STO from SPCA
 fb_SSL_Motor(stMotionStage:=Main.M1);]]></ST>
     </Implementation>
   </POU>

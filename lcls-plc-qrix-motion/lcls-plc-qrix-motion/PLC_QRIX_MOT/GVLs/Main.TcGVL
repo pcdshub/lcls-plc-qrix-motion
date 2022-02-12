@@ -15,59 +15,68 @@ VAR_GLOBAL
 
 
 	// Sample Chamber Sliding Seal - 1 axis
+	//connect EPS limits
     {attribute 'pytmc' := 'pv: QRIX:SC:SSL:MMS'}
-    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SSL-EL7041]^STM Status^Status^Digital input 1;
-                              .bLimitBackwardEnable := TIIB[SSL-EL7041]^STM Status^Status^Digital input 2;
-                              {.nRawEncoderULINT     := TIIB[SSL-EL5042]^FB Inputs Channel 1^Position'}
+    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL7041_02_01]^STM Status^Status^Digital input 1;
+                              .bLimitBackwardEnable := TIIB[EL7041_02_01]^STM Status^Status^Digital input 2;
+                              .nRawEncoderULINT     := TIIB[EL5042_02_02]^FB Inputs Channel 1^Position'}
     M1: DUT_MotionStage := (sName := 'QRIX:SC_SSL:MMS');
 	
 	// Diffractometer -  8 axes
     {attribute 'pytmc' := 'pv: QRIX:DIFF:MMS:X'}
-    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SSL-EL7041]^STM Status^Status^Digital input 1;
-                              .bLimitBackwardEnable := TIIB[SSL-EL7041]^STM Status^Status^Digital input 2;
-                              .nRawEncoderULINT     := TIIB[IM1K3-EL5042]^FB Inputs Channel 1^Position'}
+    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL1088_03_04]^Channel 1^Input;
+                              .bLimitBackwardEnable := TIIB[EL1088_03_04]^Channel 2^Input;
+							  .bHome := TIIB[EL1088_03_10]^Channel 1^Input;
+                              .nRawEncoderULINT     := TIIB[EL5042_03_02]^FB Inputs Channel 1^Position'}
     M2: DUT_MotionStage := (sName := 'QRIX:DIFF:MMS:X');
 	
 	{attribute 'pytmc' := 'pv: QRIX:DIFF:MMS:Y'}
-    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SSL-EL7041]^STM Status^Status^Digital input 1;
-                              .bLimitBackwardEnable := TIIB[SSL-EL7041]^STM Status^Status^Digital input 2;
-                              .nRawEncoderULINT     := TIIB[IM1K3-EL5042]^FB Inputs Channel 1^Position'}
+    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL1088_03_04]^Channel 3^Input;
+                              .bLimitBackwardEnable := TIIB[EL1088_03_04]^Channel 4^Input;
+							  .bHome := TIIB[EL1088_03_10]^Channel 2^Input;
+                              .nRawEncoderULINT     := TIIB[EL5042_03_02]^FB Inputs Channel 2^Position'}
     M3: DUT_MotionStage := (sName := 'QRIX:DIFF:MMS:Y');
 	
 	{attribute 'pytmc' := 'pv: QRIX:DIFF:MMS:Z'}
-    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SSL-EL7041]^STM Status^Status^Digital input 1;
-                              .bLimitBackwardEnable := TIIB[SSL-EL7041]^STM Status^Status^Digital input 2;
-                              .nRawEncoderULINT     := TIIB[IM1K3-EL5042]^FB Inputs Channel 1^Position'}
+    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL1088_03_04]^Channel 5^Input;
+                              .bLimitBackwardEnable := TIIB[EL1088_03_04]^Channel 6^Input;
+							  .bHome := TIIB[EL1088_03_10]^Channel 3^Input;
+                              .nRawEncoderULINT     := TIIB[EL5042_03_06]^FB Inputs Channel 1^Position'}
     M4: DUT_MotionStage := (sName := 'QRIX:DIFF:MMS:Z');
 	
 	{attribute 'pytmc' := 'pv: QRIX:DIFF:MMS:DETZ'}
-    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SSL-EL7041]^STM Status^Status^Digital input 1;
-                              .bLimitBackwardEnable := TIIB[SSL-EL7041]^STM Status^Status^Digital input 2;
-                              .nRawEncoderULINT     := TIIB[IM1K3-EL5042]^FB Inputs Channel 1^Position'}
+    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL1088_03_04]^Channel 7^Input;
+                              .bLimitBackwardEnable := TIIB[EL1088_03_04]^Channel 8^Input;
+							  .bHome := TIIB[EL1088_03_10]^Channel 4^Input;
+                              .nRawEncoderULINT     := TIIB[EL5042_03_06]^FB Inputs Channel 2^Position'}
     M5: DUT_MotionStage := (sName := 'QRIX:DIFF:MMS:DETZ');
 	
 	{attribute 'pytmc' := 'pv: QRIX:DIFF:MMS:PHI'}
-    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SSL-EL7041]^STM Status^Status^Digital input 1;
-                              .bLimitBackwardEnable := TIIB[SSL-EL7041]^STM Status^Status^Digital input 2;
-                              .nRawEncoderULINT     := TIIB[IM1K3-EL5042]^FB Inputs Channel 1^Position'}
+    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL1088_03_15]^Channel 1^Input;
+                              .bLimitBackwardEnable := TIIB[EL1088_03_15]^Channel 2^Input;
+							  .bHome := TIIB[EL1088_03_10]^Channel 5^Input;
+                              .nRawEncoderULINT     := TIIB[EL5042_03_13]^FB Inputs Channel 1^Position'}
     M6: DUT_MotionStage := (sName := 'QRIX:DIFF:MMS:PHI');
 	
 	{attribute 'pytmc' := 'pv: QRIX:DIFF:MMS:CHI'}
-    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SSL-EL7041]^STM Status^Status^Digital input 1;
-                              .bLimitBackwardEnable := TIIB[SSL-EL7041]^STM Status^Status^Digital input 2;
-                              .nRawEncoderULINT     := TIIB[IM1K3-EL5042]^FB Inputs Channel 1^Position'}
+    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL1088_03_15]^Channel 3^Input;
+                              .bLimitBackwardEnable := TIIB[EL1088_03_15]^Channel 4^Input;
+							  .bHome := TIIB[EL1088_03_10]^Channel 6^Input;
+                              .nRawEncoderULINT     := TIIB[EL5042_03_13]^FB Inputs Channel 2^Position'}
     M7: DUT_MotionStage := (sName := 'QRIX:DIFF:MMS:CHI');
 	
 	{attribute 'pytmc' := 'pv: QRIX:DIFF:MMS:THETA'}
-    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SSL-EL7041]^STM Status^Status^Digital input 1;
-                              .bLimitBackwardEnable := TIIB[SSL-EL7041]^STM Status^Status^Digital input 2;
-                              .nRawEncoderULINT     := TIIB[IM1K3-EL5042]^FB Inputs Channel 1^Position'}
+    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL1088_03_15]^Channel 5^Input;
+                              .bLimitBackwardEnable := TIIB[EL1088_03_15]^Channel 6^Input;
+							  .bHome := TIIB[EL1088_03_10]^Channel 7^Input;
+                              .nRawEncoderULINT     := TIIB[IM1K3-EL5042_03_17]^FB Inputs Channel 1^Position'}
     M8: DUT_MotionStage := (sName := 'QRIX:DIFF:MMS:THETA');
 	
 	{attribute 'pytmc' := 'pv: QRIX:DIFF:MMS:2THETA'}
-    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SSL-EL7041]^STM Status^Status^Digital input 1;
-                              .bLimitBackwardEnable := TIIB[SSL-EL7041]^STM Status^Status^Digital input 2;
-                              .nRawEncoderULINT     := TIIB[IM1K3-EL5042]^FB Inputs Channel 1^Position'}
+    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL1088_03_15]^Channel 7^Input;
+                              .bLimitBackwardEnable := TIIB[EL1088_03_15]^Channel 8^Input;
+							  .bHome := TIIB[EL1088_03_10]^Channel 8^Input;
+                              .nRawEncoderULINT     := TIIB[EL5042_03_17]^FB Inputs Channel 2^Position'}
     M9: DUT_MotionStage := (sName := 'QRIX:DIFF:MMS:2THETA');
 	
 	
@@ -76,19 +85,19 @@ VAR_GLOBAL
     {attribute 'pytmc' := 'pv: QRIX:LAS:MMS:VIS'}
     {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SSL-EL7041]^STM Status^Status^Digital input 1;
                               .bLimitBackwardEnable := TIIB[SSL-EL7041]^STM Status^Status^Digital input 2;
-                              .nRawEncoderULINT     := TIIB[IM1K3-EL5042]^FB Inputs Channel 1^Position'}
+                              .nRawEncoderULINT     := TIIB[EL5042_02_05]^FB Inputs Channel 1^Position'}
     M10: DUT_MotionStage := (sName := 'QRIX:LAS:MMS:VIS');
 	
 	{attribute 'pytmc' := 'pv: QRIX:LAS:MMS:D-H'}
     {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SSL-EL7041]^STM Status^Status^Digital input 1;
                               .bLimitBackwardEnable := TIIB[SSL-EL7041]^STM Status^Status^Digital input 2;
-                              .nRawEncoderULINT     := TIIB[IM1K3-EL5042]^FB Inputs Channel 1^Position'}
+                              .nRawEncoderULINT     := TIIB[EL5042_02_08]^FB Inputs Channel 1^Position'}
     M11: DUT_MotionStage := (sName := 'QRIX:LAS:MMS:D-H');
 	
 	{attribute 'pytmc' := 'pv: QRIX:LAS:MMS:D-V'}
     {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SSL-EL7041]^STM Status^Status^Digital input 1;
                               .bLimitBackwardEnable := TIIB[SSL-EL7041]^STM Status^Status^Digital input 2;
-                              .nRawEncoderULINT     := TIIB[IM1K3-EL5042]^FB Inputs Channel 1^Position'}
+                              .nRawEncoderULINT     := TIIB[EL5042_02_08]^FB Inputs Channel 2^Position'}
     M12: DUT_MotionStage := (sName := 'QRIX:LAS:MMS:D-V');
 
 	
