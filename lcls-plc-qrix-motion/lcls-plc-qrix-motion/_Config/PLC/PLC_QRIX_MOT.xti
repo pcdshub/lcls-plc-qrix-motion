@@ -1155,7 +1155,7 @@ External Setpoint Generation:
 		</DataType>
 	</DataTypes>
 	<Project GUID="{B169396F-2A5D-41C0-BAA5-19CF2205D20A}" Name="PLC_QRIX_MOT" PrjFilePath="..\..\PLC_QRIX_MOT\PLC_QRIX_MOT.plcproj" TmcFilePath="..\..\PLC_QRIX_MOT\PLC_QRIX_MOT.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-		<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2">
+		<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="PLC_QRIX_MOT\PLC_QRIX_MOT.tmc">
 			<Name>PLC_QRIX_MOT Instance</Name>
 			<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 			<Vars VarGrpType="1">
@@ -1166,17 +1166,6 @@ External Setpoint Generation:
 						<![CDATA[ AMS Net ID used for FB_EcatDiag, among others ]]>
 					</Comment>
 					<Type GUID="{18071995-0000-0000-0000-000000000041}">AMSNETID</Type>
-				</Var>
-				<Var>
-					<Name>PRG_SSL.bLimitBackwardEnable</Name>
-					<Comment>
-						<![CDATA[EPS Limit switches]]>
-					</Comment>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>PRG_SSL.bLimitForwardEnable</Name>
-					<Type>BOOL</Type>
 				</Var>
 				<Var>
 					<Name>PRG_2_PMPS.fbArbiterIO.i_stCurrentBP</Name>
@@ -1309,6 +1298,17 @@ External Setpoint Generation:
 				<Var>
 					<Name>PRG_2_PMPS.fbArbiterIO.xTxPDO_state</Name>
 					<Type>BIT</Type>
+				</Var>
+				<Var>
+					<Name>PRG_SSL.bLimitBackwardEnable</Name>
+					<Comment>
+						<![CDATA[EPS Limit switches]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_SSL.bLimitForwardEnable</Name>
+					<Type>BOOL</Type>
 				</Var>
 				<Var>
 					<Name>PRG_SSL.fb_SSL_Motor.fbDriveVirtual.MasterAxis.NcToPlc</Name>
