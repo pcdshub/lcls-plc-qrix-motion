@@ -9,7 +9,25 @@ VAR
 	bLimitBackwardEnable AT %I* :BOOL;
 	{attribute 'TcLinkTo' := 'TIIB[EL1004_02_03]^Channel 2^Input'}
 	bLimitForwardEnable AT %I* :BOOL;
+	{attribute 'pytmc' := 'pv: QRIX:SPCA:COUPLED'}
+
+	bAlreadyCoupled :BOOL := FALSE;
+	bExecuteCouple :BOOL := TRUE;
+	// Current coupled motion difference
+	nCurrGantryDiff : LINT;
+	// Autocoupling  Axes
+	couple : MC_GEARIN;
+	bInitComplete : BOOL;
 	bInit : BOOl := TRUE;
+END_VAR
+
+VAR CONSTANT
+	// Encoder reference values in counts ???!!! degrees?!!
+	// Enc Ref Vals from alignment 
+	nSSL_ENC_REF : ULINT := 16171800;
+	nSPCA_ENC_REF : ULINT := 14866900;
+	nGANTRY_TOLERANCE : LINT := 100; // default gantry tolerance in encoder counts = units???
+	
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -20,8 +38,27 @@ IF ( bInit) THEN
 	Main.M1.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
 	Main.M1.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
 END_IF
+// couple axes
+
+// Couple both axes
+// Auto-coupling at init and auto-reset of coupling boolean
+bExecuteCouple S= NOT bInitComplete;
+
+bExecuteCouple R= couple.Busy OR bAlreadyCoupled;
+couple (Master:= Main.M1.Axis, 
+		Slave:=Main.M25.Axis, 
+		Execute:=bExecuteCouple,
+		RatioNumerator := 1, 
+		RatioDenominator :=1
+);
+
+bInitComplete S= bAlreadyCoupled;
+nCurrGantryDiff := ((ULINT_TO_LINT(Main.M1.nRawEncoderULINT) - ULINT_TO_LINT(nSSL_ENC_REF)) - (ULINT_TO_LINT(Main.M25.nRawEncoderULINT) - ULINT_TO_LINT(nSSL_ENC_REF)));
+
+
 //EPS needs to be implemented and coupling of axes servo and wheel from spectometer arm
-Main.M1.bHardwareEnable := bLimitBackwardEnable AND bLimitForwardEnable; //Include STO from SPCA
+// hpw to recover from this situation?!
+Main.M1.bHardwareEnable := bLimitBackwardEnable AND bLimitForwardEnable AND (ABS(nCurrGantryDiff) > nGANTRY_TOLERANCE); //Include STO from SPCA
 fb_SSL_Motor(stMotionStage:=Main.M1);]]></ST>
     </Implementation>
   </POU>

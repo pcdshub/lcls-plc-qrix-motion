@@ -52,8 +52,8 @@ VAR_GLOBAL
     M5: DUT_MotionStage := (sName := 'QRIX:DIFF:MMS:DETZ');
 	
 	{attribute 'pytmc' := 'pv: QRIX:DIFF:MMS:PHI'}
-    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL1088_03_15]^Channel 1^Input;
-                              .bLimitBackwardEnable := TIIB[EL1088_03_15]^Channel 2^Input;
+    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL1088_03_15]^Channel 2^Input;
+                              .bLimitBackwardEnable := TIIB[EL1088_03_15]^Channel 1^Input;
 							  .bHome := TIIB[EL1088_03_10]^Channel 5^Input;
                               .nRawEncoderULINT     := TIIB[EL5042_03_13]^FB Inputs Channel 1^Position'}
     M6: DUT_MotionStage := (sName := 'QRIX:DIFF:MMS:PHI');
@@ -179,6 +179,8 @@ VAR_GLOBAL
 	
 	
 	(* Start Adding Spectometer Arm Axes Here*)
+	{attribute 'pytmc' := 'pv: QRIX:SPCA:MMS'}
+	M25: DUT_MotionStage := (sName := 'QRIX:SPCA:MMS');
 	
 END_VAR]]></Declaration>
   </GVL>
