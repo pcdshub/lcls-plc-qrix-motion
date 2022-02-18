@@ -61,5 +61,8 @@
 		<Box File="EL7031_02_18.xti" Id="26">
 			<EtherCAT PortABoxInfo="#x01000019"/>
 		</Box>
+		<Box File="Term 106 (EL9011).xti" Id="106">
+			<EtherCAT PortABoxInfo="#x0100001a"/>
+		</Box>
 	</Box>
 </TcSmItem>

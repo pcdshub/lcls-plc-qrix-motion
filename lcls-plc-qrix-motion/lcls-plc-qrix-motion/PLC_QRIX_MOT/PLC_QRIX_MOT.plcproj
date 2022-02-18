@@ -52,13 +52,13 @@
     <Compile Include="POUs\PRG_SDS.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\PRG_LAS.TcPOU">
+    <Compile Include="POUs\PRG_Questar.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\PRG_Diffractometer.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\PRG_Questar.TcPOU">
+    <Compile Include="POUs\PRG_LAS.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\PRG_SSL.TcPOU">
