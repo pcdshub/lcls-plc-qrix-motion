@@ -1,0 +1,343 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="FB_3AxesJack" Id="{e52940dd-3407-4f5b-86fe-1c81eaa8a8e3}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_3AxesJack
+VAR_IN_OUT
+    stJack1Axis: DUT_MotionStage;
+    stJack2Axis: DUT_MotionStage;
+    stJack3Axis: DUT_MotionStage;
+    bExecuteMotion:BOOL ;
+    io_fbFFHWO    :    FB_HardwareFFOutput;
+    fbArbiter: FB_Arbiter();
+END_VAR
+VAR_INPUT
+	
+    {attribute 'pytmc' := '
+    pv: PMPS_OK;
+    io: i;
+    field: ZNAM False
+    field: ONAM True
+    '}
+    bMoveOk:BOOL;
+
+    (*Offsets*)
+    {attribute 'pytmc' := '
+    pv: ZeroOffset_Jack1;
+    io: io;
+    '}
+    rEncoderOffsetJack1: REAL;
+	
+    {attribute 'pytmc' := '
+    pv: ZeroOffset_Jack2;
+    io: io;
+    '}
+    rEncoderOffsetJack2: REAL;
+	
+    {attribute 'pytmc' := '
+    pv: ZeroOffset_Jack3;
+    io: io;
+    '}
+    rEncoderOffsetJack3: REAL;
+	
+	(*Distance X*)
+	rDistanceX: REAL := 0.24;
+	(*Distance Z*)
+	rDistanceZ: REAL := 0.88;
+	
+	rLimitPositionMax: REAL := 8;
+	rLimitPositionMin: REAL := -8;	
+	rLimitPitchMin: REAL := -18;
+	rLimitPitchMax: REAL :=  18;
+	rLimitRollMin: REAL  := -18;
+	rLimitRollMax: REAL  :=  18;
+
+    i_DevName : STRING; //device name for FFO and PMPS diagnostics
+	
+     {attribute 'pytmc' := '
+    pv: Home;
+    io: i;
+    field: ZNAM False
+    field: ONAM True
+    '}
+    bHome:BOOL:=FALSE;
+END_VAR
+
+VAR
+	fbJack1Stage: FB_MotionStage;
+    fbJack2Stage: FB_MotionStage;
+    fbJack3Stage: FB_MotionStage;
+    fPosJack1Stage: LREAL;
+    fPosJack2Stage: LREAL;
+    fPosJack3Stage: LREAL;
+
+    (*Motion Parameters*)
+    fSmallDelta: LREAL := 0.01;
+    fBigDelta: LREAL := 10;
+    fMaxVelocity: LREAL := 0.1;
+    fHighAccel: LREAL := 0.8;
+    fLowAccel: LREAL := 0.1;
+
+    stJack1: DUT_PositionState;
+    stJack2: DUT_PositionState;
+    stJack3: DUT_PositionState;
+
+    {attribute 'pytmc' := 'pv: JACK1'}
+    fbJack1: FB_StatePTPMove;
+    {attribute 'pytmc' := 'pv: JACK2'}
+    fbJack2: FB_StatePTPMove;
+    {attribute 'pytmc' := 'pv: JACK3'}
+    fbJack3: FB_StatePTPMove;
+
+    (*EPICS pvs*)
+    {attribute 'pytmc' := '
+    pv: POS_REQ;
+    io: io;
+    '}
+    rReqPosition : REAL;
+	
+    {attribute 'pytmc' := '
+    pv: PIT_REQ;
+    io: io;
+    '}
+    rReqPitch : REAL;
+	
+    {attribute 'pytmc' := '
+    pv: ROL_REQ;
+    io: io;
+    '}
+    rReqRoll : REAL;
+
+
+    {attribute 'pytmc' := '
+    pv: ACTUAL_POSISION;
+    io: io;
+    '}
+    rActPosition : REAL;
+
+    {attribute 'pytmc' := '
+    pv: ACTUAL_PITCH;
+    io: io;
+    '}
+    rActPitch : REAL;
+
+    {attribute 'pytmc' := '
+    pv: ACTUAL_ROLL;
+    io: io;
+    '}
+    rActRoll : REAL;
+	
+
+    {attribute 'pytmc' := '
+    pv: HOME_READY;
+    io: i;
+    field: ZNAM False
+    field: ONAM True
+    '}
+    bHomeReady:BOOL:=FALSE;
+
+
+    //Local variables
+    bInit: BOOL :=true;
+
+    //old values
+    rOldReqPosition : REAL;
+    rOldReqPitch: REAL;
+    rOldReqRoll: REAL;
+
+    bExecuteMotionX: BOOL;
+
+	rPosAvgJAck1_3: REAL;
+
+    fPosBlock: LREAL;
+    fPosClose: LREAL;
+    fPosOpen: LREAL;
+
+    stSetPositionOptions: ST_SetPositionOptions;
+    fbSetPosition_Pos: MC_SetPosition;
+    fbSetPosition_Angle: MC_SetPosition;
+
+    // For logging
+    fbLogger : FB_LogMessage := (eSubsystem:=E_SubSystem.MOTION);
+    tErrorPresent : R_TRIG;
+    tAction : R_TRIG;
+    tOverrideActivated : R_TRIG;
+
+    FFO    :    FB_FastFault :=(
+        i_DevName := '3Jack',
+        i_Desc := 'Fault occurs when center is greated than that requested',
+        i_TypeCode := 16#1010);
+
+
+    bTest: BOOL;
+
+    AptArrayStatus AT %Q* : ST_PMPS_Aperture_IO;
+    AptArrayReq AT %I* : ST_PMPS_Aperture_IO;
+	
+	
+	fbPower: MC_POWER;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// Initialize
+ACT_init();
+
+// Instantiate Function block for all the blades
+ACT_Motion();
+
+//SET and GET the requested and Actual values
+ACT_CalculatePositions();
+
+// Software Limits to protect blades
+ACT_VirtualLimitSW();]]></ST>
+    </Implementation>
+    <Action Name="ACT_CalculatePositions" Id="{bbd17bae-60ce-497a-ba58-ed42c399a350}">
+      <Implementation>
+        <ST><![CDATA[//check if requested center or gap has changed
+//check that the requested values are within acceptable motion range
+IF (rOldReqPosition <> rReqPosition) THEN
+        rOldReqPosition := rReqPosition;
+        bExecuteMotionX := TRUE;
+        fbLogger(sMsg:='Requested new Position.', eSevr:=TcEventSeverity.Verbose);
+END_IF
+
+IF (rOldReqPitch <> rReqPitch) THEN
+    rOldReqPitch := rReqPitch;
+    bExecuteMotionX := TRUE;
+    fbLogger(sMsg:='Requested new Pitch', eSevr:=TcEventSeverity.Verbose);
+END_IF
+
+IF (rOldReqRoll <> rReqRoll) THEN
+    rOldReqRoll := rReqRoll;
+    bExecuteMotionX := TRUE;
+    fbLogger(sMsg:='Requested new Roll', eSevr:=TcEventSeverity.Verbose);
+END_IF
+
+//Calculate requested target positions from requested gap and center
+fPosJack1Stage	:= rReqPosition + rDistanceX / 2 * rReqRoll + rDistanceZ / 2 * rReqPitch + rEncoderOffsetJack1;
+fPosJack2Stage	:= rReqPosition - rDistanceX / 2 * rReqRoll + rEncoderOffsetJack2;
+fPosJack3Stage	:= rReqPosition + rDistanceX / 2 * rReqRoll - rDistanceZ / 2 * rReqPitch + rEncoderOffsetJack3;
+
+//Calculate actual gap and center from actual stages positions
+rPosAvgJack1_3	:= LREAL_TO_REAL( ((stJack1Axis.stAxisStatus.fActPosition - rEncoderOffsetJack1) + (stJack3Axis.stAxisStatus.fActPosition - rEncoderOffsetJack3)) / 2 );
+rActPosition	:= LREAL_TO_REAL( ((rPosAvgJAck1_3 + (stJack2Axis.stAxisStatus.fActPosition - rEncoderOffsetJack2)) / 2 ));
+rActPitch		:= LREAL_TO_REAL( ((stJack1Axis.stAxisStatus.fActPosition - rEncoderOffsetJack1) - (stJack3Axis.stAxisStatus.fActPosition - rEncoderOffsetJack3)) / rDistanceZ);
+rActRoll		:= LREAL_TO_REAL( (rActPosition - (stJack2Axis.stAxisStatus.fActPosition - rEncoderOffsetJack2)) / (rDistanceX/2)); // mrad
+]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="ACT_Init" Id="{9d30aadd-5716-4b90-9d43-7446f24978f4}">
+      <Implementation>
+        <ST><![CDATA[
+//  init the motion stages parameters
+IF ( bInit) THEN
+    stJack1Axis.bHardwareEnable := TRUE;
+    stJack2Axis.bHardwareEnable := TRUE;
+    stJack3Axis.bHardwareEnable := TRUE;
+    stJack1Axis.bPowerSelf :=FALSE;
+    stJack2Axis.bPowerSelf :=FALSE;
+    stJack3Axis.bPowerSelf :=FALSE;
+    stJack1Axis.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+    stJack2Axis.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+    stJack3Axis.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+    FFO.i_DevName := i_DevName;
+END_IF
+]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="ACT_Motion" Id="{22a587fa-f56f-4e0c-aede-ea43214fae3c}">
+      <Implementation>
+        <ST><![CDATA[// Instantiate Function block for all the blades
+fbJack1Stage(stMotionStage:=stJack1Axis);
+fbJack2Stage(stMotionStage:=stJack2Axis);
+fbJack3Stage(stMotionStage:=stJack3Axis);
+
+
+
+// PTP Motion for each blade
+stJack1.sName := 'Jack1';
+stJack1.fPosition := fPosJack1Stage;
+stJack1.fDelta := fSmallDelta;
+stJack1.fVelocity := fMaxVelocity;
+stJack1.fAccel := fHighAccel;
+stJack1.fDecel := fHighAccel;
+
+stJack2.sName := 'Jack2';
+stJack2.fPosition := fPosJack2Stage;
+stJack2.fDelta := fSmallDelta;
+stJack2.fVelocity := fMaxVelocity;
+stJack2.fAccel := fHighAccel;
+stJack2.fDecel := fHighAccel;
+
+stJack3.sName := 'Jack3';
+stJack3.fPosition := fPosJack3Stage;
+stJack3.fDelta := fSmallDelta;
+stJack3.fVelocity := fMaxVelocity;
+stJack3.fAccel := fHighAccel;
+stJack3.fDecel := fHighAccel;
+
+
+IF (bExecuteMotionX) THEN
+    fbJack1.bExecute := fbJack2.bExecute := fbJack3.bExecute := bExecuteMotionX;
+    bExecuteMotionX:= FALSE;
+END_IF
+
+
+fbJack1(
+    stPositionState:=stJack1,
+    bMoveOk:=bMoveOk,
+    stMotionStage:=stJack1Axis);
+
+fbJack2(
+    stPositionState:=stJack2,
+    bMoveOk:=bMoveOk,
+    stMotionStage:=stJack2Axis);
+	
+fbJack3(
+    stPositionState:=stJack3,
+    bMoveOk:=bMoveOk,
+    stMotionStage:=stJack3Axis);
+
+
+]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="ACT_VirtualLimitSW" Id="{19951cbb-ec0a-4f31-800e-72e65097a361}">
+      <Implementation>
+        <ST><![CDATA[
+// Force set to false
+stJack1Axis.bPowerSelf := stJack2Axis.bPowerSelf := stJack3Axis.bPowerSelf := FALSE;
+
+// Set SafetyReady flags manually
+stJack1Axis.bSafetyReady:= TRUE;
+stJack2Axis.bSafetyReady:= TRUE;
+stJack3Axis.bSafetyReady:= TRUE;
+
+
+// Note: FB_MotionStage calls FB_SetEnables internally that overwrites .bAllForwardEnable/.bAllBackwardEnable flags
+
+fbPower(
+	Axis := stJack1Axis.Axis,
+	Enable := stJack1Axis.bAllEnable,
+	Enable_Positive := stJack1Axis.bAllForwardEnable  AND rActPosition <= rLimitPositionMax AND rActPitch <= rLimitPitchMax,
+	Enable_Negative := stJack1Axis.bAllBackwardEnable AND rActPosition >= rLimitPositionMin AND rActPitch >= rLimitPitchMin,
+	Override := 100.000
+);
+fbPower(
+	Axis := stJack2Axis.Axis,
+	Enable := stJack2Axis.bAllEnable,
+	Enable_Positive := stJack2Axis.bAllForwardEnable  AND rActPosition <= rLimitPositionMax AND rActRoll <= rLimitRollMax,
+	Enable_Negative := stJack2Axis.bAllBackwardEnable AND rActPosition >= rLimitPositionMin AND rActRoll >= rLimitRollMin,
+	Override := 100.000
+);
+fbPower(
+	Axis := stJack3Axis.Axis,
+	Enable := stJack3Axis.bAllEnable,
+	Enable_Positive := stJack3Axis.bAllForwardEnable  AND rActPosition <= rLimitPositionMax AND rActPitch >= rLimitPitchMin,
+	Enable_Negative := stJack3Axis.bAllBackwardEnable AND rActPosition >= rLimitPositionMin AND rActPitch <= rLimitPitchMax,
+	Override := 100.000
+);
+]]></ST>
+      </Implementation>
+    </Action>
+  </POU>
+</TcPlcObject>

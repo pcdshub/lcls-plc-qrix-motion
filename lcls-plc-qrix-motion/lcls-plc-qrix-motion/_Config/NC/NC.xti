@@ -22,6 +22,22 @@
 		<AxisFolder Name="SDS"/>
 		<AxisFolder Name="Cryo"/>
 		<AxisFolder Name="Questar"/>
+		<AxisFolder Name="2 Theta Arm"/>
+		<AxisFolder Name="OPTICS"/>
+		<AxisFolder Name="DET_FRAME"/>
+		<AxisFolder Name="DET_CHAMBER"/>
+		<AxisFolder Name="DET_ARM"/>
 		<Axis File="M1 - SSL Sliding seal.xti" Id="1"/>
+		<Axis File="M2 - Diff X.xti" Id="2"/>
+		<Axis File="M3 - Diff Y.xti" Id="3"/>
+		<Axis File="M4 - Diff Z.xti" Id="4"/>
+		<Axis File="M5 - Diff 2Theta Y.xti" Id="5"/>
+		<Axis File="M6 - Diff Phi.xti" Id="6"/>
+		<Axis File="M7 - Diff Chi.xti" Id="7"/>
+		<Axis File="M8 - Diff Theta.xti" Id="9"/>
+		<Axis File="M9 - Diff 2Theta.xti" Id="8"/>
+		<Axis File="M10 - LAS IR VIS.xti" Id="10"/>
+		<Axis File="M11 - LAS IR H.xti" Id="11"/>
+		<Axis File="M12 - LAS IR V.xti" Id="12"/>
 	</NC>
 </TcSmItem>

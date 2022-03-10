@@ -14,6 +14,18 @@
     <LibraryReferences>{8cf74047-d834-494f-9acc-d498e2d4e57a}</LibraryReferences>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Devices\FB_2AxesTrans.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Devices\FB_3AxesJack.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\DUT_Sensor.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\DUT_SensorHGS.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="GVLs\GVL_PMPS.TcGVL">
       <SubType>Code</SubType>
       <LinkAlways>true</LinkAlways>
@@ -40,13 +52,13 @@
     <Compile Include="POUs\PRG_SDS.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\PRG_LAS.TcPOU">
+    <Compile Include="POUs\PRG_Questar.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\PRG_Diffractometer.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\PRG_Questar.TcPOU">
+    <Compile Include="POUs\PRG_LAS.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\PRG_SSL.TcPOU">
@@ -56,6 +68,7 @@
   <ItemGroup>
     <Folder Include="DUTs" />
     <Folder Include="GVLs" />
+    <Folder Include="Devices" />
     <Folder Include="VISUs" />
     <Folder Include="POUs" />
   </ItemGroup>
@@ -68,9 +81,17 @@
       <DefaultResolution>lcls-twincat-motion, * (SLAC)</DefaultResolution>
       <Namespace>lcls_twincat_motion</Namespace>
     </PlaceholderReference>
+    <PlaceholderReference Include="lcls-twincat-optics">
+      <DefaultResolution>lcls-twincat-optics, * (SLAC)</DefaultResolution>
+      <Namespace>lcls_twincat_optics</Namespace>
+    </PlaceholderReference>
     <PlaceholderReference Include="PMPS">
       <DefaultResolution>PMPS, * (SLAC - LCLS)</DefaultResolution>
       <Namespace>PMPS</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="Tc2_MC2">
+      <DefaultResolution>Tc2_MC2, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc2_MC2</Namespace>
     </PlaceholderReference>
     <PlaceholderReference Include="Tc2_Standard">
       <DefaultResolution>Tc2_Standard, * (Beckhoff Automation GmbH)</DefaultResolution>
@@ -87,13 +108,67 @@
   </ItemGroup>
   <ItemGroup>
     <PlaceholderResolution Include="LCLS General">
-      <Resolution>LCLS General, * (SLAC)</Resolution>
+      <Resolution>LCLS General, 2.4.2 (SLAC)</Resolution>
     </PlaceholderResolution>
     <PlaceholderResolution Include="lcls-twincat-motion">
-      <Resolution>lcls-twincat-motion, * (SLAC)</Resolution>
+      <Resolution>lcls-twincat-motion, 1.6.0 (SLAC)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="lcls-twincat-optics">
+      <Resolution>lcls-twincat-optics, 0.2.1 (SLAC)</Resolution>
     </PlaceholderResolution>
     <PlaceholderResolution Include="PMPS">
-      <Resolution>PMPS, * (SLAC - LCLS)</Resolution>
+      <Resolution>PMPS, 2.2.1 (SLAC - LCLS)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="SysDir">
+      <Resolution>SysDir, 3.5.12.0 (System)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="SysFile">
+      <Resolution>SysFile, 3.5.9.0 (System)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="Tc2_ControllerToolbox">
+      <Resolution>Tc2_ControllerToolbox, 3.4.3.0 (Beckhoff Automation GmbH)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="Tc2_EtherCAT">
+      <Resolution>Tc2_EtherCAT, 3.3.15.0 (Beckhoff Automation GmbH)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="Tc2_IoFunctions">
+      <Resolution>Tc2_IoFunctions, 3.3.13.0 (Beckhoff Automation GmbH)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="Tc2_Math">
+      <Resolution>Tc2_Math, 3.3.1.0 (Beckhoff Automation GmbH)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="Tc2_MC2">
+      <Resolution>Tc2_MC2, 3.3.42.0 (Beckhoff Automation GmbH)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="Tc2_ModbusSrv">
+      <Resolution>Tc2_ModbusSrv, 3.3.2.0 (Beckhoff Automation GmbH)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="Tc2_SerialCom">
+      <Resolution>Tc2_SerialCom, 3.3.7.0 (Beckhoff Automation GmbH)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="Tc2_Standard">
+      <Resolution>Tc2_Standard, 3.3.3.0 (Beckhoff Automation GmbH)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="Tc2_System">
+      <Resolution>Tc2_System, 3.4.24.0 (Beckhoff Automation GmbH)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="Tc2_TcpIp">
+      <Resolution>Tc2_TcpIp, 3.3.6.0 (Beckhoff Automation GmbH)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="Tc2_Utilities">
+      <Resolution>Tc2_Utilities, 3.3.41.0 (Beckhoff Automation GmbH)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="Tc3_EventLogger">
+      <Resolution>Tc3_EventLogger, 3.1.24.0 (Beckhoff Automation GmbH)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="Tc3_JsonXml">
+      <Resolution>Tc3_JsonXml, 3.3.14.0 (Beckhoff Automation GmbH)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="Tc3_Module">
+      <Resolution>Tc3_Module, 3.3.21.0 (Beckhoff Automation GmbH)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="TcUnit">
+      <Resolution>TcUnit, 1.1.0.0 (www.tcunit.org)</Resolution>
     </PlaceholderResolution>
   </ItemGroup>
   <ItemGroup>

@@ -59,15 +59,17 @@ END_VAR
 END_IF
 //EPS??
 
-
-fb_Diff_Theta(stMotionStage:=Main.M2);
-fb_Diff_2Theta(stMotionStage:=Main.M3);
-fb_Diff_Det(stMotionStage:=Main.M4);
-fb_Diff_Chi(stMotionStage:=Main.M5);
+fb_Diff_X(stMotionStage:=Main.M2);
+fb_Diff_Y(stMotionStage:=Main.M3);
+fb_Diff_Z(stMotionStage:=Main.M4);
+fb_Diff_Det(stMotionStage:=Main.M5);
 fb_Diff_Phi(stMotionStage:=Main.M6);
-fb_Diff_X(stMotionStage:=Main.M7);
-fb_Diff_Y(stMotionStage:=Main.M8);
-fb_Diff_Z(stMotionStage:=Main.M9);]]></ST>
+fb_Diff_Chi(stMotionStage:=Main.M7);
+fb_Diff_2Theta(stMotionStage:=Main.M8);
+fb_Diff_Theta(stMotionStage:=Main.M9);
+
+
+]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>
