@@ -1333,6 +1333,7 @@ External Setpoint Generation:
 		<Encoder Name="Enc" EncType="29">
 			<EncPara ScaleFactorNumerator="4.881027e-06" Offset="35.8" MaxCount="#xffffffff">
 				<Inc RefSoftSyncMask="#x0000ffff"/>
+				<ParameterChanged>14</ParameterChanged>
 				<ParameterChanged>7</ParameterChanged>
 				<ParameterChanged>35</ParameterChanged>
 			</EncPara>

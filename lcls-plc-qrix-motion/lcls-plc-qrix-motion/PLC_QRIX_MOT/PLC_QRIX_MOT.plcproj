@@ -114,7 +114,7 @@
       <Resolution>lcls-twincat-motion, 1.6.0 (SLAC)</Resolution>
     </PlaceholderResolution>
     <PlaceholderResolution Include="lcls-twincat-optics">
-      <Resolution>lcls-twincat-optics, * (SLAC)</Resolution>
+      <Resolution>lcls-twincat-optics, 0.2.1 (SLAC)</Resolution>
     </PlaceholderResolution>
     <PlaceholderResolution Include="PMPS">
       <Resolution>PMPS, 2.2.1 (SLAC - LCLS)</Resolution>
@@ -124,6 +124,9 @@
     </PlaceholderResolution>
     <PlaceholderResolution Include="SysFile">
       <Resolution>SysFile, 3.5.9.0 (System)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="Tc2_ControllerToolbox">
+      <Resolution>Tc2_ControllerToolbox, 3.4.3.0 (Beckhoff Automation GmbH)</Resolution>
     </PlaceholderResolution>
     <PlaceholderResolution Include="Tc2_EtherCAT">
       <Resolution>Tc2_EtherCAT, 3.3.15.0 (Beckhoff Automation GmbH)</Resolution>

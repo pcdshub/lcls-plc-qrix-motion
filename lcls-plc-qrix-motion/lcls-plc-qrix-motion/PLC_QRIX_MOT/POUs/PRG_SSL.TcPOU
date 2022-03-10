@@ -42,7 +42,7 @@ END_IF
 
 // Couple both axes
 // Auto-coupling at init and auto-reset of coupling boolean
-bExecuteCouple S= NOT bInitComplete;
+(*bExecuteCouple S= NOT bInitComplete;
 
 bExecuteCouple R= couple.Busy OR bAlreadyCoupled;
 couple (Master:= Main.M1.Axis, 
@@ -55,10 +55,11 @@ couple (Master:= Main.M1.Axis,
 bInitComplete S= bAlreadyCoupled;
 nCurrGantryDiff := ((ULINT_TO_LINT(Main.M1.nRawEncoderULINT) - ULINT_TO_LINT(nSSL_ENC_REF)) - (ULINT_TO_LINT(Main.M25.nRawEncoderULINT) - ULINT_TO_LINT(nSSL_ENC_REF)));
 
-
+*)
 //EPS needs to be implemented and coupling of axes servo and wheel from spectometer arm
 // hpw to recover from this situation?!
-Main.M1.bHardwareEnable := bLimitBackwardEnable AND bLimitForwardEnable AND (ABS(nCurrGantryDiff) > nGANTRY_TOLERANCE); //Include STO from SPCA
+//Main.M1.bHardwareEnable := bLimitBackwardEnable AND bLimitForwardEnable AND (ABS(nCurrGantryDiff) > nGANTRY_TOLERANCE); //Include STO from SPCA
+Main.M1.bHardwareEnable := bLimitBackwardEnable AND bLimitForwardEnable;
 fb_SSL_Motor(stMotionStage:=Main.M1);]]></ST>
     </Implementation>
   </POU>
