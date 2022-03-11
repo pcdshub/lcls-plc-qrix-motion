@@ -100,7 +100,7 @@ VAR_GLOBAL
                               .nRawEncoderULINT     := TIIB[EL5042_02_08]^FB Inputs Channel 2^Position'}
     M12: DUT_MotionStage := (sName := 'QRIX:LAS:MMS:D-V');
 
-	
+(*	
 	// Cryo -  4 axes
     {attribute 'pytmc' := 'pv: QRIX:CRYO:MMS:ROT'}
     {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SSL-EL7041]^STM Status^Status^Digital input 1;
@@ -181,6 +181,8 @@ VAR_GLOBAL
 	(* Start Adding Spectometer Arm Axes Here*)
 	{attribute 'pytmc' := 'pv: QRIX:SPCA:MMS'}
 	M25: DUT_MotionStage := (sName := 'QRIX:SPCA:MMS');
+	
+	*)
 	
 END_VAR]]></Declaration>
   </GVL>
