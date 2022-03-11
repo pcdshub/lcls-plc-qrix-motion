@@ -5,9 +5,9 @@
 VAR
 	fb_SSL_Motor : FB_MotionStage;
 	(*EPS Limit switches*)
-	{attribute 'TcLinkTo' := 'TIIB[EL1004_02_03]^Channel 1^Input'}
-	bLimitBackwardEnable AT %I* :BOOL;
 	{attribute 'TcLinkTo' := 'TIIB[EL1004_02_03]^Channel 2^Input'}
+	bLimitBackwardEnable AT %I* :BOOL;
+	{attribute 'TcLinkTo' := 'TIIB[EL1004_02_03]^Channel 3^Input'}
 	bLimitForwardEnable AT %I* :BOOL;
 	{attribute 'pytmc' := 'pv: QRIX:SPCA:COUPLED'}
 
