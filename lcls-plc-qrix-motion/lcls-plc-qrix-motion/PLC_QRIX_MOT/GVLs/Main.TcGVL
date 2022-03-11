@@ -17,8 +17,8 @@ VAR_GLOBAL
 	// Sample Chamber Sliding Seal - 1 axis
 	//connect EPS limits
     {attribute 'pytmc' := 'pv: QRIX:SC:SSL:MMS'}
-    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL7041_02_01]^STM Status^Status^Digital input 1;
-                              .bLimitBackwardEnable := TIIB[EL7041_02_01]^STM Status^Status^Digital input 2;
+    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL7047_02_01]^STM Status^Status^Digital input 1;
+                              .bLimitBackwardEnable := TIIB[EL7047_02_01]^STM Status^Status^Digital input 2;
                               .nRawEncoderULINT     := TIIB[EL5042_02_02]^FB Inputs Channel 1^Position'}
     M1: DUT_MotionStage := (sName := 'QRIX:SC_SSL:MMS');
 	
