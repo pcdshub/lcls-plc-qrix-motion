@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="PRG_2Theta" Id="{49979313-c6aa-43cf-b80a-b1a64d0ce087}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM PRG_2Theta
+VAR
+	bInit: BOOL := TRUE;
+	fbPower_AxisM1:  MC_Power;
+	fbPower_AxisM2:  MC_Power;
+	fb2ThetaStepper : FB_MotionStage;
+	fb2ThetaServo : FB_MotionStage;
+	bMoveOk: BOOL;
+	 
+END_VAR
+
+VAR CONSTANT
+	fThresholdPS1: REAL := 0.15;
+	fThresholdPS2: REAL := 0.15;
+	fThresholdPS3: REAL := 0.15;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF binit THEN
+	bInit := FALSE;
+	
+	// Servo
+	Main.M1.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+	Main.M1.bHardwareEnable := TRUE;
+	Main.M1.bPowerSelf := FALSE;
+	
+	// Set torque output limit (unit: 0.1%)
+	//Main.iServoTorqueLimitPositive := 1500; // 1500*0.1% = 150%
+	//Main.iServoTorqueLimitNegative := 1500;
+	
+	// Stepper
+	Main.M2.nBrakeMode := ENUM_StageBrakeMode.IF_MOVING;
+	Main.M2.bHardwareEnable := TRUE;
+	Main.M2.bPowerSelf := FALSE;
+	
+	
+	Main.M1.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+	Main.M2.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+END_IF;
+
+ACT_Servo();
+ACT_Stepper();	
+]]></ST>
+    </Implementation>
+    <Action Name="ACT_Servo" Id="{9c766fea-8ced-417d-ada9-1b7659117047}">
+      <Implementation>
+        <ST><![CDATA[fb2ThetaServo(stMotionStage:=GVL_Main.M1);
+
+GVL_Main.M1.bPowerSelf := FALSE;
+
+GVL_Main.M1.bAllEnable := 		GVL_Main.M1.bEnable
+							AND GVL_Main.bESTOP // ESTOP
+							AND	GVL_Sensor.stPS1.fValue > fThresholdPS1
+							AND GVL_Sensor.stPS2.fValue > fThresholdPS2
+							AND GVL_Sensor.stPS3.fValue > fThresholdPS3; // Compressed-air pressure
+GVL_Main.M1.bAllForwardEnable  := GVL_Main.M1.bLimitForwardEnable  AND GVL_Main.bESTOP;
+GVL_Main.M1.bAllBackwardEnable := GVL_Main.M1.bLimitBackwardEnable AND GVL_Main.bESTOP;
+
+fbPower_AxisM1(
+	Axis:= GVL_Main.M1.Axis,
+	Enable := GVL_Main.M1.bAllEnable,
+	Enable_Positive:= GVL_Main.M1.bAllForwardEnable,
+	Enable_Negative:= GVL_Main.M1.bAllBackwardEnable,
+	Override:= 100
+);]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="ACT_Stepper" Id="{66e0b0b8-d09b-4167-8180-d5937a88b96b}">
+      <Implementation>
+        <ST><![CDATA[fb2ThetaStepper(stMotionStage:=GVL_Main.M2);
+
+GVL_Main.M2.bPowerSelf := FALSE;
+
+GVL_Main.M2.bAllEnable := 		GVL_Main.M2.bEnable
+							AND GVL_Main.bESTOP // ESTOP
+							AND	GVL_Sensor.stPS1.fValue > fThresholdPS1
+							AND GVL_Sensor.stPS2.fValue > fThresholdPS2
+							AND GVL_Sensor.stPS3.fValue > fThresholdPS3 // Compressed-air pressure
+							AND GVL_Main.bOpenSV1
+							AND GVL_Main.bOpenSV2;
+GVL_Main.M2.bAllForwardEnable  := GVL_Main.M2.bLimitForwardEnable  AND GVL_Main.bESTOP;
+GVL_Main.M2.bAllBackwardEnable := GVL_Main.M2.bLimitBackwardEnable AND GVL_Main.bESTOP;
+
+fbPower_AxisM2(
+	Axis:= GVL_Main.M2.Axis,
+	Enable := GVL_Main.M2.bAllEnable,
+	Enable_Positive:= GVL_Main.M2.bAllForwardEnable,
+	Enable_Negative:= GVL_Main.M2.bAllBackwardEnable,
+	Override:= 100
+);]]></ST>
+      </Implementation>
+    </Action>
+  </POU>
+</TcPlcObject>

@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <GVL Name="GVL_Sensor" Id="{1e8c8953-d9ec-471b-85fd-d0dbdbf1215b}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+
+	bFloating: BOOL;
+
+	// YDF1
+	{attribute 'TcLinkTo' := '	.iRawCnts	:= TIIB[Rack#2D LinearGaugeAmp (SC-HG1-ETC)]^Process Data(In)  TxPDO-Map^Response Data Unit1'}
+	stYDF1: DUT_SensorHGS;
+	
+	// YDF2
+	{attribute 'TcLinkTo' := '	.iRawCnts	:= TIIB[Rack#2D LinearGaugeAmp (SC-HG1-ETC)]^Process Data(In)  TxPDO-Map^Response Data Unit2'}	
+	stYDF2: DUT_SensorHGS;
+	
+	// YDF3
+	{attribute 'TcLinkTo' := '	.iRawCnts	:= TIIB[Rack#2D LinearGaugeAmp (SC-HG1-ETC)]^Process Data(In)  TxPDO-Map^Response Data Unit3'}
+	stYDF3: DUT_SensorHGS;
+	
+	// Height difference btw granite shelf and detector frame.
+	{attribute 'TcLinkTo' := '	.iRawCnts	:= TIIB[Rack#2D LinearGaugeAmp (SC-HG1-ETC)]^Process Data(In)  TxPDO-Map^Response Data Unit4'}
+	stHDF: DUT_SensorHGS;
+	
+	// Granite TiltZ : Pitch
+	{attribute 'TcLinkTo' := '	.iRawCnts	:= TIIB[Rack#2B-03 AI_TiltSensor (EL3174-0002)]^AI Standard Channel 2^Value'}
+	stGraniteP: DUT_Sensor;
+	// Granite TiltX : Roll
+	{attribute 'TcLinkTo' := '	.iRawCnts	:= TIIB[Rack#2B-03 AI_TiltSensor (EL3174-0002)]^AI Standard Channel 1^Value'}
+	stGraniteR: DUT_Sensor;
+	// Frame TiltZ : Pitch
+	{attribute 'TcLinkTo' := '	.iRawCnts	:= TIIB[Rack#2B-03 AI_TiltSensor (EL3174-0002)]^AI Standard Channel 4^Value'}
+	stFrameP: DUT_Sensor;
+	// Frame TiltX : Roll
+	{attribute 'TcLinkTo' := '	.iRawCnts	:= TIIB[Rack#2B-03 AI_TiltSensor (EL3174-0002)]^AI Standard Channel 3^Value'}
+	stFrameR: DUT_Sensor;
+	
+	{attribute 'TcLinkTo' := '	.iRawCnts	:= TIIB[Rack#2B-04 PS_P (EL3064)]^AI Standard Channel 1^Value'}
+	stPS1: DUT_Sensor;
+	{attribute 'TcLinkTo' := '	.iRawCnts	:= TIIB[Rack#2B-04 PS_P (EL3064)]^AI Standard Channel 2^Value'}
+	stPS2: DUT_Sensor;
+	{attribute 'TcLinkTo' := '	.iRawCnts	:= TIIB[Rack#2B-04 PS_P (EL3064)]^AI Standard Channel 3^Value'}
+	stPS3: DUT_Sensor;
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

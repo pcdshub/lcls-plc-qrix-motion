@@ -59,7 +59,7 @@ nCurrGantryDiff := ((ULINT_TO_LINT(Main.M1.nRawEncoderULINT) - ULINT_TO_LINT(nSS
 //EPS needs to be implemented and coupling of axes servo and wheel from spectometer arm
 // hpw to recover from this situation?!
 //Main.M1.bHardwareEnable := bLimitBackwardEnable AND bLimitForwardEnable AND (ABS(nCurrGantryDiff) > nGANTRY_TOLERANCE); //Include STO from SPCA
-Main.M1.bHardwareEnable := bLimitBackwardEnable AND bLimitForwardEnable;
+//Main.M1.bHardwareEnable := bLimitBackwardEnable AND bLimitForwardEnable;
 fb_SSL_Motor(stMotionStage:=Main.M1);]]></ST>
     </Implementation>
   </POU>

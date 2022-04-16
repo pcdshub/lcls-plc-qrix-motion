@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="PRG_Sensor" Id="{3a285490-8ff2-4f17-b9dd-5ad55de9cea5}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM PRG_Sensor
+VAR
+	bInit : bool :=TRUE;
+	
+    {attribute 'TcLinkTo' := 'TIIB[Rack#2D LinearGaugeAmp (SC-HG1-ETC)]^Process Data(Out) RxPDO-Map^Head Value Mode'}
+	bSensorHeadValueMode AT %Q* : bool;
+	
+    {attribute 'TcLinkTo' := 'TIIB[Rack#2D LinearGaugeAmp (SC-HG1-ETC)]^Process Data(Out) RxPDO-Map^Normal Value Mode'}
+	bSensorHeadNormalValueMode AT %Q* : bool;
+	
+	bResetSensorMode AT %I* : bool;
+	
+	uintTest AT %Q*: UINT;
+	
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+If bInit Then
+	bSensorHeadNormalValueMode := True;
+	bInit := False;
+End_If;
+
+If(bResetSensorMode = True) Then
+	bResetSensorMode := False;
+	bSensorHeadValueMode := False;
+	bSensorHeadNormalValueMode := False;
+	bInit := True;
+End_If;
+
+
+GVL_Sensor.stYDF1.sName			:= 'YDF1 Panasonic HG-S';
+GVL_Sensor.stYDF1.sEGU			:= 'mm';
+GVL_Sensor.stYDF1.fCntsInEGU	:= 10000;
+GVL_Sensor.stYDF2.sName			:= 'YDF2 Panasonic HG-S';
+GVL_Sensor.stYDF2.sEGU			:= 'mm';
+GVL_Sensor.stYDF2.fCntsInEGU	:= 10000;
+GVL_Sensor.stYDF3.sName			:= 'YDF3 Panasonic HG-S';
+GVL_Sensor.stYDF3.sEGU			:= 'mm';
+GVL_Sensor.stYDF3.fCntsInEGU	:= 10000;
+GVL_Sensor.stHDF.sName			:= 'HDF Panasonic HG-S';
+GVL_Sensor.stHDF.sEGU			:= 'mm';
+GVL_Sensor.stHDF.fCntsInEGU		:= 10000;
+
+GVL_Sensor.stGraniteP.sName		:= 'Granite Pitch';
+GVL_Sensor.stGraniteP.sEGU		:= 'mrad';
+GVL_Sensor.stGraniteP.fCntsInEGU:= 3276.7; // 1V = 1mrad in Low gain mode
+GVL_Sensor.stGraniteP.iOffset   := -1005;
+GVL_Sensor.stGraniteR.sName		:= 'Granite Roll';
+GVL_Sensor.stGraniteR.sEGU		:= 'mrad';
+GVL_Sensor.stGraniteR.fCntsInEGU:= 3276.7;
+GVL_Sensor.stGraniteR.iOffset   := 3326;
+
+GVL_Sensor.stFrameP.sName		:= 'Det. Frame Pitch';
+GVL_Sensor.stFrameP.sEGU		:= 'mrad';
+GVL_Sensor.stFrameP.fCntsInEGU	:= 3276.7;
+GVL_Sensor.stFrameR.sName		:= 'Det. Frame Roll';
+GVL_Sensor.stFrameR.sEGU		:= 'mrad';
+GVL_Sensor.stFrameR.fCntsInEGU	:= 3276.7;
+
+GVL_Sensor.stPS1.sName			:= 'PS1';
+GVL_Sensor.stPS1.sEGU			:= 'MPa';
+GVL_Sensor.stPS1.fCntsInEGU		:= 13106.8;	// 0.25MPa/V
+GVL_Sensor.stPS1.iOffset		:= 3277;	// 0MPa@1V  P=0.25(V-V0), V0 = 1.0
+
+GVL_Sensor.stPS2.sName			:= 'PS2';
+GVL_Sensor.stPS2.sEGU			:= 'MPa';
+GVL_Sensor.stPS2.fCntsInEGU		:= 13106.8;	// 0.25MPa/V
+GVL_Sensor.stPS2.iOffset		:= 3277;	// 0MPa@1V  P=0.25(V-V0), V0 = 1.0
+
+GVL_Sensor.stPS3.sName			:= 'PS3';
+GVL_Sensor.stPS3.sEGU			:= 'MPa';
+GVL_Sensor.stPS3.fCntsInEGU		:= 13106.8;	// 0.25MPa/V
+GVL_Sensor.stPS3.iOffset		:= 3277;	// 0MPa@1V  P=0.25(V-V0), V0 = 1.0
+
+GVL_Sensor.stYDF1.fValue		:= DINT_TO_REAL(GVL_Sensor.stYDF1.iRawCnts - GVL_Sensor.stYDF1.iOffset) / GVL_Sensor.stYDF1.fCntsInEGU;
+GVL_Sensor.stYDF2.fValue		:= DINT_TO_REAL(GVL_Sensor.stYDF2.iRawCnts - GVL_Sensor.stYDF2.iOffset) / GVL_Sensor.stYDF2.fCntsInEGU;
+GVL_Sensor.stYDF3.fValue		:= DINT_TO_REAL(GVL_Sensor.stYDF3.iRawCnts - GVL_Sensor.stYDF3.iOffset) / GVL_Sensor.stYDF3.fCntsInEGU;
+GVL_Sensor.stHDF.fValue			:= DINT_TO_REAL(GVL_Sensor.stHDF.iRawCnts  - GVL_Sensor.stHDF.iOffset)  / GVL_Sensor.stHDF.fCntsInEGU;
+GVL_Sensor.stGraniteP.fValue	:= INT_TO_REAL(GVL_Sensor.stGraniteP.iRawCnts - GVL_Sensor.stGraniteP.iOffset) / GVL_Sensor.stGraniteP.fCntsInEGU;
+GVL_Sensor.stGraniteR.fValue	:= INT_TO_REAL(GVL_Sensor.stGraniteR.iRawCnts - GVL_Sensor.stGraniteR.iOffset) / GVL_Sensor.stGraniteR.fCntsInEGU;
+GVL_Sensor.stFrameP.fValue		:= INT_TO_REAL(GVL_Sensor.stFrameP.iRawCnts - GVL_Sensor.stFrameP.iOffset) / GVL_Sensor.stFrameP.fCntsInEGU;
+GVL_Sensor.stFrameR.fValue		:= INT_TO_REAL(GVL_Sensor.stFrameR.iRawCnts - GVL_Sensor.stFrameR.iOffset) / GVL_Sensor.stFrameR.fCntsInEGU;
+
+GVL_Sensor.stPS1.fValue			:= INT_TO_REAL(GVL_Sensor.stPS1.iRawCnts - GVL_Sensor.stPS1.iOffset) / GVL_Sensor.stPS1.fCntsInEGU;
+GVL_Sensor.stPS2.fValue			:= INT_TO_REAL(GVL_Sensor.stPS2.iRawCnts - GVL_Sensor.stPS2.iOffset) / GVL_Sensor.stPS2.fCntsInEGU;
+GVL_Sensor.stPS3.fValue			:= INT_TO_REAL(GVL_Sensor.stPS3.iRawCnts - GVL_Sensor.stPS3.iOffset) / GVL_Sensor.stPS3.fCntsInEGU;
+
+
+//uintTest:= REAL_TO_UINT(GVL_Sensor.stYDF1.fValue);]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

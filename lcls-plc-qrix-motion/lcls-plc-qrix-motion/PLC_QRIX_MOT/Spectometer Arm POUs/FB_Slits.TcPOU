@@ -1,0 +1,467 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="FB_Slits" Id="{15da2eaf-9159-456d-aec4-1d1fd7c9b7dc}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_Slits
+VAR_IN_OUT
+    stTopBlade: DUT_MotionStage;
+    stBottomBlade: DUT_MotionStage;
+    stLeftBlade: DUT_MotionStage; // Left Slit from upstream view
+    stRightBlade: DUT_MotionStage; // Right Slit from upstream view
+    bExecuteMotion:BOOL ;
+    io_fbFFHWO    :    FB_HardwareFFOutput;
+    fbArbiter: FB_Arbiter();
+END_VAR
+
+VAR_INPUT
+
+    {attribute 'pytmc' := '
+    pv: PMPS_OK;
+    io: i;
+    field: ZNAM False
+    field: ONAM True
+    '}
+    bMoveOk:BOOL;
+
+    (*Offsets*)
+    {attribute 'pytmc' := '
+    pv: Offset_Top;
+    io: io;
+    '}
+    rEncoderOffsetTop: REAL;
+    {attribute 'pytmc' := '
+    pv: ZeroOffset_Bottom;
+    io: io;
+    '}
+    rEncoderOffsetBottom: REAL;
+
+    {attribute 'pytmc' := 'pv: ZeroOffset_Left; io: io;'}
+    rEncoderOffsetLeft: REAL;
+	
+    {attribute 'pytmc' := '
+    pv: ZeroOffset_Right;
+    io: io;
+    '}
+    rEncoderOffsetRight: REAL;
+    i_DevName : STRING; //device name for FFO and PMPS diagnostics
+    {attribute 'pytmc' := '
+    pv: Home;
+    io: i;
+    field: ZNAM False
+    field: ONAM True
+    '}
+    bHome:BOOL:=FALSE;
+END_VAR
+
+VAR
+    fbTopBlade: FB_MotionStage;
+    fbBottomBlade: FB_MotionStage;
+    fbLeftBlade: FB_MotionStage;
+    fbRightBlade: FB_MotionStage;
+    fPosTopBlade: LREAL;
+    fPosBottomBlade: LREAL;
+    fPosLeftBlade: LREAL;
+    fPosRightBlade: LREAL;
+
+	bCollisionLimitationVert: BOOL;
+	bCollisionLimitationHorz: BOOL;
+	
+    (*Motion Parameters*)
+    fSmallDelta: LREAL := 0.01;
+    fBigDelta: LREAL := 20;
+    fMaxVelocity: LREAL := 0.5;
+    fHighAccel: LREAL := 0.8;
+    fLowAccel: LREAL := 0.1;
+
+    stTop: DUT_PositionState;
+    stBOTTOM: DUT_PositionState;
+    stLeft: DUT_PositionState;
+    stRight: DUT_PositionState;
+
+    {attribute 'pytmc' := 'pv: TOP'}
+    fbTop: FB_StatePTPMove;
+    {attribute 'pytmc' := 'pv: BOTTOM'}
+    fbBottom: FB_StatePTPMove;
+    {attribute 'pytmc' := 'pv: LEFT'}
+    fbLeft: FB_StatePTPMove;
+    {attribute 'pytmc' := 'pv: RIGHT'}
+    fbRight: FB_StatePTPMove;
+
+    (*EPICS pvs*)
+    {attribute 'pytmc' := '
+    pv: XWID_REQ;
+    io: io;
+    '}
+    rReqApertureSizeX : REAL;
+    {attribute 'pytmc' := '
+    pv: YWID_REQ;
+    io: io;
+    '}
+    rReqApertureSizeY : REAL;
+    {attribute 'pytmc' := '
+    pv: XCEN_REQ;
+    io: io;
+    '}
+    rReqCenterX: REAL;
+    {attribute 'pytmc' := '
+    pv: YCEN_REQ;
+    io: io;
+    '}
+    rReqCenterY: REAL;
+
+    {attribute 'pytmc' := '
+    pv: ACTUAL_XWIDTH;
+    io: io;
+    '}
+    rActApertureSizeX : REAL;
+
+    {attribute 'pytmc' := '
+    pv: ACTUAL_YWIDTH;
+    io: io;
+    '}
+    rActApertureSizeY : REAL;
+    {attribute 'pytmc' := '
+    pv: ACTUAL_XCENTER;
+    io: io;
+    '}
+    rActCenterX: REAL;
+    {attribute 'pytmc' := '
+    pv: ACTUAL_YCENTER;
+    io: io;
+    '}
+    rActCenterY: REAL;
+
+    {attribute 'pytmc' := '
+    pv: XCEN_SETZERO;
+    io: io;
+    '}
+    rSetCenterX: BOOL;
+    {attribute 'pytmc' := '
+    pv: YCEN_SETZERO;
+    io: io;
+    '}
+    rSetCenterY: BOOL;
+
+
+    {attribute 'pytmc' := '
+    pv: OPEN;
+    io: io;
+    field: ZNAM False
+    field: ONAM True
+    '}
+    bOpen: BOOL;
+
+    {attribute 'pytmc' := '
+    pv: CLOSE;
+    io: io;
+    field: ZNAM False
+    field: ONAM True
+    '}
+    bClose: BOOL;
+
+    {attribute 'pytmc' := '
+    pv: BLOCK;
+    io: io;
+    field: ZNAM False
+    field: ONAM True
+    '}
+    bBlock: BOOL;
+
+
+     {attribute 'pytmc' := '
+    pv: HOME_READY;
+    io: i;
+    field: ZNAM False
+    field: ONAM True
+    '}
+    bHomeReady:BOOL:=FALSE;
+
+
+    //Local variables
+    bInit: BOOL :=true;
+    rTrig_Block: R_TRIG;
+    rTrig_Open: R_TRIG;
+    rTrig_Close: R_TRIG;
+
+    //old values
+    rOldReqApertureSizeX : REAL;
+    rOldReqApertureSizeY : REAL;
+    rOldReqCenterX: REAL;
+    rOldReqCenterY: REAL;
+
+    bExecuteMotionX: BOOL;
+    bExecuteMotionY: BOOL;
+
+
+    fPosBlock: LREAL;
+    fPosClose: LREAL;
+    fPosOpen: LREAL;
+
+    stSetPositionOptions:ST_SetPositionOptions;
+    fbSetPosition_TOP: MC_SetPosition;
+    fbSetPosition_Bottom: MC_SetPosition;
+    fbSetPosition_Left: MC_SetPosition;
+    fbSetPosition_Right: MC_SetPosition;
+
+    // For logging
+    fbLogger : FB_LogMessage := (eSubsystem:=E_SubSystem.MOTION);
+    tErrorPresent : R_TRIG;
+    tAction : R_TRIG;
+    tOverrideActivated : R_TRIG;
+
+    FFO    :    FB_FastFault :=(
+        i_DevName := 'Slits',
+        i_Desc := 'Fault occurs when center is greated than that requested',
+        i_TypeCode := 16#1010);
+
+
+    bTest: BOOL;
+
+    AptArrayStatus AT %Q* : ST_PMPS_Aperture_IO;
+    AptArrayReq AT %I* : ST_PMPS_Aperture_IO;
+
+	fbPower: MC_Power;
+END_VAR
+
+
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// Initialize
+ACT_init();
+// Instantiate Function block for all the blades
+ACT_Motion();
+//SET and GET the requested and Actual values
+ACT_CalculatePositions();
+
+// Software Limits to protect blades
+ACT_VirtualLimitSW();]]></ST>
+    </Implementation>
+    <Action Name="ACT_BLOCK" Id="{a2ccb34c-6fd9-4dd4-9c34-6b05abd6ed66}">
+      <Implementation>
+        <ST><![CDATA[rTrig_Block (CLK:= bBlock);
+rTrig_Open (CLK:= bOpen);
+rTrig_Close (CLK:= bClose);
+
+if (rTrig_Block.Q) THEN
+    //BLOCK
+
+    bBlock := false;
+END_IF
+
+if (rTrig_Open.Q) THEN
+
+
+    bOpen := false;
+END_IF
+
+if (rTrig_Close.Q) THEN
+
+
+    bClose := false;
+END_IF]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="ACT_CalculatePositions" Id="{c41c207a-ac10-4b51-863c-78b57cd3eb8d}">
+      <Implementation>
+        <ST><![CDATA[//check if requested center or gap has changed
+//check that the requested values are within acceptable motion range
+IF (rOldReqApertureSizeX <> rReqApertureSizeX) THEN
+        rOldReqApertureSizeX := rReqApertureSizeX;
+        bExecuteMotionX := TRUE;
+        fbLogger(sMsg:='Requested new X gap.', eSevr:=TcEventSeverity.Verbose);
+END_IF
+
+IF (rOldReqCenterX <> rReqCenterX) THEN
+    rOldReqCenterX := rReqCenterX;
+    bExecuteMotionX := TRUE;
+    fbLogger(sMsg:='Requested new X center', eSevr:=TcEventSeverity.Verbose);
+   // ELSE
+      //  rReqCenterX := rActCenterX;
+END_IF
+
+IF (rOldReqApertureSizeY <> rReqApertureSizeY) THEN
+        rOldReqApertureSizeY := rReqApertureSizeY;
+        bExecuteMotionY := TRUE;
+        fbLogger(sMsg:='Requested new Y gap.', eSevr:=TcEventSeverity.Verbose);
+
+END_IF
+
+IF (rOldReqCenterY <> rReqCenterY) THEN
+    rOldReqCenterY := rReqCenterY;
+    bExecuteMotionY := TRUE;
+    fbLogger(sMsg:='Requested new Y center.', eSevr:=TcEventSeverity.Verbose);
+   // ELSE
+      //  rReqCenterY := rActCenterY;
+END_IF
+
+
+//Calculate requested target positions from requested gap and center
+fPosTopBlade := (rReqApertureSizeY/2) + (rReqCenterY + rEncoderOffsetTop) ;
+fPosBottomBlade := (-1*rReqApertureSizeY/2) + (rReqCenterY+rEncoderOffsetBottom);
+
+fPosLeftBlade := (rReqApertureSizeX/2) + (rReqCenterX + rEncoderOffsetLeft);
+fPosRightBlade := (-1*rReqApertureSizeX/2) + (rReqCenterX + rEncoderOffsetRight);
+
+
+//Calculate actual gap and center from actual stages positions
+rActApertureSizeX := LREAL_TO_REAL((stLeftBlade.stAxisStatus.fActPosition - rEncoderOffsetLeft) - (stRightBlade.stAxisStatus.fActPosition- rEncoderOffsetRight));
+
+rActApertureSizeY := LREAL_TO_REAL((stTopBlade.stAxisStatus.fActPosition - rEncoderOffsetTop) - (stBottomBlade.stAxisStatus.fActPosition - rEncoderOffsetBottom));
+
+rActCenterX := LREAL_TO_REAL((((stLeftBlade.stAxisStatus.fActPosition - rEncoderOffsetLeft)  + (stRightBlade.stAxisStatus.fActPosition - rEncoderOffsetRight ))/2));
+
+rActCenterY := LREAL_TO_REAL((((stTopBlade.stAxisStatus.fActPosition - rEncoderOffsetTop) + (stBottomBlade.stAxisStatus.fActPosition - rEncoderOffsetBottom))/2));
+
+
+// Prevent collision
+bCollisionLimitationHorz	:= (rActApertureSizeX > -0.1);
+bCollisionLimitationVert	:= (rActApertureSizeY > -0.1);
+
+
+]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="ACT_Init" Id="{56edb975-0ec1-4180-a0e6-ac1805a9ce37}">
+      <Implementation>
+        <ST><![CDATA[
+//  init the motion stages parameters
+IF ( bInit) THEN
+    stTopBlade.bHardwareEnable := TRUE;
+    stBottomBlade.bHardwareEnable := TRUE;
+    stLeftBlade.bHardwareEnable := TRUE;
+    stRightBlade.bHardwareEnable := TRUE;
+    stTopBlade.bPowerSelf :=FALSE;
+    stBottomBlade.bPowerSelf :=FALSE;
+    stLeftBlade.bPowerSelf :=FALSE;
+    stRightBlade.bPowerSelf :=FALSE;
+    stTopBlade.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+    stBottomBlade.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+    stLeftBlade.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+    stRightBlade.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+    FFO.i_DevName := i_DevName;
+END_IF
+
+]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="ACT_Motion" Id="{06fa9539-6085-470b-bd8c-9679adaf67a5}">
+      <Implementation>
+        <ST><![CDATA[// Instantiate Function block for all the blades
+fbTopBlade(stMotionStage:=stTopBlade);
+fbBottomBlade(stMotionStage:=stBottomBlade);
+fbLeftBlade(stMotionStage:=stLeftBlade);
+fbRightBlade(stMotionStage:=stRightBlade);
+
+
+
+// PTP Motion for each blade
+stTop.sName := 'Top';
+stTop.fPosition := fPosTopBlade;
+stTop.fDelta := fSmallDelta;
+stTop.fVelocity := fMaxVelocity;
+stTop.fAccel := fHighAccel;
+stTop.fDecel := fHighAccel;
+
+stBOTTOM.sName := 'Bottom';
+stBOTTOM.fPosition := fPosBottomBlade;
+stBOTTOM.fDelta := fSmallDelta;
+stBOTTOM.fVelocity := fMaxVelocity;
+stBOTTOM.fAccel := fHighAccel;
+stBOTTOM.fDecel := fHighAccel;
+
+stLeft.sName := 'Left';
+stLeft.fPosition := fPosLeftBlade;
+stLeft.fDelta := fSmallDelta;
+stLeft.fVelocity := fMaxVelocity;
+stLeft.fAccel := fHighAccel;
+stLeft.fDecel := fHighAccel;
+
+stRight.sName := 'Right';
+stRight.fPosition := fPosRightBlade;
+stRight.fDelta := fSmallDelta;
+stRight.fVelocity := fMaxVelocity;
+stRight.fAccel := fHighAccel;
+stRight.fDecel := fHighAccel;
+
+IF (bExecuteMotionY) THEN
+    fbTop.bExecute := fbBottom.bExecute := bExecuteMotionY;
+    bExecuteMotionY:= FALSE;
+END_IF
+
+IF (bExecuteMotionX) THEN
+    fbLeft.bExecute := fbRight.bExecute := bExecuteMotionX;
+    bExecuteMotionX:= FALSE;
+END_IF
+
+
+fbTop(
+    stPositionState:=stTop,
+    bMoveOk:=bMoveOk,
+    stMotionStage:=stTopBlade);
+
+fbBottom(
+    stPositionState:=stBOTTOM,
+    bMoveOk:=bMoveOk,
+    stMotionStage:=stBottomBlade);
+
+fbLeft(
+    stPositionState:=stLeft,
+    bMoveOk:=bMoveOk,
+    stMotionStage:=stLeftBlade);
+
+fbRight(
+    stPositionState:=stRight,
+    bMoveOk:=bMoveOk,
+    stMotionStage:=stRightBlade);
+]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="ACT_VirtualLimitSW" Id="{28423253-0307-43ac-a3eb-e23baa483989}">
+      <Implementation>
+        <ST><![CDATA[
+// Force set to false
+stLeftBlade.bPowerSelf := stRightBlade.bPowerSelf := stTopBlade.bPowerSelf := stBottomBlade.bPowerSelf := FALSE;
+
+// Set SafetyReady flags manually
+stTopBlade.bSafetyReady:= TRUE;
+stBottomBlade.bSafetyReady:= TRUE;
+stLeftBlade.bSafetyReady:= TRUE;
+stRightBlade.bSafetyReady:= TRUE;
+
+
+// Note: FB_MotionStage calls FB_SetEnables internally that overwrites .bAllForwardEnable/.bAllBackwardEnable flags
+
+fbPower(
+	Axis := stTopBlade.Axis,
+	Enable := stTopBlade.bAllEnable,
+	Enable_Positive := stTopBlade.bAllForwardEnable,
+	Enable_Negative := stTopBlade.bAllBackwardEnable AND bCollisionLimitationVert,
+	Override := 100.000
+);
+fbPower(
+	Axis := stBottomBlade.Axis,
+	Enable := stBottomBlade.bAllEnable,
+	Enable_Positive := stBottomBlade.bAllForwardEnable AND bCollisionLimitationVert,
+	Enable_Negative := stBottomBlade.bAllBackwardEnable,
+	Override := 100.000
+);
+fbPower(
+	Axis := stLeftBlade.Axis,
+	Enable := stLeftBlade.bAllEnable,
+	Enable_Positive := stLeftBlade.bAllForwardEnable,
+	Enable_Negative := stLeftBlade.bAllBackwardEnable AND bCollisionLimitationHorz,
+	Override := 100.000
+);
+fbPower(
+	Axis := stRightBlade.Axis,
+	Enable := stRightBlade.bAllEnable,
+	Enable_Positive := stRightBlade.bAllForwardEnable AND bCollisionLimitationHorz,
+	Enable_Negative := stRightBlade.bAllBackwardEnable,
+	Override := 100.000
+);
+
+
+]]></ST>
+      </Implementation>
+    </Action>
+  </POU>
+</TcPlcObject>

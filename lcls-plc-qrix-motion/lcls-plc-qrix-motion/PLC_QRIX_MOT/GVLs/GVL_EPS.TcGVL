@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <GVL Name="GVL_EPS" Id="{d80bcb88-755c-4636-a81b-aa32affdb6ed}">
+    <Declaration><![CDATA[VAR_GLOBAL
+	bResetIClk: BOOL;
+	{attribute 'TcLinkTo' := 'TIIB[Rack#1A-02 SFIN (EL1918)]^StandardInputs^Standard Out Var 18'}
+	bESTOP AT %I*: BOOL;
+	
+	{attribute 'TcLinkTo' := 'TIIB[Rack#2B-05 SV_AIR (EL2004)]^Channel 1^Output'}
+	bOpenSV1 AT %Q*: BOOL;
+	{attribute 'TcLinkTo' := 'TIIB[Rack#2B-05 SV_AIR (EL2004)]^Channel 2^Output'}
+	bOpenSV2 AT %Q*: BOOL;
+	
+	{attribute 'TcLinkTo' := 'TIIB[Rack#1C_ServoDR (NCR-HD Series)]^260th receive PDO Mapping^Positive torque limit value'}
+	iServoTorqueLimitPositive AT %Q*: UINT;
+	
+	{attribute 'TcLinkTo' := 'TIIB[Rack#1C_ServoDR (NCR-HD Series)]^260th receive PDO Mapping^Negative torque limit value'}
+	iServoTorqueLimitNegative AT %Q*: UINT;
+
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

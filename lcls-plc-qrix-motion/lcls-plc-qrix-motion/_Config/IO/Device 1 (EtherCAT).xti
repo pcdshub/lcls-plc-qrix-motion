@@ -33,7 +33,7 @@
 		<Image Id="4" AddrType="10" ImageType="3">
 			<Name>Image-2</Name>
 		</Image>
-		<Box File="Term 1 (EK1200).xti" Id="1">
+		<Box File="B950-233-R03-DRL-01 (EK1200).xti" Id="1">
 			<EtherCAT PortABoxInfo="#x00ffffff"/>
 		</Box>
 		<Box File="B950-233-WALL-S-R01-DRL-01.xti" Id="7">
@@ -45,6 +45,21 @@
 		<Box File="B950-233-WALL-S-R01-DRL-03.xti" Id="28">
 			<EtherCAT PortABoxInfo="#x0200001b"/>
 		</Box>
-		<EtherCAT/>
+		<Box File="Rack#1A-01 Coupler (EK1100).xti" Id="87">
+			<EtherCAT PortABoxInfo="#x0200001c"/>
+		</Box>
+		<Box File="BOX-01 Coupler (EK1100).xti" Id="126">
+			<EtherCAT PortABoxInfo="#x0100007d"/>
+		</Box>
+		<Box File="Rack#2A-01 Coupler (EK1100).xti" Id="90">
+			<EtherCAT PortABoxInfo="#x01000059"/>
+		</Box>
+		<Box File="Rack#2B-01 Coupler (EK1100).xti" Id="47">
+			<EtherCAT PortABoxInfo="#x0100006c"/>
+		</Box>
+		<Box File="Rack#2D LinearGaugeAmp (SC-HG1-ETC).xti" Id="70">
+			<EtherCAT PortABoxInfo="#x01000045"/>
+		</Box>
+		<EtherCAT DcSyncMode="3"/>
 	</Device>
 </TcSmItem>

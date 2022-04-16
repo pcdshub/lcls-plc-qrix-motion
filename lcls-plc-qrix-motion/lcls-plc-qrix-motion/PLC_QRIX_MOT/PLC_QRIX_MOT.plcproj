@@ -26,7 +26,15 @@
     <Compile Include="DUTs\DUT_SensorHGS.TcDUT">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="GVLs\GVL_EPS.TcGVL">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
+    </Compile>
     <Compile Include="GVLs\GVL_PMPS.TcGVL">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
+    </Compile>
+    <Compile Include="GVLs\GVL_Sensor.TcGVL">
       <SubType>Code</SubType>
       <LinkAlways>true</LinkAlways>
     </Compile>
@@ -61,7 +69,49 @@
     <Compile Include="POUs\PRG_LAS.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\PRG_SpetrometerArm.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\PRG_SSL.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Spectometer Arm POUs\FB_2AxesTrans_1.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Spectometer Arm POUs\FB_3AxesJack_1.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Spectometer Arm POUs\FB_Slits.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Spectometer Arm POUs\PRG_2Theta.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Spectometer Arm POUs\PRG_DET_ARM.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Spectometer Arm POUs\PRG_DET_CHAMBER.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Spectometer Arm POUs\PRG_DET_FRAME.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Spectometer Arm POUs\PRG_DET_SLIT.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Spectometer Arm POUs\PRG_OPT.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Spectometer Arm POUs\PRG_OPT_SLITS.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Spectometer Arm POUs\PRG_OPT_XPM.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Spectometer Arm POUs\PRG_OPT_YG.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Spectometer Arm POUs\PRG_Sensor.TcPOU">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -69,6 +119,7 @@
     <Folder Include="DUTs" />
     <Folder Include="GVLs" />
     <Folder Include="Devices" />
+    <Folder Include="Spectometer Arm POUs" />
     <Folder Include="VISUs" />
     <Folder Include="POUs" />
   </ItemGroup>

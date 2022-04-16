@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="PRG_OPT_SLITS" Id="{87d69d5e-6db8-4f14-b5ec-7224a0a8195a}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM PRG_OPT_SLITS
+VAR
+	fbSlits_Opt: FB_Slits;
+	bExecuteMotion: BOOL := TRUE;
+	bMoveOk: BOOL :=TRUE;
+	bInit:BOOl:=TRUE;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// 4 jaws slit
+
+IF bInit THEN
+	bInit := FALSE;
+	
+	Main.M3.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+	Main.M3.bHardwareEnable := TRUE;
+	Main.M3.bPowerSelf := TRUE;
+	
+	Main.M4.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+	Main.M4.bHardwareEnable := TRUE;
+	Main.M4.bPowerSelf := TRUE;
+	Main.M5.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+	Main.M5.bHardwareEnable := TRUE;
+	Main.M5.bPowerSelf := TRUE;
+	Main.M6.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+	Main.M6.bHardwareEnable := TRUE;
+	Main.M6.bPowerSelf := TRUE;
+	
+	
+	//
+	Main.M3.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+	Main.M4.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+	Main.M5.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+	Main.M6.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+END_IF
+
+
+
+fbSlits_Opt(	i_DevName:=					'OPT_SLITS',
+				stTopBlade:=				Main.M5,
+				stBottomBlade:=				Main.M6,
+				stLeftBlade:=				Main.M3,
+				stRightBlade:=				Main.M4,
+				io_fbFFHWO:=				GVL_PMPS.fbFastFaultOutput1,
+				fbArbiter:=					GVL_PMPS.fbArbiter,
+				bExecuteMotion:=			bExecuteMotion,
+				bMoveOk:=					bMoveOk
+);
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>
