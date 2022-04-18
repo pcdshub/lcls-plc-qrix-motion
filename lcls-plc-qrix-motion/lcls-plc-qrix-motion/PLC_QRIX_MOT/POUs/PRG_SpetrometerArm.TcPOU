@@ -43,51 +43,51 @@ IF bEnaIclkRestartESTOP THEN
 END_IF
 
 // When user push the ESTOPs
-IF NOT GVL_Main.bESTOP THEN
+IF NOT GVL_EPS.bESTOP THEN
 	
-	GVL_Main.bOpenSV1 := FALSE;
-	GVL_Main.bOpenSV2 := FALSE;
+	GVL_EPS.bOpenSV1 := FALSE;
+	GVL_EPS.bOpenSV2 := FALSE;
 
-	GVL_Main.M1.bEnable := FALSE;
-	GVL_Main.M2.bEnable := FALSE;
-	GVL_Main.M3.bEnable := FALSE;
-	GVL_Main.M4.bEnable := FALSE;
-	GVL_Main.M5.bEnable := FALSE;
-	GVL_Main.M6.bEnable := FALSE;
-	GVL_Main.M7.bEnable := FALSE;
-	GVL_Main.M8.bEnable := FALSE;
-	GVL_Main.M9.bEnable := FALSE;
-	GVL_Main.M10.bEnable := FALSE;
-	GVL_Main.M11.bEnable := FALSE;
-	GVL_Main.M12.bEnable := FALSE;
-	GVL_Main.M13.bEnable := FALSE;
-	GVL_Main.M14.bEnable := FALSE;
-	GVL_Main.M15.bEnable := FALSE;
-	GVL_Main.M16.bEnable := FALSE;
-	GVL_Main.M17.bEnable := FALSE;
-	GVL_Main.M18.bEnable := FALSE;
-	GVL_Main.M19.bEnable := FALSE;
-	GVL_Main.M20.bEnable := FALSE;
-	GVL_Main.M21.bEnable := FALSE;
-	GVL_Main.M22.bEnable := FALSE;
-	GVL_Main.M23.bEnable := FALSE;
-	GVL_Main.M24.bEnable := FALSE;
-	GVL_Main.M25.bEnable := FALSE;
-	GVL_Main.M26.bEnable := FALSE;
-	GVL_Main.M27.bEnable := FALSE;
+	Main.M1.bEnable := FALSE;
+	Main.M2.bEnable := FALSE;
+	Main.M3.bEnable := FALSE;
+	Main.M4.bEnable := FALSE;
+	Main.M5.bEnable := FALSE;
+	Main.M6.bEnable := FALSE;
+	Main.M7.bEnable := FALSE;
+	Main.M8.bEnable := FALSE;
+	Main.M9.bEnable := FALSE;
+	Main.M10.bEnable := FALSE;
+	Main.M11.bEnable := FALSE;
+	Main.M12.bEnable := FALSE;
+	Main.M13.bEnable := FALSE;
+	Main.M14.bEnable := FALSE;
+	Main.M15.bEnable := FALSE;
+	Main.M16.bEnable := FALSE;
+	Main.M17.bEnable := FALSE;
+	Main.M18.bEnable := FALSE;
+	Main.M19.bEnable := FALSE;
+	Main.M20.bEnable := FALSE;
+	Main.M21.bEnable := FALSE;
+	Main.M22.bEnable := FALSE;
+	Main.M23.bEnable := FALSE;
+	Main.M24.bEnable := FALSE;
+	Main.M25.bEnable := FALSE;
+	Main.M26.bEnable := FALSE;
+	Main.M27.bEnable := FALSE;
 END_IF
 
 
 // Disable M1(Servo) and M2(Stepper) if the frame is landing...
 IF NOT GVL_Sensor.bFloating THEN
-	GVL_Main.M1.bEnable := FALSE;
-	GVL_Main.M2.bEnable := FALSE;
+	Main.M1.bEnable := FALSE;
+	Main.M2.bEnable := FALSE;
 END_IF
 	
 
 // When user requests to reset ESTOP.
-IF GVL_Main.bResetIclk THEN
-	GVL_Main.bResetIclk := FALSE;	
+IF GVL_EPS.bResetIclk THEN
+	GVL_EPS.bResetIclk := FALSE;	
 	bEnaIclkErrAck := TRUE;
 	bEnaIclkRestartESTOP := TRUE;
 END_IF

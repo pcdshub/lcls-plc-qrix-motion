@@ -61,14 +61,14 @@ fbAutoCoupling(	nGantryTol 			:= 200000, // 50nm/count
 				bExecuteDecouple 	:= bExecuteDecouple,
 );
 
-Main.M25.bAllEnable := Main.M25.bEnable AND Main.bESTOP;
-Main.M26.bAllEnable := Main.M26.bEnable AND Main.bESTOP;
-Main.M27.bAllEnable := Main.M27.bEnable AND Main.bESTOP;
+Main.M25.bAllEnable := Main.M25.bEnable AND GVL_EPS.bESTOP;
+Main.M26.bAllEnable := Main.M26.bEnable AND GVL_EPS.bESTOP;
+Main.M27.bAllEnable := Main.M27.bEnable AND GVL_EPS.bESTOP;
 
 // Call Motion FB instance
 fbMotionYF1(stMotionStage:=Main.M25);
 fbMotionYF2(stMotionStage:=Main.M26);
-fbMotionZF(stMotionStage:=GVL_Main.M27);
+fbMotionZF(stMotionStage:=Main.M27);
 
 (* For test
 // Release brake if axis is enabled.

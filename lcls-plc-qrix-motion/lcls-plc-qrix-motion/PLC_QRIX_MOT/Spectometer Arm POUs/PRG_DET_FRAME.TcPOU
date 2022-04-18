@@ -137,14 +137,14 @@ ACT_ResetError();
 		// Step2 wait until done
 		IF NOT bEnableSetGaugeValue THEN
 			// read latest status
-			GVL_Main.M15.Axis.ReadStatus();
-			GVL_Main.M16.Axis.ReadStatus();
-			GVL_Main.M17.Axis.ReadStatus();
-			IF abs(GVL_Main.M15.Axis.NcToPlc.ActPos) < 0.1 AND abs(GVL_Main.M16.Axis.NcToPlc.ActPos) < 0.1 AND abs(GVL_Main.M17.Axis.NcToPlc.ActPos) < 0.1 THEN
+			Main.M15.Axis.ReadStatus();
+			Main.M16.Axis.ReadStatus();
+			Main.M17.Axis.ReadStatus();
+			IF abs(Main.M15.Axis.NcToPlc.ActPos) < 0.1 AND abs(Main.M16.Axis.NcToPlc.ActPos) < 0.1 AND abs(Main.M17.Axis.NcToPlc.ActPos) < 0.1 THEN
 				// We dont need to move any more....
 				iStepJackOFF := 5;
-			ELSIF max(GVL_Main.M15.Axis.NcToPlc.ActPos, GVL_Main.M16.Axis.NcToPlc.ActPos, GVL_Main.M17.Axis.NcToPlc.ActPos)
-				- min(GVL_Main.M15.Axis.NcToPlc.ActPos, GVL_Main.M16.Axis.NcToPlc.ActPos, GVL_Main.M17.Axis.NcToPlc.ActPos) > 10.0 THEN
+			ELSIF max(Main.M15.Axis.NcToPlc.ActPos, Main.M16.Axis.NcToPlc.ActPos, Main.M17.Axis.NcToPlc.ActPos)
+				- min(Main.M15.Axis.NcToPlc.ActPos, Main.M16.Axis.NcToPlc.ActPos, Main.M17.Axis.NcToPlc.ActPos) > 10.0 THEN
 				// Some axis may be step-out...
 				iStepJackOFF := -1;
 			ELSE
@@ -153,9 +153,9 @@ ACT_ResetError();
 		END_IF;
 	3: 
 		// Step3 calcurate motion distance		
-		fTargetPos_M15 := -1 * GVL_Main.M15.Axis.NcToPlc.ActPos;
-		fTargetPos_M16 := -1 * GVL_Main.M16.Axis.NcToPlc.ActPos;
-		fTargetPos_M17 := -1 * GVL_Main.M17.Axis.NcToPlc.ActPos;
+		fTargetPos_M15 := -1 * Main.M15.Axis.NcToPlc.ActPos;
+		fTargetPos_M16 := -1 * Main.M16.Axis.NcToPlc.ActPos;
+		fTargetPos_M17 := -1 * Main.M17.Axis.NcToPlc.ActPos;
 		
 		// Enable Relative Motion Act
 		bEnableMoveRelative := TRUE;
@@ -209,17 +209,17 @@ END_IF;]]></ST>
         <ST><![CDATA[
 
 IF bEnableLanding AND NOT (bBusy OR bError) THEN
-	GVL_Main.bOpenSV2 := FALSE;
+	GVL_EPS.bOpenSV2 := FALSE;
 	bBusy:= TRUE;
 END_IF;
 
 tonSV1Close(
-	IN := bEnableLanding AND NOT GVL_Main.bOpenSV2,
+	IN := bEnableLanding AND NOT GVL_EPS.bOpenSV2,
 	PT := T#3s
 );
 
 IF tonSV1Close.Q THEN
-	GVL_Main.bOpenSV1 := FALSE;
+	GVL_EPS.bOpenSV1 := FALSE;
 	bEnableLanding := FALSE;
 	bBusy:= FALSE;
 END_IF;]]></ST>
@@ -244,9 +244,9 @@ END_IF;]]></ST>
 	3: 
 		// Step3 calcurate motion distance
 		// read latest status
-		GVL_Main.M15.Axis.ReadStatus();
-		GVL_Main.M16.Axis.ReadStatus();
-		GVL_Main.M17.Axis.ReadStatus();
+		Main.M15.Axis.ReadStatus();
+		Main.M16.Axis.ReadStatus();
+		Main.M17.Axis.ReadStatus();
 				
 		IF GVL_Sensor.stFrameR.fValue > 0 THEN
 			// Need to up YDF1
@@ -309,9 +309,9 @@ END_CASE;]]></ST>
 	3: 
 		// Step3 calcurate motion distance
 		// read latest status
-		GVL_Main.M15.Axis.ReadStatus();
-		GVL_Main.M16.Axis.ReadStatus();
-		GVL_Main.M17.Axis.ReadStatus();
+		Main.M15.Axis.ReadStatus();
+		Main.M16.Axis.ReadStatus();
+		Main.M17.Axis.ReadStatus();
 				
 		IF GVL_Sensor.stFrameP.fValue > 0 THEN
 			// Need to up YDF1 AND 2
@@ -373,9 +373,9 @@ END_CASE;]]></ST>
 	3: 
 		// Step3 calcurate motion distance
 		// read latest status
-		GVL_Main.M15.Axis.ReadStatus();
-		GVL_Main.M16.Axis.ReadStatus();
-		GVL_Main.M17.Axis.ReadStatus();
+		Main.M15.Axis.ReadStatus();
+		Main.M16.Axis.ReadStatus();
+		Main.M17.Axis.ReadStatus();
 
 		// Need to move YDF 1~3
 		fTargetPos_M15 := -1 * REAL_TO_LREAL(GVL_Sensor.stHDF.fValue) * 0.9;
@@ -419,15 +419,15 @@ END_CASE;]]></ST>
         <ST><![CDATA[IF bINIT THEN
 	bINIT := FALSE;
 	
-	GVL_Main.M15.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
-	GVL_Main.M15.bHardwareEnable := TRUE;
-	GVL_Main.M15.bPowerSelf := TRUE;
-	GVL_Main.M16.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
-	GVL_Main.M16.bHardwareEnable := TRUE;
-	GVL_Main.M16.bPowerSelf := TRUE;
-	GVL_Main.M17.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
-	GVL_Main.M17.bHardwareEnable := TRUE;
-	GVL_Main.M17.bPowerSelf := TRUE;
+	Main.M15.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+	Main.M15.bHardwareEnable := TRUE;
+	Main.M15.bPowerSelf := TRUE;
+	Main.M16.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+	Main.M16.bHardwareEnable := TRUE;
+	Main.M16.bPowerSelf := TRUE;
+	Main.M17.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+	Main.M17.bHardwareEnable := TRUE;
+	Main.M17.bPowerSelf := TRUE;
 	
 	// Read linear gauge value
 	bEnableSetGaugeValue := TRUE;
@@ -468,7 +468,7 @@ END_IF;]]></ST>
 			bDone_M17 := TRUE;
 		END_IF;
 		
-		fbMoveRelative_M15(	Axis		:= GVL_Main.M15.Axis,
+		fbMoveRelative_M15(	Axis		:= Main.M15.Axis,
 							Execute		:= bEnableMotion AND NOT (bDone_M15 OR bError),
 							Distance	:= fTargetPos_M15,
 							Velocity	:= 0.05,
@@ -476,7 +476,7 @@ END_IF;]]></ST>
 							Deceleration:= 0.8,
 							Jerk		:= 32
 		);
-		fbMoveRelative_M16(	Axis		:= GVL_Main.M16.Axis,
+		fbMoveRelative_M16(	Axis		:= Main.M16.Axis,
 							Execute		:= bEnableMotion AND NOT (bDone_M16 OR bError),
 							Distance	:= fTargetPos_M16,
 							Velocity	:= 0.05,
@@ -484,7 +484,7 @@ END_IF;]]></ST>
 							Deceleration:= 0.8,
 							Jerk		:= 32
 		);
-		fbMoveRelative_M17(	Axis		:= GVL_Main.M17.Axis,
+		fbMoveRelative_M17(	Axis		:= Main.M17.Axis,
 							Execute		:= bEnableMotion AND NOT (bDone_M17 OR bError),
 							Distance	:= fTargetPos_M17,
 							Velocity	:= 0.05,
@@ -557,32 +557,32 @@ CASE iStepSetGaugeValue OF
 			bEnableSetGaugeValue := FALSE;
 		END_IF;		
 	2:		
-		fbSetPosition_M15(	Axis :=		GVL_Main.M15.Axis,
+		fbSetPosition_M15(	Axis :=		Main.M15.Axis,
 							Execute :=	NOT fbSetPosition_M15.Done,
 							Position :=	fTargetPos_M15
 		);
 		
-		fbSetPosition_M16(	Axis :=		GVL_Main.M16.Axis,
+		fbSetPosition_M16(	Axis :=		Main.M16.Axis,
 							Execute :=	NOT fbSetPosition_M16.Done,
 							Position :=	fTargetPos_M16
 		);
 		
-		fbSetPosition_M17(	Axis :=		GVL_Main.M17.Axis,
+		fbSetPosition_M17(	Axis :=		Main.M17.Axis,
 							Execute :=	NOT fbSetPosition_M17.Done,
 							Position :=	fTargetPos_M17
 		);
 		IF fbSetPosition_M15.Done OR fbSetPosition_M15.Error THEN
-			fbSetPosition_M15(	Axis :=		GVL_Main.M15.Axis,
+			fbSetPosition_M15(	Axis :=		Main.M15.Axis,
 								Execute :=	FALSE
 			);
 		END_IF;
 		IF fbSetPosition_M16.Done OR fbSetPosition_M16.Error THEN	
-			fbSetPosition_M16(	Axis :=		GVL_Main.M16.Axis,
+			fbSetPosition_M16(	Axis :=		Main.M16.Axis,
 								Execute :=	FALSE
 			);
 		END_IF;
 		IF fbSetPosition_M17.Done OR fbSetPosition_M17.Error THEN
-			fbSetPosition_M17(	Axis :=		GVL_Main.M17.Axis,
+			fbSetPosition_M17(	Axis :=		Main.M17.Axis,
 								Execute :=	FALSE
 			);
 		END_IF;
