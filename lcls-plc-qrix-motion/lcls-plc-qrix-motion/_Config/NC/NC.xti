@@ -17,27 +17,50 @@
 			<Name>NC-Task 1 SVB</Name>
 		</SvbTask>
 		<AxisFolder Name="SSL-ARM"/>
-		<AxisFolder Name="Diffractometer"/>
-		<AxisFolder Name="Lasers"/>
-		<AxisFolder Name="SDS"/>
-		<AxisFolder Name="Cryo"/>
-		<AxisFolder Name="Questar"/>
 		<AxisFolder Name="2 Theta Arm"/>
 		<AxisFolder Name="OPTICS"/>
 		<AxisFolder Name="DET_FRAME"/>
 		<AxisFolder Name="DET_CHAMBER"/>
 		<AxisFolder Name="DET_ARM"/>
+		<AxisFolder Name="Diffractometer"/>
+		<AxisFolder Name="Lasers"/>
 		<Axis File="M1 - SSL Sliding seal.xti" Id="1"/>
-		<Axis File="M2 - Diff X.xti" Id="2"/>
-		<Axis File="M3 - Diff Y.xti" Id="3"/>
-		<Axis File="M4 - Diff Z.xti" Id="4"/>
-		<Axis File="M5 - Diff 2Theta Y.xti" Id="5"/>
-		<Axis File="M6 - Diff Phi.xti" Id="6"/>
-		<Axis File="M7 - Diff Chi.xti" Id="7"/>
-		<Axis File="M8 - Diff Theta.xti" Id="9"/>
-		<Axis File="M9 - Diff 2Theta.xti" Id="8"/>
-		<Axis File="M10 - LAS IR VIS.xti" Id="10"/>
-		<Axis File="M11 - LAS IR H.xti" Id="11"/>
-		<Axis File="M12 - LAS IR V.xti" Id="12"/>
+		<Axis File="M2 - 2Theta Stepper.xti" Id="2"/>
+		<Axis File="M3 - XS1.xti" Id="3"/>
+		<Axis File="M4 - XS2.xti" Id="4"/>
+		<Axis File="M5 - YS1.xti" Id="5"/>
+		<Axis File="M6 - YS2.xti" Id="6"/>
+		<Axis File="M7 - YG1.xti" Id="7"/>
+		<Axis File="M8 - YG2.xti" Id="8"/>
+		<Axis File="M9 - YG3.xti" Id="9"/>
+		<Axis File="M10 - RxG.xti" Id="10"/>
+		<Axis File="M11 - XG.xti" Id="11"/>
+		<Axis File="M12 - XPM1.xti" Id="12"/>
+		<Axis File="M13 - XPM2.xti" Id="13"/>
+		<Axis File="M14 - RzPM.xti" Id="14"/>
+		<Axis File="M15 - YDF1.xti" Id="15"/>
+		<Axis File="M16 - YDF2.xti" Id="16"/>
+		<Axis File="M17 - YDF3.xti" Id="17"/>
+		<Axis File="M18 - XSDC1.xti" Id="18"/>
+		<Axis File="M19 - XSDC2.xti" Id="19"/>
+		<Axis File="M20 - YSDC1.xti" Id="20"/>
+		<Axis File="M21 - YSDC2.xti" Id="21"/>
+		<Axis File="M22 - XDC.xti" Id="22"/>
+		<Axis File="M23 - RyDC.xti" Id="23"/>
+		<Axis File="M24 - ZDC.xti" Id="24"/>
+		<Axis File="M25 - YF1.xti" Id="25"/>
+		<Axis File="M26 - YF2.xti" Id="26"/>
+		<Axis File="M27 - ZF.xti" Id="27"/>
+		<Axis File="M28 - Diff X.xti" Id="28"/>
+		<Axis File="M29 - Diff Y.xti" Id="29"/>
+		<Axis File="M30 - Diff Z.xti" Id="30"/>
+		<Axis File="M31 - Diff 2Theta Y.xti" Id="31"/>
+		<Axis File="M32 - Diff Phi.xti" Id="32"/>
+		<Axis File="M33 - Diff Chi.xti" Id="33"/>
+		<Axis File="M34 - Diff Theta.xti" Id="34"/>
+		<Axis File="M35 - Diff 2Theta.xti" Id="35"/>
+		<Axis File="M36 - LAS IR VIS.xti" Id="36"/>
+		<Axis File="M37 - LAS IR H.xti" Id="37"/>
+		<Axis File="M38 - LAS IR V.xti" Id="38"/>
 	</NC>
 </TcSmItem>
