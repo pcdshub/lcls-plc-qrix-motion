@@ -10,7 +10,13 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[IF bINIT THEN
+      <ST><![CDATA[
+//Lock stages until they are tested
+Main.M10.nEnableMode := ENUM_StageEnableMode.NEVER ;
+Main.M11.nEnableMode := ENUM_StageEnableMode.NEVER ;
+Main.M14.nEnableMode := ENUM_StageEnableMode.NEVER ;
+
+IF bINIT THEN
 	
 	Main.M10.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
 	Main.M10.bHardwareEnable := TRUE;

@@ -27,7 +27,12 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[IF bInit THEN
+      <ST><![CDATA[//Lock stages until they are tested
+Main.M25.nEnableMode := ENUM_StageEnableMode.NEVER ;
+Main.M26.nEnableMode := ENUM_StageEnableMode.NEVER ;
+Main.M27.nEnableMode := ENUM_StageEnableMode.NEVER ;
+
+IF bInit THEN
 	bInit := FALSE;
 	bExecuteCouple := TRUE;
 	

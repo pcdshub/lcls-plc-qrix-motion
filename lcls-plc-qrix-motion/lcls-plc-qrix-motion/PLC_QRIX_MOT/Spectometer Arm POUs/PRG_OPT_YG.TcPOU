@@ -12,7 +12,11 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[
+      <ST><![CDATA[//Lock stages until they are tested
+Main.M8.nEnableMode := ENUM_StageEnableMode.NEVER ;
+Main.M9.nEnableMode := ENUM_StageEnableMode.NEVER ;
+Main.M7.nEnableMode := ENUM_StageEnableMode.NEVER ;
+
 
 
 IF bInit THEN

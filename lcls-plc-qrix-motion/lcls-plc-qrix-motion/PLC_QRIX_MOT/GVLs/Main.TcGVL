@@ -97,7 +97,7 @@ VAR_GLOBAL
 								.bLimitBackwardEnable	:= TIIB[Rack#2A-08 DR_RxG (EL7041-0052)]^STM Status^Status^Digital input 2;
 								.nRawEncoderULINT		:= TIIB[Rack#2B-09 ENC_RxG_XG (EL5042)]^FB Inputs Channel 1 compact^Position
 	'}
-    M10: DUT_MotionStage(sName := 'QRIX:OPT_G:MMS:Rx');
+    M10: DUT_MotionStage:=(sName := 'QRIX:OPT_G:MMS:Rx');
 	
 	// XG
 	{attribute 'pytmc' := 'pv: QRIX:OPT_G:MMS:X'}
@@ -105,7 +105,7 @@ VAR_GLOBAL
 								.bLimitBackwardEnable	:= TIIB[Rack#2A-09 DR_XG (EL7041-0052)]^STM Status^Status^Digital input 2;
 								.nRawEncoderULINT		:= TIIB[Rack#2B-09 ENC_RxG_XG (EL5042)]^FB Inputs Channel 2^Position
 	'}
-    M11: DUT_MotionStage(sName := 'QRIX:OPT_G:MMS:X');
+    M11: DUT_MotionStage:=(sName := 'QRIX:OPT_G:MMS:X');
 	
 	// XPM1
 	{attribute 'pytmc' := 'pv: QRIX:OPT:MMS:X1'}

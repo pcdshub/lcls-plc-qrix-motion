@@ -10,7 +10,14 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[// Det. Chmber
+      <ST><![CDATA[//Lock stages until they are tested
+Main.M22.nEnableMode := ENUM_StageEnableMode.NEVER ;
+Main.M23.nEnableMode := ENUM_StageEnableMode.NEVER ;
+Main.M24.nEnableMode := ENUM_StageEnableMode.NEVER ;
+
+
+
+// Det. Chmber
 IF bInit THEN
 	bInit :=FALSE;
 	Main.M22.bHardwareEnable:= TRUE;
