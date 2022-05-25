@@ -76,6 +76,9 @@ END_VAR
 	Main.M15.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
 	Main.M16.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
 	Main.M17.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+	
+	// Read linear gauge value
+	bEnableSetGaugeValue := TRUE;
 END_IF
 
 

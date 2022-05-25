@@ -3,7 +3,8 @@
   <GVL Name="GVL_Sensor" Id="{1e8c8953-d9ec-471b-85fd-d0dbdbf1215b}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
-
+	{attribute 'pytmc' := 'pv: QRIX:SA:FLOATING'}
+   
 	bFloating: BOOL;
 
 	// YDF1
