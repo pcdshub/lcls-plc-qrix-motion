@@ -11,11 +11,6 @@ END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[// 4 jaws slit
-//Lock stages until they are tested
-Main.M3.nEnableMode := ENUM_StageEnableMode.NEVER ;
-Main.M4.nEnableMode := ENUM_StageEnableMode.NEVER ;
-Main.M5.nEnableMode := ENUM_StageEnableMode.NEVER ;
-Main.M6.nEnableMode := ENUM_StageEnableMode.NEVER ;
 
 
 
