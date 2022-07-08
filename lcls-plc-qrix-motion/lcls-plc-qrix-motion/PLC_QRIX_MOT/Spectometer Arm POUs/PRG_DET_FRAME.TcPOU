@@ -4,8 +4,10 @@
     <Declaration><![CDATA[PROGRAM PRG_DET_FRAME
 VAR
 	bInit: BOOL := TRUE;
+	{attribute 'pytmc' := 'pv: QRIX:SA:bError'}
 	bError: BOOL := FALSE;
 	bBusy: BOOL;
+	{attribute 'pytmc' := 'pv: QRIX:SA:bResetError'}
 	bResetError: BOOL := FALSE;
 	bEnableMotion : BOOL;
 	bEnableMotion_M15 : BOOL;
@@ -13,12 +15,19 @@ VAR
 	bEnableMotion_M17 : BOOL;
 	bEnableSetGaugeValue: BOOL;
 	bEnableMoveRelative: BOOL;
+	{attribute 'pytmc' := 'pv: QRIX:SA:EnableJackOff'}
 	bEnableJackOff: BOOL;
+	{attribute 'pytmc' := 'pv: QRIX:SA:EnableLevitation'}
 	bEnableLevitation: BOOL;
+	{attribute 'pytmc' := 'pv: QRIX:SA:EnableLanding'}
 	bEnableLanding: BOOL;
+	{attribute 'pytmc' := 'pv: QRIX:SA:EnableAdjustingRoll'}
 	bEnableAdjustingRoll: BOOL;
+	{attribute 'pytmc' := 'pv: QRIX:SA:EnableAdjustingPitch'}
 	bEnableAdjustingPitch: BOOL;
+	{attribute 'pytmc' := 'pv: QRIX:SA:EnableAdjustingHeight'}
 	bEnableAdjustingHeight: BOOL;
+	
 	
 	bDone_M15, bDone_M16, bDone_M17: BOOL;
 	
@@ -133,6 +142,7 @@ ACT_ResetError();
 			// Step1 read and apply gauge value
 			bEnableSetGaugeValue := TRUE;
 			iStepJackOff := 2;
+			bDoneJackOff := FALSE;
 		ELSE
 			bEnableJackOff := FALSE;
 		END_IF;
@@ -176,12 +186,14 @@ ACT_ResetError();
 		bEnableJackOff:= FALSE;
 		bBusy := FALSE;
 		iStepJackOff:=1;
+		bDoneJackOff := TRUE;
 	-1:
 		// Error
 		bError:= TRUE;
 		bEnableJackOff:= FALSE;
 		bBusy := FALSE;
 		iStepJackOff:=1;
+		bDoneJackOff := FALSE;
 END_CASE;]]></ST>
       </Implementation>
     </Action>
@@ -192,6 +204,7 @@ IF bEnableLevitation THEN
 	IF GVL_Sensor.stPS1.fValue > 0.15 AND GVL_Sensor.stPS2.fValue > 0.15 THEN
 		GVL_EPS.bOpenSV1 := TRUE;
 	END_IF;
+	bDoneLevitation := FALSE;
 END_IF;
 
 
@@ -204,6 +217,7 @@ tonSV2Open(
 IF tonSV2Open.Q THEN
 	GVL_EPS.bOpenSV2 := TRUE;
 	bEnableLevitation := FALSE;
+	bDoneLevitation := TRUE;
 END_IF;]]></ST>
       </Implementation>
     </Action>
@@ -214,6 +228,7 @@ END_IF;]]></ST>
 IF bEnableLanding AND NOT (bBusy OR bError) THEN
 	GVL_EPS.bOpenSV2 := FALSE;
 	bBusy:= TRUE;
+	bDoneLanding := FALSE;
 END_IF;
 
 tonSV1Close(
@@ -225,6 +240,7 @@ IF tonSV1Close.Q THEN
 	GVL_EPS.bOpenSV1 := FALSE;
 	bEnableLanding := FALSE;
 	bBusy:= FALSE;
+	bDoneLanding := TRUE;
 END_IF;]]></ST>
       </Implementation>
     </Action>
@@ -236,6 +252,7 @@ END_IF;]]></ST>
 			// Step1 read and apply gauge value
 			bEnableSetGaugeValue := TRUE;
 			iStepAdjustingRoll := 2;
+			bDoneAdjustingRoll := FALSE;
 		ELSE
 			bEnableAdjustingRoll := FALSE;
 		END_IF;
@@ -284,12 +301,14 @@ END_IF;]]></ST>
 			// End
 			bEnableAdjustingRoll:= FALSE;
 			iStepAdjustingRoll:=1;
+			bDoneAdjustingRoll := TRUE;
 		END_IF;
 	-1:
 		// Error
 		bError:= TRUE;
 		bEnableAdjustingRoll:= FALSE;
 		iStepAdjustingRoll:=1;
+		bDoneAdjustingRoll := FALSE;
 END_CASE;]]></ST>
       </Implementation>
     </Action>
@@ -301,6 +320,7 @@ END_CASE;]]></ST>
 			// Step1 read and apply gauge value
 			bEnableSetGaugeValue := TRUE;
 			iStepAdjustingPitch := 2;
+			bDoneAdjustingPitch := FALSE;
 		ELSE
 			bEnableAdjustingPitch := FALSE;
 		END_IF;
@@ -348,12 +368,14 @@ END_CASE;]]></ST>
 			// End
 			bEnableAdjustingPitch:= FALSE;
 			iStepAdjustingPitch:=1;
+			bDoneAdjustingPitch := TRUE;
 		END_IF;
 	-1:
 		// Error
 		bError:= TRUE;
 		bEnableAdjustingPitch:= FALSE;
 		iStepAdjustingPitch:=1;
+		bDoneAdjustingPitch := FALSE;
 END_CASE;]]></ST>
       </Implementation>
     </Action>
@@ -365,6 +387,7 @@ END_CASE;]]></ST>
 			// Step1 read and apply gauge value
 			bEnableSetGaugeValue := TRUE;
 			iStepAdjustingHeight := 2;
+			bDoneAdjustingHeight := FALSE;
 		ELSE
 			bEnableAdjustingHeight := FALSE;
 		END_IF;
@@ -408,12 +431,14 @@ END_CASE;]]></ST>
 			// End
 			bEnableAdjustingHeight:= FALSE;
 			iStepAdjustingHeight:=1;
+			bDoneAdjustingHeight := FALSE;
 		END_IF;
 	-1:
 		// Error
 		bError:= TRUE;
 		bEnableAdjustingHeight:= FALSE;
 		iStepAdjustingHeight:=1;
+		bDoneAdjustingHeight := FALSE;
 END_CASE;]]></ST>
       </Implementation>
     </Action>

@@ -75,6 +75,13 @@ IF NOT GVL_EPS.bESTOP THEN
 	Main.M25.bEnable := FALSE;
 	Main.M26.bEnable := FALSE;
 	Main.M27.bEnable := FALSE;
+	
+	bDoneJackOff := FALSE;
+	bDoneLevitation := FALSE;
+	bDoneLanding := FALSE;
+	bDoneAdjustingRoll := FALSE;
+	bDoneAdjustingPitch := FALSE;
+	bDoneAdjustingHeight := FALSE;
 END_IF
 
 
