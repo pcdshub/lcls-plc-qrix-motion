@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="PRG_DET_ARM" Id="{5258bb24-11af-4169-8ff7-86951daba536}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM PRG_DET_ARM
+VAR
+	bInit: BOOL := TRUE;
+	bExecuteCouple: BOOL := FALSE;
+	bExecuteDecouple: BOOL := FALSE;
+	
+	fbMotionYF1: FB_MotionStage;
+	fbMotionYF2: FB_MotionStage;
+	fbMotionZF: FB_MotionStage;
+	fbAutoCoupling: FB_GantryAutoCoupling;
+	
+	{attribute 'TcLinkTo' := '	.Count := TIIB[BOX-06 ENC_ZDC_YF1 (EL5042)]^FB Inputs Channel 2^Position'}
+	stRenishawAbsEncMaster: ST_RenishawAbsEnc;
+	{attribute 'TcLinkTo' := '	.Count := TIIB[BOX-07 ENC_YF2_ZF (EL5042)]^FB Inputs Channel 1^Position'}
+	stRenishawAbsEncSlave: ST_RenishawAbsEnc;
+
+	(*
+	fbPower_AxisM25: MC_POWER;
+	fbPower_AxisM26: MC_POWER;
+	fbPower_AxisM27: MC_POWER;
+	
+	tonBrakeRlease_M25, tonBrakeRlease_M26, tonBrakeRlease_M27: TON;
+	// *)
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+
+IF bInit THEN
+	bInit := FALSE;
+	bExecuteCouple := TRUE;
+	
+	Main.M25.nBrakeMode := ENUM_StageBrakeMode.IF_MOVING;
+	Main.M25.bHardwareEnable := TRUE;
+	Main.M25.bPowerSelf := TRUE;
+	Main.M26.nBrakeMode := ENUM_StageBrakeMode.IF_MOVING;
+	Main.M26.bHardwareEnable := TRUE;
+	Main.M26.bPowerSelf := TRUE;
+	Main.M27.nBrakeMode := ENUM_StageBrakeMode.IF_ENABLED;
+	Main.M27.bHardwareEnable := TRUE;
+	Main.M27.bPowerSelf := TRUE;
+	
+	
+	
+	Main.M25.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+	Main.M26.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+	Main.M27.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+END_IF
+
+stRenishawAbsEncMaster.Ref := 15370335;
+stRenishawAbsEncSlave.Ref := 15347257;
+
+// AutoCoupling
+fbAutoCoupling(	nGantryTol 			:= 200000, // 50nm/count
+				Master				:= Main.M25,
+				MasterEnc			:= stRenishawAbsEncMaster,
+				Slave				:= Main.M26,
+				SlaveEnc			:= stRenishawAbsEncSlave,
+				bExecuteCouple 		:= bExecuteCouple,
+				bExecuteDecouple 	:= bExecuteDecouple,
+);
+
+Main.M25.bAllEnable := Main.M25.bEnable AND GVL_EPS.bESTOP;
+Main.M26.bAllEnable := Main.M26.bEnable AND GVL_EPS.bESTOP;
+Main.M27.bAllEnable := Main.M27.bEnable AND GVL_EPS.bESTOP;
+
+// Call Motion FB instance
+fbMotionYF1(stMotionStage:=Main.M25);
+fbMotionYF2(stMotionStage:=Main.M26);
+fbMotionZF(stMotionStage:=Main.M27);
+
+(* For test
+// Release brake if axis is enabled.
+tonBrakeRlease_M25(
+	IN:=(GVL_Main.M25.bEnable OR GVL_Main.M25.bAllEnable) AND NOT GVL_Main.M25.Axis.Status.DriveDeviceError,
+	PT:=T#1s,
+	Q=>GVL_Main.M25.bBrakeRelease
+);
+tonBrakeRlease_M26(
+	IN:=(GVL_Main.M26.bEnable OR GVL_Main.M26.bAllEnable) AND NOT GVL_Main.M26.Axis.Status.DriveDeviceError,
+	PT:=T#1s,
+	Q=>GVL_Main.M26.bBrakeRelease
+);
+tonBrakeRlease_M27(
+	IN:=(GVL_Main.M27.bEnable OR GVL_Main.M27.bAllEnable) AND NOT GVL_Main.M27.Axis.Status.DriveDeviceError,
+	PT:=T#1s,
+	Q=>GVL_Main.M27.bBrakeRelease
+);
+fbPower_AxisM25(
+	Axis := GVL_Main.M25.Axis,
+	Enable := GVL_Main.M25.bEnable AND GVL_Main.bESTOP,
+	Enable_Positive := GVL_Main.M25.bLimitForwardEnable AND PLimFwd,
+	Enable_Negative := GVL_Main.M25.bLimitBackwardEnable AND PLimBwd,
+	Override := 100.000,
+);
+fbPower_AxisM26(
+	Axis := GVL_Main.M26.Axis,
+	Enable := GVL_Main.M26.bEnable AND GVL_Main.bESTOP,
+	Enable_Positive := GVL_Main.M26.bLimitForwardEnable AND SLimFwd,
+	Enable_Negative := GVL_Main.M26.bLimitBackwardEnable AND SLimBwd,
+	Override := 100.000,
+);
+fbPower_AxisM27(
+	Axis := GVL_Main.M27.Axis,
+	Enable := GVL_Main.M27.bEnable AND GVL_Main.bESTOP,
+	Enable_Positive := GVL_Main.M27.bLimitForwardEnable,
+	Enable_Negative := GVL_Main.M27.bLimitBackwardEnable,
+	Override := 100.000,
+);
+
+
+// *)
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

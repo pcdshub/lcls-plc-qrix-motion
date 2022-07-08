@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="PRG_DET_SLIT" Id="{2eb18d0f-2877-4c70-a778-30d760427220}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM PRG_DET_SLIT
+VAR
+	fbSlits_Det: FB_Slits;
+	bExecuteMotion: BOOL := TRUE;
+	bMoveOk: BOOL :=TRUE;
+	bInit:BOOL:=TRUE;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// 4 jaws slit
+
+
+IF bInit THEN
+	bInit := FALSE;
+	
+	Main.M18.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+	Main.M18.bHardwareEnable := TRUE;
+	Main.M18.bPowerSelf := TRUE;
+	
+	Main.M19.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+	Main.M19.bHardwareEnable := TRUE;
+	Main.M19.bPowerSelf := TRUE;
+	Main.M20.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+	Main.M20.bHardwareEnable := TRUE;
+	Main.M20.bPowerSelf := TRUE;
+	Main.M21.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+	Main.M21.bHardwareEnable := TRUE;
+	Main.M21.bPowerSelf := TRUE;
+	
+	
+	//
+	Main.M18.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+	Main.M19.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+	Main.M20.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+	Main.M21.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+END_IF
+fbSlits_Det(	i_DevName:=					'DET_SLITS',
+				stTopBlade:=				Main.M20,
+				stBottomBlade:=				Main.M21,
+				stLeftBlade:=				Main.M18,
+				stRightBlade:=				Main.M19,
+				io_fbFFHWO:=				GVL_PMPS.fbFastFaultOutput1,
+				fbArbiter:=					GVL_PMPS.fbArbiter,
+				bExecuteMotion:=			bExecuteMotion,
+				bMoveOk:=					bMoveOk
+);
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

@@ -1,0 +1,719 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TcSmItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmItem" TcSmVersion="1.0" TcVersion="3.1.4022.30" ClassName="CFlbTermDef" SubType="9099">
+	<ImageDatas>
+		<ImageData Id="1000">424de6000000000000007600000028000000100000000e000000010004000000000070000000000000000000000000000000000000000000000000008000008000000080800080000000800080008080000080808000c0c0c0000000ff0000ff000000ffff00ff000000ff00ff00ffff0000ffffff00fffffccfffcfffcfffffcffcfffcfcfffffffffcfffcfcfffffffccfffffcfffffffcffffffcfcffffffcffcfffcfcfffffffccfffcfffcffffffffffffffffffcffffcffccffffffcffffcffcfcfffffcccffcffcfcfffffcfcffcffcfcfffffcccffcffccfffffffffffffffffffff</ImageData>
+	</ImageDatas>
+	<Box Id="70" BoxType="9099" BoxFlags="#x00000020">
+		<Name>__FILENAME__</Name>
+		<ImageId>1000</ImageId>
+		<EtherCAT SlaveType="2" PdiType="#x0409" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="35" VendorId="#x00000621" ProductCode="#x00000100" RevisionNo="#x00010001" InfoDataAddr="true" TimeoutStateChange1="2000" TimeoutStateChange2="9000" TimeoutMailbox2="2000" PortPhys="17" IdentificationAdo="308" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="SC-HG1-ETC" Desc="SC-HG1-ETC">
+			<SyncMan>001080002600010001000000240080008000001026010000</SyncMan>
+			<SyncMan>801080002200010002000000240080008000801022010000</SyncMan>
+			<SyncMan>00114e006400010003000000000000004e00001164010000</SyncMan>
+			<SyncMan>001458002000010004000000000000005800001420010000</SyncMan>
+			<Fmmu>0000000000000000001100020100000001000000000000000000000000000000</Fmmu>
+			<Fmmu>0000000000000000001400010100000002000000000000000000000000000000</Fmmu>
+			<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
+			<DcMode>53796e6368726f6e0000000000000000534d2d53796e6368726f6e000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000</DcMode>
+			<DcMode>4443000000000000000000000000000044432d53796e6368726f6e000000000000000000000000000000000000000000000000000000000000000000000000030100000000000000000000000000000000000000000000000000000000000000</DcMode>
+			<Pdo Name="Process Data(In)  TxPDO-Map" Index="#x1a00" Flags="#x0000" SyncMan="3">
+				<Entry Name="Send Complete" Index="#x6000" Sub="#x01">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Command Err Flag" Index="#x6000" Sub="#x02">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="x6000_03" Index="#x6000" Sub="#x03">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="x6000_04" Index="#x6000" Sub="#x04">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="x6000_05" Index="#x6000" Sub="#x05">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="x6000_06" Index="#x6000" Sub="#x06">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="x6000_07" Index="#x6000" Sub="#x07">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="x6000_08" Index="#x6000" Sub="#x08">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Judge Value Mode" Index="#x6001" Sub="#x01">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Normal Value Mode" Index="#x6001" Sub="#x02">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Calculation Value Mode" Index="#x6001" Sub="#x03">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Head Value Mode" Index="#x6001" Sub="#x04">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Command Mode" Index="#x6001" Sub="#x05">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="x6001_06" Index="#x6001" Sub="#x06">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Error Code Mode" Index="#x6001" Sub="#x07">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="x6001_08" Index="#x6001" Sub="#x08">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output1 Unit1" Index="#x6002" Sub="#x01">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output1 Unit2" Index="#x6002" Sub="#x02">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output1 Unit3" Index="#x6002" Sub="#x03">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output1 Unit4" Index="#x6002" Sub="#x04">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output1 Unit5" Index="#x6002" Sub="#x05">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output1 Unit6" Index="#x6002" Sub="#x06">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output1 Unit7" Index="#x6002" Sub="#x07">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output1 Unit8" Index="#x6002" Sub="#x08">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output1 Unit9" Index="#x6002" Sub="#x09">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output1 Unit10" Index="#x6002" Sub="#x0a">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output1 Unit11" Index="#x6002" Sub="#x0b">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output1 Unit12" Index="#x6002" Sub="#x0c">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output1 Unit13" Index="#x6002" Sub="#x0d">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output1 Unit14" Index="#x6002" Sub="#x0e">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output1 Unit15" Index="#x6002" Sub="#x0f">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="x6002_10" Index="#x6002" Sub="#x10">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output2 Unit1" Index="#x6003" Sub="#x01">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output2 Unit2" Index="#x6003" Sub="#x02">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output2 Unit3" Index="#x6003" Sub="#x03">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output2 Unit4" Index="#x6003" Sub="#x04">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output2 Unit5" Index="#x6003" Sub="#x05">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output2 Unit6" Index="#x6003" Sub="#x06">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output2 Unit7" Index="#x6003" Sub="#x07">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output2 Unit8" Index="#x6003" Sub="#x08">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output2 Unit9" Index="#x6003" Sub="#x09">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output2 Unit10" Index="#x6003" Sub="#x0a">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output2 Unit11" Index="#x6003" Sub="#x0b">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output2 Unit12" Index="#x6003" Sub="#x0c">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output2 Unit13" Index="#x6003" Sub="#x0d">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output2 Unit14" Index="#x6003" Sub="#x0e">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output2 Unit15" Index="#x6003" Sub="#x0f">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="x6003_10" Index="#x6003" Sub="#x10">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output3 Unit1" Index="#x6004" Sub="#x01">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output3 Unit2" Index="#x6004" Sub="#x02">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output3 Unit3" Index="#x6004" Sub="#x03">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output3 Unit4" Index="#x6004" Sub="#x04">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output3 Unit5" Index="#x6004" Sub="#x05">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output3 Unit6" Index="#x6004" Sub="#x06">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output3 Unit7" Index="#x6004" Sub="#x07">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output3 Unit8" Index="#x6004" Sub="#x08">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output3 Unit9" Index="#x6004" Sub="#x09">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output3 Unit10" Index="#x6004" Sub="#x0a">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output3 Unit11" Index="#x6004" Sub="#x0b">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output3 Unit12" Index="#x6004" Sub="#x0c">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output3 Unit13" Index="#x6004" Sub="#x0d">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output3 Unit14" Index="#x6004" Sub="#x0e">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output3 Unit15" Index="#x6004" Sub="#x0f">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="x6004_10" Index="#x6004" Sub="#x10">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output Alarm Unit1" Index="#x6005" Sub="#x01">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output Alarm Unit2" Index="#x6005" Sub="#x02">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output Alarm Unit3" Index="#x6005" Sub="#x03">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output Alarm Unit4" Index="#x6005" Sub="#x04">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output Alarm Unit5" Index="#x6005" Sub="#x05">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output Alarm Unit6" Index="#x6005" Sub="#x06">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output Alarm Unit7" Index="#x6005" Sub="#x07">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output Alarm Unit8" Index="#x6005" Sub="#x08">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output Alarm Unit9" Index="#x6005" Sub="#x09">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output Alarm Unit10" Index="#x6005" Sub="#x0a">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output Alarm Unit11" Index="#x6005" Sub="#x0b">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output Alarm Unit12" Index="#x6005" Sub="#x0c">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output Alarm Unit13" Index="#x6005" Sub="#x0d">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output Alarm Unit14" Index="#x6005" Sub="#x0e">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output Alarm Unit15" Index="#x6005" Sub="#x0f">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="x6005_10" Index="#x6005" Sub="#x10">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output Err Unit1" Index="#x6006" Sub="#x01">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output Err Unit2" Index="#x6006" Sub="#x02">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output Err Unit3" Index="#x6006" Sub="#x03">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output Err Unit4" Index="#x6006" Sub="#x04">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output Err Unit5" Index="#x6006" Sub="#x05">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output Err Unit6" Index="#x6006" Sub="#x06">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output Err Unit7" Index="#x6006" Sub="#x07">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output Err Unit8" Index="#x6006" Sub="#x08">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output Err Unit9" Index="#x6006" Sub="#x09">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output Err Unit10" Index="#x6006" Sub="#x0a">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output Err Unit11" Index="#x6006" Sub="#x0b">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output Err Unit12" Index="#x6006" Sub="#x0c">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output Err Unit13" Index="#x6006" Sub="#x0d">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output Err Unit14" Index="#x6006" Sub="#x0e">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output Err Unit15" Index="#x6006" Sub="#x0f">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Output Err CommunicationUnit" Index="#x6006" Sub="#x10">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Response Unit1" Index="#x6007" Sub="#x01">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Response Unit2" Index="#x6007" Sub="#x02">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Response Unit3" Index="#x6007" Sub="#x03">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Response Unit4" Index="#x6007" Sub="#x04">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Response Unit5" Index="#x6007" Sub="#x05">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Response Unit6" Index="#x6007" Sub="#x06">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Response Unit7" Index="#x6007" Sub="#x07">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Response Unit8" Index="#x6007" Sub="#x08">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Response Unit9" Index="#x6007" Sub="#x09">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Response Unit10" Index="#x6007" Sub="#x0a">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Response Unit11" Index="#x6007" Sub="#x0b">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Response Unit12" Index="#x6007" Sub="#x0c">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Response Unit13" Index="#x6007" Sub="#x0d">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Response Unit14" Index="#x6007" Sub="#x0e">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Response Unit15" Index="#x6007" Sub="#x0f">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="x6007_10" Index="#x6007" Sub="#x10">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Response Code" Index="#x6008" Sub="#x01">
+					<Type>UINT</Type>
+				</Entry>
+				<Entry Name="Response Data Unit1" Index="#x6009" Sub="#x01">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="Response Data Unit2" Index="#x6009" Sub="#x02">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="Response Data Unit3" Index="#x6009" Sub="#x03">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="Response Data Unit4" Index="#x6009" Sub="#x04">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="Response Data Unit5" Index="#x6009" Sub="#x05">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="Response Data Unit6" Index="#x6009" Sub="#x06">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="Response Data Unit7" Index="#x6009" Sub="#x07">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="Response Data Unit8" Index="#x6009" Sub="#x08">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="Response Data Unit9" Index="#x6009" Sub="#x09">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="Response Data Unit10" Index="#x6009" Sub="#x0a">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="Response Data Unit11" Index="#x6009" Sub="#x0b">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="Response Data Unit12" Index="#x6009" Sub="#x0c">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="Response Data Unit13" Index="#x6009" Sub="#x0d">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="Response Data Unit14" Index="#x6009" Sub="#x0e">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="Response Data Unit15" Index="#x6009" Sub="#x0f">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="Response Data CommunicationUnit" Index="#x6009" Sub="#x10">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="System Status" Index="#x2002" Sub="#x01">
+					<Type>UINT</Type>
+				</Entry>
+				<Entry Name="Sensor Notice" Index="#x600a" Sub="#x01">
+					<Type>UINT</Type>
+				</Entry>
+				<Entry Name="Sensor Warning" Index="#x600a" Sub="#x02">
+					<Type>UINT</Type>
+				</Entry>
+				<Entry Name="Sensor Error" Index="#x600a" Sub="#x03">
+					<Type>UINT</Type>
+				</Entry>
+			</Pdo>
+			<Pdo Name="Process Data(Out) RxPDO-Map" Index="#x1600" InOut="1" Flags="#x0000" SyncMan="2">
+				<Entry Name="Send Command" Index="#x7000" Sub="#x01">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Write Flag" Index="#x7000" Sub="#x02">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="x7000_03" Index="#x7000" Sub="#x03">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="x7000_04" Index="#x7000" Sub="#x04">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="x7000_05" Index="#x7000" Sub="#x05">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="x7000_06" Index="#x7000" Sub="#x06">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="x7000_07" Index="#x7000" Sub="#x07">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="x7000_08" Index="#x7000" Sub="#x08">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Judge Value Mode" Index="#x7001" Sub="#x01">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Normal Value Mode" Index="#x7001" Sub="#x02">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Calculation Value Mode" Index="#x7001" Sub="#x03">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Head Value Mode" Index="#x7001" Sub="#x04">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Command Mode" Index="#x7001" Sub="#x05">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="x7001_06" Index="#x7001" Sub="#x06">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Error Code" Index="#x7001" Sub="#x07">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="x7001_08" Index="#x7001" Sub="#x08">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="External Input1 Unit1" Index="#x7002" Sub="#x01">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="External Input1 Unit2" Index="#x7002" Sub="#x02">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="External Input1 Unit3" Index="#x7002" Sub="#x03">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="External Input1 Unit4" Index="#x7002" Sub="#x04">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="External Input1 Unit5" Index="#x7002" Sub="#x05">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="External Input1 Unit6" Index="#x7002" Sub="#x06">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="External Input1 Unit7" Index="#x7002" Sub="#x07">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="External Input1 Unit8" Index="#x7002" Sub="#x08">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="External Input1 Unit9" Index="#x7002" Sub="#x09">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="External Input1 Unit10" Index="#x7002" Sub="#x0a">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="External Input1 Unit11" Index="#x7002" Sub="#x0b">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="External Input1 Unit12" Index="#x7002" Sub="#x0c">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="External Input1 Unit13" Index="#x7002" Sub="#x0d">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="External Input1 Unit14" Index="#x7002" Sub="#x0e">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="External Input1 Unit15" Index="#x7002" Sub="#x0f">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="x7002_10" Index="#x7002" Sub="#x10">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="External Input2 Unit1" Index="#x7003" Sub="#x01">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="External Input2 Unit2" Index="#x7003" Sub="#x02">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="External Input2 Unit3" Index="#x7003" Sub="#x03">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="External Input2 Unit4" Index="#x7003" Sub="#x04">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="External Input2 Unit5" Index="#x7003" Sub="#x05">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="External Input2 Unit6" Index="#x7003" Sub="#x06">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="External Input2 Unit7" Index="#x7003" Sub="#x07">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="External Input2 Unit8" Index="#x7003" Sub="#x08">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="External Input2 Unit9" Index="#x7003" Sub="#x09">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="External Input2 Unit10" Index="#x7003" Sub="#x0a">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="External Input2 Unit11" Index="#x7003" Sub="#x0b">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="External Input2 Unit12" Index="#x7003" Sub="#x0c">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="External Input2 Unit13" Index="#x7003" Sub="#x0d">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="External Input2 Unit14" Index="#x7003" Sub="#x0e">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="External Input2 Unit15" Index="#x7003" Sub="#x0f">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="x7003_10" Index="#x7003" Sub="#x10">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="External Input3 Unit1" Index="#x7004" Sub="#x01">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="External Input3 Unit2" Index="#x7004" Sub="#x02">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="External Input3 Unit3" Index="#x7004" Sub="#x03">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="External Input3 Unit4" Index="#x7004" Sub="#x04">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="External Input3 Unit5" Index="#x7004" Sub="#x05">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="External Input3 Unit6" Index="#x7004" Sub="#x06">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="External Input3 Unit7" Index="#x7004" Sub="#x07">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="External Input3 Unit8" Index="#x7004" Sub="#x08">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="External Input3 Unit9" Index="#x7004" Sub="#x09">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="External Input3 Unit10" Index="#x7004" Sub="#x0a">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="External Input3 Unit11" Index="#x7004" Sub="#x0b">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="External Input3 Unit12" Index="#x7004" Sub="#x0c">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="External Input3 Unit13" Index="#x7004" Sub="#x0d">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="External Input3 Unit14" Index="#x7004" Sub="#x0e">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="External Input3 Unit15" Index="#x7004" Sub="#x0f">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="x7004_10" Index="#x7004" Sub="#x10">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Command Request Unit1" Index="#x7005" Sub="#x01">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Command Request Unit2" Index="#x7005" Sub="#x02">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Command Request Unit3" Index="#x7005" Sub="#x03">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Command Request Unit4" Index="#x7005" Sub="#x04">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Command Request Unit5" Index="#x7005" Sub="#x05">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Command Request Unit6" Index="#x7005" Sub="#x06">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Command Request Unit7" Index="#x7005" Sub="#x07">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Command Request Unit8" Index="#x7005" Sub="#x08">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Command Request Unit9" Index="#x7005" Sub="#x09">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Command Request Unit10" Index="#x7005" Sub="#x0a">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Command Request Unit11" Index="#x7005" Sub="#x0b">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Command Request Unit12" Index="#x7005" Sub="#x0c">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Command Request Unit13" Index="#x7005" Sub="#x0d">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Command Request Unit14" Index="#x7005" Sub="#x0e">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Command Request Unit15" Index="#x7005" Sub="#x0f">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="x7005_10" Index="#x7005" Sub="#x10">
+					<Type>BIT</Type>
+				</Entry>
+				<Entry Name="Command Request Code" Index="#x7006" Sub="#x01">
+					<Type>UINT</Type>
+				</Entry>
+				<Entry Name="Command Data Unit1" Index="#x7007" Sub="#x01">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="Command Data Unit2" Index="#x7007" Sub="#x02">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="Command Data Unit3" Index="#x7007" Sub="#x03">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="Command Data Unit4" Index="#x7007" Sub="#x04">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="Command Data Unit5" Index="#x7007" Sub="#x05">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="Command Data Unit6" Index="#x7007" Sub="#x06">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="Command Data Unit7" Index="#x7007" Sub="#x07">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="Command Data Unit8" Index="#x7007" Sub="#x08">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="Command Data Unit9" Index="#x7007" Sub="#x09">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="Command Data Unit10" Index="#x7007" Sub="#x0a">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="Command Data Unit11" Index="#x7007" Sub="#x0b">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="Command Data Unit12" Index="#x7007" Sub="#x0c">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="Command Data Unit13" Index="#x7007" Sub="#x0d">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="Command Data Unit14" Index="#x7007" Sub="#x0e">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="Command Data Unit15" Index="#x7007" Sub="#x0f">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="x7007_10" Index="#x7007" Sub="#x10">
+					<Type>DINT</Type>
+				</Entry>
+				<Entry Name="System Request" Index="#x2003" Sub="#x01">
+					<Type>UINT</Type>
+				</Entry>
+			</Pdo>
+			<CoeProfile ProfileNo="65937"/>
+		</EtherCAT>
+	</Box>
+</TcSmItem>

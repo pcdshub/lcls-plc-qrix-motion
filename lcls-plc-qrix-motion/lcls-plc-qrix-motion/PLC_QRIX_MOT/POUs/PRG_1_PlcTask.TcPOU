@@ -11,6 +11,7 @@ PRG_3_LOG();
 PRG_SSL();
 //PRG_Diffractometer();
 //PRG_LAS();
+PRG_SpetrometerArm();
 ]]></ST>
     </Implementation>
   </POU>

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <GVL Name="GVL_VAR" Id="{7acc2ff9-c54c-4632-8d7c-23ce929a99e3}">
+    <Declaration><![CDATA[VAR_GLOBAL
+	
+	{attribute 'pytmc' := 'pv: QRIX:SA:JackOff'}
+	bDoneJackOff: BOOL;
+	{attribute 'pytmc' := 'pv: QRIX:SA:DoneLevitation'}
+	bDoneLevitation: BOOL;
+	{attribute 'pytmc' := 'pv: QRIX:SA:bDoneLanding'}
+	bDoneLanding: BOOL;
+	{attribute 'pytmc' := 'pv: QRIX:SA:DoneAdjustingRoll'}
+	bDoneAdjustingRoll: BOOL;
+	{attribute 'pytmc' := 'pv: QRIX:SA:DoneAdjustingPitch'}
+	bDoneAdjustingPitch: BOOL;
+	{attribute 'pytmc' := 'pv: QRIX:SA:DoneAdjustingHeight'}
+	bDoneAdjustingHeight: BOOL;
+	
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

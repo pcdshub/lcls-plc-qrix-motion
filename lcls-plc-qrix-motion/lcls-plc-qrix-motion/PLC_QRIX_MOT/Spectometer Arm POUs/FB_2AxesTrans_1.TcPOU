@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="FB_2AxesTrans_1" Id="{77693a59-2972-42d6-9cd8-fc76514a6d74}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_2AxesTrans_1
+VAR_IN_OUT
+    stFirstAxis: DUT_MotionStage;
+    stSecondAxis: DUT_MotionStage;
+    bExecuteMotion:BOOL ;
+    io_fbFFHWO    :    FB_HardwareFFOutput;
+    fbArbiter: FB_Arbiter();
+END_VAR
+VAR_INPUT
+	
+    {attribute 'pytmc' := '
+    pv: PMPS_OK;
+    io: i;
+    field: ZNAM False
+    field: ONAM True
+    '}
+    bMoveOk:BOOL;
+
+    (*Offsets*)
+    {attribute 'pytmc' := '
+    pv: ZeroOffset_First;
+    io: io;
+    '}
+    rEncoderOffsetFirst: REAL;
+	
+    {attribute 'pytmc' := '
+    pv: ZeroOffset_Secound;
+    io: io;
+    '}
+    rEncoderOffsetSecound: REAL;
+	
+	(*Distance between 1st stage and 2nd stage*)
+	rDistance: REAL := 0.40;
+
+    i_DevName : STRING; //device name for FFO and PMPS diagnostics
+	
+     {attribute 'pytmc' := '
+    pv: Home;
+    io: i;
+    field: ZNAM False
+    field: ONAM True
+    '}
+    bHome:BOOL:=FALSE;
+END_VAR
+VAR
+	fbFirstStage: FB_MotionStage;
+    fbSecondStage: FB_MotionStage;
+    fPosFirstStage: LREAL;
+    fPosSecondStage: LREAL;
+
+    (*Motion Parameters*)
+    fSmallDelta: LREAL := 0.01;
+    fBigDelta: LREAL := 10;
+    fMaxVelocity: LREAL := 0.03;
+    fHighAccel: LREAL := 0.8;
+    fLowAccel: LREAL := 0.1;
+
+    stFirst: DUT_PositionState;
+    stSecond: DUT_PositionState;
+
+    {attribute 'pytmc' := 'pv: FIRST'}
+    fbFirst: FB_StatePTPMove;
+    {attribute 'pytmc' := 'pv: SECOND'}
+    fbSecond: FB_StatePTPMove;
+
+    (*EPICS pvs*)
+    {attribute 'pytmc' := '
+    pv: POS_REQ;
+    io: io;
+    '}
+    rReqPosition : REAL;
+    {attribute 'pytmc' := '
+    pv: ANG_REQ;
+    io: io;
+    '}
+    rReqAngle : REAL;
+
+
+    {attribute 'pytmc' := '
+    pv: ACTUAL_POSISION;
+    io: io;
+    '}
+    rActPosition : REAL;
+
+    {attribute 'pytmc' := '
+    pv: ACTUAL_ANGLE;
+    io: io;
+    '}
+    rActAngle : REAL;
+
+
+
+     {attribute 'pytmc' := '
+    pv: HOME_READY;
+    io: i;
+    field: ZNAM False
+    field: ONAM True
+    '}
+    bHomeReady:BOOL:=FALSE;
+
+
+    //Local variables
+    bInit: BOOL :=true;
+    rTrig_Block: R_TRIG;
+    rTrig_Open: R_TRIG;
+    rTrig_Close: R_TRIG;
+
+    //old values
+    rOldReqPosition : REAL;
+    rOldReqAngle: REAL;
+
+    bExecuteMotionX: BOOL;
+
+
+    fPosBlock: LREAL;
+    fPosClose: LREAL;
+    fPosOpen: LREAL;
+
+    stSetPositionOptions: ST_SetPositionOptions;
+    fbSetPosition_Pos: MC_SetPosition;
+    fbSetPosition_Angle: MC_SetPosition;
+
+    // For logging
+    fbLogger : FB_LogMessage := (eSubsystem:=E_SubSystem.MOTION);
+    tErrorPresent : R_TRIG;
+    tAction : R_TRIG;
+    tOverrideActivated : R_TRIG;
+
+    FFO    :    FB_FastFault :=(
+        i_DevName := 'OPT_XPM_Translation',
+        i_Desc := 'Fault occurs when center is greated than that requested',
+        i_TypeCode := 16#1010);
+
+
+    bTest: BOOL;
+
+    AptArrayStatus AT %Q* : ST_PMPS_Aperture_IO;
+    AptArrayReq AT %I* : ST_PMPS_Aperture_IO;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// Initialize
+ACT_init();
+
+// Instantiate Function block for all the blades
+ACT_Motion();
+
+//SET and GET the requested and Actual values
+ACT_CalculatePositions();]]></ST>
+    </Implementation>
+    <Action Name="ACT_CalculatePositions" Id="{2a2b8e23-b48b-4acf-b51e-0cde5c69adbc}">
+      <Implementation>
+        <ST><![CDATA[//check if requested center or gap has changed
+//check that the requested values are within acceptable motion range
+IF (rOldReqPosition <> rReqPosition) THEN
+        rOldReqPosition := rReqPosition;
+        bExecuteMotionX := TRUE;
+        fbLogger(sMsg:='Requested new Position.', eSevr:=TcEventSeverity.Verbose);
+END_IF
+
+IF (rOldReqAngle <> rReqAngle) THEN
+    rOldReqAngle := rReqAngle;
+    bExecuteMotionX := TRUE;
+    fbLogger(sMsg:='Requested new Angle', eSevr:=TcEventSeverity.Verbose);
+END_IF
+
+
+//Calculate requested target positions from requested gap and center
+fPosFirstStage		:= rReqPosition - rDistance / 2 * rReqAngle + rEncoderOffsetFirst;
+fPosSecondStage		:= rReqPosition + rDistance / 2 * rReqAngle + rEncoderOffsetSecound;
+
+
+
+//Calculate actual gap and center from actual stages positions
+rActPosition	:= LREAL_TO_REAL( ((stFirstAxis.stAxisStatus.fActPosition - rEncoderOffsetFirst) + (stSecondAxis.stAxisStatus.fActPosition - rEncoderOffsetSecound)) / 2 );
+rActAngle		:= LREAL_TO_REAL( ((stSecondAxis.stAxisStatus.fActPosition - rEncoderOffsetSecound) - (stFirstAxis.stAxisStatus.fActPosition - rEncoderOffsetFirst)) / rDistance );
+]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="ACT_Init" Id="{23dbcb69-1a35-4e93-a284-6ddefb9dcd95}">
+      <Implementation>
+        <ST><![CDATA[
+//  init the motion stages parameters
+IF ( bInit) THEN
+    stFirstAxis.bHardwareEnable := TRUE;
+    stSecondAxis.bHardwareEnable := TRUE;
+    stFirstAxis.bPowerSelf :=TRUE;
+    stSecondAxis.bPowerSelf :=TRUE;
+    stFirstAxis.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+    stSecondAxis.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+    FFO.i_DevName := i_DevName;
+END_IF
+
+]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="ACT_Motion" Id="{efaee6a9-ad1f-4a95-8cbd-73b7697b17be}">
+      <Implementation>
+        <ST><![CDATA[// Instantiate Function block for all the blades
+fbFirstStage(stMotionStage:=stFirstAxis);
+fbSecondStage(stMotionStage:=stSecondAxis);
+
+
+
+// PTP Motion for each blade
+stFirst.sName := 'First';
+stFirst.fPosition := fPosFirstStage;
+stFirst.fDelta := fSmallDelta;
+stFirst.fVelocity := fMaxVelocity;
+stFirst.fAccel := fHighAccel;
+stFirst.fDecel := fHighAccel;
+
+stSecond.sName := 'Second';
+stSecond.fPosition := fPosSecondStage;
+stSecond.fDelta := fSmallDelta;
+stSecond.fVelocity := fMaxVelocity;
+stSecond.fAccel := fHighAccel;
+stSecond.fDecel := fHighAccel;
+
+
+
+IF (bExecuteMotionX) THEN
+    fbFirst.bExecute := fbSecond.bExecute := bExecuteMotionX;
+    bExecuteMotionX:= FALSE;
+END_IF
+
+
+fbFirst(
+    stPositionState:=stFirst,
+    bMoveOk:=bMoveOk,
+    stMotionStage:=stFirstAxis);
+
+fbSecond(
+    stPositionState:=stSecond,
+    bMoveOk:=bMoveOk,
+    stMotionStage:=stSecondAxis);
+
+]]></ST>
+      </Implementation>
+    </Action>
+  </POU>
+</TcPlcObject>
