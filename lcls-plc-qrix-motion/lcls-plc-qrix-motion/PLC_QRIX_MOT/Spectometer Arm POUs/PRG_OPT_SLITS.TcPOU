@@ -3,6 +3,7 @@
   <POU Name="PRG_OPT_SLITS" Id="{87d69d5e-6db8-4f14-b5ec-7224a0a8195a}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM PRG_OPT_SLITS
 VAR
+	{attribute 'pytmc' := 'pv: QRIX:OPT:SLITS'}
 	fbSlits_Opt: FB_Slits;
 	bExecuteMotion: BOOL := TRUE;
 	bMoveOk: BOOL :=TRUE;

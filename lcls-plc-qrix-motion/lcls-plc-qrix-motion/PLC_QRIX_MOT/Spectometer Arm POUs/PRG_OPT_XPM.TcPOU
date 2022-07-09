@@ -4,7 +4,7 @@
     <Declaration><![CDATA[PROGRAM PRG_OPT_XPM
 VAR
 	bInit: BOOL :=TRUE;
-	
+	{attribute 'pytmc' := 'pv: QRIX:OPT:XPM'}
 	fb2AxesXPM: FB_2AxesTrans;
 	bExecuteMotionXPM: BOOL :=TRUE;
 	bMoveOkXPM: BOOL :=TRUE;
