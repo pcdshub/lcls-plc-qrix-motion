@@ -59,7 +59,7 @@ VAR_GLOBAL
     M5: DUT_MotionStage:=(sName := ' QRIX:OPT:SLITS:MMS:TOP');
 	
 	// YS2
-	{attribute 'pytmc' := 'pv: QRIX:SL1:MMS:BOTTOM'}
+	{attribute 'pytmc' := 'pv: QRIX:OPT:SLITS:MMS:BOTTOM'}
 	{attribute 'TcLinkTo' := '	.bLimitForwardEnable  	:= TIIB[Rack#2A-06 DR_YS2 (EL7041-0052)]^STM Status^Status^Digital input 1;
 								.bLimitBackwardEnable 	:= TIIB[Rack#2A-06 DR_YS2 (EL7041-0052)]^STM Status^Status^Digital input 2;
 								.nRawEncoderULINT     	:= TIIB[Rack#2B-08 ENC_Y1_Y2 (EL5042)]^FB Inputs Channel 1^Position
