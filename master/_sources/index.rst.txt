@@ -1,0 +1,30 @@
+lcls-plc-qrix-motion
+--------------------
+
+.. toctree::
+    :maxdepth: 2
+    :caption: lcls-plc-qrix-motion
+
+    lcls-plc-qrix-motion_pragmas
+    lcls-plc-qrix-motion_nc
+    lcls-plc-qrix-motion_ethercat
+    lcls-plc-qrix-motion_boxes
+    lcls-plc-qrix-motion_links
+
+
+.. toctree::
+    :maxdepth: 2
+    :caption: PLC_QRIX_MOT
+
+    lcls-plc-qrix-motion_PLC_QRIX_MOT_summary
+    lcls-plc-qrix-motion_PLC_QRIX_MOT_epics
+    lcls-plc-qrix-motion_PLC_QRIX_MOT_source
+
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
