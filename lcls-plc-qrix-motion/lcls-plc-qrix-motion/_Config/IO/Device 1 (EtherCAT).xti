@@ -60,7 +60,10 @@
 		<Box File="Rack#2D LinearGaugeAmp (SC-HG1-ETC).xti" Id="70">
 			<EtherCAT PortABoxInfo="#x01000045"/>
 		</Box>
-		<EtherCAT DcSyncMode="3"/>
+		<EtherCAT DcSyncMode="3">
+			<SyncUnit Name="SPECTROMETER" NoDeleteIfUnused="true"/>
+			<SyncUnit Name="SDS_05" NoDeleteIfUnused="true"/>
+		</EtherCAT>
 	</Device>
 	<Mappings>
 		<OwnerA>

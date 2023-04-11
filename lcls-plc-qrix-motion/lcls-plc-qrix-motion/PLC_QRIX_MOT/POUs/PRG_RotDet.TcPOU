@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="PRG_RotDet" Id="{6c5a9ec6-70ef-4f3f-9260-ca012a2c65e6}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM PRG_RotDet
+VAR
+    fb_Rot_Det : FB_MotionStage;
+    bInit : BOOl := TRUE;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[(* IF ( bInit) THEN
+   bInit := FALSE;
+   Main.M51.bHardwareEnable := TRUE;
+   Main.M51.bPowerSelf := TRUE;
+   Main.M51.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+   Main.M51.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+END_IF
+
+fb_Rot_Det(stMotionStage:=Main.M51);*)]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

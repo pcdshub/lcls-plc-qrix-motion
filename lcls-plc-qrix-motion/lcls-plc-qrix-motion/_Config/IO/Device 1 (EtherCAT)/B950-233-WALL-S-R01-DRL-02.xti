@@ -58,14 +58,8 @@
 		<Box File="EL7047_03_18.xti" Id="46">
 			<EtherCAT PortABoxInfo="#x0100002d"/>
 		</Box>
-		<Box File="EL3314_03_19.xti" Id="48">
-			<EtherCAT PortABoxInfo="#x0100002e"/>
-		</Box>
-		<Box File="EL3314_03_20.xti" Id="49">
-			<EtherCAT PortABoxInfo="#x01000030"/>
-		</Box>
 		<Box File="Term 107 (EL9011).xti" Id="107">
-			<EtherCAT PortABoxInfo="#x01000031"/>
+			<EtherCAT PortABoxInfo="#x0100002e"/>
 		</Box>
 	</Box>
 </TcSmItem>

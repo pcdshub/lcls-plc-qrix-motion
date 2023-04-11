@@ -3,70 +3,70 @@
   <POU Name="PRG_Diffractometer" Id="{47cc6d87-f16c-4ab2-afb0-97aaa2cfa842}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM PRG_Diffractometer
 VAR
-	fb_Diff_Theta : FB_MotionStage;
-	fb_Diff_2Theta : FB_MotionStage;
-	fb_Diff_Det : FB_MotionStage;
-	fb_Diff_Chi : FB_MotionStage;
-	fb_Diff_Phi : FB_MotionStage;
-	fb_Diff_X : FB_MotionStage;
-	fb_Diff_Y : FB_MotionStage;
-	fb_Diff_Z : FB_MotionStage;
-	bInit : BOOl := TRUE;
+    fb_Diff_Theta : FB_MotionStage;
+    fb_Diff_2Theta : FB_MotionStage;
+    fb_Diff_Det : FB_MotionStage;
+    fb_Diff_Chi : FB_MotionStage;
+    fb_Diff_Phi : FB_MotionStage;
+    fb_Diff_X : FB_MotionStage;
+    fb_Diff_Y : FB_MotionStage;
+    fb_Diff_Z : FB_MotionStage;
+    bInit : BOOl := TRUE;
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[IF ( bInit) THEN
-	bInit := FALSE;
-	Main.M2.bHardwareEnable := TRUE;
-	Main.M2.bPowerSelf := TRUE;
-	Main.M2.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
-	Main.M2.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
-	
-	Main.M3.bHardwareEnable := TRUE;
-	Main.M3.bPowerSelf := TRUE;
-	Main.M3.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
-	Main.M3.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
-	
-	Main.M4.bHardwareEnable := TRUE;
-	Main.M4.bPowerSelf := TRUE;
-	Main.M4.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
-	Main.M4.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
-	
-	Main.M5.bHardwareEnable := TRUE;
-	Main.M5.bPowerSelf := TRUE;
-	Main.M5.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
-	Main.M5.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
-	
-	Main.M6.bHardwareEnable := TRUE;
-	Main.M6.bPowerSelf := TRUE;
-	Main.M6.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
-	Main.M6.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
-	
-	Main.M7.bHardwareEnable := TRUE;
-	Main.M7.bPowerSelf := TRUE;
-	Main.M7.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
-	Main.M7.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
-	
-	Main.M8.bHardwareEnable := TRUE;
-	Main.M8.bPowerSelf := TRUE;
-	Main.M8.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
-	Main.M8.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
-	
-	Main.M9.bHardwareEnable := TRUE;
-	Main.M9.bPowerSelf := TRUE;
-	Main.M9.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
-	Main.M9.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+    bInit := FALSE;
+    Main.M28.bHardwareEnable := TRUE;
+    Main.M28.bPowerSelf := TRUE;
+    Main.M28.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+    Main.M28.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+
+    Main.M29.bHardwareEnable := TRUE;
+    Main.M29.bPowerSelf := TRUE;
+    Main.M29.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+    Main.M29.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+
+    Main.M30.bHardwareEnable := TRUE;
+    Main.M30.bPowerSelf := TRUE;
+    Main.M30.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+    Main.M30.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+
+    Main.M31.bHardwareEnable := TRUE;
+    Main.M31.bPowerSelf := TRUE;
+    Main.M31.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+    Main.M31.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+
+    Main.M32.bHardwareEnable := TRUE;
+    Main.M32.bPowerSelf := TRUE;
+    Main.M32.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+    Main.M32.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+
+    Main.M33.bHardwareEnable := TRUE;
+    Main.M33.bPowerSelf := TRUE;
+    Main.M33.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+    Main.M33.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+
+    Main.M34.bHardwareEnable := TRUE;
+    Main.M34.bPowerSelf := TRUE;
+    Main.M34.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+    Main.M34.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+
+    Main.M35.bHardwareEnable := TRUE;
+    Main.M35.bPowerSelf := TRUE;
+    Main.M35.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+    Main.M35.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
 END_IF
 //EPS??
 
-fb_Diff_X(stMotionStage:=Main.M2);
-fb_Diff_Y(stMotionStage:=Main.M3);
-fb_Diff_Z(stMotionStage:=Main.M4);
-fb_Diff_Det(stMotionStage:=Main.M5);
-fb_Diff_Phi(stMotionStage:=Main.M6);
-fb_Diff_Chi(stMotionStage:=Main.M7);
-fb_Diff_2Theta(stMotionStage:=Main.M8);
-fb_Diff_Theta(stMotionStage:=Main.M9);
+fb_Diff_X(stMotionStage:=Main.M28);
+fb_Diff_Y(stMotionStage:=Main.M29);
+fb_Diff_Z(stMotionStage:=Main.M30);
+fb_Diff_Det(stMotionStage:=Main.M31);
+fb_Diff_Phi(stMotionStage:=Main.M32);
+fb_Diff_Chi(stMotionStage:=Main.M33);
+fb_Diff_Theta(stMotionStage:=Main.M34);
+fb_Diff_2Theta(stMotionStage:=Main.M35);
 
 
 ]]></ST>

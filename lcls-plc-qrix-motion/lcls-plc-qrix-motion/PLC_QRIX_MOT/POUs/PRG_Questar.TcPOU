@@ -3,25 +3,25 @@
   <POU Name="PRG_Questar" Id="{a13b4cbe-0334-43ca-a474-80a981d3c693}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM PRG_Questar
 VAR
-	fb_Ques_01 : FB_MotionStage;
-	fb_Ques_02: FB_MotionStage;
-	bInit : BOOl := TRUE;
+    fb_Ques_01 : FB_MotionStage;
+    fb_Ques_02: FB_MotionStage;
+    bInit : BOOl := TRUE;
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[IF ( bInit) THEN
-	bInit := FALSE;	
-	Main.M17.bHardwareEnable := TRUE;
-	Main.M17.bPowerSelf := TRUE;
-	Main.M17.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
-	Main.M17.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
-	
-	Main.M18.bHardwareEnable := TRUE;
-	Main.M18.bPowerSelf := TRUE;
-	Main.M18.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
-	Main.M18.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
-	
-		
+    bInit := FALSE;
+    Main.M17.bHardwareEnable := TRUE;
+    Main.M17.bPowerSelf := TRUE;
+    Main.M17.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+    Main.M17.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+
+    Main.M18.bHardwareEnable := TRUE;
+    Main.M18.bPowerSelf := TRUE;
+    Main.M18.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+    Main.M18.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+
+
 END_IF
 //EPS??
 

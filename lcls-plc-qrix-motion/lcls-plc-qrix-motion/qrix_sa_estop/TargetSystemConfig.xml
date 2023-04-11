@@ -1,19 +1,19 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <TargetSystemConfig Crc="926504024" Version="1.4">
   <TargetSystemType>TSafetyPLC</TargetSystemType>
   <TargetSystemSubType>None</TargetSystemSubType>
   <TargetSystemObjectId>16842768</TargetSystemObjectId>
   <TargetSystemObjectName>qrix_sa_estop Instance</TargetSystemObjectName>
-  <TaskId />
-  <TaskName />
+  <TaskId/>
+  <TaskName/>
   <SoftwareVersion>1</SoftwareVersion>
   <Id>-1</Id>
-  <ProjectCRC />
+  <ProjectCRC/>
   <MapProjectCRC>false</MapProjectCRC>
   <MapId>false</MapId>
   <VersionNumber>1</VersionNumber>
   <FSOEAddress>1</FSOEAddress>
   <TakeOverSafetyAliasDeviceNamesInProcessImage>false</TakeOverSafetyAliasDeviceNamesInProcessImage>
   <TakeOverStandardAliasDeviceNamesInProcessImage>false</TakeOverStandardAliasDeviceNamesInProcessImage>
-  <BackupRestore Needed="0" Activated="false" />
+  <BackupRestore Needed="0" Activated="false"/>
 </TargetSystemConfig>

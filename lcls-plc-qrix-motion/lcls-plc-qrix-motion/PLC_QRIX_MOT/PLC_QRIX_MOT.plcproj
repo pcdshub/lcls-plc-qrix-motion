@@ -64,6 +64,9 @@
     <Compile Include="POUs\PRG_Cryo.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\PRG_RotDet.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\PRG_SDS.TcPOU">
       <SubType>Code</SubType>
     </Compile>

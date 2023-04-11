@@ -10,7 +10,7 @@ VAR_IN_OUT
     fbArbiter: FB_Arbiter();
 END_VAR
 VAR_INPUT
-	
+
     {attribute 'pytmc' := '
     pv: PMPS_OK;
     io: i;
@@ -25,18 +25,18 @@ VAR_INPUT
     io: io;
     '}
     rEncoderOffsetFirst: REAL;
-	
+
     {attribute 'pytmc' := '
     pv: ZeroOffset_Secound;
     io: io;
     '}
     rEncoderOffsetSecound: REAL;
-	
-	(*Distance between 1st stage and 2nd stage*)
-	rDistance: REAL := 0.40;
+
+    (*Distance between 1st stage and 2nd stage*)
+    rDistance: REAL := 0.40;
 
     i_DevName : STRING; //device name for FFO and PMPS diagnostics
-	
+
      {attribute 'pytmc' := '
     pv: Home;
     io: i;
@@ -46,7 +46,7 @@ VAR_INPUT
     bHome:BOOL:=FALSE;
 END_VAR
 VAR
-	fbFirstStage: FB_MotionStage;
+    fbFirstStage: FB_MotionStage;
     fbSecondStage: FB_MotionStage;
     fPosFirstStage: LREAL;
     fPosSecondStage: LREAL;
