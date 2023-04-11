@@ -13,34 +13,20 @@ END_VAR
     <Implementation>
       <ST><![CDATA[IF ( bInit) THEN
     bInit := FALSE;
-    Main.M13.bHardwareEnable := TRUE;
-    Main.M13.bPowerSelf := TRUE;
-    Main.M13.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
-    Main.M13.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+   // Main.M13.bHardwareEnable := TRUE;
+    //Main.M13.bPowerSelf := TRUE;
+   // Main.M13.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+   // Main.M13.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
 
-    Main.M14.bHardwareEnable := TRUE;
-    Main.M14.bPowerSelf := TRUE;
-    Main.M14.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
-    Main.M14.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
-
-    Main.M15.bHardwareEnable := TRUE;
-    Main.M15.bPowerSelf := TRUE;
-    Main.M15.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
-    Main.M15.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
-
-    Main.M16.bHardwareEnable := TRUE;
-    Main.M16.bPowerSelf := TRUE;
-    Main.M16.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
-    Main.M16.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
 
 END_IF
 //EPS??
 
 
-fb_Cryo_ROT(stMotionStage:=Main.M13);
-fb_Cryo_X(stMotionStage:=Main.M14);
-fb_Cryo_Y(stMotionStage:=Main.M15);
-fb_Cryo_Z(stMotionStage:=Main.M16);]]></ST>
+//fb_Cryo_ROT(stMotionStage:=Main.M13);
+//fb_Cryo_X(stMotionStage:=Main.M14);
+//fb_Cryo_Y(stMotionStage:=Main.M15);
+//fb_Cryo_Z(stMotionStage:=Main.M16);]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

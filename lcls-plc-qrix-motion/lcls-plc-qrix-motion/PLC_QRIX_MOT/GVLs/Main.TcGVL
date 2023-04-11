@@ -311,46 +311,7 @@ VAR_GLOBAL
                               .nRawEncoderULINT     := TIIB[EL5042_02_08]^FB Inputs Channel 2^Position'}
     M38: DUT_MotionStage := (sName := 'QRIX:LAS:MMS:D-V');
 
-(*
-    // Cryo -  4 axes
-    {attribute 'pytmc' := 'pv: QRIX:CRYO:MMS:ROT'}
-    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SSL-EL7041]^STM Status^Status^Digital input 1;
-                              .bLimitBackwardEnable := TIIB[SSL-EL7041]^STM Status^Status^Digital input 2;
-                              .nRawEncoderULINT     := TIIB[IM1K3-EL5042]^FB Inputs Channel 1^Position'}
-    M13: DUT_MotionStage := (sName := 'QRIX:CRYO:MMS:ROT');
 
-    {attribute 'pytmc' := 'pv: QRIX:CRYO:MMS:X'}
-    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SSL-EL7041]^STM Status^Status^Digital input 1;
-                              .bLimitBackwardEnable := TIIB[SSL-EL7041]^STM Status^Status^Digital input 2;
-                              .nRawEncoderULINT     := TIIB[IM1K3-EL5042]^FB Inputs Channel 1^Position'}
-    M14: DUT_MotionStage := (sName := 'QRIX:CRYO:MMS:X');
-
-    {attribute 'pytmc' := 'pv: QRIX:CRYO:MMS:Y'}
-    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SSL-EL7041]^STM Status^Status^Digital input 1;
-                              .bLimitBackwardEnable := TIIB[SSL-EL7041]^STM Status^Status^Digital input 2;
-                              .nRawEncoderULINT     := TIIB[IM1K3-EL5042]^FB Inputs Channel 1^Position'}
-    M15: DUT_MotionStage := (sName := 'QRIX:CRYO:MMS:Y');
-
-    {attribute 'pytmc' := 'pv: QRIX:CRYO:MMS:Z'}
-    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SSL-EL7041]^STM Status^Status^Digital input 1;
-                              .bLimitBackwardEnable := TIIB[SSL-EL7041]^STM Status^Status^Digital input 2;
-                              .nRawEncoderULINT     := TIIB[IM1K3-EL5042]^FB Inputs Channel 1^Position'}
-    M16: DUT_MotionStage := (sName := 'QRIX:CRYO:MMS:Z');
-
-
-    // Questar -  2 axes
-    {attribute 'pytmc' := 'pv: QRIX:QUESTAR:MMS:01'}
-    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SSL-EL7041]^STM Status^Status^Digital input 1;
-                              .bLimitBackwardEnable := TIIB[SSL-EL7041]^STM Status^Status^Digital input 2;
-                              .nRawEncoderULINT     := TIIB[IM1K3-EL5042]^FB Inputs Channel 1^Position'}
-    M17: DUT_MotionStage := (sName := 'QRIX:QUESTAR:MMS:01');
-
-    {attribute 'pytmc' := 'pv: QRIX:QUESTAR:MMS:02'}
-    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SSL-EL7041]^STM Status^Status^Digital input 1;
-                              .bLimitBackwardEnable := TIIB[SSL-EL7041]^STM Status^Status^Digital input 2;
-                              .nRawEncoderULINT     := TIIB[IM1K3-EL5042]^FB Inputs Channel 1^Position'}
-    M18: DUT_MotionStage := (sName := 'QRIX:QUESTAR:MMS:02');
-*)
     //Sample Delivery - 6 Axes
 
 
@@ -390,8 +351,56 @@ VAR_GLOBAL
                               .nRawEncoderULINT     := TIIB[IM1K3-EL5042]^FB Inputs Channel 1^Position'}
     M44: DUT_MotionStage := (sName := 'QRIX:SDS:MMS:H');
 
+(*
+    // Cryo -  4 axes
+    {attribute 'pytmc' := 'pv: QRIX:CRYO:MMS:ROT'}
+    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SSL-EL7041]^STM Status^Status^Digital input 1;
+                              .bLimitBackwardEnable := TIIB[SSL-EL7041]^STM Status^Status^Digital input 2;
+                              .nRawEncoderULINT     := TIIB[IM1K3-EL5042]^FB Inputs Channel 1^Position'}
+    M45: DUT_MotionStage := (sName := 'QRIX:CRYO:MMS:ROT');
+
+    {attribute 'pytmc' := 'pv: QRIX:CRYO:MMS:X'}
+    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SSL-EL7041]^STM Status^Status^Digital input 1;
+                              .bLimitBackwardEnable := TIIB[SSL-EL7041]^STM Status^Status^Digital input 2;
+                              .nRawEncoderULINT     := TIIB[IM1K3-EL5042]^FB Inputs Channel 1^Position'}
+    M46: DUT_MotionStage := (sName := 'QRIX:CRYO:MMS:X');
+
+    {attribute 'pytmc' := 'pv: QRIX:CRYO:MMS:Y'}
+    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SSL-EL7041]^STM Status^Status^Digital input 1;
+                              .bLimitBackwardEnable := TIIB[SSL-EL7041]^STM Status^Status^Digital input 2;
+                              .nRawEncoderULINT     := TIIB[IM1K3-EL5042]^FB Inputs Channel 1^Position'}
+    M47: DUT_MotionStage := (sName := 'QRIX:CRYO:MMS:Y');
+
+    {attribute 'pytmc' := 'pv: QRIX:CRYO:MMS:Z'}
+    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SSL-EL7041]^STM Status^Status^Digital input 1;
+                              .bLimitBackwardEnable := TIIB[SSL-EL7041]^STM Status^Status^Digital input 2;
+                              .nRawEncoderULINT     := TIIB[IM1K3-EL5042]^FB Inputs Channel 1^Position'}
+    M48: DUT_MotionStage := (sName := 'QRIX:CRYO:MMS:Z');
 
 
+    // Questar -  2 axes
+    {attribute 'pytmc' := 'pv: QRIX:QUESTAR:MMS:01'}
+    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SSL-EL7041]^STM Status^Status^Digital input 1;
+                              .bLimitBackwardEnable := TIIB[SSL-EL7041]^STM Status^Status^Digital input 2;
+                              .nRawEncoderULINT     := TIIB[IM1K3-EL5042]^FB Inputs Channel 1^Position'}
+    M49: DUT_MotionStage := (sName := 'QRIX:QUESTAR:MMS:01');
+
+    {attribute 'pytmc' := 'pv: QRIX:QUESTAR:MMS:02'}
+    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SSL-EL7041]^STM Status^Status^Digital input 1;
+                              .bLimitBackwardEnable := TIIB[SSL-EL7041]^STM Status^Status^Digital input 2;
+                              .nRawEncoderULINT     := TIIB[IM1K3-EL5042]^FB Inputs Channel 1^Position'}
+    M50: DUT_MotionStage := (sName := 'QRIX:QUESTAR:MMS:02');
+*)
+
+(* 
+	//Rotary Detector Motor
+
+    {attribute 'pytmc' := 'pv: QRIX:DET:MMS:01'}
+    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SSL-EL7041]^STM Status^Status^Digital input 1;
+                              .bLimitBackwardEnable := TIIB[SSL-EL7041]^STM Status^Status^Digital input 2;
+                              .nRawEncoderULINT     := TIIB[IM1K3-EL5042]^FB Inputs Channel 1^Position'}
+    M51: DUT_MotionStage := (sName := 'QRIX:DET:MMS:01');
+	*)
 
 END_VAR]]></Declaration>
   </GVL>
