@@ -392,15 +392,15 @@ VAR_GLOBAL
     M50: DUT_MotionStage := (sName := 'QRIX:QUESTAR:MMS:02');
 *)
 
-(* 
-	//Rotary Detector Motor
+(*
+    //Rotary Detector Motor
 
     {attribute 'pytmc' := 'pv: QRIX:DET:MMS:01'}
     {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SSL-EL7041]^STM Status^Status^Digital input 1;
                               .bLimitBackwardEnable := TIIB[SSL-EL7041]^STM Status^Status^Digital input 2;
                               .nRawEncoderULINT     := TIIB[IM1K3-EL5042]^FB Inputs Channel 1^Position'}
     M51: DUT_MotionStage := (sName := 'QRIX:DET:MMS:01');
-	*)
+    *)
 
 END_VAR]]></Declaration>
   </GVL>
