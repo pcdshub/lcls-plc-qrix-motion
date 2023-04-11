@@ -15,46 +15,41 @@ END_VAR
     <Implementation>
       <ST><![CDATA[IF ( bInit) THEN
 	bInit := FALSE;
-	Main.M19.bHardwareEnable := TRUE;
-	Main.M19.bPowerSelf := TRUE;
-	Main.M19.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
-	Main.M19.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+	Main.M39.bHardwareEnable := TRUE;
+	Main.M39.bPowerSelf := TRUE;
+	Main.M39.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+	Main.M39.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
 	
-	Main.M20.bHardwareEnable := TRUE;
-	Main.M20.bPowerSelf := TRUE;
-	Main.M20.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
-	Main.M20.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+	Main.M40.bHardwareEnable := TRUE;
+	Main.M40.bPowerSelf := TRUE;
+	Main.M40.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+	Main.M40.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
 	
-	Main.M21.bHardwareEnable := TRUE;
-	Main.M21.bPowerSelf := TRUE;
-	Main.M21.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
-	Main.M21.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+	Main.M41.bHardwareEnable := TRUE;
+	Main.M41.bPowerSelf := TRUE;
+	Main.M41.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+	Main.M41.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
 	
-	Main.M22.bHardwareEnable := TRUE;
-	Main.M22.bPowerSelf := TRUE;
-	Main.M22.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
-	Main.M22.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+	Main.M42.bHardwareEnable := TRUE;
+	Main.M42.bPowerSelf := TRUE;
+	Main.M42.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+	Main.M42.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
 	
-	Main.M23.bHardwareEnable := TRUE;
-	Main.M23.bPowerSelf := TRUE;
-	Main.M23.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
-	Main.M23.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+	Main.M43.bHardwareEnable := TRUE;
+	Main.M43.bPowerSelf := TRUE;
+	Main.M43.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+	Main.M43.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
 	
-	Main.M24.bHardwareEnable := TRUE;
-	Main.M24.bPowerSelf := TRUE;
-	Main.M24.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
-	Main.M24.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+	Main.M44.bHardwareEnable := TRUE;
+	Main.M44.bPowerSelf := TRUE;
+	Main.M44.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+	Main.M44.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
 	
 END_IF
 //EPS??
 
-
-fb_SDS_ROT_V(stMotionStage:=Main.M19);
-fb_SDS_X(stMotionStage:=Main.M20);
-fb_SDS_Y(stMotionStage:=Main.M21);
-fb_SDS_Z(stMotionStage:=Main.M22);
-fb_SDS_ROT_H(stMotionStage:=Main.M23);
-fb_SDS_H(stMotionStage:=Main.M24);]]></ST>
+fb_SDS_X(stMotionStage:=Main.M39);
+fb_SDS_Y(stMotionStage:=Main.M40);]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>
