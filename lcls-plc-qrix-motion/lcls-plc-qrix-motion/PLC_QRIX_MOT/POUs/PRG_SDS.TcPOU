@@ -3,48 +3,48 @@
   <POU Name="PRG_SDS" Id="{e8b6628f-8c08-4322-8d03-c947275863d3}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM PRG_SDS
 VAR
-	fb_SDS_ROT_V : FB_MotionStage;
-	fb_SDS_X : FB_MotionStage;
-	fb_SDS_Y : FB_MotionStage;
-	fb_SDS_Z : FB_MotionStage;
-	fb_SDS_ROT_H : FB_MotionStage;
-	fb_SDS_H : FB_MotionStage;
-	bInit : BOOl := TRUE;
+    fb_SDS_ROT_V : FB_MotionStage;
+    fb_SDS_X : FB_MotionStage;
+    fb_SDS_Y : FB_MotionStage;
+    fb_SDS_Z : FB_MotionStage;
+    fb_SDS_ROT_H : FB_MotionStage;
+    fb_SDS_H : FB_MotionStage;
+    bInit : BOOl := TRUE;
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[IF ( bInit) THEN
-	bInit := FALSE;
-	Main.M39.bHardwareEnable := TRUE;
-	Main.M39.bPowerSelf := TRUE;
-	Main.M39.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
-	Main.M39.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
-	
-	Main.M40.bHardwareEnable := TRUE;
-	Main.M40.bPowerSelf := TRUE;
-	Main.M40.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
-	Main.M40.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
-	
-	Main.M41.bHardwareEnable := TRUE;
-	Main.M41.bPowerSelf := TRUE;
-	Main.M41.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
-	Main.M41.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
-	
-	Main.M42.bHardwareEnable := TRUE;
-	Main.M42.bPowerSelf := TRUE;
-	Main.M42.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
-	Main.M42.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
-	
-	Main.M43.bHardwareEnable := TRUE;
-	Main.M43.bPowerSelf := TRUE;
-	Main.M43.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
-	Main.M43.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
-	
-	Main.M44.bHardwareEnable := TRUE;
-	Main.M44.bPowerSelf := TRUE;
-	Main.M44.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
-	Main.M44.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
-	
+    bInit := FALSE;
+    Main.M39.bHardwareEnable := TRUE;
+    Main.M39.bPowerSelf := TRUE;
+    Main.M39.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+    Main.M39.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+
+    Main.M40.bHardwareEnable := TRUE;
+    Main.M40.bPowerSelf := TRUE;
+    Main.M40.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+    Main.M40.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+
+    Main.M41.bHardwareEnable := TRUE;
+    Main.M41.bPowerSelf := TRUE;
+    Main.M41.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+    Main.M41.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+
+    Main.M42.bHardwareEnable := TRUE;
+    Main.M42.bPowerSelf := TRUE;
+    Main.M42.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+    Main.M42.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+
+    Main.M43.bHardwareEnable := TRUE;
+    Main.M43.bPowerSelf := TRUE;
+    Main.M43.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+    Main.M43.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+
+    Main.M44.bHardwareEnable := TRUE;
+    Main.M44.bPowerSelf := TRUE;
+    Main.M44.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+    Main.M44.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+
 END_IF
 //EPS??
 

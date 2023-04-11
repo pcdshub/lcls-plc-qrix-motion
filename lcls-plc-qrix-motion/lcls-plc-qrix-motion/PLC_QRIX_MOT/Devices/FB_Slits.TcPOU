@@ -36,7 +36,7 @@ VAR_INPUT
 
     {attribute 'pytmc' := 'pv: ZeroOffset_Left; io: io;'}
     rEncoderOffsetLeft: REAL;
-	
+
     {attribute 'pytmc' := '
     pv: ZeroOffset_Right;
     io: io;
@@ -62,9 +62,9 @@ VAR
     fPosLeftBlade: LREAL;
     fPosRightBlade: LREAL;
 
-	bCollisionLimitationVert: BOOL;
-	bCollisionLimitationHorz: BOOL;
-	
+    bCollisionLimitationVert: BOOL;
+    bCollisionLimitationHorz: BOOL;
+
     (*Motion Parameters*)
     fSmallDelta: LREAL := 0.01;
     fBigDelta: LREAL := 20;
@@ -219,7 +219,7 @@ VAR
     AptArrayStatus AT %Q* : ST_PMPS_Aperture_IO;
     AptArrayReq AT %I* : ST_PMPS_Aperture_IO;
 
-	fbPower: MC_Power;
+    fbPower: MC_Power;
 END_VAR
 
 
@@ -431,32 +431,32 @@ stRightBlade.bSafetyReady:= TRUE;
 // Note: FB_MotionStage calls FB_SetEnables internally that overwrites .bAllForwardEnable/.bAllBackwardEnable flags
 
 fbPower(
-	Axis := stTopBlade.Axis,
-	Enable := stTopBlade.bAllEnable,
-	Enable_Positive := stTopBlade.bAllForwardEnable,
-	Enable_Negative := stTopBlade.bAllBackwardEnable AND bCollisionLimitationVert,
-	Override := 100.000
+    Axis := stTopBlade.Axis,
+    Enable := stTopBlade.bAllEnable,
+    Enable_Positive := stTopBlade.bAllForwardEnable,
+    Enable_Negative := stTopBlade.bAllBackwardEnable AND bCollisionLimitationVert,
+    Override := 100.000
 );
 fbPower(
-	Axis := stBottomBlade.Axis,
-	Enable := stBottomBlade.bAllEnable,
-	Enable_Positive := stBottomBlade.bAllForwardEnable AND bCollisionLimitationVert,
-	Enable_Negative := stBottomBlade.bAllBackwardEnable,
-	Override := 100.000
+    Axis := stBottomBlade.Axis,
+    Enable := stBottomBlade.bAllEnable,
+    Enable_Positive := stBottomBlade.bAllForwardEnable AND bCollisionLimitationVert,
+    Enable_Negative := stBottomBlade.bAllBackwardEnable,
+    Override := 100.000
 );
 fbPower(
-	Axis := stLeftBlade.Axis,
-	Enable := stLeftBlade.bAllEnable,
-	Enable_Positive := stLeftBlade.bAllForwardEnable,
-	Enable_Negative := stLeftBlade.bAllBackwardEnable AND bCollisionLimitationHorz,
-	Override := 100.000
+    Axis := stLeftBlade.Axis,
+    Enable := stLeftBlade.bAllEnable,
+    Enable_Positive := stLeftBlade.bAllForwardEnable,
+    Enable_Negative := stLeftBlade.bAllBackwardEnable AND bCollisionLimitationHorz,
+    Override := 100.000
 );
 fbPower(
-	Axis := stRightBlade.Axis,
-	Enable := stRightBlade.bAllEnable,
-	Enable_Positive := stRightBlade.bAllForwardEnable AND bCollisionLimitationHorz,
-	Enable_Negative := stRightBlade.bAllBackwardEnable,
-	Override := 100.000
+    Axis := stRightBlade.Axis,
+    Enable := stRightBlade.bAllEnable,
+    Enable_Positive := stRightBlade.bAllForwardEnable AND bCollisionLimitationHorz,
+    Enable_Negative := stRightBlade.bAllBackwardEnable,
+    Override := 100.000
 );
 
 

@@ -3,30 +3,30 @@
   <POU Name="PRG_LAS" Id="{29e7a0d6-925c-4720-acff-704fc8fc2385}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM PRG_LAS
 VAR
-	fb_LAS_VIS : FB_MotionStage;
-	fb_LAS_D_H : FB_MotionStage;
-	fb_LAS_D_V : FB_MotionStage;
-	bInit : BOOl := TRUE;
+    fb_LAS_VIS : FB_MotionStage;
+    fb_LAS_D_H : FB_MotionStage;
+    fb_LAS_D_V : FB_MotionStage;
+    bInit : BOOl := TRUE;
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[IF ( bInit) THEN
-	bInit := FALSE;	
-	Main.M10.bHardwareEnable := TRUE;
-	Main.M10.bPowerSelf := TRUE;
-	Main.M10.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
-	Main.M10.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
-	
-	Main.M11.bHardwareEnable := TRUE;
-	Main.M11.bPowerSelf := TRUE;
-	Main.M11.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
-	Main.M11.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
-	
-	Main.M12.bHardwareEnable := TRUE;
-	Main.M12.bPowerSelf := TRUE;
-	Main.M12.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
-	Main.M12.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
-		
+    bInit := FALSE;
+    Main.M10.bHardwareEnable := TRUE;
+    Main.M10.bPowerSelf := TRUE;
+    Main.M10.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+    Main.M10.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+
+    Main.M11.bHardwareEnable := TRUE;
+    Main.M11.bPowerSelf := TRUE;
+    Main.M11.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+    Main.M11.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+
+    Main.M12.bHardwareEnable := TRUE;
+    Main.M12.bPowerSelf := TRUE;
+    Main.M12.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+    Main.M12.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+
 END_IF
 //EPS??
 

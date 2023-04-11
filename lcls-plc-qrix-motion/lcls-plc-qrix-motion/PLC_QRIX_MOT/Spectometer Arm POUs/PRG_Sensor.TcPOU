@@ -3,32 +3,32 @@
   <POU Name="PRG_Sensor" Id="{3a285490-8ff2-4f17-b9dd-5ad55de9cea5}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM PRG_Sensor
 VAR
-	bInit : bool :=TRUE;
-	
+    bInit : bool :=TRUE;
+
     {attribute 'TcLinkTo' := 'TIIB[Rack#2D LinearGaugeAmp (SC-HG1-ETC)]^Process Data(Out) RxPDO-Map^Head Value Mode'}
-	bSensorHeadValueMode AT %Q* : bool;
-	
+    bSensorHeadValueMode AT %Q* : bool;
+
     {attribute 'TcLinkTo' := 'TIIB[Rack#2D LinearGaugeAmp (SC-HG1-ETC)]^Process Data(Out) RxPDO-Map^Normal Value Mode'}
-	bSensorHeadNormalValueMode AT %Q* : bool;
-	
-	bResetSensorMode AT %I* : bool;
-	
-	uintTest AT %Q*: UINT;
-	
+    bSensorHeadNormalValueMode AT %Q* : bool;
+
+    bResetSensorMode AT %I* : bool;
+
+    uintTest AT %Q*: UINT;
+
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[
 If bInit Then
-	bSensorHeadNormalValueMode := True;
-	bInit := False;
+    bSensorHeadNormalValueMode := True;
+    bInit := False;
 End_If;
 
 If(bResetSensorMode = True) Then
-	bResetSensorMode := False;
-	bSensorHeadValueMode := False;
-	bSensorHeadNormalValueMode := False;
-	bInit := True;
+    bResetSensorMode := False;
+    bSensorHeadValueMode := False;
+    bSensorHeadNormalValueMode := False;
+    bInit := True;
 End_If;
 
 

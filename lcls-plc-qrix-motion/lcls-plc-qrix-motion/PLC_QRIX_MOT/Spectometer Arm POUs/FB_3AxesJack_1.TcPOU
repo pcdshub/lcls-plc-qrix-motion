@@ -11,7 +11,7 @@ VAR_IN_OUT
     fbArbiter: FB_Arbiter();
 END_VAR
 VAR_INPUT
-	
+
     {attribute 'pytmc' := '
     pv: PMPS_OK;
     io: i;
@@ -26,13 +26,13 @@ VAR_INPUT
     io: io;
     '}
     rEncoderOffsetJack1: REAL;
-	
+
     {attribute 'pytmc' := '
     pv: ZeroOffset_Jack2;
     io: io;
     '}
     rEncoderOffsetJack2: REAL;
-	
+
     {attribute 'pytmc' := '
     pv: ZeroOffset_Jack3;
     io: io;
@@ -40,7 +40,7 @@ VAR_INPUT
     rEncoderOffsetJack3: REAL;
 
     i_DevName : STRING; //device name for FFO and PMPS diagnostics
-	
+
      {attribute 'pytmc' := '
     pv: Home;
     io: i;
@@ -51,7 +51,7 @@ VAR_INPUT
 END_VAR
 
 VAR
-	fbJack1Stage: FB_MotionStage;
+    fbJack1Stage: FB_MotionStage;
     fbJack2Stage: FB_MotionStage;
     fbJack3Stage: FB_MotionStage;
     fPosJack1Stage: LREAL;
@@ -82,13 +82,13 @@ VAR
     io: io;
     '}
     rReqPosition : REAL;
-	
+
     {attribute 'pytmc' := '
     pv: PIT_REQ;
     io: io;
     '}
     rReqPitch : REAL;
-	
+
     {attribute 'pytmc' := '
     pv: ROL_REQ;
     io: io;
@@ -113,7 +113,7 @@ VAR
     io: io;
     '}
     rActRoll : REAL;
-	
+
 
     {attribute 'pytmc' := '
     pv: HOME_READY;
@@ -134,7 +134,7 @@ VAR
 
     bExecuteMotionX: BOOL;
 
-	rPosAvgJAck1_3: REAL;
+    rPosAvgJAck1_3: REAL;
 
     fPosBlock: LREAL;
     fPosClose: LREAL;
@@ -160,24 +160,24 @@ VAR
 
     AptArrayStatus AT %Q* : ST_PMPS_Aperture_IO;
     AptArrayReq AT %I* : ST_PMPS_Aperture_IO;
-	
-	
-	fbPower: MC_POWER;
+
+
+    fbPower: MC_POWER;
 END_VAR
 VAR CONSTANT
-	//DO NOT CHANGE PLEASE
-	(*Distance X*)
-	rDistanceX: REAL := 0.24;
-	(*Distance Z*)
-	rDistanceZ: REAL := 0.88;
-	
-	(* Limit to Y +/-5mm and +/- Pitch/Roll 18mrad *)
-	rLimitPositionMin: REAL := -5;	
-	rLimitPositionMax: REAL := 5;
-	rLimitPitchMin: REAL := -18;
-	rLimitPitchMax: REAL :=  18;
-	rLimitRollMin: REAL  := -18;
-	rLimitRollMax: REAL  :=  18;
+    //DO NOT CHANGE PLEASE
+    (*Distance X*)
+    rDistanceX: REAL := 0.24;
+    (*Distance Z*)
+    rDistanceZ: REAL := 0.88;
+
+    (* Limit to Y +/-5mm and +/- Pitch/Roll 18mrad *)
+    rLimitPositionMin: REAL := -5;
+    rLimitPositionMax: REAL := 5;
+    rLimitPitchMin: REAL := -18;
+    rLimitPitchMax: REAL :=  18;
+    rLimitRollMin: REAL  := -18;
+    rLimitRollMax: REAL  :=  18;
 END_VAR
 
 ]]></Declaration>
@@ -295,7 +295,7 @@ fbJack2(
     stPositionState:=stJack2,
     bMoveOk:=bMoveOk,
     stMotionStage:=stJack2Axis);
-	
+
 fbJack3(
     stPositionState:=stJack3,
     bMoveOk:=bMoveOk,
@@ -320,25 +320,25 @@ stJack3Axis.bSafetyReady:= TRUE;
 // Note: FB_MotionStage calls FB_SetEnables internally that overwrites .bAllForwardEnable/.bAllBackwardEnable flags
 
 fbPower(
-	Axis := stJack1Axis.Axis,
-	Enable := stJack1Axis.bAllEnable,
-	Enable_Positive := stJack1Axis.bAllForwardEnable  AND rActPosition <= rLimitPositionMax AND rActPitch <= rLimitPitchMax,
-	Enable_Negative := stJack1Axis.bAllBackwardEnable AND rActPosition >= rLimitPositionMin AND rActPitch >= rLimitPitchMin,
-	Override := 100.000
+    Axis := stJack1Axis.Axis,
+    Enable := stJack1Axis.bAllEnable,
+    Enable_Positive := stJack1Axis.bAllForwardEnable  AND rActPosition <= rLimitPositionMax AND rActPitch <= rLimitPitchMax,
+    Enable_Negative := stJack1Axis.bAllBackwardEnable AND rActPosition >= rLimitPositionMin AND rActPitch >= rLimitPitchMin,
+    Override := 100.000
 );
 fbPower(
-	Axis := stJack2Axis.Axis,
-	Enable := stJack2Axis.bAllEnable,
-	Enable_Positive := stJack2Axis.bAllForwardEnable  AND rActPosition <= rLimitPositionMax AND rActRoll >= rLimitRollMin,
-	Enable_Negative := stJack2Axis.bAllBackwardEnable AND rActPosition >= rLimitPositionMin AND rActRoll <= rLimitRollMax,
-	Override := 100.000
+    Axis := stJack2Axis.Axis,
+    Enable := stJack2Axis.bAllEnable,
+    Enable_Positive := stJack2Axis.bAllForwardEnable  AND rActPosition <= rLimitPositionMax AND rActRoll >= rLimitRollMin,
+    Enable_Negative := stJack2Axis.bAllBackwardEnable AND rActPosition >= rLimitPositionMin AND rActRoll <= rLimitRollMax,
+    Override := 100.000
 );
 fbPower(
-	Axis := stJack3Axis.Axis,
-	Enable := stJack3Axis.bAllEnable,
-	Enable_Positive := stJack3Axis.bAllForwardEnable  AND rActPosition <= rLimitPositionMax AND rActPitch >= rLimitPitchMin,
-	Enable_Negative := stJack3Axis.bAllBackwardEnable AND rActPosition >= rLimitPositionMin AND rActPitch <= rLimitPitchMax,
-	Override := 100.000
+    Axis := stJack3Axis.Axis,
+    Enable := stJack3Axis.bAllEnable,
+    Enable_Positive := stJack3Axis.bAllForwardEnable  AND rActPosition <= rLimitPositionMax AND rActPitch >= rLimitPitchMin,
+    Enable_Negative := stJack3Axis.bAllBackwardEnable AND rActPosition >= rLimitPositionMin AND rActPitch <= rLimitPitchMax,
+    Override := 100.000
 );
 ]]></ST>
       </Implementation>

@@ -3,40 +3,40 @@
   <POU Name="PRG_SSL" Id="{35c5b597-c1e5-471b-bc57-49572aa20da4}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM PRG_SSL
 VAR
-	fb_SSL_Motor : FB_MotionStage;
-	(*EPS Limit switches*)
-	{attribute 'TcLinkTo' := 'TIIB[EL1004_02_03]^Channel 2^Input'}
-	bLimitBackwardEnable AT %I* :BOOL;
-	{attribute 'TcLinkTo' := 'TIIB[EL1004_02_03]^Channel 3^Input'}
-	bLimitForwardEnable AT %I* :BOOL;
-	{attribute 'pytmc' := 'pv: QRIX:SPCA:COUPLED'}
+    fb_SSL_Motor : FB_MotionStage;
+    (*EPS Limit switches*)
+    {attribute 'TcLinkTo' := 'TIIB[EL1004_02_03]^Channel 2^Input'}
+    bLimitBackwardEnable AT %I* :BOOL;
+    {attribute 'TcLinkTo' := 'TIIB[EL1004_02_03]^Channel 3^Input'}
+    bLimitForwardEnable AT %I* :BOOL;
+    {attribute 'pytmc' := 'pv: QRIX:SPCA:COUPLED'}
 
-	bAlreadyCoupled :BOOL := FALSE;
-	bExecuteCouple :BOOL := TRUE;
-	// Current coupled motion difference
-	nCurrGantryDiff : LINT;
-	// Autocoupling  Axes
-	couple : MC_GEARIN;
-	bInitComplete : BOOL;
-	bInit : BOOl := TRUE;
+    bAlreadyCoupled :BOOL := FALSE;
+    bExecuteCouple :BOOL := TRUE;
+    // Current coupled motion difference
+    nCurrGantryDiff : LINT;
+    // Autocoupling  Axes
+    couple : MC_GEARIN;
+    bInitComplete : BOOL;
+    bInit : BOOl := TRUE;
 END_VAR
 
 VAR CONSTANT
-	// Encoder reference values in counts ???!!! degrees?!!
-	// Enc Ref Vals from alignment 
-	nSSL_ENC_REF : ULINT := 16171800;
-	nSPCA_ENC_REF : ULINT := 14866900;
-	nGANTRY_TOLERANCE : LINT := 100; // default gantry tolerance in encoder counts = units???
-	
+    // Encoder reference values in counts ???!!! degrees?!!
+    // Enc Ref Vals from alignment
+    nSSL_ENC_REF : ULINT := 16171800;
+    nSPCA_ENC_REF : ULINT := 14866900;
+    nGANTRY_TOLERANCE : LINT := 100; // default gantry tolerance in encoder counts = units???
+
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[
 IF ( bInit) THEN
-	bInit := FALSE;
-	Main.M1.bPowerSelf := TRUE;
-	Main.M1.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
-	Main.M1.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+    bInit := FALSE;
+    Main.M1.bPowerSelf := TRUE;
+    Main.M1.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+    Main.M1.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
 END_IF
 // couple axes
 
@@ -45,11 +45,11 @@ END_IF
 (*bExecuteCouple S= NOT bInitComplete;
 
 bExecuteCouple R= couple.Busy OR bAlreadyCoupled;
-couple (Master:= Main.M1.Axis, 
-		Slave:=Main.M25.Axis, 
-		Execute:=bExecuteCouple,
-		RatioNumerator := 1, 
-		RatioDenominator :=1
+couple (Master:= Main.M1.Axis,
+        Slave:=Main.M25.Axis,
+        Execute:=bExecuteCouple,
+        RatioNumerator := 1,
+        RatioDenominator :=1
 );
 
 bInitComplete S= bAlreadyCoupled;

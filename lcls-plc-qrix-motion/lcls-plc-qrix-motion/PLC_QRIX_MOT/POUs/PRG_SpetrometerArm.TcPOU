@@ -3,19 +3,19 @@
   <POU Name="PRG_SpetrometerArm" Id="{eed80c44-a4f8-44e5-b6b2-59148c825f2f}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM PRG_SpetrometerArm
 VAR
-	    {attribute 'TcLinkTo' := 'TIIB[Rack#1A-01 Coupler (EK1100)]^Rack#1A-02 SFIN (EL1918)^StandardOutputs^Standard In Var 2'}
-	bEnaIclk AT %Q*: BOOL := TRUE;
-	
+        {attribute 'TcLinkTo' := 'TIIB[Rack#1A-01 Coupler (EK1100)]^Rack#1A-02 SFIN (EL1918)^StandardOutputs^Standard In Var 2'}
+    bEnaIclk AT %Q*: BOOL := TRUE;
+
     {attribute 'TcLinkTo' := 'TIIB[Rack#1A-01 Coupler (EK1100)]^Rack#1A-02 SFIN (EL1918)^StandardOutputs^Standard In Var 1'}
-	bEnaIclkErrAck AT %Q*: BOOL := FALSE;
-	
+    bEnaIclkErrAck AT %Q*: BOOL := FALSE;
+
     {attribute 'TcLinkTo' := 'TIIB[Rack#1A-01 Coupler (EK1100)]^Rack#1A-02 SFIN (EL1918)^StandardOutputs^Standard In Var 9'}
-	bEnaIclkRestartESTOP AT %Q*: BOOL := FALSE;
-	
-	fbPower_AxisM11: MC_Power;
-	fbPower_AxisM12: MC_Power;
-	fbPower_AxisM13: MC_Power;
-	fbPower_AxisM14: MC_Power;
+    bEnaIclkRestartESTOP AT %Q*: BOOL := FALSE;
+
+    fbPower_AxisM11: MC_Power;
+    fbPower_AxisM12: MC_Power;
+    fbPower_AxisM13: MC_Power;
+    fbPower_AxisM14: MC_Power;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -36,67 +36,67 @@ PRG_Sensor();]]></ST>
       <Implementation>
         <ST><![CDATA[
 IF bEnaIclkErrAck THEN
-	bEnaIclkErrAck := FALSE;
+    bEnaIclkErrAck := FALSE;
 END_IF
 IF bEnaIclkRestartESTOP THEN
-	bEnaIclkRestartESTOP := FALSE;
+    bEnaIclkRestartESTOP := FALSE;
 END_IF
 
 // When user push the ESTOPs
 IF NOT GVL_EPS.bESTOP THEN
-	
-	GVL_EPS.bOpenSV1 := FALSE;
-	GVL_EPS.bOpenSV2 := FALSE;
 
-	Main.M1.bEnable := FALSE;
-	Main.M2.bEnable := FALSE;
-	Main.M3.bEnable := FALSE;
-	Main.M4.bEnable := FALSE;
-	Main.M5.bEnable := FALSE;
-	Main.M6.bEnable := FALSE;
-	Main.M7.bEnable := FALSE;
-	Main.M8.bEnable := FALSE;
-	Main.M9.bEnable := FALSE;
-	Main.M10.bEnable := FALSE;
-	Main.M11.bEnable := FALSE;
-	Main.M12.bEnable := FALSE;
-	Main.M13.bEnable := FALSE;
-	Main.M14.bEnable := FALSE;
-	Main.M15.bEnable := FALSE;
-	Main.M16.bEnable := FALSE;
-	Main.M17.bEnable := FALSE;
-	Main.M18.bEnable := FALSE;
-	Main.M19.bEnable := FALSE;
-	Main.M20.bEnable := FALSE;
-	Main.M21.bEnable := FALSE;
-	Main.M22.bEnable := FALSE;
-	Main.M23.bEnable := FALSE;
-	Main.M24.bEnable := FALSE;
-	Main.M25.bEnable := FALSE;
-	Main.M26.bEnable := FALSE;
-	Main.M27.bEnable := FALSE;
-	
-	bDoneJackOff := FALSE;
-	bDoneLevitation := FALSE;
-	bDoneLanding := FALSE;
-	bDoneAdjustingRoll := FALSE;
-	bDoneAdjustingPitch := FALSE;
-	bDoneAdjustingHeight := FALSE;
+    GVL_EPS.bOpenSV1 := FALSE;
+    GVL_EPS.bOpenSV2 := FALSE;
+
+    Main.M1.bEnable := FALSE;
+    Main.M2.bEnable := FALSE;
+    Main.M3.bEnable := FALSE;
+    Main.M4.bEnable := FALSE;
+    Main.M5.bEnable := FALSE;
+    Main.M6.bEnable := FALSE;
+    Main.M7.bEnable := FALSE;
+    Main.M8.bEnable := FALSE;
+    Main.M9.bEnable := FALSE;
+    Main.M10.bEnable := FALSE;
+    Main.M11.bEnable := FALSE;
+    Main.M12.bEnable := FALSE;
+    Main.M13.bEnable := FALSE;
+    Main.M14.bEnable := FALSE;
+    Main.M15.bEnable := FALSE;
+    Main.M16.bEnable := FALSE;
+    Main.M17.bEnable := FALSE;
+    Main.M18.bEnable := FALSE;
+    Main.M19.bEnable := FALSE;
+    Main.M20.bEnable := FALSE;
+    Main.M21.bEnable := FALSE;
+    Main.M22.bEnable := FALSE;
+    Main.M23.bEnable := FALSE;
+    Main.M24.bEnable := FALSE;
+    Main.M25.bEnable := FALSE;
+    Main.M26.bEnable := FALSE;
+    Main.M27.bEnable := FALSE;
+
+    bDoneJackOff := FALSE;
+    bDoneLevitation := FALSE;
+    bDoneLanding := FALSE;
+    bDoneAdjustingRoll := FALSE;
+    bDoneAdjustingPitch := FALSE;
+    bDoneAdjustingHeight := FALSE;
 END_IF
 
 
 // Disable M1(Servo) and M2(Stepper) if the frame is landing...
 IF NOT GVL_Sensor.bFloating THEN
-	Main.M1.bEnable := FALSE;
-	Main.M2.bEnable := FALSE;
+    Main.M1.bEnable := FALSE;
+    Main.M2.bEnable := FALSE;
 END_IF
-	
+
 
 // When user requests to reset ESTOP.
 IF GVL_EPS.bResetIclk THEN
-	GVL_EPS.bResetIclk := FALSE;	
-	bEnaIclkErrAck := TRUE;
-	bEnaIclkRestartESTOP := TRUE;
+    GVL_EPS.bResetIclk := FALSE;
+    bEnaIclkErrAck := TRUE;
+    bEnaIclkRestartESTOP := TRUE;
 END_IF
 ]]></ST>
       </Implementation>
