@@ -65,5 +65,9 @@
 		<Axis File="M38 - LAS IR V.xti" Id="38"/>
 		<Axis File="M39 - SDS X.xti" Id="39"/>
 		<Axis File="M40 - SDS Y.xti" Id="40"/>
+		<Axis File="M41 - SDS Z.xti" Id="41"/>
+		<Axis File="M42 - SDS Rot Garage.xti" Id="42"/>
+		<Axis File="M43 -SDS Linear Rotary.xti" Id="43"/>
+		<Axis File="M44 - SDS Linear Horizontal.xti" Id="44"/>
 	</NC>
 </TcSmItem>
