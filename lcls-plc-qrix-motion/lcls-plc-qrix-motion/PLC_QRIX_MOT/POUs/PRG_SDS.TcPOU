@@ -49,7 +49,11 @@ END_IF
 //EPS??
 
 fb_SDS_X(stMotionStage:=Main.M39);
-fb_SDS_Y(stMotionStage:=Main.M40);]]></ST>
+fb_SDS_Y(stMotionStage:=Main.M40);
+fb_SDS_Z(stMotionStage:=Main.M41);
+fb_SDS_ROT_V(stMotionStage:=Main.M42);
+fb_SDS_ROT_H(stMotionStage:=Main.M43);
+fb_SDS_H(stMotionStage:=Main.M44);]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>
