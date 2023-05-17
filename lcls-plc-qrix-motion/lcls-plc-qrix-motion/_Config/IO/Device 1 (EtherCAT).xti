@@ -42,7 +42,7 @@
 		<Box File="B950-233-WALL-S-R01-DRL-02.xti" Id="27">
 			<EtherCAT PortABoxInfo="#x02000007"/>
 		</Box>
-		<Box File="B950-233-WALL-S-R01-DRL-03.xti" Id="28">
+		<Box File="B950-233-WALL-S-R01-DRL-03_SDS.xti" Id="28">
 			<EtherCAT PortABoxInfo="#x0200001b"/>
 		</Box>
 		<Box File="Rack#1A-01 Coupler (EK1100).xti" Id="87">

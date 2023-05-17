@@ -11,7 +11,7 @@ PRG_3_LOG();
 PRG_SSL();
 //PRG_Diffractometer();
 //PRG_LAS();
-//PRG_SDS();
+PRG_SDS();
 //PRG_RotDet();
 //PRG_Questar();
 PRG_SpetrometerArm();

@@ -318,13 +318,15 @@ VAR_GLOBAL
     {attribute 'pytmc' := 'pv: QRIX:SDS:MMS:X'}
     {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL7047_04_01]^STM Status^Status^Digital input 1;
                               .bLimitBackwardEnable := TIIB[EL7047_04_01]^STM Status^Status^Digital input 2;
-                              .nRawEncoderULINT     := TIIB[EL5042_04_02]^FB Inputs Channel 1^Position'}
+                              .nRawEncoderULINT     := TIIB[EL5042_04_02]^FB Inputs Channel 1^Position;
+                              .bHome 				:= TIIB[EL1004_04_04]^Channel 1^Input'}
     M39: DUT_MotionStage := (sName := 'QRIX:SDS:MMS:X');
 
     {attribute 'pytmc' := 'pv: QRIX:SDS:MMS:Y'}
-    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL7047_04_03]^STM Status^Status^Digital input 1;
-                              .bLimitBackwardEnable := TIIB[EL7047_04_03]^STM Status^Status^Digital input 2;
-                              .nRawEncoderULINT     := TIIB[EL5042_04_02]^FB Inputs Channel 2^Position'}
+    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL7047_04_03]^STM Status^Status^Digital input 2;
+                              .bLimitBackwardEnable := TIIB[EL7047_04_03]^STM Status^Status^Digital input 1;
+                              .nRawEncoderULINT     := TIIB[EL5042_04_02]^FB Inputs Channel 2^Position;
+							  .bHome 				:= TIIB[EL1004_04_04]^Channel 2^Input'}
     M40: DUT_MotionStage := (sName := 'QRIX:SDS:MMS:Y');
 
     {attribute 'pytmc' := 'pv: QRIX:SDS:MMS:Z'}
