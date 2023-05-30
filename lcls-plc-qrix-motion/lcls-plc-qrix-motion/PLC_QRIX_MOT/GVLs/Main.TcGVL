@@ -326,7 +326,7 @@ VAR_GLOBAL
     {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL7047_04_03]^STM Status^Status^Digital input 2;
                               .bLimitBackwardEnable := TIIB[EL7047_04_03]^STM Status^Status^Digital input 1;
                               .nRawEncoderULINT     := TIIB[EL5042_04_02]^FB Inputs Channel 2^Position;
-							  .bHome 				:= TIIB[EL1004_04_04]^Channel 2^Input'}
+                              .bHome 				:= TIIB[EL1004_04_04]^Channel 2^Input'}
     M40: DUT_MotionStage := (sName := 'QRIX:SDS:MMS:Y');
 
     {attribute 'pytmc' := 'pv: QRIX:SDS:MMS:Z'}
