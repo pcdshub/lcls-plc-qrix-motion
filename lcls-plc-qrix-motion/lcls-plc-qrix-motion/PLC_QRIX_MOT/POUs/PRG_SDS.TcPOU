@@ -34,6 +34,8 @@ END_VAR
     Main.M42.bPowerSelf := TRUE;
     Main.M42.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
     Main.M42.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+	Main.M42.bLimitBackwardEnable := TRUE;
+	Main.M42.bLimitForwardEnable := TRUE; 
 
     Main.M43.bHardwareEnable := TRUE;
     Main.M43.bPowerSelf := TRUE;
