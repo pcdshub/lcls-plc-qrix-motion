@@ -326,25 +326,26 @@ VAR_GLOBAL
     {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL7047_04_03]^STM Status^Status^Digital input 2;
                               .bLimitBackwardEnable := TIIB[EL7047_04_03]^STM Status^Status^Digital input 1;
                               .nRawEncoderULINT     := TIIB[EL5042_04_02]^FB Inputs Channel 2^Position;
-							  .bHome 				:= TIIB[EL1004_04_04]^Channel 2^Input'}
+                              .bHome 				:= TIIB[EL1004_04_04]^Channel 2^Input'}
     M40: DUT_MotionStage := (sName := 'QRIX:SDS:MMS:Y');
 
     {attribute 'pytmc' := 'pv: QRIX:SDS:MMS:Z'}
     {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL7047_04_05]^STM Status^Status^Digital input 1;
                               .bLimitBackwardEnable := TIIB[EL7047_04_05]^STM Status^Status^Digital input 2;
-                              .nRawEncoderULINT     := TIIB[EL5042_04_06]^FB Inputs Channel 1^Position'}
+                              .nRawEncoderULINT     := TIIB[EL5042_04_06]^FB Inputs Channel 1^Position;
+                              .bHome 				:= TIIB[EL1004_04_04]^Channel 3^Input'}
     M41: DUT_MotionStage := (sName := 'QRIX:SDS:MMS:Z');
 
      {attribute 'pytmc' := 'pv: QRIX:SDS:MMS:ROT-V'}
-    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL7047_04_07]^STM Status^Status^Digital input 1;
-                              .bLimitBackwardEnable := TIIB[EL7047_04_07]^STM Status^Status^Digital input 2;
-                              .nRawEncoderUINT     := TIIB[EL5101_05_01]^ENC Status compact^Counter value'}
+    {attribute 'TcLinkTo' := '.nRawEncoderUINT     := TIIB[EL5101_05_01]^ENC Status compact^Counter value;
+                              .bHome 				:= TIIB[EL1004_04_04]^Channel 4^Input'}
     M42: DUT_MotionStage := (sName := 'QRIX:SDS:MMS:ROT-V');
 
     {attribute 'pytmc' := 'pv: QRIX:SDS:MMS:ROT-H'}
     {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL7047_04_10]^STM Status^Status^Digital input 1;
                               .bLimitBackwardEnable := TIIB[EL7047_04_10]^STM Status^Status^Digital input 2;
-                              .nRawEncoderUINT     := TIIB[EL5101_05_02]^ENC Status compact^Counter value'}
+                              .nRawEncoderUINT     := TIIB[EL5101_05_02]^ENC Status compact^Counter value;
+                              .bHome 				:= TIIB[EL1004_04_09]^Channel 1^Input'}
     M43: DUT_MotionStage := (sName := 'QRIX:SDS:MMS:ROT-H');
 
     {attribute 'pytmc' := 'pv: QRIX:SDS:MMS:H'}
