@@ -342,8 +342,8 @@ VAR_GLOBAL
     M42: DUT_MotionStage := (sName := 'QRIX:SDS:MMS:ROT-V');
 
     {attribute 'pytmc' := 'pv: QRIX:SDS:MMS:ROT-H'}
-    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL7047_04_10]^STM Status^Status^Digital input 1;
-                              .bLimitBackwardEnable := TIIB[EL7047_04_10]^STM Status^Status^Digital input 2;
+    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL7047_04_10]^STM Status^Status^Digital input 2;
+                              .bLimitBackwardEnable := TIIB[EL7047_04_10]^STM Status^Status^Digital input 1;
                               .nRawEncoderUINT     := TIIB[EL5101_05_02]^ENC Status compact^Counter value;
                               .bHome 				:= TIIB[EL1004_04_09]^Channel 1^Input'}
     M43: DUT_MotionStage := (sName := 'QRIX:SDS:MMS:ROT-H');
