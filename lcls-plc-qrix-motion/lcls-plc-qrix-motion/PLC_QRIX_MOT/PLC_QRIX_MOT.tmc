@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<TcModuleClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2009/05/TcModuleClass" Hash="{98F9243F-04BA-2CC2-2442-246B13CEC346}" GeneratedBy="TwinCAT XAE Plc">
+<TcModuleClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2009/05/TcModuleClass" Hash="{F9D59889-6BC3-FF58-0FE9-80D6524806A5}" GeneratedBy="TwinCAT XAE Plc">
   <DataTypes>
     <DataType>
       <Name GUID="{18071995-0000-0000-0000-000000000041}" TcBaseType="true" HideSubItems="true" CName="AmsNetId">AMSNETID</Name>
@@ -65091,7 +65091,7 @@ connect EPS limits</Comment>
                 <Value>.bLimitForwardEnable  := TIIB[EL7047_04_03]^STM Status^Status^Digital input 2;
                               .bLimitBackwardEnable := TIIB[EL7047_04_03]^STM Status^Status^Digital input 1;
                               .nRawEncoderULINT     := TIIB[EL5042_04_02]^FB Inputs Channel 2^Position;
-							  .bHome 				:= TIIB[EL1004_04_04]^Channel 2^Input</Value>
+                              .bHome 				:= TIIB[EL1004_04_04]^Channel 2^Input</Value>
               </Property>
               <Property>
                 <Name>TcVarGlobal</Name>
@@ -65119,7 +65119,7 @@ connect EPS limits</Comment>
                 <Value>.bLimitForwardEnable  := TIIB[EL7047_04_05]^STM Status^Status^Digital input 1;
                               .bLimitBackwardEnable := TIIB[EL7047_04_05]^STM Status^Status^Digital input 2;
                               .nRawEncoderULINT     := TIIB[EL5042_04_06]^FB Inputs Channel 1^Position;
-							  .bHome 				:= TIIB[EL1004_04_04]^Channel 3^Input</Value>
+                              .bHome 				:= TIIB[EL1004_04_04]^Channel 3^Input</Value>
               </Property>
               <Property>
                 <Name>TcVarGlobal</Name>
@@ -65170,8 +65170,8 @@ connect EPS limits</Comment>
               </Property>
               <Property>
                 <Name>TcLinkTo</Name>
-                <Value>.bLimitForwardEnable  := TIIB[EL7047_04_10]^STM Status^Status^Digital input 1;
-                              .bLimitBackwardEnable := TIIB[EL7047_04_10]^STM Status^Status^Digital input 2;
+                <Value>.bLimitForwardEnable  := TIIB[EL7047_04_10]^STM Status^Status^Digital input 2;
+                              .bLimitBackwardEnable := TIIB[EL7047_04_10]^STM Status^Status^Digital input 1;
                               .nRawEncoderUINT     := TIIB[EL5101_05_02]^ENC Status compact^Counter value;
                               .bHome 				:= TIIB[EL1004_04_09]^Channel 1^Input</Value>
               </Property>
@@ -65200,6 +65200,7 @@ connect EPS limits</Comment>
                 <Name>TcLinkTo</Name>
                 <Value>.bLimitForwardEnable  := TIIB[EL7047_04_12]^STM Status^Status^Digital input 1;
                               .bLimitBackwardEnable := TIIB[EL7047_04_12]^STM Status^Status^Digital input 2;
+							  .bHome 				:= TIIB[EL1004_04_09]^Channel 2^Input;
                               .nRawEncoderUINT     := TIIB[EL5101_05_03]^ENC Status compact^Counter value</Value>
               </Property>
               <Property>
@@ -66001,7 +66002,7 @@ connect EPS limits</Comment>
         </Property>
         <Property>
           <Name>ChangeDate</Name>
-          <Value>2023-05-19T15:33:16</Value>
+          <Value>2023-06-08T14:38:28</Value>
         </Property>
         <Property>
           <Name>GeneratedCodeSize</Name>

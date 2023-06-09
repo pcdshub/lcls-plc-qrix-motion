@@ -1324,14 +1324,12 @@ External Setpoint Generation:
 	<Axis Id="44" CreateSymbols="true" AxisType="1" AxisFolder="SDS">
 		<Name>__FILENAME__</Name>
 		<AxisPara>
-			<Velo Maximum="15"/>
+			<Velo Maximum="5"/>
 			<OtherSettings AllowMotionCmdToSlave="true"/>
-			<ParameterChanged>39</ParameterChanged>
-			<ParameterChanged>257</ParameterChanged>
 		</AxisPara>
 		<Encoder Name="Enc" EncType="4">
-			<EncPara MaxCount="#x0000ffff">
-				<Inc RefSoftSyncMask="#x0000ffff"/>
+			<EncPara ScaleFactorNumerator="0.0007194" Offset="87.5812" Inverse="true" MaxCount="#x0000ffff">
+				<Inc RefMode="2" RefSoftSyncMask="#x0000ffff"/>
 			</EncPara>
 			<Vars VarGrpType="1">
 				<Name>Inputs</Name>
@@ -1399,7 +1397,7 @@ External Setpoint Generation:
 			</Vars>
 		</Encoder>
 		<Drive Name="Drive" DrvType="24">
-			<DrvPara>
+			<DrvPara Inverse="true">
 				<Analog VeloReferenz="14.388" ScaleFactorActTorque="0.1"/>
 				<TimeComp TaskDelayCycles="1"/>
 			</DrvPara>
