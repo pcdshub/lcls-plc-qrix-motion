@@ -294,21 +294,21 @@ VAR_GLOBAL
 
     // Laser Table  -  3 axes
     {attribute 'pytmc' := 'pv: QRIX:LAS:MMS:VIS'}
-    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SSL-EL7041]^STM Status^Status^Digital input 1;
-                              .bLimitBackwardEnable := TIIB[SSL-EL7041]^STM Status^Status^Digital input 2;
+    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL1088_02_06]^Channel 5^Input;
+                              .bLimitBackwardEnable :=  TIIB[EL1088_02_06]^Channel 6^Input;
                               .nRawEncoderULINT     := TIIB[EL5042_02_05]^FB Inputs Channel 1^Position'}
     M36: DUT_MotionStage := (sName := 'QRIX:LAS:MMS:VIS');
 
     {attribute 'pytmc' := 'pv: QRIX:LAS:MMS:D-H'}
-    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SSL-EL7041]^STM Status^Status^Digital input 1;
-                              .bLimitBackwardEnable := TIIB[SSL-EL7041]^STM Status^Status^Digital input 2;
-                              .nRawEncoderULINT     := TIIB[EL5042_02_08]^FB Inputs Channel 1^Position'}
+    {attribute 'TcLinkTo' := '.bLimitForwardEnable  :=  TIIB[EL1088_02_06]^Channel 1^Input;
+                              .bLimitBackwardEnable :=  TIIB[EL1088_02_06]^Channel 2^Input;
+                              .nRawEncoderULINT     := TIIB[EL5042_02_08]^FB Inputs Channel 2^Position'}
     M37: DUT_MotionStage := (sName := 'QRIX:LAS:MMS:D-H');
 
     {attribute 'pytmc' := 'pv: QRIX:LAS:MMS:D-V'}
-    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SSL-EL7041]^STM Status^Status^Digital input 1;
-                              .bLimitBackwardEnable := TIIB[SSL-EL7041]^STM Status^Status^Digital input 2;
-                              .nRawEncoderULINT     := TIIB[EL5042_02_08]^FB Inputs Channel 2^Position'}
+    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL1088_02_06]^Channel 3^Input;
+                              .bLimitBackwardEnable := TIIB[EL1088_02_06]^Channel 4^Input;
+                              .nRawEncoderULINT     := TIIB[EL5042_02_08]^FB Inputs Channel 1^Position'}
     M38: DUT_MotionStage := (sName := 'QRIX:LAS:MMS:D-V');
 
 
