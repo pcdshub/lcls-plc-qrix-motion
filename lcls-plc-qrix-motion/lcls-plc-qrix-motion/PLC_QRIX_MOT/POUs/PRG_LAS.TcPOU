@@ -36,7 +36,7 @@ END_VAR
 
 END_IF
 //EPS
-
+(*
 fbLAS_D_H_EPS.setDescription('Less10mm;SampleZ;PHI'); // SET DESCRITION FOR BYTE INDICATOR LABELS
 //Zero is fully retracted
 fbLAS_D_H_EPS.setBit(nBits:= 0, bValue:=fb_LAS_D_H.stMotionStage.fPosition<=10); 
@@ -51,8 +51,8 @@ fbLAS_VIS_EPS.setBit(nBits:= 0, bValue:=fb_LAS_VIS.stMotionStage.fPosition<=5);
 fbLAS_VIS_EPS.setBit(nBits:= 1, bValue:=fb_LAS_VIS.stMotionStage.fPosition<=5 OR PRG_Diffractometer.fb_Diff_Phi.stMotionStage.fPosition<>90);
 fbLAS_VIS_EPS.setBit(nBits:= 2, bValue:=fb_LAS_VIS.stMotionStage.fPosition<=5 OR PRG_Diffractometer.fb_Diff_Theta.stMotionStage.fPosition>10);
 fbLAS_VIS_EPS(eps:=fbLAS_VIS_EPS);
-fb_LAS_VIS.stMotionStage.stEPSForwardEnable := fbLAS_VIS_EPS;
-
+//fb_LAS_VIS.stMotionStage.stEPSForwardEnable := fbLAS_VIS_EPS;
+*)
 
 
 fb_LAS_VIS(stMotionStage:=Main.M36);

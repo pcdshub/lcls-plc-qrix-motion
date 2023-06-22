@@ -77,7 +77,7 @@ END_VAR
     Main.M35.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
 END_IF
 //EPS
-
+(*
 EPS_Diff_Z.setDescription('Less20mm;LAS_D_H'); // SET DESCRITION FOR BYTE INDICATOR LABELS
 EPS_Diff_Z.setBit(nBits:= 0, bValue:=fb_Diff_Z.stMotionStage.fPosition>=-20); 
 EPS_Diff_Z.setBit(nBits:= 1, bValue:=PRG_LAS.fb_LAS_D_H.stMotionStage.fPosition>=50 OR PRG_Diffractometer.fb_Diff_Z.stMotionStage.fPosition>=-20);
@@ -104,7 +104,7 @@ EPS_Diff_Phi.setBit(nBits:= 1, bValue:=PRG_LAS.fb_LAS_VIS.stMotionStage.fPositio
 EPS_Diff_Phi.setBit(nBits:= 2, PRG_Diffractometer.fb_Diff_phi.stMotionStage.fPosition<=45 OR (PRG_Diffractometer.fb_Diff_Theta.stMotionStage.fPosition <0.1 AND PRG_Diffractometer.fb_Diff_Theta.stMotionStage.fPosition>359.5));
 EPS_Diff_Phi(eps:=stEPS_Diff_Phi);
 FB_Diff_Phi.stMotionStage.stEPSBackwardEnable := stEPS_Diff_Phi; 
-
+*)
 
 fb_Diff_X(stMotionStage:=Main.M28);
 fb_Diff_Y(stMotionStage:=Main.M29);

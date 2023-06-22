@@ -169,7 +169,7 @@
       <Resolution>LCLS General, 2.8.2 (SLAC)</Resolution>
     </PlaceholderResolution>
     <PlaceholderResolution Include="lcls-twincat-motion">
-      <Resolution>lcls-twincat-motion, 2.1.0 (SLAC)</Resolution>
+      <Resolution>lcls-twincat-motion, 2.2.0 (SLAC)</Resolution>
     </PlaceholderResolution>
     <PlaceholderResolution Include="lcls-twincat-optics">
       <Resolution>lcls-twincat-optics, 0.2.1 (SLAC)</Resolution>

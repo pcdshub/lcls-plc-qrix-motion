@@ -9,8 +9,8 @@ END_VAR
       <ST><![CDATA[PRG_2_PMPS();
 PRG_3_LOG();
 PRG_SSL();
-//PRG_Diffractometer();
-//PRG_LAS();
+PRG_Diffractometer();
+PRG_LAS();
 PRG_SDS();
 //PRG_RotDet();
 //PRG_Questar();
