@@ -60,9 +60,9 @@
 		<Axis File="M33 - Diff Chi.xti" Id="33"/>
 		<Axis File="M34 - Diff Theta.xti" Id="34"/>
 		<Axis File="M35 - Diff 2Theta.xti" Id="35"/>
-		<Axis File="M36 - LAS IR VIS.xti" Id="36"/>
-		<Axis File="M37 - LAS IR H.xti" Id="37"/>
-		<Axis File="M38 - LAS IR V.xti" Id="38"/>
+		<Axis File="M36 - LAS VIS.xti" Id="36"/>
+		<Axis File="M37 - LAS D H.xti" Id="37"/>
+		<Axis File="M38 - LAS D V.xti" Id="38"/>
 		<Axis File="M39 - SDS X.xti" Id="39"/>
 		<Axis File="M40 - SDS Y.xti" Id="40"/>
 		<Axis File="M41 - SDS Z.xti" Id="41"/>

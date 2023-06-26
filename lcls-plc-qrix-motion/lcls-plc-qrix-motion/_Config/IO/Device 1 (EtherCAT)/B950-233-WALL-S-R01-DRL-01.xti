@@ -16,22 +16,22 @@
 		<Box File="EL1004_02_03.xti" Id="10">
 			<EtherCAT PortABoxInfo="#x01000009"/>
 		</Box>
-		<Box File="EL7031_02_04.xti" Id="11">
+		<Box File="EL7031_02_04 - LAS_VIS.xti" Id="11">
 			<EtherCAT PortABoxInfo="#x0100000a"/>
 		</Box>
-		<Box File="EL5042_02_05.xti" Id="12">
+		<Box File="EL5042_02_05 - LAS_VIS.xti" Id="12">
 			<EtherCAT PortABoxInfo="#x0100000b"/>
 		</Box>
 		<Box File="EL1088_02_06.xti" Id="13">
 			<EtherCAT PortABoxInfo="#x0100000c"/>
 		</Box>
-		<Box File="EL7031_02_07.xti" Id="14">
+		<Box File="EL7031_02_07 - LAS_D_H.xti" Id="14">
 			<EtherCAT PortABoxInfo="#x0100000d"/>
 		</Box>
-		<Box File="EL5042_02_08.xti" Id="15">
+		<Box File="EL5042_02_08 - LAS_V-H.xti" Id="15">
 			<EtherCAT PortABoxInfo="#x0100000e"/>
 		</Box>
-		<Box File="EL7031_02_09.xti" Id="17">
+		<Box File="EL7031_02_09 - LAS_D_V.xti" Id="17">
 			<EtherCAT PortABoxInfo="#x0100000f"/>
 		</Box>
 		<Box File="EL1004_02_10.xti" Id="18">
