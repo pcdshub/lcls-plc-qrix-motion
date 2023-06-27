@@ -242,22 +242,22 @@ VAR_GLOBAL
     M28: DUT_MotionStage := (sName := 'QRIX:DIFF:MMS:X');
 
     {attribute 'pytmc' := 'pv: QRIX:DIFF:MMS:Y'}
-    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL1088_03_04]^Channel 3^Input;
-                              .bLimitBackwardEnable := TIIB[EL1088_03_04]^Channel 4^Input;
+    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL1088_03_04]^Channel 4^Input;
+                              .bLimitBackwardEnable := TIIB[EL1088_03_04]^Channel 3^Input;
                               .bHome := TIIB[EL1088_03_10]^Channel 2^Input;
                               .nRawEncoderULINT     := TIIB[EL5042_03_02]^FB Inputs Channel 2^Position'}
     M29: DUT_MotionStage := (sName := 'QRIX:DIFF:MMS:Y');
 
     {attribute 'pytmc' := 'pv: QRIX:DIFF:MMS:Z'}
-    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL1088_03_04]^Channel 5^Input;
-                              .bLimitBackwardEnable := TIIB[EL1088_03_04]^Channel 6^Input;
+    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL1088_03_08]^Channel 1^Input;
+                              .bLimitBackwardEnable := TIIB[EL1088_03_08]^Channel 2^Input;
                               .bHome := TIIB[EL1088_03_10]^Channel 3^Input;
                               .nRawEncoderULINT     := TIIB[EL5042_03_06]^FB Inputs Channel 1^Position'}
     M30: DUT_MotionStage := (sName := 'QRIX:DIFF:MMS:Z');
 
-    {attribute 'pytmc' := 'pv: QRIX:DIFF:MMS:DETZ'}
-    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL1088_03_04]^Channel 7^Input;
-                              .bLimitBackwardEnable := TIIB[EL1088_03_04]^Channel 8^Input;
+    {attribute 'pytmc' := 'pv: QRIX:DIFF:MMS:DET-Y'}
+    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL1088_03_08]^Channel 5^Input;
+                              .bLimitBackwardEnable := TIIB[EL1088_03_08]^Channel 6^Input;
                               .bHome := TIIB[EL1088_03_10]^Channel 4^Input;
                               .nRawEncoderULINT     := TIIB[EL5042_03_06]^FB Inputs Channel 2^Position'}
     M31: DUT_MotionStage := (sName := 'QRIX:DIFF:MMS:DETZ');

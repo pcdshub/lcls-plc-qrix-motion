@@ -19,10 +19,10 @@
 		<Box File="EL1088_03_04.xti" Id="32">
 			<EtherCAT PortABoxInfo="#x0100001f"/>
 		</Box>
-		<Box File="EL7047_03_05.xti" Id="33">
+		<Box File="EL7047_03_05-Diff-Z.xti" Id="33">
 			<EtherCAT PortABoxInfo="#x01000020"/>
 		</Box>
-		<Box File="EL5042_03_06.xti" Id="34">
+		<Box File="EL5042_03_06-DIff-Z-2ThetaY.xti" Id="34">
 			<EtherCAT PortABoxInfo="#x01000021"/>
 		</Box>
 		<Box File="EL7047_03_07.xti" Id="35">
