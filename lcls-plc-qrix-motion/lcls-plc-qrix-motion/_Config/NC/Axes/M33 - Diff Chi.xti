@@ -1326,13 +1326,13 @@ External Setpoint Generation:
 		<AxisPara>
 			<General UnitName="Degree"/>
 			<Dynamic AccelerationMaximum="15" DecelerationMaximum="15" Deceleration="15" Jerk="22"/>
-			<Velo Maximum="0.04"/>
+			<Velo Maximum="0.4"/>
 			<OtherSettings AllowMotionCmdToSlave="true"/>
-			<ParameterChanged>39</ParameterChanged>
-			<ParameterChanged>257</ParameterChanged>
 		</AxisPara>
 		<Encoder Name="Enc" EncType="29">
 			<EncPara ScaleFactorNumerator="8.681775e-06" Offset="-69.9043" MaxCount="#xffffffff">
+				<SoftEndMinControl Enable="true" Range="-10"/>
+				<SoftEndMaxControl Enable="true" Range="10"/>
 				<Inc RefSoftSyncMask="#x0000ffff"/>
 			</EncPara>
 			<Vars VarGrpType="1">
@@ -1376,7 +1376,7 @@ External Setpoint Generation:
 		</Encoder>
 		<Drive Name="Drive" DrvType="24">
 			<DrvPara>
-				<Analog VeloReferenz="0.05" ScaleFactorActTorque="0.1"/>
+				<Analog VeloReferenz="0.5" ScaleFactorActTorque="0.1"/>
 				<TimeComp TaskDelayCycles="1"/>
 			</DrvPara>
 			<Vars VarGrpType="1">

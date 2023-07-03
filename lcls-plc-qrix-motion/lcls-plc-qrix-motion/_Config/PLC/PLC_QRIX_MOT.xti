@@ -9030,33 +9030,33 @@ External Setpoint Generation:
 				<Link VarA="PlcTask Inputs^Main.M1.nRawEncoderULINT" VarB="FB Inputs Channel 1^Position" AutoLink="true"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-02^EL1088_03_04">
-				<Link VarA="PlcTask Inputs^Main.M28.bLimitBackwardEnable" VarB="Channel 2^Input" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^Main.M28.bLimitForwardEnable" VarB="Channel 1^Input" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^Main.M28.bLimitBackwardEnable" VarB="Channel 1^Input" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^Main.M28.bLimitForwardEnable" VarB="Channel 2^Input" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^Main.M29.bLimitBackwardEnable" VarB="Channel 3^Input" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^Main.M29.bLimitForwardEnable" VarB="Channel 4^Input" AutoLink="true"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-02^EL1088_03_08">
-				<Link VarA="PlcTask Inputs^Main.M30.bLimitBackwardEnable" VarB="Channel 2^Input" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^Main.M30.bLimitForwardEnable" VarB="Channel 1^Input" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^Main.M30.bLimitBackwardEnable" VarB="Channel 1^Input" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^Main.M30.bLimitForwardEnable" VarB="Channel 2^Input" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^Main.M31.bLimitBackwardEnable" VarB="Channel 6^Input" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^Main.M31.bLimitForwardEnable" VarB="Channel 5^Input" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^Main.M32.bLimitBackwardEnable" VarB="Channel 3^Input" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^Main.M32.bLimitForwardEnable" VarB="Channel 4^Input" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^Main.M32.bLimitBackwardEnable" VarB="Channel 4^Input" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^Main.M32.bLimitForwardEnable" VarB="Channel 3^Input" AutoLink="true"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-02^EL1088_03_10">
 				<Link VarA="PlcTask Inputs^Main.M28.bHome" VarB="Channel 1^Input" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^Main.M29.bHome" VarB="Channel 2^Input" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^Main.M30.bHome" VarB="Channel 3^Input" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^Main.M31.bHome" VarB="Channel 4^Input" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^Main.M32.bHome" VarB="Channel 5^Input" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^Main.M32.bHome" VarB="Channel 4^Input" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^Main.M33.bHome" VarB="Channel 6^Input" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^Main.M34.bHome" VarB="Channel 7^Input" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^Main.M35.bHome" VarB="Channel 8^Input" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^Main.M45.bHome" VarB="Channel 8^Input" AutoLink="true"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-02^EL1088_03_15">
-				<Link VarA="PlcTask Inputs^Main.M33.bLimitBackwardEnable" VarB="Channel 2^Input" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^Main.M33.bLimitForwardEnable" VarB="Channel 1^Input" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^Main.M33.bLimitBackwardEnable" VarB="Channel 1^Input" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^Main.M33.bLimitForwardEnable" VarB="Channel 2^Input" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^Main.M34.bLimitBackwardEnable" VarB="Channel 4^Input" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^Main.M34.bLimitForwardEnable" VarB="Channel 3^Input" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^Main.M35.bLimitBackwardEnable" VarB="Channel 6^Input" AutoLink="true"/>
