@@ -58,8 +58,9 @@
 		<Axis File="M31 - Diff 2Theta Y.xti" Id="31"/>
 		<Axis File="M32 - Diff Phi.xti" Id="32"/>
 		<Axis File="M33 - Diff Chi.xti" Id="33"/>
-		<Axis File="M34 - Diff Theta.xti" Id="34"/>
 		<Axis File="M35 - Diff 2Theta.xti" Id="35"/>
+		<Axis File="Axis 45 - Diff 2 Theta encoder axis.xti" Id="45"/>
+		<Axis File="M34 - Diff Theta.xti" Id="34"/>
 		<Axis File="M36 - LAS VIS.xti" Id="36"/>
 		<Axis File="M37 - LAS D H.xti" Id="37"/>
 		<Axis File="M38 - LAS D V.xti" Id="38"/>

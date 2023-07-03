@@ -235,8 +235,8 @@ VAR_GLOBAL
 
     // Diffractometer -  8 axes START AT M28
     {attribute 'pytmc' := 'pv: QRIX:DIFF:MMS:X'}
-    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL1088_03_04]^Channel 1^Input;
-                              .bLimitBackwardEnable := TIIB[EL1088_03_04]^Channel 2^Input;
+    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL1088_03_04]^Channel 2^Input;
+                              .bLimitBackwardEnable := TIIB[EL1088_03_04]^Channel 1^Input;
                               .bHome := TIIB[EL1088_03_10]^Channel 1^Input;
                               .nRawEncoderULINT     := TIIB[EL5042_03_02]^FB Inputs Channel 1^Position'}
     M28: DUT_MotionStage := (sName := 'QRIX:DIFF:MMS:X');
@@ -249,8 +249,8 @@ VAR_GLOBAL
     M29: DUT_MotionStage := (sName := 'QRIX:DIFF:MMS:Y');
 
     {attribute 'pytmc' := 'pv: QRIX:DIFF:MMS:Z'}
-    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL1088_03_08]^Channel 1^Input;
-                              .bLimitBackwardEnable := TIIB[EL1088_03_08]^Channel 2^Input;
+    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL1088_03_08]^Channel 2^Input;
+                              .bLimitBackwardEnable := TIIB[EL1088_03_08]^Channel 1^Input;
                               .bHome := TIIB[EL1088_03_10]^Channel 3^Input;
                               .nRawEncoderULINT     := TIIB[EL5042_03_06]^FB Inputs Channel 1^Position'}
     M30: DUT_MotionStage := (sName := 'QRIX:DIFF:MMS:Z');
@@ -260,34 +260,34 @@ VAR_GLOBAL
                               .bLimitBackwardEnable := TIIB[EL1088_03_08]^Channel 6^Input;
                               .bHome := TIIB[EL1088_03_10]^Channel 4^Input;
                               .nRawEncoderULINT     := TIIB[EL5042_03_06]^FB Inputs Channel 2^Position'}
-    M31: DUT_MotionStage := (sName := 'QRIX:DIFF:MMS:DETZ');
+    M31: DUT_MotionStage := (sName := 'QRIX:DIFF:MMS:DETY');
 
     {attribute 'pytmc' := 'pv: QRIX:DIFF:MMS:PHI'}
-    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL1088_03_15]^Channel 2^Input;
-                              .bLimitBackwardEnable := TIIB[EL1088_03_15]^Channel 1^Input;
+    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL1088_03_08]^Channel 4^Input;
+                              .bLimitBackwardEnable := TIIB[EL1088_03_08]^Channel 3^Input;
                               .bHome := TIIB[EL1088_03_10]^Channel 5^Input;
                               .nRawEncoderULINT     := TIIB[EL5042_03_13]^FB Inputs Channel 1^Position'}
     M32: DUT_MotionStage := (sName := 'QRIX:DIFF:MMS:PHI');
 
     {attribute 'pytmc' := 'pv: QRIX:DIFF:MMS:CHI'}
-    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL1088_03_15]^Channel 3^Input;
-                              .bLimitBackwardEnable := TIIB[EL1088_03_15]^Channel 4^Input;
+    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL1088_03_15]^Channel 1^Input;
+                              .bLimitBackwardEnable := TIIB[EL1088_03_15]^Channel 2^Input;
                               .bHome := TIIB[EL1088_03_10]^Channel 6^Input;
                               .nRawEncoderULINT     := TIIB[EL5042_03_13]^FB Inputs Channel 2^Position'}
     M33: DUT_MotionStage := (sName := 'QRIX:DIFF:MMS:CHI');
 
     {attribute 'pytmc' := 'pv: QRIX:DIFF:MMS:THETA'}
-    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL1088_03_15]^Channel 5^Input;
-                              .bLimitBackwardEnable := TIIB[EL1088_03_15]^Channel 6^Input;
+    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL1088_03_15]^Channel 3^Input;
+                              .bLimitBackwardEnable := TIIB[EL1088_03_15]^Channel 4^Input;
                               .bHome := TIIB[EL1088_03_10]^Channel 7^Input;
                               .nRawEncoderULINT     := TIIB[IM1K3-EL5042_03_17]^FB Inputs Channel 1^Position'}
     M34: DUT_MotionStage := (sName := 'QRIX:DIFF:MMS:THETA');
 
     {attribute 'pytmc' := 'pv: QRIX:DIFF:MMS:2THETA'}
-    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL1088_03_15]^Channel 7^Input;
-                              .bLimitBackwardEnable := TIIB[EL1088_03_15]^Channel 8^Input;
+    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL1088_03_15]^Channel 5^Input;
+                              .bLimitBackwardEnable := TIIB[EL1088_03_15]^Channel 6^Input;
                               .bHome := TIIB[EL1088_03_10]^Channel 8^Input;
-                              .nRawEncoderULINT     := TIIB[EL5042_03_17]^FB Inputs Channel 2^Position'}
+                              .nRawEncoderULINT     := TIIB[EL5042_03_17 - Diff - Theta - 2Theta]^FB Inputs Channel 2^Position'}
     M35: DUT_MotionStage := (sName := 'QRIX:DIFF:MMS:2THETA');
 
 
@@ -354,6 +354,14 @@ VAR_GLOBAL
                               .bHome 				:= TIIB[EL1004_04_09]^Channel 2^Input;
                               .nRawEncoderUINT     := TIIB[EL5101_05_03]^ENC Status compact^Counter value'}
     M44: DUT_MotionStage := (sName := 'QRIX:SDS:MMS:H');
+	
+	///////////// Virtual axes (encoder axes) for the diffractometer rotary stages
+	 {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL1088_03_15]^Channel 5^Input;
+                              .bLimitBackwardEnable := TIIB[EL1088_03_15]^Channel 6^Input;
+                              .bHome := TIIB[EL1088_03_10]^Channel 8^Input;
+                              .nRawEncoderULINT     := TIIB[EL5042_03_17 - Diff - Theta - 2Theta]^FB Inputs Channel 2^Position'}
+     
+	M45: DUT_MotionStage := (sName := 'QRIX:SDS:MMS:2ThetaENC');
 
 
 (*
