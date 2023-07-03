@@ -19,13 +19,13 @@
 		<Box File="EL1088_03_04.xti" Id="32">
 			<EtherCAT PortABoxInfo="#x0100001f"/>
 		</Box>
-		<Box File="EL7047_03_05.xti" Id="33">
+		<Box File="EL7047_03_05-Diff-Z.xti" Id="33">
 			<EtherCAT PortABoxInfo="#x01000020"/>
 		</Box>
-		<Box File="EL5042_03_06.xti" Id="34">
+		<Box File="EL5042_03_06-DIff-Z-2ThetaY.xti" Id="34">
 			<EtherCAT PortABoxInfo="#x01000021"/>
 		</Box>
-		<Box File="EL7047_03_07.xti" Id="35">
+		<Box File="EL7047_03_07-Diff 2 Theta Y.xti" Id="35">
 			<EtherCAT PortABoxInfo="#x01000022"/>
 		</Box>
 		<Box File="EL1088_03_08.xti" Id="36">
@@ -37,25 +37,25 @@
 		<Box File="EL1088_03_10.xti" Id="38">
 			<EtherCAT PortABoxInfo="#x01000025"/>
 		</Box>
-		<Box File="EL7047_03_12.xti" Id="40">
+		<Box File="EL7047_03_12-Diff - Phi.xti" Id="40">
 			<EtherCAT PortABoxInfo="#x01000026"/>
 		</Box>
-		<Box File="EL5042_03_13.xti" Id="41">
+		<Box File="EL5042_03_13 - Diff - Phi - Chi.xti" Id="41">
 			<EtherCAT PortABoxInfo="#x01000028"/>
 		</Box>
-		<Box File="EL7047_03_14.xti" Id="42">
+		<Box File="EL7047_03_14-Diff - Chi.xti" Id="42">
 			<EtherCAT PortABoxInfo="#x01000029"/>
 		</Box>
 		<Box File="EL1088_03_15.xti" Id="43">
 			<EtherCAT PortABoxInfo="#x0100002a"/>
 		</Box>
-		<Box File="EL7047_03_16.xti" Id="44">
+		<Box File="EL7047_03_16 - Diff - Theta.xti" Id="44">
 			<EtherCAT PortABoxInfo="#x0100002b"/>
 		</Box>
-		<Box File="EL5042_03_17.xti" Id="45">
+		<Box File="EL5042_03_17 - Diff - Theta - 2Theta.xti" Id="45">
 			<EtherCAT PortABoxInfo="#x0100002c"/>
 		</Box>
-		<Box File="EL7047_03_18.xti" Id="46">
+		<Box File="EL7047_03_18 - Diff - 2Theta.xti" Id="46">
 			<EtherCAT PortABoxInfo="#x0100002d"/>
 		</Box>
 		<Box File="Term 107 (EL9011).xti" Id="107">

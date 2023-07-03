@@ -1531,7 +1531,7 @@ External Setpoint Generation:
 	</Axis>
 	<Mappings>
 		<OwnerA>
-			<OwnerB Name="TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL5042_02_08 - LAS_V-H">
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL5042_02_08 - LAS_D_V-H">
 				<Link VarA="Enc^Inputs^In^nComState" VarB="WcState^InputToggle" Size="1" OffsA="1"/>
 				<Link VarA="Enc^Inputs^In^nComState" VarB="WcState^WcState"/>
 				<Link VarA="Enc^Inputs^In^nDataIn1" VarB="FB Inputs Channel 2^Position"/>
