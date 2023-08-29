@@ -255,7 +255,7 @@ VAR_GLOBAL
                               .nRawEncoderULINT     := TIIB[EL5042_03_06]^FB Inputs Channel 1^Position'}
     M30: DUT_MotionStage := (sName := 'QRIX:DIFF:MMS:Z');
 
-    {attribute 'pytmc' := 'pv: QRIX:DIFF:MMS:DET-Y'}
+    {attribute 'pytmc' := 'pv: QRIX:DIFF:MMS:DETY'}
     {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL1088_03_08]^Channel 5^Input;
                               .bLimitBackwardEnable := TIIB[EL1088_03_08]^Channel 6^Input;
                               .bHome := TIIB[EL1088_03_10]^Channel 4^Input;
@@ -299,17 +299,17 @@ VAR_GLOBAL
                               .nRawEncoderULINT     := TIIB[EL5042_02_05]^FB Inputs Channel 1^Position'}
     M36: DUT_MotionStage := (sName := 'QRIX:LAS:MMS:VIS');
 
-    {attribute 'pytmc' := 'pv: QRIX:LAS:MMS:D-H'}
+    {attribute 'pytmc' := 'pv: QRIX:DIAG:MMS:H'}
     {attribute 'TcLinkTo' := '.bLimitForwardEnable  :=  TIIB[EL1088_02_06]^Channel 2^Input;
                               .bLimitBackwardEnable :=  TIIB[EL1088_02_06]^Channel 1^Input;
                               .nRawEncoderULINT     := TIIB[EL5042_02_08]^FB Inputs Channel 2^Position'}
-    M37: DUT_MotionStage := (sName := 'QRIX:LAS:MMS:D-H');
+    M37: DUT_MotionStage := (sName := 'QRIX:DIAG:MMS:D-H');
 
-    {attribute 'pytmc' := 'pv: QRIX:LAS:MMS:D-V'}
+    {attribute 'pytmc' := 'pv: QRIX:DIAG:MMS:V'}
     {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL1088_02_06]^Channel 4^Input;
                               .bLimitBackwardEnable := TIIB[EL1088_02_06]^Channel 3^Input;
                               .nRawEncoderULINT     := TIIB[EL5042_02_08]^FB Inputs Channel 1^Position'}
-    M38: DUT_MotionStage := (sName := 'QRIX:LAS:MMS:D-V');
+    M38: DUT_MotionStage := (sName := 'QRIX:DIAG:MMS:D-V');
 
 
     //Sample Delivery - 6 Axes
@@ -361,7 +361,7 @@ VAR_GLOBAL
                               .bHome := TIIB[EL1088_03_10]^Channel 8^Input;
                               .nRawEncoderULINT     := TIIB[EL5042_03_17 - Diff - Theta - 2Theta]^FB Inputs Channel 2^Position'}
      
-	M45: DUT_MotionStage := (sName := 'QRIX:SDS:MMS:2ThetaENC');
+	//M45: DUT_MotionStage := (sName := 'QRIX:SDS:MMS:2ThetaENC');
 
 
 (*
