@@ -25,6 +25,8 @@
 		<AxisFolder Name="Diffractometer"/>
 		<AxisFolder Name="Lasers"/>
 		<AxisFolder Name="SDS"/>
+		<AxisFolder Name="Cryo"/>
+		<AxisFolder Name="Detector Rotary"/>
 		<Axis File="M1 - SSL Sliding seal.xti" Id="1"/>
 		<Axis File="M2 - 2Theta Stepper.xti" Id="2"/>
 		<Axis File="M3 - XS1.xti" Id="3"/>
@@ -59,7 +61,6 @@
 		<Axis File="M32 - Diff Phi.xti" Id="32"/>
 		<Axis File="M33 - Diff Chi.xti" Id="33"/>
 		<Axis File="M35 - Diff 2Theta.xti" Id="35"/>
-		<Axis File="Axis 45 - Diff 2 Theta encoder axis.xti" Id="45"/>
 		<Axis File="M34 - Diff Theta.xti" Id="34"/>
 		<Axis File="M36 - LAS VIS.xti" Id="36"/>
 		<Axis File="M37 - LAS D H.xti" Id="37"/>
@@ -70,5 +71,6 @@
 		<Axis File="M42 - SDS Rot Garage.xti" Id="42"/>
 		<Axis File="M43 -SDS Linear Rotary.xti" Id="43"/>
 		<Axis File="M44 - SDS Linear Horizontal.xti" Id="44"/>
+		<Axis File="Axis 45 -.xti" Id="45"/>
 	</NC>
 </TcSmItem>

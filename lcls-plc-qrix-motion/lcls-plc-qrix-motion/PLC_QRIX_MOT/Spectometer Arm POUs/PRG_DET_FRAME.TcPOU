@@ -97,7 +97,7 @@ Main.M16.Axis.ReadStatus();
 Main.M17.Axis.ReadStatus();
 
 fbPower_AxisM15(
-    Enable := Main.M15.bEnable,
+    Enable :=Main.M15.bEnable,
     Enable_Positive := Main.M15.bLimitForwardEnable,
     Enable_Negative := Main.M15.bLimitBackwardEnable,
     Override := 100.000,
@@ -143,6 +143,9 @@ ACT_ResetError();
             bEnableSetGaugeValue := TRUE;
             iStepJackOff := 2;
             bDoneJackOff := FALSE;
+			Main.M15.bEnable := TRUE;
+			Main.M16.bEnable := TRUE;
+			Main.M17.bEnable := TRUE;
         ELSE
             bEnableJackOff := FALSE;
         END_IF;
