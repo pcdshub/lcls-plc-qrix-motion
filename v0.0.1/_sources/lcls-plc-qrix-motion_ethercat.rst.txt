@@ -1,0 +1,686 @@
+Box Hierarchy
+-------------
+
+
+#. **B950-233-R03-DRL-01 (EK1200) [ID: 1]**
+        EK1200-5000 EtherCAT Power supply (2A E-Bus)
+
+    #. EL2008_00_01 [ID: 2]
+            EL2008 8Ch. Dig. Output 24V, 0.5A
+
+
+
+    #. EL2794_00_02 [ID: 3]
+            EL2794 4Ch. Dig. Output 24V AC/DC, 2A, short-circuit-proof
+
+
+
+    #. EL6070_00_04 [ID: 4]
+            EL6070 1Ch. Licensing-Terminal
+
+
+
+    #. EK1521_00_05 [ID: 5]
+            EK1521-0010 1 port EtherCAT junction (FX-SingleMode)
+
+
+
+    #. EK1110_00_06 [ID: 6]
+            EK1110 EtherCAT extension
+
+
+
+
+
+
+#. **B950-233-WALL-S-R01-DRL-01 [ID: 7]**
+        EK1100 EtherCAT Coupler (2A E-Bus)
+
+    #. EL7047_02_01 - SSL [ID: 8]
+            EL7047 1Ch. Stepper motor output stage (50V, 5A)
+
+
+
+    #. EL5042_02_02 [ID: 9]
+            EL5042 2Ch. BiSS-C Encoder
+
+
+
+    #. EL1004_02_03 [ID: 10]
+            EL1004 4Ch. Dig. Input 24V, 3ms
+
+
+
+    #. EL7031_02_04 - LAS_VIS [ID: 11]
+            EL7031 1Ch. Stepper motor output stage (24V, 1.5A)
+
+
+
+    #. EL5042_02_05 - LAS_VIS [ID: 12]
+            EL5042 2Ch. BiSS-C Encoder
+
+
+
+    #. EL1088_02_06 [ID: 13]
+            EL1088 8Ch. Dig. Input 24V, 3ms, negative
+
+
+
+    #. EL7031_02_07 - LAS_D_H [ID: 14]
+            EL7031 1Ch. Stepper motor output stage (24V, 1.5A)
+
+
+
+    #. EL5042_02_08 - LAS_D_V-H [ID: 15]
+            EL5042 2Ch. BiSS-C Encoder
+
+
+
+    #. EL7031_02_09 - LAS_D_V [ID: 17]
+            EL7031 1Ch. Stepper motor output stage (24V, 1.5A)
+
+
+
+    #. EL1004_02_10 [ID: 18]
+            EL1004 4Ch. Dig. Input 24V, 3ms
+
+
+
+    #. EL7047_02_11 [ID: 19]
+            EL7047 1Ch. Stepper motor output stage (50V, 5A)
+
+
+
+    #. EL7047_02_12 [ID: 20]
+            EL7047 1Ch. Stepper motor output stage (50V, 5A)
+
+
+
+    #. EL5042_02_13 [ID: 24]
+            EL5042 2Ch. BiSS-C Encoder
+
+
+
+    #. EL7047_02_14 [ID: 22]
+            EL7047 1Ch. Stepper motor output stage (50V, 5A)
+
+
+
+    #. EL7047_02_15 [ID: 23]
+            EL7047 1Ch. Stepper motor output stage (50V, 5A)
+
+
+
+    #. EL5042_02_16 [ID: 21]
+            EL5042 2Ch. BiSS-C Encoder
+
+
+
+    #. EL7031_02_17 [ID: 25]
+            EL7031 1Ch. Stepper motor output stage (24V, 1.5A)
+
+
+
+    #. EL7031_02_18 [ID: 26]
+            EL7031 1Ch. Stepper motor output stage (24V, 1.5A)
+
+
+
+    #. Term 106 (EL9011) [ID: 106]
+            EL9011 End Terminal
+
+
+
+
+
+
+#. **B950-233-WALL-S-R01-DRL-02 [ID: 27]**
+        EK1100 EtherCAT Coupler (2A E-Bus)
+
+    #. EL7047_03_01-Diff-X [ID: 29]
+            EL7047 1Ch. Stepper motor output stage (50V, 5A)
+
+
+
+    #. EL5042_03_02-Diff-X-Y [ID: 30]
+            EL5042 2Ch. BiSS-C Encoder
+
+
+
+    #. EL7047_03_03-Diff-Y [ID: 31]
+            EL7047 1Ch. Stepper motor output stage (50V, 5A)
+
+
+
+    #. EL1088_03_04 [ID: 32]
+            EL1088 8Ch. Dig. Input 24V, 3ms, negative
+
+
+
+    #. EL7047_03_05-Diff-Z [ID: 33]
+            EL7047 1Ch. Stepper motor output stage (50V, 5A)
+
+
+
+    #. EL5042_03_06-DIff-Z-2ThetaY [ID: 34]
+            EL5042 2Ch. BiSS-C Encoder
+
+
+
+    #. EL7047_03_07-Diff 2 Theta Y [ID: 35]
+            EL7047 1Ch. Stepper motor output stage (50V, 5A)
+
+
+
+    #. EL1088_03_08 [ID: 36]
+            EL1088 8Ch. Dig. Input 24V, 3ms, negative
+
+
+
+    #. EL9410_03_09 [ID: 37]
+            EL9410 E-Bus Power Supplier  (Diagnostics)
+
+
+
+    #. EL1088_03_10 [ID: 38]
+            EL1088 8Ch. Dig. Input 24V, 3ms, negative
+
+
+
+    #. EL7047_03_12-Diff - Phi [ID: 40]
+            EL7047 1Ch. Stepper motor output stage (50V, 5A)
+
+
+
+    #. EL5042_03_13 - Diff - Phi - Chi [ID: 41]
+            EL5042 2Ch. BiSS-C Encoder
+
+
+
+    #. EL7047_03_14-Diff - Chi [ID: 42]
+            EL7047 1Ch. Stepper motor output stage (50V, 5A)
+
+
+
+    #. EL1088_03_15 [ID: 43]
+            EL1088 8Ch. Dig. Input 24V, 3ms, negative
+
+
+
+    #. EL7047_03_16 - Diff - Theta [ID: 44]
+            EL7047 1Ch. Stepper motor output stage (50V, 5A)
+
+
+
+    #. EL5042_03_17 - Diff - Theta - 2Theta [ID: 45]
+            EL5042 2Ch. BiSS-C Encoder
+
+
+
+    #. EL7047_03_18 - Diff - 2Theta [ID: 46]
+            EL7047 1Ch. Stepper motor output stage (50V, 5A)
+
+
+
+    #. Term 107 (EL9011) [ID: 107]
+            EL9011 End Terminal
+
+
+
+
+
+
+#. **B950-233-WALL-S-R01-DRL-03_SDS [ID: 28]**
+        EK1100 EtherCAT Coupler (2A E-Bus)
+
+    #. EL7047_04_01 [ID: 50]
+            EL7047 1Ch. Stepper motor output stage (50V, 5A)
+
+
+
+    #. EL5042_04_02 [ID: 51]
+            EL5042 2Ch. BiSS-C Encoder
+
+
+
+    #. EL7047_04_03 [ID: 52]
+            EL7047 1Ch. Stepper motor output stage (50V, 5A)
+
+
+
+    #. EL1004_04_04 [ID: 53]
+            EL1004 4Ch. Dig. Input 24V, 3ms
+
+
+
+    #. EL7047_04_05 [ID: 54]
+            EL7047 1Ch. Stepper motor output stage (50V, 5A)
+
+
+
+    #. EL5042_04_06 [ID: 55]
+            EL5042 2Ch. BiSS-C Encoder
+
+
+
+    #. EL7047_04_07 [ID: 56]
+            EL7047 1Ch. Stepper motor output stage (50V, 5A)
+
+
+
+    #. EL1004_04_09 [ID: 58]
+            EL1004 4Ch. Dig. Input 24V, 3ms
+
+
+
+    #. EL7047_04_10 [ID: 59]
+            EL7047 1Ch. Stepper motor output stage (50V, 5A)
+
+
+
+    #. EL7047_04_12 [ID: 61]
+            EL7047 1Ch. Stepper motor output stage (50V, 5A)
+
+
+
+    #. EL5042_04_13 [ID: 62]
+            EL5042 2Ch. BiSS-C Encoder
+
+
+
+    #. EL2794_04_14 [ID: 63]
+            EL2794 4Ch. Dig. Output 24V AC/DC, 2A, short-circuit-proof
+
+
+
+    #. EL3314_04_15 [ID: 49]
+            EL3314 4Ch. Ana. Input Thermocouple (TC)
+
+
+
+    #. EL3314_04_16 [ID: 48]
+            EL3314 4Ch. Ana. Input Thermocouple (TC)
+
+
+
+    #. EK1122_04_17 [ID: 57]
+            EK1122 2 port EtherCAT junction
+
+        #. **B950-233-K2S13-DRL-01 [ID: 60]**
+                EK1100 EtherCAT Coupler (2A E-Bus)
+
+            #. EL5101_05_01 [ID: 131]
+                    EL5101 1Ch. Inc. Encoder 5V
+
+
+
+            #. EL5101_05_02 [ID: 132]
+                    EL5101 1Ch. Inc. Encoder 5V
+
+
+
+            #. EL5101_05_03 [ID: 133]
+                    EL5101 1Ch. Inc. Encoder 5V
+
+
+
+            #. EL1088_05_04 [ID: 134]
+                    EL1088 8Ch. Dig. Input 24V, 3ms, negative
+
+
+
+            #. EL9011_05_05 [ID: 135]
+                    EL9011 End Terminal
+
+
+
+
+
+
+
+    #. Term 193 (EL9011) [ID: 193]
+            EL9011 End Terminal
+
+
+
+
+
+
+#. **Rack#2B-01 Coupler (EK1100) [ID: 47]**
+        EK1100 EtherCAT Coupler (2A E-Bus)
+
+    #. Rack#2B-02 KTC (EL3314) [ID: 110]
+            EL3314 4Ch. Ana. Input Thermocouple (TC)
+
+
+
+    #. Rack#2B-03 AI_TiltSensor (EL3174-0002) [ID: 111]
+            EL3174-0002 4Ch. Ana. Input +/-10V, +/-20mA 16 Bit, Isolated Channels
+
+
+
+    #. Rack#2B-04 PS_P (EL3064) [ID: 112]
+            EL3064 4Ch. Ana. Input 0-10V
+
+
+
+    #. Rack#2B-05 SV_AIR (EL2004) [ID: 113]
+            EL2004 4Ch. Dig. Output 24V, 0.5A
+
+
+
+    #. Rack#2B-06 SFIN (EL1918) [ID: 114]
+              ( **SyncUnit=None** )    EL1918, 8Ch. Safety Input 24V, TwinSAFE
+
+
+
+    #. Rack#2B-07 ENC_X1_X2 (EL5042) [ID: 115]
+            EL5042 2Ch. BiSS-C Encoder
+
+
+
+    #. Rack#2B-08 ENC_Y1_Y2 (EL5042) [ID: 116]
+            EL5042 2Ch. BiSS-C Encoder
+
+
+
+    #. Rack#2B-09 ENC_RxG_XG (EL5042) [ID: 117]
+            EL5042 2Ch. BiSS-C Encoder
+
+
+
+    #. Rack#2B-10 ENC_YG1_YG2 (EL5042) [ID: 118]
+            EL5042 2Ch. BiSS-C Encoder
+
+
+
+    #. Rack#2B-11 ENC_YG3_X1PM (EL5042) [ID: 119]
+            EL5042 2Ch. BiSS-C Encoder
+
+
+
+    #. Rack#2B-12 ENC_X2PM_RzPM (EL5042) [ID: 120]
+            EL5042 2Ch. BiSS-C Encoder
+
+
+
+    #. Rack#2B-13 PWS_EBUS (EL9410) [ID: 121]
+            EL9410 E-Bus Power Supplier  (Diagnostics)
+
+
+
+    #. Rack#2B-14 CP_YDF (EL9221-5000) [ID: 122]
+              ( **SyncUnit=Term 62 (EL9221-5000)** )    EL9221-5000 Overcurrent protection 24V DC, 1Ch., max. 10A, adjustable
+
+
+
+    #. Rack#2B-15 DR_YDF1 (EL7041-0052) [ID: 123]
+            EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)
+
+
+
+    #. Rack#2B-16 DR_YDF2 (EL7041-0052) [ID: 64]
+            EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)
+
+
+
+    #. Rack#2B-17 CP_YDF_ZF (EL9221-5000) [ID: 65]
+              ( **SyncUnit=Term 65 (EL9221-5000)** )    EL9221-5000 Overcurrent protection 24V DC, 1Ch., max. 10A, adjustable
+
+
+
+    #. Rack#2B-18 MB_ZF (EL2602) [ID: 66]
+            EL2602 2Ch. Relay Output, NO (230V AC / 30V DC)
+
+
+
+    #. Rack#2B-19 DR_YDF3 (EL7041-0052) [ID: 67]
+            EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)
+
+
+
+    #. Rack#2B-20 DR_ZF (EL7047) [ID: 128]
+            EL7047 1Ch. Stepper motor output stage (50V, 5A)
+
+
+
+    #. Rack#2B-21 EtherCAT Extension (EK1110) [ID: 69]
+            EK1110 EtherCAT extension
+
+
+
+
+
+
+#. **Rack#1A-01 Coupler (EK1100) [ID: 87]**
+        EK1100 EtherCAT Coupler (2A E-Bus)
+
+    #. Rack#1A-02 SFIN (EL1918) [ID: 99]
+              ( **SyncUnit=None** )    EL1918, 8Ch. Safety Input 24V, TwinSAFE
+
+
+
+    #. Rack#1A-03 SFOUT(EL2912) [ID: 109]
+              ( **SyncUnit=None** )    EL2912, 2Ch. Safety Output 24V, 2A, TwinSAFE
+
+
+
+    #. Rack#1A-04 DR_2Th (EL7047) [ID: 74]
+            EL7047 1Ch. Stepper motor output stage (50V, 5A)
+
+
+
+    #. Rack#1A-05 MB_2Th (EL2602) [ID: 73]
+            EL2602 2Ch. Relay Output, NO (230V AC / 30V DC)
+
+
+
+    #. Rack#1A-06 ENC_2Th (EL5042) [ID: 124]
+            EL5042 2Ch. BiSS-C Encoder
+
+
+
+    #. Rack#1A-07 ECAT Extension (EK1110) [ID: 125]
+            EK1110 EtherCAT extension
+
+
+
+
+
+
+#. **Rack#2A-01 Coupler (EK1100) [ID: 90]**
+        EK1100 EtherCAT Coupler (2A E-Bus)
+
+    #. Rack#2A-02 CP_SLIT (EL9221-5000) [ID: 91]
+              ( **SyncUnit=Term 31 (EL9221-5000)** )    EL9221-5000 Overcurrent protection 24V DC, 1Ch., max. 10A, adjustable
+
+
+
+    #. Rack#2A-03 DR_XS1 (EL7041-0052) [ID: 92]
+            EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)
+
+
+
+    #. Rack#2A-04 DR_XS2 (EL7041-0052) [ID: 93]
+            EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)
+
+
+
+    #. Rack#2A-05 DR_YS1 (EL7041-0052) [ID: 94]
+            EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)
+
+
+
+    #. Rack#2A-06 DR_YS2 (EL7041-0052) [ID: 95]
+            EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)
+
+
+
+    #. Rack#2A-07 CP_G (EL9221-5000) [ID: 96]
+              ( **SyncUnit=Term 36 (EL9221-5000)** )    EL9221-5000 Overcurrent protection 24V DC, 1Ch., max. 10A, adjustable
+
+
+
+    #. Rack#2A-08 DR_RxG (EL7041-0052) [ID: 97]
+            EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)
+
+
+
+    #. Rack#2A-09 DR_XG (EL7041-0052) [ID: 98]
+            EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)
+
+
+
+    #. Rack#2A-10 DR_YG1 (EL7041-0052) [ID: 39]
+            EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)
+
+
+
+    #. Rack#2A-11 DR_YG2 (EL7041-0052) [ID: 100]
+            EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)
+
+
+
+    #. Rack#2A-12 DR_YG3 (EL7041-0052) [ID: 101]
+            EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)
+
+
+
+    #. Rack#2A-13 CP_PM (EL9221-5000) [ID: 102]
+              ( **SyncUnit=Term 42 (EL9221-5000)** )    EL9221-5000 Overcurrent protection 24V DC, 1Ch., max. 10A, adjustable
+
+
+
+    #. Rack#2A-14 DR_XPM1 (EL7041-0052) [ID: 103]
+            EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)
+
+
+
+    #. Rack#2A-15 DR_XPM2 (EL7041-0052) [ID: 104]
+            EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)
+
+
+
+    #. Rack#2A-16 DR_RzPM (EL7041-0052) [ID: 105]
+            EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)
+
+
+
+    #. Rack#2A-17 EtherCAT Extension (EK1110) [ID: 108]
+            EK1110 EtherCAT extension
+
+
+
+
+
+
+#. **BOX-01 Coupler (EK1100) [ID: 126]**
+        EK1100 EtherCAT Coupler (2A E-Bus)
+
+    #. BOX-02 SFIN(EL1904) [ID: 127]
+            EL1904, 4 Ch. Safety Input 24V, TwinSAFE
+
+
+
+    #. BOX-03 ENC_X1_X2 (EL5042) [ID: 68]
+            EL5042 2Ch. BiSS-C Encoder
+
+
+
+    #. BOX-04 ENC_Y1_Y2 (EL5042) [ID: 129]
+            EL5042 2Ch. BiSS-C Encoder
+
+
+
+    #. BOX-05 ENC_XDC_RyDC (EL5042) [ID: 130]
+            EL5042 2Ch. BiSS-C Encoder
+
+
+
+    #. BOX-06 ENC_ZDC_YF1 (EL5042) [ID: 71]
+            EL5042 2Ch. BiSS-C Encoder
+
+
+
+    #. BOX-07 ENC_YF2_ZF (EL5042) [ID: 72]
+            EL5042 2Ch. BiSS-C Encoder
+
+
+
+    #. BOX-08 CP_SDC (EL9221-5000) [ID: 16]
+              ( **SyncUnit=Term 16 (EL9221-5000)** )    EL9221-5000 Overcurrent protection 24V DC, 1Ch., max. 10A, adjustable
+
+
+
+    #. BOX-09 DR_XSDC1 (EL7041-0052) [ID: 76]
+            EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)
+
+
+
+    #. BOX-10 DR_XSDC2 (EL7041-0052) [ID: 77]
+            EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)
+
+
+
+    #. BOX-11 DR_YSDC1 (EL7041-0052) [ID: 78]
+            EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)
+
+
+
+    #. BOX-12 DR_YSDC2 (EL7041-0052) [ID: 79]
+            EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)
+
+
+
+    #. BOX-13 CP_DC (EL9221-5000) [ID: 80]
+              ( **SyncUnit=Term 21 (EL9221-5000)** )    EL9221-5000 Overcurrent protection 24V DC, 1Ch., max. 10A, adjustable
+
+
+
+    #. BOX-14 DR_XDC (EL7041-0052) [ID: 81]
+            EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)
+
+
+
+    #. BOX-15 DR_RyDC (EL7041-0052) [ID: 82]
+            EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)
+
+
+
+    #. BOX-16 DR_ZDC (EL7041-0052) [ID: 83]
+            EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)
+
+
+
+    #. BOX-17 Ebus Reflesh (EL9410) [ID: 84]
+            EL9410 E-Bus Power Supplier  (Diagnostics)
+
+
+
+    #. BOX-18 CP_YF1_YF2 (EL9221-5000) [ID: 85]
+              ( **SyncUnit=Term 25 (EL9221-5000)** )    EL9221-5000 Overcurrent protection 24V DC, 1Ch., max. 10A, adjustable
+
+
+
+    #. BOX-19 MB_YF1_YF2 (EL2602) [ID: 86]
+            EL2602 2Ch. Relay Output, NO (230V AC / 30V DC)
+
+
+
+    #. BOX-20 DR_YF1 (EL7047) [ID: 75]
+            EL7047 1Ch. Stepper motor output stage (50V, 5A)
+
+
+
+    #. BOX-21 DR_YF2 (EL7047) [ID: 88]
+            EL7047 1Ch. Stepper motor output stage (50V, 5A)
+
+
+
+    #. BOX-22 EtherCAT Extension (EK1110) [ID: 89]
+            EK1110 EtherCAT extension
+
+
+
+
+

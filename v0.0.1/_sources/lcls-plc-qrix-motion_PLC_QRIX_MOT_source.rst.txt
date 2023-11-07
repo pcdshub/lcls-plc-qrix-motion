@@ -1,0 +1,4102 @@
+
+
+DUTs
+----
+
+
+DUT_Sensor
+^^^^^^^^^^
+
+::
+
+    TYPE DUT_Sensor :
+    STRUCT
+        fCntsInEGU:			REAL;
+        sEGU:				STRING;
+        sName:				STRING;
+        fValue:				REAL;
+        iRawCnts AT %I*:	INT;
+        iOffset:			INT;
+    END_STRUCT
+    END_TYPE
+
+
+Related:
+    * `DUT_Sensor`_
+
+
+DUT_SensorHGS
+^^^^^^^^^^^^^
+
+::
+
+    TYPE DUT_SensorHGS:
+    STRUCT
+        fCntsInEGU:			REAL;
+        sEGU:				STRING;
+        sName:				STRING;
+        fValue:				REAL;
+        iRawCnts AT %I*:	DINT;
+        iOffset:			DINT;
+    END_STRUCT
+    END_TYPE
+
+
+
+
+GVLs
+----
+
+
+Global_Version
+^^^^^^^^^^^^^^
+
+::
+
+    {attribute 'TcGenerated'}
+    // This function has been automatically generated from the project information.
+    VAR_GLOBAL CONSTANT
+        {attribute 'const_non_replaced'}
+        {attribute 'linkalways'}
+        stLibVersion_qrix_motion : ST_LibVersion := (iMajor := 0, iMinor := 0, iBuild := 1, iRevision := 0, sVersion := '0.0.1');
+    END_VAR
+
+
+
+
+GVL_EPS
+^^^^^^^
+
+::
+
+    VAR_GLOBAL
+        {attribute 'pytmc' := 'pv: QRIX:SA:ESTOP_RST'}
+        bResetIClk: BOOL;
+        {attribute 'pytmc' := 'pv: QRIX:SA:ESTOP'}
+        {attribute 'TcLinkTo' := 'TIIB[Rack#1A-02 SFIN (EL1918)]^StandardInputs^Standard Out Var 18'}
+        bESTOP AT %I*: BOOL;
+
+        {attribute 'TcLinkTo' := 'TIIB[Rack#2B-05 SV_AIR (EL2004)]^Channel 1^Output'}
+        {attribute 'pytmc' := 'pv: QRIX:SA:SV1'}
+        bOpenSV1 AT %Q*: BOOL;
+        {attribute 'TcLinkTo' := 'TIIB[Rack#2B-05 SV_AIR (EL2004)]^Channel 2^Output'}
+        {attribute 'pytmc' := 'pv: QRIX:SA:SV2'}
+        bOpenSV2 AT %Q*: BOOL;
+
+        {attribute 'TcLinkTo' := 'TIIB[Rack#1C_ServoDR (NCR-HD Series)]^260th receive PDO Mapping^Positive torque limit value'}
+        iServoTorqueLimitPositive AT %Q*: UINT;
+
+        {attribute 'TcLinkTo' := 'TIIB[Rack#1C_ServoDR (NCR-HD Series)]^260th receive PDO Mapping^Negative torque limit value'}
+        iServoTorqueLimitNegative AT %Q*: UINT;
+
+    END_VAR
+
+
+
+
+GVL_PMPS
+^^^^^^^^
+
+::
+
+    {attribute 'qualified_only'}
+    VAR_GLOBAL
+        {attribute 'pytmc' := 'pv: PLC:QRIX:MOTION:ARB'}
+        fbArbiter: FB_Arbiter(1);
+        {attribute 'pytmc' := 'pv: PLC:QRIX:MOTION:FFO:01'}
+        {attribute 'TcLinkTo' := '.q_xFastFaultOut:=TIIB[PMPS_FFO]^Channel 1^Output'}
+        fbFastFaultOutput1: FB_HardwareFFOutput := (bAutoReset := TRUE, i_sNetID:='172.21.92.73.1.1');
+        {attribute 'pytmc' := 'pv: PLC:QRIX:MOTION:FFO:02'}
+        {attribute 'TcLinkTo' := '.q_xFastFaultOut:=TIIB[PMPS_FFO]^Channel 2^Output'}
+        fbFastFaultOutput2: FB_HardwareFFOutput := (bAutoReset := TRUE, i_sNetID:='172.21.92.73.1.1');
+    END_VAR
+
+
+
+
+GVL_Sensor
+^^^^^^^^^^
+
+::
+
+    {attribute 'qualified_only'}
+    VAR_GLOBAL
+        {attribute 'pytmc' := 'pv: QRIX:SA:FLOATING'}
+
+        bFloating: BOOL;
+
+        // YDF1
+        {attribute 'TcLinkTo' := '	.iRawCnts	:= TIIB[Rack#2D LinearGaugeAmp (SC-HG1-ETC)]^Process Data(In)  TxPDO-Map^Response Data Unit1'}
+        stYDF1: DUT_SensorHGS;
+
+        // YDF2
+        {attribute 'TcLinkTo' := '	.iRawCnts	:= TIIB[Rack#2D LinearGaugeAmp (SC-HG1-ETC)]^Process Data(In)  TxPDO-Map^Response Data Unit2'}
+        stYDF2: DUT_SensorHGS;
+
+        // YDF3
+        {attribute 'TcLinkTo' := '	.iRawCnts	:= TIIB[Rack#2D LinearGaugeAmp (SC-HG1-ETC)]^Process Data(In)  TxPDO-Map^Response Data Unit3'}
+        stYDF3: DUT_SensorHGS;
+
+        // Height difference btw granite shelf and detector frame.
+        {attribute 'TcLinkTo' := '	.iRawCnts	:= TIIB[Rack#2D LinearGaugeAmp (SC-HG1-ETC)]^Process Data(In)  TxPDO-Map^Response Data Unit4'}
+        stHDF: DUT_SensorHGS;
+
+        // Granite TiltZ : Pitch
+        {attribute 'TcLinkTo' := '	.iRawCnts	:= TIIB[Rack#2B-03 AI_TiltSensor (EL3174-0002)]^AI Standard Channel 2^Value'}
+        stGraniteP: DUT_Sensor;
+        // Granite TiltX : Roll
+        {attribute 'TcLinkTo' := '	.iRawCnts	:= TIIB[Rack#2B-03 AI_TiltSensor (EL3174-0002)]^AI Standard Channel 1^Value'}
+        stGraniteR: DUT_Sensor;
+        // Frame TiltZ : Pitch
+        {attribute 'TcLinkTo' := '	.iRawCnts	:= TIIB[Rack#2B-03 AI_TiltSensor (EL3174-0002)]^AI Standard Channel 4^Value'}
+        stFrameP: DUT_Sensor;
+        // Frame TiltX : Roll
+        {attribute 'TcLinkTo' := '	.iRawCnts	:= TIIB[Rack#2B-03 AI_TiltSensor (EL3174-0002)]^AI Standard Channel 3^Value'}
+        stFrameR: DUT_Sensor;
+
+        {attribute 'TcLinkTo' := '	.iRawCnts	:= TIIB[Rack#2B-04 PS_P (EL3064)]^AI Standard Channel 1^Value'}
+        stPS1: DUT_Sensor;
+        {attribute 'TcLinkTo' := '	.iRawCnts	:= TIIB[Rack#2B-04 PS_P (EL3064)]^AI Standard Channel 2^Value'}
+        stPS2: DUT_Sensor;
+        {attribute 'TcLinkTo' := '	.iRawCnts	:= TIIB[Rack#2B-04 PS_P (EL3064)]^AI Standard Channel 3^Value'}
+        stPS3: DUT_Sensor;
+    END_VAR
+
+
+Related:
+    * `DUT_Sensor`_
+    * `DUT_SensorHGS`_
+
+
+GVL_VAR
+^^^^^^^
+
+::
+
+    VAR_GLOBAL
+
+        {attribute 'pytmc' := 'pv: QRIX:SA:JackOff'}
+        bDoneJackOff: BOOL;
+        {attribute 'pytmc' := 'pv: QRIX:SA:DoneLevitation'}
+        bDoneLevitation: BOOL;
+        {attribute 'pytmc' := 'pv: QRIX:SA:bDoneLanding'}
+        bDoneLanding: BOOL;
+        {attribute 'pytmc' := 'pv: QRIX:SA:DoneAdjustingRoll'}
+        bDoneAdjustingRoll: BOOL;
+        {attribute 'pytmc' := 'pv: QRIX:SA:DoneAdjustingPitch'}
+        bDoneAdjustingPitch: BOOL;
+        {attribute 'pytmc' := 'pv: QRIX:SA:DoneAdjustingHeight'}
+        bDoneAdjustingHeight: BOOL;
+
+    END_VAR
+
+
+
+
+Main
+^^^^
+
+::
+
+    {attribute 'qualified_only'}
+    VAR_GLOBAL
+
+    (*
+        Only includes motor definitions for the IOC
+        These are hard-coded to be Main.M#,
+        but are very convenient to store in a GVL,
+        hence the confusing namespace here
+        This should be refactored once the IOC
+        supports arbitrary ads paths for motors
+    *)
+
+
+        // Sample Chamber Sliding Seal - 1 axis
+        //connect EPS limits
+        {attribute 'pytmc' := 'pv: QRIX:SC:SSL:MMS'}
+        {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL7047_02_01]^STM Status^Status^Digital input 1;
+                                  .bLimitBackwardEnable := TIIB[EL7047_02_01]^STM Status^Status^Digital input 2;
+                                  .nRawEncoderULINT     := TIIB[EL5042_02_02]^FB Inputs Channel 1^Position'}
+        M1: DUT_MotionStage := (sName := 'QRIX:SSL:MMS');
+
+
+        (* Start Adding Spectometer Arm Axes Here*)
+
+        // 2Theta Stepper
+        {attribute 'pytmc' := 'pv: QRIX:SA:MMS:2Theta'}
+        {attribute 'TcLinkTo' := '	.bLimitForwardEnable  	:= TIIB[Rack#1A-04 DR_2Th (EL7047)]^STM Status^Status^Digital input 1;
+                                    .bLimitBackwardEnable 	:= TIIB[Rack#1A-04 DR_2Th (EL7047)]^STM Status^Status^Digital input 2;
+                                    .nRawEncoderULINT     	:= TIIB[Rack#1A-06 ENC_2Th (EL5042)]^FB Inputs Channel 1^Position;
+                                    .bBrakeRelease			:= TIIB[Rack#1A-05 MB_2Th (EL2602)]^Channel 1^Output
+        '}
+        M2: DUT_MotionStage := (sName := 'QRIX:SA:MMS:2Theta');
+
+        // XS1
+        {attribute 'pytmc' := 'pv: QRIX:OPTSL:MMS:NORTH'}
+        {attribute 'TcLinkTo' := '	.bLimitForwardEnable  	:= TIIB[Rack#2A-03 DR_XS1 (EL7041-0052)]^STM Status^Status^Digital input 1;
+                                    .bLimitBackwardEnable 	:= TIIB[Rack#2A-03 DR_XS1 (EL7041-0052)]^STM Status^Status^Digital input 2;
+                                    .nRawEncoderULINT     	:= TIIB[Rack#2B-07 ENC_X1_X2 (EL5042)]^FB Inputs Channel 1^Position
+        '}
+        M3: DUT_MotionStage :=(sName := ' QRIX:OPTSL:MMS:NORTH');
+
+        // XS2
+        {attribute 'pytmc' := 'pv: QRIX:OPTSL:MMS:SOUTH'}
+        {attribute 'TcLinkTo' := '	.bLimitForwardEnable  	:= TIIB[Rack#2A-04 DR_XS2 (EL7041-0052)]^STM Status^Status^Digital input 1;
+                                    .bLimitBackwardEnable 	:= TIIB[Rack#2A-04 DR_XS2 (EL7041-0052)]^STM Status^Status^Digital input 2;
+                                    .nRawEncoderULINT     	:= TIIB[Rack#2B-07 ENC_X1_X2 (EL5042)]^FB Inputs Channel 2^Position
+        '}
+        M4: DUT_MotionStage:=(sName := ' QRIX:OPTSL:MMS:SOUTH');
+
+        // YS1
+        {attribute 'pytmc' := 'pv: QRIX:OPTSL:MMS:TOP'}
+        {attribute 'TcLinkTo' := '	.bLimitForwardEnable  	:= TIIB[Rack#2A-05 DR_YS1 (EL7041-0052)]^STM Status^Status^Digital input 1;
+                                    .bLimitBackwardEnable 	:= TIIB[Rack#2A-05 DR_YS1 (EL7041-0052)]^STM Status^Status^Digital input 2;
+                                    .nRawEncoderULINT     	:= TIIB[Rack#2B-08 ENC_Y1_Y2 (EL5042)]^FB Inputs Channel 1^Position
+        '}
+        M5: DUT_MotionStage:=(sName := ' QRIX:OPTSL:MMS:TOP');
+
+        // YS2
+        {attribute 'pytmc' := 'pv: QRIX:OPTSL:MMS:BOTTOM'}
+        {attribute 'TcLinkTo' := '	.bLimitForwardEnable  	:= TIIB[Rack#2A-06 DR_YS2 (EL7041-0052)]^STM Status^Status^Digital input 1;
+                                    .bLimitBackwardEnable 	:= TIIB[Rack#2A-06 DR_YS2 (EL7041-0052)]^STM Status^Status^Digital input 2;
+                                    .nRawEncoderULINT     	:= TIIB[Rack#2B-08 ENC_Y1_Y2 (EL5042)]^FB Inputs Channel 1^Position
+        '}
+        M6: DUT_MotionStage :=(sName := ' QRIX:OPTSL:MMS:BOTTOM');;
+
+        // YG1
+        {attribute 'pytmc' := 'pv: QRIX:OPT:MMS:Y1'}
+        {attribute 'TcLinkTo' := '	.bLimitForwardEnable	:= TIIB[Rack#2A-10 DR_YG1 (EL7041-0052)]^STM Status^Status^Digital input 1;
+                                    .bLimitBackwardEnable	:= TIIB[Rack#2A-10 DR_YG1 (EL7041-0052)]^STM Status^Status^Digital input 2;
+                                    .nRawEncoderULINT		:= TIIB[Rack#2B-10 ENC_YG1_YG2 (EL5042)]^FB Inputs Channel 1^Position
+        '}
+        M7: DUT_MotionStage:= (sName := 'QRIX:OPT:MMS:Y2');
+
+        // YG2
+        {attribute 'pytmc' := 'pv: QRIX:OPT:MMS:Y2'}
+        {attribute 'TcLinkTo' := '	.bLimitForwardEnable	:= TIIB[Rack#2A-11 DR_YG2 (EL7041-0052)]^STM Status^Status^Digital input 1;
+                                    .bLimitBackwardEnable	:= TIIB[Rack#2A-11 DR_YG2 (EL7041-0052)]^STM Status^Status^Digital input 2;
+                                    .nRawEncoderULINT		:= TIIB[Rack#2B-10 ENC_YG1_YG2 (EL5042)]^FB Inputs Channel 2^Position
+        '}
+        M8: DUT_MotionStage:= (sName := 'QRIX:OPT:MMS:Y2');
+
+        // YG3
+        {attribute 'pytmc' := 'pv: QRIX:OPT:MMS:Y3'}
+        {attribute 'TcLinkTo' := '	.bLimitForwardEnable	:= TIIB[Rack#2A-12 DR_YG3 (EL7041-0052)]^STM Status^Status^Digital input 1;
+                                    .bLimitBackwardEnable	:= TIIB[Rack#2A-12 DR_YG3 (EL7041-0052)]^STM Status^Status^Digital input 2;
+                                    .nRawEncoderULINT		:= TIIB[Rack#2B-11 ENC_YG3_X1PM (EL5042)]^FB Inputs Channel 1^Position
+        '}
+        M9: DUT_MotionStage:= (sName := 'QRIX:OPT:MMS:Y3');
+
+
+        // RxG
+        {attribute 'pytmc' := 'pv: QRIX:G:MMS:Rx'}
+        {attribute 'TcLinkTo' := '	.bLimitForwardEnable	:= TIIB[Rack#2A-08 DR_RxG (EL7041-0052)]^STM Status^Status^Digital input 1;
+                                    .bLimitBackwardEnable	:= TIIB[Rack#2A-08 DR_RxG (EL7041-0052)]^STM Status^Status^Digital input 2;
+                                    .nRawEncoderULINT		:= TIIB[Rack#2B-09 ENC_RxG_XG (EL5042)]^FB Inputs Channel 1 compact^Position
+        '}
+        M10: DUT_MotionStage:=(sName := 'QRIX:G:MMS:Rx');
+
+        // XG
+        {attribute 'pytmc' := 'pv: QRIX:G:MMS:X'}
+        {attribute 'TcLinkTo' := '	.bLimitForwardEnable	:= TIIB[Rack#2A-09 DR_XG (EL7041-0052)]^STM Status^Status^Digital input 1;
+                                    .bLimitBackwardEnable	:= TIIB[Rack#2A-09 DR_XG (EL7041-0052)]^STM Status^Status^Digital input 2;
+                                    .nRawEncoderULINT		:= TIIB[Rack#2B-09 ENC_RxG_XG (EL5042)]^FB Inputs Channel 2^Position
+        '}
+        M11: DUT_MotionStage:=(sName := 'QRIX:G:MMS:X');
+
+        // XPM1
+        {attribute 'pytmc' := 'pv: QRIX:PM:MMS:X1'}
+        {attribute 'TcLinkTo' := '	.bLimitForwardEnable	:= TIIB[Rack#2A-14 DR_XPM1 (EL7041-0052)]^STM Status^Status^Digital input 1;
+                                    .bLimitBackwardEnable	:= TIIB[Rack#2A-14 DR_XPM1 (EL7041-0052)]^STM Status^Status^Digital input 2;
+                                    .nRawEncoderULINT		:= TIIB[Rack#2B-11 ENC_YG3_X1PM (EL5042)]^FB Inputs Channel 2^Position
+        '}
+        M12: DUT_MotionStage :=(sName := 'QRIX:PM:MMS:X1');
+
+        // XPM2
+        {attribute 'pytmc' := 'pv: QRIX:PM:MMS:X2'}
+        {attribute 'TcLinkTo' := '	.bLimitForwardEnable	:= TIIB[Rack#2A-15 DR_XPM2 (EL7041-0052)]^STM Status^Status^Digital input 1;
+                                    .bLimitBackwardEnable	:= TIIB[Rack#2A-15 DR_XPM2 (EL7041-0052)]^STM Status^Status^Digital input 2;
+                                    .nRawEncoderULINT		:= TIIB[Rack#2B-12 ENC_X2PM_RzPM (EL5042)]^FB Inputs Channel 1^Position
+        '}
+        M13: DUT_MotionStage:=(sName := 'QRIX:PM:MMS:X2');
+
+        // RzPM
+        {attribute 'pytmc' := 'pv: QRIX:PM:MMS:Rz'}
+        {attribute 'TcLinkTo' := '	.bLimitForwardEnable	:= TIIB[Rack#2A-16 DR_RzPM (EL7041-0052)]^STM Status^Status^Digital input 1;
+                                    .bLimitBackwardEnable	:= TIIB[Rack#2A-16 DR_RzPM (EL7041-0052)]^STM Status^Status^Digital input 2;
+                                    .nRawEncoderULINT		:= TIIB[Rack#2B-12 ENC_X2PM_RzPM (EL5042)]^FB Inputs Channel 2^Position
+        '}
+        M14: DUT_MotionStage:=(sName := 'QRIX:PM:MMS:Rz');
+
+        // YDF1
+        {attribute 'pytmc' := 'pv: QRIX:DF:MMS:Y1'}
+        {attribute 'TcLinkTo' := '	.bLimitForwardEnable  	:= TIIB[Rack#2B-15 DR_YDF1 (EL7041-0052)]^STM Status^Status^Digital input 1;
+                                    .bLimitBackwardEnable 	:= TIIB[Rack#2B-15 DR_YDF1 (EL7041-0052)]^STM Status^Status^Digital input 2
+        '}
+        M15: DUT_MotionStage :=(sName := 'QRIX:DF:MMS:Y1');
+
+        // YDF2
+        {attribute 'pytmc' := 'pv: QRIX:DF:MMS:Y2'}
+        {attribute 'TcLinkTo' := '	.bLimitForwardEnable  	:= TIIB[Rack#2B-16 DR_YDF2 (EL7041-0052)]^STM Status^Status^Digital input 1;
+                                    .bLimitBackwardEnable 	:= TIIB[Rack#2B-16 DR_YDF2 (EL7041-0052)]^STM Status^Status^Digital input 2
+        '}
+        M16: DUT_MotionStage:=(sName := 'QRIX:DF:MMS:Y2');
+
+        // YDF3
+        {attribute 'pytmc' := 'pv: QRIX:DF:MMS:Y3'}
+        {attribute 'TcLinkTo' := '	.bLimitForwardEnable  	:= TIIB[Rack#2B-19 DR_YDF3 (EL7041-0052)]^STM Status^Status^Digital input 1;
+                                    .bLimitBackwardEnable 	:= TIIB[Rack#2B-19 DR_YDF3 (EL7041-0052)]^STM Status^Status^Digital input 2
+        '}
+        M17: DUT_MotionStage :=(sName := 'QRIX:DF:MMS:Y3');
+
+        // XSDC1
+        {attribute 'pytmc' := 'pv: QRIX:DETSL:MMS:NORTH'}
+        {attribute 'TcLinkTo' := '	.bLimitForwardEnable  	:= TIIB[BOX-09 DR_XSDC1 (EL7041-0052)]^STM Status^Status^Digital input 1;
+                                    .bLimitBackwardEnable 	:= TIIB[BOX-09 DR_XSDC1 (EL7041-0052)]^STM Status^Status^Digital input 2;
+                                    .nRawEncoderULINT     	:= TIIB[BOX-03 ENC_X1_X2 (EL5042)]^FB Inputs Channel 1^Position
+        '}
+        M18: DUT_MotionStage:=(sName := ' QRIX:DETSL:MMS:NORTH');
+
+        // XSDC2
+        {attribute 'pytmc' := 'pv: QRIX:DETSL:MMS:SOUTH'}
+        {attribute 'TcLinkTo' := '	.bLimitForwardEnable	:= TIIB[BOX-10 DR_XSDC2 (EL7041-0052)]^STM Status^Status^Digital input 1;
+                                    .bLimitBackwardEnable 	:= TIIB[BOX-10 DR_XSDC2 (EL7041-0052)]^STM Status^Status^Digital input 2;
+                                    .nRawEncoderULINT     	:= TIIB[BOX-03 ENC_X1_X2 (EL5042)]^FB Inputs Channel 2^Position
+        '}
+        M19: DUT_MotionStage :=(sName := ' QRIX:DETSL:MMS:SOUTH');
+
+        // YSDC1
+        {attribute 'pytmc' := 'pv: QRIX:DETSL:MMS:TOP'}
+        {attribute 'TcLinkTo' := '	.bLimitForwardEnable	:= TIIB[BOX-11 DR_YSDC1 (EL7041-0052)]^STM Status^Status^Digital input 1;
+                                    .bLimitBackwardEnable 	:= TIIB[BOX-11 DR_YSDC1 (EL7041-0052)]^STM Status^Status^Digital input 2;
+                                    .nRawEncoderULINT     	:= TIIB[BOX-04 ENC_Y1_Y2 (EL5042)]^FB Inputs Channel 1^Position
+        '}
+        M20: DUT_MotionStage :=(sName := ' QRIX:DETSL:MMS:TOP');
+
+        // YSDC2
+        {attribute 'pytmc' := 'pv: QRIX:DETSL:MMS:BOTTOM'}
+        {attribute 'TcLinkTo' := '	.bLimitForwardEnable	:= TIIB[BOX-12 DR_YSDC2 (EL7041-0052)]^STM Status^Status^Digital input 1;
+                                    .bLimitBackwardEnable 	:= TIIB[BOX-12 DR_YSDC2 (EL7041-0052)]^STM Status^Status^Digital input 2;
+                                    .nRawEncoderULINT     	:= TIIB[BOX-04 ENC_Y1_Y2 (EL5042)]^FB Inputs Channel 1^Position
+        '}
+        M21: DUT_MotionStage :=(sName := ' QRIX:DETSL:MMS:BOTTOM');
+
+        // XDC
+        {attribute 'pytmc' := 'pv: QRIX:DC:MMS:X'}
+        {attribute 'TcLinkTo' := '	.bLimitForwardEnable  	:= TIIB[BOX-14 DR_XDC (EL7041-0052)]^STM Status^Status^Digital input 1;
+                                    .bLimitBackwardEnable 	:= TIIB[BOX-14 DR_XDC (EL7041-0052)]^STM Status^Status^Digital input 2;
+                                    .nRawEncoderULINT     	:= TIIB[BOX-05 ENC_XDC_RyDC (EL5042)]^FB Inputs Channel 1^Position
+        '}
+        M22: DUT_MotionStage:=(sName := ' QRIX:DC:MMS:X');
+
+        // RyDC
+        {attribute 'pytmc' := 'pv: QRIX:DC:MMS:Ry'}
+        {attribute 'TcLinkTo' := '	.bLimitForwardEnable	:= TIIB[BOX-15 DR_RyDC (EL7041-0052)]^STM Status^Status^Digital input 1;
+                                    .bLimitBackwardEnable	:= TIIB[BOX-15 DR_RyDC (EL7041-0052)]^STM Status^Status^Digital input 2;
+                                    .nRawEncoderULINT		:= TIIB[BOX-05 ENC_XDC_RyDC (EL5042)]^FB Inputs Channel 2^Position
+        '}
+        M23: DUT_MotionStage :=(sName := ' QRIX:DC:MMS:Ry');
+
+        // ZDC
+        {attribute 'pytmc' := 'pv: QRIX:DC:MMS:Z'}
+        {attribute 'TcLinkTo' := '	.bLimitForwardEnable	:= TIIB[BOX-16 DR_ZDC (EL7041-0052)]^STM Status^Status^Digital input 1;
+                                    .bLimitBackwardEnable	:= TIIB[BOX-16 DR_ZDC (EL7041-0052)]^STM Status^Status^Digital input 2;
+                                    .nRawEncoderULINT		:= TIIB[BOX-06 ENC_ZDC_YF1 (EL5042)]^FB Inputs Channel 1^Position
+        '}
+        M24: DUT_MotionStage:=(sName := ' QRIX:DC:MMS:Z');
+
+        // YF1
+        {attribute 'pytmc' := 'pv: QRIX:DA:MMS:Y1'}
+        {attribute 'TcLinkTo' := '	.bLimitForwardEnable	:= TIIB[Rack#1A-02 SFIN (EL1918)]^StandardInputs^Standard Out Var 10;
+                                    .bLimitBackwardEnable 	:= TIIB[Rack#1A-02 SFIN (EL1918)]^StandardInputs^Standard Out Var 11;
+                                    .nRawEncoderULINT     	:= TIIB[BOX-06 ENC_ZDC_YF1 (EL5042)]^FB Inputs Channel 2^Position;
+                                    .bBrakeRelease        	:= TIIB[BOX-19 MB_YF1_YF2 (EL2602)]^Channel 1^Output
+        '}
+        M25: DUT_MotionStage:=(sName := ' QRIX:DA:MMS:Y1');
+
+        // YF2
+        {attribute 'pytmc' := 'pv: QRIX:DA:MMS:Y2'}
+        {attribute 'TcLinkTo' := '	.bLimitForwardEnable	:= TIIB[Rack#1A-02 SFIN (EL1918)]^StandardInputs^Standard Out Var 12;
+                                    .bLimitBackwardEnable	:= TIIB[Rack#1A-02 SFIN (EL1918)]^StandardInputs^Standard Out Var 13;
+                                    .nRawEncoderULINT     	:= TIIB[BOX-07 ENC_YF2_ZF (EL5042)]^FB Inputs Channel 1^Position;
+                                    .bBrakeRelease			:= TIIB[BOX-19 MB_YF1_YF2 (EL2602)]^Channel 2^Output
+        '}
+        M26: DUT_MotionStage:=(sName := ' QRIX:DA:MMS:Y2');
+
+        // ZF
+        {attribute 'pytmc' := 'pv: QRIX:DA:MMS:Z'}
+        {attribute 'TcLinkTo' := '	.bLimitForwardEnable	:= TIIB[Rack#1A-02 SFIN (EL1918)]^StandardInputs^Standard Out Var 14;
+                                    .bLimitBackwardEnable	:= TIIB[Rack#1A-02 SFIN (EL1918)]^StandardInputs^Standard Out Var 15;
+                                    .nRawEncoderULINT		:= TIIB[BOX-07 ENC_YF2_ZF (EL5042)]^FB Inputs Channel 2^Position;
+                                    .bBrakeRelease			:= TIIB[Rack#2B-18 MB_ZF (EL2602)]^Channel 1^Output
+        '}
+        M27: DUT_MotionStage:=(sName := ' QRIX:DA:MMS:Z');
+
+
+        // Diffractometer -  8 axes START AT M28
+        {attribute 'pytmc' := 'pv: QRIX:DIFF:MMS:X'}
+        {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL1088_03_04]^Channel 2^Input;
+                                  .bLimitBackwardEnable := TIIB[EL1088_03_04]^Channel 1^Input;
+                                  .bHome := TIIB[EL1088_03_10]^Channel 1^Input;
+                                  .nRawEncoderULINT     := TIIB[EL5042_03_02]^FB Inputs Channel 1^Position'}
+        M28: DUT_MotionStage := (sName := 'QRIX:DIFF:MMS:X');
+
+        {attribute 'pytmc' := 'pv: QRIX:DIFF:MMS:Y'}
+        {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL1088_03_04]^Channel 4^Input;
+                                  .bLimitBackwardEnable := TIIB[EL1088_03_04]^Channel 3^Input;
+                                  .bHome := TIIB[EL1088_03_10]^Channel 2^Input;
+                                  .nRawEncoderULINT     := TIIB[EL5042_03_02]^FB Inputs Channel 2^Position'}
+        M29: DUT_MotionStage := (sName := 'QRIX:DIFF:MMS:Y');
+
+        {attribute 'pytmc' := 'pv: QRIX:DIFF:MMS:Z'}
+        {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL1088_03_08]^Channel 2^Input;
+                                  .bLimitBackwardEnable := TIIB[EL1088_03_08]^Channel 1^Input;
+                                  .bHome := TIIB[EL1088_03_10]^Channel 3^Input;
+                                  .nRawEncoderULINT     := TIIB[EL5042_03_06]^FB Inputs Channel 1^Position'}
+        M30: DUT_MotionStage := (sName := 'QRIX:DIFF:MMS:Z');
+
+        {attribute 'pytmc' := 'pv: QRIX:DIFF:MMS:DETY'}
+        {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL1088_03_08]^Channel 5^Input;
+                                  .bLimitBackwardEnable := TIIB[EL1088_03_08]^Channel 6^Input;
+                                  .bHome := TIIB[EL1088_03_10]^Channel 4^Input;
+                                  .nRawEncoderULINT     := TIIB[EL5042_03_06]^FB Inputs Channel 2^Position'}
+        M31: DUT_MotionStage := (sName := 'QRIX:DIFF:MMS:DETY');
+
+        {attribute 'pytmc' := 'pv: QRIX:DIFF:MMS:PHI'}
+        {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL1088_03_08]^Channel 3^Input;
+                                  .bLimitBackwardEnable := TIIB[EL1088_03_08]^Channel 4^Input;
+                                  .bHome := TIIB[EL1088_03_10]^Channel 4^Input;
+                                  .nRawEncoderULINT     := TIIB[EL5042_03_13]^FB Inputs Channel 1^Position'}
+        M32: DUT_MotionStage := (sName := 'QRIX:DIFF:MMS:PHI');
+
+        {attribute 'pytmc' := 'pv: QRIX:DIFF:MMS:CHI'}
+        {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL1088_03_15]^Channel 2^Input;
+                                  .bLimitBackwardEnable := TIIB[EL1088_03_15]^Channel 1^Input;
+                                  .bHome := TIIB[EL1088_03_10]^Channel 6^Input;
+                                  .nRawEncoderULINT     := TIIB[EL5042_03_13]^FB Inputs Channel 2^Position'}
+        M33: DUT_MotionStage := (sName := 'QRIX:DIFF:MMS:CHI');
+
+        {attribute 'pytmc' := 'pv: QRIX:DIFF:MMS:THETA'}
+        {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL1088_03_15]^Channel 3^Input;
+                                  .bLimitBackwardEnable := TIIB[EL1088_03_15]^Channel 4^Input;
+                                  .bHome := TIIB[EL1088_03_10]^Channel 7^Input;
+                                  .nRawEncoderULINT     := TIIB[IM1K3-EL5042_03_17]^FB Inputs Channel 1^Position'}
+        M34: DUT_MotionStage := (sName := 'QRIX:DIFF:MMS:THETA');
+
+        {attribute 'pytmc' := 'pv: QRIX:DIFF:MMS:2THETA'}
+        {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL1088_03_15]^Channel 5^Input;
+                                  .bLimitBackwardEnable := TIIB[EL1088_03_15]^Channel 6^Input;
+                                  .bHome := TIIB[EL1088_03_10]^Channel 8^Input;
+                                  .nRawEncoderULINT     := TIIB[EL5042_03_17 - Diff - Theta - 2Theta]^FB Inputs Channel 2^Position'}
+        M35: DUT_MotionStage := (sName := 'QRIX:DIFF:MMS:2THETA');
+
+
+
+        // Laser Table  -  3 axes
+        {attribute 'pytmc' := 'pv: QRIX:LAS:MMS:VIS'}
+        {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL1088_02_06]^Channel 6^Input;
+                                  .bLimitBackwardEnable :=  TIIB[EL1088_02_06]^Channel 5^Input;
+                                  .nRawEncoderULINT     := TIIB[EL5042_02_05]^FB Inputs Channel 1^Position'}
+        M36: DUT_MotionStage := (sName := 'QRIX:LAS:MMS:VIS');
+
+        {attribute 'pytmc' := 'pv: QRIX:DIAG:MMS:H'}
+        {attribute 'TcLinkTo' := '.bLimitForwardEnable  :=  TIIB[EL1088_02_06]^Channel 2^Input;
+                                  .bLimitBackwardEnable :=  TIIB[EL1088_02_06]^Channel 1^Input;
+                                  .nRawEncoderULINT     := TIIB[EL5042_02_08]^FB Inputs Channel 2^Position'}
+        M37: DUT_MotionStage := (sName := 'QRIX:DIAG:MMS:H');
+
+        {attribute 'pytmc' := 'pv: QRIX:DIAG:MMS:V'}
+        {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL1088_02_06]^Channel 4^Input;
+                                  .bLimitBackwardEnable := TIIB[EL1088_02_06]^Channel 3^Input;
+                                  .nRawEncoderULINT     := TIIB[EL5042_02_08]^FB Inputs Channel 1^Position'}
+        M38: DUT_MotionStage := (sName := 'QRIX:DIAG:MMS:V');
+
+
+        //Sample Delivery - 6 Axes
+
+
+        {attribute 'pytmc' := 'pv: QRIX:SDS:MMS:X'}
+        {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL7047_04_01]^STM Status^Status^Digital input 1;
+                                  .bLimitBackwardEnable := TIIB[EL7047_04_01]^STM Status^Status^Digital input 2;
+                                  .nRawEncoderULINT     := TIIB[EL5042_04_02]^FB Inputs Channel 1^Position;
+                                  .bHome 				:= TIIB[EL1004_04_04]^Channel 1^Input'}
+        M39: DUT_MotionStage := (sName := 'QRIX:SDS:MMS:X');
+
+        {attribute 'pytmc' := 'pv: QRIX:SDS:MMS:Y'}
+        {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL7047_04_03]^STM Status^Status^Digital input 2;
+                                  .bLimitBackwardEnable := TIIB[EL7047_04_03]^STM Status^Status^Digital input 1;
+                                  .nRawEncoderULINT     := TIIB[EL5042_04_02]^FB Inputs Channel 2^Position;
+                                  .bHome 				:= TIIB[EL1004_04_04]^Channel 2^Input'}
+        M40: DUT_MotionStage := (sName := 'QRIX:SDS:MMS:Y');
+
+        {attribute 'pytmc' := 'pv: QRIX:SDS:MMS:Z'}
+        {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL7047_04_05]^STM Status^Status^Digital input 1;
+                                  .bLimitBackwardEnable := TIIB[EL7047_04_05]^STM Status^Status^Digital input 2;
+                                  .nRawEncoderULINT     := TIIB[EL5042_04_06]^FB Inputs Channel 1^Position;
+                                  .bHome 				:= TIIB[EL1004_04_04]^Channel 3^Input'}
+        M41: DUT_MotionStage := (sName := 'QRIX:SDS:MMS:Z');
+
+         {attribute 'pytmc' := 'pv: QRIX:SDS:MMS:ROT_V'}
+        {attribute 'TcLinkTo' := '.nRawEncoderUINT     := TIIB[EL5101_05_01]^ENC Status compact^Counter value;
+                                  .bHome 				:= TIIB[EL1004_04_04]^Channel 4^Input'}
+        M42: DUT_MotionStage := (sName := 'QRIX:SDS:MMS:ROT_V');
+
+        {attribute 'pytmc' := 'pv: QRIX:SDS:MMS:ROT_H'}
+        {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL7047_04_10]^STM Status^Status^Digital input 2;
+                                  .bLimitBackwardEnable := TIIB[EL7047_04_10]^STM Status^Status^Digital input 1;
+                                  .nRawEncoderUINT     := TIIB[EL5101_05_02]^ENC Status compact^Counter value;
+                                  .bHome 				:= TIIB[EL1004_04_09]^Channel 1^Input'}
+        M43: DUT_MotionStage := (sName := 'QRIX:SDS:MMS:ROT_H');
+
+        {attribute 'pytmc' := 'pv: QRIX:SDS:MMS:H'}
+        {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL7047_04_12]^STM Status^Status^Digital input 1;
+                                  .bLimitBackwardEnable := TIIB[EL7047_04_12]^STM Status^Status^Digital input 2;
+                                  .bHome 				:= TIIB[EL1004_04_09]^Channel 2^Input;
+                                  .nRawEncoderUINT     := TIIB[EL5101_05_03]^ENC Status compact^Counter value'}
+        M44: DUT_MotionStage := (sName := 'QRIX:SDS:MMS:H');
+
+        ///////////// Virtual axes (encoder axes) for the diffractometer rotary stages
+         {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL1088_03_15]^Channel 5^Input;
+                                  .bLimitBackwardEnable := TIIB[EL1088_03_15]^Channel 6^Input;
+                                  .bHome := TIIB[EL1088_03_10]^Channel 8^Input;
+                                  .nRawEncoderULINT     := TIIB[EL5042_03_17 - Diff - Theta - 2Theta]^FB Inputs Channel 2^Position'}
+
+        //M45: DUT_MotionStage := (sName := 'QRIX:SDS:MMS:2ThetaENC');
+
+
+    (*
+        // Cryo -  4 axes
+        {attribute 'pytmc' := 'pv: QRIX:CRYO:MMS:ROT'}
+        {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SSL-EL7041]^STM Status^Status^Digital input 1;
+                                  .bLimitBackwardEnable := TIIB[SSL-EL7041]^STM Status^Status^Digital input 2;
+                                  .nRawEncoderULINT     := TIIB[IM1K3-EL5042]^FB Inputs Channel 1^Position'}
+        M45: DUT_MotionStage := (sName := 'QRIX:CRYO:MMS:ROT');
+
+        {attribute 'pytmc' := 'pv: QRIX:CRYO:MMS:X'}
+        {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SSL-EL7041]^STM Status^Status^Digital input 1;
+                                  .bLimitBackwardEnable := TIIB[SSL-EL7041]^STM Status^Status^Digital input 2;
+                                  .nRawEncoderULINT     := TIIB[IM1K3-EL5042]^FB Inputs Channel 1^Position'}
+        M46: DUT_MotionStage := (sName := 'QRIX:CRYO:MMS:X');
+
+        {attribute 'pytmc' := 'pv: QRIX:CRYO:MMS:Y'}
+        {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SSL-EL7041]^STM Status^Status^Digital input 1;
+                                  .bLimitBackwardEnable := TIIB[SSL-EL7041]^STM Status^Status^Digital input 2;
+                                  .nRawEncoderULINT     := TIIB[IM1K3-EL5042]^FB Inputs Channel 1^Position'}
+        M47: DUT_MotionStage := (sName := 'QRIX:CRYO:MMS:Y');
+
+        {attribute 'pytmc' := 'pv: QRIX:CRYO:MMS:Z'}
+        {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SSL-EL7041]^STM Status^Status^Digital input 1;
+                                  .bLimitBackwardEnable := TIIB[SSL-EL7041]^STM Status^Status^Digital input 2;
+                                  .nRawEncoderULINT     := TIIB[IM1K3-EL5042]^FB Inputs Channel 1^Position'}
+        M48: DUT_MotionStage := (sName := 'QRIX:CRYO:MMS:Z');
+
+
+        // Questar -  2 axes
+        {attribute 'pytmc' := 'pv: QRIX:QUESTAR:MMS:01'}
+        {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SSL-EL7041]^STM Status^Status^Digital input 1;
+                                  .bLimitBackwardEnable := TIIB[SSL-EL7041]^STM Status^Status^Digital input 2;
+                                  .nRawEncoderULINT     := TIIB[IM1K3-EL5042]^FB Inputs Channel 1^Position'}
+        M49: DUT_MotionStage := (sName := 'QRIX:QUESTAR:MMS:01');
+
+        {attribute 'pytmc' := 'pv: QRIX:QUESTAR:MMS:02'}
+        {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SSL-EL7041]^STM Status^Status^Digital input 1;
+                                  .bLimitBackwardEnable := TIIB[SSL-EL7041]^STM Status^Status^Digital input 2;
+                                  .nRawEncoderULINT     := TIIB[IM1K3-EL5042]^FB Inputs Channel 1^Position'}
+        M50: DUT_MotionStage := (sName := 'QRIX:QUESTAR:MMS:02');
+    *)
+
+    (*
+        //Rotary Detector Motor
+
+        {attribute 'pytmc' := 'pv: QRIX:DET:MMS:ROT'}
+        {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SSL-EL7041]^STM Status^Status^Digital input 1;
+                                  .bLimitBackwardEnable := TIIB[SSL-EL7041]^STM Status^Status^Digital input 2;
+                                  .nRawEncoderULINT     := TIIB[IM1K3-EL5042]^FB Inputs Channel 1^Position'}
+        M51: DUT_MotionStage := (sName := 'QRIX:DET:MMS:ROT');
+        *)
+
+    END_VAR
+
+
+
+
+POUs
+----
+
+
+FB_2AxesTrans
+^^^^^^^^^^^^^
+
+::
+
+    FUNCTION_BLOCK FB_2AxesTrans
+    VAR_IN_OUT
+        stFirstAxis: DUT_MotionStage;
+        stSecondAxis: DUT_MotionStage;
+        bExecuteMotion:BOOL ;
+        io_fbFFHWO    :    FB_HardwareFFOutput;
+        fbArbiter: FB_Arbiter();
+    END_VAR
+    VAR_INPUT
+
+        {attribute 'pytmc' := '
+        pv: PMPS_OK;
+        io: i;
+        field: ZNAM False
+        field: ONAM True
+        '}
+        bMoveOk:BOOL;
+
+        (*Offsets*)
+        rEncoderOffsetFirst: REAL;
+        rEncoderOffsetSecound: REAL;
+
+        (*Distance between 1st stage and 2nd stage*)
+        rDistance: REAL := 0.40;
+
+        i_DevName : STRING; //device name for FFO and PMPS diagnostics
+
+        bHome:BOOL:=FALSE;
+    END_VAR
+    VAR
+        fbFirstStage: FB_MotionStage;
+        fbSecondStage: FB_MotionStage;
+        fPosFirstStage: LREAL;
+        fPosSecondStage: LREAL;
+
+        (*Motion Parameters*)
+        fSmallDelta: LREAL := 0.01;
+        fBigDelta: LREAL := 10;
+        fMaxVelocity: LREAL := 0.03;
+        fHighAccel: LREAL := 0.8;
+        fLowAccel: LREAL := 0.1;
+
+        stFirst: DUT_PositionState;
+        stSecond: DUT_PositionState;
+
+        {attribute 'pytmc' := 'pv: FIRST'}
+        fbFirst: FB_StatePTPMove;
+        {attribute 'pytmc' := 'pv: SECOND'}
+        fbSecond: FB_StatePTPMove;
+
+        (*EPICS pvs*)
+        {attribute 'pytmc' := '
+        pv: X_REQ;
+        io: io;
+        '}
+        rReqPosition : REAL;
+        {attribute 'pytmc' := '
+        pv: PITCH_REQ;
+        io: io;
+        '}
+        rReqAngle : REAL;
+
+
+        {attribute 'pytmc' := '
+        pv: X;
+        io: i;
+        '}
+        rActPosition : REAL;
+
+        {attribute 'pytmc' := '
+        pv: PITCH;
+        io: i;
+        '}
+        rActAngle : REAL;
+
+
+
+         {attribute 'pytmc' := '
+        pv: HOME_READY;
+        io: i;
+        field: ZNAM False
+        field: ONAM True
+        '}
+        bHomeReady:BOOL:=FALSE;
+
+
+        //Local variables
+        bInit: BOOL :=true;
+        rTrig_Block: R_TRIG;
+        rTrig_Open: R_TRIG;
+        rTrig_Close: R_TRIG;
+
+        //old values
+        rOldReqPosition : REAL;
+        rOldReqAngle: REAL;
+
+        bExecuteMotionX: BOOL;
+
+
+        fPosBlock: LREAL;
+        fPosClose: LREAL;
+        fPosOpen: LREAL;
+
+        stSetPositionOptions: ST_SetPositionOptions;
+        fbSetPosition_Pos: MC_SetPosition;
+        fbSetPosition_Angle: MC_SetPosition;
+
+        // For logging
+        fbLogger : FB_LogMessage := (eSubsystem:=E_SubSystem.MOTION);
+        tErrorPresent : R_TRIG;
+        tAction : R_TRIG;
+        tOverrideActivated : R_TRIG;
+
+        FFO    :    FB_FastFault :=(
+            i_DevName := 'OPT_XPM_Translation',
+            i_Desc := 'Fault occurs when center is greated than that requested',
+            i_TypeCode := 16#1010);
+
+
+        bTest: BOOL;
+
+        AptArrayStatus AT %Q* : ST_PMPS_Aperture_IO;
+        AptArrayReq AT %I* : ST_PMPS_Aperture_IO;
+    END_VAR
+    // Initialize
+    ACT_init();
+
+    // Instantiate Function block for all the blades
+    ACT_Motion();
+
+    //SET and GET the requested and Actual values
+    ACT_CalculatePositions();
+
+    END_FUNCTION_BLOCK
+
+    ACTION ACT_CalculatePositions:
+    //check if requested center or gap has changed
+    //check that the requested values are within acceptable motion range
+    IF (rOldReqPosition <> rReqPosition) THEN
+            rOldReqPosition := rReqPosition;
+            bExecuteMotionX := TRUE;
+            fbLogger(sMsg:='Requested new Position.', eSevr:=TcEventSeverity.Verbose);
+    END_IF
+
+    IF (rOldReqAngle <> rReqAngle) THEN
+        rOldReqAngle := rReqAngle;
+        bExecuteMotionX := TRUE;
+        fbLogger(sMsg:='Requested new Angle', eSevr:=TcEventSeverity.Verbose);
+    END_IF
+
+
+    //Calculate requested target positions from requested gap and center
+    fPosFirstStage		:= rReqPosition - rDistance / 2 * rReqAngle + rEncoderOffsetFirst;
+    fPosSecondStage		:= rReqPosition + rDistance / 2 * rReqAngle + rEncoderOffsetSecound;
+
+
+
+    //Calculate actual gap and center from actual stages positions
+    rActPosition	:= LREAL_TO_REAL( ((stFirstAxis.stAxisStatus.fActPosition - rEncoderOffsetFirst) + (stSecondAxis.stAxisStatus.fActPosition - rEncoderOffsetSecound)) / 2 );
+    rActAngle		:= LREAL_TO_REAL( ((stSecondAxis.stAxisStatus.fActPosition - rEncoderOffsetSecound) - (stFirstAxis.stAxisStatus.fActPosition - rEncoderOffsetFirst)) / rDistance );
+    END_ACTION
+
+    ACTION ACT_Init:
+    //  init the motion stages parameters
+    IF ( bInit) THEN
+        stFirstAxis.bHardwareEnable := TRUE;
+        stSecondAxis.bHardwareEnable := TRUE;
+        stFirstAxis.bPowerSelf :=TRUE;
+        stSecondAxis.bPowerSelf :=TRUE;
+        stFirstAxis.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        stSecondAxis.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        FFO.i_DevName := i_DevName;
+    END_IF
+    END_ACTION
+
+    ACTION ACT_Motion:
+    // Instantiate Function block for all the blades
+    fbFirstStage(stMotionStage:=stFirstAxis);
+    fbSecondStage(stMotionStage:=stSecondAxis);
+
+
+
+    // PTP Motion for each blade
+    stFirst.sName := 'First';
+    stFirst.fPosition := fPosFirstStage;
+    stFirst.fDelta := fSmallDelta;
+    stFirst.fVelocity := fMaxVelocity;
+    stFirst.fAccel := fHighAccel;
+    stFirst.fDecel := fHighAccel;
+
+    stSecond.sName := 'Second';
+    stSecond.fPosition := fPosSecondStage;
+    stSecond.fDelta := fSmallDelta;
+    stSecond.fVelocity := fMaxVelocity;
+    stSecond.fAccel := fHighAccel;
+    stSecond.fDecel := fHighAccel;
+
+
+
+    IF (bExecuteMotionX) THEN
+        fbFirst.bExecute := fbSecond.bExecute := bExecuteMotionX;
+        bExecuteMotionX:= FALSE;
+    END_IF
+
+
+    fbFirst(
+        stPositionState:=stFirst,
+        bMoveOk:=bMoveOk,
+        stMotionStage:=stFirstAxis);
+
+    fbSecond(
+        stPositionState:=stSecond,
+        bMoveOk:=bMoveOk,
+        stMotionStage:=stSecondAxis);
+    END_ACTION
+
+
+
+
+FB_2AxesTrans_1
+^^^^^^^^^^^^^^^
+
+::
+
+    FUNCTION_BLOCK FB_2AxesTrans_1
+    VAR_IN_OUT
+        stFirstAxis: DUT_MotionStage;
+        stSecondAxis: DUT_MotionStage;
+        bExecuteMotion:BOOL ;
+        io_fbFFHWO    :    FB_HardwareFFOutput;
+        fbArbiter: FB_Arbiter();
+    END_VAR
+    VAR_INPUT
+
+        {attribute 'pytmc' := '
+        pv: PMPS_OK;
+        io: i;
+        field: ZNAM False
+        field: ONAM True
+        '}
+        bMoveOk:BOOL;
+
+        (*Offsets*)
+        {attribute 'pytmc' := '
+        pv: ZeroOffset_First;
+        io: io;
+        '}
+        rEncoderOffsetFirst: REAL;
+
+        {attribute 'pytmc' := '
+        pv: ZeroOffset_Secound;
+        io: io;
+        '}
+        rEncoderOffsetSecound: REAL;
+
+        (*Distance between 1st stage and 2nd stage*)
+        rDistance: REAL := 0.40;
+
+        i_DevName : STRING; //device name for FFO and PMPS diagnostics
+
+         {attribute 'pytmc' := '
+        pv: Home;
+        io: i;
+        field: ZNAM False
+        field: ONAM True
+        '}
+        bHome:BOOL:=FALSE;
+    END_VAR
+    VAR
+        fbFirstStage: FB_MotionStage;
+        fbSecondStage: FB_MotionStage;
+        fPosFirstStage: LREAL;
+        fPosSecondStage: LREAL;
+
+        (*Motion Parameters*)
+        fSmallDelta: LREAL := 0.01;
+        fBigDelta: LREAL := 10;
+        fMaxVelocity: LREAL := 0.03;
+        fHighAccel: LREAL := 0.8;
+        fLowAccel: LREAL := 0.1;
+
+        stFirst: DUT_PositionState;
+        stSecond: DUT_PositionState;
+
+        {attribute 'pytmc' := 'pv: FIRST'}
+        fbFirst: FB_StatePTPMove;
+        {attribute 'pytmc' := 'pv: SECOND'}
+        fbSecond: FB_StatePTPMove;
+
+        (*EPICS pvs*)
+        {attribute 'pytmc' := '
+        pv: POS_REQ;
+        io: io;
+        '}
+        rReqPosition : REAL;
+        {attribute 'pytmc' := '
+        pv: ANG_REQ;
+        io: io;
+        '}
+        rReqAngle : REAL;
+
+
+        {attribute 'pytmc' := '
+        pv: ACTUAL_POSISION;
+        io: io;
+        '}
+        rActPosition : REAL;
+
+        {attribute 'pytmc' := '
+        pv: ACTUAL_ANGLE;
+        io: io;
+        '}
+        rActAngle : REAL;
+
+
+
+         {attribute 'pytmc' := '
+        pv: HOME_READY;
+        io: i;
+        field: ZNAM False
+        field: ONAM True
+        '}
+        bHomeReady:BOOL:=FALSE;
+
+
+        //Local variables
+        bInit: BOOL :=true;
+        rTrig_Block: R_TRIG;
+        rTrig_Open: R_TRIG;
+        rTrig_Close: R_TRIG;
+
+        //old values
+        rOldReqPosition : REAL;
+        rOldReqAngle: REAL;
+
+        bExecuteMotionX: BOOL;
+
+
+        fPosBlock: LREAL;
+        fPosClose: LREAL;
+        fPosOpen: LREAL;
+
+        stSetPositionOptions: ST_SetPositionOptions;
+        fbSetPosition_Pos: MC_SetPosition;
+        fbSetPosition_Angle: MC_SetPosition;
+
+        // For logging
+        fbLogger : FB_LogMessage := (eSubsystem:=E_SubSystem.MOTION);
+        tErrorPresent : R_TRIG;
+        tAction : R_TRIG;
+        tOverrideActivated : R_TRIG;
+
+        FFO    :    FB_FastFault :=(
+            i_DevName := 'OPT_XPM_Translation',
+            i_Desc := 'Fault occurs when center is greated than that requested',
+            i_TypeCode := 16#1010);
+
+
+        bTest: BOOL;
+
+        AptArrayStatus AT %Q* : ST_PMPS_Aperture_IO;
+        AptArrayReq AT %I* : ST_PMPS_Aperture_IO;
+    END_VAR
+    // Initialize
+    ACT_init();
+
+    // Instantiate Function block for all the blades
+    ACT_Motion();
+
+    //SET and GET the requested and Actual values
+    ACT_CalculatePositions();
+
+    END_FUNCTION_BLOCK
+
+    ACTION ACT_CalculatePositions:
+    //check if requested center or gap has changed
+    //check that the requested values are within acceptable motion range
+    IF (rOldReqPosition <> rReqPosition) THEN
+            rOldReqPosition := rReqPosition;
+            bExecuteMotionX := TRUE;
+            fbLogger(sMsg:='Requested new Position.', eSevr:=TcEventSeverity.Verbose);
+    END_IF
+
+    IF (rOldReqAngle <> rReqAngle) THEN
+        rOldReqAngle := rReqAngle;
+        bExecuteMotionX := TRUE;
+        fbLogger(sMsg:='Requested new Angle', eSevr:=TcEventSeverity.Verbose);
+    END_IF
+
+
+    //Calculate requested target positions from requested gap and center
+    fPosFirstStage		:= rReqPosition - rDistance / 2 * rReqAngle + rEncoderOffsetFirst;
+    fPosSecondStage		:= rReqPosition + rDistance / 2 * rReqAngle + rEncoderOffsetSecound;
+
+
+
+    //Calculate actual gap and center from actual stages positions
+    rActPosition	:= LREAL_TO_REAL( ((stFirstAxis.stAxisStatus.fActPosition - rEncoderOffsetFirst) + (stSecondAxis.stAxisStatus.fActPosition - rEncoderOffsetSecound)) / 2 );
+    rActAngle		:= LREAL_TO_REAL( ((stSecondAxis.stAxisStatus.fActPosition - rEncoderOffsetSecound) - (stFirstAxis.stAxisStatus.fActPosition - rEncoderOffsetFirst)) / rDistance );
+    END_ACTION
+
+    ACTION ACT_Init:
+    //  init the motion stages parameters
+    IF ( bInit) THEN
+        stFirstAxis.bHardwareEnable := TRUE;
+        stSecondAxis.bHardwareEnable := TRUE;
+        stFirstAxis.bPowerSelf :=TRUE;
+        stSecondAxis.bPowerSelf :=TRUE;
+        stFirstAxis.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        stSecondAxis.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        FFO.i_DevName := i_DevName;
+    END_IF
+    END_ACTION
+
+    ACTION ACT_Motion:
+    // Instantiate Function block for all the blades
+    fbFirstStage(stMotionStage:=stFirstAxis);
+    fbSecondStage(stMotionStage:=stSecondAxis);
+
+
+
+    // PTP Motion for each blade
+    stFirst.sName := 'First';
+    stFirst.fPosition := fPosFirstStage;
+    stFirst.fDelta := fSmallDelta;
+    stFirst.fVelocity := fMaxVelocity;
+    stFirst.fAccel := fHighAccel;
+    stFirst.fDecel := fHighAccel;
+
+    stSecond.sName := 'Second';
+    stSecond.fPosition := fPosSecondStage;
+    stSecond.fDelta := fSmallDelta;
+    stSecond.fVelocity := fMaxVelocity;
+    stSecond.fAccel := fHighAccel;
+    stSecond.fDecel := fHighAccel;
+
+
+
+    IF (bExecuteMotionX) THEN
+        fbFirst.bExecute := fbSecond.bExecute := bExecuteMotionX;
+        bExecuteMotionX:= FALSE;
+    END_IF
+
+
+    fbFirst(
+        stPositionState:=stFirst,
+        bMoveOk:=bMoveOk,
+        stMotionStage:=stFirstAxis);
+
+    fbSecond(
+        stPositionState:=stSecond,
+        bMoveOk:=bMoveOk,
+        stMotionStage:=stSecondAxis);
+    END_ACTION
+
+
+
+
+FB_3AxesJack
+^^^^^^^^^^^^
+
+::
+
+    FUNCTION_BLOCK FB_3AxesJack
+    VAR_IN_OUT
+        stJack1Axis: DUT_MotionStage;
+        stJack2Axis: DUT_MotionStage;
+        stJack3Axis: DUT_MotionStage;
+        bExecuteMotion:BOOL ;
+        io_fbFFHWO    :    FB_HardwareFFOutput;
+        fbArbiter: FB_Arbiter();
+    END_VAR
+    VAR_INPUT
+
+        {attribute 'pytmc' := '
+        pv: PMPS_OK;
+        io: i;
+        field: ZNAM False
+        field: ONAM True
+        '}
+        bMoveOk:BOOL;
+
+        (*Offsets*)
+        {attribute 'pytmc' := '
+        pv: ZeroOffset_Jack1;
+        io: io;
+        '}
+        rEncoderOffsetJack1: REAL;
+
+        {attribute 'pytmc' := '
+        pv: ZeroOffset_Jack2;
+        io: io;
+        '}
+        rEncoderOffsetJack2: REAL;
+
+        {attribute 'pytmc' := '
+        pv: ZeroOffset_Jack3;
+        io: io;
+        '}
+        rEncoderOffsetJack3: REAL;
+
+        (*Distance X*)
+        rDistanceX: REAL := 0.24;
+        (*Distance Z*)
+        rDistanceZ: REAL := 0.88;
+
+        rLimitPositionMax: REAL := 8;
+        rLimitPositionMin: REAL := -8;
+        rLimitPitchMin: REAL := -18;
+        rLimitPitchMax: REAL :=  18;
+        rLimitRollMin: REAL  := -18;
+        rLimitRollMax: REAL  :=  18;
+
+        i_DevName : STRING; //device name for FFO and PMPS diagnostics
+
+         {attribute 'pytmc' := '
+        pv: Home;
+        io: i;
+        field: ZNAM False
+        field: ONAM True
+        '}
+        bHome:BOOL:=FALSE;
+    END_VAR
+
+    VAR
+        fbJack1Stage: FB_MotionStage;
+        fbJack2Stage: FB_MotionStage;
+        fbJack3Stage: FB_MotionStage;
+        fPosJack1Stage: LREAL;
+        fPosJack2Stage: LREAL;
+        fPosJack3Stage: LREAL;
+
+        (*Motion Parameters*)
+        fSmallDelta: LREAL := 0.01;
+        fBigDelta: LREAL := 10;
+        fMaxVelocity: LREAL := 0.1;
+        fHighAccel: LREAL := 0.8;
+        fLowAccel: LREAL := 0.1;
+
+        stJack1: DUT_PositionState;
+        stJack2: DUT_PositionState;
+        stJack3: DUT_PositionState;
+
+        {attribute 'pytmc' := 'pv: JACK1'}
+        fbJack1: FB_StatePTPMove;
+        {attribute 'pytmc' := 'pv: JACK2'}
+        fbJack2: FB_StatePTPMove;
+        {attribute 'pytmc' := 'pv: JACK3'}
+        fbJack3: FB_StatePTPMove;
+
+        (*EPICS pvs*)
+        {attribute 'pytmc' := '
+        pv: Y_REQ;
+        io: io;
+        '}
+        rReqPosition : REAL;
+
+        {attribute 'pytmc' := '
+        pv: PITCH_REQ;
+        io: io;
+        '}
+        rReqPitch : REAL;
+
+        {attribute 'pytmc' := '
+        pv: ROLL_REQ;
+        io: io;
+        '}
+        rReqRoll : REAL;
+
+
+        {attribute 'pytmc' := '
+        pv: Y;
+        io: i;
+        '}
+        rActPosition : REAL;
+
+        {attribute 'pytmc' := '
+        pv: PITCH;
+        io: i;
+        '}
+        rActPitch : REAL;
+
+        {attribute 'pytmc' := '
+        pv: ROLL;
+        io: i;
+        '}
+        rActRoll : REAL;
+
+
+        {attribute 'pytmc' := '
+        pv: HOME_READY;
+        io: i;
+        field: ZNAM False
+        field: ONAM True
+        '}
+        bHomeReady:BOOL:=FALSE;
+
+
+        //Local variables
+        bInit: BOOL :=true;
+
+        //old values
+        rOldReqPosition : REAL;
+        rOldReqPitch: REAL;
+        rOldReqRoll: REAL;
+
+        bExecuteMotionX: BOOL;
+
+        rPosAvgJAck1_3: REAL;
+
+        fPosBlock: LREAL;
+        fPosClose: LREAL;
+        fPosOpen: LREAL;
+
+        stSetPositionOptions: ST_SetPositionOptions;
+        fbSetPosition_Pos: MC_SetPosition;
+        fbSetPosition_Angle: MC_SetPosition;
+
+        // For logging
+        fbLogger : FB_LogMessage := (eSubsystem:=E_SubSystem.MOTION);
+        tErrorPresent : R_TRIG;
+        tAction : R_TRIG;
+        tOverrideActivated : R_TRIG;
+
+        FFO    :    FB_FastFault :=(
+            i_DevName := '3Jack',
+            i_Desc := 'Fault occurs when center is greated than that requested',
+            i_TypeCode := 16#1010);
+
+
+        bTest: BOOL;
+
+        AptArrayStatus AT %Q* : ST_PMPS_Aperture_IO;
+        AptArrayReq AT %I* : ST_PMPS_Aperture_IO;
+
+
+        fbPower: MC_POWER;
+    END_VAR
+    // Initialize
+    ACT_init();
+
+    // Instantiate Function block for all the blades
+    ACT_Motion();
+
+    //SET and GET the requested and Actual values
+    ACT_CalculatePositions();
+
+    // Software Limits to protect blades
+    ACT_VirtualLimitSW();
+
+    END_FUNCTION_BLOCK
+
+    ACTION ACT_CalculatePositions:
+    //check if requested center or gap has changed
+    //check that the requested values are within acceptable motion range
+    IF (rOldReqPosition <> rReqPosition) THEN
+            rOldReqPosition := rReqPosition;
+            bExecuteMotionX := TRUE;
+            fbLogger(sMsg:='Requested new Position.', eSevr:=TcEventSeverity.Verbose);
+    END_IF
+
+    IF (rOldReqPitch <> rReqPitch) THEN
+        rOldReqPitch := rReqPitch;
+        bExecuteMotionX := TRUE;
+        fbLogger(sMsg:='Requested new Pitch', eSevr:=TcEventSeverity.Verbose);
+    END_IF
+
+    IF (rOldReqRoll <> rReqRoll) THEN
+        rOldReqRoll := rReqRoll;
+        bExecuteMotionX := TRUE;
+        fbLogger(sMsg:='Requested new Roll', eSevr:=TcEventSeverity.Verbose);
+    END_IF
+
+    //Calculate requested target positions from requested gap and center
+    fPosJack1Stage	:= rReqPosition + rDistanceX / 2 * rReqRoll + rDistanceZ / 2 * rReqPitch + rEncoderOffsetJack1;
+    fPosJack2Stage	:= rReqPosition - rDistanceX / 2 * rReqRoll + rEncoderOffsetJack2;
+    fPosJack3Stage	:= rReqPosition + rDistanceX / 2 * rReqRoll - rDistanceZ / 2 * rReqPitch + rEncoderOffsetJack3;
+
+    //Calculate actual gap and center from actual stages positions
+    rPosAvgJack1_3	:= LREAL_TO_REAL( ((stJack1Axis.stAxisStatus.fActPosition - rEncoderOffsetJack1) + (stJack3Axis.stAxisStatus.fActPosition - rEncoderOffsetJack3)) / 2 );
+    rActPosition	:= LREAL_TO_REAL( ((rPosAvgJAck1_3 + (stJack2Axis.stAxisStatus.fActPosition - rEncoderOffsetJack2)) / 2 ));
+    rActPitch		:= LREAL_TO_REAL( ((stJack1Axis.stAxisStatus.fActPosition - rEncoderOffsetJack1) - (stJack3Axis.stAxisStatus.fActPosition - rEncoderOffsetJack3)) / rDistanceZ);
+    rActRoll		:= LREAL_TO_REAL( (rActPosition - (stJack2Axis.stAxisStatus.fActPosition - rEncoderOffsetJack2)) / (rDistanceX/2)); // mrad
+    END_ACTION
+
+    ACTION ACT_Init:
+    //  init the motion stages parameters
+    IF ( bInit) THEN
+        stJack1Axis.bHardwareEnable := TRUE;
+        stJack2Axis.bHardwareEnable := TRUE;
+        stJack3Axis.bHardwareEnable := TRUE;
+        stJack1Axis.bPowerSelf :=FALSE;
+        stJack2Axis.bPowerSelf :=FALSE;
+        stJack3Axis.bPowerSelf :=FALSE;
+        stJack1Axis.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        stJack2Axis.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        stJack3Axis.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        FFO.i_DevName := i_DevName;
+    END_IF
+    END_ACTION
+
+    ACTION ACT_Motion:
+    // Instantiate Function block for all the blades
+    fbJack1Stage(stMotionStage:=stJack1Axis);
+    fbJack2Stage(stMotionStage:=stJack2Axis);
+    fbJack3Stage(stMotionStage:=stJack3Axis);
+
+
+
+    // PTP Motion for each blade
+    stJack1.sName := 'Jack1';
+    stJack1.fPosition := fPosJack1Stage;
+    stJack1.fDelta := fSmallDelta;
+    stJack1.fVelocity := fMaxVelocity;
+    stJack1.fAccel := fHighAccel;
+    stJack1.fDecel := fHighAccel;
+
+    stJack2.sName := 'Jack2';
+    stJack2.fPosition := fPosJack2Stage;
+    stJack2.fDelta := fSmallDelta;
+    stJack2.fVelocity := fMaxVelocity;
+    stJack2.fAccel := fHighAccel;
+    stJack2.fDecel := fHighAccel;
+
+    stJack3.sName := 'Jack3';
+    stJack3.fPosition := fPosJack3Stage;
+    stJack3.fDelta := fSmallDelta;
+    stJack3.fVelocity := fMaxVelocity;
+    stJack3.fAccel := fHighAccel;
+    stJack3.fDecel := fHighAccel;
+
+
+    IF (bExecuteMotionX) THEN
+        fbJack1.bExecute := fbJack2.bExecute := fbJack3.bExecute := bExecuteMotionX;
+        bExecuteMotionX:= FALSE;
+    END_IF
+
+
+    fbJack1(
+        stPositionState:=stJack1,
+        bMoveOk:=bMoveOk,
+        stMotionStage:=stJack1Axis);
+
+    fbJack2(
+        stPositionState:=stJack2,
+        bMoveOk:=bMoveOk,
+        stMotionStage:=stJack2Axis);
+
+    fbJack3(
+        stPositionState:=stJack3,
+        bMoveOk:=bMoveOk,
+        stMotionStage:=stJack3Axis);
+    END_ACTION
+
+    ACTION ACT_VirtualLimitSW:
+    // Force set to false
+    stJack1Axis.bPowerSelf := stJack2Axis.bPowerSelf := stJack3Axis.bPowerSelf := FALSE;
+
+    // Set SafetyReady flags manually
+    stJack1Axis.bSafetyReady:= TRUE;
+    stJack2Axis.bSafetyReady:= TRUE;
+    stJack3Axis.bSafetyReady:= TRUE;
+
+
+    // Note: FB_MotionStage calls FB_SetEnables internally that overwrites .bAllForwardEnable/.bAllBackwardEnable flags
+
+    fbPower(
+        Axis := stJack1Axis.Axis,
+        Enable := stJack1Axis.bAllEnable,
+        Enable_Positive := stJack1Axis.bAllForwardEnable  AND rActPosition <= rLimitPositionMax AND rActPitch <= rLimitPitchMax,
+        Enable_Negative := stJack1Axis.bAllBackwardEnable AND rActPosition >= rLimitPositionMin AND rActPitch >= rLimitPitchMin,
+        Override := 100.000
+    );
+    fbPower(
+        Axis := stJack2Axis.Axis,
+        Enable := stJack2Axis.bAllEnable,
+        Enable_Positive := stJack2Axis.bAllForwardEnable  AND rActPosition <= rLimitPositionMax AND rActRoll <= rLimitRollMax,
+        Enable_Negative := stJack2Axis.bAllBackwardEnable AND rActPosition >= rLimitPositionMin AND rActRoll >= rLimitRollMin,
+        Override := 100.000
+    );
+    fbPower(
+        Axis := stJack3Axis.Axis,
+        Enable := stJack3Axis.bAllEnable,
+        Enable_Positive := stJack3Axis.bAllForwardEnable  AND rActPosition <= rLimitPositionMax AND rActPitch >= rLimitPitchMin,
+        Enable_Negative := stJack3Axis.bAllBackwardEnable AND rActPosition >= rLimitPositionMin AND rActPitch <= rLimitPitchMax,
+        Override := 100.000
+    );
+    END_ACTION
+
+
+
+
+FB_3AxesJack_1
+^^^^^^^^^^^^^^
+
+::
+
+    FUNCTION_BLOCK FB_3AxesJack_1
+    VAR_IN_OUT
+        stJack1Axis: DUT_MotionStage;
+        stJack2Axis: DUT_MotionStage;
+        stJack3Axis: DUT_MotionStage;
+        bExecuteMotion:BOOL ;
+        io_fbFFHWO    :    FB_HardwareFFOutput;
+        fbArbiter: FB_Arbiter();
+    END_VAR
+    VAR_INPUT
+
+        {attribute 'pytmc' := '
+        pv: PMPS_OK;
+        io: i;
+        field: ZNAM False
+        field: ONAM True
+        '}
+        bMoveOk:BOOL;
+
+        (*Offsets*)
+        {attribute 'pytmc' := '
+        pv: ZeroOffset_Jack1;
+        io: io;
+        '}
+        rEncoderOffsetJack1: REAL;
+
+        {attribute 'pytmc' := '
+        pv: ZeroOffset_Jack2;
+        io: io;
+        '}
+        rEncoderOffsetJack2: REAL;
+
+        {attribute 'pytmc' := '
+        pv: ZeroOffset_Jack3;
+        io: io;
+        '}
+        rEncoderOffsetJack3: REAL;
+
+        i_DevName : STRING; //device name for FFO and PMPS diagnostics
+
+         {attribute 'pytmc' := '
+        pv: Home;
+        io: i;
+        field: ZNAM False
+        field: ONAM True
+        '}
+        bHome:BOOL:=FALSE;
+    END_VAR
+
+    VAR
+        fbJack1Stage: FB_MotionStage;
+        fbJack2Stage: FB_MotionStage;
+        fbJack3Stage: FB_MotionStage;
+        fPosJack1Stage: LREAL;
+        fPosJack2Stage: LREAL;
+        fPosJack3Stage: LREAL;
+
+        (*Motion Parameters*)
+        fSmallDelta: LREAL := 0.01;
+        fBigDelta: LREAL := 10;
+        fMaxVelocity: LREAL := 0.05;
+        fHighAccel: LREAL := 0.8;
+        fLowAccel: LREAL := 0.1;
+
+        stJack1: DUT_PositionState;
+        stJack2: DUT_PositionState;
+        stJack3: DUT_PositionState;
+
+        {attribute 'pytmc' := 'pv: JACK1'}
+        fbJack1: FB_StatePTPMove;
+        {attribute 'pytmc' := 'pv: JACK2'}
+        fbJack2: FB_StatePTPMove;
+        {attribute 'pytmc' := 'pv: JACK3'}
+        fbJack3: FB_StatePTPMove;
+
+        (*EPICS pvs*)
+        {attribute 'pytmc' := '
+        pv: POS_REQ;
+        io: io;
+        '}
+        rReqPosition : REAL;
+
+        {attribute 'pytmc' := '
+        pv: PIT_REQ;
+        io: io;
+        '}
+        rReqPitch : REAL;
+
+        {attribute 'pytmc' := '
+        pv: ROL_REQ;
+        io: io;
+        '}
+        rReqRoll : REAL;
+
+
+        {attribute 'pytmc' := '
+        pv: ACTUAL_POSISION;
+        io: io;
+        '}
+        rActPosition : REAL;
+
+        {attribute 'pytmc' := '
+        pv: ACTUAL_PITCH;
+        io: io;
+        '}
+        rActPitch : REAL;
+
+        {attribute 'pytmc' := '
+        pv: ACTUAL_ROLL;
+        io: io;
+        '}
+        rActRoll : REAL;
+
+
+        {attribute 'pytmc' := '
+        pv: HOME_READY;
+        io: i;
+        field: ZNAM False
+        field: ONAM True
+        '}
+        bHomeReady:BOOL:=FALSE;
+
+
+        //Local variables
+        bInit: BOOL :=true;
+
+        //old values
+        rOldReqPosition : REAL;
+        rOldReqPitch: REAL;
+        rOldReqRoll: REAL;
+
+        bExecuteMotionX: BOOL;
+
+        rPosAvgJAck1_3: REAL;
+
+        fPosBlock: LREAL;
+        fPosClose: LREAL;
+        fPosOpen: LREAL;
+
+        stSetPositionOptions: ST_SetPositionOptions;
+        fbSetPosition_Pos: MC_SetPosition;
+        fbSetPosition_Angle: MC_SetPosition;
+
+        // For logging
+        fbLogger : FB_LogMessage := (eSubsystem:=E_SubSystem.MOTION);
+        tErrorPresent : R_TRIG;
+        tAction : R_TRIG;
+        tOverrideActivated : R_TRIG;
+
+        FFO    :    FB_FastFault :=(
+            i_DevName := '3Jack',
+            i_Desc := 'Fault occurs when center is greated than that requested',
+            i_TypeCode := 16#1010);
+
+
+        bTest: BOOL;
+
+        AptArrayStatus AT %Q* : ST_PMPS_Aperture_IO;
+        AptArrayReq AT %I* : ST_PMPS_Aperture_IO;
+
+
+        fbPower: MC_POWER;
+    END_VAR
+    VAR CONSTANT
+        //DO NOT CHANGE PLEASE
+        (*Distance X*)
+        rDistanceX: REAL := 0.24;
+        (*Distance Z*)
+        rDistanceZ: REAL := 0.88;
+
+        (* Limit to Y +/-5mm and +/- Pitch/Roll 18mrad *)
+        rLimitPositionMin: REAL := -5;
+        rLimitPositionMax: REAL := 5;
+        rLimitPitchMin: REAL := -18;
+        rLimitPitchMax: REAL :=  18;
+        rLimitRollMin: REAL  := -18;
+        rLimitRollMax: REAL  :=  18;
+    END_VAR
+    // Initialize
+    ACT_init();
+
+    // Instantiate Function block for all the blades
+    ACT_Motion();
+
+    //SET and GET the requested and Actual values
+    ACT_CalculatePositions();
+
+    // Software Limits to protect blades
+    ACT_VirtualLimitSW();
+
+    END_FUNCTION_BLOCK
+
+    ACTION ACT_CalculatePositions:
+    //check if requested center or gap has changed
+    //check that the requested values are within acceptable motion range
+    IF (rOldReqPosition <> rReqPosition) THEN
+            rOldReqPosition := rReqPosition;
+            bExecuteMotionX := TRUE;
+            fbLogger(sMsg:='Requested new Position.', eSevr:=TcEventSeverity.Verbose);
+    END_IF
+
+    IF (rOldReqPitch <> rReqPitch) THEN
+        rOldReqPitch := rReqPitch;
+        bExecuteMotionX := TRUE;
+        fbLogger(sMsg:='Requested new Pitch', eSevr:=TcEventSeverity.Verbose);
+    END_IF
+
+    IF (rOldReqRoll <> rReqRoll) THEN
+        rOldReqRoll := rReqRoll;
+        bExecuteMotionX := TRUE;
+        fbLogger(sMsg:='Requested new Roll', eSevr:=TcEventSeverity.Verbose);
+    END_IF
+
+    //Calculate requested target positions from requested gap and center
+    fPosJack1Stage	:= rReqPosition + rDistanceX / 2 * rReqRoll + rDistanceZ / 2 * rReqPitch + rEncoderOffsetJack1;
+    fPosJack2Stage	:= rReqPosition - rDistanceX / 2 * rReqRoll + rEncoderOffsetJack2;
+    fPosJack3Stage	:= rReqPosition + rDistanceX / 2 * rReqRoll - rDistanceZ / 2 * rReqPitch + rEncoderOffsetJack3;
+
+    //Calculate actual gap and center from actual stages positions
+    rPosAvgJack1_3	:= LREAL_TO_REAL( ((stJack1Axis.stAxisStatus.fActPosition - rEncoderOffsetJack1) + (stJack3Axis.stAxisStatus.fActPosition - rEncoderOffsetJack3)) / 2 );
+    rActPosition	:= LREAL_TO_REAL( ((rPosAvgJAck1_3 + (stJack2Axis.stAxisStatus.fActPosition - rEncoderOffsetJack2)) / 2 ));
+    rActPitch		:= LREAL_TO_REAL( ((stJack1Axis.stAxisStatus.fActPosition - rEncoderOffsetJack1) - (stJack3Axis.stAxisStatus.fActPosition - rEncoderOffsetJack3)) / rDistanceZ);
+    rActRoll		:= LREAL_TO_REAL( (rActPosition - (stJack2Axis.stAxisStatus.fActPosition - rEncoderOffsetJack2)) / (rDistanceX/2)); // mrad
+    END_ACTION
+
+    ACTION ACT_Init:
+    //  init the motion stages parameters
+    IF ( bInit) THEN
+        stJack1Axis.bHardwareEnable := TRUE;
+        stJack2Axis.bHardwareEnable := TRUE;
+        stJack3Axis.bHardwareEnable := TRUE;
+        stJack1Axis.bPowerSelf :=FALSE;
+        stJack2Axis.bPowerSelf :=FALSE;
+        stJack3Axis.bPowerSelf :=FALSE;
+        stJack1Axis.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        stJack2Axis.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        stJack3Axis.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        FFO.i_DevName := i_DevName;
+    END_IF
+    END_ACTION
+
+    ACTION ACT_Motion:
+    // Instantiate Function block for all the blades
+    fbJack1Stage(stMotionStage:=stJack1Axis);
+    fbJack2Stage(stMotionStage:=stJack2Axis);
+    fbJack3Stage(stMotionStage:=stJack3Axis);
+
+
+
+    // PTP Motion for each blade
+    stJack1.sName := 'Jack1';
+    stJack1.fPosition := fPosJack1Stage;
+    stJack1.fDelta := fSmallDelta;
+    stJack1.fVelocity := fMaxVelocity;
+    stJack1.fAccel := fHighAccel;
+    stJack1.fDecel := fHighAccel;
+
+    stJack2.sName := 'Jack2';
+    stJack2.fPosition := fPosJack2Stage;
+    stJack2.fDelta := fSmallDelta;
+    stJack2.fVelocity := fMaxVelocity;
+    stJack2.fAccel := fHighAccel;
+    stJack2.fDecel := fHighAccel;
+
+    stJack3.sName := 'Jack3';
+    stJack3.fPosition := fPosJack3Stage;
+    stJack3.fDelta := fSmallDelta;
+    stJack3.fVelocity := fMaxVelocity;
+    stJack3.fAccel := fHighAccel;
+    stJack3.fDecel := fHighAccel;
+
+
+    IF (bExecuteMotionX) THEN
+        fbJack1.bExecute := fbJack2.bExecute := fbJack3.bExecute := bExecuteMotionX;
+        bExecuteMotionX:= FALSE;
+    END_IF
+
+
+    fbJack1(
+        stPositionState:=stJack1,
+        bMoveOk:=bMoveOk,
+        stMotionStage:=stJack1Axis);
+
+    fbJack2(
+        stPositionState:=stJack2,
+        bMoveOk:=bMoveOk,
+        stMotionStage:=stJack2Axis);
+
+    fbJack3(
+        stPositionState:=stJack3,
+        bMoveOk:=bMoveOk,
+        stMotionStage:=stJack3Axis);
+    END_ACTION
+
+    ACTION ACT_VirtualLimitSW:
+    // Force set to false
+    stJack1Axis.bPowerSelf := stJack2Axis.bPowerSelf := stJack3Axis.bPowerSelf := FALSE;
+
+    // Set SafetyReady flags manually
+    stJack1Axis.bSafetyReady:= TRUE;
+    stJack2Axis.bSafetyReady:= TRUE;
+    stJack3Axis.bSafetyReady:= TRUE;
+
+
+    // Note: FB_MotionStage calls FB_SetEnables internally that overwrites .bAllForwardEnable/.bAllBackwardEnable flags
+
+    fbPower(
+        Axis := stJack1Axis.Axis,
+        Enable := stJack1Axis.bAllEnable,
+        Enable_Positive := stJack1Axis.bAllForwardEnable  AND rActPosition <= rLimitPositionMax AND rActPitch <= rLimitPitchMax,
+        Enable_Negative := stJack1Axis.bAllBackwardEnable AND rActPosition >= rLimitPositionMin AND rActPitch >= rLimitPitchMin,
+        Override := 100.000
+    );
+    fbPower(
+        Axis := stJack2Axis.Axis,
+        Enable := stJack2Axis.bAllEnable,
+        Enable_Positive := stJack2Axis.bAllForwardEnable  AND rActPosition <= rLimitPositionMax AND rActRoll >= rLimitRollMin,
+        Enable_Negative := stJack2Axis.bAllBackwardEnable AND rActPosition >= rLimitPositionMin AND rActRoll <= rLimitRollMax,
+        Override := 100.000
+    );
+    fbPower(
+        Axis := stJack3Axis.Axis,
+        Enable := stJack3Axis.bAllEnable,
+        Enable_Positive := stJack3Axis.bAllForwardEnable  AND rActPosition <= rLimitPositionMax AND rActPitch >= rLimitPitchMin,
+        Enable_Negative := stJack3Axis.bAllBackwardEnable AND rActPosition >= rLimitPositionMin AND rActPitch <= rLimitPitchMax,
+        Override := 100.000
+    );
+    END_ACTION
+
+
+
+
+FB_Slits
+^^^^^^^^
+
+::
+
+    FUNCTION_BLOCK FB_Slits
+    VAR_IN_OUT
+        stTopBlade: DUT_MotionStage;
+        stBottomBlade: DUT_MotionStage;
+        stLeftBlade: DUT_MotionStage; // Left Slit from upstream view
+        stRightBlade: DUT_MotionStage; // Right Slit from upstream view
+        bExecuteMotion:BOOL ;
+        io_fbFFHWO    :    FB_HardwareFFOutput;
+        fbArbiter: FB_Arbiter();
+    END_VAR
+
+    VAR_INPUT
+
+        {attribute 'pytmc' := '
+        pv: PMPS_OK;
+        io: i;
+        field: ZNAM False
+        field: ONAM True
+        '}
+        bMoveOk:BOOL;
+
+        (*Offsets*)
+        {attribute 'pytmc' := '
+        pv: Offset_Top;
+        io: io;
+        '}
+        rEncoderOffsetTop: REAL;
+        {attribute 'pytmc' := '
+        pv: ZeroOffset_Bottom;
+        io: io;
+        '}
+        rEncoderOffsetBottom: REAL;
+
+        {attribute 'pytmc' := 'pv: ZeroOffset_Left; io: io;'}
+        rEncoderOffsetLeft: REAL;
+
+        {attribute 'pytmc' := '
+        pv: ZeroOffset_Right;
+        io: io;
+        '}
+        rEncoderOffsetRight: REAL;
+        i_DevName : STRING; //device name for FFO and PMPS diagnostics
+        {attribute 'pytmc' := '
+        pv: Home;
+        io: i;
+        field: ZNAM False
+        field: ONAM True
+        '}
+        bHome:BOOL:=FALSE;
+    END_VAR
+
+    VAR
+        fbTopBlade: FB_MotionStage;
+        fbBottomBlade: FB_MotionStage;
+        fbLeftBlade: FB_MotionStage;
+        fbRightBlade: FB_MotionStage;
+        fPosTopBlade: LREAL;
+        fPosBottomBlade: LREAL;
+        fPosLeftBlade: LREAL;
+        fPosRightBlade: LREAL;
+
+        bCollisionLimitationVert: BOOL;
+        bCollisionLimitationHorz: BOOL;
+
+        (*Motion Parameters*)
+        fSmallDelta: LREAL := 0.01;
+        fBigDelta: LREAL := 20;
+        fMaxVelocity: LREAL := 0.5;
+        fHighAccel: LREAL := 0.8;
+        fLowAccel: LREAL := 0.1;
+
+        stTop: DUT_PositionState;
+        stBOTTOM: DUT_PositionState;
+        stLeft: DUT_PositionState;
+        stRight: DUT_PositionState;
+
+        {attribute 'pytmc' := 'pv: TOP'}
+        fbTop: FB_StatePTPMove;
+        {attribute 'pytmc' := 'pv: BOTTOM'}
+        fbBottom: FB_StatePTPMove;
+        {attribute 'pytmc' := 'pv: LEFT'}
+        fbLeft: FB_StatePTPMove;
+        {attribute 'pytmc' := 'pv: RIGHT'}
+        fbRight: FB_StatePTPMove;
+
+        (*EPICS pvs*)
+        {attribute 'pytmc' := '
+        pv: XWID_REQ;
+        io: io;
+        '}
+        rReqApertureSizeX : REAL;
+        {attribute 'pytmc' := '
+        pv: YWID_REQ;
+        io: io;
+        '}
+        rReqApertureSizeY : REAL;
+        {attribute 'pytmc' := '
+        pv: XCEN_REQ;
+        io: io;
+        '}
+        rReqCenterX: REAL;
+        {attribute 'pytmc' := '
+        pv: YCEN_REQ;
+        io: io;
+        '}
+        rReqCenterY: REAL;
+
+        {attribute 'pytmc' := '
+        pv: ACTUAL_XWIDTH;
+        io: io;
+        '}
+        rActApertureSizeX : REAL;
+
+        {attribute 'pytmc' := '
+        pv: ACTUAL_YWIDTH;
+        io: io;
+        '}
+        rActApertureSizeY : REAL;
+        {attribute 'pytmc' := '
+        pv: ACTUAL_XCENTER;
+        io: io;
+        '}
+        rActCenterX: REAL;
+        {attribute 'pytmc' := '
+        pv: ACTUAL_YCENTER;
+        io: io;
+        '}
+        rActCenterY: REAL;
+
+        {attribute 'pytmc' := '
+        pv: XCEN_SETZERO;
+        io: io;
+        '}
+        rSetCenterX: BOOL;
+        {attribute 'pytmc' := '
+        pv: YCEN_SETZERO;
+        io: io;
+        '}
+        rSetCenterY: BOOL;
+
+
+        {attribute 'pytmc' := '
+        pv: OPEN;
+        io: io;
+        field: ZNAM False
+        field: ONAM True
+        '}
+        bOpen: BOOL;
+
+        {attribute 'pytmc' := '
+        pv: CLOSE;
+        io: io;
+        field: ZNAM False
+        field: ONAM True
+        '}
+        bClose: BOOL;
+
+        {attribute 'pytmc' := '
+        pv: BLOCK;
+        io: io;
+        field: ZNAM False
+        field: ONAM True
+        '}
+        bBlock: BOOL;
+
+
+         {attribute 'pytmc' := '
+        pv: HOME_READY;
+        io: i;
+        field: ZNAM False
+        field: ONAM True
+        '}
+        bHomeReady:BOOL:=FALSE;
+
+
+        //Local variables
+        bInit: BOOL :=true;
+        rTrig_Block: R_TRIG;
+        rTrig_Open: R_TRIG;
+        rTrig_Close: R_TRIG;
+
+        //old values
+        rOldReqApertureSizeX : REAL;
+        rOldReqApertureSizeY : REAL;
+        rOldReqCenterX: REAL;
+        rOldReqCenterY: REAL;
+
+        bExecuteMotionX: BOOL;
+        bExecuteMotionY: BOOL;
+
+
+        fPosBlock: LREAL;
+        fPosClose: LREAL;
+        fPosOpen: LREAL;
+
+        stSetPositionOptions:ST_SetPositionOptions;
+        fbSetPosition_TOP: MC_SetPosition;
+        fbSetPosition_Bottom: MC_SetPosition;
+        fbSetPosition_Left: MC_SetPosition;
+        fbSetPosition_Right: MC_SetPosition;
+
+        // For logging
+        fbLogger : FB_LogMessage := (eSubsystem:=E_SubSystem.MOTION);
+        tErrorPresent : R_TRIG;
+        tAction : R_TRIG;
+        tOverrideActivated : R_TRIG;
+
+        FFO    :    FB_FastFault :=(
+            i_DevName := 'Slits',
+            i_Desc := 'Fault occurs when center is greated than that requested',
+            i_TypeCode := 16#1010);
+
+
+        bTest: BOOL;
+
+        AptArrayStatus AT %Q* : ST_PMPS_Aperture_IO;
+        AptArrayReq AT %I* : ST_PMPS_Aperture_IO;
+
+        fbPower: MC_Power;
+    END_VAR
+    // Initialize
+    ACT_init();
+    // Instantiate Function block for all the blades
+    ACT_Motion();
+    //SET and GET the requested and Actual values
+    ACT_CalculatePositions();
+
+    // Software Limits to protect blades
+    ACT_VirtualLimitSW();
+
+    END_FUNCTION_BLOCK
+
+    ACTION ACT_BLOCK:
+    rTrig_Block (CLK:= bBlock);
+    rTrig_Open (CLK:= bOpen);
+    rTrig_Close (CLK:= bClose);
+
+    if (rTrig_Block.Q) THEN
+        //BLOCK
+
+        bBlock := false;
+    END_IF
+
+    if (rTrig_Open.Q) THEN
+
+
+        bOpen := false;
+    END_IF
+
+    if (rTrig_Close.Q) THEN
+
+
+        bClose := false;
+    END_IF
+    END_ACTION
+
+    ACTION ACT_CalculatePositions:
+    //check if requested center or gap has changed
+    //check that the requested values are within acceptable motion range
+    IF (rOldReqApertureSizeX <> rReqApertureSizeX) THEN
+            rOldReqApertureSizeX := rReqApertureSizeX;
+            bExecuteMotionX := TRUE;
+            fbLogger(sMsg:='Requested new X gap.', eSevr:=TcEventSeverity.Verbose);
+    END_IF
+
+    IF (rOldReqCenterX <> rReqCenterX) THEN
+        rOldReqCenterX := rReqCenterX;
+        bExecuteMotionX := TRUE;
+        fbLogger(sMsg:='Requested new X center', eSevr:=TcEventSeverity.Verbose);
+       // ELSE
+          //  rReqCenterX := rActCenterX;
+    END_IF
+
+    IF (rOldReqApertureSizeY <> rReqApertureSizeY) THEN
+            rOldReqApertureSizeY := rReqApertureSizeY;
+            bExecuteMotionY := TRUE;
+            fbLogger(sMsg:='Requested new Y gap.', eSevr:=TcEventSeverity.Verbose);
+
+    END_IF
+
+    IF (rOldReqCenterY <> rReqCenterY) THEN
+        rOldReqCenterY := rReqCenterY;
+        bExecuteMotionY := TRUE;
+        fbLogger(sMsg:='Requested new Y center.', eSevr:=TcEventSeverity.Verbose);
+       // ELSE
+          //  rReqCenterY := rActCenterY;
+    END_IF
+
+
+    //Calculate requested target positions from requested gap and center
+    fPosTopBlade := (rReqApertureSizeY/2) + (rReqCenterY + rEncoderOffsetTop) ;
+    fPosBottomBlade := (-1*rReqApertureSizeY/2) + (rReqCenterY+rEncoderOffsetBottom);
+
+    fPosLeftBlade := (rReqApertureSizeX/2) + (rReqCenterX + rEncoderOffsetLeft);
+    fPosRightBlade := (-1*rReqApertureSizeX/2) + (rReqCenterX + rEncoderOffsetRight);
+
+
+    //Calculate actual gap and center from actual stages positions
+    rActApertureSizeX := LREAL_TO_REAL((stLeftBlade.stAxisStatus.fActPosition - rEncoderOffsetLeft) - (stRightBlade.stAxisStatus.fActPosition- rEncoderOffsetRight));
+
+    rActApertureSizeY := LREAL_TO_REAL((stTopBlade.stAxisStatus.fActPosition - rEncoderOffsetTop) - (stBottomBlade.stAxisStatus.fActPosition - rEncoderOffsetBottom));
+
+    rActCenterX := LREAL_TO_REAL((((stLeftBlade.stAxisStatus.fActPosition - rEncoderOffsetLeft)  + (stRightBlade.stAxisStatus.fActPosition - rEncoderOffsetRight ))/2));
+
+    rActCenterY := LREAL_TO_REAL((((stTopBlade.stAxisStatus.fActPosition - rEncoderOffsetTop) + (stBottomBlade.stAxisStatus.fActPosition - rEncoderOffsetBottom))/2));
+
+
+    // Prevent collision
+    bCollisionLimitationHorz	:= (rActApertureSizeX > -0.1);
+    bCollisionLimitationVert	:= (rActApertureSizeY > -0.1);
+    END_ACTION
+
+    ACTION ACT_Init:
+    //  init the motion stages parameters
+    IF ( bInit) THEN
+        stTopBlade.bHardwareEnable := TRUE;
+        stBottomBlade.bHardwareEnable := TRUE;
+        stLeftBlade.bHardwareEnable := TRUE;
+        stRightBlade.bHardwareEnable := TRUE;
+        stTopBlade.bPowerSelf :=FALSE;
+        stBottomBlade.bPowerSelf :=FALSE;
+        stLeftBlade.bPowerSelf :=FALSE;
+        stRightBlade.bPowerSelf :=FALSE;
+        stTopBlade.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        stBottomBlade.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        stLeftBlade.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        stRightBlade.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        FFO.i_DevName := i_DevName;
+    END_IF
+    END_ACTION
+
+    ACTION ACT_Motion:
+    // Instantiate Function block for all the blades
+    fbTopBlade(stMotionStage:=stTopBlade);
+    fbBottomBlade(stMotionStage:=stBottomBlade);
+    fbLeftBlade(stMotionStage:=stLeftBlade);
+    fbRightBlade(stMotionStage:=stRightBlade);
+
+
+
+    // PTP Motion for each blade
+    stTop.sName := 'Top';
+    stTop.fPosition := fPosTopBlade;
+    stTop.fDelta := fSmallDelta;
+    stTop.fVelocity := fMaxVelocity;
+    stTop.fAccel := fHighAccel;
+    stTop.fDecel := fHighAccel;
+
+    stBOTTOM.sName := 'Bottom';
+    stBOTTOM.fPosition := fPosBottomBlade;
+    stBOTTOM.fDelta := fSmallDelta;
+    stBOTTOM.fVelocity := fMaxVelocity;
+    stBOTTOM.fAccel := fHighAccel;
+    stBOTTOM.fDecel := fHighAccel;
+
+    stLeft.sName := 'Left';
+    stLeft.fPosition := fPosLeftBlade;
+    stLeft.fDelta := fSmallDelta;
+    stLeft.fVelocity := fMaxVelocity;
+    stLeft.fAccel := fHighAccel;
+    stLeft.fDecel := fHighAccel;
+
+    stRight.sName := 'Right';
+    stRight.fPosition := fPosRightBlade;
+    stRight.fDelta := fSmallDelta;
+    stRight.fVelocity := fMaxVelocity;
+    stRight.fAccel := fHighAccel;
+    stRight.fDecel := fHighAccel;
+
+    IF (bExecuteMotionY) THEN
+        fbTop.bExecute := fbBottom.bExecute := bExecuteMotionY;
+        bExecuteMotionY:= FALSE;
+    END_IF
+
+    IF (bExecuteMotionX) THEN
+        fbLeft.bExecute := fbRight.bExecute := bExecuteMotionX;
+        bExecuteMotionX:= FALSE;
+    END_IF
+
+
+    fbTop(
+        stPositionState:=stTop,
+        bMoveOk:=bMoveOk,
+        stMotionStage:=stTopBlade);
+
+    fbBottom(
+        stPositionState:=stBOTTOM,
+        bMoveOk:=bMoveOk,
+        stMotionStage:=stBottomBlade);
+
+    fbLeft(
+        stPositionState:=stLeft,
+        bMoveOk:=bMoveOk,
+        stMotionStage:=stLeftBlade);
+
+    fbRight(
+        stPositionState:=stRight,
+        bMoveOk:=bMoveOk,
+        stMotionStage:=stRightBlade);
+    END_ACTION
+
+    ACTION ACT_VirtualLimitSW:
+    // Force set to false
+    stLeftBlade.bPowerSelf := stRightBlade.bPowerSelf := stTopBlade.bPowerSelf := stBottomBlade.bPowerSelf := FALSE;
+
+    // Set SafetyReady flags manually
+    stTopBlade.bSafetyReady:= TRUE;
+    stBottomBlade.bSafetyReady:= TRUE;
+    stLeftBlade.bSafetyReady:= TRUE;
+    stRightBlade.bSafetyReady:= TRUE;
+
+
+    // Note: FB_MotionStage calls FB_SetEnables internally that overwrites .bAllForwardEnable/.bAllBackwardEnable flags
+
+    fbPower(
+        Axis := stTopBlade.Axis,
+        Enable := stTopBlade.bAllEnable,
+        Enable_Positive := stTopBlade.bAllForwardEnable,
+        Enable_Negative := stTopBlade.bAllBackwardEnable AND bCollisionLimitationVert,
+        Override := 100.000
+    );
+    fbPower(
+        Axis := stBottomBlade.Axis,
+        Enable := stBottomBlade.bAllEnable,
+        Enable_Positive := stBottomBlade.bAllForwardEnable AND bCollisionLimitationVert,
+        Enable_Negative := stBottomBlade.bAllBackwardEnable,
+        Override := 100.000
+    );
+    fbPower(
+        Axis := stLeftBlade.Axis,
+        Enable := stLeftBlade.bAllEnable,
+        Enable_Positive := stLeftBlade.bAllForwardEnable,
+        Enable_Negative := stLeftBlade.bAllBackwardEnable AND bCollisionLimitationHorz,
+        Override := 100.000
+    );
+    fbPower(
+        Axis := stRightBlade.Axis,
+        Enable := stRightBlade.bAllEnable,
+        Enable_Positive := stRightBlade.bAllForwardEnable AND bCollisionLimitationHorz,
+        Enable_Negative := stRightBlade.bAllBackwardEnable,
+        Override := 100.000
+    );
+    END_ACTION
+
+
+
+
+PRG_1_PlcTask
+^^^^^^^^^^^^^
+
+::
+
+    PROGRAM PRG_1_PlcTask
+    VAR
+    END_VAR
+    PRG_2_PMPS();
+    PRG_3_LOG();
+    PRG_SSL();
+    PRG_Diffractometer();
+    PRG_LAS();
+    PRG_SDS();
+    //PRG_RotDet();
+    //PRG_Questar();
+    PRG_SpetrometerArm();
+
+    END_PROGRAM
+
+
+Related:
+    * `PRG_2_PMPS`_
+    * `PRG_3_LOG`_
+    * `PRG_Diffractometer`_
+    * `PRG_LAS`_
+    * `PRG_Questar`_
+    * `PRG_RotDet`_
+    * `PRG_SDS`_
+    * `PRG_SSL`_
+    * `PRG_SpetrometerArm`_
+
+
+PRG_2_PMPS
+^^^^^^^^^^
+
+::
+
+    PROGRAM PRG_2_PMPS
+    VAR
+        fbArbiterIO: FB_SubSysToArbiter_IO;
+    END_VAR
+    GVL_PMPS.fbFastFaultOutput1.Execute();
+    GVL_PMPS.fbFastFaultOutput2.Execute();
+    fbArbiterIO(
+        Arbiter:=GVL_PMPS.fbArbiter,
+        fbFFHWO:=GVL_PMPS.fbFastFaultOutput1);
+
+    END_PROGRAM
+
+
+Related:
+    * `GVL_PMPS`_
+
+
+PRG_2Theta
+^^^^^^^^^^
+
+::
+
+    PROGRAM PRG_2Theta
+    VAR
+        bInit: BOOL := TRUE;
+        fbPower_AxisM2:  MC_Power;
+        fb2ThetaStepper : FB_MotionStage;
+        bMoveOk: BOOL;
+
+    END_VAR
+
+    VAR CONSTANT
+        fThresholdPS1: REAL := 0.15;
+        fThresholdPS2: REAL := 0.15;
+        fThresholdPS3: REAL := 0.15;
+    END_VAR
+    IF binit THEN
+        bInit := FALSE;
+
+        // Stepper
+        Main.M2.nBrakeMode := ENUM_StageBrakeMode.IF_MOVING;
+        Main.M2.bHardwareEnable := TRUE;
+        Main.M2.bPowerSelf := FALSE;
+
+        Main.M2.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+    END_IF;
+
+    ACT_Stepper();
+
+    END_PROGRAM
+
+    ACTION ACT_Stepper:
+    fb2ThetaStepper(stMotionStage:=Main.M2);
+
+    Main.M2.bPowerSelf := FALSE;
+
+    Main.M2.bAllEnable := 		Main.M2.bEnable
+                                AND GVL_EPS.bESTOP // ESTOP
+                                AND	GVL_Sensor.stPS1.fValue > fThresholdPS1
+                                AND GVL_Sensor.stPS2.fValue > fThresholdPS2
+                                AND GVL_Sensor.stPS3.fValue > fThresholdPS3 // Compressed-air pressure
+                                AND GVL_EPS.bOpenSV1
+                                AND GVL_EPS.bOpenSV2;
+    Main.M2.bAllForwardEnable  := Main.M2.bLimitForwardEnable  AND GVL_EPS.bESTOP;
+    Main.M2.bAllBackwardEnable := Main.M2.bLimitBackwardEnable AND GVL_EPS.bESTOP;
+
+    fbPower_AxisM2(
+        Axis:= Main.M2.Axis,
+        Enable := Main.M2.bAllEnable,
+        Enable_Positive:= Main.M2.bAllForwardEnable,
+        Enable_Negative:= Main.M2.bAllBackwardEnable,
+        Override:= 100
+    );
+    END_ACTION
+
+
+Related:
+    * `GVL_EPS`_
+    * `GVL_Sensor`_
+    * `Main`_
+
+
+PRG_3_LOG
+^^^^^^^^^
+
+::
+
+    PROGRAM PRG_3_LOG
+    VAR
+          fbLogHandler: FB_LogHandler;
+    END_VAR
+    fbLogHandler();
+
+    END_PROGRAM
+
+
+
+
+PRG_Cryo
+^^^^^^^^
+
+::
+
+    PROGRAM PRG_Cryo
+    VAR
+        fb_Cryo_ROT : FB_MotionStage;
+        fb_Cryo_X : FB_MotionStage;
+        fb_Cryo_Y : FB_MotionStage;
+        fb_Cryo_Z : FB_MotionStage;
+        bInit : BOOl := TRUE;
+    END_VAR
+    IF ( bInit) THEN
+        bInit := FALSE;
+       // Main.M13.bHardwareEnable := TRUE;
+        //Main.M13.bPowerSelf := TRUE;
+       // Main.M13.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+       // Main.M13.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+
+
+    END_IF
+    //EPS??
+
+
+    //fb_Cryo_ROT(stMotionStage:=Main.M13);
+    //fb_Cryo_X(stMotionStage:=Main.M14);
+    //fb_Cryo_Y(stMotionStage:=Main.M15);
+    //fb_Cryo_Z(stMotionStage:=Main.M16);
+
+    END_PROGRAM
+
+
+Related:
+    * `Main`_
+
+
+PRG_DET_ARM
+^^^^^^^^^^^
+
+::
+
+    PROGRAM PRG_DET_ARM
+    VAR
+        bInit: BOOL := TRUE;
+        bExecuteCouple: BOOL := FALSE;
+        bExecuteDecouple: BOOL := FALSE;
+
+        fbMotionYF1: FB_MotionStage;
+        fbMotionYF2: FB_MotionStage;
+        fbMotionZF: FB_MotionStage;
+        fbAutoCoupling: FB_GantryAutoCoupling;
+
+        {attribute 'TcLinkTo' := '	.Count := TIIB[BOX-06 ENC_ZDC_YF1 (EL5042)]^FB Inputs Channel 2^Position'}
+        stRenishawAbsEncMaster: ST_RenishawAbsEnc;
+        {attribute 'TcLinkTo' := '	.Count := TIIB[BOX-07 ENC_YF2_ZF (EL5042)]^FB Inputs Channel 1^Position'}
+        stRenishawAbsEncSlave: ST_RenishawAbsEnc;
+
+        (*
+        fbPower_AxisM25: MC_POWER;
+        fbPower_AxisM26: MC_POWER;
+        fbPower_AxisM27: MC_POWER;
+
+        tonBrakeRlease_M25, tonBrakeRlease_M26, tonBrakeRlease_M27: TON;
+        // *)
+    END_VAR
+    IF bInit THEN
+        bInit := FALSE;
+        bExecuteCouple := TRUE;
+
+        Main.M25.nBrakeMode := ENUM_StageBrakeMode.IF_MOVING;
+        Main.M25.bHardwareEnable := TRUE;
+        Main.M25.bPowerSelf := TRUE;
+        Main.M26.nBrakeMode := ENUM_StageBrakeMode.IF_MOVING;
+        Main.M26.bHardwareEnable := TRUE;
+        Main.M26.bPowerSelf := TRUE;
+        Main.M27.nBrakeMode := ENUM_StageBrakeMode.IF_ENABLED;
+        Main.M27.bHardwareEnable := TRUE;
+        Main.M27.bPowerSelf := TRUE;
+
+
+
+        Main.M25.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+        Main.M26.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+        Main.M27.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+    END_IF
+
+    stRenishawAbsEncMaster.Ref := 15370335;
+    stRenishawAbsEncSlave.Ref := 15347257;
+
+    // AutoCoupling
+    fbAutoCoupling(	nGantryTol 			:= 200000, // 50nm/count
+                    Master				:= Main.M25,
+                    MasterEnc			:= stRenishawAbsEncMaster,
+                    Slave				:= Main.M26,
+                    SlaveEnc			:= stRenishawAbsEncSlave,
+                    bExecuteCouple 		:= bExecuteCouple,
+                    bExecuteDecouple 	:= bExecuteDecouple,
+    );
+
+    Main.M25.bAllEnable := Main.M25.bEnable AND GVL_EPS.bESTOP;
+    Main.M26.bAllEnable := Main.M26.bEnable AND GVL_EPS.bESTOP;
+    Main.M27.bAllEnable := Main.M27.bEnable AND GVL_EPS.bESTOP;
+
+    // Call Motion FB instance
+    fbMotionYF1(stMotionStage:=Main.M25);
+    fbMotionYF2(stMotionStage:=Main.M26);
+    fbMotionZF(stMotionStage:=Main.M27);
+
+    (* For test
+    // Release brake if axis is enabled.
+    tonBrakeRlease_M25(
+        IN:=(GVL_Main.M25.bEnable OR GVL_Main.M25.bAllEnable) AND NOT GVL_Main.M25.Axis.Status.DriveDeviceError,
+        PT:=T#1s,
+        Q=>GVL_Main.M25.bBrakeRelease
+    );
+    tonBrakeRlease_M26(
+        IN:=(GVL_Main.M26.bEnable OR GVL_Main.M26.bAllEnable) AND NOT GVL_Main.M26.Axis.Status.DriveDeviceError,
+        PT:=T#1s,
+        Q=>GVL_Main.M26.bBrakeRelease
+    );
+    tonBrakeRlease_M27(
+        IN:=(GVL_Main.M27.bEnable OR GVL_Main.M27.bAllEnable) AND NOT GVL_Main.M27.Axis.Status.DriveDeviceError,
+        PT:=T#1s,
+        Q=>GVL_Main.M27.bBrakeRelease
+    );
+    fbPower_AxisM25(
+        Axis := GVL_Main.M25.Axis,
+        Enable := GVL_Main.M25.bEnable AND GVL_Main.bESTOP,
+        Enable_Positive := GVL_Main.M25.bLimitForwardEnable AND PLimFwd,
+        Enable_Negative := GVL_Main.M25.bLimitBackwardEnable AND PLimBwd,
+        Override := 100.000,
+    );
+    fbPower_AxisM26(
+        Axis := GVL_Main.M26.Axis,
+        Enable := GVL_Main.M26.bEnable AND GVL_Main.bESTOP,
+        Enable_Positive := GVL_Main.M26.bLimitForwardEnable AND SLimFwd,
+        Enable_Negative := GVL_Main.M26.bLimitBackwardEnable AND SLimBwd,
+        Override := 100.000,
+    );
+    fbPower_AxisM27(
+        Axis := GVL_Main.M27.Axis,
+        Enable := GVL_Main.M27.bEnable AND GVL_Main.bESTOP,
+        Enable_Positive := GVL_Main.M27.bLimitForwardEnable,
+        Enable_Negative := GVL_Main.M27.bLimitBackwardEnable,
+        Override := 100.000,
+    );
+
+
+    // *)
+
+    END_PROGRAM
+
+
+Related:
+    * `GVL_EPS`_
+    * `Main`_
+
+
+PRG_DET_CHAMBER
+^^^^^^^^^^^^^^^
+
+::
+
+    PROGRAM PRG_DET_CHAMBER
+    VAR
+        bInit: BOOL := TRUE;
+        fbMotionXDC: FB_MotionStage;
+        fbMotionRyDC: FB_MotionStage;
+        fbMotionZDC: FB_MotionStage;
+    END_VAR
+    //Lock stages until they are tested
+    Main.M22.nEnableMode := ENUM_StageEnableMode.NEVER ;
+    Main.M23.nEnableMode := ENUM_StageEnableMode.NEVER ;
+    Main.M24.nEnableMode := ENUM_StageEnableMode.NEVER ;
+
+
+
+    // Det. Chmber
+    IF bInit THEN
+        bInit :=FALSE;
+        Main.M22.bHardwareEnable:= TRUE;
+        Main.M22.bPowerSelf:= TRUE;
+        Main.M22.nBrakeMode:= ENUM_StageBrakeMode.NO_BRAKE;
+        Main.M23.bHardwareEnable:= TRUE;
+        Main.M23.bPowerSelf:= TRUE;
+        Main.M23.nBrakeMode:= ENUM_StageBrakeMode.NO_BRAKE;
+        Main.M24.bHardwareEnable:= TRUE;
+        Main.M24.bPowerSelf:= TRUE;
+        Main.M24.nBrakeMode:= ENUM_StageBrakeMode.NO_BRAKE;
+        Main.M24.nEnableMode := ENUM_StageEnableMode.ALWAYS ; // This axis should always be enables due to belows
+    END_IF;
+
+
+    fbMotionXDC(stMotionStage:= Main.M22);
+    fbMotionRyDC(stMotionStage:= Main.M23);
+    fbMotionZDC(stMotionStage:= Main.M24);
+
+    END_PROGRAM
+
+
+Related:
+    * `Main`_
+
+
+PRG_DET_FRAME
+^^^^^^^^^^^^^
+
+::
+
+    PROGRAM PRG_DET_FRAME
+    VAR
+        bInit: BOOL := TRUE;
+        {attribute 'pytmc' := 'pv: QRIX:SA:bError'}
+        bError: BOOL := FALSE;
+        bBusy: BOOL;
+        {attribute 'pytmc' := 'pv: QRIX:SA:bResetError'}
+        bResetError: BOOL := FALSE;
+        bEnableMotion : BOOL;
+        bEnableMotion_M15 : BOOL;
+        bEnableMotion_M16 : BOOL;
+        bEnableMotion_M17 : BOOL;
+        bEnableSetGaugeValue: BOOL;
+        bEnableMoveRelative: BOOL;
+        {attribute 'pytmc' := 'pv: QRIX:SA:EnableJackOff'}
+        bEnableJackOff: BOOL;
+        {attribute 'pytmc' := 'pv: QRIX:SA:EnableLevitation'}
+        bEnableLevitation: BOOL;
+        {attribute 'pytmc' := 'pv: QRIX:SA:EnableLanding'}
+        bEnableLanding: BOOL;
+        {attribute 'pytmc' := 'pv: QRIX:DF:EnableAdjustingRoll'}
+        bEnableAdjustingRoll: BOOL;
+        {attribute 'pytmc' := 'pv: QRIX:DF:EnableAdjustingPitch'}
+        bEnableAdjustingPitch: BOOL;
+        {attribute 'pytmc' := 'pv: QRIX:DF:EnableAdjustingHeight'}
+        bEnableAdjustingHeight: BOOL;
+
+
+        bDone_M15, bDone_M16, bDone_M17: BOOL;
+
+        tonWaitToStabilize: TON;
+
+        tonSV2Open: TON;
+        tonSV1Close: TON;
+
+        tonDelayTrig: TON;
+
+        iStepJackOff: INT := 1;
+        iStepAdjustingRoll : INT := 1;
+        iStepSetGaugeValue : INT := 1;
+        iStepMoveRelative : INT := 1;
+        iStepAdjustingPitch : INT := 1;
+        iStepAdjustingHeight : INT := 1;
+
+        trigDone: F_TRIG;
+
+        fDistanceX: LREAL := 2.114; // in m
+        fDistanceZ: LREAL := 2.142; // in m
+
+        fbPower_AxisM15: MC_Power;
+        fbPower_AxisM16: MC_Power;
+        fbPower_AxisM17: MC_Power;
+
+        fbSetPosition_M15: MC_SetPosition;
+        fbSetPosition_M16: MC_SetPosition;
+        fbSetPosition_M17: MC_SetPosition;
+
+        fTargetPos_M15, fTargetPos_M16, fTargetPos_M17: LREAL;
+
+        fbMoveRelative_M15: MC_MoveRelative;
+        fbMoveRelative_M16: MC_MoveRelative;
+        fbMoveRelative_M17: MC_MoveRelative;
+    END_VAR
+    IF bInit THEN
+        bInit := FALSE;
+
+
+        Main.M15.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        Main.M15.bHardwareEnable := TRUE;
+        Main.M15.bPowerSelf := TRUE;
+        Main.M16.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        Main.M16.bHardwareEnable := TRUE;
+        Main.M16.bPowerSelf := TRUE;
+        Main.M17.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        Main.M17.bHardwareEnable := TRUE;
+        Main.M17.bPowerSelf := TRUE;
+
+
+        //
+        Main.M15.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+        Main.M16.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+        Main.M17.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+
+        // Read linear gauge value
+        bEnableSetGaugeValue := TRUE;
+    END_IF
+
+
+    // Read axis status
+    Main.M15.Axis.ReadStatus();
+    Main.M16.Axis.ReadStatus();
+    Main.M17.Axis.ReadStatus();
+
+    fbPower_AxisM15(
+        Enable :=Main.M15.bEnable,
+        Enable_Positive := Main.M15.bLimitForwardEnable,
+        Enable_Negative := Main.M15.bLimitBackwardEnable,
+        Override := 100.000,
+        Axis := Main.M15.Axis
+    );
+
+    fbPower_AxisM16(
+        Enable := Main.M16.bEnable,
+        Enable_Positive := Main.M16.bLimitForwardEnable,
+        Enable_Negative := Main.M16.bLimitBackwardEnable,
+        Override := 100.000,
+        Axis := Main.M16.Axis
+    );
+
+    fbPower_AxisM17(
+        Enable := Main.M17.bEnable,
+        Enable_Positive := Main.M17.bLimitForwardEnable,
+        Enable_Negative := Main.M17.bLimitBackwardEnable,
+        Override := 100.000,
+        Axis := Main.M17.Axis
+    );
+
+    GVL_Sensor.bFloating := GVL_Sensor.stPS1.fValue > 0.3 AND GVL_Sensor.stPS2.fValue > 0.18 AND GVL_Sensor.stPS3.fValue > 0.15;
+
+    ACT_1_JACK_OFF();
+    ACT_2_Levitation();
+    ACT_3_Landing();
+    ACT_4_AdjustingRoll();
+    ACT_5_AdjustingPitch();
+    ACT_6_AdjustingHeight();
+    ACT_INIT();
+    ACT_SetGaugeValue();
+    ACT_MoveRelative();
+    ACT_ResetError();
+
+    END_PROGRAM
+
+    ACTION ACT_1_JACK_OFF:
+    CASE iStepJackOff OF
+        1:
+            IF bEnableJackOff AND NOT(bBusy AND bError) THEN
+                // Step1 read and apply gauge value
+                bEnableSetGaugeValue := TRUE;
+                iStepJackOff := 2;
+                bDoneJackOff := FALSE;
+                Main.M15.bEnable := TRUE;
+                Main.M16.bEnable := TRUE;
+                Main.M17.bEnable := TRUE;
+            ELSE
+                bEnableJackOff := FALSE;
+            END_IF;
+        2:
+            // Step2 wait until done
+            IF NOT bEnableSetGaugeValue THEN
+                // read latest status
+                Main.M15.Axis.ReadStatus();
+                Main.M16.Axis.ReadStatus();
+                Main.M17.Axis.ReadStatus();
+                IF abs(Main.M15.Axis.NcToPlc.ActPos) < 0.1 AND abs(Main.M16.Axis.NcToPlc.ActPos) < 0.1 AND abs(Main.M17.Axis.NcToPlc.ActPos) < 0.1 THEN
+                    // We dont need to move any more....
+                    iStepJackOFF := 5;
+                ELSIF max(Main.M15.Axis.NcToPlc.ActPos, Main.M16.Axis.NcToPlc.ActPos, Main.M17.Axis.NcToPlc.ActPos)
+                    - min(Main.M15.Axis.NcToPlc.ActPos, Main.M16.Axis.NcToPlc.ActPos, Main.M17.Axis.NcToPlc.ActPos) > 10.0 THEN
+                    // Some axis may be step-out...
+                    iStepJackOFF := -1;
+                ELSE
+                    iStepJackOff := 3;
+                END_IF;
+            END_IF;
+        3:
+            // Step3 calcurate motion distance
+            fTargetPos_M15 := -1 * Main.M15.Axis.NcToPlc.ActPos;
+            fTargetPos_M16 := -1 * Main.M16.Axis.NcToPlc.ActPos;
+            fTargetPos_M17 := -1 * Main.M17.Axis.NcToPlc.ActPos;
+
+            // Enable Relative Motion Act
+            bEnableMoveRelative := TRUE;
+
+            iStepJackOff := 4;
+        4:
+            // Wait until Done.
+            IF NOT bEnableMoveRelative THEN
+                // read and apply gauge value
+                bEnableSetGaugeValue := TRUE;
+                iStepJackOff := 2;
+            END_IF;
+        5:
+            // End
+            bEnableJackOff:= FALSE;
+            bBusy := FALSE;
+            iStepJackOff:=1;
+            bDoneJackOff := TRUE;
+        -1:
+            // Error
+            bError:= TRUE;
+            bEnableJackOff:= FALSE;
+            bBusy := FALSE;
+            iStepJackOff:=1;
+            bDoneJackOff := FALSE;
+    END_CASE;
+    END_ACTION
+
+    ACTION ACT_2_Levitation:
+    IF bEnableLevitation THEN
+        IF GVL_Sensor.stPS1.fValue > 0.15 AND GVL_Sensor.stPS2.fValue > 0.15 THEN
+            GVL_EPS.bOpenSV1 := TRUE;
+        END_IF;
+        bDoneLevitation := FALSE;
+    END_IF;
+
+
+    // SV2 will open after 3 secounds from SV1 opened...
+    tonSV2Open(
+        IN := bEnableLevitation AND GVL_EPS.bOpenSV1,
+        PT := T#3s
+    );
+
+    IF tonSV2Open.Q THEN
+        GVL_EPS.bOpenSV2 := TRUE;
+        bEnableLevitation := FALSE;
+        bDoneLevitation := TRUE;
+    END_IF;
+    END_ACTION
+
+    ACTION ACT_3_Landing:
+    IF bEnableLanding AND NOT (bBusy OR bError) THEN
+        GVL_EPS.bOpenSV2 := FALSE;
+        bBusy:= TRUE;
+        bDoneLanding := FALSE;
+    END_IF;
+
+    tonSV1Close(
+        IN := bEnableLanding AND NOT GVL_EPS.bOpenSV2,
+        PT := T#3s
+    );
+
+    IF tonSV1Close.Q THEN
+        GVL_EPS.bOpenSV1 := FALSE;
+        bEnableLanding := FALSE;
+        bBusy:= FALSE;
+        bDoneLanding := TRUE;
+    END_IF;
+    END_ACTION
+
+    ACTION ACT_4_AdjustingRoll:
+    CASE iStepAdjustingRoll OF
+        1:
+            IF bEnableAdjustingRoll AND NOT(bBusy AND bError) THEN
+                // Step1 read and apply gauge value
+                bEnableSetGaugeValue := TRUE;
+                iStepAdjustingRoll := 2;
+                bDoneAdjustingRoll := FALSE;
+            ELSE
+                bEnableAdjustingRoll := FALSE;
+            END_IF;
+        2:
+            // Step2 wait until done
+            IF NOT bEnableSetGaugeValue THEN
+                iStepAdjustingRoll := 3;
+            END_IF;
+        3:
+            // Step3 calcurate motion distance
+            // read latest status
+            Main.M15.Axis.ReadStatus();
+            Main.M16.Axis.ReadStatus();
+            Main.M17.Axis.ReadStatus();
+
+            IF GVL_Sensor.stFrameR.fValue > 0 THEN
+                // Need to up YDF1
+                fTargetPos_M15 := abs(REAL_TO_LREAL(GVL_Sensor.stFrameR.fValue)) * fDistanceX / 2 * 0.9;
+                fTargetPos_M16 := 0;
+                fTargetPos_M17 := 0;
+                // Enable Relative Motion Act
+                bEnableMoveRelative := TRUE;
+                iStepAdjustingRoll := 4;
+            ELSE
+                // Need to up YDF2
+                fTargetPos_M15 := 0;
+                fTargetPos_M16 := abs(REAL_TO_LREAL(GVL_Sensor.stFrameR.fValue)) * fDistanceX / 2 * 0.9;
+                fTargetPos_M17 := 0;
+                // Enable Relative Motion Act
+                bEnableMoveRelative := TRUE;
+                iStepAdjustingRoll := 4;
+            END_IF;
+        4:
+            // Wait until Done. and wait tilt sensor stabilization.
+            tonWaitToStabilize(IN:=NOT bEnableMoveRelative, PT:=T#5s);
+            IF tonWaitToStabilize.Q THEN
+                iStepAdjustingRoll := 5;
+                tonWaitToStabilize(IN:=FALSE);
+            END_IF;
+        5:
+            IF abs(GVL_Sensor.stFrameR.fValue) > 0.05 THEN
+                // Iterartion
+                bEnableSetGaugeValue := TRUE;
+                iStepAdjustingRoll := 2;
+            ELSE
+                // End
+                bEnableAdjustingRoll:= FALSE;
+                iStepAdjustingRoll:=1;
+                bDoneAdjustingRoll := TRUE;
+            END_IF;
+        -1:
+            // Error
+            bError:= TRUE;
+            bEnableAdjustingRoll:= FALSE;
+            iStepAdjustingRoll:=1;
+            bDoneAdjustingRoll := FALSE;
+    END_CASE;
+    END_ACTION
+
+    ACTION ACT_5_AdjustingPitch:
+    CASE iStepAdjustingPitch OF
+        1:
+            IF bEnableAdjustingPitch AND NOT(bBusy AND bError) THEN
+                // Step1 read and apply gauge value
+                bEnableSetGaugeValue := TRUE;
+                iStepAdjustingPitch := 2;
+                bDoneAdjustingPitch := FALSE;
+            ELSE
+                bEnableAdjustingPitch := FALSE;
+            END_IF;
+        2:
+            // Step2 wait until done
+            IF NOT bEnableSetGaugeValue THEN
+                iStepAdjustingPitch := 3;
+            END_IF;
+        3:
+            // Step3 calcurate motion distance
+            // read latest status
+            Main.M15.Axis.ReadStatus();
+            Main.M16.Axis.ReadStatus();
+            Main.M17.Axis.ReadStatus();
+
+            IF GVL_Sensor.stFrameP.fValue > 0 THEN
+                // Need to up YDF1 AND 2
+                fTargetPos_M15 := abs(REAL_TO_LREAL(GVL_Sensor.stFrameP.fValue)) * fDistanceZ / 2 * 0.9;
+                fTargetPos_M16 := abs(REAL_TO_LREAL(GVL_Sensor.stFrameP.fValue)) * fDistanceZ / 2 * 0.9;;
+                fTargetPos_M17 := 0;
+                // Enable Relative Motion Act
+                bEnableMoveRelative := TRUE;
+                iStepAdjustingPitch := 4;
+            ELSE
+                // Need to up YDF3
+                fTargetPos_M15 := 0;
+                fTargetPos_M16 := 0;
+                fTargetPos_M17 := abs(REAL_TO_LREAL(GVL_Sensor.stFrameP.fValue)) * fDistanceZ / 2 * 0.9;
+                // Enable Relative Motion Act
+                bEnableMoveRelative := TRUE;
+                iStepAdjustingPitch := 4;
+            END_IF;
+        4:
+            // Wait until Done. and wait tilt sensor stabilization.
+            tonWaitToStabilize(IN:=NOT bEnableMoveRelative, PT:=T#5s);
+            IF tonWaitToStabilize.Q THEN
+                iStepAdjustingPitch := 5;
+            END_IF;
+        5:
+            IF abs(GVL_Sensor.stFrameP.fValue) > 0.05 THEN
+                // Iteration
+                bEnableSetGaugeValue := TRUE;
+                iStepAdjustingPitch := 2;
+            ELSE
+                // End
+                bEnableAdjustingPitch:= FALSE;
+                iStepAdjustingPitch:=1;
+                bDoneAdjustingPitch := TRUE;
+            END_IF;
+        -1:
+            // Error
+            bError:= TRUE;
+            bEnableAdjustingPitch:= FALSE;
+            iStepAdjustingPitch:=1;
+            bDoneAdjustingPitch := FALSE;
+    END_CASE;
+    END_ACTION
+
+    ACTION ACT_6_AdjustingHeight:
+    CASE iStepAdjustingHeight OF
+        1:
+            IF bEnableAdjustingHeight AND NOT(bBusy AND bError) THEN
+                // Step1 read and apply gauge value
+                bEnableSetGaugeValue := TRUE;
+                iStepAdjustingHeight := 2;
+                bDoneAdjustingHeight := FALSE;
+            ELSE
+                bEnableAdjustingHeight := FALSE;
+            END_IF;
+        2:
+            // Step2 wait until done
+            IF NOT bEnableSetGaugeValue THEN
+                iStepAdjustingHeight := 3;
+            END_IF;
+        3:
+            // Step3 calcurate motion distance
+            // read latest status
+            Main.M15.Axis.ReadStatus();
+            Main.M16.Axis.ReadStatus();
+            Main.M17.Axis.ReadStatus();
+
+            // Need to move YDF 1~3
+            fTargetPos_M15 := -1 * REAL_TO_LREAL(GVL_Sensor.stHDF.fValue) * 0.9;
+            fTargetPos_M16 := -1 * REAL_TO_LREAL(GVL_Sensor.stHDF.fValue) * 0.9;
+            fTargetPos_M17 := -1 * REAL_TO_LREAL(GVL_Sensor.stHDF.fValue) * 0.9;
+            // Enable Relative Motion Act
+            bEnableMoveRelative := TRUE;
+            iStepAdjustingHeight := 4;
+
+        4:
+            // Wait until Done. and wait tilt sensor stabilization.
+            tonWaitToStabilize(IN:=NOT bEnableMoveRelative, PT:=T#5s);
+            IF tonWaitToStabilize.Q THEN
+                iStepAdjustingHeight := 5;
+            END_IF;
+        5:
+            // check pitch and roll (if some axis is step-out)
+            IF abs(GVL_Sensor.stFrameP.fValue) > 0.5 OR abs(GVL_Sensor.stFrameR.fValue) > 0.5 THEN
+                bError := TRUE;
+            END_IF;
+
+            IF abs(GVL_Sensor.stHDF.fValue) > 0.05 AND NOT bError THEN
+                // Iteration
+                bEnableAdjustingHeight := FALSE;
+                iStepAdjustingHeight := 2;
+            ELSE
+                // End
+                bEnableAdjustingHeight:= FALSE;
+                iStepAdjustingHeight:=1;
+                bDoneAdjustingHeight := FALSE;
+            END_IF;
+        -1:
+            // Error
+            bError:= TRUE;
+            bEnableAdjustingHeight:= FALSE;
+            iStepAdjustingHeight:=1;
+            bDoneAdjustingHeight := FALSE;
+    END_CASE;
+    END_ACTION
+
+    ACTION ACT_INIT:
+    IF bINIT THEN
+        bINIT := FALSE;
+
+        Main.M15.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        Main.M15.bHardwareEnable := TRUE;
+        Main.M15.bPowerSelf := TRUE;
+        Main.M16.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        Main.M16.bHardwareEnable := TRUE;
+        Main.M16.bPowerSelf := TRUE;
+        Main.M17.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        Main.M17.bHardwareEnable := TRUE;
+        Main.M17.bPowerSelf := TRUE;
+
+        // Read linear gauge value
+        bEnableSetGaugeValue := TRUE;
+
+    END_IF;
+    END_ACTION
+
+    ACTION ACT_MoveRelative:
+    CASE iStepMoveRelative OF
+        1:
+            IF bEnableMoveRelative AND NOT (bBusy OR bError) THEN
+                bBusy:= TRUE;
+                bEnableMotion := TRUE;
+                bDone_M15 := bDone_M16 := bDone_M17 := FALSE;
+                iStepMoveRelative:= 2;
+            ELSE
+                bEnableMoveRelative:= FALSE;
+            END_IF;
+        2:
+            // Step2 Execute motion
+            IF fbMoveRelative_M15.Error OR fbMoveRelative_M16.Error OR fbMoveRelative_M17.Error THEN
+                iStepMoveRelative:= -1;
+                bError := 1;
+            END_IF;
+
+            IF (bDone_M15 AND bDone_M16 AND bDone_M17) AND NOT(fbMoveRelative_M15.Execute OR fbMoveRelative_M16.Execute OR fbMoveRelative_M17.Execute) THEN
+                iStepMoveRelative:= 3;
+            END_IF;
+
+            IF fbMoveRelative_M15.Done THEN
+                bDone_M15 := TRUE;
+            END_IF;
+            IF fbMoveRelative_M16.Done THEN
+                bDone_M16 := TRUE;
+            END_IF;
+            IF fbMoveRelative_M17.Done THEN
+                bDone_M17 := TRUE;
+            END_IF;
+
+            fbMoveRelative_M15(	Axis		:= Main.M15.Axis,
+                                Execute		:= bEnableMotion AND NOT (bDone_M15 OR bError),
+                                Distance	:= fTargetPos_M15,
+                                Velocity	:= 0.05,
+                                Acceleration:= 0.8,
+                                Deceleration:= 0.8,
+                                Jerk		:= 32
+            );
+            fbMoveRelative_M16(	Axis		:= Main.M16.Axis,
+                                Execute		:= bEnableMotion AND NOT (bDone_M16 OR bError),
+                                Distance	:= fTargetPos_M16,
+                                Velocity	:= 0.05,
+                                Acceleration:= 0.8,
+                                Deceleration:= 0.8,
+                                Jerk		:= 32
+            );
+            fbMoveRelative_M17(	Axis		:= Main.M17.Axis,
+                                Execute		:= bEnableMotion AND NOT (bDone_M17 OR bError),
+                                Distance	:= fTargetPos_M17,
+                                Velocity	:= 0.05,
+                                Acceleration:= 0.8,
+                                Deceleration:= 0.8,
+                                Jerk		:= 32
+            );
+        3:
+            // End
+            bEnableMotion:= FALSE;
+            bEnableMoveRelative:= FALSE;
+            bBusy := FALSE;
+            iStepMoveRelative:=1;
+        -1:
+            // Error
+            fbMoveRelative_M15.Execute:= FALSE;
+            fbMoveRelative_M16.Execute:= FALSE;
+            fbMoveRelative_M17.Execute:= FALSE;
+            bError:= TRUE;
+            bEnableMotion:= FALSE;
+            bEnableMoveRelative:= FALSE;
+            bBusy := FALSE;
+            iStepMoveRelative:=1;
+    END_CASE;
+    END_ACTION
+
+    ACTION ACT_ResetError:
+    IF bResetError THEN
+        bResetError := FALSE;
+        bError:= FALSE;
+        bBusy:=FALSE;
+        bEnableMotion := FALSE;
+        bEnableMotion_M15 := FALSE;
+        bEnableMotion_M16 := FALSE;
+        bEnableMotion_M17 := FALSE;
+        bEnableSetGaugeValue := FALSE;
+        bEnableMoveRelative := FALSE;
+        bEnableJackOff := FALSE;
+        bEnableLevitation := FALSE;
+        bEnableLanding := FALSE;
+        bEnableAdjustingRoll := FALSE;
+        bEnableAdjustingPitch := FALSE;
+        bEnableAdjustingHeight := FALSE;
+
+        bDone_M15 := bDone_M16 := bDone_M17 := FALSE;
+
+        iStepJackOff := 1;
+        iStepAdjustingRoll := 1;
+        iStepSetGaugeValue := 1;
+        iStepMoveRelative := 1;
+        iStepAdjustingPitch := 1;
+        iStepAdjustingHeight := 1;
+    END_IF;
+    END_ACTION
+
+    ACTION ACT_SetGaugeValue:
+    CASE iStepSetGaugeValue OF
+        1:
+            IF bEnableSetGaugeValue AND NOT (bBusy OR bError) THEN
+                fTargetPos_M15 := GVL_Sensor.stYDF1.fValue;
+                fTargetPos_M16 := GVL_Sensor.stYDF2.fValue;
+                fTargetPos_M17 := GVL_Sensor.stYDF3.fValue;
+
+                iStepSetGaugeValue:=2;
+            ELSE
+                bEnableSetGaugeValue := FALSE;
+            END_IF;
+        2:
+            fbSetPosition_M15(	Axis :=		Main.M15.Axis,
+                                Execute :=	NOT fbSetPosition_M15.Done,
+                                Position :=	fTargetPos_M15
+            );
+
+            fbSetPosition_M16(	Axis :=		Main.M16.Axis,
+                                Execute :=	NOT fbSetPosition_M16.Done,
+                                Position :=	fTargetPos_M16
+            );
+
+            fbSetPosition_M17(	Axis :=		Main.M17.Axis,
+                                Execute :=	NOT fbSetPosition_M17.Done,
+                                Position :=	fTargetPos_M17
+            );
+            IF fbSetPosition_M15.Done OR fbSetPosition_M15.Error THEN
+                fbSetPosition_M15(	Axis :=		Main.M15.Axis,
+                                    Execute :=	FALSE
+                );
+            END_IF;
+            IF fbSetPosition_M16.Done OR fbSetPosition_M16.Error THEN
+                fbSetPosition_M16(	Axis :=		Main.M16.Axis,
+                                    Execute :=	FALSE
+                );
+            END_IF;
+            IF fbSetPosition_M17.Done OR fbSetPosition_M17.Error THEN
+                fbSetPosition_M17(	Axis :=		Main.M17.Axis,
+                                    Execute :=	FALSE
+                );
+            END_IF;
+
+            IF NOT(fbSetPosition_M15.Execute OR fbSetPosition_M16.Execute OR fbSetPosition_M17.Execute) THEN
+                iStepSetGaugeValue:=3;
+            END_IF;
+
+        3:
+            bEnableSetGaugeValue := FALSE;
+            iStepSetGaugeValue:=1;
+    END_CASE;
+    END_ACTION
+
+
+Related:
+    * `GVL_EPS`_
+    * `GVL_Sensor`_
+    * `Main`_
+
+
+PRG_DET_SLIT
+^^^^^^^^^^^^
+
+::
+
+    PROGRAM PRG_DET_SLIT
+    VAR
+        {attribute 'pytmc' := 'pv: QRIX:DETSL'}
+        fbSlits_Det: FB_Slits;
+        bExecuteMotion: BOOL := TRUE;
+        bMoveOk: BOOL :=TRUE;
+        bInit:BOOL:=TRUE;
+    END_VAR
+    // 4 jaws slit
+
+
+    IF bInit THEN
+        bInit := FALSE;
+
+        Main.M18.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        Main.M18.bHardwareEnable := TRUE;
+        Main.M18.bPowerSelf := TRUE;
+
+        Main.M19.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        Main.M19.bHardwareEnable := TRUE;
+        Main.M19.bPowerSelf := TRUE;
+        Main.M20.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        Main.M20.bHardwareEnable := TRUE;
+        Main.M20.bPowerSelf := TRUE;
+        Main.M21.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        Main.M21.bHardwareEnable := TRUE;
+        Main.M21.bPowerSelf := TRUE;
+
+
+        //
+        Main.M18.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+        Main.M19.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+        Main.M20.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+        Main.M21.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+    END_IF
+    fbSlits_Det(	i_DevName:=					'DET_SLITS',
+                    stTopBlade:=				Main.M20,
+                    stBottomBlade:=				Main.M21,
+                    stLeftBlade:=				Main.M18,
+                    stRightBlade:=				Main.M19,
+                    io_fbFFHWO:=				GVL_PMPS.fbFastFaultOutput1,
+                    fbArbiter:=					GVL_PMPS.fbArbiter,
+                    bExecuteMotion:=			bExecuteMotion,
+                    bMoveOk:=					bMoveOk
+    );
+
+    END_PROGRAM
+
+
+Related:
+    * `FB_Slits`_
+    * `GVL_PMPS`_
+    * `Main`_
+
+
+PRG_Diffractometer
+^^^^^^^^^^^^^^^^^^
+
+::
+
+    PROGRAM PRG_Diffractometer
+    VAR
+        fb_Diff_Theta : FB_MotionStage;
+        fb_Diff_2Theta : FB_MotionStage;
+        fb_Diff_2ThetaY : FB_MotionStage;
+        fb_Diff_Chi : FB_MotionStage;
+        fb_Diff_Phi : FB_MotionStage;
+        fb_Diff_X : FB_MotionStage;
+        fb_Diff_Y : FB_MotionStage;
+        fb_Diff_Z : FB_MotionStage;
+        bInit : BOOl := TRUE;
+
+        //EPS
+        stEPS_Diff_Z : DUT_EPS;
+        EPS_Diff_Z : FB_EPS;
+
+        stEPS_Diff_Chi : DUT_EPS;
+        EPS_Diff_Chi : FB_EPS;
+
+        stEPS_Diff_Phi : DUT_EPS;
+        EPS_Diff_Phi : FB_EPS;
+
+        stEPS_Diff_Theta : DUT_EPS;
+        EPS_Diff_Theta : FB_EPS;
+
+        stEPS_Diff_2Theta : DUT_EPS;
+        EPS_Diff_2Theta : FB_EPS;
+
+        stEPS_Diff_2ThetaY : DUT_EPS;
+        EPS_Diff_2ThetaY : FB_EPS;
+
+
+        //Encoders for rotary stages
+        fbSetPosition: MC_SetPosition;
+        fb2ThetaAutoCoupling: FB_GantryAutoCoupling;
+        couple : MC_GEARIN;
+        decouple : MC_GEAROUT;
+        bExecuteCouple: BOOL := TRUE;
+        bExecuteDecouple: BOOL := FALSE;
+
+        temp:ULINT;
+        rtemp:LREAL;
+        GantryDiff:REAL;
+
+        fb_Diff_2Theta_Encoder : FB_MotionStage;
+    END_VAR
+    IF ( bInit) THEN
+        bInit := FALSE;
+        Main.M28.bHardwareEnable := TRUE;
+        Main.M28.bPowerSelf := TRUE;
+        Main.M28.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        Main.M28.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+
+        Main.M29.bHardwareEnable := TRUE;
+        Main.M29.bPowerSelf := TRUE;
+        Main.M29.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        Main.M29.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+
+        Main.M30.bHardwareEnable := TRUE;
+        Main.M30.bPowerSelf := TRUE;
+        Main.M30.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        Main.M30.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+
+        Main.M31.bHardwareEnable := TRUE;
+        Main.M31.bPowerSelf := TRUE;
+        Main.M31.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        Main.M31.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+
+        Main.M32.bHardwareEnable := TRUE;
+        Main.M32.bPowerSelf := TRUE;
+        Main.M32.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        Main.M32.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+
+        Main.M33.bHardwareEnable := TRUE;
+        Main.M33.bPowerSelf := TRUE;
+        Main.M33.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        Main.M33.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+
+        Main.M34.bHardwareEnable := TRUE;
+        Main.M34.bPowerSelf := TRUE;
+        Main.M34.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        Main.M34.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+
+        Main.M35.bHardwareEnable := TRUE;
+        Main.M35.bPowerSelf := TRUE;
+        Main.M35.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        Main.M35.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+
+
+    END_IF
+    //EPS
+    (*
+    EPS_Diff_Z.setDescription('Less20mm;LAS_D_H'); // SET DESCRITION FOR BYTE INDICATOR LABELS
+    EPS_Diff_Z.setBit(nBits:= 0, bValue:=fb_Diff_Z.stMotionStage.fPosition>=-20);
+    EPS_Diff_Z.setBit(nBits:= 1, bValue:=PRG_LAS.fb_LAS_D_H.stMotionStage.fPosition>=50 OR PRG_Diffractometer.fb_Diff_Z.stMotionStage.fPosition>=-20);
+    EPS_Diff_Z(eps:=stEPS_Diff_Z);
+    fb_Diff_Z.stMotionStage.stEPSBackwardEnable := stEPS_Diff_Z;
+
+    EPS_Diff_Chi.setDescription('Less-5mm;Theta'); // SET DESCRITION FOR BYTE INDICATOR LABELS
+    EPS_Diff_Chi.setBit(nBits:= 0, bValue:=fb_Diff_Chi.stMotionStage.fPosition>-5);
+    EPS_Diff_Chi.setBit(nBits:= 1, bValue:=fb_Diff_Theta.stMotionStage.fPosition>5 OR PRG_Diffractometer.fb_Diff_Chi.stMotionStage.fPosition>-5);
+    EPS_Diff_Chi(eps:=stEPS_Diff_Chi);
+    fb_Diff_Chi.stMotionStage.stEPSBackwardEnable := stEPS_Diff_Chi;
+
+    EPS_Diff_Theta.setDescription('CHI;PHI;MIDIT'); // SET DESCRITION FOR BYTE INDICATOR LABELS
+    EPS_Diff_Theta.setBit(nBits:= 0, bValue:=fb_Diff_Theta.stMotionStage.fPosition>=5 OR PRG_Diffractometer.fb_Diff_Chi.stMotionStage.fPosition>-5);
+    EPS_Diff_Theta.setBit(nBits:= 1, bValue:=fb_Diff_Theta.stMotionStage.fPosition>10 OR (PRG_Diffractometer.fb_Diff_Phi.stMotionStage.fPosition <90.1 AND PRG_Diffractometer.fb_Diff_Phi.stMotionStage.fPosition>89.9)) ;
+    EPS_Diff_Theta.setBit(nBits:= 2, bValue:= fb_Diff_Theta.stMotionStage.fPosition>10 OR (PRG_LAS.fb_LAS_VIS.stMotionStage.fPosition <90.1 AND PRG_LAS.fb_LAS_VIS.stMotionStage.fPosition>89.9));
+    EPS_Diff_Theta(eps:=stEPS_Diff_Theta);
+    fb_Diff_Theta.stMotionStage.stEPSBackwardEnable := stEPS_Diff_Theta; //Need More
+
+
+    EPS_Diff_Phi.setDescription('Less-45;MID_IR;Theta'); // SET DESCRITION FOR BYTE INDICATOR LABELS
+    EPS_Diff_Phi.setBit(nBits:= 0, bValue:=fb_Diff_phi.stMotionStage.fPosition<=45);
+    EPS_Diff_Phi.setBit(nBits:= 1, bValue:=PRG_LAS.fb_LAS_VIS.stMotionStage.fPosition <45 OR PRG_Diffractometer.fb_Diff_phi.stMotionStage.fPosition<=45);
+    EPS_Diff_Phi.setBit(nBits:= 2, PRG_Diffractometer.fb_Diff_phi.stMotionStage.fPosition<=45 OR (PRG_Diffractometer.fb_Diff_Theta.stMotionStage.fPosition <0.1 AND PRG_Diffractometer.fb_Diff_Theta.stMotionStage.fPosition>359.5));
+    EPS_Diff_Phi(eps:=stEPS_Diff_Phi);
+    FB_Diff_Phi.stMotionStage.stEPSBackwardEnable := stEPS_Diff_Phi;
+    *)
+
+
+
+    fb_Diff_X(stMotionStage:=Main.M28);
+    fb_Diff_Y(stMotionStage:=Main.M29);
+    fb_Diff_Z(stMotionStage:=Main.M30);
+    fb_Diff_2ThetaY(stMotionStage:=Main.M31);
+    fb_Diff_Phi(stMotionStage:=Main.M32);
+    fb_Diff_Chi(stMotionStage:=Main.M33);
+    fb_Diff_Theta(stMotionStage:=Main.M34);
+    fb_Diff_2Theta(stMotionStage:=Main.M35);
+
+    END_PROGRAM
+
+
+Related:
+    * `Main`_
+    * `PRG_LAS`_
+
+
+PRG_LAS
+^^^^^^^
+
+::
+
+    PROGRAM PRG_LAS
+    VAR
+        fb_LAS_VIS : FB_MotionStage;
+        fb_LAS_D_H : FB_MotionStage;
+        fb_LAS_D_V : FB_MotionStage;
+        bInit : BOOl := TRUE;
+
+        //EPS
+        stLAS_VIS : DUT_EPS;
+        fbLAS_VIS_EPS : FB_EPS;
+
+        stLAS_D_H : DUT_EPS;
+        fbLAS_D_H_EPS : FB_EPS;
+    END_VAR
+    IF ( bInit) THEN
+        bInit := FALSE;
+        Main.M36.bHardwareEnable := TRUE;
+        Main.M36.bPowerSelf := TRUE;
+        Main.M36.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        Main.M36.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+
+        Main.M37.bHardwareEnable := TRUE;
+        Main.M37.bPowerSelf := TRUE;
+        Main.M37.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        Main.M37.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+
+        Main.M38.bHardwareEnable := TRUE;
+        Main.M38.bPowerSelf := TRUE;
+        Main.M38.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        Main.M38.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+
+    END_IF
+    //EPS
+    (*
+    fbLAS_D_H_EPS.setDescription('Less10mm;SampleZ;PHI'); // SET DESCRITION FOR BYTE INDICATOR LABELS
+    //Zero is fully retracted
+    fbLAS_D_H_EPS.setBit(nBits:= 0, bValue:=fb_LAS_D_H.stMotionStage.fPosition<=10);
+    fbLAS_D_H_EPS.setBit(nBits:= 1, bValue:=fb_LAS_D_H.stMotionStage.fPosition<=10 OR PRG_Diffractometer.fb_Diff_Z.stMotionStage.fPosition<=-20);
+    fbLAS_D_H_EPS.setBit(nBits:= 2, bValue:=fb_LAS_D_H.stMotionStage.fPosition<=10 OR PRG_Diffractometer.fb_Diff_Phi.stMotionStage.fPosition>0);
+    fbLAS_D_H_EPS(eps:=stLAS_D_H);
+    fb_LAS_D_H.stMotionStage.stEPSForwardEnable := stLAS_D_H; // Update Motion stage structure.
+
+    fbLAS_VIS_EPS.setDescription('IN90mm;PHIat90;Theta<10'); // SET DESCRITION FOR BYTE INDICATOR LABELS
+    //Zero is fully retracted
+    fbLAS_VIS_EPS.setBit(nBits:= 0, bValue:=fb_LAS_VIS.stMotionStage.fPosition<=5);
+    fbLAS_VIS_EPS.setBit(nBits:= 1, bValue:=fb_LAS_VIS.stMotionStage.fPosition<=5 OR PRG_Diffractometer.fb_Diff_Phi.stMotionStage.fPosition<>90);
+    fbLAS_VIS_EPS.setBit(nBits:= 2, bValue:=fb_LAS_VIS.stMotionStage.fPosition<=5 OR PRG_Diffractometer.fb_Diff_Theta.stMotionStage.fPosition>10);
+    fbLAS_VIS_EPS(eps:=fbLAS_VIS_EPS);
+    //fb_LAS_VIS.stMotionStage.stEPSForwardEnable := fbLAS_VIS_EPS;
+    *)
+
+
+    fb_LAS_VIS(stMotionStage:=Main.M36);
+    fb_LAS_D_H(stMotionStage:=Main.M37);
+    fb_LAS_D_V(stMotionStage:=Main.M38);
+
+    END_PROGRAM
+
+
+Related:
+    * `Main`_
+    * `PRG_Diffractometer`_
+
+
+PRG_OPT
+^^^^^^^
+
+::
+
+    PROGRAM PRG_OPT
+    VAR
+        bInit: BOOL := TRUE;
+        fbMotionRxG: FB_MotionStage;
+        fbMotionXG: FB_MotionStage;
+        fbMotionRzPM: FB_MotionStage;
+    END_VAR
+    //Lock stages until they are tested
+    Main.M10.nEnableMode := ENUM_StageEnableMode.NEVER ;
+    Main.M11.nEnableMode := ENUM_StageEnableMode.NEVER ;
+    Main.M14.nEnableMode := ENUM_StageEnableMode.NEVER ;
+
+    IF bINIT THEN
+
+        Main.M10.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        Main.M10.bHardwareEnable := TRUE;
+        Main.M10.bPowerSelf := TRUE;
+        Main.M11.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        Main.M11.bHardwareEnable := TRUE;
+        Main.M11.bPowerSelf := TRUE;
+        Main.M14.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        Main.M14.bHardwareEnable := TRUE;
+        Main.M14.bPowerSelf := TRUE;
+
+        Main.M10.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+        Main.M11.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+        Main.M14.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+
+        bINIT := FALSE;
+    END_IF;
+
+
+    fbMotionRxG(stMotionStage:= Main.M10);
+    fbMotionXG(stMotionStage:= Main.M11);
+    fbMotionRzPM(stMotionStage:= Main.M14);
+
+    END_PROGRAM
+
+
+Related:
+    * `Main`_
+
+
+PRG_OPT_SLITS
+^^^^^^^^^^^^^
+
+::
+
+    PROGRAM PRG_OPT_SLITS
+    VAR
+        {attribute 'pytmc' := 'pv: QRIX:OPTSL'}
+        fbSlits_Opt: FB_Slits;
+        bExecuteMotion: BOOL := TRUE;
+        bMoveOk: BOOL :=TRUE;
+        bInit:BOOl:=TRUE;
+    END_VAR
+    // 4 jaws slit
+
+
+
+    IF bInit THEN
+        bInit := FALSE;
+
+        Main.M3.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        Main.M3.bHardwareEnable := TRUE;
+        Main.M3.bPowerSelf := TRUE;
+
+        Main.M4.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        Main.M4.bHardwareEnable := TRUE;
+        Main.M4.bPowerSelf := TRUE;
+        Main.M5.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        Main.M5.bHardwareEnable := TRUE;
+        Main.M5.bPowerSelf := TRUE;
+        Main.M6.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        Main.M6.bHardwareEnable := TRUE;
+        Main.M6.bPowerSelf := TRUE;
+
+
+        //
+        Main.M3.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+        Main.M4.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+        Main.M5.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+        Main.M6.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+    END_IF
+
+
+
+    fbSlits_Opt(	i_DevName:=					'OPT_SLITS',
+                    stTopBlade:=				Main.M5,
+                    stBottomBlade:=				Main.M6,
+                    stLeftBlade:=				Main.M3,
+                    stRightBlade:=				Main.M4,
+                    io_fbFFHWO:=				GVL_PMPS.fbFastFaultOutput1,
+                    fbArbiter:=					GVL_PMPS.fbArbiter,
+                    bExecuteMotion:=			bExecuteMotion,
+                    bMoveOk:=					bMoveOk
+    );
+
+    END_PROGRAM
+
+
+Related:
+    * `FB_Slits`_
+    * `GVL_PMPS`_
+    * `Main`_
+
+
+PRG_OPT_XPM
+^^^^^^^^^^^
+
+::
+
+    PROGRAM PRG_OPT_XPM
+    VAR
+        bInit: BOOL :=TRUE;
+        {attribute 'pytmc' := 'pv: QRIX:PM'}
+        fb2AxesXPM: FB_2AxesTrans;
+        bExecuteMotionXPM: BOOL :=TRUE;
+        bMoveOkXPM: BOOL :=TRUE;
+    END_VAR
+
+    VAR CONSTANT
+        rDistance	:REAL	:=	0.4;
+    END_VAR
+    //Lock stages until they are tested
+    Main.M12.nEnableMode := ENUM_StageEnableMode.NEVER ;
+    Main.M13.nEnableMode := ENUM_StageEnableMode.NEVER ;
+
+
+    IF bINIT THEN
+
+        Main.M12.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        Main.M12.bHardwareEnable := TRUE;
+        Main.M12.bPowerSelf := TRUE;
+        Main.M13.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        Main.M13.bHardwareEnable := TRUE;
+        Main.M13.bPowerSelf := TRUE;
+
+            //
+        Main.M12.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+        Main.M13.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+
+        bINIT := FALSE;
+    END_IF;
+
+    fb2AxesXPM(	i_DevName		:=	'OPT_XPM',
+                stFirstAxis		:=	Main.M12,
+                stSecondAxis	:=	Main.M13,
+                bExecuteMotion	:=	bExecuteMotionXPM,
+                io_fbFFHWO		:=	GVL_PMPS.fbFastFaultOutput1,
+                fbArbiter		:=	GVL_PMPS.fbArbiter,
+                rDistance		:=	rDistance,//0.4, // 0.4m
+                bMoveOk			:= bMoveOkXPM
+    );
+
+    END_PROGRAM
+
+
+Related:
+    * `FB_2AxesTrans`_
+    * `GVL_PMPS`_
+    * `Main`_
+
+
+PRG_OPT_YG
+^^^^^^^^^^
+
+::
+
+    PROGRAM PRG_OPT_YG
+    VAR
+        bDebug: BOOL;
+        bExecuteMotion: BOOL := TRUE;
+        bMoveOk: BOOL :=TRUE;
+        {attribute 'pytmc' := 'pv: QRIX:OPT'}
+        fbYGMotion: FB_3AxesJack;
+
+        bInit: BOOL :=TRUE;
+    END_VAR
+    //Lock stages until they are tested
+    Main.M8.nEnableMode := ENUM_StageEnableMode.NEVER ;
+    Main.M9.nEnableMode := ENUM_StageEnableMode.NEVER ;
+    Main.M7.nEnableMode := ENUM_StageEnableMode.NEVER ;
+
+
+
+    IF bInit THEN
+        bInit := FALSE;
+
+
+        Main.M7.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        Main.M7.bHardwareEnable := TRUE;
+        Main.M7.bPowerSelf := TRUE;
+        Main.M8.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        Main.M8.bHardwareEnable := TRUE;
+        Main.M8.bPowerSelf := TRUE;
+        Main.M9.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        Main.M9.bHardwareEnable := TRUE;
+        Main.M9.bPowerSelf := TRUE;
+
+
+        //
+        Main.M7.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+        Main.M8.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+        Main.M9.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+    END_IF
+
+
+
+    fbYGMotion(
+        bExecuteMotion	:= bExecuteMotion,
+        bMoveOk			:= bMoveOk,
+        stJack1Axis		:= Main.M7,
+        stJack2Axis		:= Main.M8,
+        stJack3Axis		:= Main.M9,
+        i_DevName		:= 'OPT_YG',
+        io_fbFFHWO		:= GVL_PMPS.fbFastFaultOutput1,
+        fbArbiter		:= GVL_PMPS.fbArbiter,
+    );
+
+    END_PROGRAM
+
+
+Related:
+    * `FB_3AxesJack`_
+    * `GVL_PMPS`_
+    * `Main`_
+
+
+PRG_Questar
+^^^^^^^^^^^
+
+::
+
+    PROGRAM PRG_Questar
+    VAR
+        fb_Ques_01 : FB_MotionStage;
+        fb_Ques_02: FB_MotionStage;
+        bInit : BOOl := TRUE;
+    END_VAR
+    IF ( bInit) THEN
+        bInit := FALSE;
+        Main.M17.bHardwareEnable := TRUE;
+        Main.M17.bPowerSelf := TRUE;
+        Main.M17.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        Main.M17.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+
+        Main.M18.bHardwareEnable := TRUE;
+        Main.M18.bPowerSelf := TRUE;
+        Main.M18.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        Main.M18.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+
+
+    END_IF
+    //EPS??
+
+
+    fb_Ques_01(stMotionStage:=Main.M17);
+    fb_Ques_02(stMotionStage:=Main.M18);
+
+    END_PROGRAM
+
+
+Related:
+    * `Main`_
+
+
+PRG_RotDet
+^^^^^^^^^^
+
+::
+
+    PROGRAM PRG_RotDet
+    VAR
+        fb_Rot_Det : FB_MotionStage;
+        bInit : BOOl := TRUE;
+    END_VAR
+    (* IF ( bInit) THEN
+       bInit := FALSE;
+       Main.M51.bHardwareEnable := TRUE;
+       Main.M51.bPowerSelf := TRUE;
+       Main.M51.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+       Main.M51.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+    END_IF
+
+    fb_Rot_Det(stMotionStage:=Main.M51);*)
+
+    END_PROGRAM
+
+
+Related:
+    * `Main`_
+
+
+PRG_SDS
+^^^^^^^
+
+::
+
+    PROGRAM PRG_SDS
+    VAR
+        fb_SDS_ROT_V : FB_MotionStage;
+        fb_SDS_X : FB_MotionStage;
+        fb_SDS_Y : FB_MotionStage;
+        fb_SDS_Z : FB_MotionStage;
+        fb_SDS_ROT_H : FB_MotionStage;
+        fb_SDS_H : FB_MotionStage;
+        bInit : BOOl := TRUE;
+    END_VAR
+    IF ( bInit) THEN
+        bInit := FALSE;
+        Main.M39.bHardwareEnable := TRUE;
+        Main.M39.bPowerSelf := TRUE;
+        Main.M39.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        Main.M39.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+
+        Main.M40.bHardwareEnable := TRUE;
+        Main.M40.bPowerSelf := TRUE;
+        Main.M40.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        Main.M40.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+
+        Main.M41.bHardwareEnable := TRUE;
+        Main.M41.bPowerSelf := TRUE;
+        Main.M41.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        Main.M41.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+
+        Main.M42.bHardwareEnable := TRUE;
+        Main.M42.bPowerSelf := TRUE;
+        Main.M42.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        Main.M42.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+        Main.M42.bLimitBackwardEnable := TRUE;
+        Main.M42.bLimitForwardEnable := TRUE;
+
+        Main.M43.bHardwareEnable := TRUE;
+        Main.M43.bPowerSelf := TRUE;
+        Main.M43.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        Main.M43.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+
+        Main.M44.bHardwareEnable := TRUE;
+        Main.M44.bPowerSelf := TRUE;
+        Main.M44.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        Main.M44.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+
+    END_IF
+    //EPS??
+
+    fb_SDS_X(stMotionStage:=Main.M39);
+    fb_SDS_Y(stMotionStage:=Main.M40);
+    fb_SDS_Z(stMotionStage:=Main.M41);
+    fb_SDS_ROT_V(stMotionStage:=Main.M42);
+    fb_SDS_ROT_H(stMotionStage:=Main.M43);
+    fb_SDS_H(stMotionStage:=Main.M44);
+
+    END_PROGRAM
+
+
+Related:
+    * `Main`_
+
+
+PRG_Sensor
+^^^^^^^^^^
+
+::
+
+    PROGRAM PRG_Sensor
+    VAR
+        bInit : bool :=TRUE;
+
+        {attribute 'TcLinkTo' := 'TIIB[Rack#2D LinearGaugeAmp (SC-HG1-ETC)]^Process Data(Out) RxPDO-Map^Head Value Mode'}
+        bSensorHeadValueMode AT %Q* : bool;
+
+        {attribute 'TcLinkTo' := 'TIIB[Rack#2D LinearGaugeAmp (SC-HG1-ETC)]^Process Data(Out) RxPDO-Map^Normal Value Mode'}
+        bSensorHeadNormalValueMode AT %Q* : bool;
+
+        bResetSensorMode AT %I* : bool;
+
+        uintTest AT %Q*: UINT;
+
+    END_VAR
+    If bInit Then
+        bSensorHeadNormalValueMode := True;
+        bInit := False;
+    End_If;
+
+    If(bResetSensorMode = True) Then
+        bResetSensorMode := False;
+        bSensorHeadValueMode := False;
+        bSensorHeadNormalValueMode := False;
+        bInit := True;
+    End_If;
+
+
+    GVL_Sensor.stYDF1.sName			:= 'YDF1 Panasonic HG-S';
+    GVL_Sensor.stYDF1.sEGU			:= 'mm';
+    GVL_Sensor.stYDF1.fCntsInEGU	:= 10000;
+    GVL_Sensor.stYDF2.sName			:= 'YDF2 Panasonic HG-S';
+    GVL_Sensor.stYDF2.sEGU			:= 'mm';
+    GVL_Sensor.stYDF2.fCntsInEGU	:= 10000;
+    GVL_Sensor.stYDF3.sName			:= 'YDF3 Panasonic HG-S';
+    GVL_Sensor.stYDF3.sEGU			:= 'mm';
+    GVL_Sensor.stYDF3.fCntsInEGU	:= 10000;
+    GVL_Sensor.stHDF.sName			:= 'HDF Panasonic HG-S';
+    GVL_Sensor.stHDF.sEGU			:= 'mm';
+    GVL_Sensor.stHDF.fCntsInEGU		:= 10000;
+
+    GVL_Sensor.stGraniteP.sName		:= 'Granite Pitch';
+    GVL_Sensor.stGraniteP.sEGU		:= 'mrad';
+    GVL_Sensor.stGraniteP.fCntsInEGU:= 3276.7; // 1V = 1mrad in Low gain mode
+    GVL_Sensor.stGraniteP.iOffset   := -1005;
+    GVL_Sensor.stGraniteR.sName		:= 'Granite Roll';
+    GVL_Sensor.stGraniteR.sEGU		:= 'mrad';
+    GVL_Sensor.stGraniteR.fCntsInEGU:= 3276.7;
+    GVL_Sensor.stGraniteR.iOffset   := 3326;
+
+    GVL_Sensor.stFrameP.sName		:= 'Det. Frame Pitch';
+    GVL_Sensor.stFrameP.sEGU		:= 'mrad';
+    GVL_Sensor.stFrameP.fCntsInEGU	:= 3276.7;
+    GVL_Sensor.stFrameR.sName		:= 'Det. Frame Roll';
+    GVL_Sensor.stFrameR.sEGU		:= 'mrad';
+    GVL_Sensor.stFrameR.fCntsInEGU	:= 3276.7;
+
+    GVL_Sensor.stPS1.sName			:= 'PS1';
+    GVL_Sensor.stPS1.sEGU			:= 'MPa';
+    GVL_Sensor.stPS1.fCntsInEGU		:= 13106.8;	// 0.25MPa/V
+    GVL_Sensor.stPS1.iOffset		:= 3277;	// 0MPa@1V  P=0.25(V-V0), V0 = 1.0
+
+    GVL_Sensor.stPS2.sName			:= 'PS2';
+    GVL_Sensor.stPS2.sEGU			:= 'MPa';
+    GVL_Sensor.stPS2.fCntsInEGU		:= 13106.8;	// 0.25MPa/V
+    GVL_Sensor.stPS2.iOffset		:= 3277;	// 0MPa@1V  P=0.25(V-V0), V0 = 1.0
+
+    GVL_Sensor.stPS3.sName			:= 'PS3';
+    GVL_Sensor.stPS3.sEGU			:= 'MPa';
+    GVL_Sensor.stPS3.fCntsInEGU		:= 13106.8;	// 0.25MPa/V
+    GVL_Sensor.stPS3.iOffset		:= 3277;	// 0MPa@1V  P=0.25(V-V0), V0 = 1.0
+
+    GVL_Sensor.stYDF1.fValue		:= DINT_TO_REAL(GVL_Sensor.stYDF1.iRawCnts - GVL_Sensor.stYDF1.iOffset) / GVL_Sensor.stYDF1.fCntsInEGU;
+    GVL_Sensor.stYDF2.fValue		:= DINT_TO_REAL(GVL_Sensor.stYDF2.iRawCnts - GVL_Sensor.stYDF2.iOffset) / GVL_Sensor.stYDF2.fCntsInEGU;
+    GVL_Sensor.stYDF3.fValue		:= DINT_TO_REAL(GVL_Sensor.stYDF3.iRawCnts - GVL_Sensor.stYDF3.iOffset) / GVL_Sensor.stYDF3.fCntsInEGU;
+    GVL_Sensor.stHDF.fValue			:= DINT_TO_REAL(GVL_Sensor.stHDF.iRawCnts  - GVL_Sensor.stHDF.iOffset)  / GVL_Sensor.stHDF.fCntsInEGU;
+    GVL_Sensor.stGraniteP.fValue	:= INT_TO_REAL(GVL_Sensor.stGraniteP.iRawCnts - GVL_Sensor.stGraniteP.iOffset) / GVL_Sensor.stGraniteP.fCntsInEGU;
+    GVL_Sensor.stGraniteR.fValue	:= INT_TO_REAL(GVL_Sensor.stGraniteR.iRawCnts - GVL_Sensor.stGraniteR.iOffset) / GVL_Sensor.stGraniteR.fCntsInEGU;
+    GVL_Sensor.stFrameP.fValue		:= INT_TO_REAL(GVL_Sensor.stFrameP.iRawCnts - GVL_Sensor.stFrameP.iOffset) / GVL_Sensor.stFrameP.fCntsInEGU;
+    GVL_Sensor.stFrameR.fValue		:= INT_TO_REAL(GVL_Sensor.stFrameR.iRawCnts - GVL_Sensor.stFrameR.iOffset) / GVL_Sensor.stFrameR.fCntsInEGU;
+
+    GVL_Sensor.stPS1.fValue			:= INT_TO_REAL(GVL_Sensor.stPS1.iRawCnts - GVL_Sensor.stPS1.iOffset) / GVL_Sensor.stPS1.fCntsInEGU;
+    GVL_Sensor.stPS2.fValue			:= INT_TO_REAL(GVL_Sensor.stPS2.iRawCnts - GVL_Sensor.stPS2.iOffset) / GVL_Sensor.stPS2.fCntsInEGU;
+    GVL_Sensor.stPS3.fValue			:= INT_TO_REAL(GVL_Sensor.stPS3.iRawCnts - GVL_Sensor.stPS3.iOffset) / GVL_Sensor.stPS3.fCntsInEGU;
+
+
+    //uintTest:= REAL_TO_UINT(GVL_Sensor.stYDF1.fValue);
+
+    END_PROGRAM
+
+
+Related:
+    * `GVL_Sensor`_
+
+
+PRG_SpetrometerArm
+^^^^^^^^^^^^^^^^^^
+
+::
+
+    PROGRAM PRG_SpetrometerArm
+    VAR
+            {attribute 'TcLinkTo' := 'TIIB[Rack#1A-01 Coupler (EK1100)]^Rack#1A-02 SFIN (EL1918)^StandardOutputs^Standard In Var 2'}
+        bEnaIclk AT %Q*: BOOL := TRUE;
+
+        {attribute 'TcLinkTo' := 'TIIB[Rack#1A-01 Coupler (EK1100)]^Rack#1A-02 SFIN (EL1918)^StandardOutputs^Standard In Var 1'}
+        bEnaIclkErrAck AT %Q*: BOOL := FALSE;
+
+        {attribute 'TcLinkTo' := 'TIIB[Rack#1A-01 Coupler (EK1100)]^Rack#1A-02 SFIN (EL1918)^StandardOutputs^Standard In Var 9'}
+        bEnaIclkRestartESTOP AT %Q*: BOOL := FALSE;
+
+        fbPower_AxisM11: MC_Power;
+        fbPower_AxisM12: MC_Power;
+        fbPower_AxisM13: MC_Power;
+        fbPower_AxisM14: MC_Power;
+    END_VAR
+    ACT_ESTOP();
+
+    PRG_2Theta();
+    PRG_DET_ARM();
+    PRG_DET_CHAMBER();
+    PRG_DET_SLIT();
+    PRG_DET_FRAME();
+    PRG_OPT_SLITS();
+    PRG_OPT_YG();
+    PRG_OPT_XPM();
+    PRG_OPT();
+    PRG_Sensor();
+
+    END_PROGRAM
+
+    ACTION ACT_ESTOP:
+    IF bEnaIclkErrAck THEN
+        bEnaIclkErrAck := FALSE;
+    END_IF
+    IF bEnaIclkRestartESTOP THEN
+        bEnaIclkRestartESTOP := FALSE;
+    END_IF
+
+    // When user push the ESTOPs
+    IF NOT GVL_EPS.bESTOP THEN
+
+        GVL_EPS.bOpenSV1 := FALSE;
+        GVL_EPS.bOpenSV2 := FALSE;
+
+        Main.M1.bEnable := FALSE;
+        Main.M2.bEnable := FALSE;
+        Main.M3.bEnable := FALSE;
+        Main.M4.bEnable := FALSE;
+        Main.M5.bEnable := FALSE;
+        Main.M6.bEnable := FALSE;
+        Main.M7.bEnable := FALSE;
+        Main.M8.bEnable := FALSE;
+        Main.M9.bEnable := FALSE;
+        Main.M10.bEnable := FALSE;
+        Main.M11.bEnable := FALSE;
+        Main.M12.bEnable := FALSE;
+        Main.M13.bEnable := FALSE;
+        Main.M14.bEnable := FALSE;
+        Main.M15.bEnable := FALSE;
+        Main.M16.bEnable := FALSE;
+        Main.M17.bEnable := FALSE;
+        Main.M18.bEnable := FALSE;
+        Main.M19.bEnable := FALSE;
+        Main.M20.bEnable := FALSE;
+        Main.M21.bEnable := FALSE;
+        Main.M22.bEnable := FALSE;
+        Main.M23.bEnable := FALSE;
+        Main.M24.bEnable := FALSE;
+        Main.M25.bEnable := FALSE;
+        Main.M26.bEnable := FALSE;
+        Main.M27.bEnable := FALSE;
+
+        bDoneJackOff := FALSE;
+        bDoneLevitation := FALSE;
+        bDoneLanding := FALSE;
+        bDoneAdjustingRoll := FALSE;
+        bDoneAdjustingPitch := FALSE;
+        bDoneAdjustingHeight := FALSE;
+    END_IF
+
+
+    // Disable M1(Servo) and M2(Stepper) if the frame is landing...
+    IF NOT GVL_Sensor.bFloating THEN
+        Main.M1.bEnable := FALSE;
+        Main.M2.bEnable := FALSE;
+    END_IF
+
+
+    // When user requests to reset ESTOP.
+    IF GVL_EPS.bResetIclk THEN
+        GVL_EPS.bResetIclk := FALSE;
+        bEnaIclkErrAck := TRUE;
+        bEnaIclkRestartESTOP := TRUE;
+    END_IF
+    END_ACTION
+
+
+Related:
+    * `GVL_EPS`_
+    * `GVL_Sensor`_
+    * `Main`_
+    * `PRG_2Theta`_
+    * `PRG_DET_ARM`_
+    * `PRG_DET_CHAMBER`_
+    * `PRG_DET_FRAME`_
+    * `PRG_DET_SLIT`_
+    * `PRG_OPT`_
+    * `PRG_OPT_SLITS`_
+    * `PRG_OPT_XPM`_
+    * `PRG_OPT_YG`_
+    * `PRG_Sensor`_
+
+
+PRG_SSL
+^^^^^^^
+
+::
+
+    PROGRAM PRG_SSL
+    VAR
+        fb_SSL_Motor : FB_MotionStage;
+        (*EPS Limit switches*)
+        {attribute 'TcLinkTo' := 'TIIB[EL1004_02_03]^Channel 2^Input'}
+        bLimitBackwardEnable AT %I* :BOOL;
+        {attribute 'TcLinkTo' := 'TIIB[EL1004_02_03]^Channel 3^Input'}
+        bLimitForwardEnable AT %I* :BOOL;
+        {attribute 'pytmc' := 'pv: QRIX:SPCA:COUPLED'}
+
+        bAlreadyCoupled :BOOL := FALSE;
+        bExecuteCouple :BOOL := TRUE;
+        // Current coupled motion difference
+        nCurrGantryDiff : LINT;
+        // Autocoupling  Axes
+        couple : MC_GEARIN;
+        bInitComplete : BOOL;
+        bInit : BOOl := TRUE;
+    END_VAR
+
+    VAR CONSTANT
+        // Encoder reference values in counts ???!!! degrees?!!
+        // Enc Ref Vals from alignment
+        nSSL_ENC_REF : ULINT := 16171800;
+        nSPCA_ENC_REF : ULINT := 14866900;
+        nGANTRY_TOLERANCE : LINT := 100; // default gantry tolerance in encoder counts = units???
+
+    END_VAR
+    IF ( bInit) THEN
+        bInit := FALSE;
+        Main.M1.bPowerSelf := TRUE;
+        Main.M1.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+        Main.M1.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+    END_IF
+    // couple axes
+
+    // Couple both axes
+    // Auto-coupling at init and auto-reset of coupling boolean
+    (*bExecuteCouple S= NOT bInitComplete;
+
+    bExecuteCouple R= couple.Busy OR bAlreadyCoupled;
+    couple (Master:= Main.M1.Axis,
+            Slave:=Main.M25.Axis,
+            Execute:=bExecuteCouple,
+            RatioNumerator := 1,
+            RatioDenominator :=1
+    );
+
+    bInitComplete S= bAlreadyCoupled;
+    nCurrGantryDiff := ((ULINT_TO_LINT(Main.M1.nRawEncoderULINT) - ULINT_TO_LINT(nSSL_ENC_REF)) - (ULINT_TO_LINT(Main.M25.nRawEncoderULINT) - ULINT_TO_LINT(nSSL_ENC_REF)));
+
+    *)
+    //EPS needs to be implemented and coupling of axes servo and wheel from spectometer arm
+    // hpw to recover from this situation?!
+    //Main.M1.bHardwareEnable := bLimitBackwardEnable AND bLimitForwardEnable AND (ABS(nCurrGantryDiff) > nGANTRY_TOLERANCE); //Include STO from SPCA
+    //Main.M1.bHardwareEnable := bLimitBackwardEnable AND bLimitForwardEnable;
+    fb_SSL_Motor(stMotionStage:=Main.M1);
+
+    END_PROGRAM
+
+
+Related:
+    * `Main`_
+
