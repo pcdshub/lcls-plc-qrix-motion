@@ -90,39 +90,39 @@ VAR
 
     (*EPICS pvs*)
     {attribute 'pytmc' := '
-    pv: POS_REQ;
+    pv: Y_REQ;
     io: io;
     '}
     rReqPosition : REAL;
 
     {attribute 'pytmc' := '
-    pv: PIT_REQ;
+    pv: PITCH_REQ;
     io: io;
     '}
     rReqPitch : REAL;
 
     {attribute 'pytmc' := '
-    pv: ROL_REQ;
+    pv: ROLL_REQ;
     io: io;
     '}
     rReqRoll : REAL;
 
 
     {attribute 'pytmc' := '
-    pv: ACTUAL_POSISION;
-    io: io;
+    pv: Y;
+    io: i;
     '}
     rActPosition : REAL;
 
     {attribute 'pytmc' := '
-    pv: ACTUAL_PITCH;
-    io: io;
+    pv: PITCH;
+    io: i;
     '}
     rActPitch : REAL;
 
     {attribute 'pytmc' := '
-    pv: ACTUAL_ROLL;
-    io: io;
+    pv: ROLL;
+    io: i;
     '}
     rActRoll : REAL;
 

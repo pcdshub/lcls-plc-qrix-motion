@@ -3,7 +3,7 @@
   <POU Name="PRG_DET_SLIT" Id="{2eb18d0f-2877-4c70-a778-30d760427220}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM PRG_DET_SLIT
 VAR
-    {attribute 'pytmc' := 'pv: QRIX:DET:SLITS'}
+    {attribute 'pytmc' := 'pv: QRIX:DETSL'}
     fbSlits_Det: FB_Slits;
     bExecuteMotion: BOOL := TRUE;
     bMoveOk: BOOL :=TRUE;

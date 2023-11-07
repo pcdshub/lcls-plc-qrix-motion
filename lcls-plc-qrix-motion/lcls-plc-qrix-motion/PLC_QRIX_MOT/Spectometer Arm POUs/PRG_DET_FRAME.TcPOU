@@ -21,11 +21,11 @@ VAR
     bEnableLevitation: BOOL;
     {attribute 'pytmc' := 'pv: QRIX:SA:EnableLanding'}
     bEnableLanding: BOOL;
-    {attribute 'pytmc' := 'pv: QRIX:SA:EnableAdjustingRoll'}
+    {attribute 'pytmc' := 'pv: QRIX:DF:EnableAdjustingRoll'}
     bEnableAdjustingRoll: BOOL;
-    {attribute 'pytmc' := 'pv: QRIX:SA:EnableAdjustingPitch'}
+    {attribute 'pytmc' := 'pv: QRIX:DF:EnableAdjustingPitch'}
     bEnableAdjustingPitch: BOOL;
-    {attribute 'pytmc' := 'pv: QRIX:SA:EnableAdjustingHeight'}
+    {attribute 'pytmc' := 'pv: QRIX:DF:EnableAdjustingHeight'}
     bEnableAdjustingHeight: BOOL;
 
 

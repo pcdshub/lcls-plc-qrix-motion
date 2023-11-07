@@ -53,26 +53,26 @@ VAR
 
     (*EPICS pvs*)
     {attribute 'pytmc' := '
-    pv: POS_REQ;
+    pv: X_REQ;
     io: io;
     '}
     rReqPosition : REAL;
     {attribute 'pytmc' := '
-    pv: ANG_REQ;
+    pv: PITCH_REQ;
     io: io;
     '}
     rReqAngle : REAL;
 
 
     {attribute 'pytmc' := '
-    pv: ACTUAL_POSISION;
-    io: io;
+    pv: X;
+    io: i;
     '}
     rActPosition : REAL;
 
     {attribute 'pytmc' := '
-    pv: ACTUAL_ANGLE;
-    io: io;
+    pv: PITCH;
+    io: i;
     '}
     rActAngle : REAL;
 

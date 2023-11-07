@@ -6,7 +6,7 @@ VAR
     bDebug: BOOL;
     bExecuteMotion: BOOL := TRUE;
     bMoveOk: BOOL :=TRUE;
-    {attribute 'pytmc' := 'pv: QRIX:OPT:YG'}
+    {attribute 'pytmc' := 'pv: QRIX:OPT'}
     fbYGMotion: FB_3AxesJack;
 
     bInit: BOOL :=TRUE;
