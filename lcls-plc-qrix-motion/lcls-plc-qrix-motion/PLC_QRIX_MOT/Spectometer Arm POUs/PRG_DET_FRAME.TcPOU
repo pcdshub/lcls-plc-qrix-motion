@@ -143,9 +143,9 @@ ACT_ResetError();
             bEnableSetGaugeValue := TRUE;
             iStepJackOff := 2;
             bDoneJackOff := FALSE;
-			Main.M15.bEnable := TRUE;
-			Main.M16.bEnable := TRUE;
-			Main.M17.bEnable := TRUE;
+            Main.M15.bEnable := TRUE;
+            Main.M16.bEnable := TRUE;
+            Main.M17.bEnable := TRUE;
         ELSE
             bEnableJackOff := FALSE;
         END_IF;

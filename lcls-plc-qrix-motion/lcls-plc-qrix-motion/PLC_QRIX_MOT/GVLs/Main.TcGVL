@@ -209,7 +209,7 @@ VAR_GLOBAL
     M24: DUT_MotionStage:=(sName := ' QRIX:DC:MMS:Z');
 
     // YF1
-	{attribute 'pytmc' := 'pv: QRIX:DA:MMS:Y1'}
+    {attribute 'pytmc' := 'pv: QRIX:DA:MMS:Y1'}
     {attribute 'TcLinkTo' := '	.bLimitForwardEnable	:= TIIB[Rack#1A-02 SFIN (EL1918)]^StandardInputs^Standard Out Var 10;
                                 .bLimitBackwardEnable 	:= TIIB[Rack#1A-02 SFIN (EL1918)]^StandardInputs^Standard Out Var 11;
                                 .nRawEncoderULINT     	:= TIIB[BOX-06 ENC_ZDC_YF1 (EL5042)]^FB Inputs Channel 2^Position;
@@ -218,7 +218,7 @@ VAR_GLOBAL
     M25: DUT_MotionStage:=(sName := ' QRIX:DA:MMS:Y1');
 
     // YF2
-	{attribute 'pytmc' := 'pv: QRIX:DA:MMS:Y2'}
+    {attribute 'pytmc' := 'pv: QRIX:DA:MMS:Y2'}
     {attribute 'TcLinkTo' := '	.bLimitForwardEnable	:= TIIB[Rack#1A-02 SFIN (EL1918)]^StandardInputs^Standard Out Var 12;
                                 .bLimitBackwardEnable	:= TIIB[Rack#1A-02 SFIN (EL1918)]^StandardInputs^Standard Out Var 13;
                                 .nRawEncoderULINT     	:= TIIB[BOX-07 ENC_YF2_ZF (EL5042)]^FB Inputs Channel 1^Position;
@@ -227,7 +227,7 @@ VAR_GLOBAL
     M26: DUT_MotionStage:=(sName := ' QRIX:DA:MMS:Y2');
 
     // ZF
-	{attribute 'pytmc' := 'pv: QRIX:DA:MMS:Z'}
+    {attribute 'pytmc' := 'pv: QRIX:DA:MMS:Z'}
     {attribute 'TcLinkTo' := '	.bLimitForwardEnable	:= TIIB[Rack#1A-02 SFIN (EL1918)]^StandardInputs^Standard Out Var 14;
                                 .bLimitBackwardEnable	:= TIIB[Rack#1A-02 SFIN (EL1918)]^StandardInputs^Standard Out Var 15;
                                 .nRawEncoderULINT		:= TIIB[BOX-07 ENC_YF2_ZF (EL5042)]^FB Inputs Channel 2^Position;
@@ -357,14 +357,14 @@ VAR_GLOBAL
                               .bHome 				:= TIIB[EL1004_04_09]^Channel 2^Input;
                               .nRawEncoderUINT     := TIIB[EL5101_05_03]^ENC Status compact^Counter value'}
     M44: DUT_MotionStage := (sName := 'QRIX:SDS:MMS:H');
-	
-	///////////// Virtual axes (encoder axes) for the diffractometer rotary stages
-	 {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL1088_03_15]^Channel 5^Input;
+
+    ///////////// Virtual axes (encoder axes) for the diffractometer rotary stages
+     {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL1088_03_15]^Channel 5^Input;
                               .bLimitBackwardEnable := TIIB[EL1088_03_15]^Channel 6^Input;
                               .bHome := TIIB[EL1088_03_10]^Channel 8^Input;
                               .nRawEncoderULINT     := TIIB[EL5042_03_17 - Diff - Theta - 2Theta]^FB Inputs Channel 2^Position'}
-     
-	//M45: DUT_MotionStage := (sName := 'QRIX:SDS:MMS:2ThetaENC');
+
+    //M45: DUT_MotionStage := (sName := 'QRIX:SDS:MMS:2ThetaENC');
 
 
 (*
