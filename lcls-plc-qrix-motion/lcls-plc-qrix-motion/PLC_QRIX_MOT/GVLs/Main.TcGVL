@@ -354,43 +354,42 @@ VAR_GLOBAL
                               .bHome 				:= TIIB[EL1004_04_09]^Channel 2^Input;
                               .nRawEncoderUINT     := TIIB[EL5101_05_03]^ENC Status compact^Counter value'}
     M44: DUT_MotionStage := (sName := 'QRIX:SDS:MMS:H');
-	
-	///////////// Virtual axes (encoder axes) for the diffractometer rotary stages
-	 {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL1088_03_15]^Channel 5^Input;
+
+    ///////////// Virtual axes (encoder axes) for the diffractometer rotary stages
+     {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL1088_03_15]^Channel 5^Input;
                               .bLimitBackwardEnable := TIIB[EL1088_03_15]^Channel 6^Input;
                               .bHome := TIIB[EL1088_03_10]^Channel 8^Input;
                               .nRawEncoderULINT     := TIIB[EL5042_03_17 - Diff - Theta - 2Theta]^FB Inputs Channel 2^Position'}
-     
-	M45: DUT_MotionStage := (sName := 'QRIX:SDS:MMS:2ThetaENC');
 
+    M45: DUT_MotionStage := (sName := 'QRIX:SDS:MMS:2ThetaENC');
 
-(*
     // Cryo -  4 axes
-    {attribute 'pytmc' := 'pv: QRIX:CRYO:MMS:ROT'}
-    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SSL-EL7041]^STM Status^Status^Digital input 1;
-                              .bLimitBackwardEnable := TIIB[SSL-EL7041]^STM Status^Status^Digital input 2;
-                              .nRawEncoderULINT     := TIIB[IM1K3-EL5042]^FB Inputs Channel 1^Position'}
-    M45: DUT_MotionStage := (sName := 'QRIX:CRYO:MMS:ROT');
 
     {attribute 'pytmc' := 'pv: QRIX:CRYO:MMS:X'}
-    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SSL-EL7041]^STM Status^Status^Digital input 1;
-                              .bLimitBackwardEnable := TIIB[SSL-EL7041]^STM Status^Status^Digital input 2;
-                              .nRawEncoderULINT     := TIIB[IM1K3-EL5042]^FB Inputs Channel 1^Position'}
+    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL7047_02_12]^STM Status^Status^Digital input 1;
+                              .bLimitBackwardEnable := TIIB[EL7047_02_12]^STM Status^Status^Digital input 2;
+                              .nRawEncoderULINT     := TIIB[EL5042_02_13]^FB Inputs Channel 1^Position; '}
     M46: DUT_MotionStage := (sName := 'QRIX:CRYO:MMS:X');
 
     {attribute 'pytmc' := 'pv: QRIX:CRYO:MMS:Y'}
-    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SSL-EL7041]^STM Status^Status^Digital input 1;
-                              .bLimitBackwardEnable := TIIB[SSL-EL7041]^STM Status^Status^Digital input 2;
-                              .nRawEncoderULINT     := TIIB[IM1K3-EL5042]^FB Inputs Channel 1^Position'}
+    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL7047_02_14]^STM Status^Status^Digital input 1;
+                              .bLimitBackwardEnable := TIIB[EL7047_02_14]^STM Status^Status^Digital input 2;
+                              .nRawEncoderULINT     := TIIB[EL5042_02_13]^FB Inputs Channel 2^Position; '}
     M47: DUT_MotionStage := (sName := 'QRIX:CRYO:MMS:Y');
 
     {attribute 'pytmc' := 'pv: QRIX:CRYO:MMS:Z'}
-    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SSL-EL7041]^STM Status^Status^Digital input 1;
-                              .bLimitBackwardEnable := TIIB[SSL-EL7041]^STM Status^Status^Digital input 2;
-                              .nRawEncoderULINT     := TIIB[IM1K3-EL5042]^FB Inputs Channel 1^Position'}
+    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL7047_02_15]^STM Status^Status^Digital input 1;
+                              .bLimitBackwardEnable := TIIB[EL7047_02_15]^STM Status^Status^Digital input 2;
+                              .nRawEncoderULINT     := TIIB[EL5042_02_16]^FB Inputs Channel 1^Position; '}
     M48: DUT_MotionStage := (sName := 'QRIX:CRYO:MMS:Z');
 
+    {attribute 'pytmc' := 'pv: QRIX:CRYO:MMS:ROT'}
+    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL7047_02_11]^STM Status^Status^Digital input 1;
+                              .bLimitBackwardEnable := TIIB[EL7047_02_11]^STM Status^Status^Digital input 2;
+                              .nRawEncoderULINT     := TIIB[EL5042_02_16]^FB Inputs Channel 2^Position; '}
+    M49: DUT_MotionStage := (sName := 'QRIX:CRYO:MMS:ROT');
 
+(*
     // Questar -  2 axes
     {attribute 'pytmc' := 'pv: QRIX:QUESTAR:MMS:01'}
     {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SSL-EL7041]^STM Status^Status^Digital input 1;
@@ -403,8 +402,8 @@ VAR_GLOBAL
                               .bLimitBackwardEnable := TIIB[SSL-EL7041]^STM Status^Status^Digital input 2;
                               .nRawEncoderULINT     := TIIB[IM1K3-EL5042]^FB Inputs Channel 1^Position'}
     M50: DUT_MotionStage := (sName := 'QRIX:QUESTAR:MMS:02');
-*)
 
+*)
 (*
     //Rotary Detector Motor
 

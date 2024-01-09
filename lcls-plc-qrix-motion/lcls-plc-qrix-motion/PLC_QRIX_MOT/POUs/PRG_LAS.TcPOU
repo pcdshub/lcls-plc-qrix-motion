@@ -7,13 +7,13 @@ VAR
     fb_LAS_D_H : FB_MotionStage;
     fb_LAS_D_V : FB_MotionStage;
     bInit : BOOl := TRUE;
-	
-	//EPS
-	stLAS_VIS : DUT_EPS;
-	fbLAS_VIS_EPS : FB_EPS;
-	
-	stLAS_D_H : DUT_EPS;
-	fbLAS_D_H_EPS : FB_EPS;
+
+    //EPS
+    stLAS_VIS : DUT_EPS;
+    fbLAS_VIS_EPS : FB_EPS;
+
+    stLAS_D_H : DUT_EPS;
+    fbLAS_D_H_EPS : FB_EPS;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -39,7 +39,7 @@ END_IF
 (*
 fbLAS_D_H_EPS.setDescription('Less10mm;SampleZ;PHI'); // SET DESCRITION FOR BYTE INDICATOR LABELS
 //Zero is fully retracted
-fbLAS_D_H_EPS.setBit(nBits:= 0, bValue:=fb_LAS_D_H.stMotionStage.fPosition<=10); 
+fbLAS_D_H_EPS.setBit(nBits:= 0, bValue:=fb_LAS_D_H.stMotionStage.fPosition<=10);
 fbLAS_D_H_EPS.setBit(nBits:= 1, bValue:=fb_LAS_D_H.stMotionStage.fPosition<=10 OR PRG_Diffractometer.fb_Diff_Z.stMotionStage.fPosition<=-20);
 fbLAS_D_H_EPS.setBit(nBits:= 2, bValue:=fb_LAS_D_H.stMotionStage.fPosition<=10 OR PRG_Diffractometer.fb_Diff_Phi.stMotionStage.fPosition>0);
 fbLAS_D_H_EPS(eps:=stLAS_D_H);
@@ -47,7 +47,7 @@ fb_LAS_D_H.stMotionStage.stEPSForwardEnable := stLAS_D_H; // Update Motion stage
 
 fbLAS_VIS_EPS.setDescription('IN90mm;PHIat90;Theta<10'); // SET DESCRITION FOR BYTE INDICATOR LABELS
 //Zero is fully retracted
-fbLAS_VIS_EPS.setBit(nBits:= 0, bValue:=fb_LAS_VIS.stMotionStage.fPosition<=5); 
+fbLAS_VIS_EPS.setBit(nBits:= 0, bValue:=fb_LAS_VIS.stMotionStage.fPosition<=5);
 fbLAS_VIS_EPS.setBit(nBits:= 1, bValue:=fb_LAS_VIS.stMotionStage.fPosition<=5 OR PRG_Diffractometer.fb_Diff_Phi.stMotionStage.fPosition<>90);
 fbLAS_VIS_EPS.setBit(nBits:= 2, bValue:=fb_LAS_VIS.stMotionStage.fPosition<=5 OR PRG_Diffractometer.fb_Diff_Theta.stMotionStage.fPosition>10);
 fbLAS_VIS_EPS(eps:=fbLAS_VIS_EPS);
