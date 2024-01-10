@@ -12,8 +12,6 @@ VAR_GLOBAL
     This should be refactored once the IOC
     supports arbitrary ads paths for motors
 *)
-
-
     // Sample Chamber Sliding Seal - 1 axis
     //connect EPS limits
     {attribute 'pytmc' := 'pv: QRIX:SC:SSL:MMS'}
