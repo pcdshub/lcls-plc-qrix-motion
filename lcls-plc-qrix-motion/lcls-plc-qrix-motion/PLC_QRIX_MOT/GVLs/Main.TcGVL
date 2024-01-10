@@ -372,8 +372,8 @@ VAR_GLOBAL
     M46: DUT_MotionStage := (sName := 'QRIX:CRYO:MMS:X');
 
     {attribute 'pytmc' := 'pv: QRIX:CRYO:MMS:Y'}
-    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL7047_02_14]^STM Status^Status^Digital input 1;
-                              .bLimitBackwardEnable := TIIB[EL7047_02_14]^STM Status^Status^Digital input 2;
+    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL7047_02_14]^STM Status^Status^Digital input 2;
+                              .bLimitBackwardEnable := TIIB[EL7047_02_14]^STM Status^Status^Digital input 1;
                               .nRawEncoderULINT     := TIIB[EL5042_02_13]^FB Inputs Channel 2^Position; '}
     M47: DUT_MotionStage := (sName := 'QRIX:CRYO:MMS:Y');
 

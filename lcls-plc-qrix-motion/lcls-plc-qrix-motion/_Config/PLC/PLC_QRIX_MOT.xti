@@ -9685,13 +9685,17 @@ External Setpoint Generation:
 				<Link VarA="PlcTask Inputs^Main.M48.nRawEncoderULINT" VarB="FB Inputs Channel 1^Position" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^Main.M49.nRawEncoderULINT" VarB="FB Inputs Channel 2^Position" AutoLink="true"/>
 			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_11">
+				<Link VarA="PlcTask Inputs^Main.M49.bLimitBackwardEnable" VarB="STM Status^Status^Digital input 2" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^Main.M49.bLimitForwardEnable" VarB="STM Status^Status^Digital input 1" AutoLink="true"/>
+			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_12">
 				<Link VarA="PlcTask Inputs^Main.M46.bLimitBackwardEnable" VarB="STM Status^Status^Digital input 2" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^Main.M46.bLimitForwardEnable" VarB="STM Status^Status^Digital input 1" AutoLink="true"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_14">
-				<Link VarA="PlcTask Inputs^Main.M47.bLimitBackwardEnable" VarB="STM Status^Status^Digital input 2" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^Main.M47.bLimitForwardEnable" VarB="STM Status^Status^Digital input 1" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^Main.M47.bLimitBackwardEnable" VarB="STM Status^Status^Digital input 1" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^Main.M47.bLimitForwardEnable" VarB="STM Status^Status^Digital input 2" AutoLink="true"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_15">
 				<Link VarA="PlcTask Inputs^Main.M48.bLimitBackwardEnable" VarB="STM Status^Status^Digital input 2" AutoLink="true"/>
