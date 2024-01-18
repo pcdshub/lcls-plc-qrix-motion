@@ -1324,7 +1324,7 @@ External Setpoint Generation:
 	<Axis Id="46" CreateSymbols="true" AxisType="1" AxisFolder="CRYO">
 		<Name>__FILENAME__</Name>
 		<AxisPara>
-			<Velo Maximum="15"/>
+			<Velo Maximum="12.7"/>
 			<OtherSettings AllowMotionCmdToSlave="true"/>
 		</AxisPara>
 		<Encoder Name="Enc" EncType="29">
