@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Data Types &mdash; pcdshub/lcls-plc-qrix-motion  documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/tree.css?v=837a00b9" />
+      <link rel="stylesheet" type="text/css" href="_static/width.css?v=ab210c7a" />
+
+  
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -47,7 +51,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_pragmas.html">Pragmas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_nc.html">NC Settings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_ethercat.html">Box Hierarchy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_ethercat.html">EtherCAT Terminals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html">Boxes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_links.html">Links</a></li>
 </ul>
@@ -71089,6 +71093,2751 @@
 </div>
 </td>
 </tr>
+<tr class="row-odd"><td><p>QRIX:DET:MMS:ROT:PLC:bAllBackwardEnable_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>Summary of axis permission to move backward</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:DET:MMS:ROT:PLC:bAllEnable_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>Summary of axis permission to have power</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:DET:MMS:ROT:PLC:bAllForwardEnable_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>Summary of axis permission to move forward</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:DET:MMS:ROT:PLC:bBrakeRelease_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if brake released</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:DET:MMS:ROT:PLC:bBusy_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if in the middle of a command</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:DET:MMS:ROT:PLC:bDone_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if command finished successfully</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:DET:MMS:ROT:PLC:bEnable_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>Used internally to request enables</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:DET:MMS:ROT:PLC:bEnable</p></td>
+<td><p>bo</p></td>
+<td><p>Used internally to request enables</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:DET:MMS:ROT:PLC:bEnableDone_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if done enabling</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:DET:MMS:ROT:PLC:bError_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if we are in an error state</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+<div class="line">update: 100hz notify</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:DET:MMS:ROT:PLC:bExecute_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>Used internally and by the IOC to start or stop</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:DET:MMS:ROT:PLC:bExecute</p></td>
+<td><p>bo</p></td>
+<td><p>Used internally and by the IOC to start or stop</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:DET:MMS:ROT:PLC:bGantryAxis_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if gantry EPS active</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:DET:MMS:ROT:PLC:bGantryBackwardEnable_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if gantry ok to move backward</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:DET:MMS:ROT:PLC:bGantryForwardEnable_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if gantry ok to move forward</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:DET:MMS:ROT:PLC:bHardwareEnable_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if STO not hit</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:DET:MMS:ROT:PLC:bHome_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if at homing switch</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:DET:MMS:ROT:PLC:bHomeCmd_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>Start the homing routine</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:DET:MMS:ROT:PLC:bHomeCmd</p></td>
+<td><p>bo</p></td>
+<td><p>Start the homing routine</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:DET:MMS:ROT:PLC:bHomed_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if the motor has been homed</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:DET:MMS:ROT:PLC:bLimitBackwardEnable_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>FALSE if reverse limit hit</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:DET:MMS:ROT:PLC:bLimitForwardEnable_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>FALSE if forward limit hit</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:DET:MMS:ROT:PLC:bMoveCmd_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>Start a move</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:DET:MMS:ROT:PLC:bMoveCmd</p></td>
+<td><p>bo</p></td>
+<td><p>Start a move</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:DET:MMS:ROT:PLC:bPowerSelf_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>FALSE if axis is in PMPS</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:DET:MMS:ROT:PLC:bReset_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>Used internally to reset errors</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:DET:MMS:ROT:PLC:bReset</p></td>
+<td><p>bo</p></td>
+<td><p>Used internally to reset errors</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:DET:MMS:ROT:PLC:bSafetyReady_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if safe to start a move</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:DET:MMS:ROT:PLC:bUserEnable_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>Used to disable power entirely for an axis</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM ENABLE</div>
+<div class="line">field: ZNAM DISABLE</div>
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:DET:MMS:ROT:PLC:bUserEnable</p></td>
+<td><p>bo</p></td>
+<td><p>Used to disable power entirely for an axis</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM ENABLE</div>
+<div class="line">field: ZNAM DISABLE</div>
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:DET:MMS:ROT:PLC:fAcceleration_RBV</p></td>
+<td><p>ai</p></td>
+<td><p>Used internally and by the IOC to set acceleration</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:DET:MMS:ROT:PLC:fAcceleration</p></td>
+<td><p>ao</p></td>
+<td><p>Used internally and by the IOC to set acceleration</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:DET:MMS:ROT:PLC:fDeceleration_RBV</p></td>
+<td><p>ai</p></td>
+<td><p>Used internally and by the IOC to set deceleration</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:DET:MMS:ROT:PLC:fDeceleration</p></td>
+<td><p>ao</p></td>
+<td><p>Used internally and by the IOC to set deceleration</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:DET:MMS:ROT:PLC:fHomePosition_RBV</p></td>
+<td><p>ai</p></td>
+<td><p>Used internally and by the IOC to pick home position</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:DET:MMS:ROT:PLC:fHomePosition</p></td>
+<td><p>ao</p></td>
+<td><p>Used internally and by the IOC to pick home position</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:DET:MMS:ROT:PLC:fPosDiff_RBV</p></td>
+<td><p>ai</p></td>
+<td><p>Position lag difference</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:DET:MMS:ROT:PLC:fPosition_RBV</p></td>
+<td><p>ai</p></td>
+<td><p>Used internally and by the IOC as the set position</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:DET:MMS:ROT:PLC:fPosition</p></td>
+<td><p>ao</p></td>
+<td><p>Used internally and by the IOC as the set position</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:DET:MMS:ROT:PLC:fVelocity_RBV</p></td>
+<td><p>ai</p></td>
+<td><p>Used internally and by the IOC to set velocity</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:DET:MMS:ROT:PLC:fVelocity</p></td>
+<td><p>ao</p></td>
+<td><p>Used internally and by the IOC to set velocity</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:DET:MMS:ROT:PLC:nBrakeMode_RBV</p></td>
+<td><p>mbbi</p></td>
+<td><p>Describes when the brake will be released</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:DET:MMS:ROT:PLC:nCmdData_RBV</p></td>
+<td><p>longin</p></td>
+<td><p>Used internally and by the IOC to pass extra args</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:DET:MMS:ROT:PLC:nCmdData</p></td>
+<td><p>longout</p></td>
+<td><p>Used internally and by the IOC to pass extra args</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:DET:MMS:ROT:PLC:nCommand_RBV</p></td>
+<td><p>longin</p></td>
+<td><p>Used internally and by the IOC to pick move type</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:DET:MMS:ROT:PLC:nCommand</p></td>
+<td><p>longout</p></td>
+<td><p>Used internally and by the IOC to pick move type</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:DET:MMS:ROT:PLC:nEnableMode_RBV</p></td>
+<td><p>mbbi</p></td>
+<td><p>Describes when the axis will automatically get power</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:DET:MMS:ROT:PLC:nEncoderCount_RBV</p></td>
+<td><p>longin</p></td>
+<td><p>Count from encoder hardware</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:DET:MMS:ROT:PLC:nErrorId_RBV</p></td>
+<td><p>longin</p></td>
+<td><p>Error code if nonzero</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+<div class="line">update: 100hz notify</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:DET:MMS:ROT:PLC:nHomingMode_RBV</p></td>
+<td><p>mbbi</p></td>
+<td><p>Describes our homing strategy</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:DET:MMS:ROT:PLC:nMotionAxisID_RBV</p></td>
+<td><p>longin</p></td>
+<td><p>Unique ID assigned to each axis in the NC</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:DET:MMS:ROT:PLC:sErrorMessage_RBV</p></td>
+<td><p>waveform</p></td>
+<td><p>Message to identify the error state</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+<div class="line">update: 100hz notify</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:DET:MMS:ROT:PLC:sName_RBV</p></td>
+<td><p>waveform</p></td>
+<td><p>PLC program name</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:DET:MMS:ROT:PLC:stEPSBackwardEnable:nFlags_RBV</p></td>
+<td><p>longin</p></td>
+<td><p>Contains EPS flags</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:DET:MMS:ROT:PLC:stEPSBackwardEnable:sFlagDesc_RBV</p></td>
+<td><p>waveform</p></td>
+<td><p>semicolon-delimited nFlag variable</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:DET:MMS:ROT:PLC:stEPSBackwardEnable:sMessage_RBV</p></td>
+<td><p>waveform</p></td>
+<td><p>Message from EPS to usr</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:DET:MMS:ROT:PLC:stEPSForwardEnable:nFlags_RBV</p></td>
+<td><p>longin</p></td>
+<td><p>Contains EPS flags</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:DET:MMS:ROT:PLC:stEPSForwardEnable:sFlagDesc_RBV</p></td>
+<td><p>waveform</p></td>
+<td><p>semicolon-delimited nFlag variable</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:DET:MMS:ROT:PLC:stEPSForwardEnable:sMessage_RBV</p></td>
+<td><p>waveform</p></td>
+<td><p>Message from EPS to usr</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:DET:MMS:ROT:PLC:stEPSPowerEnable:nFlags_RBV</p></td>
+<td><p>longin</p></td>
+<td><p>Contains EPS flags</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:DET:MMS:ROT:PLC:stEPSPowerEnable:sFlagDesc_RBV</p></td>
+<td><p>waveform</p></td>
+<td><p>semicolon-delimited nFlag variable</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:DET:MMS:ROT:PLC:stEPSPowerEnable:sMessage_RBV</p></td>
+<td><p>waveform</p></td>
+<td><p>Message from EPS to usr</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:X:PLC:bAllBackwardEnable_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>Summary of axis permission to move backward</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:X:PLC:bAllEnable_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>Summary of axis permission to have power</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:X:PLC:bAllForwardEnable_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>Summary of axis permission to move forward</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:X:PLC:bBrakeRelease_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if brake released</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:X:PLC:bBusy_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if in the middle of a command</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:X:PLC:bDone_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if command finished successfully</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:X:PLC:bEnable_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>Used internally to request enables</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:X:PLC:bEnable</p></td>
+<td><p>bo</p></td>
+<td><p>Used internally to request enables</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:X:PLC:bEnableDone_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if done enabling</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:X:PLC:bError_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if we are in an error state</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+<div class="line">update: 100hz notify</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:X:PLC:bExecute_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>Used internally and by the IOC to start or stop</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:X:PLC:bExecute</p></td>
+<td><p>bo</p></td>
+<td><p>Used internally and by the IOC to start or stop</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:X:PLC:bGantryAxis_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if gantry EPS active</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:X:PLC:bGantryBackwardEnable_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if gantry ok to move backward</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:X:PLC:bGantryForwardEnable_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if gantry ok to move forward</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:X:PLC:bHardwareEnable_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if STO not hit</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:X:PLC:bHome_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if at homing switch</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:X:PLC:bHomeCmd_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>Start the homing routine</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:X:PLC:bHomeCmd</p></td>
+<td><p>bo</p></td>
+<td><p>Start the homing routine</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:X:PLC:bHomed_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if the motor has been homed</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:X:PLC:bLimitBackwardEnable_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>FALSE if reverse limit hit</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:X:PLC:bLimitForwardEnable_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>FALSE if forward limit hit</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:X:PLC:bMoveCmd_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>Start a move</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:X:PLC:bMoveCmd</p></td>
+<td><p>bo</p></td>
+<td><p>Start a move</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:X:PLC:bPowerSelf_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>FALSE if axis is in PMPS</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:X:PLC:bReset_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>Used internally to reset errors</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:X:PLC:bReset</p></td>
+<td><p>bo</p></td>
+<td><p>Used internally to reset errors</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:X:PLC:bSafetyReady_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if safe to start a move</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:X:PLC:bUserEnable_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>Used to disable power entirely for an axis</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM ENABLE</div>
+<div class="line">field: ZNAM DISABLE</div>
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:X:PLC:bUserEnable</p></td>
+<td><p>bo</p></td>
+<td><p>Used to disable power entirely for an axis</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM ENABLE</div>
+<div class="line">field: ZNAM DISABLE</div>
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:X:PLC:fAcceleration_RBV</p></td>
+<td><p>ai</p></td>
+<td><p>Used internally and by the IOC to set acceleration</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:X:PLC:fAcceleration</p></td>
+<td><p>ao</p></td>
+<td><p>Used internally and by the IOC to set acceleration</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:X:PLC:fDeceleration_RBV</p></td>
+<td><p>ai</p></td>
+<td><p>Used internally and by the IOC to set deceleration</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:X:PLC:fDeceleration</p></td>
+<td><p>ao</p></td>
+<td><p>Used internally and by the IOC to set deceleration</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:X:PLC:fHomePosition_RBV</p></td>
+<td><p>ai</p></td>
+<td><p>Used internally and by the IOC to pick home position</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:X:PLC:fHomePosition</p></td>
+<td><p>ao</p></td>
+<td><p>Used internally and by the IOC to pick home position</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:X:PLC:fPosDiff_RBV</p></td>
+<td><p>ai</p></td>
+<td><p>Position lag difference</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:X:PLC:fPosition_RBV</p></td>
+<td><p>ai</p></td>
+<td><p>Used internally and by the IOC as the set position</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:X:PLC:fPosition</p></td>
+<td><p>ao</p></td>
+<td><p>Used internally and by the IOC as the set position</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:X:PLC:fVelocity_RBV</p></td>
+<td><p>ai</p></td>
+<td><p>Used internally and by the IOC to set velocity</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:X:PLC:fVelocity</p></td>
+<td><p>ao</p></td>
+<td><p>Used internally and by the IOC to set velocity</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:X:PLC:nBrakeMode_RBV</p></td>
+<td><p>mbbi</p></td>
+<td><p>Describes when the brake will be released</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:X:PLC:nCmdData_RBV</p></td>
+<td><p>longin</p></td>
+<td><p>Used internally and by the IOC to pass extra args</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:X:PLC:nCmdData</p></td>
+<td><p>longout</p></td>
+<td><p>Used internally and by the IOC to pass extra args</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:X:PLC:nCommand_RBV</p></td>
+<td><p>longin</p></td>
+<td><p>Used internally and by the IOC to pick move type</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:X:PLC:nCommand</p></td>
+<td><p>longout</p></td>
+<td><p>Used internally and by the IOC to pick move type</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:X:PLC:nEnableMode_RBV</p></td>
+<td><p>mbbi</p></td>
+<td><p>Describes when the axis will automatically get power</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:X:PLC:nEncoderCount_RBV</p></td>
+<td><p>longin</p></td>
+<td><p>Count from encoder hardware</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:X:PLC:nErrorId_RBV</p></td>
+<td><p>longin</p></td>
+<td><p>Error code if nonzero</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+<div class="line">update: 100hz notify</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:X:PLC:nHomingMode_RBV</p></td>
+<td><p>mbbi</p></td>
+<td><p>Describes our homing strategy</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:X:PLC:nMotionAxisID_RBV</p></td>
+<td><p>longin</p></td>
+<td><p>Unique ID assigned to each axis in the NC</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:X:PLC:sErrorMessage_RBV</p></td>
+<td><p>waveform</p></td>
+<td><p>Message to identify the error state</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+<div class="line">update: 100hz notify</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:X:PLC:sName_RBV</p></td>
+<td><p>waveform</p></td>
+<td><p>PLC program name</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:X:PLC:stEPSBackwardEnable:nFlags_RBV</p></td>
+<td><p>longin</p></td>
+<td><p>Contains EPS flags</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:X:PLC:stEPSBackwardEnable:sFlagDesc_RBV</p></td>
+<td><p>waveform</p></td>
+<td><p>semicolon-delimited nFlag variable</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:X:PLC:stEPSBackwardEnable:sMessage_RBV</p></td>
+<td><p>waveform</p></td>
+<td><p>Message from EPS to usr</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:X:PLC:stEPSForwardEnable:nFlags_RBV</p></td>
+<td><p>longin</p></td>
+<td><p>Contains EPS flags</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:X:PLC:stEPSForwardEnable:sFlagDesc_RBV</p></td>
+<td><p>waveform</p></td>
+<td><p>semicolon-delimited nFlag variable</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:X:PLC:stEPSForwardEnable:sMessage_RBV</p></td>
+<td><p>waveform</p></td>
+<td><p>Message from EPS to usr</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:X:PLC:stEPSPowerEnable:nFlags_RBV</p></td>
+<td><p>longin</p></td>
+<td><p>Contains EPS flags</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:X:PLC:stEPSPowerEnable:sFlagDesc_RBV</p></td>
+<td><p>waveform</p></td>
+<td><p>semicolon-delimited nFlag variable</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:X:PLC:stEPSPowerEnable:sMessage_RBV</p></td>
+<td><p>waveform</p></td>
+<td><p>Message from EPS to usr</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Y:PLC:bAllBackwardEnable_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>Summary of axis permission to move backward</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Y:PLC:bAllEnable_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>Summary of axis permission to have power</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Y:PLC:bAllForwardEnable_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>Summary of axis permission to move forward</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Y:PLC:bBrakeRelease_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if brake released</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Y:PLC:bBusy_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if in the middle of a command</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Y:PLC:bDone_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if command finished successfully</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Y:PLC:bEnable_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>Used internally to request enables</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Y:PLC:bEnable</p></td>
+<td><p>bo</p></td>
+<td><p>Used internally to request enables</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Y:PLC:bEnableDone_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if done enabling</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Y:PLC:bError_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if we are in an error state</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+<div class="line">update: 100hz notify</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Y:PLC:bExecute_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>Used internally and by the IOC to start or stop</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Y:PLC:bExecute</p></td>
+<td><p>bo</p></td>
+<td><p>Used internally and by the IOC to start or stop</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Y:PLC:bGantryAxis_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if gantry EPS active</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Y:PLC:bGantryBackwardEnable_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if gantry ok to move backward</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Y:PLC:bGantryForwardEnable_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if gantry ok to move forward</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Y:PLC:bHardwareEnable_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if STO not hit</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Y:PLC:bHome_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if at homing switch</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Y:PLC:bHomeCmd_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>Start the homing routine</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Y:PLC:bHomeCmd</p></td>
+<td><p>bo</p></td>
+<td><p>Start the homing routine</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Y:PLC:bHomed_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if the motor has been homed</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Y:PLC:bLimitBackwardEnable_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>FALSE if reverse limit hit</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Y:PLC:bLimitForwardEnable_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>FALSE if forward limit hit</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Y:PLC:bMoveCmd_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>Start a move</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Y:PLC:bMoveCmd</p></td>
+<td><p>bo</p></td>
+<td><p>Start a move</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Y:PLC:bPowerSelf_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>FALSE if axis is in PMPS</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Y:PLC:bReset_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>Used internally to reset errors</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Y:PLC:bReset</p></td>
+<td><p>bo</p></td>
+<td><p>Used internally to reset errors</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Y:PLC:bSafetyReady_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if safe to start a move</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Y:PLC:bUserEnable_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>Used to disable power entirely for an axis</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM ENABLE</div>
+<div class="line">field: ZNAM DISABLE</div>
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Y:PLC:bUserEnable</p></td>
+<td><p>bo</p></td>
+<td><p>Used to disable power entirely for an axis</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM ENABLE</div>
+<div class="line">field: ZNAM DISABLE</div>
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Y:PLC:fAcceleration_RBV</p></td>
+<td><p>ai</p></td>
+<td><p>Used internally and by the IOC to set acceleration</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Y:PLC:fAcceleration</p></td>
+<td><p>ao</p></td>
+<td><p>Used internally and by the IOC to set acceleration</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Y:PLC:fDeceleration_RBV</p></td>
+<td><p>ai</p></td>
+<td><p>Used internally and by the IOC to set deceleration</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Y:PLC:fDeceleration</p></td>
+<td><p>ao</p></td>
+<td><p>Used internally and by the IOC to set deceleration</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Y:PLC:fHomePosition_RBV</p></td>
+<td><p>ai</p></td>
+<td><p>Used internally and by the IOC to pick home position</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Y:PLC:fHomePosition</p></td>
+<td><p>ao</p></td>
+<td><p>Used internally and by the IOC to pick home position</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Y:PLC:fPosDiff_RBV</p></td>
+<td><p>ai</p></td>
+<td><p>Position lag difference</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Y:PLC:fPosition_RBV</p></td>
+<td><p>ai</p></td>
+<td><p>Used internally and by the IOC as the set position</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Y:PLC:fPosition</p></td>
+<td><p>ao</p></td>
+<td><p>Used internally and by the IOC as the set position</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Y:PLC:fVelocity_RBV</p></td>
+<td><p>ai</p></td>
+<td><p>Used internally and by the IOC to set velocity</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Y:PLC:fVelocity</p></td>
+<td><p>ao</p></td>
+<td><p>Used internally and by the IOC to set velocity</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Y:PLC:nBrakeMode_RBV</p></td>
+<td><p>mbbi</p></td>
+<td><p>Describes when the brake will be released</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Y:PLC:nCmdData_RBV</p></td>
+<td><p>longin</p></td>
+<td><p>Used internally and by the IOC to pass extra args</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Y:PLC:nCmdData</p></td>
+<td><p>longout</p></td>
+<td><p>Used internally and by the IOC to pass extra args</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Y:PLC:nCommand_RBV</p></td>
+<td><p>longin</p></td>
+<td><p>Used internally and by the IOC to pick move type</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Y:PLC:nCommand</p></td>
+<td><p>longout</p></td>
+<td><p>Used internally and by the IOC to pick move type</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Y:PLC:nEnableMode_RBV</p></td>
+<td><p>mbbi</p></td>
+<td><p>Describes when the axis will automatically get power</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Y:PLC:nEncoderCount_RBV</p></td>
+<td><p>longin</p></td>
+<td><p>Count from encoder hardware</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Y:PLC:nErrorId_RBV</p></td>
+<td><p>longin</p></td>
+<td><p>Error code if nonzero</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+<div class="line">update: 100hz notify</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Y:PLC:nHomingMode_RBV</p></td>
+<td><p>mbbi</p></td>
+<td><p>Describes our homing strategy</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Y:PLC:nMotionAxisID_RBV</p></td>
+<td><p>longin</p></td>
+<td><p>Unique ID assigned to each axis in the NC</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Y:PLC:sErrorMessage_RBV</p></td>
+<td><p>waveform</p></td>
+<td><p>Message to identify the error state</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+<div class="line">update: 100hz notify</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Y:PLC:sName_RBV</p></td>
+<td><p>waveform</p></td>
+<td><p>PLC program name</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Y:PLC:stEPSBackwardEnable:nFlags_RBV</p></td>
+<td><p>longin</p></td>
+<td><p>Contains EPS flags</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Y:PLC:stEPSBackwardEnable:sFlagDesc_RBV</p></td>
+<td><p>waveform</p></td>
+<td><p>semicolon-delimited nFlag variable</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Y:PLC:stEPSBackwardEnable:sMessage_RBV</p></td>
+<td><p>waveform</p></td>
+<td><p>Message from EPS to usr</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Y:PLC:stEPSForwardEnable:nFlags_RBV</p></td>
+<td><p>longin</p></td>
+<td><p>Contains EPS flags</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Y:PLC:stEPSForwardEnable:sFlagDesc_RBV</p></td>
+<td><p>waveform</p></td>
+<td><p>semicolon-delimited nFlag variable</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Y:PLC:stEPSForwardEnable:sMessage_RBV</p></td>
+<td><p>waveform</p></td>
+<td><p>Message from EPS to usr</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Y:PLC:stEPSPowerEnable:nFlags_RBV</p></td>
+<td><p>longin</p></td>
+<td><p>Contains EPS flags</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Y:PLC:stEPSPowerEnable:sFlagDesc_RBV</p></td>
+<td><p>waveform</p></td>
+<td><p>semicolon-delimited nFlag variable</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Y:PLC:stEPSPowerEnable:sMessage_RBV</p></td>
+<td><p>waveform</p></td>
+<td><p>Message from EPS to usr</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Z:PLC:bAllBackwardEnable_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>Summary of axis permission to move backward</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Z:PLC:bAllEnable_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>Summary of axis permission to have power</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Z:PLC:bAllForwardEnable_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>Summary of axis permission to move forward</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Z:PLC:bBrakeRelease_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if brake released</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Z:PLC:bBusy_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if in the middle of a command</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Z:PLC:bDone_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if command finished successfully</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Z:PLC:bEnable_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>Used internally to request enables</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Z:PLC:bEnable</p></td>
+<td><p>bo</p></td>
+<td><p>Used internally to request enables</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Z:PLC:bEnableDone_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if done enabling</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Z:PLC:bError_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if we are in an error state</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+<div class="line">update: 100hz notify</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Z:PLC:bExecute_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>Used internally and by the IOC to start or stop</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Z:PLC:bExecute</p></td>
+<td><p>bo</p></td>
+<td><p>Used internally and by the IOC to start or stop</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Z:PLC:bGantryAxis_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if gantry EPS active</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Z:PLC:bGantryBackwardEnable_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if gantry ok to move backward</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Z:PLC:bGantryForwardEnable_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if gantry ok to move forward</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Z:PLC:bHardwareEnable_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if STO not hit</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Z:PLC:bHome_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if at homing switch</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Z:PLC:bHomeCmd_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>Start the homing routine</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Z:PLC:bHomeCmd</p></td>
+<td><p>bo</p></td>
+<td><p>Start the homing routine</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Z:PLC:bHomed_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if the motor has been homed</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Z:PLC:bLimitBackwardEnable_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>FALSE if reverse limit hit</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Z:PLC:bLimitForwardEnable_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>FALSE if forward limit hit</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Z:PLC:bMoveCmd_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>Start a move</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Z:PLC:bMoveCmd</p></td>
+<td><p>bo</p></td>
+<td><p>Start a move</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Z:PLC:bPowerSelf_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>FALSE if axis is in PMPS</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Z:PLC:bReset_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>Used internally to reset errors</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Z:PLC:bReset</p></td>
+<td><p>bo</p></td>
+<td><p>Used internally to reset errors</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Z:PLC:bSafetyReady_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if safe to start a move</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Z:PLC:bUserEnable_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>Used to disable power entirely for an axis</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM ENABLE</div>
+<div class="line">field: ZNAM DISABLE</div>
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Z:PLC:bUserEnable</p></td>
+<td><p>bo</p></td>
+<td><p>Used to disable power entirely for an axis</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM ENABLE</div>
+<div class="line">field: ZNAM DISABLE</div>
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Z:PLC:fAcceleration_RBV</p></td>
+<td><p>ai</p></td>
+<td><p>Used internally and by the IOC to set acceleration</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Z:PLC:fAcceleration</p></td>
+<td><p>ao</p></td>
+<td><p>Used internally and by the IOC to set acceleration</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Z:PLC:fDeceleration_RBV</p></td>
+<td><p>ai</p></td>
+<td><p>Used internally and by the IOC to set deceleration</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Z:PLC:fDeceleration</p></td>
+<td><p>ao</p></td>
+<td><p>Used internally and by the IOC to set deceleration</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Z:PLC:fHomePosition_RBV</p></td>
+<td><p>ai</p></td>
+<td><p>Used internally and by the IOC to pick home position</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Z:PLC:fHomePosition</p></td>
+<td><p>ao</p></td>
+<td><p>Used internally and by the IOC to pick home position</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Z:PLC:fPosDiff_RBV</p></td>
+<td><p>ai</p></td>
+<td><p>Position lag difference</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Z:PLC:fPosition_RBV</p></td>
+<td><p>ai</p></td>
+<td><p>Used internally and by the IOC as the set position</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Z:PLC:fPosition</p></td>
+<td><p>ao</p></td>
+<td><p>Used internally and by the IOC as the set position</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Z:PLC:fVelocity_RBV</p></td>
+<td><p>ai</p></td>
+<td><p>Used internally and by the IOC to set velocity</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Z:PLC:fVelocity</p></td>
+<td><p>ao</p></td>
+<td><p>Used internally and by the IOC to set velocity</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Z:PLC:nBrakeMode_RBV</p></td>
+<td><p>mbbi</p></td>
+<td><p>Describes when the brake will be released</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Z:PLC:nCmdData_RBV</p></td>
+<td><p>longin</p></td>
+<td><p>Used internally and by the IOC to pass extra args</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Z:PLC:nCmdData</p></td>
+<td><p>longout</p></td>
+<td><p>Used internally and by the IOC to pass extra args</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Z:PLC:nCommand_RBV</p></td>
+<td><p>longin</p></td>
+<td><p>Used internally and by the IOC to pick move type</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Z:PLC:nCommand</p></td>
+<td><p>longout</p></td>
+<td><p>Used internally and by the IOC to pick move type</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Z:PLC:nEnableMode_RBV</p></td>
+<td><p>mbbi</p></td>
+<td><p>Describes when the axis will automatically get power</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Z:PLC:nEncoderCount_RBV</p></td>
+<td><p>longin</p></td>
+<td><p>Count from encoder hardware</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Z:PLC:nErrorId_RBV</p></td>
+<td><p>longin</p></td>
+<td><p>Error code if nonzero</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+<div class="line">update: 100hz notify</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Z:PLC:nHomingMode_RBV</p></td>
+<td><p>mbbi</p></td>
+<td><p>Describes our homing strategy</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Z:PLC:nMotionAxisID_RBV</p></td>
+<td><p>longin</p></td>
+<td><p>Unique ID assigned to each axis in the NC</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Z:PLC:sErrorMessage_RBV</p></td>
+<td><p>waveform</p></td>
+<td><p>Message to identify the error state</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+<div class="line">update: 100hz notify</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Z:PLC:sName_RBV</p></td>
+<td><p>waveform</p></td>
+<td><p>PLC program name</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Z:PLC:stEPSBackwardEnable:nFlags_RBV</p></td>
+<td><p>longin</p></td>
+<td><p>Contains EPS flags</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Z:PLC:stEPSBackwardEnable:sFlagDesc_RBV</p></td>
+<td><p>waveform</p></td>
+<td><p>semicolon-delimited nFlag variable</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Z:PLC:stEPSBackwardEnable:sMessage_RBV</p></td>
+<td><p>waveform</p></td>
+<td><p>Message from EPS to usr</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Z:PLC:stEPSForwardEnable:nFlags_RBV</p></td>
+<td><p>longin</p></td>
+<td><p>Contains EPS flags</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Z:PLC:stEPSForwardEnable:sFlagDesc_RBV</p></td>
+<td><p>waveform</p></td>
+<td><p>semicolon-delimited nFlag variable</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Z:PLC:stEPSForwardEnable:sMessage_RBV</p></td>
+<td><p>waveform</p></td>
+<td><p>Message from EPS to usr</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Z:PLC:stEPSPowerEnable:nFlags_RBV</p></td>
+<td><p>longin</p></td>
+<td><p>Contains EPS flags</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:Z:PLC:stEPSPowerEnable:sFlagDesc_RBV</p></td>
+<td><p>waveform</p></td>
+<td><p>semicolon-delimited nFlag variable</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:Z:PLC:stEPSPowerEnable:sMessage_RBV</p></td>
+<td><p>waveform</p></td>
+<td><p>Message from EPS to usr</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:ROT:PLC:bAllBackwardEnable_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>Summary of axis permission to move backward</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:ROT:PLC:bAllEnable_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>Summary of axis permission to have power</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:ROT:PLC:bAllForwardEnable_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>Summary of axis permission to move forward</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:ROT:PLC:bBrakeRelease_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if brake released</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:ROT:PLC:bBusy_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if in the middle of a command</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:ROT:PLC:bDone_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if command finished successfully</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:ROT:PLC:bEnable_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>Used internally to request enables</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:ROT:PLC:bEnable</p></td>
+<td><p>bo</p></td>
+<td><p>Used internally to request enables</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:ROT:PLC:bEnableDone_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if done enabling</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:ROT:PLC:bError_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if we are in an error state</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+<div class="line">update: 100hz notify</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:ROT:PLC:bExecute_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>Used internally and by the IOC to start or stop</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:ROT:PLC:bExecute</p></td>
+<td><p>bo</p></td>
+<td><p>Used internally and by the IOC to start or stop</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:ROT:PLC:bGantryAxis_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if gantry EPS active</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:ROT:PLC:bGantryBackwardEnable_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if gantry ok to move backward</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:ROT:PLC:bGantryForwardEnable_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if gantry ok to move forward</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:ROT:PLC:bHardwareEnable_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if STO not hit</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:ROT:PLC:bHome_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if at homing switch</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:ROT:PLC:bHomeCmd_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>Start the homing routine</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:ROT:PLC:bHomeCmd</p></td>
+<td><p>bo</p></td>
+<td><p>Start the homing routine</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:ROT:PLC:bHomed_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if the motor has been homed</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:ROT:PLC:bLimitBackwardEnable_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>FALSE if reverse limit hit</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:ROT:PLC:bLimitForwardEnable_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>FALSE if forward limit hit</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:ROT:PLC:bMoveCmd_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>Start a move</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:ROT:PLC:bMoveCmd</p></td>
+<td><p>bo</p></td>
+<td><p>Start a move</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:ROT:PLC:bPowerSelf_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>FALSE if axis is in PMPS</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:ROT:PLC:bReset_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>Used internally to reset errors</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:ROT:PLC:bReset</p></td>
+<td><p>bo</p></td>
+<td><p>Used internally to reset errors</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:ROT:PLC:bSafetyReady_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>TRUE if safe to start a move</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM TRUE</div>
+<div class="line">field: ZNAM FALSE</div>
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:ROT:PLC:bUserEnable_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>Used to disable power entirely for an axis</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM ENABLE</div>
+<div class="line">field: ZNAM DISABLE</div>
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:ROT:PLC:bUserEnable</p></td>
+<td><p>bo</p></td>
+<td><p>Used to disable power entirely for an axis</p></td>
+<td><div class="line-block">
+<div class="line">field: ONAM ENABLE</div>
+<div class="line">field: ZNAM DISABLE</div>
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:ROT:PLC:fAcceleration_RBV</p></td>
+<td><p>ai</p></td>
+<td><p>Used internally and by the IOC to set acceleration</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:ROT:PLC:fAcceleration</p></td>
+<td><p>ao</p></td>
+<td><p>Used internally and by the IOC to set acceleration</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:ROT:PLC:fDeceleration_RBV</p></td>
+<td><p>ai</p></td>
+<td><p>Used internally and by the IOC to set deceleration</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:ROT:PLC:fDeceleration</p></td>
+<td><p>ao</p></td>
+<td><p>Used internally and by the IOC to set deceleration</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:ROT:PLC:fHomePosition_RBV</p></td>
+<td><p>ai</p></td>
+<td><p>Used internally and by the IOC to pick home position</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:ROT:PLC:fHomePosition</p></td>
+<td><p>ao</p></td>
+<td><p>Used internally and by the IOC to pick home position</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:ROT:PLC:fPosDiff_RBV</p></td>
+<td><p>ai</p></td>
+<td><p>Position lag difference</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:ROT:PLC:fPosition_RBV</p></td>
+<td><p>ai</p></td>
+<td><p>Used internally and by the IOC as the set position</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:ROT:PLC:fPosition</p></td>
+<td><p>ao</p></td>
+<td><p>Used internally and by the IOC as the set position</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:ROT:PLC:fVelocity_RBV</p></td>
+<td><p>ai</p></td>
+<td><p>Used internally and by the IOC to set velocity</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:ROT:PLC:fVelocity</p></td>
+<td><p>ao</p></td>
+<td><p>Used internally and by the IOC to set velocity</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:ROT:PLC:nBrakeMode_RBV</p></td>
+<td><p>mbbi</p></td>
+<td><p>Describes when the brake will be released</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:ROT:PLC:nCmdData_RBV</p></td>
+<td><p>longin</p></td>
+<td><p>Used internally and by the IOC to pass extra args</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:ROT:PLC:nCmdData</p></td>
+<td><p>longout</p></td>
+<td><p>Used internally and by the IOC to pass extra args</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:ROT:PLC:nCommand_RBV</p></td>
+<td><p>longin</p></td>
+<td><p>Used internally and by the IOC to pick move type</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:ROT:PLC:nCommand</p></td>
+<td><p>longout</p></td>
+<td><p>Used internally and by the IOC to pick move type</p></td>
+<td><div class="line-block">
+<div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:ROT:PLC:nEnableMode_RBV</p></td>
+<td><p>mbbi</p></td>
+<td><p>Describes when the axis will automatically get power</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:ROT:PLC:nEncoderCount_RBV</p></td>
+<td><p>longin</p></td>
+<td><p>Count from encoder hardware</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:ROT:PLC:nErrorId_RBV</p></td>
+<td><p>longin</p></td>
+<td><p>Error code if nonzero</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+<div class="line">update: 100hz notify</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:ROT:PLC:nHomingMode_RBV</p></td>
+<td><p>mbbi</p></td>
+<td><p>Describes our homing strategy</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:ROT:PLC:nMotionAxisID_RBV</p></td>
+<td><p>longin</p></td>
+<td><p>Unique ID assigned to each axis in the NC</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:ROT:PLC:sErrorMessage_RBV</p></td>
+<td><p>waveform</p></td>
+<td><p>Message to identify the error state</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+<div class="line">update: 100hz notify</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:ROT:PLC:sName_RBV</p></td>
+<td><p>waveform</p></td>
+<td><p>PLC program name</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:ROT:PLC:stEPSBackwardEnable:nFlags_RBV</p></td>
+<td><p>longin</p></td>
+<td><p>Contains EPS flags</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:ROT:PLC:stEPSBackwardEnable:sFlagDesc_RBV</p></td>
+<td><p>waveform</p></td>
+<td><p>semicolon-delimited nFlag variable</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:ROT:PLC:stEPSBackwardEnable:sMessage_RBV</p></td>
+<td><p>waveform</p></td>
+<td><p>Message from EPS to usr</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:ROT:PLC:stEPSForwardEnable:nFlags_RBV</p></td>
+<td><p>longin</p></td>
+<td><p>Contains EPS flags</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:ROT:PLC:stEPSForwardEnable:sFlagDesc_RBV</p></td>
+<td><p>waveform</p></td>
+<td><p>semicolon-delimited nFlag variable</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:ROT:PLC:stEPSForwardEnable:sMessage_RBV</p></td>
+<td><p>waveform</p></td>
+<td><p>Message from EPS to usr</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:ROT:PLC:stEPSPowerEnable:nFlags_RBV</p></td>
+<td><p>longin</p></td>
+<td><p>Contains EPS flags</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:CRYO:MMS:ROT:PLC:stEPSPowerEnable:sFlagDesc_RBV</p></td>
+<td><p>waveform</p></td>
+<td><p>semicolon-delimited nFlag variable</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:CRYO:MMS:ROT:PLC:stEPSPowerEnable:sMessage_RBV</p></td>
+<td><p>waveform</p></td>
+<td><p>Message from EPS to usr</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
 <tr class="row-odd"><td><p>QRIX:OPTSL:MMS:TOP:PLC:bAllBackwardEnable_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>Summary of axis permission to move backward</p></td>
@@ -81073,7 +83822,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, SLAC National Accelerator Laboratory.</p>
+    <p>&#169; Copyright 2024, SLAC National Accelerator Laboratory.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

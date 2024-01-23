@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Box Hierarchy &mdash; pcdshub/lcls-plc-qrix-motion  documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <title>EtherCAT Terminals &mdash; pcdshub/lcls-plc-qrix-motion  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/tree.css?v=837a00b9" />
+      <link rel="stylesheet" type="text/css" href="_static/width.css?v=ab210c7a" />
+
+  
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -47,7 +51,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_pragmas.html">Pragmas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_nc.html">NC Settings</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Box Hierarchy</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">EtherCAT Terminals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html">Boxes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_links.html">Links</a></li>
 </ul>
@@ -78,7 +82,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Box Hierarchy</li>
+      <li class="breadcrumb-item active">EtherCAT Terminals</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/lcls-plc-qrix-motion_ethercat.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -88,726 +92,2979 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="box-hierarchy">
-<h1>Box Hierarchy<a class="headerlink" href="#box-hierarchy" title="Link to this heading"></a></h1>
-<ol class="arabic">
-<li><dl>
-<dt><strong>B950-233-R03-DRL-01 (EK1200) [ID: 1]</strong></dt><dd><blockquote>
-<div><p>EK1200-5000 EtherCAT Power supply (2A E-Bus)</p>
-</div></blockquote>
-<ol class="arabic simple">
-<li><dl class="simple">
-<dt>EL2008_00_01 [ID: 2]</dt><dd><p>EL2008 8Ch. Dig. Output 24V, 0.5A</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>EL2794_00_02 [ID: 3]</dt><dd><p>EL2794 4Ch. Dig. Output 24V AC/DC, 2A, short-circuit-proof</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>EL6070_00_04 [ID: 4]</dt><dd><p>EL6070 1Ch. Licensing-Terminal</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>EK1521_00_05 [ID: 5]</dt><dd><p>EK1521-0010 1 port EtherCAT junction (FX-SingleMode)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>EK1110_00_06 [ID: 6]</dt><dd><p>EK1110 EtherCAT extension</p>
-</dd>
-</dl>
-</li>
-</ol>
-</dd>
-</dl>
-</li>
-<li><dl>
-<dt><strong>B950-233-WALL-S-R01-DRL-01 [ID: 7]</strong></dt><dd><blockquote>
-<div><p>EK1100 EtherCAT Coupler (2A E-Bus)</p>
-</div></blockquote>
-<ol class="arabic simple">
-<li><dl class="simple">
-<dt>EL7047_02_01 - SSL [ID: 8]</dt><dd><p>EL7047 1Ch. Stepper motor output stage (50V, 5A)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>EL5042_02_02 [ID: 9]</dt><dd><p>EL5042 2Ch. BiSS-C Encoder</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>EL1004_02_03 [ID: 10]</dt><dd><p>EL1004 4Ch. Dig. Input 24V, 3ms</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>EL7031_02_04 - LAS_VIS [ID: 11]</dt><dd><p>EL7031 1Ch. Stepper motor output stage (24V, 1.5A)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>EL5042_02_05 - LAS_VIS [ID: 12]</dt><dd><p>EL5042 2Ch. BiSS-C Encoder</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>EL1088_02_06 [ID: 13]</dt><dd><p>EL1088 8Ch. Dig. Input 24V, 3ms, negative</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>EL7031_02_07 - LAS_D_H [ID: 14]</dt><dd><p>EL7031 1Ch. Stepper motor output stage (24V, 1.5A)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>EL5042_02_08 - LAS_D_V-H [ID: 15]</dt><dd><p>EL5042 2Ch. BiSS-C Encoder</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>EL7031_02_09 - LAS_D_V [ID: 17]</dt><dd><p>EL7031 1Ch. Stepper motor output stage (24V, 1.5A)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>EL1004_02_10 [ID: 18]</dt><dd><p>EL1004 4Ch. Dig. Input 24V, 3ms</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>EL7047_02_11 [ID: 19]</dt><dd><p>EL7047 1Ch. Stepper motor output stage (50V, 5A)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>EL7047_02_12 [ID: 20]</dt><dd><p>EL7047 1Ch. Stepper motor output stage (50V, 5A)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>EL5042_02_13 [ID: 24]</dt><dd><p>EL5042 2Ch. BiSS-C Encoder</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>EL7047_02_14 [ID: 22]</dt><dd><p>EL7047 1Ch. Stepper motor output stage (50V, 5A)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>EL7047_02_15 [ID: 23]</dt><dd><p>EL7047 1Ch. Stepper motor output stage (50V, 5A)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>EL5042_02_16 [ID: 21]</dt><dd><p>EL5042 2Ch. BiSS-C Encoder</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>EL7031_02_17 [ID: 25]</dt><dd><p>EL7031 1Ch. Stepper motor output stage (24V, 1.5A)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>EL7031_02_18 [ID: 26]</dt><dd><p>EL7031 1Ch. Stepper motor output stage (24V, 1.5A)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Term 106 (EL9011) [ID: 106]</dt><dd><p>EL9011 End Terminal</p>
-</dd>
-</dl>
-</li>
-</ol>
-</dd>
-</dl>
-</li>
-<li><dl>
-<dt><strong>B950-233-WALL-S-R01-DRL-02 [ID: 27]</strong></dt><dd><blockquote>
-<div><p>EK1100 EtherCAT Coupler (2A E-Bus)</p>
-</div></blockquote>
-<ol class="arabic simple">
-<li><dl class="simple">
-<dt>EL7047_03_01-Diff-X [ID: 29]</dt><dd><p>EL7047 1Ch. Stepper motor output stage (50V, 5A)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>EL5042_03_02-Diff-X-Y [ID: 30]</dt><dd><p>EL5042 2Ch. BiSS-C Encoder</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>EL7047_03_03-Diff-Y [ID: 31]</dt><dd><p>EL7047 1Ch. Stepper motor output stage (50V, 5A)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>EL1088_03_04 [ID: 32]</dt><dd><p>EL1088 8Ch. Dig. Input 24V, 3ms, negative</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>EL7047_03_05-Diff-Z [ID: 33]</dt><dd><p>EL7047 1Ch. Stepper motor output stage (50V, 5A)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>EL5042_03_06-DIff-Z-2ThetaY [ID: 34]</dt><dd><p>EL5042 2Ch. BiSS-C Encoder</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>EL7047_03_07-Diff 2 Theta Y [ID: 35]</dt><dd><p>EL7047 1Ch. Stepper motor output stage (50V, 5A)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>EL1088_03_08 [ID: 36]</dt><dd><p>EL1088 8Ch. Dig. Input 24V, 3ms, negative</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>EL9410_03_09 [ID: 37]</dt><dd><p>EL9410 E-Bus Power Supplier  (Diagnostics)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>EL1088_03_10 [ID: 38]</dt><dd><p>EL1088 8Ch. Dig. Input 24V, 3ms, negative</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>EL7047_03_12-Diff - Phi [ID: 40]</dt><dd><p>EL7047 1Ch. Stepper motor output stage (50V, 5A)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>EL5042_03_13 - Diff - Phi - Chi [ID: 41]</dt><dd><p>EL5042 2Ch. BiSS-C Encoder</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>EL7047_03_14-Diff - Chi [ID: 42]</dt><dd><p>EL7047 1Ch. Stepper motor output stage (50V, 5A)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>EL1088_03_15 [ID: 43]</dt><dd><p>EL1088 8Ch. Dig. Input 24V, 3ms, negative</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>EL7047_03_16 - Diff - Theta [ID: 44]</dt><dd><p>EL7047 1Ch. Stepper motor output stage (50V, 5A)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>EL5042_03_17 - Diff - Theta - 2Theta [ID: 45]</dt><dd><p>EL5042 2Ch. BiSS-C Encoder</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>EL7047_03_18 - Diff - 2Theta [ID: 46]</dt><dd><p>EL7047 1Ch. Stepper motor output stage (50V, 5A)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Term 107 (EL9011) [ID: 107]</dt><dd><p>EL9011 End Terminal</p>
-</dd>
-</dl>
-</li>
-</ol>
-</dd>
-</dl>
-</li>
-<li><dl>
-<dt><strong>B950-233-WALL-S-R01-DRL-03_SDS [ID: 28]</strong></dt><dd><blockquote>
-<div><p>EK1100 EtherCAT Coupler (2A E-Bus)</p>
-</div></blockquote>
-<ol class="arabic">
-<li><dl class="simple">
-<dt>EL7047_04_01 [ID: 50]</dt><dd><p>EL7047 1Ch. Stepper motor output stage (50V, 5A)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>EL5042_04_02 [ID: 51]</dt><dd><p>EL5042 2Ch. BiSS-C Encoder</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>EL7047_04_03 [ID: 52]</dt><dd><p>EL7047 1Ch. Stepper motor output stage (50V, 5A)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>EL1004_04_04 [ID: 53]</dt><dd><p>EL1004 4Ch. Dig. Input 24V, 3ms</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>EL7047_04_05 [ID: 54]</dt><dd><p>EL7047 1Ch. Stepper motor output stage (50V, 5A)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>EL5042_04_06 [ID: 55]</dt><dd><p>EL5042 2Ch. BiSS-C Encoder</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>EL7047_04_07 [ID: 56]</dt><dd><p>EL7047 1Ch. Stepper motor output stage (50V, 5A)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>EL1004_04_09 [ID: 58]</dt><dd><p>EL1004 4Ch. Dig. Input 24V, 3ms</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>EL7047_04_10 [ID: 59]</dt><dd><p>EL7047 1Ch. Stepper motor output stage (50V, 5A)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>EL7047_04_12 [ID: 61]</dt><dd><p>EL7047 1Ch. Stepper motor output stage (50V, 5A)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>EL5042_04_13 [ID: 62]</dt><dd><p>EL5042 2Ch. BiSS-C Encoder</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>EL2794_04_14 [ID: 63]</dt><dd><p>EL2794 4Ch. Dig. Output 24V AC/DC, 2A, short-circuit-proof</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>EL3314_04_15 [ID: 49]</dt><dd><p>EL3314 4Ch. Ana. Input Thermocouple (TC)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>EL3314_04_16 [ID: 48]</dt><dd><p>EL3314 4Ch. Ana. Input Thermocouple (TC)</p>
-</dd>
-</dl>
-</li>
-<li><dl>
-<dt>EK1122_04_17 [ID: 57]</dt><dd><blockquote>
-<div><p>EK1122 2 port EtherCAT junction</p>
-</div></blockquote>
-<ol class="arabic">
-<li><dl>
-<dt><strong>B950-233-K2S13-DRL-01 [ID: 60]</strong></dt><dd><blockquote>
-<div><p>EK1100 EtherCAT Coupler (2A E-Bus)</p>
-</div></blockquote>
-<ol class="arabic simple">
-<li><dl class="simple">
-<dt>EL5101_05_01 [ID: 131]</dt><dd><p>EL5101 1Ch. Inc. Encoder 5V</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>EL5101_05_02 [ID: 132]</dt><dd><p>EL5101 1Ch. Inc. Encoder 5V</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>EL5101_05_03 [ID: 133]</dt><dd><p>EL5101 1Ch. Inc. Encoder 5V</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>EL1088_05_04 [ID: 134]</dt><dd><p>EL1088 8Ch. Dig. Input 24V, 3ms, negative</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>EL9011_05_05 [ID: 135]</dt><dd><p>EL9011 End Terminal</p>
-</dd>
-</dl>
-</li>
-</ol>
-</dd>
-</dl>
-</li>
-</ol>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Term 193 (EL9011) [ID: 193]</dt><dd><p>EL9011 End Terminal</p>
-</dd>
-</dl>
-</li>
-</ol>
-</dd>
-</dl>
-</li>
-<li><dl>
-<dt><strong>Rack#2B-01 Coupler (EK1100) [ID: 47]</strong></dt><dd><blockquote>
-<div><p>EK1100 EtherCAT Coupler (2A E-Bus)</p>
-</div></blockquote>
-<ol class="arabic simple">
-<li><dl class="simple">
-<dt>Rack#2B-02 KTC (EL3314) [ID: 110]</dt><dd><p>EL3314 4Ch. Ana. Input Thermocouple (TC)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Rack#2B-03 AI_TiltSensor (EL3174-0002) [ID: 111]</dt><dd><p>EL3174-0002 4Ch. Ana. Input +/-10V, +/-20mA 16 Bit, Isolated Channels</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Rack#2B-04 PS_P (EL3064) [ID: 112]</dt><dd><p>EL3064 4Ch. Ana. Input 0-10V</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Rack#2B-05 SV_AIR (EL2004) [ID: 113]</dt><dd><p>EL2004 4Ch. Dig. Output 24V, 0.5A</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Rack#2B-06 SFIN (EL1918) [ID: 114]</dt><dd><p>( <strong>SyncUnit=None</strong> )    EL1918, 8Ch. Safety Input 24V, TwinSAFE</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Rack#2B-07 ENC_X1_X2 (EL5042) [ID: 115]</dt><dd><p>EL5042 2Ch. BiSS-C Encoder</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Rack#2B-08 ENC_Y1_Y2 (EL5042) [ID: 116]</dt><dd><p>EL5042 2Ch. BiSS-C Encoder</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Rack#2B-09 ENC_RxG_XG (EL5042) [ID: 117]</dt><dd><p>EL5042 2Ch. BiSS-C Encoder</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Rack#2B-10 ENC_YG1_YG2 (EL5042) [ID: 118]</dt><dd><p>EL5042 2Ch. BiSS-C Encoder</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Rack#2B-11 ENC_YG3_X1PM (EL5042) [ID: 119]</dt><dd><p>EL5042 2Ch. BiSS-C Encoder</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Rack#2B-12 ENC_X2PM_RzPM (EL5042) [ID: 120]</dt><dd><p>EL5042 2Ch. BiSS-C Encoder</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Rack#2B-13 PWS_EBUS (EL9410) [ID: 121]</dt><dd><p>EL9410 E-Bus Power Supplier  (Diagnostics)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Rack#2B-14 CP_YDF (EL9221-5000) [ID: 122]</dt><dd><p>( <strong>SyncUnit=Term 62 (EL9221-5000)</strong> )    EL9221-5000 Overcurrent protection 24V DC, 1Ch., max. 10A, adjustable</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Rack#2B-15 DR_YDF1 (EL7041-0052) [ID: 123]</dt><dd><p>EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Rack#2B-16 DR_YDF2 (EL7041-0052) [ID: 64]</dt><dd><p>EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Rack#2B-17 CP_YDF_ZF (EL9221-5000) [ID: 65]</dt><dd><p>( <strong>SyncUnit=Term 65 (EL9221-5000)</strong> )    EL9221-5000 Overcurrent protection 24V DC, 1Ch., max. 10A, adjustable</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Rack#2B-18 MB_ZF (EL2602) [ID: 66]</dt><dd><p>EL2602 2Ch. Relay Output, NO (230V AC / 30V DC)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Rack#2B-19 DR_YDF3 (EL7041-0052) [ID: 67]</dt><dd><p>EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Rack#2B-20 DR_ZF (EL7047) [ID: 128]</dt><dd><p>EL7047 1Ch. Stepper motor output stage (50V, 5A)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Rack#2B-21 EtherCAT Extension (EK1110) [ID: 69]</dt><dd><p>EK1110 EtherCAT extension</p>
-</dd>
-</dl>
-</li>
-</ol>
-</dd>
-</dl>
-</li>
-<li><dl>
-<dt><strong>Rack#1A-01 Coupler (EK1100) [ID: 87]</strong></dt><dd><blockquote>
-<div><p>EK1100 EtherCAT Coupler (2A E-Bus)</p>
-</div></blockquote>
-<ol class="arabic simple">
-<li><dl class="simple">
-<dt>Rack#1A-02 SFIN (EL1918) [ID: 99]</dt><dd><p>( <strong>SyncUnit=None</strong> )    EL1918, 8Ch. Safety Input 24V, TwinSAFE</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Rack#1A-03 SFOUT(EL2912) [ID: 109]</dt><dd><p>( <strong>SyncUnit=None</strong> )    EL2912, 2Ch. Safety Output 24V, 2A, TwinSAFE</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Rack#1A-04 DR_2Th (EL7047) [ID: 74]</dt><dd><p>EL7047 1Ch. Stepper motor output stage (50V, 5A)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Rack#1A-05 MB_2Th (EL2602) [ID: 73]</dt><dd><p>EL2602 2Ch. Relay Output, NO (230V AC / 30V DC)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Rack#1A-06 ENC_2Th (EL5042) [ID: 124]</dt><dd><p>EL5042 2Ch. BiSS-C Encoder</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Rack#1A-07 ECAT Extension (EK1110) [ID: 125]</dt><dd><p>EK1110 EtherCAT extension</p>
-</dd>
-</dl>
-</li>
-</ol>
-</dd>
-</dl>
-</li>
-<li><dl>
-<dt><strong>Rack#2A-01 Coupler (EK1100) [ID: 90]</strong></dt><dd><blockquote>
-<div><p>EK1100 EtherCAT Coupler (2A E-Bus)</p>
-</div></blockquote>
-<ol class="arabic simple">
-<li><dl class="simple">
-<dt>Rack#2A-02 CP_SLIT (EL9221-5000) [ID: 91]</dt><dd><p>( <strong>SyncUnit=Term 31 (EL9221-5000)</strong> )    EL9221-5000 Overcurrent protection 24V DC, 1Ch., max. 10A, adjustable</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Rack#2A-03 DR_XS1 (EL7041-0052) [ID: 92]</dt><dd><p>EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Rack#2A-04 DR_XS2 (EL7041-0052) [ID: 93]</dt><dd><p>EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Rack#2A-05 DR_YS1 (EL7041-0052) [ID: 94]</dt><dd><p>EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Rack#2A-06 DR_YS2 (EL7041-0052) [ID: 95]</dt><dd><p>EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Rack#2A-07 CP_G (EL9221-5000) [ID: 96]</dt><dd><p>( <strong>SyncUnit=Term 36 (EL9221-5000)</strong> )    EL9221-5000 Overcurrent protection 24V DC, 1Ch., max. 10A, adjustable</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Rack#2A-08 DR_RxG (EL7041-0052) [ID: 97]</dt><dd><p>EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Rack#2A-09 DR_XG (EL7041-0052) [ID: 98]</dt><dd><p>EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Rack#2A-10 DR_YG1 (EL7041-0052) [ID: 39]</dt><dd><p>EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Rack#2A-11 DR_YG2 (EL7041-0052) [ID: 100]</dt><dd><p>EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Rack#2A-12 DR_YG3 (EL7041-0052) [ID: 101]</dt><dd><p>EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Rack#2A-13 CP_PM (EL9221-5000) [ID: 102]</dt><dd><p>( <strong>SyncUnit=Term 42 (EL9221-5000)</strong> )    EL9221-5000 Overcurrent protection 24V DC, 1Ch., max. 10A, adjustable</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Rack#2A-14 DR_XPM1 (EL7041-0052) [ID: 103]</dt><dd><p>EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Rack#2A-15 DR_XPM2 (EL7041-0052) [ID: 104]</dt><dd><p>EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Rack#2A-16 DR_RzPM (EL7041-0052) [ID: 105]</dt><dd><p>EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Rack#2A-17 EtherCAT Extension (EK1110) [ID: 108]</dt><dd><p>EK1110 EtherCAT extension</p>
-</dd>
-</dl>
-</li>
-</ol>
-</dd>
-</dl>
-</li>
-<li><dl>
-<dt><strong>BOX-01 Coupler (EK1100) [ID: 126]</strong></dt><dd><blockquote>
-<div><p>EK1100 EtherCAT Coupler (2A E-Bus)</p>
-</div></blockquote>
-<ol class="arabic simple">
-<li><dl class="simple">
-<dt>BOX-02 SFIN(EL1904) [ID: 127]</dt><dd><p>EL1904, 4 Ch. Safety Input 24V, TwinSAFE</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>BOX-03 ENC_X1_X2 (EL5042) [ID: 68]</dt><dd><p>EL5042 2Ch. BiSS-C Encoder</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>BOX-04 ENC_Y1_Y2 (EL5042) [ID: 129]</dt><dd><p>EL5042 2Ch. BiSS-C Encoder</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>BOX-05 ENC_XDC_RyDC (EL5042) [ID: 130]</dt><dd><p>EL5042 2Ch. BiSS-C Encoder</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>BOX-06 ENC_ZDC_YF1 (EL5042) [ID: 71]</dt><dd><p>EL5042 2Ch. BiSS-C Encoder</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>BOX-07 ENC_YF2_ZF (EL5042) [ID: 72]</dt><dd><p>EL5042 2Ch. BiSS-C Encoder</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>BOX-08 CP_SDC (EL9221-5000) [ID: 16]</dt><dd><p>( <strong>SyncUnit=Term 16 (EL9221-5000)</strong> )    EL9221-5000 Overcurrent protection 24V DC, 1Ch., max. 10A, adjustable</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>BOX-09 DR_XSDC1 (EL7041-0052) [ID: 76]</dt><dd><p>EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>BOX-10 DR_XSDC2 (EL7041-0052) [ID: 77]</dt><dd><p>EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>BOX-11 DR_YSDC1 (EL7041-0052) [ID: 78]</dt><dd><p>EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>BOX-12 DR_YSDC2 (EL7041-0052) [ID: 79]</dt><dd><p>EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>BOX-13 CP_DC (EL9221-5000) [ID: 80]</dt><dd><p>( <strong>SyncUnit=Term 21 (EL9221-5000)</strong> )    EL9221-5000 Overcurrent protection 24V DC, 1Ch., max. 10A, adjustable</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>BOX-14 DR_XDC (EL7041-0052) [ID: 81]</dt><dd><p>EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>BOX-15 DR_RyDC (EL7041-0052) [ID: 82]</dt><dd><p>EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>BOX-16 DR_ZDC (EL7041-0052) [ID: 83]</dt><dd><p>EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>BOX-17 Ebus Reflesh (EL9410) [ID: 84]</dt><dd><p>EL9410 E-Bus Power Supplier  (Diagnostics)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>BOX-18 CP_YF1_YF2 (EL9221-5000) [ID: 85]</dt><dd><p>( <strong>SyncUnit=Term 25 (EL9221-5000)</strong> )    EL9221-5000 Overcurrent protection 24V DC, 1Ch., max. 10A, adjustable</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>BOX-19 MB_YF1_YF2 (EL2602) [ID: 86]</dt><dd><p>EL2602 2Ch. Relay Output, NO (230V AC / 30V DC)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>BOX-20 DR_YF1 (EL7047) [ID: 75]</dt><dd><p>EL7047 1Ch. Stepper motor output stage (50V, 5A)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>BOX-21 DR_YF2 (EL7047) [ID: 88]</dt><dd><p>EL7047 1Ch. Stepper motor output stage (50V, 5A)</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>BOX-22 EtherCAT Extension (EK1110) [ID: 89]</dt><dd><p>EK1110 EtherCAT extension</p>
-</dd>
-</dl>
-</li>
-</ol>
-</dd>
-</dl>
-</li>
-</ol>
-</section>
+  <section id="ethercat-terminals">
+<h1>EtherCAT Terminals<a class="headerlink" href="#ethercat-terminals" title="Link to this heading"></a></h1>
+  <ul class="tree">
+
+
+
+    <li>
+  <details open>
+    <summary>
+          <table width="100%">
+    <tr>
+      <td width="10%">
+        ID=1:
+      </td>
+      <td width="75%">B950-233-R03-DRL-01 (EK1200)
+      </td>
+      <td>        </td>
+    </tr>
+    <tr>
+      <td>
+                </td>
+      <td colspan="2">
+        EK1200-5000 EtherCAT Power supply (2A E-Bus)
+      </td>
+    </tr>
+  </table>
+    </summary>
+    <ul>
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=2:
+                </td>
+                <td width="75%">EL2008_00_01
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL2008 8Ch. Dig. Output 24V, 0.5A
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=3:
+                </td>
+                <td width="75%">EL2794_00_02
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL2794 4Ch. Dig. Output 24V AC/DC, 2A, short-circuit-proof
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=4:
+                </td>
+                <td width="75%">EL6070_00_04
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL6070 1Ch. Licensing-Terminal
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=5:
+                </td>
+                <td width="75%">EK1521_00_05
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EK1521-0010 1 port EtherCAT junction (FX-SingleMode)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=6:
+                </td>
+                <td width="75%">EK1110_00_06
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EK1110 EtherCAT extension
+                </td>
+              </tr>
+            </table>
+          </li>
+
+    </ul>
+  </details>
+</li>
+
+
+
+    <li>
+  <details open>
+    <summary>
+          <table width="100%">
+    <tr>
+      <td width="10%">
+        ID=7:
+      </td>
+      <td width="75%">B950-233-WALL-S-R01-DRL-01
+      </td>
+      <td>        </td>
+    </tr>
+    <tr>
+      <td>
+                </td>
+      <td colspan="2">
+        EK1100 EtherCAT Coupler (2A E-Bus)
+      </td>
+    </tr>
+  </table>
+    </summary>
+    <ul>
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=8:
+                </td>
+                <td width="75%">EL7047_02_01 - SSL
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL7047 1Ch. Stepper motor output stage (50V, 5A)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=9:
+                </td>
+                <td width="75%">EL5042_02_02
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL5042 2Ch. BiSS-C Encoder
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=10:
+                </td>
+                <td width="75%">EL1004_02_03
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL1004 4Ch. Dig. Input 24V, 3ms
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=11:
+                </td>
+                <td width="75%">EL7031_02_04 - LAS_VIS
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL7031 1Ch. Stepper motor output stage (24V, 1.5A)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=12:
+                </td>
+                <td width="75%">EL5042_02_05 - LAS_VIS
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL5042 2Ch. BiSS-C Encoder
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=13:
+                </td>
+                <td width="75%">EL1088_02_06
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL1088 8Ch. Dig. Input 24V, 3ms, negative
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=14:
+                </td>
+                <td width="75%">EL7031_02_07 - LAS_D_H
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL7031 1Ch. Stepper motor output stage (24V, 1.5A)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=15:
+                </td>
+                <td width="75%">EL5042_02_08 - LAS_D_V-H
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL5042 2Ch. BiSS-C Encoder
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=17:
+                </td>
+                <td width="75%">EL7031_02_09 - LAS_D_V
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL7031 1Ch. Stepper motor output stage (24V, 1.5A)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=18:
+                </td>
+                <td width="75%">EL1004_02_10
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL1004 4Ch. Dig. Input 24V, 3ms
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=19:
+                </td>
+                <td width="75%">EL7047_02_11
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL7047 1Ch. Stepper motor output stage (50V, 5A)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=20:
+                </td>
+                <td width="75%">EL7047_02_12
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL7047 1Ch. Stepper motor output stage (50V, 5A)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=24:
+                </td>
+                <td width="75%">EL5042_02_13
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL5042 2Ch. BiSS-C Encoder
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=22:
+                </td>
+                <td width="75%">EL7047_02_14
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL7047 1Ch. Stepper motor output stage (50V, 5A)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=23:
+                </td>
+                <td width="75%">EL7047_02_15
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL7047 1Ch. Stepper motor output stage (50V, 5A)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=21:
+                </td>
+                <td width="75%">EL5042_02_16
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL5042 2Ch. BiSS-C Encoder
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=25:
+                </td>
+                <td width="75%">EL7031_02_17
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL7031 1Ch. Stepper motor output stage (24V, 1.5A)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=26:
+                </td>
+                <td width="75%">EL7031_02_18
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL7031 1Ch. Stepper motor output stage (24V, 1.5A)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=106:
+                </td>
+                <td width="75%">Term 106 (EL9011)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL9011 End Terminal
+                </td>
+              </tr>
+            </table>
+          </li>
+
+    </ul>
+  </details>
+</li>
+
+
+
+    <li>
+  <details open>
+    <summary>
+          <table width="100%">
+    <tr>
+      <td width="10%">
+        ID=27:
+      </td>
+      <td width="75%">B950-233-WALL-S-R01-DRL-02
+      </td>
+      <td>        </td>
+    </tr>
+    <tr>
+      <td>
+                </td>
+      <td colspan="2">
+        EK1100 EtherCAT Coupler (2A E-Bus)
+      </td>
+    </tr>
+  </table>
+    </summary>
+    <ul>
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=29:
+                </td>
+                <td width="75%">EL7047_03_01-Diff-X
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL7047 1Ch. Stepper motor output stage (50V, 5A)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=30:
+                </td>
+                <td width="75%">EL5042_03_02-Diff-X-Y
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL5042 2Ch. BiSS-C Encoder
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=31:
+                </td>
+                <td width="75%">EL7047_03_03-Diff-Y
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL7047 1Ch. Stepper motor output stage (50V, 5A)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=32:
+                </td>
+                <td width="75%">EL1088_03_04
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL1088 8Ch. Dig. Input 24V, 3ms, negative
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=33:
+                </td>
+                <td width="75%">EL7047_03_05-Diff-Z
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL7047 1Ch. Stepper motor output stage (50V, 5A)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=34:
+                </td>
+                <td width="75%">EL5042_03_06-DIff-Z-2ThetaY
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL5042 2Ch. BiSS-C Encoder
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=35:
+                </td>
+                <td width="75%">EL7047_03_07-Diff 2 Theta Y
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL7047 1Ch. Stepper motor output stage (50V, 5A)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=36:
+                </td>
+                <td width="75%">EL1088_03_08
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL1088 8Ch. Dig. Input 24V, 3ms, negative
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=37:
+                </td>
+                <td width="75%">EL9410_03_09
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL9410 E-Bus Power Supplier  (Diagnostics)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=38:
+                </td>
+                <td width="75%">EL1088_03_10
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL1088 8Ch. Dig. Input 24V, 3ms, negative
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=40:
+                </td>
+                <td width="75%">EL7047_03_12-Diff - Phi
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL7047 1Ch. Stepper motor output stage (50V, 5A)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=41:
+                </td>
+                <td width="75%">EL5042_03_13 - Diff - Phi - Chi
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL5042 2Ch. BiSS-C Encoder
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=42:
+                </td>
+                <td width="75%">EL7047_03_14-Diff - Chi
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL7047 1Ch. Stepper motor output stage (50V, 5A)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=43:
+                </td>
+                <td width="75%">EL1088_03_15
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL1088 8Ch. Dig. Input 24V, 3ms, negative
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=44:
+                </td>
+                <td width="75%">EL7047_03_16 - Diff - Theta
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL7047 1Ch. Stepper motor output stage (50V, 5A)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=45:
+                </td>
+                <td width="75%">EL5042_03_17 - Diff - Theta - 2Theta
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL5042 2Ch. BiSS-C Encoder
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=46:
+                </td>
+                <td width="75%">EL7047_03_18 - Diff - 2Theta
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL7047 1Ch. Stepper motor output stage (50V, 5A)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=107:
+                </td>
+                <td width="75%">Term 107 (EL9011)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL9011 End Terminal
+                </td>
+              </tr>
+            </table>
+          </li>
+
+    </ul>
+  </details>
+</li>
+
+
+
+    <li>
+  <details open>
+    <summary>
+          <table width="100%">
+    <tr>
+      <td width="10%">
+        ID=28:
+      </td>
+      <td width="75%">B950-233-WALL-S-R01-DRL-03_SDS
+      </td>
+      <td>        </td>
+    </tr>
+    <tr>
+      <td>
+                </td>
+      <td colspan="2">
+        EK1100 EtherCAT Coupler (2A E-Bus)
+      </td>
+    </tr>
+  </table>
+    </summary>
+    <ul>
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=50:
+                </td>
+                <td width="75%">EL7047_04_01
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL7047 1Ch. Stepper motor output stage (50V, 5A)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=51:
+                </td>
+                <td width="75%">EL5042_04_02
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL5042 2Ch. BiSS-C Encoder
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=52:
+                </td>
+                <td width="75%">EL7047_04_03
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL7047 1Ch. Stepper motor output stage (50V, 5A)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=53:
+                </td>
+                <td width="75%">EL1004_04_04
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL1004 4Ch. Dig. Input 24V, 3ms
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=54:
+                </td>
+                <td width="75%">EL7047_04_05
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL7047 1Ch. Stepper motor output stage (50V, 5A)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=55:
+                </td>
+                <td width="75%">EL5042_04_06
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL5042 2Ch. BiSS-C Encoder
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=56:
+                </td>
+                <td width="75%">EL7047_04_07
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL7047 1Ch. Stepper motor output stage (50V, 5A)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=58:
+                </td>
+                <td width="75%">EL1004_04_09
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL1004 4Ch. Dig. Input 24V, 3ms
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=59:
+                </td>
+                <td width="75%">EL7047_04_10
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL7047 1Ch. Stepper motor output stage (50V, 5A)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=61:
+                </td>
+                <td width="75%">EL7047_04_12
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL7047 1Ch. Stepper motor output stage (50V, 5A)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=62:
+                </td>
+                <td width="75%">EL5042_04_13
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL5042 2Ch. BiSS-C Encoder
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=63:
+                </td>
+                <td width="75%">EL2794_04_14
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL2794 4Ch. Dig. Output 24V AC/DC, 2A, short-circuit-proof
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=49:
+                </td>
+                <td width="75%">EL3314_04_15
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL3314 4Ch. Ana. Input Thermocouple (TC)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=48:
+                </td>
+                <td width="75%">EL3314_04_16
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL3314 4Ch. Ana. Input Thermocouple (TC)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+            <details open>
+              <summary>
+                    <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=57:
+                </td>
+                <td width="75%">EK1122_04_17
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EK1122 2 port EtherCAT junction
+                </td>
+              </tr>
+            </table>
+              </summary>
+              <ul>
+
+                    <li>
+                      <details open>
+                        <summary>
+                              <table width="100%">
+                        <tr>
+                          <td width="10%">
+                            ID=60:
+                          </td>
+                          <td width="75%">B950-233-K2S13-DRL-01
+                          </td>
+                          <td>        </td>
+                        </tr>
+                        <tr>
+                          <td>
+                                    </td>
+                          <td colspan="2">
+                            EK1100 EtherCAT Coupler (2A E-Bus)
+                          </td>
+                        </tr>
+                      </table>
+                        </summary>
+                        <ul>
+
+                              <li>
+                                    <table width="100%">
+                                  <tr>
+                                    <td width="10%">
+                                      ID=131:
+                                    </td>
+                                    <td width="75%">EL5101_05_01
+                                    </td>
+                                    <td>        </td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                              </td>
+                                    <td colspan="2">
+                                      EL5101 1Ch. Inc. Encoder 5V
+                                    </td>
+                                  </tr>
+                                </table>
+                              </li>
+
+
+                              <li>
+                                    <table width="100%">
+                                  <tr>
+                                    <td width="10%">
+                                      ID=132:
+                                    </td>
+                                    <td width="75%">EL5101_05_02
+                                    </td>
+                                    <td>        </td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                              </td>
+                                    <td colspan="2">
+                                      EL5101 1Ch. Inc. Encoder 5V
+                                    </td>
+                                  </tr>
+                                </table>
+                              </li>
+
+
+                              <li>
+                                    <table width="100%">
+                                  <tr>
+                                    <td width="10%">
+                                      ID=133:
+                                    </td>
+                                    <td width="75%">EL5101_05_03
+                                    </td>
+                                    <td>        </td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                              </td>
+                                    <td colspan="2">
+                                      EL5101 1Ch. Inc. Encoder 5V
+                                    </td>
+                                  </tr>
+                                </table>
+                              </li>
+
+
+                              <li>
+                                    <table width="100%">
+                                  <tr>
+                                    <td width="10%">
+                                      ID=134:
+                                    </td>
+                                    <td width="75%">EL1088_05_04
+                                    </td>
+                                    <td>        </td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                              </td>
+                                    <td colspan="2">
+                                      EL1088 8Ch. Dig. Input 24V, 3ms, negative
+                                    </td>
+                                  </tr>
+                                </table>
+                              </li>
+
+
+                              <li>
+                                    <table width="100%">
+                                  <tr>
+                                    <td width="10%">
+                                      ID=135:
+                                    </td>
+                                    <td width="75%">EL9011_05_05
+                                    </td>
+                                    <td>        </td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                              </td>
+                                    <td colspan="2">
+                                      EL9011 End Terminal
+                                    </td>
+                                  </tr>
+                                </table>
+                              </li>
+
+                        </ul>
+                      </details>
+                    </li>
+
+              </ul>
+            </details>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=193:
+                </td>
+                <td width="75%">Term 193 (EL9011)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL9011 End Terminal
+                </td>
+              </tr>
+            </table>
+          </li>
+
+    </ul>
+  </details>
+</li>
+
+
+
+    <li>
+  <details open>
+    <summary>
+          <table width="100%">
+    <tr>
+      <td width="10%">
+        ID=47:
+      </td>
+      <td width="75%">Rack#2B-01 Coupler (EK1100)
+      </td>
+      <td>        </td>
+    </tr>
+    <tr>
+      <td>
+                </td>
+      <td colspan="2">
+        EK1100 EtherCAT Coupler (2A E-Bus)
+      </td>
+    </tr>
+  </table>
+    </summary>
+    <ul>
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=110:
+                </td>
+                <td width="75%">Rack#2B-02 KTC (EL3314)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL3314 4Ch. Ana. Input Thermocouple (TC)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=111:
+                </td>
+                <td width="75%">Rack#2B-03 AI_TiltSensor (EL3174-0002)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL3174-0002 4Ch. Ana. Input +/-10V, +/-20mA 16 Bit, Isolated Channels
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=112:
+                </td>
+                <td width="75%">Rack#2B-04 PS_P (EL3064)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL3064 4Ch. Ana. Input 0-10V
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=113:
+                </td>
+                <td width="75%">Rack#2B-05 SV_AIR (EL2004)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL2004 4Ch. Dig. Output 24V, 0.5A
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=114:
+                </td>
+                <td width="75%">Rack#2B-06 SFIN (EL1918)
+                </td>
+                <td>            <b>
+                      SyncUnit None
+                    </b>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL1918, 8Ch. Safety Input 24V, TwinSAFE
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=115:
+                </td>
+                <td width="75%">Rack#2B-07 ENC_X1_X2 (EL5042)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL5042 2Ch. BiSS-C Encoder
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=116:
+                </td>
+                <td width="75%">Rack#2B-08 ENC_Y1_Y2 (EL5042)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL5042 2Ch. BiSS-C Encoder
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=117:
+                </td>
+                <td width="75%">Rack#2B-09 ENC_RxG_XG (EL5042)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL5042 2Ch. BiSS-C Encoder
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=118:
+                </td>
+                <td width="75%">Rack#2B-10 ENC_YG1_YG2 (EL5042)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL5042 2Ch. BiSS-C Encoder
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=119:
+                </td>
+                <td width="75%">Rack#2B-11 ENC_YG3_X1PM (EL5042)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL5042 2Ch. BiSS-C Encoder
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=120:
+                </td>
+                <td width="75%">Rack#2B-12 ENC_X2PM_RzPM (EL5042)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL5042 2Ch. BiSS-C Encoder
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=121:
+                </td>
+                <td width="75%">Rack#2B-13 PWS_EBUS (EL9410)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL9410 E-Bus Power Supplier  (Diagnostics)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=122:
+                </td>
+                <td width="75%">Rack#2B-14 CP_YDF (EL9221-5000)
+                </td>
+                <td>            <b>
+                      SyncUnit Term 62 (EL9221-5000)
+                    </b>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL9221-5000 Overcurrent protection 24V DC, 1Ch., max. 10A, adjustable
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=123:
+                </td>
+                <td width="75%">Rack#2B-15 DR_YDF1 (EL7041-0052)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=64:
+                </td>
+                <td width="75%">Rack#2B-16 DR_YDF2 (EL7041-0052)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=65:
+                </td>
+                <td width="75%">Rack#2B-17 CP_YDF_ZF (EL9221-5000)
+                </td>
+                <td>            <b>
+                      SyncUnit Term 65 (EL9221-5000)
+                    </b>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL9221-5000 Overcurrent protection 24V DC, 1Ch., max. 10A, adjustable
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=66:
+                </td>
+                <td width="75%">Rack#2B-18 MB_ZF (EL2602)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL2602 2Ch. Relay Output, NO (230V AC / 30V DC)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=67:
+                </td>
+                <td width="75%">Rack#2B-19 DR_YDF3 (EL7041-0052)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=128:
+                </td>
+                <td width="75%">Rack#2B-20 DR_ZF (EL7047)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL7047 1Ch. Stepper motor output stage (50V, 5A)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=69:
+                </td>
+                <td width="75%">Rack#2B-21 EtherCAT Extension (EK1110)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EK1110 EtherCAT extension
+                </td>
+              </tr>
+            </table>
+          </li>
+
+    </ul>
+  </details>
+</li>
+
+
+
+    <li>
+  <details open>
+    <summary>
+          <table width="100%">
+    <tr>
+      <td width="10%">
+        ID=87:
+      </td>
+      <td width="75%">Rack#1A-01 Coupler (EK1100)
+      </td>
+      <td>        </td>
+    </tr>
+    <tr>
+      <td>
+                </td>
+      <td colspan="2">
+        EK1100 EtherCAT Coupler (2A E-Bus)
+      </td>
+    </tr>
+  </table>
+    </summary>
+    <ul>
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=99:
+                </td>
+                <td width="75%">Rack#1A-02 SFIN (EL1918)
+                </td>
+                <td>            <b>
+                      SyncUnit None
+                    </b>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL1918, 8Ch. Safety Input 24V, TwinSAFE
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=109:
+                </td>
+                <td width="75%">Rack#1A-03 SFOUT(EL2912)
+                </td>
+                <td>            <b>
+                      SyncUnit None
+                    </b>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL2912, 2Ch. Safety Output 24V, 2A, TwinSAFE
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=74:
+                </td>
+                <td width="75%">Rack#1A-04 DR_2Th (EL7047)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL7047 1Ch. Stepper motor output stage (50V, 5A)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=73:
+                </td>
+                <td width="75%">Rack#1A-05 MB_2Th (EL2602)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL2602 2Ch. Relay Output, NO (230V AC / 30V DC)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=124:
+                </td>
+                <td width="75%">Rack#1A-06 ENC_2Th (EL5042)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL5042 2Ch. BiSS-C Encoder
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=125:
+                </td>
+                <td width="75%">Rack#1A-07 ECAT Extension (EK1110)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EK1110 EtherCAT extension
+                </td>
+              </tr>
+            </table>
+          </li>
+
+    </ul>
+  </details>
+</li>
+
+
+
+    <li>
+  <details open>
+    <summary>
+          <table width="100%">
+    <tr>
+      <td width="10%">
+        ID=90:
+      </td>
+      <td width="75%">Rack#2A-01 Coupler (EK1100)
+      </td>
+      <td>        </td>
+    </tr>
+    <tr>
+      <td>
+                </td>
+      <td colspan="2">
+        EK1100 EtherCAT Coupler (2A E-Bus)
+      </td>
+    </tr>
+  </table>
+    </summary>
+    <ul>
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=91:
+                </td>
+                <td width="75%">Rack#2A-02 CP_SLIT (EL9221-5000)
+                </td>
+                <td>            <b>
+                      SyncUnit Term 31 (EL9221-5000)
+                    </b>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL9221-5000 Overcurrent protection 24V DC, 1Ch., max. 10A, adjustable
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=92:
+                </td>
+                <td width="75%">Rack#2A-03 DR_XS1 (EL7041-0052)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=93:
+                </td>
+                <td width="75%">Rack#2A-04 DR_XS2 (EL7041-0052)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=94:
+                </td>
+                <td width="75%">Rack#2A-05 DR_YS1 (EL7041-0052)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=95:
+                </td>
+                <td width="75%">Rack#2A-06 DR_YS2 (EL7041-0052)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=96:
+                </td>
+                <td width="75%">Rack#2A-07 CP_G (EL9221-5000)
+                </td>
+                <td>            <b>
+                      SyncUnit Term 36 (EL9221-5000)
+                    </b>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL9221-5000 Overcurrent protection 24V DC, 1Ch., max. 10A, adjustable
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=97:
+                </td>
+                <td width="75%">Rack#2A-08 DR_RxG (EL7041-0052)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=98:
+                </td>
+                <td width="75%">Rack#2A-09 DR_XG (EL7041-0052)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=39:
+                </td>
+                <td width="75%">Rack#2A-10 DR_YG1 (EL7041-0052)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=100:
+                </td>
+                <td width="75%">Rack#2A-11 DR_YG2 (EL7041-0052)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=101:
+                </td>
+                <td width="75%">Rack#2A-12 DR_YG3 (EL7041-0052)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=102:
+                </td>
+                <td width="75%">Rack#2A-13 CP_PM (EL9221-5000)
+                </td>
+                <td>            <b>
+                      SyncUnit Term 42 (EL9221-5000)
+                    </b>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL9221-5000 Overcurrent protection 24V DC, 1Ch., max. 10A, adjustable
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=103:
+                </td>
+                <td width="75%">Rack#2A-14 DR_XPM1 (EL7041-0052)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=104:
+                </td>
+                <td width="75%">Rack#2A-15 DR_XPM2 (EL7041-0052)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=105:
+                </td>
+                <td width="75%">Rack#2A-16 DR_RzPM (EL7041-0052)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=108:
+                </td>
+                <td width="75%">Rack#2A-17 EtherCAT Extension (EK1110)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EK1110 EtherCAT extension
+                </td>
+              </tr>
+            </table>
+          </li>
+
+    </ul>
+  </details>
+</li>
+
+
+
+    <li>
+  <details open>
+    <summary>
+          <table width="100%">
+    <tr>
+      <td width="10%">
+        ID=126:
+      </td>
+      <td width="75%">BOX-01 Coupler (EK1100)
+      </td>
+      <td>        </td>
+    </tr>
+    <tr>
+      <td>
+                </td>
+      <td colspan="2">
+        EK1100 EtherCAT Coupler (2A E-Bus)
+      </td>
+    </tr>
+  </table>
+    </summary>
+    <ul>
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=127:
+                </td>
+                <td width="75%">BOX-02 SFIN(EL1904)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL1904, 4 Ch. Safety Input 24V, TwinSAFE
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=68:
+                </td>
+                <td width="75%">BOX-03 ENC_X1_X2 (EL5042)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL5042 2Ch. BiSS-C Encoder
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=129:
+                </td>
+                <td width="75%">BOX-04 ENC_Y1_Y2 (EL5042)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL5042 2Ch. BiSS-C Encoder
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=130:
+                </td>
+                <td width="75%">BOX-05 ENC_XDC_RyDC (EL5042)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL5042 2Ch. BiSS-C Encoder
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=71:
+                </td>
+                <td width="75%">BOX-06 ENC_ZDC_YF1 (EL5042)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL5042 2Ch. BiSS-C Encoder
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=72:
+                </td>
+                <td width="75%">BOX-07 ENC_YF2_ZF (EL5042)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL5042 2Ch. BiSS-C Encoder
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=16:
+                </td>
+                <td width="75%">BOX-08 CP_SDC (EL9221-5000)
+                </td>
+                <td>            <b>
+                      SyncUnit Term 16 (EL9221-5000)
+                    </b>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL9221-5000 Overcurrent protection 24V DC, 1Ch., max. 10A, adjustable
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=76:
+                </td>
+                <td width="75%">BOX-09 DR_XSDC1 (EL7041-0052)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=77:
+                </td>
+                <td width="75%">BOX-10 DR_XSDC2 (EL7041-0052)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=78:
+                </td>
+                <td width="75%">BOX-11 DR_YSDC1 (EL7041-0052)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=79:
+                </td>
+                <td width="75%">BOX-12 DR_YSDC2 (EL7041-0052)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=80:
+                </td>
+                <td width="75%">BOX-13 CP_DC (EL9221-5000)
+                </td>
+                <td>            <b>
+                      SyncUnit Term 21 (EL9221-5000)
+                    </b>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL9221-5000 Overcurrent protection 24V DC, 1Ch., max. 10A, adjustable
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=81:
+                </td>
+                <td width="75%">BOX-14 DR_XDC (EL7041-0052)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=82:
+                </td>
+                <td width="75%">BOX-15 DR_RyDC (EL7041-0052)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=83:
+                </td>
+                <td width="75%">BOX-16 DR_ZDC (EL7041-0052)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL7041-0052 1Ch. Stepper motor output stage (50V, 5A)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=84:
+                </td>
+                <td width="75%">BOX-17 Ebus Reflesh (EL9410)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL9410 E-Bus Power Supplier  (Diagnostics)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=85:
+                </td>
+                <td width="75%">BOX-18 CP_YF1_YF2 (EL9221-5000)
+                </td>
+                <td>            <b>
+                      SyncUnit Term 25 (EL9221-5000)
+                    </b>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL9221-5000 Overcurrent protection 24V DC, 1Ch., max. 10A, adjustable
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=86:
+                </td>
+                <td width="75%">BOX-19 MB_YF1_YF2 (EL2602)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL2602 2Ch. Relay Output, NO (230V AC / 30V DC)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=75:
+                </td>
+                <td width="75%">BOX-20 DR_YF1 (EL7047)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL7047 1Ch. Stepper motor output stage (50V, 5A)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=88:
+                </td>
+                <td width="75%">BOX-21 DR_YF2 (EL7047)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL7047 1Ch. Stepper motor output stage (50V, 5A)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=229:
+                </td>
+                <td width="75%">BOX-22 DET_ROT (EL5042)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL5042 2Ch. BiSS-C Encoder
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=230:
+                </td>
+                <td width="75%">BOX-23 DET_ROT (EL7047)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EL7047 1Ch. Stepper motor output stage (50V, 5A)
+                </td>
+              </tr>
+            </table>
+          </li>
+
+
+          <li>
+                <table width="100%">
+              <tr>
+                <td width="10%">
+                  ID=89:
+                </td>
+                <td width="75%">BOX-24 EtherCAT Extension (EK1110)
+                </td>
+                <td>        </td>
+              </tr>
+              <tr>
+                <td>
+                          </td>
+                <td colspan="2">
+                  EK1110 EtherCAT extension
+                </td>
+              </tr>
+            </table>
+          </li>
+
+    </ul>
+  </details>
+</li>
+
+
+  </ul></section>
 
 
            </div>
@@ -820,7 +3077,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, SLAC National Accelerator Laboratory.</p>
+    <p>&#169; Copyright 2024, SLAC National Accelerator Laboratory.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

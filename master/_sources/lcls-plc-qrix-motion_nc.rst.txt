@@ -50,7 +50,11 @@ NC Settings
         42, M42 - SDS Rot Garage
         43, M43 -SDS Linear Rotary
         44, M44 - SDS Linear Horizontal
-        45, Axis 45 -
+        45, M45 - DET ROT
+        46, M46 - CRYO X
+        47, M47 - CRYO Y
+        48, M48 - CRYO Z
+        49, M49 - CRYO ROT
 
 
 
@@ -1511,24 +1515,122 @@ Axis 44: M44 - SDS Linear Horizontal
 
 
 
-Axis 45: Axis 45 -
-^^^^^^^^^^^^^^^^^^
+Axis 45: M45 - DET ROT
+^^^^^^^^^^^^^^^^^^^^^^
 
 .. csv-table::
     :header: Setting, Value
     :align: center
 
     Axis ID, 45
-    Name, Axis 45 -
+    Name, M45 - DET ROT
     AxisFolder, Detector Rotary
     AxisType, 1
     CreateSymbols, true
     Enc:EncType, 29
-    Enc:Inc:RefSoftSyncMask, #xffffffff
+    Enc:Inc:RefSoftSyncMask, #x0000ffff
     Enc:MaxCount, #xffffffff
-    Enc:ScaleFactorNumerator, 8.3819e-08
+    Enc:ScaleFactorNumerator, 8.319e-08
     General:UnitName, Degree
     Id, 45
     OtherSettings:AllowMotionCmdToSlave, true
+    Velo:Maximum, 10
+
+
+
+Axis 46: M46 - CRYO X
+^^^^^^^^^^^^^^^^^^^^^
+
+.. csv-table::
+    :header: Setting, Value
+    :align: center
+
+    Axis ID, 46
+    Name, M46 - CRYO X
+    AxisFolder, Cryo
+    AxisType, 1
+    CreateSymbols, true
+    Enc:EncType, 29
+    Enc:Inc:RefSoftSyncMask, #x0000ffff
+    Enc:MaxCount, #xffffffff
+    Enc:ScaleFactorNumerator, 5e-05
+    Id, 46
+    OtherSettings:AllowMotionCmdToSlave, true
+    Velo:Maximum, 12.7
+
+
+
+Axis 47: M47 - CRYO Y
+^^^^^^^^^^^^^^^^^^^^^
+
+.. csv-table::
+    :header: Setting, Value
+    :align: center
+
+    Axis ID, 47
+    Name, M47 - CRYO Y
+    AxisFolder, Cryo
+    AxisType, 1
+    CreateSymbols, true
+    Dynamic:AccelerationMaximum, 15
+    Dynamic:DecelerationMaximum, 15
+    Enc:EncType, 29
+    Enc:Inc:RefSoftSyncMask, #x0000ffff
+    Enc:MaxCount, #xffffffff
+    Enc:Offset, -214568.1696
+    Enc:ScaleFactorNumerator, 5e-05
+    Enc:SoftEndMaxControl:Enable, true
+    Enc:SoftEndMaxControl:Range, 150
+    Enc:SoftEndMinControl:Enable, true
+    Id, 47
+    OtherSettings:AllowMotionCmdToSlave, true
+    Velo:Maximum, 5.08
+
+
+
+Axis 48: M48 - CRYO Z
+^^^^^^^^^^^^^^^^^^^^^
+
+.. csv-table::
+    :header: Setting, Value
+    :align: center
+
+    Axis ID, 48
+    Name, M48 - CRYO Z
+    AxisFolder, Cryo
+    AxisType, 1
+    CreateSymbols, true
+    Dynamic:AccelerationMaximum, 10
+    Dynamic:DecelerationMaximum, 10
+    Enc:EncType, 29
+    Enc:Inc:RefSoftSyncMask, #x0000ffff
+    Enc:MaxCount, #xffffffff
+    Enc:ScaleFactorNumerator, 5e-05
+    Id, 48
+    OtherSettings:AllowMotionCmdToSlave, true
+    Velo:Maximum, 12.7
+
+
+
+Axis 49: M49 - CRYO ROT
+^^^^^^^^^^^^^^^^^^^^^^^
+
+.. csv-table::
+    :header: Setting, Value
+    :align: center
+
+    Axis ID, 49
+    Name, M49 - CRYO ROT
+    AxisFolder, Cryo
+    AxisType, 1
+    CreateSymbols, true
+    Enc:EncType, 4
+    Enc:Inc:RefSoftSyncMask, #x0000ffff
+    Enc:MaxCount, #x0000ffff
+    Enc:ScaleFactorNumerator, 8.3819e-08
+    General:UnitName, Degree
+    Id, 49
+    OtherSettings:AllowMotionCmdToSlave, true
+    Velo:Maximum, 36
 
 

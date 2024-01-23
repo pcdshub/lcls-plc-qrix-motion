@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DUTs &mdash; pcdshub/lcls-plc-qrix-motion  documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/tree.css?v=837a00b9" />
+      <link rel="stylesheet" type="text/css" href="_static/width.css?v=ab210c7a" />
+
+  
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -46,7 +50,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_pragmas.html">Pragmas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_nc.html">NC Settings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_ethercat.html">Box Hierarchy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_ethercat.html">EtherCAT Terminals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html">Boxes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_links.html">Links</a></li>
 </ul>
@@ -643,42 +647,39 @@
                               <span class="o">.</span><span class="n">nRawEncoderUINT</span>     <span class="o">:=</span> <span class="n">TIIB</span><span class="p">[</span><span class="n">EL5101_05_03</span><span class="p">]</span><span class="o">^</span><span class="n">ENC</span> <span class="n">Status</span> <span class="n">compact</span><span class="o">^</span><span class="n">Counter</span> <span class="n">value</span><span class="s1">&#39;}</span>
     <span class="n">M44</span><span class="p">:</span> <span class="n">DUT_MotionStage</span> <span class="o">:=</span> <span class="p">(</span><span class="n">sName</span> <span class="o">:=</span> <span class="s1">&#39;QRIX:SDS:MMS:H&#39;</span><span class="p">);</span>
 
-    <span class="o">/////////////</span> <span class="n">Virtual</span> <span class="n">axes</span> <span class="p">(</span><span class="n">encoder</span> <span class="n">axes</span><span class="p">)</span> <span class="k">for</span> <span class="n">the</span> <span class="n">diffractometer</span> <span class="n">rotary</span> <span class="n">stages</span>
-     <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;TcLinkTo&#39;</span> <span class="o">:=</span> <span class="s1">&#39;.bLimitForwardEnable  := TIIB[EL1088_03_15]^Channel 5^Input;</span>
-                              <span class="o">.</span><span class="n">bLimitBackwardEnable</span> <span class="o">:=</span> <span class="n">TIIB</span><span class="p">[</span><span class="n">EL1088_03_15</span><span class="p">]</span><span class="o">^</span><span class="n">Channel</span> <span class="mi">6</span><span class="o">^</span><span class="n">Input</span><span class="p">;</span>
-                              <span class="o">.</span><span class="n">bHome</span> <span class="o">:=</span> <span class="n">TIIB</span><span class="p">[</span><span class="n">EL1088_03_10</span><span class="p">]</span><span class="o">^</span><span class="n">Channel</span> <span class="mi">8</span><span class="o">^</span><span class="n">Input</span><span class="p">;</span>
-                              <span class="o">.</span><span class="n">nRawEncoderULINT</span>     <span class="o">:=</span> <span class="n">TIIB</span><span class="p">[</span><span class="n">EL5042_03_17</span> <span class="o">-</span> <span class="n">Diff</span> <span class="o">-</span> <span class="n">Theta</span> <span class="o">-</span> <span class="mi">2</span><span class="n">Theta</span><span class="p">]</span><span class="o">^</span><span class="n">FB</span> <span class="n">Inputs</span> <span class="n">Channel</span> <span class="mi">2</span><span class="o">^</span><span class="n">Position</span><span class="s1">&#39;}</span>
+    <span class="o">//</span><span class="n">Detector</span> <span class="n">Rotation</span>
+    <span class="o">//</span><span class="n">Need</span> <span class="n">to</span> <span class="n">fix</span> <span class="n">linking</span>
+    <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;pytmc&#39;</span> <span class="o">:=</span> <span class="s1">&#39;pv: QRIX:DET:MMS:ROT&#39;</span><span class="p">}</span>
+    <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;TcLinkTo&#39;</span> <span class="o">:=</span> <span class="s1">&#39;.nRawEncoderULINT     := TIIB[BOX-22 DET_ROT (EL5042)]^FB Inputs Channel 1^Position&#39;</span><span class="p">}</span>
+    <span class="n">M45</span><span class="p">:</span> <span class="n">DUT_MotionStage</span> <span class="o">:=</span> <span class="p">(</span><span class="n">sName</span> <span class="o">:=</span> <span class="s1">&#39;QRIX:DET:MMS:ROT&#39;</span><span class="p">);</span>
 
-    <span class="o">//</span><span class="n">M45</span><span class="p">:</span> <span class="n">DUT_MotionStage</span> <span class="o">:=</span> <span class="p">(</span><span class="n">sName</span> <span class="o">:=</span> <span class="s1">&#39;QRIX:SDS:MMS:2ThetaENC&#39;</span><span class="p">);</span>
-
+    <span class="o">//</span> <span class="n">Cryo</span> <span class="o">-</span>  <span class="mi">4</span> <span class="n">axes</span>
+    <span class="o">//</span><span class="n">Cryo</span> <span class="o">-</span><span class="n">X</span>
+    <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;pytmc&#39;</span> <span class="o">:=</span> <span class="s1">&#39;pv: QRIX:CRYO:MMS:X&#39;</span><span class="p">}</span>
+    <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;TcLinkTo&#39;</span> <span class="o">:=</span> <span class="s1">&#39;.bLimitForwardEnable  := TIIB[EL7047_02_12]^STM Status^Status^Digital input 1;</span>
+                              <span class="o">.</span><span class="n">bLimitBackwardEnable</span> <span class="o">:=</span> <span class="n">TIIB</span><span class="p">[</span><span class="n">EL7047_02_12</span><span class="p">]</span><span class="o">^</span><span class="n">STM</span> <span class="n">Status</span><span class="o">^</span><span class="n">Status</span><span class="o">^</span><span class="n">Digital</span> <span class="nb">input</span> <span class="mi">2</span><span class="p">;</span>
+                              <span class="o">.</span><span class="n">nRawEncoderULINT</span>     <span class="o">:=</span> <span class="n">TIIB</span><span class="p">[</span><span class="n">EL5042_02_13</span><span class="p">]</span><span class="o">^</span><span class="n">FB</span> <span class="n">Inputs</span> <span class="n">Channel</span> <span class="mi">1</span><span class="o">^</span><span class="n">Position</span><span class="p">;</span> <span class="s1">&#39;}</span>
+    <span class="n">M46</span><span class="p">:</span> <span class="n">DUT_MotionStage</span> <span class="o">:=</span> <span class="p">(</span><span class="n">sName</span> <span class="o">:=</span> <span class="s1">&#39;QRIX:CRYO:MMS:X&#39;</span><span class="p">);</span>
+    <span class="o">//</span><span class="n">CRYO</span> <span class="n">Y</span>
+    <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;pytmc&#39;</span> <span class="o">:=</span> <span class="s1">&#39;pv: QRIX:CRYO:MMS:Y&#39;</span><span class="p">}</span>
+    <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;TcLinkTo&#39;</span> <span class="o">:=</span> <span class="s1">&#39;.bLimitForwardEnable  := TIIB[EL7047_02_14]^STM Status^Status^Digital input 2;</span>
+                              <span class="o">.</span><span class="n">bLimitBackwardEnable</span> <span class="o">:=</span> <span class="n">TIIB</span><span class="p">[</span><span class="n">EL7047_02_14</span><span class="p">]</span><span class="o">^</span><span class="n">STM</span> <span class="n">Status</span><span class="o">^</span><span class="n">Status</span><span class="o">^</span><span class="n">Digital</span> <span class="nb">input</span> <span class="mi">1</span><span class="p">;</span>
+                              <span class="o">.</span><span class="n">nRawEncoderULINT</span>     <span class="o">:=</span> <span class="n">TIIB</span><span class="p">[</span><span class="n">EL5042_02_13</span><span class="p">]</span><span class="o">^</span><span class="n">FB</span> <span class="n">Inputs</span> <span class="n">Channel</span> <span class="mi">2</span><span class="o">^</span><span class="n">Position</span><span class="p">;</span> <span class="s1">&#39;}</span>
+    <span class="n">M47</span><span class="p">:</span> <span class="n">DUT_MotionStage</span> <span class="o">:=</span> <span class="p">(</span><span class="n">sName</span> <span class="o">:=</span> <span class="s1">&#39;QRIX:CRYO:MMS:Y&#39;</span><span class="p">);</span>
+    <span class="o">//</span><span class="n">CRYO</span> <span class="n">Z</span>
+    <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;pytmc&#39;</span> <span class="o">:=</span> <span class="s1">&#39;pv: QRIX:CRYO:MMS:Z&#39;</span><span class="p">}</span>
+    <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;TcLinkTo&#39;</span> <span class="o">:=</span> <span class="s1">&#39;.bLimitForwardEnable  := TIIB[EL7047_02_15]^STM Status^Status^Digital input 1;</span>
+                              <span class="o">.</span><span class="n">bLimitBackwardEnable</span> <span class="o">:=</span> <span class="n">TIIB</span><span class="p">[</span><span class="n">EL7047_02_15</span><span class="p">]</span><span class="o">^</span><span class="n">STM</span> <span class="n">Status</span><span class="o">^</span><span class="n">Status</span><span class="o">^</span><span class="n">Digital</span> <span class="nb">input</span> <span class="mi">2</span><span class="p">;</span>
+                              <span class="o">.</span><span class="n">nRawEncoderULINT</span>     <span class="o">:=</span> <span class="n">TIIB</span><span class="p">[</span><span class="n">EL5042_02_16</span><span class="p">]</span><span class="o">^</span><span class="n">FB</span> <span class="n">Inputs</span> <span class="n">Channel</span> <span class="mi">1</span><span class="o">^</span><span class="n">Position</span><span class="p">;</span> <span class="s1">&#39;}</span>
+    <span class="n">M48</span><span class="p">:</span> <span class="n">DUT_MotionStage</span> <span class="o">:=</span> <span class="p">(</span><span class="n">sName</span> <span class="o">:=</span> <span class="s1">&#39;QRIX:CRYO:MMS:Z&#39;</span><span class="p">);</span>
+    <span class="o">//</span> <span class="n">CRYO</span><span class="o">-</span><span class="n">ROT</span>
+    <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;pytmc&#39;</span> <span class="o">:=</span> <span class="s1">&#39;pv: QRIX:CRYO:MMS:ROT&#39;</span><span class="p">}</span>
+    <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;TcLinkTo&#39;</span> <span class="o">:=</span> <span class="s1">&#39;.bLimitForwardEnable  := TIIB[EL7047_02_11]^STM Status^Status^Digital input 1;</span>
+                              <span class="o">.</span><span class="n">bLimitBackwardEnable</span> <span class="o">:=</span> <span class="n">TIIB</span><span class="p">[</span><span class="n">EL7047_02_11</span><span class="p">]</span><span class="o">^</span><span class="n">STM</span> <span class="n">Status</span><span class="o">^</span><span class="n">Status</span><span class="o">^</span><span class="n">Digital</span> <span class="nb">input</span> <span class="mi">2</span><span class="p">;</span>
+                              <span class="o">.</span><span class="n">nRawEncoderULINT</span>     <span class="o">:=</span> <span class="n">TIIB</span><span class="p">[</span><span class="n">EL5042_02_16</span><span class="p">]</span><span class="o">^</span><span class="n">FB</span> <span class="n">Inputs</span> <span class="n">Channel</span> <span class="mi">2</span><span class="o">^</span><span class="n">Position</span><span class="p">;</span> <span class="s1">&#39;}</span>
+    <span class="n">M49</span><span class="p">:</span> <span class="n">DUT_MotionStage</span> <span class="o">:=</span> <span class="p">(</span><span class="n">sName</span> <span class="o">:=</span> <span class="s1">&#39;QRIX:CRYO:MMS:ROT&#39;</span><span class="p">);</span>
 
 <span class="p">(</span><span class="o">*</span>
-    <span class="o">//</span> <span class="n">Cryo</span> <span class="o">-</span>  <span class="mi">4</span> <span class="n">axes</span>
-    <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;pytmc&#39;</span> <span class="o">:=</span> <span class="s1">&#39;pv: QRIX:CRYO:MMS:ROT&#39;</span><span class="p">}</span>
-    <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;TcLinkTo&#39;</span> <span class="o">:=</span> <span class="s1">&#39;.bLimitForwardEnable  := TIIB[SSL-EL7041]^STM Status^Status^Digital input 1;</span>
-                              <span class="o">.</span><span class="n">bLimitBackwardEnable</span> <span class="o">:=</span> <span class="n">TIIB</span><span class="p">[</span><span class="n">SSL</span><span class="o">-</span><span class="n">EL7041</span><span class="p">]</span><span class="o">^</span><span class="n">STM</span> <span class="n">Status</span><span class="o">^</span><span class="n">Status</span><span class="o">^</span><span class="n">Digital</span> <span class="nb">input</span> <span class="mi">2</span><span class="p">;</span>
-                              <span class="o">.</span><span class="n">nRawEncoderULINT</span>     <span class="o">:=</span> <span class="n">TIIB</span><span class="p">[</span><span class="n">IM1K3</span><span class="o">-</span><span class="n">EL5042</span><span class="p">]</span><span class="o">^</span><span class="n">FB</span> <span class="n">Inputs</span> <span class="n">Channel</span> <span class="mi">1</span><span class="o">^</span><span class="n">Position</span><span class="s1">&#39;}</span>
-    <span class="n">M45</span><span class="p">:</span> <span class="n">DUT_MotionStage</span> <span class="o">:=</span> <span class="p">(</span><span class="n">sName</span> <span class="o">:=</span> <span class="s1">&#39;QRIX:CRYO:MMS:ROT&#39;</span><span class="p">);</span>
-
-    <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;pytmc&#39;</span> <span class="o">:=</span> <span class="s1">&#39;pv: QRIX:CRYO:MMS:X&#39;</span><span class="p">}</span>
-    <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;TcLinkTo&#39;</span> <span class="o">:=</span> <span class="s1">&#39;.bLimitForwardEnable  := TIIB[SSL-EL7041]^STM Status^Status^Digital input 1;</span>
-                              <span class="o">.</span><span class="n">bLimitBackwardEnable</span> <span class="o">:=</span> <span class="n">TIIB</span><span class="p">[</span><span class="n">SSL</span><span class="o">-</span><span class="n">EL7041</span><span class="p">]</span><span class="o">^</span><span class="n">STM</span> <span class="n">Status</span><span class="o">^</span><span class="n">Status</span><span class="o">^</span><span class="n">Digital</span> <span class="nb">input</span> <span class="mi">2</span><span class="p">;</span>
-                              <span class="o">.</span><span class="n">nRawEncoderULINT</span>     <span class="o">:=</span> <span class="n">TIIB</span><span class="p">[</span><span class="n">IM1K3</span><span class="o">-</span><span class="n">EL5042</span><span class="p">]</span><span class="o">^</span><span class="n">FB</span> <span class="n">Inputs</span> <span class="n">Channel</span> <span class="mi">1</span><span class="o">^</span><span class="n">Position</span><span class="s1">&#39;}</span>
-    <span class="n">M46</span><span class="p">:</span> <span class="n">DUT_MotionStage</span> <span class="o">:=</span> <span class="p">(</span><span class="n">sName</span> <span class="o">:=</span> <span class="s1">&#39;QRIX:CRYO:MMS:X&#39;</span><span class="p">);</span>
-
-    <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;pytmc&#39;</span> <span class="o">:=</span> <span class="s1">&#39;pv: QRIX:CRYO:MMS:Y&#39;</span><span class="p">}</span>
-    <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;TcLinkTo&#39;</span> <span class="o">:=</span> <span class="s1">&#39;.bLimitForwardEnable  := TIIB[SSL-EL7041]^STM Status^Status^Digital input 1;</span>
-                              <span class="o">.</span><span class="n">bLimitBackwardEnable</span> <span class="o">:=</span> <span class="n">TIIB</span><span class="p">[</span><span class="n">SSL</span><span class="o">-</span><span class="n">EL7041</span><span class="p">]</span><span class="o">^</span><span class="n">STM</span> <span class="n">Status</span><span class="o">^</span><span class="n">Status</span><span class="o">^</span><span class="n">Digital</span> <span class="nb">input</span> <span class="mi">2</span><span class="p">;</span>
-                              <span class="o">.</span><span class="n">nRawEncoderULINT</span>     <span class="o">:=</span> <span class="n">TIIB</span><span class="p">[</span><span class="n">IM1K3</span><span class="o">-</span><span class="n">EL5042</span><span class="p">]</span><span class="o">^</span><span class="n">FB</span> <span class="n">Inputs</span> <span class="n">Channel</span> <span class="mi">1</span><span class="o">^</span><span class="n">Position</span><span class="s1">&#39;}</span>
-    <span class="n">M47</span><span class="p">:</span> <span class="n">DUT_MotionStage</span> <span class="o">:=</span> <span class="p">(</span><span class="n">sName</span> <span class="o">:=</span> <span class="s1">&#39;QRIX:CRYO:MMS:Y&#39;</span><span class="p">);</span>
-
-    <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;pytmc&#39;</span> <span class="o">:=</span> <span class="s1">&#39;pv: QRIX:CRYO:MMS:Z&#39;</span><span class="p">}</span>
-    <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;TcLinkTo&#39;</span> <span class="o">:=</span> <span class="s1">&#39;.bLimitForwardEnable  := TIIB[SSL-EL7041]^STM Status^Status^Digital input 1;</span>
-                              <span class="o">.</span><span class="n">bLimitBackwardEnable</span> <span class="o">:=</span> <span class="n">TIIB</span><span class="p">[</span><span class="n">SSL</span><span class="o">-</span><span class="n">EL7041</span><span class="p">]</span><span class="o">^</span><span class="n">STM</span> <span class="n">Status</span><span class="o">^</span><span class="n">Status</span><span class="o">^</span><span class="n">Digital</span> <span class="nb">input</span> <span class="mi">2</span><span class="p">;</span>
-                              <span class="o">.</span><span class="n">nRawEncoderULINT</span>     <span class="o">:=</span> <span class="n">TIIB</span><span class="p">[</span><span class="n">IM1K3</span><span class="o">-</span><span class="n">EL5042</span><span class="p">]</span><span class="o">^</span><span class="n">FB</span> <span class="n">Inputs</span> <span class="n">Channel</span> <span class="mi">1</span><span class="o">^</span><span class="n">Position</span><span class="s1">&#39;}</span>
-    <span class="n">M48</span><span class="p">:</span> <span class="n">DUT_MotionStage</span> <span class="o">:=</span> <span class="p">(</span><span class="n">sName</span> <span class="o">:=</span> <span class="s1">&#39;QRIX:CRYO:MMS:Z&#39;</span><span class="p">);</span>
-
-
     <span class="o">//</span> <span class="n">Questar</span> <span class="o">-</span>  <span class="mi">2</span> <span class="n">axes</span>
     <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;pytmc&#39;</span> <span class="o">:=</span> <span class="s1">&#39;pv: QRIX:QUESTAR:MMS:01&#39;</span><span class="p">}</span>
     <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;TcLinkTo&#39;</span> <span class="o">:=</span> <span class="s1">&#39;.bLimitForwardEnable  := TIIB[SSL-EL7041]^STM Status^Status^Digital input 1;</span>
@@ -691,17 +692,8 @@
                               <span class="o">.</span><span class="n">bLimitBackwardEnable</span> <span class="o">:=</span> <span class="n">TIIB</span><span class="p">[</span><span class="n">SSL</span><span class="o">-</span><span class="n">EL7041</span><span class="p">]</span><span class="o">^</span><span class="n">STM</span> <span class="n">Status</span><span class="o">^</span><span class="n">Status</span><span class="o">^</span><span class="n">Digital</span> <span class="nb">input</span> <span class="mi">2</span><span class="p">;</span>
                               <span class="o">.</span><span class="n">nRawEncoderULINT</span>     <span class="o">:=</span> <span class="n">TIIB</span><span class="p">[</span><span class="n">IM1K3</span><span class="o">-</span><span class="n">EL5042</span><span class="p">]</span><span class="o">^</span><span class="n">FB</span> <span class="n">Inputs</span> <span class="n">Channel</span> <span class="mi">1</span><span class="o">^</span><span class="n">Position</span><span class="s1">&#39;}</span>
     <span class="n">M50</span><span class="p">:</span> <span class="n">DUT_MotionStage</span> <span class="o">:=</span> <span class="p">(</span><span class="n">sName</span> <span class="o">:=</span> <span class="s1">&#39;QRIX:QUESTAR:MMS:02&#39;</span><span class="p">);</span>
+
 <span class="o">*</span><span class="p">)</span>
-
-<span class="p">(</span><span class="o">*</span>
-    <span class="o">//</span><span class="n">Rotary</span> <span class="n">Detector</span> <span class="n">Motor</span>
-
-    <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;pytmc&#39;</span> <span class="o">:=</span> <span class="s1">&#39;pv: QRIX:DET:MMS:ROT&#39;</span><span class="p">}</span>
-    <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;TcLinkTo&#39;</span> <span class="o">:=</span> <span class="s1">&#39;.bLimitForwardEnable  := TIIB[SSL-EL7041]^STM Status^Status^Digital input 1;</span>
-                              <span class="o">.</span><span class="n">bLimitBackwardEnable</span> <span class="o">:=</span> <span class="n">TIIB</span><span class="p">[</span><span class="n">SSL</span><span class="o">-</span><span class="n">EL7041</span><span class="p">]</span><span class="o">^</span><span class="n">STM</span> <span class="n">Status</span><span class="o">^</span><span class="n">Status</span><span class="o">^</span><span class="n">Digital</span> <span class="nb">input</span> <span class="mi">2</span><span class="p">;</span>
-                              <span class="o">.</span><span class="n">nRawEncoderULINT</span>     <span class="o">:=</span> <span class="n">TIIB</span><span class="p">[</span><span class="n">IM1K3</span><span class="o">-</span><span class="n">EL5042</span><span class="p">]</span><span class="o">^</span><span class="n">FB</span> <span class="n">Inputs</span> <span class="n">Channel</span> <span class="mi">1</span><span class="o">^</span><span class="n">Position</span><span class="s1">&#39;}</span>
-    <span class="n">M51</span><span class="p">:</span> <span class="n">DUT_MotionStage</span> <span class="o">:=</span> <span class="p">(</span><span class="n">sName</span> <span class="o">:=</span> <span class="s1">&#39;QRIX:DET:MMS:ROT&#39;</span><span class="p">);</span>
-    <span class="o">*</span><span class="p">)</span>
 
 <span class="n">END_VAR</span>
 </pre></div>
@@ -2287,9 +2279,10 @@
 <span class="n">PRG_Diffractometer</span><span class="p">();</span>
 <span class="n">PRG_LAS</span><span class="p">();</span>
 <span class="n">PRG_SDS</span><span class="p">();</span>
-<span class="o">//</span><span class="n">PRG_RotDet</span><span class="p">();</span>
+<span class="n">PRG_RotDet</span><span class="p">();</span>
 <span class="o">//</span><span class="n">PRG_Questar</span><span class="p">();</span>
 <span class="n">PRG_SpetrometerArm</span><span class="p">();</span>
+<span class="n">PRG_Cryo</span><span class="p">();</span>
 
 <span class="n">END_PROGRAM</span>
 </pre></div>
@@ -2298,6 +2291,7 @@
 <dt>Related:</dt><dd><ul class="simple">
 <li><p><a class="reference internal" href="#prg-2-pmps">PRG_2_PMPS</a></p></li>
 <li><p><a class="reference internal" href="#prg-3-log">PRG_3_LOG</a></p></li>
+<li><p><a class="reference internal" href="#prg-cryo">PRG_Cryo</a></p></li>
 <li><p><a class="reference internal" href="#prg-diffractometer">PRG_Diffractometer</a></p></li>
 <li><p><a class="reference internal" href="#prg-las">PRG_LAS</a></p></li>
 <li><p><a class="reference internal" href="#prg-questar">PRG_Questar</a></p></li>
@@ -2420,20 +2414,34 @@ VAR
 END_VAR
 IF ( bInit) THEN
     bInit := FALSE;
-   // Main.M13.bHardwareEnable := TRUE;
-    //Main.M13.bPowerSelf := TRUE;
-   // Main.M13.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
-   // Main.M13.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+    Main.M46.bHardwareEnable := TRUE;
+    Main.M46.bPowerSelf := TRUE;
+    Main.M46.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+    Main.M46.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
 
+    Main.M47.bHardwareEnable := TRUE;
+    Main.M47.bPowerSelf := TRUE;
+    Main.M47.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+    Main.M47.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
 
+    Main.M48.bHardwareEnable := TRUE;
+    Main.M48.bPowerSelf := TRUE;
+    Main.M48.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+    Main.M48.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+
+    Main.M49.bHardwareEnable := TRUE;
+    Main.M49.bPowerSelf := TRUE;
+    Main.M49.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+    Main.M49.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
 END_IF
+
+
 //EPS??
 
-
-//fb_Cryo_ROT(stMotionStage:=Main.M13);
-//fb_Cryo_X(stMotionStage:=Main.M14);
-//fb_Cryo_Y(stMotionStage:=Main.M15);
-//fb_Cryo_Z(stMotionStage:=Main.M16);
+fb_Cryo_X(stMotionStage:=Main.M46);
+fb_Cryo_Y(stMotionStage:=Main.M47);
+fb_Cryo_Z(stMotionStage:=Main.M48);
+fb_Cryo_ROT(stMotionStage:=Main.M49);
 
 END_PROGRAM
 </pre></div>
@@ -3337,7 +3345,8 @@ END_PROGRAM
     <span class="n">decouple</span> <span class="p">:</span> <span class="n">MC_GEAROUT</span><span class="p">;</span>
     <span class="n">bExecuteCouple</span><span class="p">:</span> <span class="n">BOOL</span> <span class="o">:=</span> <span class="n">TRUE</span><span class="p">;</span>
     <span class="n">bExecuteDecouple</span><span class="p">:</span> <span class="n">BOOL</span> <span class="o">:=</span> <span class="n">FALSE</span><span class="p">;</span>
-
+    <span class="n">n2Theta</span> <span class="n">AT</span> <span class="o">%</span><span class="n">Q</span><span class="o">*</span> <span class="p">:</span><span class="n">ULINT</span><span class="p">;</span>
+    <span class="n">r2Theta</span><span class="p">:</span><span class="n">LREAL</span><span class="p">;</span>
     <span class="n">temp</span><span class="p">:</span><span class="n">ULINT</span><span class="p">;</span>
     <span class="n">rtemp</span><span class="p">:</span><span class="n">LREAL</span><span class="p">;</span>
     <span class="n">GantryDiff</span><span class="p">:</span><span class="n">REAL</span><span class="p">;</span>
@@ -3386,8 +3395,8 @@ END_PROGRAM
     <span class="n">Main</span><span class="o">.</span><span class="n">M35</span><span class="o">.</span><span class="n">nBrakeMode</span> <span class="o">:=</span> <span class="n">ENUM_StageBrakeMode</span><span class="o">.</span><span class="n">NO_BRAKE</span><span class="p">;</span>
     <span class="n">Main</span><span class="o">.</span><span class="n">M35</span><span class="o">.</span><span class="n">nEnableMode</span> <span class="o">:=</span> <span class="n">ENUM_StageEnableMode</span><span class="o">.</span><span class="n">DURING_MOTION</span><span class="p">;</span>
 
-
 <span class="n">END_IF</span>
+
 <span class="o">//</span><span class="n">EPS</span>
 <span class="p">(</span><span class="o">*</span>
 <span class="n">EPS_Diff_Z</span><span class="o">.</span><span class="n">setDescription</span><span class="p">(</span><span class="s1">&#39;Less20mm;LAS_D_H&#39;</span><span class="p">);</span> <span class="o">//</span> <span class="n">SET</span> <span class="n">DESCRITION</span> <span class="n">FOR</span> <span class="n">BYTE</span> <span class="n">INDICATOR</span> <span class="n">LABELS</span>
@@ -3408,7 +3417,6 @@ END_PROGRAM
 <span class="n">EPS_Diff_Theta</span><span class="o">.</span><span class="n">setBit</span><span class="p">(</span><span class="n">nBits</span><span class="o">:=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">bValue</span><span class="o">:=</span> <span class="n">fb_Diff_Theta</span><span class="o">.</span><span class="n">stMotionStage</span><span class="o">.</span><span class="n">fPosition</span><span class="o">&gt;</span><span class="mi">10</span> <span class="n">OR</span> <span class="p">(</span><span class="n">PRG_LAS</span><span class="o">.</span><span class="n">fb_LAS_VIS</span><span class="o">.</span><span class="n">stMotionStage</span><span class="o">.</span><span class="n">fPosition</span> <span class="o">&lt;</span><span class="mf">90.1</span> <span class="n">AND</span> <span class="n">PRG_LAS</span><span class="o">.</span><span class="n">fb_LAS_VIS</span><span class="o">.</span><span class="n">stMotionStage</span><span class="o">.</span><span class="n">fPosition</span><span class="o">&gt;</span><span class="mf">89.9</span><span class="p">));</span>
 <span class="n">EPS_Diff_Theta</span><span class="p">(</span><span class="n">eps</span><span class="o">:=</span><span class="n">stEPS_Diff_Theta</span><span class="p">);</span>
 <span class="n">fb_Diff_Theta</span><span class="o">.</span><span class="n">stMotionStage</span><span class="o">.</span><span class="n">stEPSBackwardEnable</span> <span class="o">:=</span> <span class="n">stEPS_Diff_Theta</span><span class="p">;</span> <span class="o">//</span><span class="n">Need</span> <span class="n">More</span>
-
 
 <span class="n">EPS_Diff_Phi</span><span class="o">.</span><span class="n">setDescription</span><span class="p">(</span><span class="s1">&#39;Less-45;MID_IR;Theta&#39;</span><span class="p">);</span> <span class="o">//</span> <span class="n">SET</span> <span class="n">DESCRITION</span> <span class="n">FOR</span> <span class="n">BYTE</span> <span class="n">INDICATOR</span> <span class="n">LABELS</span>
 <span class="n">EPS_Diff_Phi</span><span class="o">.</span><span class="n">setBit</span><span class="p">(</span><span class="n">nBits</span><span class="o">:=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">bValue</span><span class="o">:=</span><span class="n">fb_Diff_phi</span><span class="o">.</span><span class="n">stMotionStage</span><span class="o">.</span><span class="n">fPosition</span><span class="o">&lt;=</span><span class="mi">45</span><span class="p">);</span>
@@ -3788,15 +3796,17 @@ END_PROGRAM
     <span class="n">fb_Rot_Det</span> <span class="p">:</span> <span class="n">FB_MotionStage</span><span class="p">;</span>
     <span class="n">bInit</span> <span class="p">:</span> <span class="n">BOOl</span> <span class="o">:=</span> <span class="n">TRUE</span><span class="p">;</span>
 <span class="n">END_VAR</span>
-<span class="p">(</span><span class="o">*</span> <span class="n">IF</span> <span class="p">(</span> <span class="n">bInit</span><span class="p">)</span> <span class="n">THEN</span>
+<span class="n">IF</span> <span class="p">(</span> <span class="n">bInit</span><span class="p">)</span> <span class="n">THEN</span>
    <span class="n">bInit</span> <span class="o">:=</span> <span class="n">FALSE</span><span class="p">;</span>
-   <span class="n">Main</span><span class="o">.</span><span class="n">M51</span><span class="o">.</span><span class="n">bHardwareEnable</span> <span class="o">:=</span> <span class="n">TRUE</span><span class="p">;</span>
-   <span class="n">Main</span><span class="o">.</span><span class="n">M51</span><span class="o">.</span><span class="n">bPowerSelf</span> <span class="o">:=</span> <span class="n">TRUE</span><span class="p">;</span>
-   <span class="n">Main</span><span class="o">.</span><span class="n">M51</span><span class="o">.</span><span class="n">nBrakeMode</span> <span class="o">:=</span> <span class="n">ENUM_StageBrakeMode</span><span class="o">.</span><span class="n">NO_BRAKE</span><span class="p">;</span>
-   <span class="n">Main</span><span class="o">.</span><span class="n">M51</span><span class="o">.</span><span class="n">nEnableMode</span> <span class="o">:=</span> <span class="n">ENUM_StageEnableMode</span><span class="o">.</span><span class="n">DURING_MOTION</span><span class="p">;</span>
+   <span class="n">Main</span><span class="o">.</span><span class="n">M45</span><span class="o">.</span><span class="n">bHardwareEnable</span> <span class="o">:=</span> <span class="n">TRUE</span><span class="p">;</span>
+   <span class="n">Main</span><span class="o">.</span><span class="n">M45</span><span class="o">.</span><span class="n">bPowerSelf</span> <span class="o">:=</span> <span class="n">TRUE</span><span class="p">;</span>
+   <span class="n">Main</span><span class="o">.</span><span class="n">M45</span><span class="o">.</span><span class="n">nBrakeMode</span> <span class="o">:=</span> <span class="n">ENUM_StageBrakeMode</span><span class="o">.</span><span class="n">NO_BRAKE</span><span class="p">;</span>
+   <span class="n">Main</span><span class="o">.</span><span class="n">M45</span><span class="o">.</span><span class="n">nEnableMode</span> <span class="o">:=</span> <span class="n">ENUM_StageEnableMode</span><span class="o">.</span><span class="n">DURING_MOTION</span><span class="p">;</span>
+   <span class="n">Main</span><span class="o">.</span><span class="n">M45</span><span class="o">.</span><span class="n">bLimitForwardEnable</span> <span class="o">:=</span> <span class="n">TRUE</span><span class="p">;</span>
+   <span class="n">Main</span><span class="o">.</span><span class="n">M45</span><span class="o">.</span><span class="n">bLimitBackwardEnable</span> <span class="o">:=</span> <span class="n">TRUE</span><span class="p">;</span>
 <span class="n">END_IF</span>
 
-<span class="n">fb_Rot_Det</span><span class="p">(</span><span class="n">stMotionStage</span><span class="o">:=</span><span class="n">Main</span><span class="o">.</span><span class="n">M51</span><span class="p">);</span><span class="o">*</span><span class="p">)</span>
+<span class="n">fb_Rot_Det</span><span class="p">(</span><span class="n">stMotionStage</span><span class="o">:=</span><span class="n">Main</span><span class="o">.</span><span class="n">M45</span><span class="p">);</span>
 
 <span class="n">END_PROGRAM</span>
 </pre></div>
@@ -4175,7 +4185,7 @@ END_PROGRAM
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, SLAC National Accelerator Laboratory.</p>
+    <p>&#169; Copyright 2024, SLAC National Accelerator Laboratory.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

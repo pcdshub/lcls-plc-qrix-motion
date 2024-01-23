@@ -6,7 +6,7 @@ Pragmas
     :header: PLC Name, Total Pragmas, Errors
     :align: center
 
-    :ref:`PLC_QRIX_MOT <PLC_QRIX_MOT_overview_pragmas>`, 233, 0
+    :ref:`PLC_QRIX_MOT <PLC_QRIX_MOT_overview_pragmas>`, 232, 0
 
 
 .. _PLC_QRIX_MOT_overview_pragmas:
@@ -15,7 +15,7 @@ Pragmas
 PLC_QRIX_MOT
 ^^^^^^^^^^^^
 
-Total pragmas found: 233
+Total pragmas found: 232
 Total linter errors: 0
 
 
