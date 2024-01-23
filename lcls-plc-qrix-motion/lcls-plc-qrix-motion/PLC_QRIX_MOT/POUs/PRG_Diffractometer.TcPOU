@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
   <POU Name="PRG_Diffractometer" Id="{47cc6d87-f16c-4ab2-afb0-97aaa2cfa842}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM PRG_Diffractometer
 VAR
@@ -92,42 +92,7 @@ END_VAR
     Main.M35.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
     Main.M35.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
 
-    Main.M45.bHardwareEnable := TRUE;
-    Main.M45.bPowerSelf := TRUE;
-    Main.M45.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
-    Main.M45.nEnableMode := ENUM_StageEnableMode.ALWAYS;
-
-    //Set 2Theta encoder value to the virtual axis 45 abosulte encoder value
-    Main.M35.nHomingMode := ENUM_EpicsHomeCmd.ABSOLUTE_SET;
 END_IF
-
-IF (Main.M45.Axis.NcToPlc.ActPos >180) THEN
-    Main.M35.fHomePosition := Main.M45.Axis.NcToPlc.ActPos - 360;
-ELSE
-    Main.M35.fHomePosition := Main.M45.Axis.NcToPlc.ActPos;
-END_IF
-
-// AutoCoupling
-GantryDiff:= Main.M35.Axis.NcToPlc.ActPos - Main.M45.Axis.NcToPlc.ActPos;
-IF (GantryDiff >0.5) THEN
-    Main.M35.bHardwareEnable := FALSE;
-END_IF
-couple(Master:=Main.M35.Axis, Slave:=Main.M45.Axis, Execute:=bExecuteCouple);
-decouple(Slave:=Main.M45.Axis, Execute:=NOT bExecuteCouple);
-
-Main.M45.bLimitBackwardEnable := Main.M35.bLimitBackwardEnable ;
-Main.M45.bLimitForwardEnable := Main.M35.bLimitForwardEnable ;
-(*fb2ThetaAutoCoupling(	nGantryTol 			:= 200000, // 50nm/count
-                Master				:= Main.M35,
-              //  MasterEnc			:= stRenishawAbsEncMaster,
-                Slave				:= Main.M45,
-              //  SlaveEnc			:= stRenishawAbsEncSlave,
-                bExecuteCouple 		:= bExecuteCouple,
-                bExecuteDecouple 	:= bExecuteDecouple,
-);*)
-
-
-
 
 //EPS
 (*
@@ -169,10 +134,14 @@ fb_Diff_Phi(stMotionStage:=Main.M32);
 fb_Diff_Chi(stMotionStage:=Main.M33);
 fb_Diff_Theta(stMotionStage:=Main.M34);
 fb_Diff_2Theta(stMotionStage:=Main.M35);
-
-//virtual axis for 2theta encoder
-fb_Diff_2Theta_Encoder(stMotionStage:=Main.M45);
 ]]></ST>
     </Implementation>
+    <LineIds Name="PRG_Diffractometer">
+      <LineId Id="3" Count="40" />
+      <LineId Id="51" Count="0" />
+      <LineId Id="77" Count="0" />
+      <LineId Id="81" Count="40" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
   </POU>
 </TcPlcObject>

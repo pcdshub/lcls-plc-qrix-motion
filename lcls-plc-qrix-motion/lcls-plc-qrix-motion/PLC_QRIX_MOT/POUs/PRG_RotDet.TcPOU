@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
   <POU Name="PRG_RotDet" Id="{6c5a9ec6-70ef-4f3f-9260-ca012a2c65e6}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM PRG_RotDet
 VAR
@@ -8,15 +8,23 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[(* IF ( bInit) THEN
+      <ST><![CDATA[IF ( bInit) THEN
    bInit := FALSE;
-   Main.M51.bHardwareEnable := TRUE;
-   Main.M51.bPowerSelf := TRUE;
-   Main.M51.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
-   Main.M51.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+   Main.M45.bHardwareEnable := TRUE;
+   Main.M45.bPowerSelf := TRUE;
+   Main.M45.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+   Main.M45.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+   Main.M45.bLimitForwardEnable := TRUE;
+   Main.M45.bLimitBackwardEnable := TRUE;
 END_IF
 
-fb_Rot_Det(stMotionStage:=Main.M51);*)]]></ST>
+fb_Rot_Det(stMotionStage:=Main.M45);]]></ST>
     </Implementation>
+    <LineIds Name="PRG_RotDet">
+      <LineId Id="3" Count="5" />
+      <LineId Id="17" Count="1" />
+      <LineId Id="9" Count="1" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
   </POU>
 </TcPlcObject>
