@@ -359,19 +359,19 @@ VAR_GLOBAL
     M44: DUT_MotionStage := (sName := 'QRIX:SDS:MMS:H');
 
     //Detector Rotation
-	//Need to fix linking
-	{attribute 'pytmc' := 'pv: QRIX:DET:MMS:ROT'}
+    //Need to fix linking
+    {attribute 'pytmc' := 'pv: QRIX:DET:MMS:ROT'}
     {attribute 'TcLinkTo' := '.nRawEncoderULINT     := TIIB[BOX-22 DET_ROT (EL5042)]^FB Inputs Channel 1^Position'}
     M45: DUT_MotionStage := (sName := 'QRIX:DET:MMS:ROT');
 
     // Cryo -  4 axes
-	//Cryo -X
+    //Cryo -X
     {attribute 'pytmc' := 'pv: QRIX:CRYO:MMS:X'}
     {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL7047_02_12]^STM Status^Status^Digital input 1;
                               .bLimitBackwardEnable := TIIB[EL7047_02_12]^STM Status^Status^Digital input 2;
                               .nRawEncoderULINT     := TIIB[EL5042_02_13]^FB Inputs Channel 1^Position; '}
     M46: DUT_MotionStage := (sName := 'QRIX:CRYO:MMS:X');
-    //CRYO Y 
+    //CRYO Y
     {attribute 'pytmc' := 'pv: QRIX:CRYO:MMS:Y'}
     {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL7047_02_14]^STM Status^Status^Digital input 2;
                               .bLimitBackwardEnable := TIIB[EL7047_02_14]^STM Status^Status^Digital input 1;

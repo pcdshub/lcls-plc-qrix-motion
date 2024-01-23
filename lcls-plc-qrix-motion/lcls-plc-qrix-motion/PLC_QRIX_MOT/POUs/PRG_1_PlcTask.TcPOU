@@ -18,9 +18,5 @@ PRG_SpetrometerArm();
 PRG_Cryo();
 ]]></ST>
     </Implementation>
-    <LineIds Name="PRG_1_PlcTask">
-      <LineId Id="3" Count="9" />
-      <LineId Id="2" Count="0" />
-    </LineIds>
   </POU>
 </TcPlcObject>
