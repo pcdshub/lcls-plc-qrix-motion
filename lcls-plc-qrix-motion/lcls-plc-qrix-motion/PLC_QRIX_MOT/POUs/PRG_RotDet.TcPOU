@@ -8,15 +8,18 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[(* IF ( bInit) THEN
+      <ST><![CDATA[IF ( bInit) THEN
    bInit := FALSE;
-   Main.M51.bHardwareEnable := TRUE;
-   Main.M51.bPowerSelf := TRUE;
-   Main.M51.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
-   Main.M51.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+   Main.M45.bHardwareEnable := TRUE;
+   Main.M45.bPowerSelf := TRUE;
+   Main.M45.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+   Main.M45.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+   Main.M45.bLimitForwardEnable := TRUE;
+   Main.M45.bLimitBackwardEnable := TRUE;
 END_IF
 
-fb_Rot_Det(stMotionStage:=Main.M51);*)]]></ST>
+fb_Rot_Det(stMotionStage:=Main.M45);
+]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

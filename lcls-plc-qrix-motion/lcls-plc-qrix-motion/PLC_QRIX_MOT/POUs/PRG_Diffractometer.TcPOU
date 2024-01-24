@@ -92,42 +92,7 @@ END_VAR
     Main.M35.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
     Main.M35.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
 
-    Main.M45.bHardwareEnable := TRUE;
-    Main.M45.bPowerSelf := TRUE;
-    Main.M45.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
-    Main.M45.nEnableMode := ENUM_StageEnableMode.ALWAYS;
-
-    //Set 2Theta encoder value to the virtual axis 45 abosulte encoder value
-    Main.M35.nHomingMode := ENUM_EpicsHomeCmd.ABSOLUTE_SET;
 END_IF
-
-IF (Main.M45.Axis.NcToPlc.ActPos >180) THEN
-    Main.M35.fHomePosition := Main.M45.Axis.NcToPlc.ActPos - 360;
-ELSE
-    Main.M35.fHomePosition := Main.M45.Axis.NcToPlc.ActPos;
-END_IF
-
-// AutoCoupling
-GantryDiff:= Main.M35.Axis.NcToPlc.ActPos - Main.M45.Axis.NcToPlc.ActPos;
-IF (GantryDiff >0.5) THEN
-    Main.M35.bHardwareEnable := FALSE;
-END_IF
-couple(Master:=Main.M35.Axis, Slave:=Main.M45.Axis, Execute:=bExecuteCouple);
-decouple(Slave:=Main.M45.Axis, Execute:=NOT bExecuteCouple);
-
-Main.M45.bLimitBackwardEnable := Main.M35.bLimitBackwardEnable ;
-Main.M45.bLimitForwardEnable := Main.M35.bLimitForwardEnable ;
-(*fb2ThetaAutoCoupling(	nGantryTol 			:= 200000, // 50nm/count
-                Master				:= Main.M35,
-              //  MasterEnc			:= stRenishawAbsEncMaster,
-                Slave				:= Main.M45,
-              //  SlaveEnc			:= stRenishawAbsEncSlave,
-                bExecuteCouple 		:= bExecuteCouple,
-                bExecuteDecouple 	:= bExecuteDecouple,
-);*)
-
-
-
 
 //EPS
 (*
@@ -150,7 +115,6 @@ EPS_Diff_Theta.setBit(nBits:= 2, bValue:= fb_Diff_Theta.stMotionStage.fPosition>
 EPS_Diff_Theta(eps:=stEPS_Diff_Theta);
 fb_Diff_Theta.stMotionStage.stEPSBackwardEnable := stEPS_Diff_Theta; //Need More
 
-
 EPS_Diff_Phi.setDescription('Less-45;MID_IR;Theta'); // SET DESCRITION FOR BYTE INDICATOR LABELS
 EPS_Diff_Phi.setBit(nBits:= 0, bValue:=fb_Diff_phi.stMotionStage.fPosition<=45);
 EPS_Diff_Phi.setBit(nBits:= 1, bValue:=PRG_LAS.fb_LAS_VIS.stMotionStage.fPosition <45 OR PRG_Diffractometer.fb_Diff_phi.stMotionStage.fPosition<=45);
@@ -169,9 +133,6 @@ fb_Diff_Phi(stMotionStage:=Main.M32);
 fb_Diff_Chi(stMotionStage:=Main.M33);
 fb_Diff_Theta(stMotionStage:=Main.M34);
 fb_Diff_2Theta(stMotionStage:=Main.M35);
-
-//virtual axis for 2theta encoder
-fb_Diff_2Theta_Encoder(stMotionStage:=Main.M45);
 ]]></ST>
     </Implementation>
   </POU>

@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<TcSmItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmItem" TcSmVersion="1.0" TcVersion="3.1.4022.30" ClassName="CNcSafTaskDef" SubType="0">
+<?xml version="1.0"?>
+<TcSmItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.35" ClassName="CNcSafTaskDef" SubType="0">
 	<NC>
 		<SafTask Priority="4" CycleTime="20000" AmsPort="501" IoAtBegin="true">
 			<Name>NC-Task 1 SAF</Name>
@@ -71,6 +71,10 @@
 		<Axis File="M42 - SDS Rot Garage.xti" Id="42"/>
 		<Axis File="M43 -SDS Linear Rotary.xti" Id="43"/>
 		<Axis File="M44 - SDS Linear Horizontal.xti" Id="44"/>
-		<Axis File="Axis 45 -.xti" Id="45"/>
+		<Axis File="M46 - CRYO X.xti" Id="46"/>
+		<Axis File="M47 - CRYO Y.xti" Id="47"/>
+		<Axis File="M48 - CRYO Z.xti" Id="48"/>
+		<Axis File="M49 - CRYO ROT.xti" Id="49"/>
+		<Axis File="M45 - DET ROT.xti" Id="45"/>
 	</NC>
 </TcSmItem>

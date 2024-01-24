@@ -12,10 +12,11 @@ PRG_SSL();
 PRG_Diffractometer();
 PRG_LAS();
 PRG_SDS();
-//PRG_RotDet();
+PRG_RotDet();
 //PRG_Questar();
 PRG_SpetrometerArm();
 PRG_Cryo();
+
 ]]></ST>
     </Implementation>
   </POU>
