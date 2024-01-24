@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
   <POU Name="PRG_Diffractometer" Id="{47cc6d87-f16c-4ab2-afb0-97aaa2cfa842}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM PRG_Diffractometer
 VAR
@@ -114,7 +114,6 @@ EPS_Diff_Theta.setBit(nBits:= 1, bValue:=fb_Diff_Theta.stMotionStage.fPosition>1
 EPS_Diff_Theta.setBit(nBits:= 2, bValue:= fb_Diff_Theta.stMotionStage.fPosition>10 OR (PRG_LAS.fb_LAS_VIS.stMotionStage.fPosition <90.1 AND PRG_LAS.fb_LAS_VIS.stMotionStage.fPosition>89.9));
 EPS_Diff_Theta(eps:=stEPS_Diff_Theta);
 fb_Diff_Theta.stMotionStage.stEPSBackwardEnable := stEPS_Diff_Theta; //Need More
-
 
 EPS_Diff_Phi.setDescription('Less-45;MID_IR;Theta'); // SET DESCRITION FOR BYTE INDICATOR LABELS
 EPS_Diff_Phi.setBit(nBits:= 0, bValue:=fb_Diff_phi.stMotionStage.fPosition<=45);

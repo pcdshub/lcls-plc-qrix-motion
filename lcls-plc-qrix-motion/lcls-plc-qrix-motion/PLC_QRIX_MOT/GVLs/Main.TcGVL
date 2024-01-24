@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
   <GVL Name="Main" Id="{2b6c7284-966c-4508-b749-c66dc5cfc539}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
@@ -405,15 +405,6 @@ VAR_GLOBAL
     M50: DUT_MotionStage := (sName := 'QRIX:QUESTAR:MMS:02');
 
 *)
-(*
-    //Rotary Detector Motor
-
-    {attribute 'pytmc' := 'pv: QRIX:DET:MMS:01'}
-    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[SSL-EL7041]^STM Status^Status^Digital input 1;
-                              .bLimitBackwardEnable := TIIB[SSL-EL7041]^STM Status^Status^Digital input 2;
-                              .nRawEncoderULINT     := TIIB[IM1K3-EL5042]^FB Inputs Channel 1^Position'}
-    M51: DUT_MotionStage := (sName := 'QRIX:DET:MMS:01');
-    *)
 
 END_VAR]]></Declaration>
   </GVL>
