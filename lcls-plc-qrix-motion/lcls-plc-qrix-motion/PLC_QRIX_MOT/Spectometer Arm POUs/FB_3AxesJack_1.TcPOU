@@ -3,9 +3,9 @@
   <POU Name="FB_3AxesJack_1" Id="{afd21d97-09ad-42c7-b90b-b0403b1a6085}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_3AxesJack_1
 VAR_IN_OUT
-    stJack1Axis: DUT_MotionStage;
-    stJack2Axis: DUT_MotionStage;
-    stJack3Axis: DUT_MotionStage;
+    stJack1Axis: ST_MotionStage;
+    stJack2Axis: ST_MotionStage;
+    stJack3Axis: ST_MotionStage;
     bExecuteMotion:BOOL ;
     io_fbFFHWO    :    FB_HardwareFFOutput;
     fbArbiter: FB_Arbiter();
@@ -65,9 +65,9 @@ VAR
     fHighAccel: LREAL := 0.8;
     fLowAccel: LREAL := 0.1;
 
-    stJack1: DUT_PositionState;
-    stJack2: DUT_PositionState;
-    stJack3: DUT_PositionState;
+    stJack1: ST_PositionState;
+    stJack2: ST_PositionState;
+    stJack3: ST_PositionState;
 
     {attribute 'pytmc' := 'pv: JACK1'}
     fbJack1: FB_StatePTPMove;
