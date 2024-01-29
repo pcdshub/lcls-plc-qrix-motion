@@ -24,28 +24,28 @@ VAR_GLOBAL
 
     // Granite TiltZ : Pitch
     {attribute 'pytmc' := '
-        pv: QRIX:GS:AI:TILTZ
+        pv: QRIX:GS:INM:Z
         io: i
     '}
     {attribute 'TcLinkTo' := '	.iRawCnts	:= TIIB[Rack#2B-03 AI_TiltSensor (EL3174-0002)]^AI Standard Channel 2^Value'}
     stGraniteP: DUT_Sensor;
     // Granite TiltX : Roll
     {attribute 'pytmc' := '
-        pv: QRIX:GS:AI:TILTX
+        pv: QRIX:GS:INM:X
         io: i
     '}
     {attribute 'TcLinkTo' := '	.iRawCnts	:= TIIB[Rack#2B-03 AI_TiltSensor (EL3174-0002)]^AI Standard Channel 1^Value'}
     stGraniteR: DUT_Sensor;
     // Frame TiltZ : Pitch
     {attribute 'pytmc' := '
-        pv: QRIX:DF:AI:TILTZ
+        pv: QRIX:DF:INM:Z
         io: i
     '}
     {attribute 'TcLinkTo' := '	.iRawCnts	:= TIIB[Rack#2B-03 AI_TiltSensor (EL3174-0002)]^AI Standard Channel 4^Value'}
     stFrameP: DUT_Sensor;
     // Frame TiltX : Roll
     {attribute 'pytmc' := '
-        pv: QRIX:DF:AI:TILTX
+        pv: QRIX:DF:INM:X
         io: i
     '}
     {attribute 'TcLinkTo' := '	.iRawCnts	:= TIIB[Rack#2B-03 AI_TiltSensor (EL3174-0002)]^AI Standard Channel 3^Value'}
