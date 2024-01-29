@@ -21,16 +21,22 @@ IF bInit THEN
     Main.M3.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
     Main.M3.bHardwareEnable := TRUE;
     Main.M3.bPowerSelf := TRUE;
+    Main.M3.fVelocity := 0.1;
 
     Main.M4.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
     Main.M4.bHardwareEnable := TRUE;
     Main.M4.bPowerSelf := TRUE;
+    Main.M4.fVelocity := 0.1;
+
     Main.M5.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
     Main.M5.bHardwareEnable := TRUE;
     Main.M5.bPowerSelf := TRUE;
+    Main.M5.fVelocity := 0.1;
+
     Main.M6.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
     Main.M6.bHardwareEnable := TRUE;
     Main.M6.bPowerSelf := TRUE;
+    Main.M6.fVelocity := 0.1;
 
 
     //

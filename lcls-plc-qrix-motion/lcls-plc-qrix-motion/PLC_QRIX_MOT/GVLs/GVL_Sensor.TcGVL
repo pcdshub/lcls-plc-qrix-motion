@@ -4,7 +4,6 @@
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
     {attribute 'pytmc' := 'pv: QRIX:SA:FLOATING'}
-
     bFloating: BOOL;
 
     // YDF1
@@ -24,15 +23,31 @@ VAR_GLOBAL
     stHDF: DUT_SensorHGS;
 
     // Granite TiltZ : Pitch
+    {attribute 'pytmc' := '
+        pv: QRIX:GS:AI:TILTZ
+        io: i
+    '}
     {attribute 'TcLinkTo' := '	.iRawCnts	:= TIIB[Rack#2B-03 AI_TiltSensor (EL3174-0002)]^AI Standard Channel 2^Value'}
     stGraniteP: DUT_Sensor;
     // Granite TiltX : Roll
+    {attribute 'pytmc' := '
+        pv: QRIX:GS:AI:TILTX
+        io: i
+    '}
     {attribute 'TcLinkTo' := '	.iRawCnts	:= TIIB[Rack#2B-03 AI_TiltSensor (EL3174-0002)]^AI Standard Channel 1^Value'}
     stGraniteR: DUT_Sensor;
     // Frame TiltZ : Pitch
+    {attribute 'pytmc' := '
+        pv: QRIX:DF:AI:TILTZ
+        io: i
+    '}
     {attribute 'TcLinkTo' := '	.iRawCnts	:= TIIB[Rack#2B-03 AI_TiltSensor (EL3174-0002)]^AI Standard Channel 4^Value'}
     stFrameP: DUT_Sensor;
     // Frame TiltX : Roll
+    {attribute 'pytmc' := '
+        pv: QRIX:DF:AI:TILTX
+        io: i
+    '}
     {attribute 'TcLinkTo' := '	.iRawCnts	:= TIIB[Rack#2B-03 AI_TiltSensor (EL3174-0002)]^AI Standard Channel 3^Value'}
     stFrameR: DUT_Sensor;
 

@@ -73,15 +73,18 @@ END_VAR
     Main.M15.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
     Main.M15.bHardwareEnable := TRUE;
     Main.M15.bPowerSelf := TRUE;
+    Main.M15.fVelocity := 0.1;
+
     Main.M16.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
     Main.M16.bHardwareEnable := TRUE;
     Main.M16.bPowerSelf := TRUE;
+    Main.M16.fVelocity := 0.1;
+
     Main.M17.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
     Main.M17.bHardwareEnable := TRUE;
     Main.M17.bPowerSelf := TRUE;
+    Main.M17.fVelocity := 0.1;
 
-
-    //
     Main.M15.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
     Main.M16.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
     Main.M17.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;

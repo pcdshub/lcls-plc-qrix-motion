@@ -40,7 +40,7 @@ VAR_GLOBAL
                                 .bLimitBackwardEnable 	:= TIIB[Rack#2A-03 DR_XS1 (EL7041-0052)]^STM Status^Status^Digital input 2;
                                 .nRawEncoderULINT     	:= TIIB[Rack#2B-07 ENC_X1_X2 (EL5042)]^FB Inputs Channel 1^Position
     '}
-    M3: ST_MotionStage :=(sName := ' QRIX:OPTSL:MMS:NORTH');
+    M3: ST_MotionStage :=(sName := 'QRIX:OPTSL:MMS:NORTH');
 
     // XS2
     {attribute 'pytmc' := 'pv: QRIX:OPTSL:MMS:SOUTH'}
@@ -48,7 +48,7 @@ VAR_GLOBAL
                                 .bLimitBackwardEnable 	:= TIIB[Rack#2A-04 DR_XS2 (EL7041-0052)]^STM Status^Status^Digital input 2;
                                 .nRawEncoderULINT     	:= TIIB[Rack#2B-07 ENC_X1_X2 (EL5042)]^FB Inputs Channel 2^Position
     '}
-    M4: ST_MotionStage:=(sName := ' QRIX:OPTSL:MMS:SOUTH');
+    M4: ST_MotionStage:=(sName := 'QRIX:OPTSL:MMS:SOUTH');
 
     // YS1
     {attribute 'pytmc' := 'pv: QRIX:OPTSL:MMS:TOP'}
@@ -56,7 +56,7 @@ VAR_GLOBAL
                                 .bLimitBackwardEnable 	:= TIIB[Rack#2A-05 DR_YS1 (EL7041-0052)]^STM Status^Status^Digital input 2;
                                 .nRawEncoderULINT     	:= TIIB[Rack#2B-08 ENC_Y1_Y2 (EL5042)]^FB Inputs Channel 1^Position
     '}
-    M5: ST_MotionStage:=(sName := ' QRIX:OPTSL:MMS:TOP');
+    M5: ST_MotionStage:=(sName := 'QRIX:OPTSL:MMS:TOP');
 
     // YS2
     {attribute 'pytmc' := 'pv: QRIX:OPTSL:MMS:BOTTOM'}
@@ -64,7 +64,7 @@ VAR_GLOBAL
                                 .bLimitBackwardEnable 	:= TIIB[Rack#2A-06 DR_YS2 (EL7041-0052)]^STM Status^Status^Digital input 2;
                                 .nRawEncoderULINT     	:= TIIB[Rack#2B-08 ENC_Y1_Y2 (EL5042)]^FB Inputs Channel 1^Position
     '}
-    M6: ST_MotionStage :=(sName := ' QRIX:OPTSL:MMS:BOTTOM');;
+    M6: ST_MotionStage :=(sName := 'QRIX:OPTSL:MMS:BOTTOM');;
 
     // YG1
     {attribute 'pytmc' := 'pv: QRIX:OPT:MMS:Y1'}
@@ -158,7 +158,7 @@ VAR_GLOBAL
                                 .bLimitBackwardEnable 	:= TIIB[BOX-09 DR_XSDC1 (EL7041-0052)]^STM Status^Status^Digital input 2;
                                 .nRawEncoderULINT     	:= TIIB[BOX-03 ENC_X1_X2 (EL5042)]^FB Inputs Channel 1^Position
     '}
-    M18: ST_MotionStage:=(sName := ' QRIX:DETSL:MMS:NORTH');
+    M18: ST_MotionStage:=(sName := 'QRIX:DETSL:MMS:NORTH');
 
     // XSDC2
     {attribute 'pytmc' := 'pv: QRIX:DETSL:MMS:SOUTH'}
@@ -166,7 +166,7 @@ VAR_GLOBAL
                                 .bLimitBackwardEnable 	:= TIIB[BOX-10 DR_XSDC2 (EL7041-0052)]^STM Status^Status^Digital input 2;
                                 .nRawEncoderULINT     	:= TIIB[BOX-03 ENC_X1_X2 (EL5042)]^FB Inputs Channel 2^Position
     '}
-    M19: ST_MotionStage :=(sName := ' QRIX:DETSL:MMS:SOUTH');
+    M19: ST_MotionStage :=(sName := 'QRIX:DETSL:MMS:SOUTH');
 
     // YSDC1
     {attribute 'pytmc' := 'pv: QRIX:DETSL:MMS:TOP'}
@@ -174,7 +174,7 @@ VAR_GLOBAL
                                 .bLimitBackwardEnable 	:= TIIB[BOX-11 DR_YSDC1 (EL7041-0052)]^STM Status^Status^Digital input 2;
                                 .nRawEncoderULINT     	:= TIIB[BOX-04 ENC_Y1_Y2 (EL5042)]^FB Inputs Channel 1^Position
     '}
-    M20: ST_MotionStage :=(sName := ' QRIX:DETSL:MMS:TOP');
+    M20: ST_MotionStage :=(sName := 'QRIX:DETSL:MMS:TOP');
 
     // YSDC2
     {attribute 'pytmc' := 'pv: QRIX:DETSL:MMS:BOTTOM'}
@@ -182,7 +182,7 @@ VAR_GLOBAL
                                 .bLimitBackwardEnable 	:= TIIB[BOX-12 DR_YSDC2 (EL7041-0052)]^STM Status^Status^Digital input 2;
                                 .nRawEncoderULINT     	:= TIIB[BOX-04 ENC_Y1_Y2 (EL5042)]^FB Inputs Channel 1^Position
     '}
-    M21: ST_MotionStage :=(sName := ' QRIX:DETSL:MMS:BOTTOM');
+    M21: ST_MotionStage :=(sName := 'QRIX:DETSL:MMS:BOTTOM');
 
     // XDC
     {attribute 'pytmc' := 'pv: QRIX:DC:MMS:X'}
@@ -190,7 +190,7 @@ VAR_GLOBAL
                                 .bLimitBackwardEnable 	:= TIIB[BOX-14 DR_XDC (EL7041-0052)]^STM Status^Status^Digital input 2;
                                 .nRawEncoderULINT     	:= TIIB[BOX-05 ENC_XDC_RyDC (EL5042)]^FB Inputs Channel 1^Position
     '}
-    M22: ST_MotionStage:=(sName := ' QRIX:DC:MMS:X');
+    M22: ST_MotionStage:=(sName := 'QRIX:DC:MMS:X');
 
     // RyDC
     {attribute 'pytmc' := 'pv: QRIX:DC:MMS:Ry'}
@@ -198,7 +198,7 @@ VAR_GLOBAL
                                 .bLimitBackwardEnable	:= TIIB[BOX-15 DR_RyDC (EL7041-0052)]^STM Status^Status^Digital input 2;
                                 .nRawEncoderULINT		:= TIIB[BOX-05 ENC_XDC_RyDC (EL5042)]^FB Inputs Channel 2^Position
     '}
-    M23: ST_MotionStage :=(sName := ' QRIX:DC:MMS:Ry');
+    M23: ST_MotionStage :=(sName := 'QRIX:DC:MMS:Ry');
 
     // ZDC
     {attribute 'pytmc' := 'pv: QRIX:DC:MMS:Z'}
@@ -206,7 +206,7 @@ VAR_GLOBAL
                                 .bLimitBackwardEnable	:= TIIB[BOX-16 DR_ZDC (EL7041-0052)]^STM Status^Status^Digital input 2;
                                 .nRawEncoderULINT		:= TIIB[BOX-06 ENC_ZDC_YF1 (EL5042)]^FB Inputs Channel 1^Position
     '}
-    M24: ST_MotionStage:=(sName := ' QRIX:DC:MMS:Z');
+    M24: ST_MotionStage:=(sName := 'QRIX:DC:MMS:Z');
 
     // YF1
     {attribute 'pytmc' := 'pv: QRIX:DA:MMS:Y1'}
@@ -215,7 +215,7 @@ VAR_GLOBAL
                                 .nRawEncoderULINT     	:= TIIB[BOX-06 ENC_ZDC_YF1 (EL5042)]^FB Inputs Channel 2^Position;
                                 .bBrakeRelease        	:= TIIB[BOX-19 MB_YF1_YF2 (EL2602)]^Channel 1^Output
     '}
-    M25: ST_MotionStage:=(sName := ' QRIX:DA:MMS:Y1');
+    M25: ST_MotionStage:=(sName := 'QRIX:DA:MMS:Y1');
 
     // YF2
     {attribute 'pytmc' := 'pv: QRIX:DA:MMS:Y2'}
@@ -224,7 +224,7 @@ VAR_GLOBAL
                                 .nRawEncoderULINT     	:= TIIB[BOX-07 ENC_YF2_ZF (EL5042)]^FB Inputs Channel 1^Position;
                                 .bBrakeRelease			:= TIIB[BOX-19 MB_YF1_YF2 (EL2602)]^Channel 2^Output
     '}
-    M26: ST_MotionStage:=(sName := ' QRIX:DA:MMS:Y2');
+    M26: ST_MotionStage:=(sName := 'QRIX:DA:MMS:Y2');
 
     // ZF
     {attribute 'pytmc' := 'pv: QRIX:DA:MMS:Z'}
@@ -233,7 +233,7 @@ VAR_GLOBAL
                                 .nRawEncoderULINT		:= TIIB[BOX-07 ENC_YF2_ZF (EL5042)]^FB Inputs Channel 2^Position;
                                 .bBrakeRelease			:= TIIB[Rack#2B-18 MB_ZF (EL2602)]^Channel 1^Output
     '}
-    M27: ST_MotionStage:=(sName := ' QRIX:DA:MMS:Z');
+    M27: ST_MotionStage:=(sName := 'QRIX:DA:MMS:Z');
 
 
     // Diffractometer -  8 axes START AT M28

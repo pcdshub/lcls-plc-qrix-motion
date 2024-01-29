@@ -23,6 +23,7 @@ VAR
     fbLAS_VIS_PositionState1D : FB_PositionState1D;
     astLAS_VIS_PositionState : ARRAY [1..GeneralConstants.MAX_STATES] of ST_PositionState;
     fbLAS_VIS_StateSetupHelper : FB_StateSetupHelper;
+    fbLAS_VIS_HardwareFFOutput : FB_HardwareFFOutput;
 
     //EPS
     stLAS_VIS : DUT_EPS;
@@ -39,16 +40,19 @@ END_VAR
     Main.M36.bPowerSelf := TRUE;
     Main.M36.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
     Main.M36.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+    Main.M36.fVelocity := 0.1;
 
     Main.M37.bHardwareEnable := TRUE;
     Main.M37.bPowerSelf := TRUE;
     Main.M37.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
     Main.M37.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+    Main.M37.fVelocity := 0.1;
 
     Main.M38.bHardwareEnable := TRUE;
     Main.M38.bPowerSelf := TRUE;
     Main.M38.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
     Main.M38.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+    Main.M38.fVelocity := 0.1;
 
     // Initialize the M36 LAS VIS Axis States
     // Beam OK if one of these two states is active. Otherwise, beam is not okay.
@@ -85,6 +89,7 @@ fbLAS_VIS_PositionState1D(
 
 IF eLAS_VIS_StateGet = ENUM_LAS_VIS_States.Position7to24mm OR eLAS_VIS_StateGet = ENUM_LAS_VIS_States.Position62to77mm THEN
     // BEAM OKAY
+
 ELSE
     // BEAM NOT OKAY
 END_IF

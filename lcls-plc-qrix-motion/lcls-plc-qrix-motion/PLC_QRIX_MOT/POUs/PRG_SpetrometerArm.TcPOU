@@ -43,38 +43,43 @@ IF bEnaIclkRestartESTOP THEN
 END_IF
 
 // When user push the ESTOPs
+// REVALUATE AFTER TESTING:
+// Only specific motors are a part of the ESTOP at this point based on
+// "Components" column on this page:
+// https://confluence.slac.stanford.edu/display/L2SI/qRIXS+Spectrometer+Arm
+// Items are commented out if not included in ESTOP to allow them to be added back easily.
 IF NOT GVL_EPS.bESTOP THEN
 
     GVL_EPS.bOpenSV1 := FALSE;
     GVL_EPS.bOpenSV2 := FALSE;
 
-    Main.M1.bEnable := FALSE;
-    Main.M2.bEnable := FALSE;
-    Main.M3.bEnable := FALSE;
-    Main.M4.bEnable := FALSE;
-    Main.M5.bEnable := FALSE;
-    Main.M6.bEnable := FALSE;
-    Main.M7.bEnable := FALSE;
-    Main.M8.bEnable := FALSE;
-    Main.M9.bEnable := FALSE;
-    Main.M10.bEnable := FALSE;
-    Main.M11.bEnable := FALSE;
-    Main.M12.bEnable := FALSE;
-    Main.M13.bEnable := FALSE;
-    Main.M14.bEnable := FALSE;
-    Main.M15.bEnable := FALSE;
-    Main.M16.bEnable := FALSE;
-    Main.M17.bEnable := FALSE;
-    Main.M18.bEnable := FALSE;
-    Main.M19.bEnable := FALSE;
-    Main.M20.bEnable := FALSE;
-    Main.M21.bEnable := FALSE;
-    Main.M22.bEnable := FALSE;
-    Main.M23.bEnable := FALSE;
-    Main.M24.bEnable := FALSE;
-    Main.M25.bEnable := FALSE;
-    Main.M26.bEnable := FALSE;
-    Main.M27.bEnable := FALSE;
+    Main.M1.bEnable := FALSE; // SSL Sliding Seal // QRIX:SSL:MMS
+    Main.M2.bEnable := FALSE; // 2Theta Arm // QRIX:SA:MMS:2Theta
+    //Main.M3.bEnable := FALSE; // Optics Slits XS1 // QRIX:OPTSL:MMS:NORTH
+    //Main.M4.bEnable := FALSE; // Optics Slits XS2 // QRIX:OPTSL:MMS:SOUTH
+    //Main.M5.bEnable := FALSE; // Optics Slits YS1 // QRIX:OPTSL:MMS:TOP
+    //Main.M6.bEnable := FALSE; // Optics Slits YS2 // QRIX:OPTSL:MMS:BOTTOM
+    Main.M7.bEnable := FALSE; // Optics Base YG1 // QRIX:OPT:MMS:Y2
+    Main.M8.bEnable := FALSE; // Optics Base YG2 // QRIX:OPT:MMS:Y2
+    Main.M9.bEnable := FALSE; // Optics Base YG3 // QRIX:OPT:MMS:Y3
+    //Main.M10.bEnable := FALSE; // Optics Grating RxG // QRIX:G:MMS:Rx
+    //Main.M11.bEnable := FALSE; // Optics Grating XG // QRIX:G:MMS:X
+    //Main.M12.bEnable := FALSE; // Optics Mirror XPM1 // QRIX:PM:MMS:X1
+    //Main.M13.bEnable := FALSE; // Optics Mirror XPM2 // QRIX:PM:MMS:X2
+    //Main.M14.bEnable := FALSE; // Optics Mirror RzPM // QRIX:PM:MMS:Rz
+    Main.M15.bEnable := FALSE; // Detector Frame YDF1 // QRIX:DF:MMS:Y1
+    Main.M16.bEnable := FALSE; // Detector Frame YDF2 // QRIX:DF:MMS:Y2
+    Main.M17.bEnable := FALSE; // Detector Frame YDF3 // QRIX:DF:MMS:Y3
+    //Main.M18.bEnable := FALSE; // Detector Slits XSDC1 // QRIX:DETSL:MMS:NORTH
+    //Main.M19.bEnable := FALSE; // Detector Slits XSDC2 // QRIX:DETSL:MMS:SOUTH
+    //Main.M20.bEnable := FALSE; // Detector Slits YSDC1 // QRIX:DETSL:MMS:TOP
+    //Main.M21.bEnable := FALSE; // Detector Slits YSDC2 // QRIX:DETSL:MMS:BOTTOM
+    //Main.M22.bEnable := FALSE; // Detector Chamber XDC // QRIX:DC:MMS:X
+    //Main.M23.bEnable := FALSE; // Detector Chamber RyDC // QRIX:DC:MMS:Ry
+    //Main.M24.bEnable := FALSE; // Detector Chamber ZDC // QRIX:DC:MMS:Z
+    Main.M25.bEnable := FALSE; // Detector Arm YF1 // QRIX:DA:MMS:Y1
+    Main.M26.bEnable := FALSE; // Detector Arm YF2 // QRIX:DA:MMS:Y2
+    Main.M27.bEnable := FALSE; // Detector Arm ZF // QRIX:DA:MMS:Z
 
     bDoneJackOff := FALSE;
     bDoneLevitation := FALSE;

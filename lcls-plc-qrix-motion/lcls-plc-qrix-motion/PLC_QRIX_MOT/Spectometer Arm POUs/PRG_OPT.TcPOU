@@ -21,12 +21,17 @@ IF bINIT THEN
     Main.M10.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
     Main.M10.bHardwareEnable := TRUE;
     Main.M10.bPowerSelf := TRUE;
+    Main.M10.fVelocity := 0.1;
+
     Main.M11.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
     Main.M11.bHardwareEnable := TRUE;
     Main.M11.bPowerSelf := TRUE;
+    Main.M11.fVelocity := 0.1;
+
     Main.M14.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
     Main.M14.bHardwareEnable := TRUE;
     Main.M14.bPowerSelf := TRUE;
+    Main.M14.fVelocity := 0.1;
 
     Main.M10.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
     Main.M11.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
