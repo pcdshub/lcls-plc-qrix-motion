@@ -1050,7 +1050,7 @@ Axis 28: M28 - Diff X
     Enc:EncType, 29
     Enc:Inc:RefSoftSyncMask, #x0000ffff
     Enc:MaxCount, #xffffffff
-    Enc:Offset, -6871196.6789
+    Enc:Offset, -213997.3723
     Enc:ScaleFactorNumerator, 5e-05
     Enc:SoftEndMaxControl:Enable, true
     Enc:SoftEndMaxControl:Range, 18.5
@@ -1296,6 +1296,9 @@ Axis 36: M36 - LAS VIS
     Enc:MaxCount, #xffffffff
     Enc:Offset, -214632.0782
     Enc:ScaleFactorNumerator, 5e-05
+    Enc:SoftEndMaxControl:Enable, true
+    Enc:SoftEndMaxControl:Range, 101.2
+    Enc:SoftEndMinControl:Enable, true
     Id, 36
     OtherSettings:AllowMotionCmdToSlave, true
     Velo:Maximum, 10
@@ -1321,6 +1324,9 @@ Axis 37: M37 - LAS D H
     Enc:MaxCount, #xffffffff
     Enc:Offset, -214532.2542
     Enc:ScaleFactorNumerator, 5e-05
+    Enc:SoftEndMaxControl:Enable, true
+    Enc:SoftEndMaxControl:Range, 202
+    Enc:SoftEndMinControl:Enable, true
     Id, 37
     OtherSettings:AllowMotionCmdToSlave, true
     Velo:Maximum, 10
@@ -1346,6 +1352,10 @@ Axis 38: M38 - LAS D V
     Enc:MaxCount, #xffffffff
     Enc:Offset, -214632.2658
     Enc:ScaleFactorNumerator, 5e-05
+    Enc:SoftEndMaxControl:Enable, true
+    Enc:SoftEndMaxControl:Range, 102.1
+    Enc:SoftEndMinControl:Enable, true
+    Enc:SoftEndMinControl:Range, -102.1
     Id, 38
     OtherSettings:AllowMotionCmdToSlave, true
     Velo:Maximum, 10

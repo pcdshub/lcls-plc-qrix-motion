@@ -1483,6 +1483,8 @@ Links
         PLC_QRIX_MOT Instance, PlcTask Inputs^GVL_Sensor.stYDF2.iRawCnts, TIID^Device 1 (EtherCAT)^Rack#2D LinearGaugeAmp (SC-HG1-ETC), Process Data(In)  TxPDO-Map^Response Data Unit2
         PLC_QRIX_MOT Instance, PlcTask Inputs^GVL_Sensor.stYDF3.iRawCnts, TIID^Device 1 (EtherCAT)^Rack#2D LinearGaugeAmp (SC-HG1-ETC), Process Data(In)  TxPDO-Map^Response Data Unit3
         PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M1.Axis.NcToPlc, TINC^NC-Task 1 SAF^Axes^M1 - SSL Sliding seal, Outputs^ToPlc
+        PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M1.bLimitBackwardEnable, TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_01 - SSL, STM Status^Status^Digital input 2
+        PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M1.bLimitForwardEnable, TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_01 - SSL, STM Status^Status^Digital input 1
         PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M1.nRawEncoderULINT, TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL5042_02_02, FB Inputs Channel 1^Position
         PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M10.Axis.NcToPlc, TINC^NC-Task 1 SAF^Axes^M10 - RxG, Outputs^ToPlc
         PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M10.bLimitBackwardEnable, TIID^Device 1 (EtherCAT)^Rack#2A-01 Coupler (EK1100)^Rack#2A-08 DR_RxG (EL7041-0052), STM Status^Status^Digital input 2
@@ -1561,10 +1563,12 @@ Links
         PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M28.bHome, TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-02^EL1088_03_10, Channel 1^Input
         PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M28.bLimitBackwardEnable, TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-02^EL1088_03_04, Channel 1^Input
         PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M28.bLimitForwardEnable, TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-02^EL1088_03_04, Channel 2^Input
+        PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M28.nRawEncoderULINT, TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-02^EL5042_03_02-Diff-X-Y, FB Inputs Channel 1^Position
         PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M29.Axis.NcToPlc, TINC^NC-Task 1 SAF^Axes^M29 - Diff Y, Outputs^ToPlc
         PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M29.bHome, TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-02^EL1088_03_10, Channel 2^Input
         PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M29.bLimitBackwardEnable, TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-02^EL1088_03_04, Channel 3^Input
         PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M29.bLimitForwardEnable, TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-02^EL1088_03_04, Channel 4^Input
+        PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M29.nRawEncoderULINT, TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-02^EL5042_03_02-Diff-X-Y, FB Inputs Channel 2^Position
         PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M3.Axis.NcToPlc, TINC^NC-Task 1 SAF^Axes^M3 - XS1, Outputs^ToPlc
         PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M3.bLimitBackwardEnable, TIID^Device 1 (EtherCAT)^Rack#2A-01 Coupler (EK1100)^Rack#2A-03 DR_XS1 (EL7041-0052), STM Status^Status^Digital input 2
         PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M3.bLimitForwardEnable, TIID^Device 1 (EtherCAT)^Rack#2A-01 Coupler (EK1100)^Rack#2A-03 DR_XS1 (EL7041-0052), STM Status^Status^Digital input 1
@@ -1573,22 +1577,27 @@ Links
         PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M30.bHome, TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-02^EL1088_03_10, Channel 3^Input
         PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M30.bLimitBackwardEnable, TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-02^EL1088_03_08, Channel 1^Input
         PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M30.bLimitForwardEnable, TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-02^EL1088_03_08, Channel 2^Input
+        PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M30.nRawEncoderULINT, TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-02^EL5042_03_06-DIff-Z-2ThetaY, FB Inputs Channel 1^Position
         PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M31.Axis.NcToPlc, TINC^NC-Task 1 SAF^Axes^M31 - Diff 2Theta Y, Outputs^ToPlc
         PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M31.bHome, TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-02^EL1088_03_10, Channel 4^Input
         PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M31.bLimitBackwardEnable, TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-02^EL1088_03_08, Channel 6^Input
         PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M31.bLimitForwardEnable, TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-02^EL1088_03_08, Channel 5^Input
+        PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M31.nRawEncoderULINT, TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-02^EL5042_03_06-DIff-Z-2ThetaY, FB Inputs Channel 2^Position
         PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M32.Axis.NcToPlc, TINC^NC-Task 1 SAF^Axes^M32 - Diff Phi, Outputs^ToPlc
         PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M32.bHome, TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-02^EL1088_03_10, Channel 4^Input
         PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M32.bLimitBackwardEnable, TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-02^EL1088_03_08, Channel 4^Input
         PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M32.bLimitForwardEnable, TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-02^EL1088_03_08, Channel 3^Input
+        PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M32.nRawEncoderULINT, TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-02^EL5042_03_13 - Diff - Phi - Chi, FB Inputs Channel 1^Position
         PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M33.Axis.NcToPlc, TINC^NC-Task 1 SAF^Axes^M33 - Diff Chi, Outputs^ToPlc
         PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M33.bHome, TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-02^EL1088_03_10, Channel 6^Input
         PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M33.bLimitBackwardEnable, TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-02^EL1088_03_15, Channel 1^Input
         PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M33.bLimitForwardEnable, TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-02^EL1088_03_15, Channel 2^Input
+        PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M33.nRawEncoderULINT, TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-02^EL5042_03_13 - Diff - Phi - Chi, FB Inputs Channel 2^Position
         PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M34.Axis.NcToPlc, TINC^NC-Task 1 SAF^Axes^M34 - Diff Theta, Outputs^ToPlc
         PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M34.bHome, TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-02^EL1088_03_10, Channel 7^Input
         PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M34.bLimitBackwardEnable, TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-02^EL1088_03_15, Channel 4^Input
         PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M34.bLimitForwardEnable, TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-02^EL1088_03_15, Channel 3^Input
+        PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M34.nRawEncoderULINT, TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-02^EL5042_03_17 - Diff - Theta - 2Theta, FB Inputs Channel 1^Position
         PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M35.Axis.NcToPlc, TINC^NC-Task 1 SAF^Axes^M35 - Diff 2Theta, Outputs^ToPlc
         PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M35.bHome, TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-02^EL1088_03_10, Channel 8^Input
         PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M35.bLimitBackwardEnable, TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-02^EL1088_03_15, Channel 6^Input
@@ -1597,12 +1606,15 @@ Links
         PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M36.Axis.NcToPlc, TINC^NC-Task 1 SAF^Axes^M36 - LAS VIS, Outputs^ToPlc
         PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M36.bLimitBackwardEnable, TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL1088_02_06, Channel 5^Input
         PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M36.bLimitForwardEnable, TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL1088_02_06, Channel 6^Input
+        PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M36.nRawEncoderULINT, TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL5042_02_05 - LAS_VIS, FB Inputs Channel 1^Position
         PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M37.Axis.NcToPlc, TINC^NC-Task 1 SAF^Axes^M37 - LAS D H, Outputs^ToPlc
         PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M37.bLimitBackwardEnable, TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL1088_02_06, Channel 1^Input
         PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M37.bLimitForwardEnable, TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL1088_02_06, Channel 2^Input
+        PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M37.nRawEncoderULINT, TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL5042_02_08 - LAS_D_V-H, FB Inputs Channel 2^Position
         PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M38.Axis.NcToPlc, TINC^NC-Task 1 SAF^Axes^M38 - LAS D V, Outputs^ToPlc
         PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M38.bLimitBackwardEnable, TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL1088_02_06, Channel 3^Input
         PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M38.bLimitForwardEnable, TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL1088_02_06, Channel 4^Input
+        PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M38.nRawEncoderULINT, TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL5042_02_08 - LAS_D_V-H, FB Inputs Channel 1^Position
         PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M39.Axis.NcToPlc, TINC^NC-Task 1 SAF^Axes^M39 - SDS X, Outputs^ToPlc
         PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M39.bHome, TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-03_SDS^EL1004_04_04, Channel 1^Input
         PLC_QRIX_MOT Instance, PlcTask Inputs^Main.M39.bLimitBackwardEnable, TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-03_SDS^EL7047_04_01, STM Status^Status^Digital input 2
