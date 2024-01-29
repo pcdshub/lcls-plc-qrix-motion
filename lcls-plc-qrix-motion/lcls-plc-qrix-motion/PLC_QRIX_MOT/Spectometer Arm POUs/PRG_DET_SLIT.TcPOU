@@ -13,26 +13,29 @@ END_VAR
     <Implementation>
       <ST><![CDATA[// 4 jaws slit
 
-
 IF bInit THEN
     bInit := FALSE;
 
     Main.M18.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
     Main.M18.bHardwareEnable := TRUE;
     Main.M18.bPowerSelf := TRUE;
+    Main.M18.fVelocity := 0.1;
 
     Main.M19.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
     Main.M19.bHardwareEnable := TRUE;
     Main.M19.bPowerSelf := TRUE;
+    Main.M19.fVelocity := 0.1;
+
     Main.M20.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
     Main.M20.bHardwareEnable := TRUE;
     Main.M20.bPowerSelf := TRUE;
+    Main.M20.fVelocity := 0.1;
+
     Main.M21.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
     Main.M21.bHardwareEnable := TRUE;
     Main.M21.bPowerSelf := TRUE;
+    Main.M21.fVelocity := 0.1;
 
-
-    //
     Main.M18.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
     Main.M19.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
     Main.M20.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;

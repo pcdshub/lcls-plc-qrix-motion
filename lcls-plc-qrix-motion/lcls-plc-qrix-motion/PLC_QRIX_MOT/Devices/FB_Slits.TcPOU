@@ -3,10 +3,10 @@
   <POU Name="FB_Slits" Id="{15da2eaf-9159-456d-aec4-1d1fd7c9b7dc}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_Slits
 VAR_IN_OUT
-    stTopBlade: DUT_MotionStage;
-    stBottomBlade: DUT_MotionStage;
-    stLeftBlade: DUT_MotionStage; // Left Slit from upstream view
-    stRightBlade: DUT_MotionStage; // Right Slit from upstream view
+    stTopBlade: ST_MotionStage;
+    stBottomBlade: ST_MotionStage;
+    stLeftBlade: ST_MotionStage; // Left Slit from upstream view
+    stRightBlade: ST_MotionStage; // Right Slit from upstream view
     bExecuteMotion:BOOL ;
     io_fbFFHWO    :    FB_HardwareFFOutput;
     fbArbiter: FB_Arbiter();
@@ -72,10 +72,10 @@ VAR
     fHighAccel: LREAL := 0.8;
     fLowAccel: LREAL := 0.1;
 
-    stTop: DUT_PositionState;
-    stBOTTOM: DUT_PositionState;
-    stLeft: DUT_PositionState;
-    stRight: DUT_PositionState;
+    stTop: ST_PositionState;
+    stBOTTOM: ST_PositionState;
+    stLeft: ST_PositionState;
+    stRight: ST_PositionState;
 
     {attribute 'pytmc' := 'pv: TOP'}
     fbTop: FB_StatePTPMove;

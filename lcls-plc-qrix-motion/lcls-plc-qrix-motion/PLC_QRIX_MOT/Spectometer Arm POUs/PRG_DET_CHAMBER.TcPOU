@@ -23,13 +23,18 @@ IF bInit THEN
     Main.M22.bHardwareEnable:= TRUE;
     Main.M22.bPowerSelf:= TRUE;
     Main.M22.nBrakeMode:= ENUM_StageBrakeMode.NO_BRAKE;
+    Main.M22.fVelocity := 0.1;
+
     Main.M23.bHardwareEnable:= TRUE;
     Main.M23.bPowerSelf:= TRUE;
     Main.M23.nBrakeMode:= ENUM_StageBrakeMode.NO_BRAKE;
+    Main.M23.fVelocity := 0.1;
+
     Main.M24.bHardwareEnable:= TRUE;
     Main.M24.bPowerSelf:= TRUE;
     Main.M24.nBrakeMode:= ENUM_StageBrakeMode.NO_BRAKE;
     Main.M24.nEnableMode := ENUM_StageEnableMode.ALWAYS ; // This axis should always be enables due to belows
+    Main.M24.fVelocity := 0.1;
 END_IF;
 
 

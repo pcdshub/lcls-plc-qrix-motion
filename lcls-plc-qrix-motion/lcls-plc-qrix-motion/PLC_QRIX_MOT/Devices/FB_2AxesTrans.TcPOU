@@ -3,8 +3,8 @@
   <POU Name="FB_2AxesTrans" Id="{5b698e71-3212-478a-9e14-3b925bebfd39}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_2AxesTrans
 VAR_IN_OUT
-    stFirstAxis: DUT_MotionStage;
-    stSecondAxis: DUT_MotionStage;
+    stFirstAxis: ST_MotionStage;
+    stSecondAxis: ST_MotionStage;
     bExecuteMotion:BOOL ;
     io_fbFFHWO    :    FB_HardwareFFOutput;
     fbArbiter: FB_Arbiter();
@@ -43,8 +43,8 @@ VAR
     fHighAccel: LREAL := 0.8;
     fLowAccel: LREAL := 0.1;
 
-    stFirst: DUT_PositionState;
-    stSecond: DUT_PositionState;
+    stFirst: ST_PositionState;
+    stSecond: ST_PositionState;
 
     {attribute 'pytmc' := 'pv: FIRST'}
     fbFirst: FB_StatePTPMove;

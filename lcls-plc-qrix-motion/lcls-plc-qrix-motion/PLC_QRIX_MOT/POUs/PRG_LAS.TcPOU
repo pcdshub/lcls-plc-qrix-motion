@@ -8,6 +8,23 @@ VAR
     fb_LAS_D_V : FB_MotionStage;
     bInit : BOOl := TRUE;
 
+    //LAS_VIS BEAM OK/NOK
+    {attribute 'pytmc' := '
+      pv: QRIX:LAS:MMS:VIS:STATES:SET
+      io: io
+    '}
+    eLAS_VIS_StateSet: ENUM_LAS_VIS_States;
+    {attribute 'pytmc' := '
+      pv: QRIX:LAS:MMS:VIS:STATES:GET
+      io: i
+    '}
+    eLAS_VIS_StateGet: ENUM_LAS_VIS_States;
+    {attribute 'pytmc' := 'pv: QRIX:LAS:MMS:VIS'}
+    fbLAS_VIS_PositionState1D : FB_PositionState1D;
+    astLAS_VIS_PositionState : ARRAY [1..GeneralConstants.MAX_STATES] of ST_PositionState;
+    fbLAS_VIS_StateSetupHelper : FB_StateSetupHelper;
+    fbLAS_VIS_HardwareFFOutput : FB_HardwareFFOutput;
+
     //EPS
     stLAS_VIS : DUT_EPS;
     fbLAS_VIS_EPS : FB_EPS;
@@ -17,22 +34,30 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[IF ( bInit) THEN
+      <ST><![CDATA[IF (bInit) THEN
     bInit := FALSE;
     Main.M36.bHardwareEnable := TRUE;
     Main.M36.bPowerSelf := TRUE;
     Main.M36.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
     Main.M36.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+    Main.M36.fVelocity := 0.1;
 
     Main.M37.bHardwareEnable := TRUE;
     Main.M37.bPowerSelf := TRUE;
     Main.M37.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
     Main.M37.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+    Main.M37.fVelocity := 0.1;
 
     Main.M38.bHardwareEnable := TRUE;
     Main.M38.bPowerSelf := TRUE;
     Main.M38.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
     Main.M38.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+    Main.M38.fVelocity := 0.1;
+
+    // Initialize the M36 LAS VIS Axis States
+    // Beam OK if one of these two states is active. Otherwise, beam is not okay.
+    fbLAS_VIS_StateSetupHelper(stPositionState := astLAS_VIS_PositionState[1], sName := 'Position7to24mm', bValid := TRUE, fPosition := 15.5, fDelta := 8.5);
+    fbLAS_VIS_StateSetupHelper(stPositionState := astLAS_VIS_PositionState[2], sName := 'Position62to77mm', bValid := TRUE, fPosition := 69.5, fDelta := 7.5);
 
 END_IF
 //EPS
@@ -54,6 +79,20 @@ fbLAS_VIS_EPS(eps:=fbLAS_VIS_EPS);
 //fb_LAS_VIS.stMotionStage.stEPSForwardEnable := fbLAS_VIS_EPS;
 *)
 
+fbLAS_VIS_PositionState1D(
+    stMotionStage := Main.M36,
+    astPositionState := astLAS_VIS_PositionState,
+    eEnumSet := eLAS_VIS_StateSet,
+    eEnumGet := eLAS_VIS_StateGet,
+    bEnable := TRUE
+);
+
+IF eLAS_VIS_StateGet = ENUM_LAS_VIS_States.Position7to24mm OR eLAS_VIS_StateGet = ENUM_LAS_VIS_States.Position62to77mm THEN
+    // BEAM OKAY
+
+ELSE
+    // BEAM NOT OKAY
+END_IF
 
 fb_LAS_VIS(stMotionStage:=Main.M36);
 fb_LAS_D_H(stMotionStage:=Main.M37);

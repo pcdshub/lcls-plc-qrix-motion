@@ -16,6 +16,7 @@ END_VAR
    Main.M45.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
    Main.M45.bLimitForwardEnable := TRUE;
    Main.M45.bLimitBackwardEnable := TRUE;
+   Main.M45.fVelocity := 0.1;
 END_IF
 
 fb_Rot_Det(stMotionStage:=Main.M45);
