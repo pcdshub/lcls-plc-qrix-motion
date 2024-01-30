@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>lcls-plc-qrix-motion &mdash; pcdshub/lcls-plc-qrix-motion  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/tree.css?v=837a00b9" />
+      <link rel="stylesheet" type="text/css" href="_static/width.css?v=ab210c7a" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/docs-versions-menu.js?v=3d6a1aea"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Pragmas" href="lcls-plc-qrix-motion_pragmas.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            pcdshub/lcls-plc-qrix-motion
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">lcls-plc-qrix-motion</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_pragmas.html">Pragmas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_nc.html">NC Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_ethercat.html">EtherCAT Terminals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html">Boxes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_links.html">Links</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PLC_QRIX_MOT</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#pragmas">Pragmas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#libraries">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#symbols">Symbols</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_epics.html">Data Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_epics.html#database-records">Database Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_source.html">DUTs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_source.html#gvls">GVLs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_source.html#pous">POUs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">pcdshub/lcls-plc-qrix-motion</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">lcls-plc-qrix-motion</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="lcls-plc-qrix-motion">
+<h1>lcls-plc-qrix-motion<a class="headerlink" href="#lcls-plc-qrix-motion" title="Link to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">lcls-plc-qrix-motion</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_pragmas.html">Pragmas</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_pragmas.html#plc-qrix-mot">PLC_QRIX_MOT</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_nc.html">NC Settings</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_nc.html#axis-1-m1-ssl-sliding-seal">Axis 1: M1 - SSL Sliding seal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_nc.html#axis-2-m2-2theta-stepper">Axis 2: M2 - 2Theta Stepper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_nc.html#axis-3-m3-xs1">Axis 3: M3 - XS1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_nc.html#axis-4-m4-xs2">Axis 4: M4 - XS2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_nc.html#axis-5-m5-ys1">Axis 5: M5 - YS1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_nc.html#axis-6-m6-ys2">Axis 6: M6 - YS2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_nc.html#axis-7-m7-yg1">Axis 7: M7 - YG1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_nc.html#axis-8-m8-yg2">Axis 8: M8 - YG2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_nc.html#axis-9-m9-yg3">Axis 9: M9 - YG3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_nc.html#axis-10-m10-rxg">Axis 10: M10 - RxG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_nc.html#axis-11-m11-xg">Axis 11: M11 - XG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_nc.html#axis-12-m12-xpm1">Axis 12: M12 - XPM1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_nc.html#axis-13-m13-xpm2">Axis 13: M13 - XPM2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_nc.html#axis-14-m14-rzpm">Axis 14: M14 - RzPM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_nc.html#axis-15-m15-ydf1">Axis 15: M15 - YDF1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_nc.html#axis-16-m16-ydf2">Axis 16: M16 - YDF2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_nc.html#axis-17-m17-ydf3">Axis 17: M17 - YDF3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_nc.html#axis-18-m18-xsdc1">Axis 18: M18 - XSDC1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_nc.html#axis-19-m19-xsdc2">Axis 19: M19 - XSDC2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_nc.html#axis-20-m20-ysdc1">Axis 20: M20 - YSDC1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_nc.html#axis-21-m21-ysdc2">Axis 21: M21 - YSDC2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_nc.html#axis-22-m22-xdc">Axis 22: M22 - XDC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_nc.html#axis-23-m23-rydc">Axis 23: M23 - RyDC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_nc.html#axis-24-m24-zdc">Axis 24: M24 - ZDC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_nc.html#axis-25-m25-yf1">Axis 25: M25 - YF1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_nc.html#axis-26-m26-yf2">Axis 26: M26 - YF2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_nc.html#axis-27-m27-zf">Axis 27: M27 - ZF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_nc.html#axis-28-m28-diff-x">Axis 28: M28 - Diff X</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_nc.html#axis-29-m29-diff-y">Axis 29: M29 - Diff Y</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_nc.html#axis-30-m30-diff-z">Axis 30: M30 - Diff Z</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_nc.html#axis-31-m31-diff-2theta-y">Axis 31: M31 - Diff 2Theta Y</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_nc.html#axis-32-m32-diff-phi">Axis 32: M32 - Diff Phi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_nc.html#axis-33-m33-diff-chi">Axis 33: M33 - Diff Chi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_nc.html#axis-34-m34-diff-theta">Axis 34: M34 - Diff Theta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_nc.html#axis-35-m35-diff-2theta">Axis 35: M35 - Diff 2Theta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_nc.html#axis-36-m36-las-vis">Axis 36: M36 - LAS VIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_nc.html#axis-37-m37-las-d-h">Axis 37: M37 - LAS D H</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_nc.html#axis-38-m38-las-d-v">Axis 38: M38 - LAS D V</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_nc.html#axis-39-m39-sds-x">Axis 39: M39 - SDS X</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_nc.html#axis-40-m40-sds-y">Axis 40: M40 - SDS Y</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_nc.html#axis-41-m41-sds-z">Axis 41: M41 - SDS Z</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_nc.html#axis-42-m42-sds-rot-garage">Axis 42: M42 - SDS Rot Garage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_nc.html#axis-43-m43-sds-linear-rotary">Axis 43: M43 -SDS Linear Rotary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_nc.html#axis-44-m44-sds-linear-horizontal">Axis 44: M44 - SDS Linear Horizontal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_nc.html#axis-45-m45-det-rot">Axis 45: M45 - DET ROT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_nc.html#axis-46-m46-cryo-x">Axis 46: M46 - CRYO X</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_nc.html#axis-47-m47-cryo-y">Axis 47: M47 - CRYO Y</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_nc.html#axis-48-m48-cryo-z">Axis 48: M48 - CRYO Z</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_nc.html#axis-49-m49-cryo-rot">Axis 49: M49 - CRYO ROT</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_ethercat.html">EtherCAT Terminals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html">Boxes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#b950-233-r03-drl-01-ek1200">B950-233-R03-DRL-01 (EK1200)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el2008-00-01">EL2008_00_01</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el2794-00-02">EL2794_00_02</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el6070-00-04">EL6070_00_04</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#ek1521-00-05">EK1521_00_05</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#ek1110-00-06">EK1110_00_06</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#b950-233-wall-s-r01-drl-01">B950-233-WALL-S-R01-DRL-01</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el7047-02-01-ssl">EL7047_02_01 - SSL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el5042-02-02">EL5042_02_02</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el1004-02-03">EL1004_02_03</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el7031-02-04-las-vis">EL7031_02_04 - LAS_VIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el5042-02-05-las-vis">EL5042_02_05 - LAS_VIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el1088-02-06">EL1088_02_06</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el7031-02-07-las-d-h">EL7031_02_07 - LAS_D_H</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el5042-02-08-las-d-v-h">EL5042_02_08 - LAS_D_V-H</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#box-08-cp-sdc-el9221-5000">BOX-08 CP_SDC (EL9221-5000)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el7031-02-09-las-d-v">EL7031_02_09 - LAS_D_V</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el1004-02-10">EL1004_02_10</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el7047-02-11">EL7047_02_11</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el7047-02-12">EL7047_02_12</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el5042-02-16">EL5042_02_16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el7047-02-14">EL7047_02_14</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el7047-02-15">EL7047_02_15</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el5042-02-13">EL5042_02_13</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el7031-02-17">EL7031_02_17</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el7031-02-18">EL7031_02_18</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#b950-233-wall-s-r01-drl-02">B950-233-WALL-S-R01-DRL-02</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#b950-233-wall-s-r01-drl-03-sds">B950-233-WALL-S-R01-DRL-03_SDS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el7047-03-01-diff-x">EL7047_03_01-Diff-X</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el5042-03-02-diff-x-y">EL5042_03_02-Diff-X-Y</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el7047-03-03-diff-y">EL7047_03_03-Diff-Y</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el1088-03-04">EL1088_03_04</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el7047-03-05-diff-z">EL7047_03_05-Diff-Z</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el5042-03-06-diff-z-2thetay">EL5042_03_06-DIff-Z-2ThetaY</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el7047-03-07-diff-2-theta-y">EL7047_03_07-Diff 2 Theta Y</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el1088-03-08">EL1088_03_08</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el9410-03-09">EL9410_03_09</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el1088-03-10">EL1088_03_10</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#rack-2a-10-dr-yg1-el7041-0052">Rack#2A-10 DR_YG1 (EL7041-0052)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el7047-03-12-diff-phi">EL7047_03_12-Diff - Phi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el5042-03-13-diff-phi-chi">EL5042_03_13 - Diff - Phi - Chi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el7047-03-14-diff-chi">EL7047_03_14-Diff - Chi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el1088-03-15">EL1088_03_15</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el7047-03-16-diff-theta">EL7047_03_16 - Diff - Theta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el5042-03-17-diff-theta-2theta">EL5042_03_17 - Diff - Theta - 2Theta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el7047-03-18-diff-2theta">EL7047_03_18 - Diff - 2Theta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#rack-2b-01-coupler-ek1100">Rack#2B-01 Coupler (EK1100)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el3314-04-16">EL3314_04_16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el3314-04-15">EL3314_04_15</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el7047-04-01">EL7047_04_01</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el5042-04-02">EL5042_04_02</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el7047-04-03">EL7047_04_03</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el1004-04-04">EL1004_04_04</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el7047-04-05">EL7047_04_05</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el5042-04-06">EL5042_04_06</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el7047-04-07">EL7047_04_07</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#ek1122-04-17">EK1122_04_17</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el1004-04-09">EL1004_04_09</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el7047-04-10">EL7047_04_10</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#b950-233-k2s13-drl-01">B950-233-K2S13-DRL-01</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el7047-04-12">EL7047_04_12</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el5042-04-13">EL5042_04_13</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el2794-04-14">EL2794_04_14</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#rack-2b-16-dr-ydf2-el7041-0052">Rack#2B-16 DR_YDF2 (EL7041-0052)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#rack-2b-17-cp-ydf-zf-el9221-5000">Rack#2B-17 CP_YDF_ZF (EL9221-5000)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#rack-2b-18-mb-zf-el2602">Rack#2B-18 MB_ZF (EL2602)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#rack-2b-19-dr-ydf3-el7041-0052">Rack#2B-19 DR_YDF3 (EL7041-0052)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#box-03-enc-x1-x2-el5042">BOX-03 ENC_X1_X2 (EL5042)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#rack-2b-21-ethercat-extension-ek1110">Rack#2B-21 EtherCAT Extension (EK1110)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#rack-2d-lineargaugeamp-sc-hg1-etc">Rack#2D LinearGaugeAmp (SC-HG1-ETC)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#box-06-enc-zdc-yf1-el5042">BOX-06 ENC_ZDC_YF1 (EL5042)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#box-07-enc-yf2-zf-el5042">BOX-07 ENC_YF2_ZF (EL5042)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#rack-1a-05-mb-2th-el2602">Rack#1A-05 MB_2Th (EL2602)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#rack-1a-04-dr-2th-el7047">Rack#1A-04 DR_2Th (EL7047)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#box-20-dr-yf1-el7047">BOX-20 DR_YF1 (EL7047)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#box-09-dr-xsdc1-el7041-0052">BOX-09 DR_XSDC1 (EL7041-0052)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#box-10-dr-xsdc2-el7041-0052">BOX-10 DR_XSDC2 (EL7041-0052)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#box-11-dr-ysdc1-el7041-0052">BOX-11 DR_YSDC1 (EL7041-0052)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#box-12-dr-ysdc2-el7041-0052">BOX-12 DR_YSDC2 (EL7041-0052)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#box-13-cp-dc-el9221-5000">BOX-13 CP_DC (EL9221-5000)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#box-14-dr-xdc-el7041-0052">BOX-14 DR_XDC (EL7041-0052)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#box-15-dr-rydc-el7041-0052">BOX-15 DR_RyDC (EL7041-0052)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#box-16-dr-zdc-el7041-0052">BOX-16 DR_ZDC (EL7041-0052)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#box-17-ebus-reflesh-el9410">BOX-17 Ebus Reflesh (EL9410)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#box-18-cp-yf1-yf2-el9221-5000">BOX-18 CP_YF1_YF2 (EL9221-5000)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#box-19-mb-yf1-yf2-el2602">BOX-19 MB_YF1_YF2 (EL2602)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#rack-1a-01-coupler-ek1100">Rack#1A-01 Coupler (EK1100)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#box-21-dr-yf2-el7047">BOX-21 DR_YF2 (EL7047)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#box-24-ethercat-extension-ek1110">BOX-24 EtherCAT Extension (EK1110)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#rack-2a-01-coupler-ek1100">Rack#2A-01 Coupler (EK1100)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#rack-2a-02-cp-slit-el9221-5000">Rack#2A-02 CP_SLIT (EL9221-5000)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#rack-2a-03-dr-xs1-el7041-0052">Rack#2A-03 DR_XS1 (EL7041-0052)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#rack-2a-04-dr-xs2-el7041-0052">Rack#2A-04 DR_XS2 (EL7041-0052)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#rack-2a-05-dr-ys1-el7041-0052">Rack#2A-05 DR_YS1 (EL7041-0052)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#rack-2a-06-dr-ys2-el7041-0052">Rack#2A-06 DR_YS2 (EL7041-0052)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#rack-2a-07-cp-g-el9221-5000">Rack#2A-07 CP_G (EL9221-5000)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#rack-2a-08-dr-rxg-el7041-0052">Rack#2A-08 DR_RxG (EL7041-0052)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#rack-2a-09-dr-xg-el7041-0052">Rack#2A-09 DR_XG (EL7041-0052)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#rack-1a-02-sfin-el1918">Rack#1A-02 SFIN (EL1918)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#rack-2a-11-dr-yg2-el7041-0052">Rack#2A-11 DR_YG2 (EL7041-0052)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#rack-2a-12-dr-yg3-el7041-0052">Rack#2A-12 DR_YG3 (EL7041-0052)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#rack-2a-13-cp-pm-el9221-5000">Rack#2A-13 CP_PM (EL9221-5000)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#rack-2a-14-dr-xpm1-el7041-0052">Rack#2A-14 DR_XPM1 (EL7041-0052)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#rack-2a-15-dr-xpm2-el7041-0052">Rack#2A-15 DR_XPM2 (EL7041-0052)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#rack-2a-16-dr-rzpm-el7041-0052">Rack#2A-16 DR_RzPM (EL7041-0052)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#term-106-el9011">Term 106 (EL9011)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#term-107-el9011">Term 107 (EL9011)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#rack-2a-17-ethercat-extension-ek1110">Rack#2A-17 EtherCAT Extension (EK1110)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#rack-1a-03-sfout-el2912">Rack#1A-03 SFOUT(EL2912)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#rack-2b-02-ktc-el3314">Rack#2B-02 KTC (EL3314)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#rack-2b-03-ai-tiltsensor-el3174-0002">Rack#2B-03 AI_TiltSensor (EL3174-0002)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#rack-2b-04-ps-p-el3064">Rack#2B-04 PS_P (EL3064)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#rack-2b-05-sv-air-el2004">Rack#2B-05 SV_AIR (EL2004)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#rack-2b-06-sfin-el1918">Rack#2B-06 SFIN (EL1918)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#rack-2b-07-enc-x1-x2-el5042">Rack#2B-07 ENC_X1_X2 (EL5042)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#rack-2b-08-enc-y1-y2-el5042">Rack#2B-08 ENC_Y1_Y2 (EL5042)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#rack-2b-09-enc-rxg-xg-el5042">Rack#2B-09 ENC_RxG_XG (EL5042)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#rack-2b-10-enc-yg1-yg2-el5042">Rack#2B-10 ENC_YG1_YG2 (EL5042)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#rack-2b-11-enc-yg3-x1pm-el5042">Rack#2B-11 ENC_YG3_X1PM (EL5042)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#rack-2b-12-enc-x2pm-rzpm-el5042">Rack#2B-12 ENC_X2PM_RzPM (EL5042)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#rack-2b-13-pws-ebus-el9410">Rack#2B-13 PWS_EBUS (EL9410)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#rack-2b-14-cp-ydf-el9221-5000">Rack#2B-14 CP_YDF (EL9221-5000)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#rack-2b-15-dr-ydf1-el7041-0052">Rack#2B-15 DR_YDF1 (EL7041-0052)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#rack-1a-06-enc-2th-el5042">Rack#1A-06 ENC_2Th (EL5042)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#rack-1a-07-ecat-extension-ek1110">Rack#1A-07 ECAT Extension (EK1110)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#box-01-coupler-ek1100">BOX-01 Coupler (EK1100)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#box-02-sfin-el1904">BOX-02 SFIN(EL1904)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#rack-2b-20-dr-zf-el7047">Rack#2B-20 DR_ZF (EL7047)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#box-04-enc-y1-y2-el5042">BOX-04 ENC_Y1_Y2 (EL5042)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#box-05-enc-xdc-rydc-el5042">BOX-05 ENC_XDC_RyDC (EL5042)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el5101-05-01">EL5101_05_01</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el5101-05-02">EL5101_05_02</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el5101-05-03">EL5101_05_03</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el1088-05-04">EL1088_05_04</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#el9011-05-05">EL9011_05_05</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#term-193-el9011">Term 193 (EL9011)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#box-22-det-rot-el5042">BOX-22 DET_ROT (EL5042)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html#box-23-det-rot-el7047">BOX-23 DET_ROT (EL7047)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_links.html">Links</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">PLC_QRIX_MOT</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#pragmas">Pragmas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#libraries">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#symbols">Symbols</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#constants">Constants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#defaultglobals">DefaultGlobals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#generalconstants">GeneralConstants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#global-constants">Global_Constants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#global-variables">Global_Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#global-version">Global_Version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#gvl">GVL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#gvl-constants">GVL_Constants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#gvl-eps">GVL_EPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#gvl-internal">GVL_INTERNAL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#gvl-logger">GVL_Logger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#gvl-param-tcunit">GVL_Param_TcUnit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#gvl-pmps">GVL_PMPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#gvl-sensor">GVL_Sensor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#gvl-tcunit">GVL_TcUnit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#gvl-teststructs">GVL_TestStructs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#gvl-var">GVL_VAR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#lcls-twincat-optics">lcls_twincat_optics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#main">Main</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#motion-gvl">MOTION_GVL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#motionconstants">MotionConstants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#parameterlist">ParameterList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#pmps-gvl">PMPS_GVL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#pmps-param">PMPS_PARAM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#pmps-tools">PMPS_TOOLS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#prg-2-pmps">PRG_2_PMPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#prg-2theta">PRG_2Theta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#prg-3-log">PRG_3_LOG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#prg-cryo">PRG_Cryo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#prg-det-arm">PRG_DET_ARM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#prg-det-chamber">PRG_DET_CHAMBER</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#prg-det-frame">PRG_DET_FRAME</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#prg-det-slit">PRG_DET_SLIT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#prg-diffractometer">PRG_Diffractometer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#prg-las">PRG_LAS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#prg-opt">PRG_OPT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#prg-opt-slits">PRG_OPT_SLITS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#prg-opt-xpm">PRG_OPT_XPM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#prg-opt-yg">PRG_OPT_YG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#prg-rotdet">PRG_RotDet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#prg-sds">PRG_SDS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#prg-sensor">PRG_Sensor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#prg-spetrometerarm">PRG_SpetrometerArm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#prg-ssl">PRG_SSL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#tc-event-classes">TC_EVENT_CLASSES</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#tc-events">TC_EVENTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#twincat-licenseinfovarlist">TwinCAT_LicenseInfoVarList</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#twincat-systeminfovarlist">TwinCAT_SystemInfoVarList</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_epics.html">Data Types</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_epics.html#dut-sensor">DUT_Sensor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_epics.html#fb-2axestrans">FB_2AxesTrans</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_epics.html#fb-3axesjack">FB_3AxesJack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_epics.html#fb-slits">FB_Slits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_epics.html#lcls-general-dut-eps">LCLS_General.DUT_EPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_epics.html#lcls-general-fb-listener">LCLS_General.FB_Listener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_epics.html#lcls-general-fb-loghandler">LCLS_General.FB_LogHandler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_epics.html#lcls-general-fb-logmessage">LCLS_General.FB_LogMessage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_epics.html#lcls-general-st-pendingevent">LCLS_General.ST_PendingEvent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_epics.html#lcls-twincat-motion-fb-positionstate1d">lcls_twincat_motion.FB_PositionState1D</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_epics.html#lcls-twincat-motion-fb-positionstatemove">lcls_twincat_motion.FB_PositionStateMove</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_epics.html#lcls-twincat-motion-fb-standard-pmpsdb">lcls_twincat_motion.FB_Standard_PMPSDB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_epics.html#lcls-twincat-motion-fb-stateptpmove">lcls_twincat_motion.FB_StatePTPMove</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_epics.html#lcls-twincat-motion-st-motionstage">lcls_twincat_motion.ST_MotionStage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_epics.html#lcls-twincat-motion-st-positionstate">lcls_twincat_motion.ST_PositionState</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_epics.html#lcls-twincat-motion-st-stateepicstoplc">lcls_twincat_motion.ST_StateEpicsToPlc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_epics.html#lcls-twincat-motion-st-stateplctoepics">lcls_twincat_motion.ST_StatePlcToEpics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_epics.html#pmps-fb-arbiter">PMPS.FB_Arbiter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_epics.html#pmps-fb-beamparamassertionpool">PMPS.FB_BeamParamAssertionPool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_epics.html#pmps-fb-hardwareffoutput">PMPS.FB_HardwareFFOutput</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_epics.html#pmps-fb-subsystoarbiter-io">PMPS.FB_SubSysToArbiter_IO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_epics.html#pmps-st-beamparams">PMPS.ST_BeamParams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_epics.html#pmps-st-bp-arbinternal">PMPS.ST_BP_ArbInternal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_epics.html#pmps-st-dbstateparams">PMPS.ST_DbStateParams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_epics.html#pmps-st-ff">PMPS.ST_FF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_epics.html#pmps-st-ffinfo">PMPS.ST_FFInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_epics.html#pmps-st-ffoverride">PMPS.ST_FFOverride</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_epics.html#pmps-st-pmps-aperture">PMPS.ST_PMPS_Aperture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_epics.html#pmps-t-hashtableentry">PMPS.T_HashTableEntry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_epics.html#st-beamparams-io">ST_BeamParams_IO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_epics.html#st-loggingeventinfo">ST_LoggingEventInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_epics.html#st-pmps-aperture-io">ST_PMPS_Aperture_IO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_epics.html#database-records">Database Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_source.html">DUTs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_source.html#dut-sensor">DUT_Sensor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_source.html#dut-sensorhgs">DUT_SensorHGS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_source.html#enum-las-vis-states">ENUM_LAS_VIS_States</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_source.html#gvls">GVLs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_source.html#global-version">Global_Version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_source.html#gvl-eps">GVL_EPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_source.html#gvl-pmps">GVL_PMPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_source.html#gvl-sensor">GVL_Sensor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_source.html#gvl-var">GVL_VAR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_source.html#main">Main</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_source.html#pous">POUs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_source.html#fb-2axestrans">FB_2AxesTrans</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_source.html#fb-2axestrans-1">FB_2AxesTrans_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_source.html#fb-3axesjack">FB_3AxesJack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_source.html#fb-3axesjack-1">FB_3AxesJack_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_source.html#fb-slits">FB_Slits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_source.html#prg-1-plctask">PRG_1_PlcTask</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_source.html#prg-2-pmps">PRG_2_PMPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_source.html#prg-2theta">PRG_2Theta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_source.html#prg-3-log">PRG_3_LOG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_source.html#prg-cryo">PRG_Cryo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_source.html#prg-det-arm">PRG_DET_ARM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_source.html#prg-det-chamber">PRG_DET_CHAMBER</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_source.html#prg-det-frame">PRG_DET_FRAME</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_source.html#prg-det-slit">PRG_DET_SLIT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_source.html#prg-diffractometer">PRG_Diffractometer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_source.html#prg-las">PRG_LAS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_source.html#prg-opt">PRG_OPT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_source.html#prg-opt-slits">PRG_OPT_SLITS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_source.html#prg-opt-xpm">PRG_OPT_XPM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_source.html#prg-opt-yg">PRG_OPT_YG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_source.html#prg-questar">PRG_Questar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_source.html#prg-rotdet">PRG_RotDet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_source.html#prg-sds">PRG_SDS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_source.html#prg-sensor">PRG_Sensor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_source.html#prg-spetrometerarm">PRG_SpetrometerArm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_source.html#prg-ssl">PRG_SSL</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="indices-and-tables">
+<h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="lcls-plc-qrix-motion_pragmas.html" class="btn btn-neutral float-right" title="Pragmas" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, SLAC National Accelerator Laboratory.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
