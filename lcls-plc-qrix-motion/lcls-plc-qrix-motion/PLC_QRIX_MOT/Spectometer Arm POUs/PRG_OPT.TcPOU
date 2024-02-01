@@ -12,9 +12,12 @@ END_VAR
     <Implementation>
       <ST><![CDATA[
 //Lock stages until they are tested
-Main.M10.nEnableMode := ENUM_StageEnableMode.NEVER ;
-Main.M11.nEnableMode := ENUM_StageEnableMode.NEVER ;
-Main.M14.nEnableMode := ENUM_StageEnableMode.NEVER ;
+//Main.M10.nEnableMode := ENUM_StageEnableMode.NEVER ;
+//Main.M11.nEnableMode := ENUM_StageEnableMode.NEVER ;
+//Main.M14.nEnableMode := ENUM_StageEnableMode.NEVER ;
+Main.M10.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+Main.M11.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+Main.M14.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
 
 IF bINIT THEN
 
