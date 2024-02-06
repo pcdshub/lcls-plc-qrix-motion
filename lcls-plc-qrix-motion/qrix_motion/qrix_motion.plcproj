@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{b169396f-2a5d-41c0-baa5-19cf2205d20a}</ProjectGuid>
     <SubObjectsSortedByName>True</SubObjectsSortedByName>
-    <Name>PLC_QRIX_MOT</Name>
+    <Name>qrix_motion</Name>
     <ProgramVersion>3.1.4022.7</ProgramVersion>
     <Application>{428ecb78-8b90-4622-9114-79185b086a58}</Application>
     <TypeSystem>{f7f7cea6-c40b-4689-a1e6-3ec78c651fa5}</TypeSystem>
@@ -238,7 +238,7 @@
     </PlaceholderResolution>
   </ItemGroup>
   <ItemGroup>
-    <None Include="PLC_QRIX_MOT.tmc">
+    <None Include="qrix_motion.tmc">
       <SubType>Content</SubType>
     </None>
   </ItemGroup>

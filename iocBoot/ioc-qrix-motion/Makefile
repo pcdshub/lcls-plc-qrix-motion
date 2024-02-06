@@ -6,7 +6,7 @@ PRODUCTION_IOC := 1
 
 PROJECT_NAME := lcls-plc-qrix-motion
 PROJECT_PATH := ../../lcls-plc-qrix-motion/lcls-plc-qrix-motion.tsproj
-PLC := PLC_QRIX_MOT
+PLC := QRIX:MOT
 
 PYTMC_OPTS := 
 PREFIX := PLC:$(PLC)
