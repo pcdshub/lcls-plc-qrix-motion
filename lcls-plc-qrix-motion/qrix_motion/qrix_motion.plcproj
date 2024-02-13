@@ -60,6 +60,9 @@
     <Compile Include="PlcTask.TcTTO">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\F_Limit.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\PRG_1_PlcTask.TcPOU">
       <SubType>Code</SubType>
     </Compile>
