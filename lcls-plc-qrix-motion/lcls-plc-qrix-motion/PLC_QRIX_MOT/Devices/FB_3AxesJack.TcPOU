@@ -7,8 +7,6 @@ VAR_IN_OUT
     stJack2Axis: ST_MotionStage;
     stJack3Axis: ST_MotionStage;
     bExecuteMotion:BOOL ;
-    io_fbFFHWO    :    FB_HardwareFFOutput;
-    fbArbiter: FB_Arbiter();
 END_VAR
 VAR_INPUT
 
@@ -162,17 +160,7 @@ VAR
     tAction : R_TRIG;
     tOverrideActivated : R_TRIG;
 
-    FFO    :    FB_FastFault :=(
-        i_DevName := '3Jack',
-        i_Desc := 'Fault occurs when center is greated than that requested',
-        i_TypeCode := 16#1010);
-
-
     bTest: BOOL;
-
-    AptArrayStatus AT %Q* : ST_PMPS_Aperture_IO;
-    AptArrayReq AT %I* : ST_PMPS_Aperture_IO;
-
 
     fbPower: MC_POWER;
 END_VAR
@@ -233,13 +221,9 @@ IF ( bInit) THEN
     stJack1Axis.bHardwareEnable := TRUE;
     stJack2Axis.bHardwareEnable := TRUE;
     stJack3Axis.bHardwareEnable := TRUE;
-    stJack1Axis.bPowerSelf :=FALSE;
-    stJack2Axis.bPowerSelf :=FALSE;
-    stJack3Axis.bPowerSelf :=FALSE;
     stJack1Axis.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
     stJack2Axis.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
     stJack3Axis.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
-    FFO.i_DevName := i_DevName;
 END_IF
 ]]></ST>
       </Implementation>
@@ -305,7 +289,7 @@ fbJack3(
       <Implementation>
         <ST><![CDATA[
 // Force set to false
-stJack1Axis.bPowerSelf := stJack2Axis.bPowerSelf := stJack3Axis.bPowerSelf := FALSE;
+//stJack1Axis.bPowerSelf := stJack2Axis.bPowerSelf := stJack3Axis.bPowerSelf := FALSE;
 
 // Set SafetyReady flags manually
 stJack1Axis.bSafetyReady:= TRUE;
