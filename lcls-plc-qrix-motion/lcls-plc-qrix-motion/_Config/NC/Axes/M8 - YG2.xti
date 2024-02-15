@@ -1321,11 +1321,11 @@ External Setpoint Generation:
 			</Relations>
 		</DataType>
 	</DataTypes>
-	<Axis Id="8" Disabled="true" CreateSymbols="true" AxisType="1" AxisFolder="OPTICS">
+	<Axis Id="8" CreateSymbols="true" AxisType="1" AxisFolder="OPTICS">
 		<Name>__FILENAME__</Name>
 		<AxisPara>
 			<Dynamic AccelerationMaximum="0.4" DecelerationMaximum="0.4" Acceleration="0.2" Deceleration="0.2" Jerk="0.4"/>
-			<Velo Maximum="0.05"/>
+			<Velo Maximum="0.1"/>
 			<PositionAreaControl Range="0.5"/>
 			<TargetPosControl Range="0.05"/>
 			<OtherSettings AllowMotionCmdToSlave="true"/>
@@ -1341,7 +1341,7 @@ External Setpoint Generation:
 				<Var>
 					<Name>In</Name>
 					<Type GUID="{9ED17BA1-BC38-47CA-9DD2-F96861AB0266}" Namespace="MC">NCENCODERSTRUCT_IN3</Type>
-					<BitOffs>4992</BitOffs>
+					<BitOffs>14912</BitOffs>
 					<SubVar>
 						<Name>nState1</Name>
 						<Comment>
@@ -1371,13 +1371,13 @@ External Setpoint Generation:
 				<Var>
 					<Name>Out</Name>
 					<Type GUID="{4AA66E19-7B91-4A09-817D-0357681B7869}" Namespace="MC">NCENCODERSTRUCT_OUT3</Type>
-					<BitOffs>8064</BitOffs>
+					<BitOffs>23104</BitOffs>
 				</Var>
 			</Vars>
 		</Encoder>
 		<Drive Name="Drive" DrvType="24">
 			<DrvPara>
-				<Analog VeloReferenz="0.1" ScaleFactorActTorque="0.1"/>
+				<Analog VeloReferenz="0.115" ScaleFactorActTorque="0.1"/>
 				<TimeComp TaskDelayCycles="1"/>
 			</DrvPara>
 			<Vars VarGrpType="1">
@@ -1385,7 +1385,7 @@ External Setpoint Generation:
 				<Var>
 					<Name>In</Name>
 					<Type GUID="{F95C7C69-0C87-46C4-9559-1285CCA5B23A}" Namespace="MC">NCDRIVESTRUCT_IN2</Type>
-					<BitOffs>5632</BitOffs>
+					<BitOffs>15552</BitOffs>
 					<SubVar TypeFormatIndex="2">
 						<Name>nDataIn1</Name>
 					</SubVar>
@@ -1423,7 +1423,7 @@ Drive Status 4 (manually linked):
 				<Var>
 					<Name>Out</Name>
 					<Type GUID="{644DC4BD-3D15-4DCB-94C7-24F3A5D579AA}" Namespace="MC">NCDRIVESTRUCT_OUT2</Type>
-					<BitOffs>8704</BitOffs>
+					<BitOffs>23744</BitOffs>
 					<SubVar TypeFormatIndex="2">
 						<Name>nDataOut1</Name>
 					</SubVar>
@@ -1477,7 +1477,7 @@ Drive Status 4 (manually linked):
 			<Var>
 				<Name>FromPlc</Name>
 				<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
-				<BitOffs>3968</BitOffs>
+				<BitOffs>13888</BitOffs>
 			</Var>
 		</Vars>
 		<Vars VarGrpType="2" InsertType="1">
@@ -1485,7 +1485,7 @@ Drive Status 4 (manually linked):
 			<Var>
 				<Name>ToPlc</Name>
 				<Type GUID="{6A65C767-34E5-42BF-AD87-E1A503EAC7BE}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
-				<BitOffs>6016</BitOffs>
+				<BitOffs>21056</BitOffs>
 				<SubVar>
 					<Name>AxisState</Name>
 					<Comment>

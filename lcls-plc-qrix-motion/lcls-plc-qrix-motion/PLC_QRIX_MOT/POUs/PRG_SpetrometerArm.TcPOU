@@ -59,7 +59,7 @@ IF NOT GVL_EPS.bESTOP THEN
     //Main.M4.bEnable := FALSE; // Optics Slits XS2 // QRIX:OPTSL:MMS:SOUTH
     //Main.M5.bEnable := FALSE; // Optics Slits YS1 // QRIX:OPTSL:MMS:TOP
     //Main.M6.bEnable := FALSE; // Optics Slits YS2 // QRIX:OPTSL:MMS:BOTTOM
-    Main.M7.bEnable := FALSE; // Optics Base YG1 // QRIX:OPT:MMS:Y2
+    Main.M7.bEnable := FALSE; // Optics Base YG1 // QRIX:OPT:MMS:Y1
     Main.M8.bEnable := FALSE; // Optics Base YG2 // QRIX:OPT:MMS:Y2
     Main.M9.bEnable := FALSE; // Optics Base YG3 // QRIX:OPT:MMS:Y3
     //Main.M10.bEnable := FALSE; // Optics Grating RxG // QRIX:G:MMS:Rx

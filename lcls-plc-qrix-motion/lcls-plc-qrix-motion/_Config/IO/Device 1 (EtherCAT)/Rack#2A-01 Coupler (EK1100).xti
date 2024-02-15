@@ -1835,10 +1835,10 @@
 				<SuName>Term 36 (EL9221-5000)</SuName>
 				<MBoxUserCmdData>004003000a00000000000000030010000000000000000000000000000000000020f3100502000000010000</MBoxUserCmdData>
 				<Pdo Name="OCP Inputs" Index="#x1a00" Flags="#x0010" SyncMan="3">
-					<Entry Name="Status__Enabled" Index="#x6000" Sub="#x01">
+					<Entry Name="Status__Enabled" Index="#x6000" Sub="#x01" Flags="#x00008020">
 						<Type>BIT</Type>
 					</Entry>
-					<Entry Name="Status__Tripped" Index="#x6000" Sub="#x02">
+					<Entry Name="Status__Tripped" Index="#x6000" Sub="#x02" Flags="#x00008020">
 						<Type>BIT</Type>
 					</Entry>
 					<Entry Name="Status__">
@@ -1859,25 +1859,25 @@
 					<Entry Name="Status__">
 						<Type GUID="{18071995-0000-0000-0000-002000000003}">ARRAY [0..2] OF BIT</Type>
 					</Entry>
-					<Entry Name="Status__Diag" Index="#x6000" Sub="#x0d">
+					<Entry Name="Status__Diag" Index="#x6000" Sub="#x0d" Flags="#x00008020">
 						<Type>BIT</Type>
 					</Entry>
-					<Entry Name="Status__TxPDO State" Index="#x6000" Sub="#x0e">
+					<Entry Name="Status__TxPDO State" Index="#x6000" Sub="#x0e" Flags="#x00008020">
 						<Type>BIT</Type>
 					</Entry>
-					<Entry Name="Status__Input cycle counter" Index="#x6000" Sub="#x0f">
+					<Entry Name="Status__Input cycle counter" Index="#x6000" Sub="#x0f" Flags="#x00008020">
 						<Type>BIT2</Type>
 					</Entry>
 					<Entry Name="Status__">
 						<Type GUID="{18071995-0000-0000-0000-002000000002}">ARRAY [0..1] OF BIT</Type>
 					</Entry>
-					<Entry Name="Status__Error" Index="#x6000" Sub="#x13">
+					<Entry Name="Status__Error" Index="#x6000" Sub="#x13" Flags="#x00008020">
 						<Type>BIT</Type>
 					</Entry>
-					<Entry Name="Status__State Reset" Index="#x6000" Sub="#x14">
+					<Entry Name="Status__State Reset" Index="#x6000" Sub="#x14" Flags="#x00008020">
 						<Type>BIT</Type>
 					</Entry>
-					<Entry Name="Status__State Switch" Index="#x6000" Sub="#x15">
+					<Entry Name="Status__State Switch" Index="#x6000" Sub="#x15" Flags="#x00008020">
 						<Type>BIT</Type>
 					</Entry>
 					<Entry Name="Status__">
@@ -1885,7 +1885,7 @@
 					</Entry>
 				</Pdo>
 				<Pdo Name="OCP Outputs" Index="#x1600" InOut="1" Flags="#x0010" SyncMan="2">
-					<Entry Name="Control__Reset" Index="#x7000" Sub="#x01">
+					<Entry Name="Control__Reset" Index="#x7000" Sub="#x01" Flags="#x00008020">
 						<Type>BIT</Type>
 					</Entry>
 					<Entry Name="Control__Switch" Index="#x7000" Sub="#x02">

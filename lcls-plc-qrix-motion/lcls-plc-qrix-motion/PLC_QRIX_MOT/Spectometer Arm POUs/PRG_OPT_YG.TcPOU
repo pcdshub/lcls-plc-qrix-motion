@@ -14,9 +14,12 @@ END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[//Lock stages until they are tested
-Main.M8.nEnableMode := ENUM_StageEnableMode.NEVER ;
-Main.M9.nEnableMode := ENUM_StageEnableMode.NEVER ;
-Main.M7.nEnableMode := ENUM_StageEnableMode.NEVER ;
+//Main.M8.nEnableMode := ENUM_StageEnableMode.NEVER ;
+//Main.M9.nEnableMode := ENUM_StageEnableMode.NEVER ;
+//Main.M7.nEnableMode := ENUM_StageEnableMode.NEVER ;
+Main.M8.nEnableMode := ENUM_StageEnableMode.ALWAYS ;
+Main.M9.nEnableMode := ENUM_StageEnableMode.ALWAYS ;
+Main.M7.nEnableMode := ENUM_StageEnableMode.ALWAYS ;
 
 
 
@@ -27,17 +30,14 @@ IF bInit THEN
     Main.M7.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
     Main.M7.bHardwareEnable := TRUE;
     Main.M7.bPowerSelf := TRUE;
-    Main.M7.fVelocity := 0.1;
 
     Main.M8.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
     Main.M8.bHardwareEnable := TRUE;
     Main.M8.bPowerSelf := TRUE;
-    Main.M8.fVelocity := 0.1;
 
     Main.M9.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
     Main.M9.bHardwareEnable := TRUE;
     Main.M9.bPowerSelf := TRUE;
-    Main.M9.fVelocity := 0.1;
 
     Main.M7.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
     Main.M8.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
@@ -52,9 +52,7 @@ fbYGMotion(
     stJack1Axis		:= Main.M7,
     stJack2Axis		:= Main.M8,
     stJack3Axis		:= Main.M9,
-    i_DevName		:= 'OPT_YG',
-    io_fbFFHWO		:= GVL_PMPS.fbFastFaultOutput1,
-    fbArbiter		:= GVL_PMPS.fbArbiter,
+    i_DevName		:= 'OPT_YG'
 );]]></ST>
     </Implementation>
   </POU>
