@@ -14,11 +14,11 @@ lcls-plc-qrix-motion
 
 .. toctree::
     :maxdepth: 2
-    :caption: PLC_QRIX_MOT
+    :caption: qrix_motion
 
-    lcls-plc-qrix-motion_PLC_QRIX_MOT_summary
-    lcls-plc-qrix-motion_PLC_QRIX_MOT_epics
-    lcls-plc-qrix-motion_PLC_QRIX_MOT_source
+    lcls-plc-qrix-motion_qrix_motion_summary
+    lcls-plc-qrix-motion_qrix_motion_epics
+    lcls-plc-qrix-motion_qrix_motion_source
 
 
 

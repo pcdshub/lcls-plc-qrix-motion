@@ -33,7 +33,37 @@ DUT_Sensor
       - | io: input
 
 
-  
+ 
+DUT_SensorHGS
+^^^^^^^^^^^^^
+
+.. list-table::
+    :header-rows: 1
+    :align: center
+
+    * - Record
+      - Type
+      - Description
+      - Pragma
+    * - $(PREFIX):EU_RBV
+      - waveform
+      - $(SYMBOL).sEGU
+      - | io: input
+
+
+    * - $(PREFIX):RAWCOUNTS_RBV
+      - longin
+      - $(SYMBOL).iRawCnts
+      - | io: input
+
+
+    * - $(PREFIX):VALUE_RBV
+      - ai
+      - $(SYMBOL).fValue
+      - | io: input
+
+
+ 
 FB_2AxesTrans
 ^^^^^^^^^^^^^
 
@@ -35886,157 +35916,241 @@ Database Records
     * - QRIX:SA:FLOATING_RBV
       - bi
       - GVL_Sensor.bFloating
-      - | io: output
+      - | io: input
 
 
-    * - QRIX:SA:FLOATING
-      - bo
-      - GVL_Sensor.bFloating
-      - | io: output
-
-
-    * - QRIX:DF:AI:TILTZ:VALUE_RBV
+    * - QRIX:DF:INM:Z:VALUE_RBV
       - ai
       - GVL_Sensor.stFrameP.fValue
       - | io: input
 
 
-    * - QRIX:DF:AI:TILTZ:RAWCOUNTS_RBV
+    * - QRIX:DF:INM:Z:RAWCOUNTS_RBV
       - longin
       - GVL_Sensor.stFrameP.iRawCnts
       - | io: input
 
 
-    * - QRIX:DF:AI:TILTZ:EU_RBV
+    * - QRIX:DF:INM:Z:EU_RBV
       - waveform
       - GVL_Sensor.stFrameP.sEGU
       - | io: input
 
 
-    * - QRIX:DF:AI:TILTX:VALUE_RBV
+    * - QRIX:DF:INM:X:VALUE_RBV
       - ai
       - GVL_Sensor.stFrameR.fValue
       - | io: input
 
 
-    * - QRIX:DF:AI:TILTX:RAWCOUNTS_RBV
+    * - QRIX:DF:INM:X:RAWCOUNTS_RBV
       - longin
       - GVL_Sensor.stFrameR.iRawCnts
       - | io: input
 
 
-    * - QRIX:DF:AI:TILTX:EU_RBV
+    * - QRIX:DF:INM:X:EU_RBV
       - waveform
       - GVL_Sensor.stFrameR.sEGU
       - | io: input
 
 
-    * - QRIX:GS:AI:TILTZ:VALUE_RBV
+    * - QRIX:GS:INM:Z:VALUE_RBV
       - ai
       - GVL_Sensor.stGraniteP.fValue
       - | io: input
 
 
-    * - QRIX:GS:AI:TILTZ:RAWCOUNTS_RBV
+    * - QRIX:GS:INM:Z:RAWCOUNTS_RBV
       - longin
       - GVL_Sensor.stGraniteP.iRawCnts
       - | io: input
 
 
-    * - QRIX:GS:AI:TILTZ:EU_RBV
+    * - QRIX:GS:INM:Z:EU_RBV
       - waveform
       - GVL_Sensor.stGraniteP.sEGU
       - | io: input
 
 
-    * - QRIX:GS:AI:TILTX:VALUE_RBV
+    * - QRIX:GS:INM:X:VALUE_RBV
       - ai
       - GVL_Sensor.stGraniteR.fValue
       - | io: input
 
 
-    * - QRIX:GS:AI:TILTX:RAWCOUNTS_RBV
+    * - QRIX:GS:INM:X:RAWCOUNTS_RBV
       - longin
       - GVL_Sensor.stGraniteR.iRawCnts
       - | io: input
 
 
-    * - QRIX:GS:AI:TILTX:EU_RBV
+    * - QRIX:GS:INM:X:EU_RBV
       - waveform
       - GVL_Sensor.stGraniteR.sEGU
       - | io: input
 
 
-    * - QRIX:SA:DoneAdjustingHeight_RBV
+    * - QRIX:SA:DDS:HDF:VALUE_RBV
+      - ai
+      - GVL_Sensor.stHDF.fValue
+      - | io: input
+
+
+    * - QRIX:SA:DDS:HDF:RAWCOUNTS_RBV
+      - longin
+      - GVL_Sensor.stHDF.iRawCnts
+      - | io: input
+
+
+    * - QRIX:SA:DDS:HDF:EU_RBV
+      - waveform
+      - GVL_Sensor.stHDF.sEGU
+      - | io: input
+
+
+    * - QRIX:SA:GPT:PS1:VALUE_RBV
+      - ai
+      - GVL_Sensor.stPS1.fValue
+      - | io: input
+
+
+    * - QRIX:SA:GPT:PS1:RAWCOUNTS_RBV
+      - longin
+      - GVL_Sensor.stPS1.iRawCnts
+      - | io: input
+
+
+    * - QRIX:SA:GPT:PS1:EU_RBV
+      - waveform
+      - GVL_Sensor.stPS1.sEGU
+      - | io: input
+
+
+    * - QRIX:SA:GPT:PS2:VALUE_RBV
+      - ai
+      - GVL_Sensor.stPS2.fValue
+      - | io: input
+
+
+    * - QRIX:SA:GPT:PS2:RAWCOUNTS_RBV
+      - longin
+      - GVL_Sensor.stPS2.iRawCnts
+      - | io: input
+
+
+    * - QRIX:SA:GPT:PS2:EU_RBV
+      - waveform
+      - GVL_Sensor.stPS2.sEGU
+      - | io: input
+
+
+    * - QRIX:SA:GPT:PS3:VALUE_RBV
+      - ai
+      - GVL_Sensor.stPS3.fValue
+      - | io: input
+
+
+    * - QRIX:SA:GPT:PS3:RAWCOUNTS_RBV
+      - longin
+      - GVL_Sensor.stPS3.iRawCnts
+      - | io: input
+
+
+    * - QRIX:SA:GPT:PS3:EU_RBV
+      - waveform
+      - GVL_Sensor.stPS3.sEGU
+      - | io: input
+
+
+    * - QRIX:SA:DDS:YDF1:VALUE_RBV
+      - ai
+      - GVL_Sensor.stYDF1.fValue
+      - | io: input
+
+
+    * - QRIX:SA:DDS:YDF1:RAWCOUNTS_RBV
+      - longin
+      - GVL_Sensor.stYDF1.iRawCnts
+      - | io: input
+
+
+    * - QRIX:SA:DDS:YDF1:EU_RBV
+      - waveform
+      - GVL_Sensor.stYDF1.sEGU
+      - | io: input
+
+
+    * - QRIX:SA:DDS:YDF2:VALUE_RBV
+      - ai
+      - GVL_Sensor.stYDF2.fValue
+      - | io: input
+
+
+    * - QRIX:SA:DDS:YDF2:RAWCOUNTS_RBV
+      - longin
+      - GVL_Sensor.stYDF2.iRawCnts
+      - | io: input
+
+
+    * - QRIX:SA:DDS:YDF2:EU_RBV
+      - waveform
+      - GVL_Sensor.stYDF2.sEGU
+      - | io: input
+
+
+    * - QRIX:SA:DDS:YDF3:VALUE_RBV
+      - ai
+      - GVL_Sensor.stYDF3.fValue
+      - | io: input
+
+
+    * - QRIX:SA:DDS:YDF3:RAWCOUNTS_RBV
+      - longin
+      - GVL_Sensor.stYDF3.iRawCnts
+      - | io: input
+
+
+    * - QRIX:SA:DDS:YDF3:EU_RBV
+      - waveform
+      - GVL_Sensor.stYDF3.sEGU
+      - | io: input
+
+
+    * - QRIX:SA:bDoneAdjustingHeight_RBV
       - bi
       - GVL_VAR.bDoneAdjustingHeight
-      - | io: output
+      - | io: input
 
 
-    * - QRIX:SA:DoneAdjustingHeight
-      - bo
-      - GVL_VAR.bDoneAdjustingHeight
-      - | io: output
-
-
-    * - QRIX:SA:DoneAdjustingPitch_RBV
+    * - QRIX:SA:bDoneAdjustingPitch_RBV
       - bi
       - GVL_VAR.bDoneAdjustingPitch
-      - | io: output
+      - | io: input
 
 
-    * - QRIX:SA:DoneAdjustingPitch
-      - bo
-      - GVL_VAR.bDoneAdjustingPitch
-      - | io: output
-
-
-    * - QRIX:SA:DoneAdjustingRoll_RBV
+    * - QRIX:SA:bDoneAdjustingRoll_RBV
       - bi
       - GVL_VAR.bDoneAdjustingRoll
-      - | io: output
+      - | io: input
 
 
-    * - QRIX:SA:DoneAdjustingRoll
-      - bo
-      - GVL_VAR.bDoneAdjustingRoll
-      - | io: output
-
-
-    * - QRIX:SA:JackOff_RBV
+    * - QRIX:SA:bDoneJackOff_RBV
       - bi
       - GVL_VAR.bDoneJackOff
-      - | io: output
-
-
-    * - QRIX:SA:JackOff
-      - bo
-      - GVL_VAR.bDoneJackOff
-      - | io: output
+      - | io: input
 
 
     * - QRIX:SA:bDoneLanding_RBV
       - bi
       - GVL_VAR.bDoneLanding
-      - | io: output
+      - | io: input
 
 
-    * - QRIX:SA:bDoneLanding
-      - bo
-      - GVL_VAR.bDoneLanding
-      - | io: output
-
-
-    * - QRIX:SA:DoneLevitation_RBV
+    * - QRIX:SA:bDoneLevitation_RBV
       - bi
       - GVL_VAR.bDoneLevitation
-      - | io: output
-
-
-    * - QRIX:SA:DoneLevitation
-      - bo
-      - GVL_VAR.bDoneLevitation
-      - | io: output
+      - | io: input
 
 
     * - $(PREFIX)DB:REFRESH_RBV
@@ -45152,6 +45266,12 @@ Database Records
         | io: input
 
 
+    * - QRIX:SA:bBusy_RBV
+      - bi
+      - PRG_DET_FRAME.bBusy
+      - | io: input
+
+
     * - QRIX:DF:EnableAdjustingHeight_RBV
       - bi
       - PRG_DET_FRAME.bEnableAdjustingHeight
@@ -45224,16 +45344,28 @@ Database Records
       - | io: output
 
 
+    * - QRIX:SA:bEnableMotion_RBV
+      - bi
+      - PRG_DET_FRAME.bEnableMotion
+      - | io: input
+
+
+    * - QRIX:SA:bEnableMoveRelative_RBV
+      - bi
+      - PRG_DET_FRAME.bEnableMoveRelative
+      - | io: input
+
+
+    * - QRIX:SA:bEnableSetGaugeValue_RBV
+      - bi
+      - PRG_DET_FRAME.bEnableSetGaugeValue
+      - | io: input
+
+
     * - QRIX:SA:bError_RBV
       - bi
       - PRG_DET_FRAME.bError
-      - | io: output
-
-
-    * - QRIX:SA:bError
-      - bo
-      - PRG_DET_FRAME.bError
-      - | io: output
+      - | io: input
 
 
     * - QRIX:SA:bResetError_RBV

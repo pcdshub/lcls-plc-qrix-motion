@@ -98,10 +98,10 @@ Axis 2: M2 - 2Theta Stepper
     AxisFolder, 2 Theta Arm
     AxisType, 1
     CreateSymbols, true
-    Dynamic:Acceleration, 1.4
-    Dynamic:AccelerationMaximum, 1.5
-    Dynamic:Deceleration, 0.7
-    Dynamic:DecelerationMaximum, 1.5
+    Dynamic:Acceleration, 0.01
+    Dynamic:AccelerationMaximum, 0.01
+    Dynamic:Deceleration, 0.01
+    Dynamic:DecelerationMaximum, 0.01
     Dynamic:Jerk, 2.8
     Enc:EncType, 29
     Enc:Inc:RefSoftSyncMask, #x0000ffff
@@ -270,7 +270,6 @@ Axis 7: M7 - YG1
     AxisType, 1
     BacklashCompensation:Range, 0.025
     CreateSymbols, true
-    Disabled, true
     Dynamic:Acceleration, 0.2
     Dynamic:AccelerationMaximum, 0.4
     Dynamic:Deceleration, 0.2
@@ -290,9 +289,9 @@ Axis 7: M7 - YG1
     OtherSettings:PulseDistanceNeg, 1
     OtherSettings:PulseDistancePos, 1
     PositionAreaControl:Range, 0.1
-    TargetPosControl:Range, 0.05
+    TargetPosControl:Range, 0.01
     Velo:FastManual, 0.5
-    Velo:Maximum, 0.05
+    Velo:Maximum, 0.1
     Velo:SlowManual, 0.25
 
 
@@ -309,7 +308,6 @@ Axis 8: M8 - YG2
     AxisFolder, OPTICS
     AxisType, 1
     CreateSymbols, true
-    Disabled, true
     Dynamic:Acceleration, 0.2
     Dynamic:AccelerationMaximum, 0.4
     Dynamic:Deceleration, 0.2
@@ -328,7 +326,7 @@ Axis 8: M8 - YG2
     OtherSettings:AllowMotionCmdToSlave, true
     PositionAreaControl:Range, 0.5
     TargetPosControl:Range, 0.05
-    Velo:Maximum, 0.05
+    Velo:Maximum, 0.1
 
 
 
@@ -344,7 +342,6 @@ Axis 9: M9 - YG3
     AxisFolder, OPTICS
     AxisType, 1
     CreateSymbols, true
-    Disabled, true
     Dynamic:Acceleration, 0.2
     Dynamic:AccelerationMaximum, 0.4
     Dynamic:Deceleration, 0.2
@@ -363,7 +360,7 @@ Axis 9: M9 - YG3
     OtherSettings:AllowMotionCmdToSlave, true
     PositionAreaControl:Range, 0.1
     TargetPosControl:Range, 0.05
-    Velo:Maximum, 0.05
+    Velo:Maximum, 0.1
 
 
 
@@ -379,7 +376,6 @@ Axis 10: M10 - RxG
     AxisFolder, OPTICS
     AxisType, 1
     CreateSymbols, true
-    Disabled, true
     Dynamic:Acceleration, 2
     Dynamic:AccelerationMaximum, 2
     Dynamic:Deceleration, 2
@@ -415,7 +411,6 @@ Axis 11: M11 - XG
     AxisFolder, OPTICS
     AxisType, 1
     CreateSymbols, true
-    Disabled, true
     Dynamic:Acceleration, 20
     Dynamic:AccelerationMaximum, 40
     Dynamic:Deceleration, 20
@@ -449,7 +444,6 @@ Axis 12: M12 - XPM1
     AxisFolder, OPTICS
     AxisType, 1
     CreateSymbols, true
-    Disabled, true
     Dynamic:Acceleration, 20
     Dynamic:AccelerationMaximum, 20
     Dynamic:Deceleration, 20
@@ -490,7 +484,6 @@ Axis 13: M13 - XPM2
     AxisFolder, OPTICS
     AxisType, 1
     CreateSymbols, true
-    Disabled, true
     Dynamic:Acceleration, 20
     Dynamic:AccelerationMaximum, 20
     Dynamic:Deceleration, 20
@@ -531,7 +524,6 @@ Axis 14: M14 - RzPM
     AxisFolder, OPTICS
     AxisType, 1
     CreateSymbols, true
-    Disabled, true
     Dynamic:Acceleration, 2.6
     Dynamic:AccelerationMaximum, 2.6
     Dynamic:Deceleration, 2.6
@@ -802,7 +794,6 @@ Axis 22: M22 - XDC
     AxisFolder, DET_CHAMBER
     AxisType, 1
     CreateSymbols, true
-    Disabled, true
     Dynamic:Acceleration, 0.5
     Dynamic:AccelerationMaximum, 0.5
     Dynamic:Deceleration, 0.5
@@ -843,7 +834,6 @@ Axis 23: M23 - RyDC
     AxisFolder, DET_CHAMBER
     AxisType, 1
     CreateSymbols, true
-    Disabled, true
     Dynamic:Acceleration, 4
     Dynamic:AccelerationMaximum, 4
     Dynamic:Deceleration, 4
@@ -886,7 +876,6 @@ Axis 24: M24 - ZDC
     AxisFolder, DET_CHAMBER
     AxisType, 1
     CreateSymbols, true
-    Disabled, true
     Dynamic:Acceleration, 2
     Dynamic:AccelerationMaximum, 2
     Dynamic:Deceleration, 2
@@ -943,13 +932,15 @@ Axis 25: M25 - YF1
     Enc:SoftEndMinControl:Range, -925
     Id, 25
     OtherSettings:AllowMotionCmdToSlave, true
+    OtherSettings:PulseDistanceNeg, 0.1
+    OtherSettings:PulseDistancePos, 0.1
     PositionAreaControl:Range, 2
     TargetPosControl:Range, 1
-    Velo:FastManual, 1
+    Velo:FastManual, 0.1
     Velo:Maximum, 2
-    Velo:RefSearch, 0.5
-    Velo:RefSync, 0.5
-    Velo:SlowManual, 0.5
+    Velo:RefSearch, 0.1
+    Velo:RefSync, 0.1
+    Velo:SlowManual, 0.1
 
 
 

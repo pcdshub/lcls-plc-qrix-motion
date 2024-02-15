@@ -24,7 +24,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Data Types" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_epics.html" /> 
+    <link rel="prev" title="Data Types" href="lcls-plc-qrix-motion_qrix_motion_epics.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -54,14 +54,14 @@
 <li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html">Boxes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_links.html">Links</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">PLC_QRIX_MOT</span></p>
+<p class="caption" role="heading"><span class="caption-text">qrix_motion</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html">Settings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#pragmas">Pragmas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#libraries">Libraries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#symbols">Symbols</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_epics.html">Data Types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_epics.html#database-records">Database Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_qrix_motion_summary.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_qrix_motion_summary.html#pragmas">Pragmas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_qrix_motion_summary.html#libraries">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_qrix_motion_summary.html#symbols">Symbols</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_qrix_motion_epics.html">Data Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_qrix_motion_epics.html#database-records">Database Records</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">DUTs</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#dut-sensor">DUT_Sensor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#dut-sensorhgs">DUT_SensorHGS</a></li>
@@ -77,6 +77,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="#pous">POUs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#f-limit">F_Limit</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#fb-2axestrans">FB_2AxesTrans</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#fb-2axestrans-1">FB_2AxesTrans_1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#fb-3axesjack">FB_3AxesJack</a></li>
@@ -123,7 +124,7 @@
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active">DUTs</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/lcls-plc-qrix-motion_PLC_QRIX_MOT_source.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/lcls-plc-qrix-motion_qrix_motion_source.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -171,9 +172,21 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TYPE</span> <span class="n">DUT_SensorHGS</span><span class="p">:</span>
 <span class="n">STRUCT</span>
     <span class="n">fCntsInEGU</span><span class="p">:</span>                     <span class="n">REAL</span><span class="p">;</span>
+    <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;pytmc&#39;</span> <span class="o">:=</span> <span class="s1">&#39;</span>
+        <span class="n">pv</span><span class="p">:</span> <span class="n">EU</span>
+        <span class="n">io</span><span class="p">:</span> <span class="n">i</span>
+    <span class="s1">&#39;}</span>
     <span class="n">sEGU</span><span class="p">:</span>                           <span class="n">STRING</span><span class="p">;</span>
     <span class="n">sName</span><span class="p">:</span>                          <span class="n">STRING</span><span class="p">;</span>
+    <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;pytmc&#39;</span> <span class="o">:=</span> <span class="s1">&#39;</span>
+        <span class="n">pv</span><span class="p">:</span> <span class="n">VALUE</span>
+        <span class="n">io</span><span class="p">:</span> <span class="n">i</span>
+    <span class="s1">&#39;}</span>
     <span class="n">fValue</span><span class="p">:</span>                         <span class="n">REAL</span><span class="p">;</span>
+    <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;pytmc&#39;</span> <span class="o">:=</span> <span class="s1">&#39;</span>
+        <span class="n">pv</span><span class="p">:</span> <span class="n">RAWCOUNTS</span>
+        <span class="n">io</span><span class="p">:</span> <span class="n">i</span>
+    <span class="s1">&#39;}</span>
     <span class="n">iRawCnts</span> <span class="n">AT</span> <span class="o">%</span><span class="n">I</span><span class="o">*</span><span class="p">:</span>        <span class="n">DINT</span><span class="p">;</span>
     <span class="n">iOffset</span><span class="p">:</span>                        <span class="n">DINT</span><span class="p">;</span>
 <span class="n">END_STRUCT</span>
@@ -243,22 +256,41 @@
 <h2>GVL_Sensor<a class="headerlink" href="#gvl-sensor" title="Link to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;qualified_only&#39;</span><span class="p">}</span>
 <span class="n">VAR_GLOBAL</span>
-    <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;pytmc&#39;</span> <span class="o">:=</span> <span class="s1">&#39;pv: QRIX:SA:FLOATING&#39;</span><span class="p">}</span>
+    <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;pytmc&#39;</span> <span class="o">:=</span> <span class="s1">&#39;</span>
+        <span class="n">pv</span><span class="p">:</span> <span class="n">QRIX</span><span class="p">:</span><span class="n">SA</span><span class="p">:</span><span class="n">FLOATING</span>
+        <span class="n">io</span><span class="p">:</span> <span class="n">i</span>
+    <span class="s1">&#39;}</span>
     <span class="n">bFloating</span><span class="p">:</span> <span class="n">BOOL</span><span class="p">;</span>
 
     <span class="o">//</span> <span class="n">YDF1</span>
+    <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;pytmc&#39;</span> <span class="o">:=</span> <span class="s1">&#39;</span>
+        <span class="n">pv</span><span class="p">:</span> <span class="n">QRIX</span><span class="p">:</span><span class="n">SA</span><span class="p">:</span><span class="n">DDS</span><span class="p">:</span><span class="n">YDF1</span>
+        <span class="n">io</span><span class="p">:</span> <span class="n">i</span>
+    <span class="s1">&#39;}</span>
     <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;TcLinkTo&#39;</span> <span class="o">:=</span> <span class="s1">&#39;      .iRawCnts       := TIIB[Rack#2D LinearGaugeAmp (SC-HG1-ETC)]^Process Data(In)  TxPDO-Map^Response Data Unit1&#39;</span><span class="p">}</span>
     <span class="n">stYDF1</span><span class="p">:</span> <span class="n">DUT_SensorHGS</span><span class="p">;</span>
 
     <span class="o">//</span> <span class="n">YDF2</span>
+    <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;pytmc&#39;</span> <span class="o">:=</span> <span class="s1">&#39;</span>
+        <span class="n">pv</span><span class="p">:</span> <span class="n">QRIX</span><span class="p">:</span><span class="n">SA</span><span class="p">:</span><span class="n">DDS</span><span class="p">:</span><span class="n">YDF2</span>
+        <span class="n">io</span><span class="p">:</span> <span class="n">i</span>
+    <span class="s1">&#39;}</span>
     <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;TcLinkTo&#39;</span> <span class="o">:=</span> <span class="s1">&#39;      .iRawCnts       := TIIB[Rack#2D LinearGaugeAmp (SC-HG1-ETC)]^Process Data(In)  TxPDO-Map^Response Data Unit2&#39;</span><span class="p">}</span>
     <span class="n">stYDF2</span><span class="p">:</span> <span class="n">DUT_SensorHGS</span><span class="p">;</span>
 
     <span class="o">//</span> <span class="n">YDF3</span>
+    <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;pytmc&#39;</span> <span class="o">:=</span> <span class="s1">&#39;</span>
+        <span class="n">pv</span><span class="p">:</span> <span class="n">QRIX</span><span class="p">:</span><span class="n">SA</span><span class="p">:</span><span class="n">DDS</span><span class="p">:</span><span class="n">YDF3</span>
+        <span class="n">io</span><span class="p">:</span> <span class="n">i</span>
+    <span class="s1">&#39;}</span>
     <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;TcLinkTo&#39;</span> <span class="o">:=</span> <span class="s1">&#39;      .iRawCnts       := TIIB[Rack#2D LinearGaugeAmp (SC-HG1-ETC)]^Process Data(In)  TxPDO-Map^Response Data Unit3&#39;</span><span class="p">}</span>
     <span class="n">stYDF3</span><span class="p">:</span> <span class="n">DUT_SensorHGS</span><span class="p">;</span>
 
     <span class="o">//</span> <span class="n">Height</span> <span class="n">difference</span> <span class="n">btw</span> <span class="n">granite</span> <span class="n">shelf</span> <span class="ow">and</span> <span class="n">detector</span> <span class="n">frame</span><span class="o">.</span>
+    <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;pytmc&#39;</span> <span class="o">:=</span> <span class="s1">&#39;</span>
+        <span class="n">pv</span><span class="p">:</span> <span class="n">QRIX</span><span class="p">:</span><span class="n">SA</span><span class="p">:</span><span class="n">DDS</span><span class="p">:</span><span class="n">HDF</span>
+        <span class="n">io</span><span class="p">:</span> <span class="n">i</span>
+    <span class="s1">&#39;}</span>
     <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;TcLinkTo&#39;</span> <span class="o">:=</span> <span class="s1">&#39;      .iRawCnts       := TIIB[Rack#2D LinearGaugeAmp (SC-HG1-ETC)]^Process Data(In)  TxPDO-Map^Response Data Unit4&#39;</span><span class="p">}</span>
     <span class="n">stHDF</span><span class="p">:</span> <span class="n">DUT_SensorHGS</span><span class="p">;</span>
 
@@ -291,10 +323,22 @@
     <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;TcLinkTo&#39;</span> <span class="o">:=</span> <span class="s1">&#39;      .iRawCnts       := TIIB[Rack#2B-03 AI_TiltSensor (EL3174-0002)]^AI Standard Channel 3^Value&#39;</span><span class="p">}</span>
     <span class="n">stFrameR</span><span class="p">:</span> <span class="n">DUT_Sensor</span><span class="p">;</span>
 
+    <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;pytmc&#39;</span> <span class="o">:=</span> <span class="s1">&#39;</span>
+        <span class="n">pv</span><span class="p">:</span> <span class="n">QRIX</span><span class="p">:</span><span class="n">SA</span><span class="p">:</span><span class="n">GPT</span><span class="p">:</span><span class="n">PS1</span>
+        <span class="n">io</span><span class="p">:</span> <span class="n">i</span>
+    <span class="s1">&#39;}</span>
     <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;TcLinkTo&#39;</span> <span class="o">:=</span> <span class="s1">&#39;      .iRawCnts       := TIIB[Rack#2B-04 PS_P (EL3064)]^AI Standard Channel 1^Value&#39;</span><span class="p">}</span>
     <span class="n">stPS1</span><span class="p">:</span> <span class="n">DUT_Sensor</span><span class="p">;</span>
+    <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;pytmc&#39;</span> <span class="o">:=</span> <span class="s1">&#39;</span>
+        <span class="n">pv</span><span class="p">:</span> <span class="n">QRIX</span><span class="p">:</span><span class="n">SA</span><span class="p">:</span><span class="n">GPT</span><span class="p">:</span><span class="n">PS2</span>
+        <span class="n">io</span><span class="p">:</span> <span class="n">i</span>
+    <span class="s1">&#39;}</span>
     <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;TcLinkTo&#39;</span> <span class="o">:=</span> <span class="s1">&#39;      .iRawCnts       := TIIB[Rack#2B-04 PS_P (EL3064)]^AI Standard Channel 2^Value&#39;</span><span class="p">}</span>
     <span class="n">stPS2</span><span class="p">:</span> <span class="n">DUT_Sensor</span><span class="p">;</span>
+    <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;pytmc&#39;</span> <span class="o">:=</span> <span class="s1">&#39;</span>
+        <span class="n">pv</span><span class="p">:</span> <span class="n">QRIX</span><span class="p">:</span><span class="n">SA</span><span class="p">:</span><span class="n">GPT</span><span class="p">:</span><span class="n">PS3</span>
+        <span class="n">io</span><span class="p">:</span> <span class="n">i</span>
+    <span class="s1">&#39;}</span>
     <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;TcLinkTo&#39;</span> <span class="o">:=</span> <span class="s1">&#39;      .iRawCnts       := TIIB[Rack#2B-04 PS_P (EL3064)]^AI Standard Channel 3^Value&#39;</span><span class="p">}</span>
     <span class="n">stPS3</span><span class="p">:</span> <span class="n">DUT_Sensor</span><span class="p">;</span>
 <span class="n">END_VAR</span>
@@ -312,17 +356,35 @@
 <h2>GVL_VAR<a class="headerlink" href="#gvl-var" title="Link to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VAR_GLOBAL</span>
 
-    <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;pytmc&#39;</span> <span class="o">:=</span> <span class="s1">&#39;pv: QRIX:SA:JackOff&#39;</span><span class="p">}</span>
+    <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;pytmc&#39;</span> <span class="o">:=</span> <span class="s1">&#39;</span>
+        <span class="n">pv</span><span class="p">:</span> <span class="n">QRIX</span><span class="p">:</span><span class="n">SA</span><span class="p">:</span><span class="n">bDoneJackOff</span>
+        <span class="n">io</span><span class="p">:</span> <span class="n">i</span>
+    <span class="s1">&#39;}</span>
     <span class="n">bDoneJackOff</span><span class="p">:</span> <span class="n">BOOL</span><span class="p">;</span>
-    <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;pytmc&#39;</span> <span class="o">:=</span> <span class="s1">&#39;pv: QRIX:SA:DoneLevitation&#39;</span><span class="p">}</span>
+    <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;pytmc&#39;</span> <span class="o">:=</span> <span class="s1">&#39;</span>
+        <span class="n">pv</span><span class="p">:</span> <span class="n">QRIX</span><span class="p">:</span><span class="n">SA</span><span class="p">:</span><span class="n">bDoneLevitation</span>
+        <span class="n">io</span><span class="p">:</span> <span class="n">i</span>
+    <span class="s1">&#39;}</span>
     <span class="n">bDoneLevitation</span><span class="p">:</span> <span class="n">BOOL</span><span class="p">;</span>
-    <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;pytmc&#39;</span> <span class="o">:=</span> <span class="s1">&#39;pv: QRIX:SA:bDoneLanding&#39;</span><span class="p">}</span>
+    <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;pytmc&#39;</span> <span class="o">:=</span> <span class="s1">&#39;</span>
+        <span class="n">pv</span><span class="p">:</span> <span class="n">QRIX</span><span class="p">:</span><span class="n">SA</span><span class="p">:</span><span class="n">bDoneLanding</span>
+        <span class="n">io</span><span class="p">:</span> <span class="n">i</span>
+    <span class="s1">&#39;}</span>
     <span class="n">bDoneLanding</span><span class="p">:</span> <span class="n">BOOL</span><span class="p">;</span>
-    <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;pytmc&#39;</span> <span class="o">:=</span> <span class="s1">&#39;pv: QRIX:SA:DoneAdjustingRoll&#39;</span><span class="p">}</span>
+    <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;pytmc&#39;</span> <span class="o">:=</span> <span class="s1">&#39;</span>
+        <span class="n">pv</span><span class="p">:</span> <span class="n">QRIX</span><span class="p">:</span><span class="n">SA</span><span class="p">:</span><span class="n">bDoneAdjustingRoll</span>
+        <span class="n">io</span><span class="p">:</span> <span class="n">i</span>
+    <span class="s1">&#39;}</span>
     <span class="n">bDoneAdjustingRoll</span><span class="p">:</span> <span class="n">BOOL</span><span class="p">;</span>
-    <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;pytmc&#39;</span> <span class="o">:=</span> <span class="s1">&#39;pv: QRIX:SA:DoneAdjustingPitch&#39;</span><span class="p">}</span>
+    <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;pytmc&#39;</span> <span class="o">:=</span> <span class="s1">&#39;</span>
+        <span class="n">pv</span><span class="p">:</span> <span class="n">QRIX</span><span class="p">:</span><span class="n">SA</span><span class="p">:</span><span class="n">bDoneAdjustingPitch</span>
+        <span class="n">io</span><span class="p">:</span> <span class="n">i</span>
+    <span class="s1">&#39;}</span>
     <span class="n">bDoneAdjustingPitch</span><span class="p">:</span> <span class="n">BOOL</span><span class="p">;</span>
-    <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;pytmc&#39;</span> <span class="o">:=</span> <span class="s1">&#39;pv: QRIX:SA:DoneAdjustingHeight&#39;</span><span class="p">}</span>
+    <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;pytmc&#39;</span> <span class="o">:=</span> <span class="s1">&#39;</span>
+        <span class="n">pv</span><span class="p">:</span> <span class="n">QRIX</span><span class="p">:</span><span class="n">SA</span><span class="p">:</span><span class="n">bDoneAdjustingHeight</span>
+        <span class="n">io</span><span class="p">:</span> <span class="n">i</span>
+    <span class="s1">&#39;}</span>
     <span class="n">bDoneAdjustingHeight</span><span class="p">:</span> <span class="n">BOOL</span><span class="p">;</span>
 
 <span class="n">END_VAR</span>
@@ -350,7 +412,7 @@
     <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;TcLinkTo&#39;</span> <span class="o">:=</span> <span class="s1">&#39;.bLimitForwardEnable  := TIIB[EL7047_02_01 - SSL]^STM Status^Status^Digital input 1;</span>
                               <span class="o">.</span><span class="n">bLimitBackwardEnable</span> <span class="o">:=</span> <span class="n">TIIB</span><span class="p">[</span><span class="n">EL7047_02_01</span> <span class="o">-</span> <span class="n">SSL</span><span class="p">]</span><span class="o">^</span><span class="n">STM</span> <span class="n">Status</span><span class="o">^</span><span class="n">Status</span><span class="o">^</span><span class="n">Digital</span> <span class="nb">input</span> <span class="mi">2</span><span class="p">;</span>
                               <span class="o">.</span><span class="n">nRawEncoderULINT</span>     <span class="o">:=</span> <span class="n">TIIB</span><span class="p">[</span><span class="n">EL5042_02_02</span><span class="p">]</span><span class="o">^</span><span class="n">FB</span> <span class="n">Inputs</span> <span class="n">Channel</span> <span class="mi">1</span><span class="o">^</span><span class="n">Position</span><span class="s1">&#39;}</span>
-    <span class="n">M1</span><span class="p">:</span> <span class="n">ST_MotionStage</span> <span class="o">:=</span> <span class="p">(</span><span class="n">sName</span> <span class="o">:=</span> <span class="s1">&#39;QRIX:SSL:MMS&#39;</span><span class="p">);</span>
+    <span class="n">M1</span><span class="p">:</span> <span class="n">ST_MotionStage</span> <span class="o">:=</span> <span class="p">(</span><span class="n">sName</span> <span class="o">:=</span> <span class="s1">&#39;QRIX:SC:SSL:MMS&#39;</span><span class="p">);</span>
 
 
     <span class="p">(</span><span class="o">*</span> <span class="n">Start</span> <span class="n">Adding</span> <span class="n">Spectometer</span> <span class="n">Arm</span> <span class="n">Axes</span> <span class="n">Here</span><span class="o">*</span><span class="p">)</span>
@@ -402,7 +464,7 @@
                                 <span class="o">.</span><span class="n">bLimitBackwardEnable</span>       <span class="o">:=</span> <span class="n">TIIB</span><span class="p">[</span><span class="n">Rack</span><span class="c1">#2A-10 DR_YG1 (EL7041-0052)]^STM Status^Status^Digital input 2;</span>
                                 <span class="o">.</span><span class="n">nRawEncoderULINT</span>           <span class="o">:=</span> <span class="n">TIIB</span><span class="p">[</span><span class="n">Rack</span><span class="c1">#2B-10 ENC_YG1_YG2 (EL5042)]^FB Inputs Channel 1^Position</span>
     <span class="s1">&#39;}</span>
-    <span class="n">M7</span><span class="p">:</span> <span class="n">ST_MotionStage</span><span class="o">:=</span> <span class="p">(</span><span class="n">sName</span> <span class="o">:=</span> <span class="s1">&#39;QRIX:OPT:MMS:Y2&#39;</span><span class="p">);</span>
+    <span class="n">M7</span><span class="p">:</span> <span class="n">ST_MotionStage</span><span class="o">:=</span> <span class="p">(</span><span class="n">sName</span> <span class="o">:=</span> <span class="s1">&#39;QRIX:OPT:MMS:Y1&#39;</span><span class="p">);</span>
 
     <span class="o">//</span> <span class="n">YG2</span>
     <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;pytmc&#39;</span> <span class="o">:=</span> <span class="s1">&#39;pv: QRIX:OPT:MMS:Y2&#39;</span><span class="p">}</span>
@@ -741,6 +803,35 @@
 </section>
 <section id="pous">
 <h1>POUs<a class="headerlink" href="#pous" title="Link to this heading"></a></h1>
+<section id="f-limit">
+<h2>F_Limit<a class="headerlink" href="#f-limit" title="Link to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">FUNCTION</span> <span class="n">F_Limit</span> <span class="p">:</span> <span class="n">BOOL</span>
+<span class="n">VAR_INPUT</span>
+    <span class="n">fVal</span> <span class="p">:</span> <span class="n">LREAL</span><span class="p">;</span>
+    <span class="n">fLLim</span> <span class="p">:</span> <span class="n">LREAL</span><span class="p">;</span>
+    <span class="n">fHLim</span> <span class="p">:</span> <span class="n">LREAL</span><span class="p">;</span>
+    <span class="n">bInclusive</span> <span class="p">:</span> <span class="n">BOOL</span><span class="p">;</span>
+<span class="n">END_VAR</span>
+<span class="n">VAR</span>
+<span class="n">END_VAR</span>
+<span class="n">IF</span> <span class="n">bInclusive</span> <span class="n">THEN</span>
+    <span class="n">IF</span> <span class="n">fLLim</span> <span class="o">&lt;=</span> <span class="n">fHLim</span> <span class="n">THEN</span>
+        <span class="n">F_Limit</span> <span class="o">:=</span> <span class="n">fLLim</span> <span class="o">&lt;=</span> <span class="n">fVal</span> <span class="n">AND</span> <span class="n">fHLim</span> <span class="o">&gt;=</span> <span class="n">fVal</span><span class="p">;</span>
+    <span class="n">ELSE</span>
+        <span class="n">F_Limit</span> <span class="o">:=</span> <span class="n">fLLim</span> <span class="o">&gt;=</span> <span class="n">fVal</span> <span class="n">OR</span> <span class="n">fHLim</span> <span class="o">&lt;=</span> <span class="n">fVal</span><span class="p">;</span>
+    <span class="n">END_IF</span>
+<span class="n">ELSE</span>
+    <span class="n">IF</span> <span class="n">fLLim</span> <span class="o">&lt;=</span> <span class="n">fHLim</span> <span class="n">THEN</span>
+        <span class="n">F_Limit</span> <span class="o">:=</span> <span class="n">fLLim</span> <span class="o">&lt;</span> <span class="n">fVal</span> <span class="n">AND</span> <span class="n">fHLim</span> <span class="o">&gt;</span> <span class="n">fVal</span><span class="p">;</span>
+    <span class="n">ELSE</span>
+        <span class="n">F_Limit</span> <span class="o">:=</span> <span class="n">fLLim</span> <span class="o">&gt;</span> <span class="n">fVal</span> <span class="n">OR</span> <span class="n">fHLim</span> <span class="o">&lt;</span> <span class="n">fVal</span><span class="p">;</span>
+    <span class="n">END_IF</span>
+<span class="n">END_IF</span>
+
+<span class="n">END_FUNCTION</span>
+</pre></div>
+</div>
+</section>
 <section id="fb-2axestrans">
 <h2>FB_2AxesTrans<a class="headerlink" href="#fb-2axestrans" title="Link to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">FUNCTION_BLOCK</span> <span class="n">FB_2AxesTrans</span>
@@ -1204,8 +1295,6 @@
     <span class="n">stJack2Axis</span><span class="p">:</span> <span class="n">ST_MotionStage</span><span class="p">;</span>
     <span class="n">stJack3Axis</span><span class="p">:</span> <span class="n">ST_MotionStage</span><span class="p">;</span>
     <span class="n">bExecuteMotion</span><span class="p">:</span><span class="n">BOOL</span> <span class="p">;</span>
-    <span class="n">io_fbFFHWO</span>    <span class="p">:</span>    <span class="n">FB_HardwareFFOutput</span><span class="p">;</span>
-    <span class="n">fbArbiter</span><span class="p">:</span> <span class="n">FB_Arbiter</span><span class="p">();</span>
 <span class="n">END_VAR</span>
 <span class="n">VAR_INPUT</span>
 
@@ -1359,17 +1448,7 @@
     <span class="n">tAction</span> <span class="p">:</span> <span class="n">R_TRIG</span><span class="p">;</span>
     <span class="n">tOverrideActivated</span> <span class="p">:</span> <span class="n">R_TRIG</span><span class="p">;</span>
 
-    <span class="n">FFO</span>    <span class="p">:</span>    <span class="n">FB_FastFault</span> <span class="o">:=</span><span class="p">(</span>
-        <span class="n">i_DevName</span> <span class="o">:=</span> <span class="s1">&#39;3Jack&#39;</span><span class="p">,</span>
-        <span class="n">i_Desc</span> <span class="o">:=</span> <span class="s1">&#39;Fault occurs when center is greated than that requested&#39;</span><span class="p">,</span>
-        <span class="n">i_TypeCode</span> <span class="o">:=</span> <span class="mi">16</span><span class="c1">#1010);</span>
-
-
     <span class="n">bTest</span><span class="p">:</span> <span class="n">BOOL</span><span class="p">;</span>
-
-    <span class="n">AptArrayStatus</span> <span class="n">AT</span> <span class="o">%</span><span class="n">Q</span><span class="o">*</span> <span class="p">:</span> <span class="n">ST_PMPS_Aperture_IO</span><span class="p">;</span>
-    <span class="n">AptArrayReq</span> <span class="n">AT</span> <span class="o">%</span><span class="n">I</span><span class="o">*</span> <span class="p">:</span> <span class="n">ST_PMPS_Aperture_IO</span><span class="p">;</span>
-
 
     <span class="n">fbPower</span><span class="p">:</span> <span class="n">MC_POWER</span><span class="p">;</span>
 <span class="n">END_VAR</span>
@@ -1426,13 +1505,9 @@
     <span class="n">stJack1Axis</span><span class="o">.</span><span class="n">bHardwareEnable</span> <span class="o">:=</span> <span class="n">TRUE</span><span class="p">;</span>
     <span class="n">stJack2Axis</span><span class="o">.</span><span class="n">bHardwareEnable</span> <span class="o">:=</span> <span class="n">TRUE</span><span class="p">;</span>
     <span class="n">stJack3Axis</span><span class="o">.</span><span class="n">bHardwareEnable</span> <span class="o">:=</span> <span class="n">TRUE</span><span class="p">;</span>
-    <span class="n">stJack1Axis</span><span class="o">.</span><span class="n">bPowerSelf</span> <span class="o">:=</span><span class="n">FALSE</span><span class="p">;</span>
-    <span class="n">stJack2Axis</span><span class="o">.</span><span class="n">bPowerSelf</span> <span class="o">:=</span><span class="n">FALSE</span><span class="p">;</span>
-    <span class="n">stJack3Axis</span><span class="o">.</span><span class="n">bPowerSelf</span> <span class="o">:=</span><span class="n">FALSE</span><span class="p">;</span>
     <span class="n">stJack1Axis</span><span class="o">.</span><span class="n">nBrakeMode</span> <span class="o">:=</span> <span class="n">ENUM_StageBrakeMode</span><span class="o">.</span><span class="n">NO_BRAKE</span><span class="p">;</span>
     <span class="n">stJack2Axis</span><span class="o">.</span><span class="n">nBrakeMode</span> <span class="o">:=</span> <span class="n">ENUM_StageBrakeMode</span><span class="o">.</span><span class="n">NO_BRAKE</span><span class="p">;</span>
     <span class="n">stJack3Axis</span><span class="o">.</span><span class="n">nBrakeMode</span> <span class="o">:=</span> <span class="n">ENUM_StageBrakeMode</span><span class="o">.</span><span class="n">NO_BRAKE</span><span class="p">;</span>
-    <span class="n">FFO</span><span class="o">.</span><span class="n">i_DevName</span> <span class="o">:=</span> <span class="n">i_DevName</span><span class="p">;</span>
 <span class="n">END_IF</span>
 <span class="n">END_ACTION</span>
 
@@ -1491,7 +1566,7 @@
 
 <span class="n">ACTION</span> <span class="n">ACT_VirtualLimitSW</span><span class="p">:</span>
 <span class="o">//</span> <span class="n">Force</span> <span class="nb">set</span> <span class="n">to</span> <span class="n">false</span>
-<span class="n">stJack1Axis</span><span class="o">.</span><span class="n">bPowerSelf</span> <span class="o">:=</span> <span class="n">stJack2Axis</span><span class="o">.</span><span class="n">bPowerSelf</span> <span class="o">:=</span> <span class="n">stJack3Axis</span><span class="o">.</span><span class="n">bPowerSelf</span> <span class="o">:=</span> <span class="n">FALSE</span><span class="p">;</span>
+<span class="o">//</span><span class="n">stJack1Axis</span><span class="o">.</span><span class="n">bPowerSelf</span> <span class="o">:=</span> <span class="n">stJack2Axis</span><span class="o">.</span><span class="n">bPowerSelf</span> <span class="o">:=</span> <span class="n">stJack3Axis</span><span class="o">.</span><span class="n">bPowerSelf</span> <span class="o">:=</span> <span class="n">FALSE</span><span class="p">;</span>
 
 <span class="o">//</span> <span class="n">Set</span> <span class="n">SafetyReady</span> <span class="n">flags</span> <span class="n">manually</span>
 <span class="n">stJack1Axis</span><span class="o">.</span><span class="n">bSafetyReady</span><span class="o">:=</span> <span class="n">TRUE</span><span class="p">;</span>
@@ -2386,7 +2461,6 @@
     <span class="o">//</span> <span class="n">Stepper</span>
     <span class="n">Main</span><span class="o">.</span><span class="n">M2</span><span class="o">.</span><span class="n">nBrakeMode</span> <span class="o">:=</span> <span class="n">ENUM_StageBrakeMode</span><span class="o">.</span><span class="n">IF_MOVING</span><span class="p">;</span>
     <span class="n">Main</span><span class="o">.</span><span class="n">M2</span><span class="o">.</span><span class="n">bHardwareEnable</span> <span class="o">:=</span> <span class="n">TRUE</span><span class="p">;</span>
-    <span class="n">Main</span><span class="o">.</span><span class="n">M2</span><span class="o">.</span><span class="n">bPowerSelf</span> <span class="o">:=</span> <span class="n">FALSE</span><span class="p">;</span>
 
     <span class="n">Main</span><span class="o">.</span><span class="n">M2</span><span class="o">.</span><span class="n">nEnableMode</span> <span class="o">:=</span> <span class="n">ENUM_StageEnableMode</span><span class="o">.</span><span class="n">DURING_MOTION</span> <span class="p">;</span>
 <span class="n">END_IF</span><span class="p">;</span>
@@ -2396,27 +2470,19 @@
 <span class="n">END_PROGRAM</span>
 
 <span class="n">ACTION</span> <span class="n">ACT_Stepper</span><span class="p">:</span>
-<span class="n">fb2ThetaStepper</span><span class="p">(</span><span class="n">stMotionStage</span><span class="o">:=</span><span class="n">Main</span><span class="o">.</span><span class="n">M2</span><span class="p">);</span>
-
-<span class="n">Main</span><span class="o">.</span><span class="n">M2</span><span class="o">.</span><span class="n">bPowerSelf</span> <span class="o">:=</span> <span class="n">FALSE</span><span class="p">;</span>
-
-<span class="n">Main</span><span class="o">.</span><span class="n">M2</span><span class="o">.</span><span class="n">bAllEnable</span> <span class="o">:=</span>               <span class="n">Main</span><span class="o">.</span><span class="n">M2</span><span class="o">.</span><span class="n">bEnable</span>
-                            <span class="n">AND</span> <span class="n">GVL_EPS</span><span class="o">.</span><span class="n">bESTOP</span> <span class="o">//</span> <span class="n">ESTOP</span>
+<span class="o">//</span> <span class="n">Simplified</span> <span class="n">enabling</span> <span class="n">logic</span> <span class="n">by</span> <span class="n">removing</span> <span class="n">separate</span> <span class="n">fbPower</span> <span class="n">function</span> <span class="ow">and</span>
+<span class="o">//</span> <span class="n">making</span> <span class="n">the</span> <span class="n">estop</span> <span class="ow">and</span> <span class="n">other</span> <span class="n">permissives</span> <span class="n">drive</span> <span class="n">the</span> <span class="n">bPowerSelf</span> <span class="n">bit</span><span class="o">.</span>
+<span class="o">//</span> <span class="n">Now</span><span class="p">,</span> <span class="n">the</span> <span class="n">motor</span> <span class="n">motion</span> <span class="ow">is</span> <span class="n">handled</span> <span class="n">entirely</span> <span class="n">within</span> <span class="n">the</span> <span class="n">FB_MotionStage</span> <span class="n">block</span>
+<span class="o">//</span> <span class="n">which</span> <span class="n">makes</span> <span class="n">this</span> <span class="n">usage</span> <span class="n">more</span> <span class="n">standard</span> <span class="ow">and</span> <span class="n">easier</span> <span class="n">to</span> <span class="n">work</span> <span class="k">with</span> <span class="n">using</span> <span class="n">our</span>
+<span class="o">//</span> <span class="n">standard</span> <span class="n">typhos</span> <span class="n">widget</span><span class="o">.</span>
+<span class="n">Main</span><span class="o">.</span><span class="n">M2</span><span class="o">.</span><span class="n">bPowerSelf</span> <span class="o">:=</span>               <span class="n">GVL_EPS</span><span class="o">.</span><span class="n">bESTOP</span> <span class="o">//</span> <span class="n">ESTOP</span>
                             <span class="n">AND</span>     <span class="n">GVL_Sensor</span><span class="o">.</span><span class="n">stPS1</span><span class="o">.</span><span class="n">fValue</span> <span class="o">&gt;</span> <span class="n">fThresholdPS1</span>
                             <span class="n">AND</span> <span class="n">GVL_Sensor</span><span class="o">.</span><span class="n">stPS2</span><span class="o">.</span><span class="n">fValue</span> <span class="o">&gt;</span> <span class="n">fThresholdPS2</span>
                             <span class="n">AND</span> <span class="n">GVL_Sensor</span><span class="o">.</span><span class="n">stPS3</span><span class="o">.</span><span class="n">fValue</span> <span class="o">&gt;</span> <span class="n">fThresholdPS3</span> <span class="o">//</span> <span class="n">Compressed</span><span class="o">-</span><span class="n">air</span> <span class="n">pressure</span>
                             <span class="n">AND</span> <span class="n">GVL_EPS</span><span class="o">.</span><span class="n">bOpenSV1</span>
                             <span class="n">AND</span> <span class="n">GVL_EPS</span><span class="o">.</span><span class="n">bOpenSV2</span><span class="p">;</span>
-<span class="n">Main</span><span class="o">.</span><span class="n">M2</span><span class="o">.</span><span class="n">bAllForwardEnable</span>  <span class="o">:=</span> <span class="n">Main</span><span class="o">.</span><span class="n">M2</span><span class="o">.</span><span class="n">bLimitForwardEnable</span>  <span class="n">AND</span> <span class="n">GVL_EPS</span><span class="o">.</span><span class="n">bESTOP</span><span class="p">;</span>
-<span class="n">Main</span><span class="o">.</span><span class="n">M2</span><span class="o">.</span><span class="n">bAllBackwardEnable</span> <span class="o">:=</span> <span class="n">Main</span><span class="o">.</span><span class="n">M2</span><span class="o">.</span><span class="n">bLimitBackwardEnable</span> <span class="n">AND</span> <span class="n">GVL_EPS</span><span class="o">.</span><span class="n">bESTOP</span><span class="p">;</span>
 
-<span class="n">fbPower_AxisM2</span><span class="p">(</span>
-    <span class="n">Axis</span><span class="o">:=</span> <span class="n">Main</span><span class="o">.</span><span class="n">M2</span><span class="o">.</span><span class="n">Axis</span><span class="p">,</span>
-    <span class="n">Enable</span> <span class="o">:=</span> <span class="n">Main</span><span class="o">.</span><span class="n">M2</span><span class="o">.</span><span class="n">bAllEnable</span><span class="p">,</span>
-    <span class="n">Enable_Positive</span><span class="o">:=</span> <span class="n">Main</span><span class="o">.</span><span class="n">M2</span><span class="o">.</span><span class="n">bAllForwardEnable</span><span class="p">,</span>
-    <span class="n">Enable_Negative</span><span class="o">:=</span> <span class="n">Main</span><span class="o">.</span><span class="n">M2</span><span class="o">.</span><span class="n">bAllBackwardEnable</span><span class="p">,</span>
-    <span class="n">Override</span><span class="o">:=</span> <span class="mi">100</span>
-<span class="p">);</span>
+<span class="n">fb2ThetaStepper</span><span class="p">(</span><span class="n">stMotionStage</span><span class="o">:=</span><span class="n">Main</span><span class="o">.</span><span class="n">M2</span><span class="p">);</span>
 <span class="n">END_ACTION</span>
 </pre></div>
 </div>
@@ -2514,13 +2580,6 @@ END_PROGRAM
     <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;TcLinkTo&#39;</span> <span class="o">:=</span> <span class="s1">&#39;      .Count := TIIB[BOX-07 ENC_YF2_ZF (EL5042)]^FB Inputs Channel 1^Position&#39;</span><span class="p">}</span>
     <span class="n">stRenishawAbsEncSlave</span><span class="p">:</span> <span class="n">ST_RenishawAbsEnc</span><span class="p">;</span>
 
-    <span class="p">(</span><span class="o">*</span>
-    <span class="n">fbPower_AxisM25</span><span class="p">:</span> <span class="n">MC_POWER</span><span class="p">;</span>
-    <span class="n">fbPower_AxisM26</span><span class="p">:</span> <span class="n">MC_POWER</span><span class="p">;</span>
-    <span class="n">fbPower_AxisM27</span><span class="p">:</span> <span class="n">MC_POWER</span><span class="p">;</span>
-
-    <span class="n">tonBrakeRlease_M25</span><span class="p">,</span> <span class="n">tonBrakeRlease_M26</span><span class="p">,</span> <span class="n">tonBrakeRlease_M27</span><span class="p">:</span> <span class="n">TON</span><span class="p">;</span>
-    <span class="o">//</span> <span class="o">*</span><span class="p">)</span>
 <span class="n">END_VAR</span>
 <span class="n">IF</span> <span class="n">bInit</span> <span class="n">THEN</span>
     <span class="n">bInit</span> <span class="o">:=</span> <span class="n">FALSE</span><span class="p">;</span>
@@ -2541,8 +2600,27 @@ END_PROGRAM
     <span class="n">Main</span><span class="o">.</span><span class="n">M27</span><span class="o">.</span><span class="n">bPowerSelf</span> <span class="o">:=</span> <span class="n">TRUE</span><span class="p">;</span>
     <span class="n">Main</span><span class="o">.</span><span class="n">M27</span><span class="o">.</span><span class="n">fVelocity</span> <span class="o">:=</span> <span class="mf">0.1</span><span class="p">;</span>
 
+    <span class="o">//</span> <span class="n">M25</span> <span class="ow">and</span> <span class="n">M26</span> <span class="n">are</span> <span class="n">coupled</span> <span class="k">with</span> <span class="n">M25</span> <span class="k">as</span> <span class="n">the</span> <span class="n">leader</span><span class="o">.</span>
+    <span class="o">//</span> <span class="n">The</span> <span class="n">motors</span> <span class="n">cannot</span> <span class="n">be</span> <span class="nb">set</span> <span class="n">to</span> <span class="n">always</span> <span class="n">enabled</span><span class="p">,</span> <span class="n">because</span> <span class="n">they</span> <span class="n">have</span> <span class="n">brakes</span> <span class="n">that</span>
+    <span class="o">//</span> <span class="n">only</span> <span class="n">activate</span> <span class="n">when</span> <span class="n">the</span> <span class="n">motors</span> <span class="n">are</span> <span class="ow">not</span> <span class="n">moving</span><span class="o">.</span> <span class="n">Due</span> <span class="n">to</span> <span class="n">the</span> <span class="n">weight</span>
+    <span class="o">//</span> <span class="n">of</span> <span class="n">the</span> <span class="n">frame</span><span class="p">,</span> <span class="n">it</span> <span class="n">appears</span> <span class="n">that</span> <span class="k">if</span> <span class="n">the</span> <span class="n">brake</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">on</span><span class="p">,</span> <span class="n">the</span> <span class="n">motors</span>
+    <span class="o">//</span> <span class="n">are</span> <span class="n">moving</span> <span class="n">constantly</span> <span class="n">to</span> <span class="n">keep</span> <span class="n">the</span> <span class="n">frame</span> <span class="kn">from</span> <span class="nn">falling.</span> <span class="n">So</span> <span class="n">essentially</span><span class="p">,</span>
+    <span class="o">//</span> <span class="s2">&quot;is moving&quot;</span> <span class="ow">is</span> <span class="n">synonymous</span> <span class="k">with</span> <span class="s2">&quot;is enabled&quot;</span> <span class="k">for</span> <span class="n">these</span> <span class="n">motors</span> <span class="n">which</span>
+    <span class="o">//</span> <span class="n">results</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">brake</span> <span class="n">only</span> <span class="n">applying</span> <span class="k">if</span> <span class="n">the</span> <span class="n">motors</span> <span class="n">are</span> <span class="n">disabled</span><span class="o">.</span> <span class="n">Setting</span> <span class="n">M25</span>
+    <span class="o">//</span> <span class="n">to</span> <span class="n">only</span> <span class="n">enable</span> <span class="n">during</span> <span class="n">motion</span><span class="p">,</span> <span class="ow">and</span> <span class="n">M26</span> <span class="n">to</span> <span class="n">NEVER</span> <span class="n">means</span> <span class="n">that</span>
+    <span class="o">//</span> <span class="n">M25</span> <span class="n">will</span> <span class="n">be</span> <span class="n">enabled</span> <span class="n">when</span> <span class="n">commanded</span> <span class="n">to</span> <span class="n">move</span> <span class="kn">from</span> <span class="nn">EPICS</span> <span class="n">but</span>
+    <span class="o">//</span> <span class="k">for</span> <span class="n">M26</span> <span class="n">the</span> <span class="n">FB_MotionStage</span> <span class="n">will</span> <span class="ow">not</span> <span class="n">modify</span> <span class="n">the</span> <span class="n">bEnable</span> <span class="n">boolean</span>
+    <span class="o">//</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">state</span> <span class="n">machine</span><span class="o">.</span> <span class="n">Therefore</span><span class="p">,</span> <span class="n">we</span> <span class="n">can</span> <span class="nb">set</span> <span class="n">the</span> <span class="n">M26</span> <span class="n">bEnable</span>
+    <span class="o">//</span> <span class="n">status</span> <span class="n">based</span> <span class="n">on</span> <span class="n">the</span> <span class="n">M25</span> <span class="n">bEnable</span> <span class="n">status</span> <span class="n">after</span> <span class="n">the</span> <span class="n">M25</span> <span class="n">FB_MotionStage</span>
+    <span class="o">//</span> <span class="n">runs</span><span class="o">.</span> <span class="n">But</span> <span class="n">this</span> <span class="n">also</span> <span class="n">allows</span> <span class="n">the</span> <span class="n">brake</span> <span class="n">to</span> <span class="n">still</span> <span class="n">activate</span> <span class="n">when</span> <span class="n">M26</span> <span class="ow">is</span>
+    <span class="o">//</span> <span class="ow">not</span> <span class="n">moving</span><span class="o">.</span>
     <span class="n">Main</span><span class="o">.</span><span class="n">M25</span><span class="o">.</span><span class="n">nEnableMode</span> <span class="o">:=</span> <span class="n">ENUM_StageEnableMode</span><span class="o">.</span><span class="n">DURING_MOTION</span> <span class="p">;</span>
-    <span class="n">Main</span><span class="o">.</span><span class="n">M26</span><span class="o">.</span><span class="n">nEnableMode</span> <span class="o">:=</span> <span class="n">ENUM_StageEnableMode</span><span class="o">.</span><span class="n">DURING_MOTION</span> <span class="p">;</span>
+    <span class="o">//</span> <span class="n">M26</span> <span class="n">bEnable</span> <span class="ow">is</span> <span class="n">coupled</span> <span class="n">to</span> <span class="n">M25</span> <span class="n">bEnable</span> <span class="n">below</span><span class="o">.</span> <span class="n">Set</span> <span class="n">M26</span> <span class="n">enable</span> <span class="n">mode</span> <span class="n">to</span> <span class="n">NEVER</span>
+    <span class="o">//</span> <span class="n">so</span> <span class="n">that</span> <span class="n">the</span> <span class="n">function</span> <span class="n">block</span> <span class="n">does</span> <span class="ow">not</span> <span class="k">try</span> <span class="n">to</span> <span class="nb">set</span> <span class="n">the</span> <span class="n">bEnable</span> <span class="n">bit</span> <span class="n">unless</span>
+    <span class="o">//</span> <span class="n">it</span> <span class="n">detects</span> <span class="n">an</span> <span class="n">error</span><span class="o">.</span> <span class="n">This</span> <span class="n">allows</span> <span class="n">the</span> <span class="n">bEnable</span> <span class="n">to</span> <span class="n">be</span> <span class="nb">set</span> <span class="n">outside</span> <span class="n">of</span>
+    <span class="o">//</span> <span class="n">the</span> <span class="n">function</span> <span class="n">block</span><span class="o">.</span>
+    <span class="n">Main</span><span class="o">.</span><span class="n">M26</span><span class="o">.</span><span class="n">nEnableMode</span> <span class="o">:=</span> <span class="n">ENUM_StageEnableMode</span><span class="o">.</span><span class="n">NEVER</span> <span class="p">;</span>
+
     <span class="n">Main</span><span class="o">.</span><span class="n">M27</span><span class="o">.</span><span class="n">nEnableMode</span> <span class="o">:=</span> <span class="n">ENUM_StageEnableMode</span><span class="o">.</span><span class="n">DURING_MOTION</span> <span class="p">;</span>
 <span class="n">END_IF</span>
 
@@ -2559,56 +2637,20 @@ END_PROGRAM
                 <span class="n">bExecuteDecouple</span>    <span class="o">:=</span> <span class="n">bExecuteDecouple</span><span class="p">,</span>
 <span class="p">);</span>
 
+<span class="o">//</span> <span class="n">I</span> <span class="n">don</span><span class="s1">&#39;t think these 3 lines do anything but I am keeping for now.</span>
+<span class="o">//</span> <span class="n">The</span> <span class="n">FB_MotionStage</span> <span class="n">overwrites</span> <span class="n">the</span> <span class="n">bAllEnable</span> <span class="n">bit</span> <span class="n">internally</span><span class="o">.</span>
 <span class="n">Main</span><span class="o">.</span><span class="n">M25</span><span class="o">.</span><span class="n">bAllEnable</span> <span class="o">:=</span> <span class="n">Main</span><span class="o">.</span><span class="n">M25</span><span class="o">.</span><span class="n">bEnable</span> <span class="n">AND</span> <span class="n">GVL_EPS</span><span class="o">.</span><span class="n">bESTOP</span><span class="p">;</span>
 <span class="n">Main</span><span class="o">.</span><span class="n">M26</span><span class="o">.</span><span class="n">bAllEnable</span> <span class="o">:=</span> <span class="n">Main</span><span class="o">.</span><span class="n">M26</span><span class="o">.</span><span class="n">bEnable</span> <span class="n">AND</span> <span class="n">GVL_EPS</span><span class="o">.</span><span class="n">bESTOP</span><span class="p">;</span>
 <span class="n">Main</span><span class="o">.</span><span class="n">M27</span><span class="o">.</span><span class="n">bAllEnable</span> <span class="o">:=</span> <span class="n">Main</span><span class="o">.</span><span class="n">M27</span><span class="o">.</span><span class="n">bEnable</span> <span class="n">AND</span> <span class="n">GVL_EPS</span><span class="o">.</span><span class="n">bESTOP</span><span class="p">;</span>
 
 <span class="o">//</span> <span class="n">Call</span> <span class="n">Motion</span> <span class="n">FB</span> <span class="n">instance</span>
 <span class="n">fbMotionYF1</span><span class="p">(</span><span class="n">stMotionStage</span><span class="o">:=</span><span class="n">Main</span><span class="o">.</span><span class="n">M25</span><span class="p">);</span>
+
+<span class="o">//</span> <span class="n">Set</span> <span class="n">the</span> <span class="n">M26</span> <span class="n">bEnable</span> <span class="n">equal</span> <span class="n">to</span> <span class="n">the</span> <span class="n">M25</span> <span class="n">bEnable</span> <span class="n">status</span> <span class="n">to</span> <span class="n">couple</span> <span class="n">their</span> <span class="n">enable</span> <span class="n">bits</span> <span class="n">together</span><span class="o">.</span>
+<span class="n">Main</span><span class="o">.</span><span class="n">M26</span><span class="o">.</span><span class="n">bEnable</span> <span class="o">:=</span> <span class="n">Main</span><span class="o">.</span><span class="n">M25</span><span class="o">.</span><span class="n">bEnable</span><span class="p">;</span>
+
 <span class="n">fbMotionYF2</span><span class="p">(</span><span class="n">stMotionStage</span><span class="o">:=</span><span class="n">Main</span><span class="o">.</span><span class="n">M26</span><span class="p">);</span>
 <span class="n">fbMotionZF</span><span class="p">(</span><span class="n">stMotionStage</span><span class="o">:=</span><span class="n">Main</span><span class="o">.</span><span class="n">M27</span><span class="p">);</span>
-
-<span class="p">(</span><span class="o">*</span> <span class="n">For</span> <span class="n">test</span>
-<span class="o">//</span> <span class="n">Release</span> <span class="n">brake</span> <span class="k">if</span> <span class="n">axis</span> <span class="ow">is</span> <span class="n">enabled</span><span class="o">.</span>
-<span class="n">tonBrakeRlease_M25</span><span class="p">(</span>
-    <span class="n">IN</span><span class="o">:=</span><span class="p">(</span><span class="n">GVL_Main</span><span class="o">.</span><span class="n">M25</span><span class="o">.</span><span class="n">bEnable</span> <span class="n">OR</span> <span class="n">GVL_Main</span><span class="o">.</span><span class="n">M25</span><span class="o">.</span><span class="n">bAllEnable</span><span class="p">)</span> <span class="n">AND</span> <span class="n">NOT</span> <span class="n">GVL_Main</span><span class="o">.</span><span class="n">M25</span><span class="o">.</span><span class="n">Axis</span><span class="o">.</span><span class="n">Status</span><span class="o">.</span><span class="n">DriveDeviceError</span><span class="p">,</span>
-    <span class="n">PT</span><span class="o">:=</span><span class="n">T</span><span class="c1">#1s,</span>
-    <span class="n">Q</span><span class="o">=&gt;</span><span class="n">GVL_Main</span><span class="o">.</span><span class="n">M25</span><span class="o">.</span><span class="n">bBrakeRelease</span>
-<span class="p">);</span>
-<span class="n">tonBrakeRlease_M26</span><span class="p">(</span>
-    <span class="n">IN</span><span class="o">:=</span><span class="p">(</span><span class="n">GVL_Main</span><span class="o">.</span><span class="n">M26</span><span class="o">.</span><span class="n">bEnable</span> <span class="n">OR</span> <span class="n">GVL_Main</span><span class="o">.</span><span class="n">M26</span><span class="o">.</span><span class="n">bAllEnable</span><span class="p">)</span> <span class="n">AND</span> <span class="n">NOT</span> <span class="n">GVL_Main</span><span class="o">.</span><span class="n">M26</span><span class="o">.</span><span class="n">Axis</span><span class="o">.</span><span class="n">Status</span><span class="o">.</span><span class="n">DriveDeviceError</span><span class="p">,</span>
-    <span class="n">PT</span><span class="o">:=</span><span class="n">T</span><span class="c1">#1s,</span>
-    <span class="n">Q</span><span class="o">=&gt;</span><span class="n">GVL_Main</span><span class="o">.</span><span class="n">M26</span><span class="o">.</span><span class="n">bBrakeRelease</span>
-<span class="p">);</span>
-<span class="n">tonBrakeRlease_M27</span><span class="p">(</span>
-    <span class="n">IN</span><span class="o">:=</span><span class="p">(</span><span class="n">GVL_Main</span><span class="o">.</span><span class="n">M27</span><span class="o">.</span><span class="n">bEnable</span> <span class="n">OR</span> <span class="n">GVL_Main</span><span class="o">.</span><span class="n">M27</span><span class="o">.</span><span class="n">bAllEnable</span><span class="p">)</span> <span class="n">AND</span> <span class="n">NOT</span> <span class="n">GVL_Main</span><span class="o">.</span><span class="n">M27</span><span class="o">.</span><span class="n">Axis</span><span class="o">.</span><span class="n">Status</span><span class="o">.</span><span class="n">DriveDeviceError</span><span class="p">,</span>
-    <span class="n">PT</span><span class="o">:=</span><span class="n">T</span><span class="c1">#1s,</span>
-    <span class="n">Q</span><span class="o">=&gt;</span><span class="n">GVL_Main</span><span class="o">.</span><span class="n">M27</span><span class="o">.</span><span class="n">bBrakeRelease</span>
-<span class="p">);</span>
-<span class="n">fbPower_AxisM25</span><span class="p">(</span>
-    <span class="n">Axis</span> <span class="o">:=</span> <span class="n">GVL_Main</span><span class="o">.</span><span class="n">M25</span><span class="o">.</span><span class="n">Axis</span><span class="p">,</span>
-    <span class="n">Enable</span> <span class="o">:=</span> <span class="n">GVL_Main</span><span class="o">.</span><span class="n">M25</span><span class="o">.</span><span class="n">bEnable</span> <span class="n">AND</span> <span class="n">GVL_Main</span><span class="o">.</span><span class="n">bESTOP</span><span class="p">,</span>
-    <span class="n">Enable_Positive</span> <span class="o">:=</span> <span class="n">GVL_Main</span><span class="o">.</span><span class="n">M25</span><span class="o">.</span><span class="n">bLimitForwardEnable</span> <span class="n">AND</span> <span class="n">PLimFwd</span><span class="p">,</span>
-    <span class="n">Enable_Negative</span> <span class="o">:=</span> <span class="n">GVL_Main</span><span class="o">.</span><span class="n">M25</span><span class="o">.</span><span class="n">bLimitBackwardEnable</span> <span class="n">AND</span> <span class="n">PLimBwd</span><span class="p">,</span>
-    <span class="n">Override</span> <span class="o">:=</span> <span class="mf">100.000</span><span class="p">,</span>
-<span class="p">);</span>
-<span class="n">fbPower_AxisM26</span><span class="p">(</span>
-    <span class="n">Axis</span> <span class="o">:=</span> <span class="n">GVL_Main</span><span class="o">.</span><span class="n">M26</span><span class="o">.</span><span class="n">Axis</span><span class="p">,</span>
-    <span class="n">Enable</span> <span class="o">:=</span> <span class="n">GVL_Main</span><span class="o">.</span><span class="n">M26</span><span class="o">.</span><span class="n">bEnable</span> <span class="n">AND</span> <span class="n">GVL_Main</span><span class="o">.</span><span class="n">bESTOP</span><span class="p">,</span>
-    <span class="n">Enable_Positive</span> <span class="o">:=</span> <span class="n">GVL_Main</span><span class="o">.</span><span class="n">M26</span><span class="o">.</span><span class="n">bLimitForwardEnable</span> <span class="n">AND</span> <span class="n">SLimFwd</span><span class="p">,</span>
-    <span class="n">Enable_Negative</span> <span class="o">:=</span> <span class="n">GVL_Main</span><span class="o">.</span><span class="n">M26</span><span class="o">.</span><span class="n">bLimitBackwardEnable</span> <span class="n">AND</span> <span class="n">SLimBwd</span><span class="p">,</span>
-    <span class="n">Override</span> <span class="o">:=</span> <span class="mf">100.000</span><span class="p">,</span>
-<span class="p">);</span>
-<span class="n">fbPower_AxisM27</span><span class="p">(</span>
-    <span class="n">Axis</span> <span class="o">:=</span> <span class="n">GVL_Main</span><span class="o">.</span><span class="n">M27</span><span class="o">.</span><span class="n">Axis</span><span class="p">,</span>
-    <span class="n">Enable</span> <span class="o">:=</span> <span class="n">GVL_Main</span><span class="o">.</span><span class="n">M27</span><span class="o">.</span><span class="n">bEnable</span> <span class="n">AND</span> <span class="n">GVL_Main</span><span class="o">.</span><span class="n">bESTOP</span><span class="p">,</span>
-    <span class="n">Enable_Positive</span> <span class="o">:=</span> <span class="n">GVL_Main</span><span class="o">.</span><span class="n">M27</span><span class="o">.</span><span class="n">bLimitForwardEnable</span><span class="p">,</span>
-    <span class="n">Enable_Negative</span> <span class="o">:=</span> <span class="n">GVL_Main</span><span class="o">.</span><span class="n">M27</span><span class="o">.</span><span class="n">bLimitBackwardEnable</span><span class="p">,</span>
-    <span class="n">Override</span> <span class="o">:=</span> <span class="mf">100.000</span><span class="p">,</span>
-<span class="p">);</span>
-
-
-<span class="o">//</span> <span class="o">*</span><span class="p">)</span>
 
 <span class="n">END_PROGRAM</span>
 </pre></div>
@@ -2630,24 +2672,19 @@ END_PROGRAM
     <span class="n">fbMotionRyDC</span><span class="p">:</span> <span class="n">FB_MotionStage</span><span class="p">;</span>
     <span class="n">fbMotionZDC</span><span class="p">:</span> <span class="n">FB_MotionStage</span><span class="p">;</span>
 <span class="n">END_VAR</span>
-<span class="o">//</span><span class="n">Lock</span> <span class="n">stages</span> <span class="n">until</span> <span class="n">they</span> <span class="n">are</span> <span class="n">tested</span>
-<span class="n">Main</span><span class="o">.</span><span class="n">M22</span><span class="o">.</span><span class="n">nEnableMode</span> <span class="o">:=</span> <span class="n">ENUM_StageEnableMode</span><span class="o">.</span><span class="n">NEVER</span> <span class="p">;</span>
-<span class="n">Main</span><span class="o">.</span><span class="n">M23</span><span class="o">.</span><span class="n">nEnableMode</span> <span class="o">:=</span> <span class="n">ENUM_StageEnableMode</span><span class="o">.</span><span class="n">NEVER</span> <span class="p">;</span>
-<span class="n">Main</span><span class="o">.</span><span class="n">M24</span><span class="o">.</span><span class="n">nEnableMode</span> <span class="o">:=</span> <span class="n">ENUM_StageEnableMode</span><span class="o">.</span><span class="n">NEVER</span> <span class="p">;</span>
-
-
-
 <span class="o">//</span> <span class="n">Det</span><span class="o">.</span> <span class="n">Chmber</span>
 <span class="n">IF</span> <span class="n">bInit</span> <span class="n">THEN</span>
     <span class="n">bInit</span> <span class="o">:=</span><span class="n">FALSE</span><span class="p">;</span>
     <span class="n">Main</span><span class="o">.</span><span class="n">M22</span><span class="o">.</span><span class="n">bHardwareEnable</span><span class="o">:=</span> <span class="n">TRUE</span><span class="p">;</span>
     <span class="n">Main</span><span class="o">.</span><span class="n">M22</span><span class="o">.</span><span class="n">bPowerSelf</span><span class="o">:=</span> <span class="n">TRUE</span><span class="p">;</span>
     <span class="n">Main</span><span class="o">.</span><span class="n">M22</span><span class="o">.</span><span class="n">nBrakeMode</span><span class="o">:=</span> <span class="n">ENUM_StageBrakeMode</span><span class="o">.</span><span class="n">NO_BRAKE</span><span class="p">;</span>
+    <span class="n">Main</span><span class="o">.</span><span class="n">M22</span><span class="o">.</span><span class="n">nEnableMode</span> <span class="o">:=</span> <span class="n">ENUM_StageEnableMode</span><span class="o">.</span><span class="n">DURING_MOTION</span> <span class="p">;</span>
     <span class="n">Main</span><span class="o">.</span><span class="n">M22</span><span class="o">.</span><span class="n">fVelocity</span> <span class="o">:=</span> <span class="mf">0.1</span><span class="p">;</span>
 
     <span class="n">Main</span><span class="o">.</span><span class="n">M23</span><span class="o">.</span><span class="n">bHardwareEnable</span><span class="o">:=</span> <span class="n">TRUE</span><span class="p">;</span>
     <span class="n">Main</span><span class="o">.</span><span class="n">M23</span><span class="o">.</span><span class="n">bPowerSelf</span><span class="o">:=</span> <span class="n">TRUE</span><span class="p">;</span>
     <span class="n">Main</span><span class="o">.</span><span class="n">M23</span><span class="o">.</span><span class="n">nBrakeMode</span><span class="o">:=</span> <span class="n">ENUM_StageBrakeMode</span><span class="o">.</span><span class="n">NO_BRAKE</span><span class="p">;</span>
+    <span class="n">Main</span><span class="o">.</span><span class="n">M23</span><span class="o">.</span><span class="n">nEnableMode</span> <span class="o">:=</span> <span class="n">ENUM_StageEnableMode</span><span class="o">.</span><span class="n">DURING_MOTION</span> <span class="p">;</span>
     <span class="n">Main</span><span class="o">.</span><span class="n">M23</span><span class="o">.</span><span class="n">fVelocity</span> <span class="o">:=</span> <span class="mf">0.1</span><span class="p">;</span>
 
     <span class="n">Main</span><span class="o">.</span><span class="n">M24</span><span class="o">.</span><span class="n">bHardwareEnable</span><span class="o">:=</span> <span class="n">TRUE</span><span class="p">;</span>
@@ -2677,16 +2714,32 @@ END_PROGRAM
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PROGRAM</span> <span class="n">PRG_DET_FRAME</span>
 <span class="n">VAR</span>
     <span class="n">bInit</span><span class="p">:</span> <span class="n">BOOL</span> <span class="o">:=</span> <span class="n">TRUE</span><span class="p">;</span>
-    <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;pytmc&#39;</span> <span class="o">:=</span> <span class="s1">&#39;pv: QRIX:SA:bError&#39;</span><span class="p">}</span>
+    <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;pytmc&#39;</span> <span class="o">:=</span> <span class="s1">&#39;</span>
+        <span class="n">pv</span><span class="p">:</span> <span class="n">QRIX</span><span class="p">:</span><span class="n">SA</span><span class="p">:</span><span class="n">bError</span>
+        <span class="n">io</span><span class="p">:</span> <span class="n">i</span>
+    <span class="s1">&#39;}</span>
     <span class="n">bError</span><span class="p">:</span> <span class="n">BOOL</span> <span class="o">:=</span> <span class="n">FALSE</span><span class="p">;</span>
+    <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;pytmc&#39;</span> <span class="o">:=</span> <span class="s1">&#39;</span>
+        <span class="n">pv</span><span class="p">:</span> <span class="n">QRIX</span><span class="p">:</span><span class="n">SA</span><span class="p">:</span><span class="n">bBusy</span>
+        <span class="n">io</span><span class="p">:</span> <span class="n">i</span>
+    <span class="s1">&#39;}</span>
     <span class="n">bBusy</span><span class="p">:</span> <span class="n">BOOL</span><span class="p">;</span>
     <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;pytmc&#39;</span> <span class="o">:=</span> <span class="s1">&#39;pv: QRIX:SA:bResetError&#39;</span><span class="p">}</span>
     <span class="n">bResetError</span><span class="p">:</span> <span class="n">BOOL</span> <span class="o">:=</span> <span class="n">FALSE</span><span class="p">;</span>
+    <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;pytmc&#39;</span> <span class="o">:=</span> <span class="s1">&#39;</span>
+        <span class="n">pv</span><span class="p">:</span> <span class="n">QRIX</span><span class="p">:</span><span class="n">SA</span><span class="p">:</span><span class="n">bEnableMotion</span>
+        <span class="n">io</span><span class="p">:</span> <span class="n">i</span>
+    <span class="s1">&#39;}</span>
     <span class="n">bEnableMotion</span> <span class="p">:</span> <span class="n">BOOL</span><span class="p">;</span>
-    <span class="n">bEnableMotion_M15</span> <span class="p">:</span> <span class="n">BOOL</span><span class="p">;</span>
-    <span class="n">bEnableMotion_M16</span> <span class="p">:</span> <span class="n">BOOL</span><span class="p">;</span>
-    <span class="n">bEnableMotion_M17</span> <span class="p">:</span> <span class="n">BOOL</span><span class="p">;</span>
+    <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;pytmc&#39;</span> <span class="o">:=</span> <span class="s1">&#39;</span>
+        <span class="n">pv</span><span class="p">:</span> <span class="n">QRIX</span><span class="p">:</span><span class="n">SA</span><span class="p">:</span><span class="n">bEnableSetGaugeValue</span>
+        <span class="n">io</span><span class="p">:</span> <span class="n">i</span>
+    <span class="s1">&#39;}</span>
     <span class="n">bEnableSetGaugeValue</span><span class="p">:</span> <span class="n">BOOL</span><span class="p">;</span>
+    <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;pytmc&#39;</span> <span class="o">:=</span> <span class="s1">&#39;</span>
+        <span class="n">pv</span><span class="p">:</span> <span class="n">QRIX</span><span class="p">:</span><span class="n">SA</span><span class="p">:</span><span class="n">bEnableMoveRelative</span>
+        <span class="n">io</span><span class="p">:</span> <span class="n">i</span>
+    <span class="s1">&#39;}</span>
     <span class="n">bEnableMoveRelative</span><span class="p">:</span> <span class="n">BOOL</span><span class="p">;</span>
     <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;pytmc&#39;</span> <span class="o">:=</span> <span class="s1">&#39;pv: QRIX:SA:EnableJackOff&#39;</span><span class="p">}</span>
     <span class="n">bEnableJackOff</span><span class="p">:</span> <span class="n">BOOL</span><span class="p">;</span>
@@ -2700,7 +2753,6 @@ END_PROGRAM
     <span class="n">bEnableAdjustingPitch</span><span class="p">:</span> <span class="n">BOOL</span><span class="p">;</span>
     <span class="p">{</span><span class="n">attribute</span> <span class="s1">&#39;pytmc&#39;</span> <span class="o">:=</span> <span class="s1">&#39;pv: QRIX:DF:EnableAdjustingHeight&#39;</span><span class="p">}</span>
     <span class="n">bEnableAdjustingHeight</span><span class="p">:</span> <span class="n">BOOL</span><span class="p">;</span>
-
 
     <span class="n">bDone_M15</span><span class="p">,</span> <span class="n">bDone_M16</span><span class="p">,</span> <span class="n">bDone_M17</span><span class="p">:</span> <span class="n">BOOL</span><span class="p">;</span>
 
@@ -2736,34 +2788,24 @@ END_PROGRAM
     <span class="n">fbMoveRelative_M15</span><span class="p">:</span> <span class="n">MC_MoveRelative</span><span class="p">;</span>
     <span class="n">fbMoveRelative_M16</span><span class="p">:</span> <span class="n">MC_MoveRelative</span><span class="p">;</span>
     <span class="n">fbMoveRelative_M17</span><span class="p">:</span> <span class="n">MC_MoveRelative</span><span class="p">;</span>
+
+    <span class="n">fbReset_M15</span><span class="p">:</span> <span class="n">MC_Reset</span><span class="p">;</span>
+    <span class="n">fbReset_M16</span><span class="p">:</span> <span class="n">MC_Reset</span><span class="p">;</span>
+    <span class="n">fbReset_M17</span><span class="p">:</span> <span class="n">MC_Reset</span><span class="p">;</span>
 <span class="n">END_VAR</span>
 <span class="n">IF</span> <span class="n">bInit</span> <span class="n">THEN</span>
     <span class="n">bInit</span> <span class="o">:=</span> <span class="n">FALSE</span><span class="p">;</span>
-
-
-    <span class="n">Main</span><span class="o">.</span><span class="n">M15</span><span class="o">.</span><span class="n">nBrakeMode</span> <span class="o">:=</span> <span class="n">ENUM_StageBrakeMode</span><span class="o">.</span><span class="n">NO_BRAKE</span><span class="p">;</span>
-    <span class="n">Main</span><span class="o">.</span><span class="n">M15</span><span class="o">.</span><span class="n">bHardwareEnable</span> <span class="o">:=</span> <span class="n">TRUE</span><span class="p">;</span>
-    <span class="n">Main</span><span class="o">.</span><span class="n">M15</span><span class="o">.</span><span class="n">bPowerSelf</span> <span class="o">:=</span> <span class="n">TRUE</span><span class="p">;</span>
-    <span class="n">Main</span><span class="o">.</span><span class="n">M15</span><span class="o">.</span><span class="n">fVelocity</span> <span class="o">:=</span> <span class="mf">0.1</span><span class="p">;</span>
-
-    <span class="n">Main</span><span class="o">.</span><span class="n">M16</span><span class="o">.</span><span class="n">nBrakeMode</span> <span class="o">:=</span> <span class="n">ENUM_StageBrakeMode</span><span class="o">.</span><span class="n">NO_BRAKE</span><span class="p">;</span>
-    <span class="n">Main</span><span class="o">.</span><span class="n">M16</span><span class="o">.</span><span class="n">bHardwareEnable</span> <span class="o">:=</span> <span class="n">TRUE</span><span class="p">;</span>
-    <span class="n">Main</span><span class="o">.</span><span class="n">M16</span><span class="o">.</span><span class="n">bPowerSelf</span> <span class="o">:=</span> <span class="n">TRUE</span><span class="p">;</span>
-    <span class="n">Main</span><span class="o">.</span><span class="n">M16</span><span class="o">.</span><span class="n">fVelocity</span> <span class="o">:=</span> <span class="mf">0.1</span><span class="p">;</span>
-
-    <span class="n">Main</span><span class="o">.</span><span class="n">M17</span><span class="o">.</span><span class="n">nBrakeMode</span> <span class="o">:=</span> <span class="n">ENUM_StageBrakeMode</span><span class="o">.</span><span class="n">NO_BRAKE</span><span class="p">;</span>
-    <span class="n">Main</span><span class="o">.</span><span class="n">M17</span><span class="o">.</span><span class="n">bHardwareEnable</span> <span class="o">:=</span> <span class="n">TRUE</span><span class="p">;</span>
-    <span class="n">Main</span><span class="o">.</span><span class="n">M17</span><span class="o">.</span><span class="n">bPowerSelf</span> <span class="o">:=</span> <span class="n">TRUE</span><span class="p">;</span>
-    <span class="n">Main</span><span class="o">.</span><span class="n">M17</span><span class="o">.</span><span class="n">fVelocity</span> <span class="o">:=</span> <span class="mf">0.1</span><span class="p">;</span>
-
-    <span class="n">Main</span><span class="o">.</span><span class="n">M15</span><span class="o">.</span><span class="n">nEnableMode</span> <span class="o">:=</span> <span class="n">ENUM_StageEnableMode</span><span class="o">.</span><span class="n">DURING_MOTION</span> <span class="p">;</span>
-    <span class="n">Main</span><span class="o">.</span><span class="n">M16</span><span class="o">.</span><span class="n">nEnableMode</span> <span class="o">:=</span> <span class="n">ENUM_StageEnableMode</span><span class="o">.</span><span class="n">DURING_MOTION</span> <span class="p">;</span>
-    <span class="n">Main</span><span class="o">.</span><span class="n">M17</span><span class="o">.</span><span class="n">nEnableMode</span> <span class="o">:=</span> <span class="n">ENUM_StageEnableMode</span><span class="o">.</span><span class="n">DURING_MOTION</span> <span class="p">;</span>
 
     <span class="o">//</span> <span class="n">Read</span> <span class="n">linear</span> <span class="n">gauge</span> <span class="n">value</span>
     <span class="n">bEnableSetGaugeValue</span> <span class="o">:=</span> <span class="n">TRUE</span><span class="p">;</span>
 <span class="n">END_IF</span>
 
+<span class="o">//</span><span class="n">Main</span><span class="o">.</span><span class="n">M15</span><span class="o">.</span><span class="n">bEnable</span> <span class="o">:=</span> <span class="n">bEnableJackOff</span> <span class="n">OR</span> <span class="n">bEnableLevitation</span> <span class="n">OR</span> <span class="n">bEnableLanding</span> <span class="n">OR</span>
+<span class="o">//</span>    <span class="n">bEnableAdjustingRoll</span> <span class="n">OR</span> <span class="n">bEnableAdjustingPitch</span> <span class="n">OR</span> <span class="n">bEnableAdjustingHeight</span>
+<span class="o">//</span>    <span class="n">OR</span> <span class="n">bEnableMoveRelative</span> <span class="n">OR</span> <span class="n">bEnableMotion</span><span class="p">;</span>
+<span class="n">Main</span><span class="o">.</span><span class="n">M15</span><span class="o">.</span><span class="n">bEnable</span> <span class="o">:=</span> <span class="n">TRUE</span><span class="p">;</span>
+<span class="n">Main</span><span class="o">.</span><span class="n">M16</span><span class="o">.</span><span class="n">bEnable</span> <span class="o">:=</span> <span class="n">Main</span><span class="o">.</span><span class="n">M15</span><span class="o">.</span><span class="n">bEnable</span><span class="p">;</span>
+<span class="n">Main</span><span class="o">.</span><span class="n">M17</span><span class="o">.</span><span class="n">bEnable</span> <span class="o">:=</span> <span class="n">Main</span><span class="o">.</span><span class="n">M16</span><span class="o">.</span><span class="n">bEnable</span><span class="p">;</span>
 
 <span class="o">//</span> <span class="n">Read</span> <span class="n">axis</span> <span class="n">status</span>
 <span class="n">Main</span><span class="o">.</span><span class="n">M15</span><span class="o">.</span><span class="n">Axis</span><span class="o">.</span><span class="n">ReadStatus</span><span class="p">();</span>
@@ -3212,9 +3254,6 @@ END_PROGRAM
     <span class="n">bError</span><span class="o">:=</span> <span class="n">FALSE</span><span class="p">;</span>
     <span class="n">bBusy</span><span class="o">:=</span><span class="n">FALSE</span><span class="p">;</span>
     <span class="n">bEnableMotion</span> <span class="o">:=</span> <span class="n">FALSE</span><span class="p">;</span>
-    <span class="n">bEnableMotion_M15</span> <span class="o">:=</span> <span class="n">FALSE</span><span class="p">;</span>
-    <span class="n">bEnableMotion_M16</span> <span class="o">:=</span> <span class="n">FALSE</span><span class="p">;</span>
-    <span class="n">bEnableMotion_M17</span> <span class="o">:=</span> <span class="n">FALSE</span><span class="p">;</span>
     <span class="n">bEnableSetGaugeValue</span> <span class="o">:=</span> <span class="n">FALSE</span><span class="p">;</span>
     <span class="n">bEnableMoveRelative</span> <span class="o">:=</span> <span class="n">FALSE</span><span class="p">;</span>
     <span class="n">bEnableJackOff</span> <span class="o">:=</span> <span class="n">FALSE</span><span class="p">;</span>
@@ -3223,6 +3262,32 @@ END_PROGRAM
     <span class="n">bEnableAdjustingRoll</span> <span class="o">:=</span> <span class="n">FALSE</span><span class="p">;</span>
     <span class="n">bEnableAdjustingPitch</span> <span class="o">:=</span> <span class="n">FALSE</span><span class="p">;</span>
     <span class="n">bEnableAdjustingHeight</span> <span class="o">:=</span> <span class="n">FALSE</span><span class="p">;</span>
+
+    <span class="n">Main</span><span class="o">.</span><span class="n">M2</span><span class="o">.</span><span class="n">bReset</span> <span class="o">:=</span> <span class="n">TRUE</span><span class="p">;</span>
+    <span class="n">Main</span><span class="o">.</span><span class="n">M2</span><span class="o">.</span><span class="n">bError</span> <span class="o">:=</span> <span class="n">FALSE</span><span class="p">;</span>
+
+    <span class="p">(</span><span class="o">*</span><span class="n">Reset</span><span class="o">*</span><span class="p">)</span>
+    <span class="n">fbReset_M15</span><span class="p">(</span>
+        <span class="n">Execute</span><span class="o">:=</span><span class="n">Main</span><span class="o">.</span><span class="n">M15</span><span class="o">.</span><span class="n">Axis</span><span class="o">.</span><span class="n">Status</span><span class="o">.</span><span class="n">Error</span><span class="p">,</span>
+        <span class="n">Axis</span><span class="o">:=</span><span class="n">Main</span><span class="o">.</span><span class="n">M15</span><span class="o">.</span><span class="n">Axis</span><span class="p">,</span>
+        <span class="n">Done</span><span class="o">=&gt;</span> <span class="p">,</span>
+        <span class="n">Busy</span><span class="o">=&gt;</span> <span class="p">,</span>
+        <span class="n">Error</span><span class="o">=&gt;</span> <span class="p">,</span>
+        <span class="n">ErrorID</span><span class="o">=&gt;</span> <span class="p">);</span>
+    <span class="n">fbReset_M16</span><span class="p">(</span>
+        <span class="n">Execute</span><span class="o">:=</span><span class="n">Main</span><span class="o">.</span><span class="n">M16</span><span class="o">.</span><span class="n">Axis</span><span class="o">.</span><span class="n">Status</span><span class="o">.</span><span class="n">Error</span><span class="p">,</span>
+        <span class="n">Axis</span><span class="o">:=</span><span class="n">Main</span><span class="o">.</span><span class="n">M16</span><span class="o">.</span><span class="n">Axis</span><span class="p">,</span>
+        <span class="n">Done</span><span class="o">=&gt;</span> <span class="p">,</span>
+        <span class="n">Busy</span><span class="o">=&gt;</span> <span class="p">,</span>
+        <span class="n">Error</span><span class="o">=&gt;</span> <span class="p">,</span>
+        <span class="n">ErrorID</span><span class="o">=&gt;</span> <span class="p">);</span>
+    <span class="n">fbReset_M17</span><span class="p">(</span>
+        <span class="n">Execute</span><span class="o">:=</span><span class="n">Main</span><span class="o">.</span><span class="n">M17</span><span class="o">.</span><span class="n">Axis</span><span class="o">.</span><span class="n">Status</span><span class="o">.</span><span class="n">Error</span><span class="p">,</span>
+        <span class="n">Axis</span><span class="o">:=</span><span class="n">Main</span><span class="o">.</span><span class="n">M17</span><span class="o">.</span><span class="n">Axis</span><span class="p">,</span>
+        <span class="n">Done</span><span class="o">=&gt;</span> <span class="p">,</span>
+        <span class="n">Busy</span><span class="o">=&gt;</span> <span class="p">,</span>
+        <span class="n">Error</span><span class="o">=&gt;</span> <span class="p">,</span>
+        <span class="n">ErrorID</span><span class="o">=&gt;</span> <span class="p">);</span>
 
     <span class="n">bDone_M15</span> <span class="o">:=</span> <span class="n">bDone_M16</span> <span class="o">:=</span> <span class="n">bDone_M17</span> <span class="o">:=</span> <span class="n">FALSE</span><span class="p">;</span>
 
@@ -3376,24 +3441,17 @@ END_PROGRAM
     <span class="n">bInit</span> <span class="p">:</span> <span class="n">BOOl</span> <span class="o">:=</span> <span class="n">TRUE</span><span class="p">;</span>
 
     <span class="o">//</span><span class="n">EPS</span>
-    <span class="n">stEPS_Diff_Z</span> <span class="p">:</span> <span class="n">DUT_EPS</span><span class="p">;</span>
     <span class="n">EPS_Diff_Z</span> <span class="p">:</span> <span class="n">FB_EPS</span><span class="p">;</span>
 
-    <span class="n">stEPS_Diff_Chi</span> <span class="p">:</span> <span class="n">DUT_EPS</span><span class="p">;</span>
     <span class="n">EPS_Diff_Chi</span> <span class="p">:</span> <span class="n">FB_EPS</span><span class="p">;</span>
 
-    <span class="n">stEPS_Diff_Phi</span> <span class="p">:</span> <span class="n">DUT_EPS</span><span class="p">;</span>
     <span class="n">EPS_Diff_Phi</span> <span class="p">:</span> <span class="n">FB_EPS</span><span class="p">;</span>
 
-    <span class="n">stEPS_Diff_Theta</span> <span class="p">:</span> <span class="n">DUT_EPS</span><span class="p">;</span>
     <span class="n">EPS_Diff_Theta</span> <span class="p">:</span> <span class="n">FB_EPS</span><span class="p">;</span>
 
-    <span class="n">stEPS_Diff_2Theta</span> <span class="p">:</span> <span class="n">DUT_EPS</span><span class="p">;</span>
     <span class="n">EPS_Diff_2Theta</span> <span class="p">:</span> <span class="n">FB_EPS</span><span class="p">;</span>
 
-    <span class="n">stEPS_Diff_2ThetaY</span> <span class="p">:</span> <span class="n">DUT_EPS</span><span class="p">;</span>
     <span class="n">EPS_Diff_2ThetaY</span> <span class="p">:</span> <span class="n">FB_EPS</span><span class="p">;</span>
-
 
     <span class="o">//</span><span class="n">Encoders</span> <span class="k">for</span> <span class="n">rotary</span> <span class="n">stages</span>
     <span class="n">fbSetPosition</span><span class="p">:</span> <span class="n">MC_SetPosition</span><span class="p">;</span>
@@ -3464,33 +3522,34 @@ END_PROGRAM
 
 <span class="o">//</span><span class="n">EPS</span>
 <span class="p">(</span><span class="o">*</span>
-<span class="n">EPS_Diff_Z</span><span class="o">.</span><span class="n">setDescription</span><span class="p">(</span><span class="s1">&#39;Less20mm;LAS_D_H&#39;</span><span class="p">);</span> <span class="o">//</span> <span class="n">SET</span> <span class="n">DESCRITION</span> <span class="n">FOR</span> <span class="n">BYTE</span> <span class="n">INDICATOR</span> <span class="n">LABELS</span>
-<span class="n">EPS_Diff_Z</span><span class="o">.</span><span class="n">setBit</span><span class="p">(</span><span class="n">nBits</span><span class="o">:=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">bValue</span><span class="o">:=</span><span class="n">fb_Diff_Z</span><span class="o">.</span><span class="n">stMotionStage</span><span class="o">.</span><span class="n">fPosition</span><span class="o">&gt;=-</span><span class="mi">20</span><span class="p">);</span>
-<span class="n">EPS_Diff_Z</span><span class="o">.</span><span class="n">setBit</span><span class="p">(</span><span class="n">nBits</span><span class="o">:=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">bValue</span><span class="o">:=</span><span class="n">PRG_LAS</span><span class="o">.</span><span class="n">fb_LAS_D_H</span><span class="o">.</span><span class="n">stMotionStage</span><span class="o">.</span><span class="n">fPosition</span><span class="o">&gt;=</span><span class="mi">50</span> <span class="n">OR</span> <span class="n">PRG_Diffractometer</span><span class="o">.</span><span class="n">fb_Diff_Z</span><span class="o">.</span><span class="n">stMotionStage</span><span class="o">.</span><span class="n">fPosition</span><span class="o">&gt;=-</span><span class="mi">20</span><span class="p">);</span>
-<span class="n">EPS_Diff_Z</span><span class="p">(</span><span class="n">eps</span><span class="o">:=</span><span class="n">stEPS_Diff_Z</span><span class="p">);</span>
-<span class="n">fb_Diff_Z</span><span class="o">.</span><span class="n">stMotionStage</span><span class="o">.</span><span class="n">stEPSBackwardEnable</span> <span class="o">:=</span> <span class="n">stEPS_Diff_Z</span><span class="p">;</span>
+<span class="o">//</span> <span class="n">All</span> <span class="n">bits</span> <span class="n">must</span> <span class="n">be</span> <span class="n">TRUE</span> <span class="n">to</span> <span class="n">enable</span> <span class="n">the</span> <span class="n">specifiied</span> <span class="n">direction</span> <span class="p">(</span><span class="n">backward</span> <span class="ow">or</span> <span class="n">forwards</span><span class="p">)</span>
+<span class="o">//</span> <span class="n">The</span> <span class="n">bits</span> <span class="n">are</span> <span class="n">populated</span> <span class="n">right</span> <span class="n">to</span> <span class="n">left</span> <span class="ow">in</span> <span class="n">typhos</span> <span class="n">screen</span><span class="o">.</span> <span class="n">So</span> <span class="n">Descriptions</span> <span class="n">highest</span> <span class="n">bit</span> <span class="n">number</span> <span class="ow">is</span> <span class="n">at</span> <span class="n">the</span> <span class="n">beginning</span> <span class="n">of</span> <span class="n">the</span> <span class="n">description</span><span class="o">.</span>
+<span class="n">EPS_Diff_Theta</span><span class="p">(</span><span class="n">eps</span><span class="o">:=</span><span class="n">Main</span><span class="o">.</span><span class="n">M34</span><span class="o">.</span><span class="n">stEPSBackwardEnable</span><span class="p">);</span>
+<span class="n">EPS_Diff_Theta</span><span class="o">.</span><span class="n">setDescription</span><span class="p">(</span><span class="s1">&#39;CHI;MIDIR;PHI&#39;</span><span class="p">);</span> <span class="o">//</span> <span class="n">SET</span> <span class="n">DESCRIPTION</span> <span class="n">FOR</span> <span class="n">BYTE</span> <span class="n">INDICATOR</span> <span class="n">LABELS</span>
+<span class="o">//</span> <span class="n">Diffractometer</span> <span class="n">Theta</span> <span class="n">cannot</span> <span class="n">go</span> <span class="n">less</span> <span class="n">than</span> <span class="mi">5</span> <span class="n">degrees</span> <span class="k">if</span> <span class="n">the</span> <span class="n">Diffractometer</span> <span class="n">Chi</span> <span class="ow">is</span> <span class="n">less</span> <span class="n">than</span> <span class="o">-</span><span class="mi">5</span> <span class="n">degrees</span>
+<span class="n">EPS_Diff_Theta</span><span class="o">.</span><span class="n">setBit</span><span class="p">(</span><span class="n">nBits</span><span class="o">:=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">bValue</span><span class="o">:=</span><span class="n">Main</span><span class="o">.</span><span class="n">M34</span><span class="o">.</span><span class="n">fPosition</span><span class="o">&gt;=</span><span class="mi">5</span> <span class="n">OR</span> <span class="n">Main</span><span class="o">.</span><span class="n">M33</span><span class="o">.</span><span class="n">fPosition</span><span class="o">&gt;=-</span><span class="mi">5</span><span class="p">);</span>
+<span class="o">//</span> <span class="n">Diffractometer</span> <span class="n">Theta</span> <span class="n">cannot</span> <span class="n">go</span> <span class="n">less</span> <span class="n">than</span> <span class="mi">10</span> <span class="n">degrees</span> <span class="k">if</span> <span class="n">the</span> <span class="n">MID</span> <span class="n">IR</span> <span class="p">(</span><span class="n">LAS</span> <span class="n">VIS</span><span class="p">)</span> <span class="ow">is</span> <span class="n">IN</span><span class="p">,</span> <span class="n">which</span> <span class="ow">is</span> <span class="n">defined</span> <span class="k">as</span> <span class="n">a</span> <span class="n">position</span> <span class="n">of</span> <span class="mi">90</span> <span class="o">+/-</span> <span class="mf">1.</span>
+<span class="n">EPS_Diff_Theta</span><span class="o">.</span><span class="n">setBit</span><span class="p">(</span><span class="n">nBits</span><span class="o">:=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">bValue</span><span class="o">:=</span> <span class="n">Main</span><span class="o">.</span><span class="n">M34</span><span class="o">.</span><span class="n">fPosition</span><span class="o">&gt;</span><span class="mi">10</span> <span class="n">OR</span> <span class="n">F_Limit</span><span class="p">(</span><span class="n">Main</span><span class="o">.</span><span class="n">M36</span><span class="o">.</span><span class="n">fPosition</span><span class="p">,</span> <span class="mi">91</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="n">false</span><span class="p">));</span>
+<span class="o">//</span> <span class="n">Diffractometer</span> <span class="n">Theta</span> <span class="n">cannot</span> <span class="n">go</span> <span class="n">less</span> <span class="n">than</span> <span class="mi">10</span> <span class="n">degrees</span> <span class="k">if</span> <span class="n">the</span> <span class="n">Diffractometer</span> <span class="n">phi</span> <span class="ow">is</span> <span class="n">at</span> <span class="mi">90</span> <span class="o">+/-</span> <span class="mf">1.</span>
+<span class="n">EPS_Diff_Theta</span><span class="o">.</span><span class="n">setBit</span><span class="p">(</span><span class="n">nBits</span><span class="o">:=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">bValue</span><span class="o">:=</span><span class="n">Main</span><span class="o">.</span><span class="n">M34</span><span class="o">.</span><span class="n">fPosition</span><span class="o">&gt;</span><span class="mi">10</span> <span class="n">OR</span> <span class="n">F_Limit</span><span class="p">(</span><span class="n">Main</span><span class="o">.</span><span class="n">M32</span><span class="o">.</span><span class="n">fPosition</span><span class="p">,</span> <span class="mi">91</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="n">false</span><span class="p">));</span>
 
-<span class="n">EPS_Diff_Chi</span><span class="o">.</span><span class="n">setDescription</span><span class="p">(</span><span class="s1">&#39;Less-5mm;Theta&#39;</span><span class="p">);</span> <span class="o">//</span> <span class="n">SET</span> <span class="n">DESCRITION</span> <span class="n">FOR</span> <span class="n">BYTE</span> <span class="n">INDICATOR</span> <span class="n">LABELS</span>
-<span class="n">EPS_Diff_Chi</span><span class="o">.</span><span class="n">setBit</span><span class="p">(</span><span class="n">nBits</span><span class="o">:=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">bValue</span><span class="o">:=</span><span class="n">fb_Diff_Chi</span><span class="o">.</span><span class="n">stMotionStage</span><span class="o">.</span><span class="n">fPosition</span><span class="o">&gt;-</span><span class="mi">5</span><span class="p">);</span>
-<span class="n">EPS_Diff_Chi</span><span class="o">.</span><span class="n">setBit</span><span class="p">(</span><span class="n">nBits</span><span class="o">:=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">bValue</span><span class="o">:=</span><span class="n">fb_Diff_Theta</span><span class="o">.</span><span class="n">stMotionStage</span><span class="o">.</span><span class="n">fPosition</span><span class="o">&gt;</span><span class="mi">5</span> <span class="n">OR</span> <span class="n">PRG_Diffractometer</span><span class="o">.</span><span class="n">fb_Diff_Chi</span><span class="o">.</span><span class="n">stMotionStage</span><span class="o">.</span><span class="n">fPosition</span><span class="o">&gt;-</span><span class="mi">5</span><span class="p">);</span>
-<span class="n">EPS_Diff_Chi</span><span class="p">(</span><span class="n">eps</span><span class="o">:=</span><span class="n">stEPS_Diff_Chi</span><span class="p">);</span>
-<span class="n">fb_Diff_Chi</span><span class="o">.</span><span class="n">stMotionStage</span><span class="o">.</span><span class="n">stEPSBackwardEnable</span> <span class="o">:=</span> <span class="n">stEPS_Diff_Chi</span><span class="p">;</span>
+<span class="n">EPS_Diff_Chi</span><span class="p">(</span><span class="n">eps</span><span class="o">:=</span><span class="n">Main</span><span class="o">.</span><span class="n">M33</span><span class="o">.</span><span class="n">stEPSBackwardEnable</span><span class="p">);</span>
+<span class="n">EPS_Diff_Chi</span><span class="o">.</span><span class="n">setDescription</span><span class="p">(</span><span class="s1">&#39;Theta&#39;</span><span class="p">);</span> <span class="o">//</span> <span class="n">SET</span> <span class="n">DESCRIPTION</span> <span class="n">FOR</span> <span class="n">BYTE</span> <span class="n">INDICATOR</span> <span class="n">LABELS</span>
+<span class="o">//</span> <span class="n">Diffractometer</span> <span class="n">Chi</span> <span class="n">cannot</span> <span class="n">go</span> <span class="n">less</span> <span class="n">than</span> <span class="o">-</span><span class="mi">5</span> <span class="n">degrees</span> <span class="k">if</span> <span class="n">the</span> <span class="n">Diffractometer</span> <span class="n">Theta</span> <span class="ow">is</span> <span class="n">less</span> <span class="n">than</span> <span class="mi">5</span> <span class="n">degrees</span>
+<span class="n">EPS_Diff_Chi</span><span class="o">.</span><span class="n">setBit</span><span class="p">(</span><span class="n">nBits</span><span class="o">:=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">bValue</span><span class="o">:=</span><span class="n">Main</span><span class="o">.</span><span class="n">M33</span><span class="o">.</span><span class="n">fPosition</span><span class="o">&gt;=-</span><span class="mi">5</span> <span class="n">OR</span> <span class="n">Main</span><span class="o">.</span><span class="n">M34</span><span class="o">.</span><span class="n">fPosition</span><span class="o">&gt;=</span><span class="mi">5</span><span class="p">);</span>
 
-<span class="n">EPS_Diff_Theta</span><span class="o">.</span><span class="n">setDescription</span><span class="p">(</span><span class="s1">&#39;CHI;PHI;MIDIT&#39;</span><span class="p">);</span> <span class="o">//</span> <span class="n">SET</span> <span class="n">DESCRITION</span> <span class="n">FOR</span> <span class="n">BYTE</span> <span class="n">INDICATOR</span> <span class="n">LABELS</span>
-<span class="n">EPS_Diff_Theta</span><span class="o">.</span><span class="n">setBit</span><span class="p">(</span><span class="n">nBits</span><span class="o">:=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">bValue</span><span class="o">:=</span><span class="n">fb_Diff_Theta</span><span class="o">.</span><span class="n">stMotionStage</span><span class="o">.</span><span class="n">fPosition</span><span class="o">&gt;=</span><span class="mi">5</span> <span class="n">OR</span> <span class="n">PRG_Diffractometer</span><span class="o">.</span><span class="n">fb_Diff_Chi</span><span class="o">.</span><span class="n">stMotionStage</span><span class="o">.</span><span class="n">fPosition</span><span class="o">&gt;-</span><span class="mi">5</span><span class="p">);</span>
-<span class="n">EPS_Diff_Theta</span><span class="o">.</span><span class="n">setBit</span><span class="p">(</span><span class="n">nBits</span><span class="o">:=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">bValue</span><span class="o">:=</span><span class="n">fb_Diff_Theta</span><span class="o">.</span><span class="n">stMotionStage</span><span class="o">.</span><span class="n">fPosition</span><span class="o">&gt;</span><span class="mi">10</span> <span class="n">OR</span> <span class="p">(</span><span class="n">PRG_Diffractometer</span><span class="o">.</span><span class="n">fb_Diff_Phi</span><span class="o">.</span><span class="n">stMotionStage</span><span class="o">.</span><span class="n">fPosition</span> <span class="o">&lt;</span><span class="mf">90.1</span> <span class="n">AND</span> <span class="n">PRG_Diffractometer</span><span class="o">.</span><span class="n">fb_Diff_Phi</span><span class="o">.</span><span class="n">stMotionStage</span><span class="o">.</span><span class="n">fPosition</span><span class="o">&gt;</span><span class="mf">89.9</span><span class="p">))</span> <span class="p">;</span>
-<span class="n">EPS_Diff_Theta</span><span class="o">.</span><span class="n">setBit</span><span class="p">(</span><span class="n">nBits</span><span class="o">:=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">bValue</span><span class="o">:=</span> <span class="n">fb_Diff_Theta</span><span class="o">.</span><span class="n">stMotionStage</span><span class="o">.</span><span class="n">fPosition</span><span class="o">&gt;</span><span class="mi">10</span> <span class="n">OR</span> <span class="p">(</span><span class="n">PRG_LAS</span><span class="o">.</span><span class="n">fb_LAS_VIS</span><span class="o">.</span><span class="n">stMotionStage</span><span class="o">.</span><span class="n">fPosition</span> <span class="o">&lt;</span><span class="mf">90.1</span> <span class="n">AND</span> <span class="n">PRG_LAS</span><span class="o">.</span><span class="n">fb_LAS_VIS</span><span class="o">.</span><span class="n">stMotionStage</span><span class="o">.</span><span class="n">fPosition</span><span class="o">&gt;</span><span class="mf">89.9</span><span class="p">));</span>
-<span class="n">EPS_Diff_Theta</span><span class="p">(</span><span class="n">eps</span><span class="o">:=</span><span class="n">stEPS_Diff_Theta</span><span class="p">);</span>
-<span class="n">fb_Diff_Theta</span><span class="o">.</span><span class="n">stMotionStage</span><span class="o">.</span><span class="n">stEPSBackwardEnable</span> <span class="o">:=</span> <span class="n">stEPS_Diff_Theta</span><span class="p">;</span> <span class="o">//</span><span class="n">Need</span> <span class="n">More</span>
+<span class="n">EPS_Diff_Phi</span><span class="p">(</span><span class="n">eps</span><span class="o">:=</span><span class="n">Main</span><span class="o">.</span><span class="n">M32</span><span class="o">.</span><span class="n">stEPSBackwardEnable</span><span class="p">);</span>
+<span class="n">EPS_Diff_Phi</span><span class="o">.</span><span class="n">setDescription</span><span class="p">(</span><span class="s1">&#39;Less_45;MID_IR;Theta&#39;</span><span class="p">);</span> <span class="o">//</span> <span class="n">SET</span> <span class="n">DESCRIPTION</span> <span class="n">FOR</span> <span class="n">BYTE</span> <span class="n">INDICATOR</span> <span class="n">LABELS</span>
+<span class="o">//</span>
+<span class="n">EPS_Diff_Phi</span><span class="o">.</span><span class="n">setBit</span><span class="p">(</span><span class="n">nBits</span><span class="o">:=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">bValue</span><span class="o">:=</span><span class="n">Main</span><span class="o">.</span><span class="n">M32</span><span class="o">.</span><span class="n">fPosition</span><span class="o">&lt;=</span><span class="mi">45</span><span class="p">);</span>
+<span class="n">EPS_Diff_Phi</span><span class="o">.</span><span class="n">setBit</span><span class="p">(</span><span class="n">nBits</span><span class="o">:=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">bValue</span><span class="o">:=</span><span class="n">Main</span><span class="o">.</span><span class="n">M36</span><span class="o">.</span><span class="n">fPosition</span> <span class="o">&lt;</span><span class="mi">45</span> <span class="n">OR</span> <span class="n">Main</span><span class="o">.</span><span class="n">M32</span><span class="o">.</span><span class="n">fPosition</span><span class="o">&lt;=</span><span class="mi">45</span><span class="p">);</span>
+<span class="n">EPS_Diff_Phi</span><span class="o">.</span><span class="n">setBit</span><span class="p">(</span><span class="n">nBits</span><span class="o">:=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">bValue</span><span class="o">:=</span><span class="n">Main</span><span class="o">.</span><span class="n">M32</span><span class="o">.</span><span class="n">fPosition</span><span class="o">&lt;=</span><span class="mi">45</span> <span class="n">OR</span> <span class="p">(</span><span class="n">Main</span><span class="o">.</span><span class="n">M34</span><span class="o">.</span><span class="n">fPosition</span> <span class="o">&lt;</span><span class="mf">0.1</span> <span class="n">AND</span> <span class="n">Main</span><span class="o">.</span><span class="n">M34</span><span class="o">.</span><span class="n">fPosition</span><span class="o">&gt;</span><span class="mf">359.5</span><span class="p">));</span>
 
-<span class="n">EPS_Diff_Phi</span><span class="o">.</span><span class="n">setDescription</span><span class="p">(</span><span class="s1">&#39;Less-45;MID_IR;Theta&#39;</span><span class="p">);</span> <span class="o">//</span> <span class="n">SET</span> <span class="n">DESCRITION</span> <span class="n">FOR</span> <span class="n">BYTE</span> <span class="n">INDICATOR</span> <span class="n">LABELS</span>
-<span class="n">EPS_Diff_Phi</span><span class="o">.</span><span class="n">setBit</span><span class="p">(</span><span class="n">nBits</span><span class="o">:=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">bValue</span><span class="o">:=</span><span class="n">fb_Diff_phi</span><span class="o">.</span><span class="n">stMotionStage</span><span class="o">.</span><span class="n">fPosition</span><span class="o">&lt;=</span><span class="mi">45</span><span class="p">);</span>
-<span class="n">EPS_Diff_Phi</span><span class="o">.</span><span class="n">setBit</span><span class="p">(</span><span class="n">nBits</span><span class="o">:=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">bValue</span><span class="o">:=</span><span class="n">PRG_LAS</span><span class="o">.</span><span class="n">fb_LAS_VIS</span><span class="o">.</span><span class="n">stMotionStage</span><span class="o">.</span><span class="n">fPosition</span> <span class="o">&lt;</span><span class="mi">45</span> <span class="n">OR</span> <span class="n">PRG_Diffractometer</span><span class="o">.</span><span class="n">fb_Diff_phi</span><span class="o">.</span><span class="n">stMotionStage</span><span class="o">.</span><span class="n">fPosition</span><span class="o">&lt;=</span><span class="mi">45</span><span class="p">);</span>
-<span class="n">EPS_Diff_Phi</span><span class="o">.</span><span class="n">setBit</span><span class="p">(</span><span class="n">nBits</span><span class="o">:=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">PRG_Diffractometer</span><span class="o">.</span><span class="n">fb_Diff_phi</span><span class="o">.</span><span class="n">stMotionStage</span><span class="o">.</span><span class="n">fPosition</span><span class="o">&lt;=</span><span class="mi">45</span> <span class="n">OR</span> <span class="p">(</span><span class="n">PRG_Diffractometer</span><span class="o">.</span><span class="n">fb_Diff_Theta</span><span class="o">.</span><span class="n">stMotionStage</span><span class="o">.</span><span class="n">fPosition</span> <span class="o">&lt;</span><span class="mf">0.1</span> <span class="n">AND</span> <span class="n">PRG_Diffractometer</span><span class="o">.</span><span class="n">fb_Diff_Theta</span><span class="o">.</span><span class="n">stMotionStage</span><span class="o">.</span><span class="n">fPosition</span><span class="o">&gt;</span><span class="mf">359.5</span><span class="p">));</span>
-<span class="n">EPS_Diff_Phi</span><span class="p">(</span><span class="n">eps</span><span class="o">:=</span><span class="n">stEPS_Diff_Phi</span><span class="p">);</span>
-<span class="n">FB_Diff_Phi</span><span class="o">.</span><span class="n">stMotionStage</span><span class="o">.</span><span class="n">stEPSBackwardEnable</span> <span class="o">:=</span> <span class="n">stEPS_Diff_Phi</span><span class="p">;</span>
+<span class="n">EPS_Diff_Z</span><span class="p">(</span><span class="n">eps</span><span class="o">:=</span><span class="n">Main</span><span class="o">.</span><span class="n">M30</span><span class="o">.</span><span class="n">stEPSBackwardEnable</span><span class="p">);</span>
+<span class="n">EPS_Diff_Z</span><span class="o">.</span><span class="n">setDescription</span><span class="p">(</span><span class="s1">&#39;Less20mm;LAS_D_H&#39;</span><span class="p">);</span> <span class="o">//</span> <span class="n">SET</span> <span class="n">DESCRIPTION</span> <span class="n">FOR</span> <span class="n">BYTE</span> <span class="n">INDICATOR</span> <span class="n">LABELS</span>
+<span class="n">EPS_Diff_Z</span><span class="o">.</span><span class="n">setBit</span><span class="p">(</span><span class="n">nBits</span><span class="o">:=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">bValue</span><span class="o">:=</span><span class="n">Main</span><span class="o">.</span><span class="n">M36</span><span class="o">.</span><span class="n">fPosition</span><span class="o">&gt;=-</span><span class="mi">20</span><span class="p">);</span>
+<span class="n">EPS_Diff_Z</span><span class="o">.</span><span class="n">setBit</span><span class="p">(</span><span class="n">nBits</span><span class="o">:=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">bValue</span><span class="o">:=</span><span class="n">Main</span><span class="o">.</span><span class="n">M37</span><span class="o">.</span><span class="n">fPosition</span><span class="o">&gt;=</span><span class="mi">50</span> <span class="n">OR</span> <span class="n">Main</span><span class="o">.</span><span class="n">M30</span><span class="o">.</span><span class="n">fPosition</span><span class="o">&gt;=-</span><span class="mi">20</span><span class="p">);</span>
 <span class="o">*</span><span class="p">)</span>
-
 
 
 <span class="n">fb_Diff_X</span><span class="p">(</span><span class="n">stMotionStage</span><span class="o">:=</span><span class="n">Main</span><span class="o">.</span><span class="n">M28</span><span class="p">);</span>
@@ -3507,8 +3566,8 @@ END_PROGRAM
 </div>
 <dl class="simple">
 <dt>Related:</dt><dd><ul class="simple">
+<li><p><a class="reference internal" href="#f-limit">F_Limit</a></p></li>
 <li><p><a class="reference internal" href="#main">Main</a></p></li>
-<li><p><a class="reference internal" href="#prg-las">PRG_LAS</a></p></li>
 </ul>
 </dd>
 </dl>
@@ -3631,12 +3690,7 @@ END_PROGRAM
     <span class="n">fbMotionXG</span><span class="p">:</span> <span class="n">FB_MotionStage</span><span class="p">;</span>
     <span class="n">fbMotionRzPM</span><span class="p">:</span> <span class="n">FB_MotionStage</span><span class="p">;</span>
 <span class="n">END_VAR</span>
-<span class="o">//</span><span class="n">Lock</span> <span class="n">stages</span> <span class="n">until</span> <span class="n">they</span> <span class="n">are</span> <span class="n">tested</span>
-<span class="n">Main</span><span class="o">.</span><span class="n">M10</span><span class="o">.</span><span class="n">nEnableMode</span> <span class="o">:=</span> <span class="n">ENUM_StageEnableMode</span><span class="o">.</span><span class="n">NEVER</span> <span class="p">;</span>
-<span class="n">Main</span><span class="o">.</span><span class="n">M11</span><span class="o">.</span><span class="n">nEnableMode</span> <span class="o">:=</span> <span class="n">ENUM_StageEnableMode</span><span class="o">.</span><span class="n">NEVER</span> <span class="p">;</span>
-<span class="n">Main</span><span class="o">.</span><span class="n">M14</span><span class="o">.</span><span class="n">nEnableMode</span> <span class="o">:=</span> <span class="n">ENUM_StageEnableMode</span><span class="o">.</span><span class="n">NEVER</span> <span class="p">;</span>
-
-<span class="n">IF</span> <span class="n">bINIT</span> <span class="n">THEN</span>
+<span class="n">IF</span> <span class="n">bInit</span> <span class="n">THEN</span>
 
     <span class="n">Main</span><span class="o">.</span><span class="n">M10</span><span class="o">.</span><span class="n">nBrakeMode</span> <span class="o">:=</span> <span class="n">ENUM_StageBrakeMode</span><span class="o">.</span><span class="n">NO_BRAKE</span><span class="p">;</span>
     <span class="n">Main</span><span class="o">.</span><span class="n">M10</span><span class="o">.</span><span class="n">bHardwareEnable</span> <span class="o">:=</span> <span class="n">TRUE</span><span class="p">;</span>
@@ -3657,7 +3711,7 @@ END_PROGRAM
     <span class="n">Main</span><span class="o">.</span><span class="n">M11</span><span class="o">.</span><span class="n">nEnableMode</span> <span class="o">:=</span> <span class="n">ENUM_StageEnableMode</span><span class="o">.</span><span class="n">DURING_MOTION</span> <span class="p">;</span>
     <span class="n">Main</span><span class="o">.</span><span class="n">M14</span><span class="o">.</span><span class="n">nEnableMode</span> <span class="o">:=</span> <span class="n">ENUM_StageEnableMode</span><span class="o">.</span><span class="n">DURING_MOTION</span> <span class="p">;</span>
 
-    <span class="n">bINIT</span> <span class="o">:=</span> <span class="n">FALSE</span><span class="p">;</span>
+    <span class="n">bInit</span> <span class="o">:=</span> <span class="n">FALSE</span><span class="p">;</span>
 <span class="n">END_IF</span><span class="p">;</span>
 
 
@@ -3816,31 +3870,20 @@ END_PROGRAM
 
     <span class="n">bInit</span><span class="p">:</span> <span class="n">BOOL</span> <span class="o">:=</span><span class="n">TRUE</span><span class="p">;</span>
 <span class="n">END_VAR</span>
-<span class="o">//</span><span class="n">Lock</span> <span class="n">stages</span> <span class="n">until</span> <span class="n">they</span> <span class="n">are</span> <span class="n">tested</span>
-<span class="n">Main</span><span class="o">.</span><span class="n">M8</span><span class="o">.</span><span class="n">nEnableMode</span> <span class="o">:=</span> <span class="n">ENUM_StageEnableMode</span><span class="o">.</span><span class="n">NEVER</span> <span class="p">;</span>
-<span class="n">Main</span><span class="o">.</span><span class="n">M9</span><span class="o">.</span><span class="n">nEnableMode</span> <span class="o">:=</span> <span class="n">ENUM_StageEnableMode</span><span class="o">.</span><span class="n">NEVER</span> <span class="p">;</span>
-<span class="n">Main</span><span class="o">.</span><span class="n">M7</span><span class="o">.</span><span class="n">nEnableMode</span> <span class="o">:=</span> <span class="n">ENUM_StageEnableMode</span><span class="o">.</span><span class="n">NEVER</span> <span class="p">;</span>
-
-
-
 <span class="n">IF</span> <span class="n">bInit</span> <span class="n">THEN</span>
     <span class="n">bInit</span> <span class="o">:=</span> <span class="n">FALSE</span><span class="p">;</span>
-
 
     <span class="n">Main</span><span class="o">.</span><span class="n">M7</span><span class="o">.</span><span class="n">nBrakeMode</span> <span class="o">:=</span> <span class="n">ENUM_StageBrakeMode</span><span class="o">.</span><span class="n">NO_BRAKE</span><span class="p">;</span>
     <span class="n">Main</span><span class="o">.</span><span class="n">M7</span><span class="o">.</span><span class="n">bHardwareEnable</span> <span class="o">:=</span> <span class="n">TRUE</span><span class="p">;</span>
     <span class="n">Main</span><span class="o">.</span><span class="n">M7</span><span class="o">.</span><span class="n">bPowerSelf</span> <span class="o">:=</span> <span class="n">TRUE</span><span class="p">;</span>
-    <span class="n">Main</span><span class="o">.</span><span class="n">M7</span><span class="o">.</span><span class="n">fVelocity</span> <span class="o">:=</span> <span class="mf">0.1</span><span class="p">;</span>
 
     <span class="n">Main</span><span class="o">.</span><span class="n">M8</span><span class="o">.</span><span class="n">nBrakeMode</span> <span class="o">:=</span> <span class="n">ENUM_StageBrakeMode</span><span class="o">.</span><span class="n">NO_BRAKE</span><span class="p">;</span>
     <span class="n">Main</span><span class="o">.</span><span class="n">M8</span><span class="o">.</span><span class="n">bHardwareEnable</span> <span class="o">:=</span> <span class="n">TRUE</span><span class="p">;</span>
     <span class="n">Main</span><span class="o">.</span><span class="n">M8</span><span class="o">.</span><span class="n">bPowerSelf</span> <span class="o">:=</span> <span class="n">TRUE</span><span class="p">;</span>
-    <span class="n">Main</span><span class="o">.</span><span class="n">M8</span><span class="o">.</span><span class="n">fVelocity</span> <span class="o">:=</span> <span class="mf">0.1</span><span class="p">;</span>
 
     <span class="n">Main</span><span class="o">.</span><span class="n">M9</span><span class="o">.</span><span class="n">nBrakeMode</span> <span class="o">:=</span> <span class="n">ENUM_StageBrakeMode</span><span class="o">.</span><span class="n">NO_BRAKE</span><span class="p">;</span>
     <span class="n">Main</span><span class="o">.</span><span class="n">M9</span><span class="o">.</span><span class="n">bHardwareEnable</span> <span class="o">:=</span> <span class="n">TRUE</span><span class="p">;</span>
     <span class="n">Main</span><span class="o">.</span><span class="n">M9</span><span class="o">.</span><span class="n">bPowerSelf</span> <span class="o">:=</span> <span class="n">TRUE</span><span class="p">;</span>
-    <span class="n">Main</span><span class="o">.</span><span class="n">M9</span><span class="o">.</span><span class="n">fVelocity</span> <span class="o">:=</span> <span class="mf">0.1</span><span class="p">;</span>
 
     <span class="n">Main</span><span class="o">.</span><span class="n">M7</span><span class="o">.</span><span class="n">nEnableMode</span> <span class="o">:=</span> <span class="n">ENUM_StageEnableMode</span><span class="o">.</span><span class="n">DURING_MOTION</span> <span class="p">;</span>
     <span class="n">Main</span><span class="o">.</span><span class="n">M8</span><span class="o">.</span><span class="n">nEnableMode</span> <span class="o">:=</span> <span class="n">ENUM_StageEnableMode</span><span class="o">.</span><span class="n">DURING_MOTION</span> <span class="p">;</span>
@@ -3855,9 +3898,7 @@ END_PROGRAM
     <span class="n">stJack1Axis</span>             <span class="o">:=</span> <span class="n">Main</span><span class="o">.</span><span class="n">M7</span><span class="p">,</span>
     <span class="n">stJack2Axis</span>             <span class="o">:=</span> <span class="n">Main</span><span class="o">.</span><span class="n">M8</span><span class="p">,</span>
     <span class="n">stJack3Axis</span>             <span class="o">:=</span> <span class="n">Main</span><span class="o">.</span><span class="n">M9</span><span class="p">,</span>
-    <span class="n">i_DevName</span>               <span class="o">:=</span> <span class="s1">&#39;OPT_YG&#39;</span><span class="p">,</span>
-    <span class="n">io_fbFFHWO</span>              <span class="o">:=</span> <span class="n">GVL_PMPS</span><span class="o">.</span><span class="n">fbFastFaultOutput1</span><span class="p">,</span>
-    <span class="n">fbArbiter</span>               <span class="o">:=</span> <span class="n">GVL_PMPS</span><span class="o">.</span><span class="n">fbArbiter</span><span class="p">,</span>
+    <span class="n">i_DevName</span>               <span class="o">:=</span> <span class="s1">&#39;OPT_YG&#39;</span>
 <span class="p">);</span>
 
 <span class="n">END_PROGRAM</span>
@@ -3866,7 +3907,6 @@ END_PROGRAM
 <dl class="simple">
 <dt>Related:</dt><dd><ul class="simple">
 <li><p><a class="reference internal" href="#fb-3axesjack">FB_3AxesJack</a></p></li>
-<li><p><a class="reference internal" href="#gvl-pmps">GVL_PMPS</a></p></li>
 <li><p><a class="reference internal" href="#main">Main</a></p></li>
 </ul>
 </dd>
@@ -4166,7 +4206,7 @@ END_PROGRAM
     <span class="o">//</span><span class="n">Main</span><span class="o">.</span><span class="n">M4</span><span class="o">.</span><span class="n">bEnable</span> <span class="o">:=</span> <span class="n">FALSE</span><span class="p">;</span> <span class="o">//</span> <span class="n">Optics</span> <span class="n">Slits</span> <span class="n">XS2</span> <span class="o">//</span> <span class="n">QRIX</span><span class="p">:</span><span class="n">OPTSL</span><span class="p">:</span><span class="n">MMS</span><span class="p">:</span><span class="n">SOUTH</span>
     <span class="o">//</span><span class="n">Main</span><span class="o">.</span><span class="n">M5</span><span class="o">.</span><span class="n">bEnable</span> <span class="o">:=</span> <span class="n">FALSE</span><span class="p">;</span> <span class="o">//</span> <span class="n">Optics</span> <span class="n">Slits</span> <span class="n">YS1</span> <span class="o">//</span> <span class="n">QRIX</span><span class="p">:</span><span class="n">OPTSL</span><span class="p">:</span><span class="n">MMS</span><span class="p">:</span><span class="n">TOP</span>
     <span class="o">//</span><span class="n">Main</span><span class="o">.</span><span class="n">M6</span><span class="o">.</span><span class="n">bEnable</span> <span class="o">:=</span> <span class="n">FALSE</span><span class="p">;</span> <span class="o">//</span> <span class="n">Optics</span> <span class="n">Slits</span> <span class="n">YS2</span> <span class="o">//</span> <span class="n">QRIX</span><span class="p">:</span><span class="n">OPTSL</span><span class="p">:</span><span class="n">MMS</span><span class="p">:</span><span class="n">BOTTOM</span>
-    <span class="n">Main</span><span class="o">.</span><span class="n">M7</span><span class="o">.</span><span class="n">bEnable</span> <span class="o">:=</span> <span class="n">FALSE</span><span class="p">;</span> <span class="o">//</span> <span class="n">Optics</span> <span class="n">Base</span> <span class="n">YG1</span> <span class="o">//</span> <span class="n">QRIX</span><span class="p">:</span><span class="n">OPT</span><span class="p">:</span><span class="n">MMS</span><span class="p">:</span><span class="n">Y2</span>
+    <span class="n">Main</span><span class="o">.</span><span class="n">M7</span><span class="o">.</span><span class="n">bEnable</span> <span class="o">:=</span> <span class="n">FALSE</span><span class="p">;</span> <span class="o">//</span> <span class="n">Optics</span> <span class="n">Base</span> <span class="n">YG1</span> <span class="o">//</span> <span class="n">QRIX</span><span class="p">:</span><span class="n">OPT</span><span class="p">:</span><span class="n">MMS</span><span class="p">:</span><span class="n">Y1</span>
     <span class="n">Main</span><span class="o">.</span><span class="n">M8</span><span class="o">.</span><span class="n">bEnable</span> <span class="o">:=</span> <span class="n">FALSE</span><span class="p">;</span> <span class="o">//</span> <span class="n">Optics</span> <span class="n">Base</span> <span class="n">YG2</span> <span class="o">//</span> <span class="n">QRIX</span><span class="p">:</span><span class="n">OPT</span><span class="p">:</span><span class="n">MMS</span><span class="p">:</span><span class="n">Y2</span>
     <span class="n">Main</span><span class="o">.</span><span class="n">M9</span><span class="o">.</span><span class="n">bEnable</span> <span class="o">:=</span> <span class="n">FALSE</span><span class="p">;</span> <span class="o">//</span> <span class="n">Optics</span> <span class="n">Base</span> <span class="n">YG3</span> <span class="o">//</span> <span class="n">QRIX</span><span class="p">:</span><span class="n">OPT</span><span class="p">:</span><span class="n">MMS</span><span class="p">:</span><span class="n">Y3</span>
     <span class="o">//</span><span class="n">Main</span><span class="o">.</span><span class="n">M10</span><span class="o">.</span><span class="n">bEnable</span> <span class="o">:=</span> <span class="n">FALSE</span><span class="p">;</span> <span class="o">//</span> <span class="n">Optics</span> <span class="n">Grating</span> <span class="n">RxG</span> <span class="o">//</span> <span class="n">QRIX</span><span class="p">:</span><span class="n">G</span><span class="p">:</span><span class="n">MMS</span><span class="p">:</span><span class="n">Rx</span>
@@ -4308,7 +4348,7 @@ END_PROGRAM
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="lcls-plc-qrix-motion_PLC_QRIX_MOT_epics.html" class="btn btn-neutral float-left" title="Data Types" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="lcls-plc-qrix-motion_qrix_motion_epics.html" class="btn btn-neutral float-left" title="Data Types" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

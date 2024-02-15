@@ -45,9 +45,21 @@ DUT_SensorHGS
     TYPE DUT_SensorHGS:
     STRUCT
         fCntsInEGU:			REAL;
+        {attribute 'pytmc' := '
+            pv: EU
+            io: i
+        '}
         sEGU:				STRING;
         sName:				STRING;
+        {attribute 'pytmc' := '
+            pv: VALUE
+            io: i
+        '}
         fValue:				REAL;
+        {attribute 'pytmc' := '
+            pv: RAWCOUNTS
+            io: i
+        '}
         iRawCnts AT %I*:	DINT;
         iOffset:			DINT;
     END_STRUCT
@@ -134,22 +146,41 @@ GVL_Sensor
 
     {attribute 'qualified_only'}
     VAR_GLOBAL
-        {attribute 'pytmc' := 'pv: QRIX:SA:FLOATING'}
+        {attribute 'pytmc' := '
+            pv: QRIX:SA:FLOATING
+            io: i
+        '}
         bFloating: BOOL;
 
         // YDF1
+        {attribute 'pytmc' := '
+            pv: QRIX:SA:DDS:YDF1
+            io: i
+        '}
         {attribute 'TcLinkTo' := '	.iRawCnts	:= TIIB[Rack#2D LinearGaugeAmp (SC-HG1-ETC)]^Process Data(In)  TxPDO-Map^Response Data Unit1'}
         stYDF1: DUT_SensorHGS;
 
         // YDF2
+        {attribute 'pytmc' := '
+            pv: QRIX:SA:DDS:YDF2
+            io: i
+        '}
         {attribute 'TcLinkTo' := '	.iRawCnts	:= TIIB[Rack#2D LinearGaugeAmp (SC-HG1-ETC)]^Process Data(In)  TxPDO-Map^Response Data Unit2'}
         stYDF2: DUT_SensorHGS;
 
         // YDF3
+        {attribute 'pytmc' := '
+            pv: QRIX:SA:DDS:YDF3
+            io: i
+        '}
         {attribute 'TcLinkTo' := '	.iRawCnts	:= TIIB[Rack#2D LinearGaugeAmp (SC-HG1-ETC)]^Process Data(In)  TxPDO-Map^Response Data Unit3'}
         stYDF3: DUT_SensorHGS;
 
         // Height difference btw granite shelf and detector frame.
+        {attribute 'pytmc' := '
+            pv: QRIX:SA:DDS:HDF
+            io: i
+        '}
         {attribute 'TcLinkTo' := '	.iRawCnts	:= TIIB[Rack#2D LinearGaugeAmp (SC-HG1-ETC)]^Process Data(In)  TxPDO-Map^Response Data Unit4'}
         stHDF: DUT_SensorHGS;
 
@@ -182,10 +213,22 @@ GVL_Sensor
         {attribute 'TcLinkTo' := '	.iRawCnts	:= TIIB[Rack#2B-03 AI_TiltSensor (EL3174-0002)]^AI Standard Channel 3^Value'}
         stFrameR: DUT_Sensor;
 
+        {attribute 'pytmc' := '
+            pv: QRIX:SA:GPT:PS1
+            io: i
+        '}
         {attribute 'TcLinkTo' := '	.iRawCnts	:= TIIB[Rack#2B-04 PS_P (EL3064)]^AI Standard Channel 1^Value'}
         stPS1: DUT_Sensor;
+        {attribute 'pytmc' := '
+            pv: QRIX:SA:GPT:PS2
+            io: i
+        '}
         {attribute 'TcLinkTo' := '	.iRawCnts	:= TIIB[Rack#2B-04 PS_P (EL3064)]^AI Standard Channel 2^Value'}
         stPS2: DUT_Sensor;
+        {attribute 'pytmc' := '
+            pv: QRIX:SA:GPT:PS3
+            io: i
+        '}
         {attribute 'TcLinkTo' := '	.iRawCnts	:= TIIB[Rack#2B-04 PS_P (EL3064)]^AI Standard Channel 3^Value'}
         stPS3: DUT_Sensor;
     END_VAR
@@ -203,17 +246,35 @@ GVL_VAR
 
     VAR_GLOBAL
 
-        {attribute 'pytmc' := 'pv: QRIX:SA:JackOff'}
+        {attribute 'pytmc' := '
+            pv: QRIX:SA:bDoneJackOff
+            io: i
+        '}
         bDoneJackOff: BOOL;
-        {attribute 'pytmc' := 'pv: QRIX:SA:DoneLevitation'}
+        {attribute 'pytmc' := '
+            pv: QRIX:SA:bDoneLevitation
+            io: i
+        '}
         bDoneLevitation: BOOL;
-        {attribute 'pytmc' := 'pv: QRIX:SA:bDoneLanding'}
+        {attribute 'pytmc' := '
+            pv: QRIX:SA:bDoneLanding
+            io: i
+        '}
         bDoneLanding: BOOL;
-        {attribute 'pytmc' := 'pv: QRIX:SA:DoneAdjustingRoll'}
+        {attribute 'pytmc' := '
+            pv: QRIX:SA:bDoneAdjustingRoll
+            io: i
+        '}
         bDoneAdjustingRoll: BOOL;
-        {attribute 'pytmc' := 'pv: QRIX:SA:DoneAdjustingPitch'}
+        {attribute 'pytmc' := '
+            pv: QRIX:SA:bDoneAdjustingPitch
+            io: i
+        '}
         bDoneAdjustingPitch: BOOL;
-        {attribute 'pytmc' := 'pv: QRIX:SA:DoneAdjustingHeight'}
+        {attribute 'pytmc' := '
+            pv: QRIX:SA:bDoneAdjustingHeight
+            io: i
+        '}
         bDoneAdjustingHeight: BOOL;
 
     END_VAR
@@ -245,7 +306,7 @@ Main
         {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL7047_02_01 - SSL]^STM Status^Status^Digital input 1;
                                   .bLimitBackwardEnable := TIIB[EL7047_02_01 - SSL]^STM Status^Status^Digital input 2;
                                   .nRawEncoderULINT     := TIIB[EL5042_02_02]^FB Inputs Channel 1^Position'}
-        M1: ST_MotionStage := (sName := 'QRIX:SSL:MMS');
+        M1: ST_MotionStage := (sName := 'QRIX:SC:SSL:MMS');
 
 
         (* Start Adding Spectometer Arm Axes Here*)
@@ -297,7 +358,7 @@ Main
                                     .bLimitBackwardEnable	:= TIIB[Rack#2A-10 DR_YG1 (EL7041-0052)]^STM Status^Status^Digital input 2;
                                     .nRawEncoderULINT		:= TIIB[Rack#2B-10 ENC_YG1_YG2 (EL5042)]^FB Inputs Channel 1^Position
         '}
-        M7: ST_MotionStage:= (sName := 'QRIX:OPT:MMS:Y2');
+        M7: ST_MotionStage:= (sName := 'QRIX:OPT:MMS:Y1');
 
         // YG2
         {attribute 'pytmc' := 'pv: QRIX:OPT:MMS:Y2'}
@@ -636,6 +697,39 @@ Main
 
 POUs
 ----
+
+
+F_Limit
+^^^^^^^
+
+::
+
+    FUNCTION F_Limit : BOOL
+    VAR_INPUT
+        fVal : LREAL;
+        fLLim : LREAL;
+        fHLim : LREAL;
+        bInclusive : BOOL;
+    END_VAR
+    VAR
+    END_VAR
+    IF bInclusive THEN
+        IF fLLim <= fHLim THEN
+            F_Limit := fLLim <= fVal AND fHLim >= fVal;
+        ELSE
+            F_Limit := fLLim >= fVal OR fHLim <= fVal;
+        END_IF
+    ELSE
+        IF fLLim <= fHLim THEN
+            F_Limit := fLLim < fVal AND fHLim > fVal;
+        ELSE
+            F_Limit := fLLim > fVal OR fHLim < fVal;
+        END_IF
+    END_IF
+
+    END_FUNCTION
+
+
 
 
 FB_2AxesTrans
@@ -1112,8 +1206,6 @@ FB_3AxesJack
         stJack2Axis: ST_MotionStage;
         stJack3Axis: ST_MotionStage;
         bExecuteMotion:BOOL ;
-        io_fbFFHWO    :    FB_HardwareFFOutput;
-        fbArbiter: FB_Arbiter();
     END_VAR
     VAR_INPUT
 
@@ -1267,17 +1359,7 @@ FB_3AxesJack
         tAction : R_TRIG;
         tOverrideActivated : R_TRIG;
 
-        FFO    :    FB_FastFault :=(
-            i_DevName := '3Jack',
-            i_Desc := 'Fault occurs when center is greated than that requested',
-            i_TypeCode := 16#1010);
-
-
         bTest: BOOL;
-
-        AptArrayStatus AT %Q* : ST_PMPS_Aperture_IO;
-        AptArrayReq AT %I* : ST_PMPS_Aperture_IO;
-
 
         fbPower: MC_POWER;
     END_VAR
@@ -1334,13 +1416,9 @@ FB_3AxesJack
         stJack1Axis.bHardwareEnable := TRUE;
         stJack2Axis.bHardwareEnable := TRUE;
         stJack3Axis.bHardwareEnable := TRUE;
-        stJack1Axis.bPowerSelf :=FALSE;
-        stJack2Axis.bPowerSelf :=FALSE;
-        stJack3Axis.bPowerSelf :=FALSE;
         stJack1Axis.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
         stJack2Axis.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
         stJack3Axis.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
-        FFO.i_DevName := i_DevName;
     END_IF
     END_ACTION
 
@@ -1399,7 +1477,7 @@ FB_3AxesJack
 
     ACTION ACT_VirtualLimitSW:
     // Force set to false
-    stJack1Axis.bPowerSelf := stJack2Axis.bPowerSelf := stJack3Axis.bPowerSelf := FALSE;
+    //stJack1Axis.bPowerSelf := stJack2Axis.bPowerSelf := stJack3Axis.bPowerSelf := FALSE;
 
     // Set SafetyReady flags manually
     stJack1Axis.bSafetyReady:= TRUE;
@@ -2306,7 +2384,6 @@ PRG_2Theta
         // Stepper
         Main.M2.nBrakeMode := ENUM_StageBrakeMode.IF_MOVING;
         Main.M2.bHardwareEnable := TRUE;
-        Main.M2.bPowerSelf := FALSE;
 
         Main.M2.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
     END_IF;
@@ -2316,27 +2393,19 @@ PRG_2Theta
     END_PROGRAM
 
     ACTION ACT_Stepper:
-    fb2ThetaStepper(stMotionStage:=Main.M2);
-
-    Main.M2.bPowerSelf := FALSE;
-
-    Main.M2.bAllEnable := 		Main.M2.bEnable
-                                AND GVL_EPS.bESTOP // ESTOP
+    // Simplified enabling logic by removing separate fbPower function and
+    // making the estop and other permissives drive the bPowerSelf bit.
+    // Now, the motor motion is handled entirely within the FB_MotionStage block
+    // which makes this usage more standard and easier to work with using our
+    // standard typhos widget.
+    Main.M2.bPowerSelf := 		GVL_EPS.bESTOP // ESTOP
                                 AND	GVL_Sensor.stPS1.fValue > fThresholdPS1
                                 AND GVL_Sensor.stPS2.fValue > fThresholdPS2
                                 AND GVL_Sensor.stPS3.fValue > fThresholdPS3 // Compressed-air pressure
                                 AND GVL_EPS.bOpenSV1
                                 AND GVL_EPS.bOpenSV2;
-    Main.M2.bAllForwardEnable  := Main.M2.bLimitForwardEnable  AND GVL_EPS.bESTOP;
-    Main.M2.bAllBackwardEnable := Main.M2.bLimitBackwardEnable AND GVL_EPS.bESTOP;
 
-    fbPower_AxisM2(
-        Axis:= Main.M2.Axis,
-        Enable := Main.M2.bAllEnable,
-        Enable_Positive:= Main.M2.bAllForwardEnable,
-        Enable_Negative:= Main.M2.bAllBackwardEnable,
-        Override:= 100
-    );
+    fb2ThetaStepper(stMotionStage:=Main.M2);
     END_ACTION
 
 
@@ -2438,13 +2507,6 @@ PRG_DET_ARM
         {attribute 'TcLinkTo' := '	.Count := TIIB[BOX-07 ENC_YF2_ZF (EL5042)]^FB Inputs Channel 1^Position'}
         stRenishawAbsEncSlave: ST_RenishawAbsEnc;
 
-        (*
-        fbPower_AxisM25: MC_POWER;
-        fbPower_AxisM26: MC_POWER;
-        fbPower_AxisM27: MC_POWER;
-
-        tonBrakeRlease_M25, tonBrakeRlease_M26, tonBrakeRlease_M27: TON;
-        // *)
     END_VAR
     IF bInit THEN
         bInit := FALSE;
@@ -2465,8 +2527,27 @@ PRG_DET_ARM
         Main.M27.bPowerSelf := TRUE;
         Main.M27.fVelocity := 0.1;
 
+        // M25 and M26 are coupled with M25 as the leader.
+        // The motors cannot be set to always enabled, because they have brakes that
+        // only activate when the motors are not moving. Due to the weight
+        // of the frame, it appears that if the brake is not on, the motors
+        // are moving constantly to keep the frame from falling. So essentially,
+        // "is moving" is synonymous with "is enabled" for these motors which
+        // results in the brake only applying if the motors are disabled. Setting M25
+        // to only enable during motion, and M26 to NEVER means that
+        // M25 will be enabled when commanded to move from EPICS but
+        // for M26 the FB_MotionStage will not modify the bEnable boolean
+        // in the state machine. Therefore, we can set the M26 bEnable
+        // status based on the M25 bEnable status after the M25 FB_MotionStage
+        // runs. But this also allows the brake to still activate when M26 is
+        // not moving.
         Main.M25.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
-        Main.M26.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+        // M26 bEnable is coupled to M25 bEnable below. Set M26 enable mode to NEVER
+        // so that the function block does not try to set the bEnable bit unless
+        // it detects an error. This allows the bEnable to be set outside of
+        // the function block.
+        Main.M26.nEnableMode := ENUM_StageEnableMode.NEVER ;
+
         Main.M27.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
     END_IF
 
@@ -2483,56 +2564,20 @@ PRG_DET_ARM
                     bExecuteDecouple 	:= bExecuteDecouple,
     );
 
+    // I don't think these 3 lines do anything but I am keeping for now.
+    // The FB_MotionStage overwrites the bAllEnable bit internally.
     Main.M25.bAllEnable := Main.M25.bEnable AND GVL_EPS.bESTOP;
     Main.M26.bAllEnable := Main.M26.bEnable AND GVL_EPS.bESTOP;
     Main.M27.bAllEnable := Main.M27.bEnable AND GVL_EPS.bESTOP;
 
     // Call Motion FB instance
     fbMotionYF1(stMotionStage:=Main.M25);
+
+    // Set the M26 bEnable equal to the M25 bEnable status to couple their enable bits together.
+    Main.M26.bEnable := Main.M25.bEnable;
+
     fbMotionYF2(stMotionStage:=Main.M26);
     fbMotionZF(stMotionStage:=Main.M27);
-
-    (* For test
-    // Release brake if axis is enabled.
-    tonBrakeRlease_M25(
-        IN:=(GVL_Main.M25.bEnable OR GVL_Main.M25.bAllEnable) AND NOT GVL_Main.M25.Axis.Status.DriveDeviceError,
-        PT:=T#1s,
-        Q=>GVL_Main.M25.bBrakeRelease
-    );
-    tonBrakeRlease_M26(
-        IN:=(GVL_Main.M26.bEnable OR GVL_Main.M26.bAllEnable) AND NOT GVL_Main.M26.Axis.Status.DriveDeviceError,
-        PT:=T#1s,
-        Q=>GVL_Main.M26.bBrakeRelease
-    );
-    tonBrakeRlease_M27(
-        IN:=(GVL_Main.M27.bEnable OR GVL_Main.M27.bAllEnable) AND NOT GVL_Main.M27.Axis.Status.DriveDeviceError,
-        PT:=T#1s,
-        Q=>GVL_Main.M27.bBrakeRelease
-    );
-    fbPower_AxisM25(
-        Axis := GVL_Main.M25.Axis,
-        Enable := GVL_Main.M25.bEnable AND GVL_Main.bESTOP,
-        Enable_Positive := GVL_Main.M25.bLimitForwardEnable AND PLimFwd,
-        Enable_Negative := GVL_Main.M25.bLimitBackwardEnable AND PLimBwd,
-        Override := 100.000,
-    );
-    fbPower_AxisM26(
-        Axis := GVL_Main.M26.Axis,
-        Enable := GVL_Main.M26.bEnable AND GVL_Main.bESTOP,
-        Enable_Positive := GVL_Main.M26.bLimitForwardEnable AND SLimFwd,
-        Enable_Negative := GVL_Main.M26.bLimitBackwardEnable AND SLimBwd,
-        Override := 100.000,
-    );
-    fbPower_AxisM27(
-        Axis := GVL_Main.M27.Axis,
-        Enable := GVL_Main.M27.bEnable AND GVL_Main.bESTOP,
-        Enable_Positive := GVL_Main.M27.bLimitForwardEnable,
-        Enable_Negative := GVL_Main.M27.bLimitBackwardEnable,
-        Override := 100.000,
-    );
-
-
-    // *)
 
     END_PROGRAM
 
@@ -2554,24 +2599,19 @@ PRG_DET_CHAMBER
         fbMotionRyDC: FB_MotionStage;
         fbMotionZDC: FB_MotionStage;
     END_VAR
-    //Lock stages until they are tested
-    Main.M22.nEnableMode := ENUM_StageEnableMode.NEVER ;
-    Main.M23.nEnableMode := ENUM_StageEnableMode.NEVER ;
-    Main.M24.nEnableMode := ENUM_StageEnableMode.NEVER ;
-
-
-
     // Det. Chmber
     IF bInit THEN
         bInit :=FALSE;
         Main.M22.bHardwareEnable:= TRUE;
         Main.M22.bPowerSelf:= TRUE;
         Main.M22.nBrakeMode:= ENUM_StageBrakeMode.NO_BRAKE;
+        Main.M22.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
         Main.M22.fVelocity := 0.1;
 
         Main.M23.bHardwareEnable:= TRUE;
         Main.M23.bPowerSelf:= TRUE;
         Main.M23.nBrakeMode:= ENUM_StageBrakeMode.NO_BRAKE;
+        Main.M23.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
         Main.M23.fVelocity := 0.1;
 
         Main.M24.bHardwareEnable:= TRUE;
@@ -2601,16 +2641,32 @@ PRG_DET_FRAME
     PROGRAM PRG_DET_FRAME
     VAR
         bInit: BOOL := TRUE;
-        {attribute 'pytmc' := 'pv: QRIX:SA:bError'}
+        {attribute 'pytmc' := '
+            pv: QRIX:SA:bError
+            io: i
+        '}
         bError: BOOL := FALSE;
+        {attribute 'pytmc' := '
+            pv: QRIX:SA:bBusy
+            io: i
+        '}
         bBusy: BOOL;
         {attribute 'pytmc' := 'pv: QRIX:SA:bResetError'}
         bResetError: BOOL := FALSE;
+        {attribute 'pytmc' := '
+            pv: QRIX:SA:bEnableMotion
+            io: i
+        '}
         bEnableMotion : BOOL;
-        bEnableMotion_M15 : BOOL;
-        bEnableMotion_M16 : BOOL;
-        bEnableMotion_M17 : BOOL;
+        {attribute 'pytmc' := '
+            pv: QRIX:SA:bEnableSetGaugeValue
+            io: i
+        '}
         bEnableSetGaugeValue: BOOL;
+        {attribute 'pytmc' := '
+            pv: QRIX:SA:bEnableMoveRelative
+            io: i
+        '}
         bEnableMoveRelative: BOOL;
         {attribute 'pytmc' := 'pv: QRIX:SA:EnableJackOff'}
         bEnableJackOff: BOOL;
@@ -2624,7 +2680,6 @@ PRG_DET_FRAME
         bEnableAdjustingPitch: BOOL;
         {attribute 'pytmc' := 'pv: QRIX:DF:EnableAdjustingHeight'}
         bEnableAdjustingHeight: BOOL;
-
 
         bDone_M15, bDone_M16, bDone_M17: BOOL;
 
@@ -2660,34 +2715,24 @@ PRG_DET_FRAME
         fbMoveRelative_M15: MC_MoveRelative;
         fbMoveRelative_M16: MC_MoveRelative;
         fbMoveRelative_M17: MC_MoveRelative;
+
+        fbReset_M15: MC_Reset;
+        fbReset_M16: MC_Reset;
+        fbReset_M17: MC_Reset;
     END_VAR
     IF bInit THEN
         bInit := FALSE;
-
-
-        Main.M15.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
-        Main.M15.bHardwareEnable := TRUE;
-        Main.M15.bPowerSelf := TRUE;
-        Main.M15.fVelocity := 0.1;
-
-        Main.M16.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
-        Main.M16.bHardwareEnable := TRUE;
-        Main.M16.bPowerSelf := TRUE;
-        Main.M16.fVelocity := 0.1;
-
-        Main.M17.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
-        Main.M17.bHardwareEnable := TRUE;
-        Main.M17.bPowerSelf := TRUE;
-        Main.M17.fVelocity := 0.1;
-
-        Main.M15.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
-        Main.M16.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
-        Main.M17.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
 
         // Read linear gauge value
         bEnableSetGaugeValue := TRUE;
     END_IF
 
+    //Main.M15.bEnable := bEnableJackOff OR bEnableLevitation OR bEnableLanding OR
+    //    bEnableAdjustingRoll OR bEnableAdjustingPitch OR bEnableAdjustingHeight
+    //    OR bEnableMoveRelative OR bEnableMotion;
+    Main.M15.bEnable := TRUE;
+    Main.M16.bEnable := Main.M15.bEnable;
+    Main.M17.bEnable := Main.M16.bEnable;
 
     // Read axis status
     Main.M15.Axis.ReadStatus();
@@ -3136,9 +3181,6 @@ PRG_DET_FRAME
         bError:= FALSE;
         bBusy:=FALSE;
         bEnableMotion := FALSE;
-        bEnableMotion_M15 := FALSE;
-        bEnableMotion_M16 := FALSE;
-        bEnableMotion_M17 := FALSE;
         bEnableSetGaugeValue := FALSE;
         bEnableMoveRelative := FALSE;
         bEnableJackOff := FALSE;
@@ -3147,6 +3189,32 @@ PRG_DET_FRAME
         bEnableAdjustingRoll := FALSE;
         bEnableAdjustingPitch := FALSE;
         bEnableAdjustingHeight := FALSE;
+
+        Main.M2.bReset := TRUE;
+        Main.M2.bError := FALSE;
+
+        (*Reset*)
+        fbReset_M15(
+            Execute:=Main.M15.Axis.Status.Error,
+            Axis:=Main.M15.Axis,
+            Done=> ,
+            Busy=> ,
+            Error=> ,
+            ErrorID=> );
+        fbReset_M16(
+            Execute:=Main.M16.Axis.Status.Error,
+            Axis:=Main.M16.Axis,
+            Done=> ,
+            Busy=> ,
+            Error=> ,
+            ErrorID=> );
+        fbReset_M17(
+            Execute:=Main.M17.Axis.Status.Error,
+            Axis:=Main.M17.Axis,
+            Done=> ,
+            Busy=> ,
+            Error=> ,
+            ErrorID=> );
 
         bDone_M15 := bDone_M16 := bDone_M17 := FALSE;
 
@@ -3300,24 +3368,17 @@ PRG_Diffractometer
         bInit : BOOl := TRUE;
 
         //EPS
-        stEPS_Diff_Z : DUT_EPS;
         EPS_Diff_Z : FB_EPS;
 
-        stEPS_Diff_Chi : DUT_EPS;
         EPS_Diff_Chi : FB_EPS;
 
-        stEPS_Diff_Phi : DUT_EPS;
         EPS_Diff_Phi : FB_EPS;
 
-        stEPS_Diff_Theta : DUT_EPS;
         EPS_Diff_Theta : FB_EPS;
 
-        stEPS_Diff_2Theta : DUT_EPS;
         EPS_Diff_2Theta : FB_EPS;
 
-        stEPS_Diff_2ThetaY : DUT_EPS;
         EPS_Diff_2ThetaY : FB_EPS;
-
 
         //Encoders for rotary stages
         fbSetPosition: MC_SetPosition;
@@ -3388,33 +3449,34 @@ PRG_Diffractometer
 
     //EPS
     (*
-    EPS_Diff_Z.setDescription('Less20mm;LAS_D_H'); // SET DESCRITION FOR BYTE INDICATOR LABELS
-    EPS_Diff_Z.setBit(nBits:= 0, bValue:=fb_Diff_Z.stMotionStage.fPosition>=-20);
-    EPS_Diff_Z.setBit(nBits:= 1, bValue:=PRG_LAS.fb_LAS_D_H.stMotionStage.fPosition>=50 OR PRG_Diffractometer.fb_Diff_Z.stMotionStage.fPosition>=-20);
-    EPS_Diff_Z(eps:=stEPS_Diff_Z);
-    fb_Diff_Z.stMotionStage.stEPSBackwardEnable := stEPS_Diff_Z;
+    // All bits must be TRUE to enable the specifiied direction (backward or forwards)
+    // The bits are populated right to left in typhos screen. So Descriptions highest bit number is at the beginning of the description.
+    EPS_Diff_Theta(eps:=Main.M34.stEPSBackwardEnable);
+    EPS_Diff_Theta.setDescription('CHI;MIDIR;PHI'); // SET DESCRIPTION FOR BYTE INDICATOR LABELS
+    // Diffractometer Theta cannot go less than 5 degrees if the Diffractometer Chi is less than -5 degrees
+    EPS_Diff_Theta.setBit(nBits:= 2, bValue:=Main.M34.fPosition>=5 OR Main.M33.fPosition>=-5);
+    // Diffractometer Theta cannot go less than 10 degrees if the MID IR (LAS VIS) is IN, which is defined as a position of 90 +/- 1.
+    EPS_Diff_Theta.setBit(nBits:= 1, bValue:= Main.M34.fPosition>10 OR F_Limit(Main.M36.fPosition, 91, 89, false));
+    // Diffractometer Theta cannot go less than 10 degrees if the Diffractometer phi is at 90 +/- 1.
+    EPS_Diff_Theta.setBit(nBits:= 0, bValue:=Main.M34.fPosition>10 OR F_Limit(Main.M32.fPosition, 91, 89, false));
 
-    EPS_Diff_Chi.setDescription('Less-5mm;Theta'); // SET DESCRITION FOR BYTE INDICATOR LABELS
-    EPS_Diff_Chi.setBit(nBits:= 0, bValue:=fb_Diff_Chi.stMotionStage.fPosition>-5);
-    EPS_Diff_Chi.setBit(nBits:= 1, bValue:=fb_Diff_Theta.stMotionStage.fPosition>5 OR PRG_Diffractometer.fb_Diff_Chi.stMotionStage.fPosition>-5);
-    EPS_Diff_Chi(eps:=stEPS_Diff_Chi);
-    fb_Diff_Chi.stMotionStage.stEPSBackwardEnable := stEPS_Diff_Chi;
+    EPS_Diff_Chi(eps:=Main.M33.stEPSBackwardEnable);
+    EPS_Diff_Chi.setDescription('Theta'); // SET DESCRIPTION FOR BYTE INDICATOR LABELS
+    // Diffractometer Chi cannot go less than -5 degrees if the Diffractometer Theta is less than 5 degrees
+    EPS_Diff_Chi.setBit(nBits:= 0, bValue:=Main.M33.fPosition>=-5 OR Main.M34.fPosition>=5);
 
-    EPS_Diff_Theta.setDescription('CHI;PHI;MIDIT'); // SET DESCRITION FOR BYTE INDICATOR LABELS
-    EPS_Diff_Theta.setBit(nBits:= 0, bValue:=fb_Diff_Theta.stMotionStage.fPosition>=5 OR PRG_Diffractometer.fb_Diff_Chi.stMotionStage.fPosition>-5);
-    EPS_Diff_Theta.setBit(nBits:= 1, bValue:=fb_Diff_Theta.stMotionStage.fPosition>10 OR (PRG_Diffractometer.fb_Diff_Phi.stMotionStage.fPosition <90.1 AND PRG_Diffractometer.fb_Diff_Phi.stMotionStage.fPosition>89.9)) ;
-    EPS_Diff_Theta.setBit(nBits:= 2, bValue:= fb_Diff_Theta.stMotionStage.fPosition>10 OR (PRG_LAS.fb_LAS_VIS.stMotionStage.fPosition <90.1 AND PRG_LAS.fb_LAS_VIS.stMotionStage.fPosition>89.9));
-    EPS_Diff_Theta(eps:=stEPS_Diff_Theta);
-    fb_Diff_Theta.stMotionStage.stEPSBackwardEnable := stEPS_Diff_Theta; //Need More
+    EPS_Diff_Phi(eps:=Main.M32.stEPSBackwardEnable);
+    EPS_Diff_Phi.setDescription('Less_45;MID_IR;Theta'); // SET DESCRIPTION FOR BYTE INDICATOR LABELS
+    //
+    EPS_Diff_Phi.setBit(nBits:= 2, bValue:=Main.M32.fPosition<=45);
+    EPS_Diff_Phi.setBit(nBits:= 1, bValue:=Main.M36.fPosition <45 OR Main.M32.fPosition<=45);
+    EPS_Diff_Phi.setBit(nBits:= 0, bValue:=Main.M32.fPosition<=45 OR (Main.M34.fPosition <0.1 AND Main.M34.fPosition>359.5));
 
-    EPS_Diff_Phi.setDescription('Less-45;MID_IR;Theta'); // SET DESCRITION FOR BYTE INDICATOR LABELS
-    EPS_Diff_Phi.setBit(nBits:= 0, bValue:=fb_Diff_phi.stMotionStage.fPosition<=45);
-    EPS_Diff_Phi.setBit(nBits:= 1, bValue:=PRG_LAS.fb_LAS_VIS.stMotionStage.fPosition <45 OR PRG_Diffractometer.fb_Diff_phi.stMotionStage.fPosition<=45);
-    EPS_Diff_Phi.setBit(nBits:= 2, PRG_Diffractometer.fb_Diff_phi.stMotionStage.fPosition<=45 OR (PRG_Diffractometer.fb_Diff_Theta.stMotionStage.fPosition <0.1 AND PRG_Diffractometer.fb_Diff_Theta.stMotionStage.fPosition>359.5));
-    EPS_Diff_Phi(eps:=stEPS_Diff_Phi);
-    FB_Diff_Phi.stMotionStage.stEPSBackwardEnable := stEPS_Diff_Phi;
+    EPS_Diff_Z(eps:=Main.M30.stEPSBackwardEnable);
+    EPS_Diff_Z.setDescription('Less20mm;LAS_D_H'); // SET DESCRIPTION FOR BYTE INDICATOR LABELS
+    EPS_Diff_Z.setBit(nBits:= 0, bValue:=Main.M36.fPosition>=-20);
+    EPS_Diff_Z.setBit(nBits:= 1, bValue:=Main.M37.fPosition>=50 OR Main.M30.fPosition>=-20);
     *)
-
 
 
     fb_Diff_X(stMotionStage:=Main.M28);
@@ -3430,8 +3492,8 @@ PRG_Diffractometer
 
 
 Related:
+    * `F_Limit`_
     * `Main`_
-    * `PRG_LAS`_
 
 
 PRG_LAS
@@ -3555,12 +3617,7 @@ PRG_OPT
         fbMotionXG: FB_MotionStage;
         fbMotionRzPM: FB_MotionStage;
     END_VAR
-    //Lock stages until they are tested
-    Main.M10.nEnableMode := ENUM_StageEnableMode.NEVER ;
-    Main.M11.nEnableMode := ENUM_StageEnableMode.NEVER ;
-    Main.M14.nEnableMode := ENUM_StageEnableMode.NEVER ;
-
-    IF bINIT THEN
+    IF bInit THEN
 
         Main.M10.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
         Main.M10.bHardwareEnable := TRUE;
@@ -3581,7 +3638,7 @@ PRG_OPT
         Main.M11.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
         Main.M14.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
 
-        bINIT := FALSE;
+        bInit := FALSE;
     END_IF;
 
 
@@ -3740,31 +3797,20 @@ PRG_OPT_YG
 
         bInit: BOOL :=TRUE;
     END_VAR
-    //Lock stages until they are tested
-    Main.M8.nEnableMode := ENUM_StageEnableMode.NEVER ;
-    Main.M9.nEnableMode := ENUM_StageEnableMode.NEVER ;
-    Main.M7.nEnableMode := ENUM_StageEnableMode.NEVER ;
-
-
-
     IF bInit THEN
         bInit := FALSE;
-
 
         Main.M7.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
         Main.M7.bHardwareEnable := TRUE;
         Main.M7.bPowerSelf := TRUE;
-        Main.M7.fVelocity := 0.1;
 
         Main.M8.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
         Main.M8.bHardwareEnable := TRUE;
         Main.M8.bPowerSelf := TRUE;
-        Main.M8.fVelocity := 0.1;
 
         Main.M9.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
         Main.M9.bHardwareEnable := TRUE;
         Main.M9.bPowerSelf := TRUE;
-        Main.M9.fVelocity := 0.1;
 
         Main.M7.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
         Main.M8.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
@@ -3779,9 +3825,7 @@ PRG_OPT_YG
         stJack1Axis		:= Main.M7,
         stJack2Axis		:= Main.M8,
         stJack3Axis		:= Main.M9,
-        i_DevName		:= 'OPT_YG',
-        io_fbFFHWO		:= GVL_PMPS.fbFastFaultOutput1,
-        fbArbiter		:= GVL_PMPS.fbArbiter,
+        i_DevName		:= 'OPT_YG'
     );
 
     END_PROGRAM
@@ -3789,7 +3833,6 @@ PRG_OPT_YG
 
 Related:
     * `FB_3AxesJack`_
-    * `GVL_PMPS`_
     * `Main`_
 
 
@@ -4090,7 +4133,7 @@ PRG_SpetrometerArm
         //Main.M4.bEnable := FALSE; // Optics Slits XS2 // QRIX:OPTSL:MMS:SOUTH
         //Main.M5.bEnable := FALSE; // Optics Slits YS1 // QRIX:OPTSL:MMS:TOP
         //Main.M6.bEnable := FALSE; // Optics Slits YS2 // QRIX:OPTSL:MMS:BOTTOM
-        Main.M7.bEnable := FALSE; // Optics Base YG1 // QRIX:OPT:MMS:Y2
+        Main.M7.bEnable := FALSE; // Optics Base YG1 // QRIX:OPT:MMS:Y1
         Main.M8.bEnable := FALSE; // Optics Base YG2 // QRIX:OPT:MMS:Y2
         Main.M9.bEnable := FALSE; // Optics Base YG3 // QRIX:OPT:MMS:Y3
         //Main.M10.bEnable := FALSE; // Optics Grating RxG // QRIX:G:MMS:Rx

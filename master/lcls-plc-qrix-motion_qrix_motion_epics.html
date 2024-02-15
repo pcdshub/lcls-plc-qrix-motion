@@ -24,8 +24,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="DUTs" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_source.html" />
-    <link rel="prev" title="Settings" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html" /> 
+    <link rel="next" title="DUTs" href="lcls-plc-qrix-motion_qrix_motion_source.html" />
+    <link rel="prev" title="Settings" href="lcls-plc-qrix-motion_qrix_motion_summary.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -55,14 +55,15 @@
 <li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_boxes.html">Boxes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_links.html">Links</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">PLC_QRIX_MOT</span></p>
+<p class="caption" role="heading"><span class="caption-text">qrix_motion</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html">Settings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#pragmas">Pragmas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#libraries">Libraries</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html#symbols">Symbols</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_qrix_motion_summary.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_qrix_motion_summary.html#pragmas">Pragmas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_qrix_motion_summary.html#libraries">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_qrix_motion_summary.html#symbols">Symbols</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Data Types</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#dut-sensor">DUT_Sensor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dut-sensorhgs">DUT_SensorHGS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#fb-2axestrans">FB_2AxesTrans</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#fb-3axesjack">FB_3AxesJack</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#fb-slits">FB_Slits</a></li>
@@ -97,9 +98,9 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="#database-records">Database Records</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_source.html">DUTs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_source.html#gvls">GVLs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_PLC_QRIX_MOT_source.html#pous">POUs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_qrix_motion_source.html">DUTs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_qrix_motion_source.html#gvls">GVLs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lcls-plc-qrix-motion_qrix_motion_source.html#pous">POUs</a></li>
 </ul>
 
         </div>
@@ -118,7 +119,7 @@
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active">Data Types</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/lcls-plc-qrix-motion_PLC_QRIX_MOT_epics.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/lcls-plc-qrix-motion_qrix_motion_epics.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -130,6 +131,44 @@
 <h1>Data Types<a class="headerlink" href="#data-types" title="Link to this heading"></a></h1>
 <section id="dut-sensor">
 <h2>DUT_Sensor<a class="headerlink" href="#dut-sensor" title="Link to this heading"></a></h2>
+<table class="docutils align-center">
+<thead>
+<tr class="row-odd"><th class="head"><p>Record</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Pragma</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>$(PREFIX):EU_RBV</p></td>
+<td><p>waveform</p></td>
+<td><p>$(SYMBOL).sEGU</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>$(PREFIX):RAWCOUNTS_RBV</p></td>
+<td><p>longin</p></td>
+<td><p>$(SYMBOL).iRawCnts</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>$(PREFIX):VALUE_RBV</p></td>
+<td><p>ai</p></td>
+<td><p>$(SYMBOL).fValue</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="dut-sensorhgs">
+<h2>DUT_SensorHGS<a class="headerlink" href="#dut-sensorhgs" title="Link to this heading"></a></h2>
 <table class="docutils align-center">
 <thead>
 <tr class="row-odd"><th class="head"><p>Record</p></th>
@@ -47468,19 +47507,11 @@
 <td><p>bi</p></td>
 <td><p>GVL_Sensor.bFloating</p></td>
 <td><div class="line-block">
-<div class="line">io: output</div>
+<div class="line">io: input</div>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:SA:FLOATING</p></td>
-<td><p>bo</p></td>
-<td><p>GVL_Sensor.bFloating</p></td>
-<td><div class="line-block">
-<div class="line">io: output</div>
-</div>
-</td>
-</tr>
-<tr class="row-even"><td><p>QRIX:DF:AI:TILTZ:VALUE_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:DF:INM:Z:VALUE_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>GVL_Sensor.stFrameP.fValue</p></td>
 <td><div class="line-block">
@@ -47488,7 +47519,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:DF:AI:TILTZ:RAWCOUNTS_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:DF:INM:Z:RAWCOUNTS_RBV</p></td>
 <td><p>longin</p></td>
 <td><p>GVL_Sensor.stFrameP.iRawCnts</p></td>
 <td><div class="line-block">
@@ -47496,7 +47527,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:DF:AI:TILTZ:EU_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:DF:INM:Z:EU_RBV</p></td>
 <td><p>waveform</p></td>
 <td><p>GVL_Sensor.stFrameP.sEGU</p></td>
 <td><div class="line-block">
@@ -47504,7 +47535,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:DF:AI:TILTX:VALUE_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:DF:INM:X:VALUE_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>GVL_Sensor.stFrameR.fValue</p></td>
 <td><div class="line-block">
@@ -47512,7 +47543,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:DF:AI:TILTX:RAWCOUNTS_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:DF:INM:X:RAWCOUNTS_RBV</p></td>
 <td><p>longin</p></td>
 <td><p>GVL_Sensor.stFrameR.iRawCnts</p></td>
 <td><div class="line-block">
@@ -47520,7 +47551,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:DF:AI:TILTX:EU_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:DF:INM:X:EU_RBV</p></td>
 <td><p>waveform</p></td>
 <td><p>GVL_Sensor.stFrameR.sEGU</p></td>
 <td><div class="line-block">
@@ -47528,7 +47559,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:GS:AI:TILTZ:VALUE_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:GS:INM:Z:VALUE_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>GVL_Sensor.stGraniteP.fValue</p></td>
 <td><div class="line-block">
@@ -47536,7 +47567,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:GS:AI:TILTZ:RAWCOUNTS_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:GS:INM:Z:RAWCOUNTS_RBV</p></td>
 <td><p>longin</p></td>
 <td><p>GVL_Sensor.stGraniteP.iRawCnts</p></td>
 <td><div class="line-block">
@@ -47544,7 +47575,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:GS:AI:TILTZ:EU_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:GS:INM:Z:EU_RBV</p></td>
 <td><p>waveform</p></td>
 <td><p>GVL_Sensor.stGraniteP.sEGU</p></td>
 <td><div class="line-block">
@@ -47552,7 +47583,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:GS:AI:TILTX:VALUE_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:GS:INM:X:VALUE_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>GVL_Sensor.stGraniteR.fValue</p></td>
 <td><div class="line-block">
@@ -47560,7 +47591,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:GS:AI:TILTX:RAWCOUNTS_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:GS:INM:X:RAWCOUNTS_RBV</p></td>
 <td><p>longin</p></td>
 <td><p>GVL_Sensor.stGraniteR.iRawCnts</p></td>
 <td><div class="line-block">
@@ -47568,7 +47599,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:GS:AI:TILTX:EU_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:GS:INM:X:EU_RBV</p></td>
 <td><p>waveform</p></td>
 <td><p>GVL_Sensor.stGraniteR.sEGU</p></td>
 <td><div class="line-block">
@@ -47576,67 +47607,203 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:SA:DoneAdjustingHeight_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:SA:DDS:HDF:VALUE_RBV</p></td>
+<td><p>ai</p></td>
+<td><p>GVL_Sensor.stHDF.fValue</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:SA:DDS:HDF:RAWCOUNTS_RBV</p></td>
+<td><p>longin</p></td>
+<td><p>GVL_Sensor.stHDF.iRawCnts</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:SA:DDS:HDF:EU_RBV</p></td>
+<td><p>waveform</p></td>
+<td><p>GVL_Sensor.stHDF.sEGU</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:SA:GPT:PS1:VALUE_RBV</p></td>
+<td><p>ai</p></td>
+<td><p>GVL_Sensor.stPS1.fValue</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:SA:GPT:PS1:RAWCOUNTS_RBV</p></td>
+<td><p>longin</p></td>
+<td><p>GVL_Sensor.stPS1.iRawCnts</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:SA:GPT:PS1:EU_RBV</p></td>
+<td><p>waveform</p></td>
+<td><p>GVL_Sensor.stPS1.sEGU</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:SA:GPT:PS2:VALUE_RBV</p></td>
+<td><p>ai</p></td>
+<td><p>GVL_Sensor.stPS2.fValue</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:SA:GPT:PS2:RAWCOUNTS_RBV</p></td>
+<td><p>longin</p></td>
+<td><p>GVL_Sensor.stPS2.iRawCnts</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:SA:GPT:PS2:EU_RBV</p></td>
+<td><p>waveform</p></td>
+<td><p>GVL_Sensor.stPS2.sEGU</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:SA:GPT:PS3:VALUE_RBV</p></td>
+<td><p>ai</p></td>
+<td><p>GVL_Sensor.stPS3.fValue</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:SA:GPT:PS3:RAWCOUNTS_RBV</p></td>
+<td><p>longin</p></td>
+<td><p>GVL_Sensor.stPS3.iRawCnts</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:SA:GPT:PS3:EU_RBV</p></td>
+<td><p>waveform</p></td>
+<td><p>GVL_Sensor.stPS3.sEGU</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:SA:DDS:YDF1:VALUE_RBV</p></td>
+<td><p>ai</p></td>
+<td><p>GVL_Sensor.stYDF1.fValue</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:SA:DDS:YDF1:RAWCOUNTS_RBV</p></td>
+<td><p>longin</p></td>
+<td><p>GVL_Sensor.stYDF1.iRawCnts</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:SA:DDS:YDF1:EU_RBV</p></td>
+<td><p>waveform</p></td>
+<td><p>GVL_Sensor.stYDF1.sEGU</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:SA:DDS:YDF2:VALUE_RBV</p></td>
+<td><p>ai</p></td>
+<td><p>GVL_Sensor.stYDF2.fValue</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:SA:DDS:YDF2:RAWCOUNTS_RBV</p></td>
+<td><p>longin</p></td>
+<td><p>GVL_Sensor.stYDF2.iRawCnts</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:SA:DDS:YDF2:EU_RBV</p></td>
+<td><p>waveform</p></td>
+<td><p>GVL_Sensor.stYDF2.sEGU</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:SA:DDS:YDF3:VALUE_RBV</p></td>
+<td><p>ai</p></td>
+<td><p>GVL_Sensor.stYDF3.fValue</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:SA:DDS:YDF3:RAWCOUNTS_RBV</p></td>
+<td><p>longin</p></td>
+<td><p>GVL_Sensor.stYDF3.iRawCnts</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:SA:DDS:YDF3:EU_RBV</p></td>
+<td><p>waveform</p></td>
+<td><p>GVL_Sensor.stYDF3.sEGU</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:SA:bDoneAdjustingHeight_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>GVL_VAR.bDoneAdjustingHeight</p></td>
 <td><div class="line-block">
-<div class="line">io: output</div>
+<div class="line">io: input</div>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:SA:DoneAdjustingHeight</p></td>
-<td><p>bo</p></td>
-<td><p>GVL_VAR.bDoneAdjustingHeight</p></td>
-<td><div class="line-block">
-<div class="line">io: output</div>
-</div>
-</td>
-</tr>
-<tr class="row-even"><td><p>QRIX:SA:DoneAdjustingPitch_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:SA:bDoneAdjustingPitch_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>GVL_VAR.bDoneAdjustingPitch</p></td>
 <td><div class="line-block">
-<div class="line">io: output</div>
+<div class="line">io: input</div>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:SA:DoneAdjustingPitch</p></td>
-<td><p>bo</p></td>
-<td><p>GVL_VAR.bDoneAdjustingPitch</p></td>
-<td><div class="line-block">
-<div class="line">io: output</div>
-</div>
-</td>
-</tr>
-<tr class="row-even"><td><p>QRIX:SA:DoneAdjustingRoll_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:SA:bDoneAdjustingRoll_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>GVL_VAR.bDoneAdjustingRoll</p></td>
 <td><div class="line-block">
-<div class="line">io: output</div>
+<div class="line">io: input</div>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:SA:DoneAdjustingRoll</p></td>
-<td><p>bo</p></td>
-<td><p>GVL_VAR.bDoneAdjustingRoll</p></td>
-<td><div class="line-block">
-<div class="line">io: output</div>
-</div>
-</td>
-</tr>
-<tr class="row-even"><td><p>QRIX:SA:JackOff_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:SA:bDoneJackOff_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>GVL_VAR.bDoneJackOff</p></td>
 <td><div class="line-block">
-<div class="line">io: output</div>
-</div>
-</td>
-</tr>
-<tr class="row-odd"><td><p>QRIX:SA:JackOff</p></td>
-<td><p>bo</p></td>
-<td><p>GVL_VAR.bDoneJackOff</p></td>
-<td><div class="line-block">
-<div class="line">io: output</div>
+<div class="line">io: input</div>
 </div>
 </td>
 </tr>
@@ -47644,31 +47811,15 @@
 <td><p>bi</p></td>
 <td><p>GVL_VAR.bDoneLanding</p></td>
 <td><div class="line-block">
-<div class="line">io: output</div>
+<div class="line">io: input</div>
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:SA:bDoneLanding</p></td>
-<td><p>bo</p></td>
-<td><p>GVL_VAR.bDoneLanding</p></td>
-<td><div class="line-block">
-<div class="line">io: output</div>
-</div>
-</td>
-</tr>
-<tr class="row-even"><td><p>QRIX:SA:DoneLevitation_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:SA:bDoneLevitation_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>GVL_VAR.bDoneLevitation</p></td>
 <td><div class="line-block">
-<div class="line">io: output</div>
-</div>
-</td>
-</tr>
-<tr class="row-odd"><td><p>QRIX:SA:DoneLevitation</p></td>
-<td><p>bo</p></td>
-<td><p>GVL_VAR.bDoneLevitation</p></td>
-<td><div class="line-block">
-<div class="line">io: output</div>
+<div class="line">io: input</div>
 </div>
 </td>
 </tr>
@@ -59527,7 +59678,15 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:DF:EnableAdjustingHeight_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:SA:bBusy_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>PRG_DET_FRAME.bBusy</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:DF:EnableAdjustingHeight_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_DET_FRAME.bEnableAdjustingHeight</p></td>
 <td><div class="line-block">
@@ -59535,7 +59694,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:DF:EnableAdjustingHeight</p></td>
+<tr class="row-odd"><td><p>QRIX:DF:EnableAdjustingHeight</p></td>
 <td><p>bo</p></td>
 <td><p>PRG_DET_FRAME.bEnableAdjustingHeight</p></td>
 <td><div class="line-block">
@@ -59543,7 +59702,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:DF:EnableAdjustingPitch_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:DF:EnableAdjustingPitch_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_DET_FRAME.bEnableAdjustingPitch</p></td>
 <td><div class="line-block">
@@ -59551,7 +59710,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:DF:EnableAdjustingPitch</p></td>
+<tr class="row-odd"><td><p>QRIX:DF:EnableAdjustingPitch</p></td>
 <td><p>bo</p></td>
 <td><p>PRG_DET_FRAME.bEnableAdjustingPitch</p></td>
 <td><div class="line-block">
@@ -59559,7 +59718,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:DF:EnableAdjustingRoll_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:DF:EnableAdjustingRoll_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_DET_FRAME.bEnableAdjustingRoll</p></td>
 <td><div class="line-block">
@@ -59567,7 +59726,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:DF:EnableAdjustingRoll</p></td>
+<tr class="row-odd"><td><p>QRIX:DF:EnableAdjustingRoll</p></td>
 <td><p>bo</p></td>
 <td><p>PRG_DET_FRAME.bEnableAdjustingRoll</p></td>
 <td><div class="line-block">
@@ -59575,7 +59734,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:SA:EnableJackOff_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:SA:EnableJackOff_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_DET_FRAME.bEnableJackOff</p></td>
 <td><div class="line-block">
@@ -59583,7 +59742,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:SA:EnableJackOff</p></td>
+<tr class="row-odd"><td><p>QRIX:SA:EnableJackOff</p></td>
 <td><p>bo</p></td>
 <td><p>PRG_DET_FRAME.bEnableJackOff</p></td>
 <td><div class="line-block">
@@ -59591,7 +59750,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:SA:EnableLanding_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:SA:EnableLanding_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_DET_FRAME.bEnableLanding</p></td>
 <td><div class="line-block">
@@ -59599,7 +59758,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:SA:EnableLanding</p></td>
+<tr class="row-odd"><td><p>QRIX:SA:EnableLanding</p></td>
 <td><p>bo</p></td>
 <td><p>PRG_DET_FRAME.bEnableLanding</p></td>
 <td><div class="line-block">
@@ -59607,7 +59766,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:SA:EnableLevitation_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:SA:EnableLevitation_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_DET_FRAME.bEnableLevitation</p></td>
 <td><div class="line-block">
@@ -59615,11 +59774,35 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:SA:EnableLevitation</p></td>
+<tr class="row-odd"><td><p>QRIX:SA:EnableLevitation</p></td>
 <td><p>bo</p></td>
 <td><p>PRG_DET_FRAME.bEnableLevitation</p></td>
 <td><div class="line-block">
 <div class="line">io: output</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:SA:bEnableMotion_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>PRG_DET_FRAME.bEnableMotion</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>QRIX:SA:bEnableMoveRelative_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>PRG_DET_FRAME.bEnableMoveRelative</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>QRIX:SA:bEnableSetGaugeValue_RBV</p></td>
+<td><p>bi</p></td>
+<td><p>PRG_DET_FRAME.bEnableSetGaugeValue</p></td>
+<td><div class="line-block">
+<div class="line">io: input</div>
 </div>
 </td>
 </tr>
@@ -59627,19 +59810,11 @@
 <td><p>bi</p></td>
 <td><p>PRG_DET_FRAME.bError</p></td>
 <td><div class="line-block">
-<div class="line">io: output</div>
+<div class="line">io: input</div>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:SA:bError</p></td>
-<td><p>bo</p></td>
-<td><p>PRG_DET_FRAME.bError</p></td>
-<td><div class="line-block">
-<div class="line">io: output</div>
-</div>
-</td>
-</tr>
-<tr class="row-odd"><td><p>QRIX:SA:bResetError_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:SA:bResetError_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_DET_FRAME.bResetError</p></td>
 <td><div class="line-block">
@@ -59647,7 +59822,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:SA:bResetError</p></td>
+<tr class="row-odd"><td><p>QRIX:SA:bResetError</p></td>
 <td><p>bo</p></td>
 <td><p>PRG_DET_FRAME.bResetError</p></td>
 <td><div class="line-block">
@@ -59655,7 +59830,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:DETSL:BLOCK_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:DETSL:BLOCK_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.bBlock</p></td>
 <td><div class="line-block">
@@ -59665,7 +59840,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:DETSL:BLOCK</p></td>
+<tr class="row-odd"><td><p>QRIX:DETSL:BLOCK</p></td>
 <td><p>bo</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.bBlock</p></td>
 <td><div class="line-block">
@@ -59675,7 +59850,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:DETSL:CLOSE_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:DETSL:CLOSE_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.bClose</p></td>
 <td><div class="line-block">
@@ -59685,7 +59860,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:DETSL:CLOSE</p></td>
+<tr class="row-odd"><td><p>QRIX:DETSL:CLOSE</p></td>
 <td><p>bo</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.bClose</p></td>
 <td><div class="line-block">
@@ -59695,7 +59870,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:DETSL:Home_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:DETSL:Home_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.bHome</p></td>
 <td><div class="line-block">
@@ -59705,7 +59880,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:DETSL:HOME_READY_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:DETSL:HOME_READY_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.bHomeReady</p></td>
 <td><div class="line-block">
@@ -59715,7 +59890,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:DETSL:PMPS_OK_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:DETSL:PMPS_OK_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.bMoveOk</p></td>
 <td><div class="line-block">
@@ -59725,7 +59900,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:DETSL:OPEN_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:DETSL:OPEN_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.bOpen</p></td>
 <td><div class="line-block">
@@ -59735,7 +59910,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:DETSL:OPEN</p></td>
+<tr class="row-even"><td><p>QRIX:DETSL:OPEN</p></td>
 <td><p>bo</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.bOpen</p></td>
 <td><div class="line-block">
@@ -59745,7 +59920,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:DETSL:BOTTOM:AT_STATE_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:DETSL:BOTTOM:AT_STATE_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.fbBottom.bAtState</p></td>
 <td><div class="line-block">
@@ -59755,7 +59930,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:DETSL:BOTTOM:BUSY_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:DETSL:BOTTOM:BUSY_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.fbBottom.bBusy</p></td>
 <td><div class="line-block">
@@ -59765,7 +59940,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:DETSL:BOTTOM:DMOV_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:DETSL:BOTTOM:DMOV_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.fbBottom.bDone</p></td>
 <td><div class="line-block">
@@ -59775,7 +59950,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:DETSL:BOTTOM:ERR_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:DETSL:BOTTOM:ERR_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.fbBottom.bError</p></td>
 <td><div class="line-block">
@@ -59785,7 +59960,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:DETSL:BOTTOM:GO_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:DETSL:BOTTOM:GO_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.fbBottom.bExecute</p></td>
 <td><div class="line-block">
@@ -59795,7 +59970,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:DETSL:BOTTOM:GO</p></td>
+<tr class="row-even"><td><p>QRIX:DETSL:BOTTOM:GO</p></td>
 <td><p>bo</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.fbBottom.bExecute</p></td>
 <td><div class="line-block">
@@ -59805,7 +59980,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:DETSL:BOTTOM:ERRMSG_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:DETSL:BOTTOM:ERRMSG_RBV</p></td>
 <td><p>waveform</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.fbBottom.sError</p></td>
 <td><div class="line-block">
@@ -59813,7 +59988,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:DETSL:BOTTOM:MOVE_OK_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:DETSL:BOTTOM:MOVE_OK_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>TRUE if the move would be safe</p></td>
 <td><div class="line-block">
@@ -59823,7 +59998,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:DETSL:BOTTOM:SETPOINT_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:DETSL:BOTTOM:SETPOINT_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -59831,7 +60006,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:DETSL:BOTTOM:SETPOINT</p></td>
+<tr class="row-even"><td><p>QRIX:DETSL:BOTTOM:SETPOINT</p></td>
 <td><p>ao</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -59839,7 +60014,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:DETSL:BOTTOM:VELO_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:DETSL:BOTTOM:VELO_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -59847,7 +60022,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:DETSL:BOTTOM:VELO</p></td>
+<tr class="row-even"><td><p>QRIX:DETSL:BOTTOM:VELO</p></td>
 <td><p>ao</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -59855,7 +60030,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:DETSL:BOTTOM:ENCODER_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:DETSL:BOTTOM:ENCODER_RBV</p></td>
 <td><p>longin</p></td>
 <td><p>Encoder count associated with this state</p></td>
 <td><div class="line-block">
@@ -59863,7 +60038,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:DETSL:BOTTOM:NAME_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:DETSL:BOTTOM:NAME_RBV</p></td>
 <td><p>waveform</p></td>
 <td><p>Name of this position state</p></td>
 <td><div class="line-block">
@@ -59871,7 +60046,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:DETSL:LEFT:AT_STATE_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:DETSL:LEFT:AT_STATE_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.fbLeft.bAtState</p></td>
 <td><div class="line-block">
@@ -59881,7 +60056,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:DETSL:LEFT:BUSY_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:DETSL:LEFT:BUSY_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.fbLeft.bBusy</p></td>
 <td><div class="line-block">
@@ -59891,7 +60066,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:DETSL:LEFT:DMOV_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:DETSL:LEFT:DMOV_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.fbLeft.bDone</p></td>
 <td><div class="line-block">
@@ -59901,7 +60076,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:DETSL:LEFT:ERR_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:DETSL:LEFT:ERR_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.fbLeft.bError</p></td>
 <td><div class="line-block">
@@ -59911,7 +60086,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:DETSL:LEFT:GO_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:DETSL:LEFT:GO_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.fbLeft.bExecute</p></td>
 <td><div class="line-block">
@@ -59921,7 +60096,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:DETSL:LEFT:GO</p></td>
+<tr class="row-even"><td><p>QRIX:DETSL:LEFT:GO</p></td>
 <td><p>bo</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.fbLeft.bExecute</p></td>
 <td><div class="line-block">
@@ -59931,7 +60106,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:DETSL:LEFT:ERRMSG_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:DETSL:LEFT:ERRMSG_RBV</p></td>
 <td><p>waveform</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.fbLeft.sError</p></td>
 <td><div class="line-block">
@@ -59939,7 +60114,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:DETSL:LEFT:MOVE_OK_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:DETSL:LEFT:MOVE_OK_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>TRUE if the move would be safe</p></td>
 <td><div class="line-block">
@@ -59949,7 +60124,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:DETSL:LEFT:SETPOINT_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:DETSL:LEFT:SETPOINT_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -59957,7 +60132,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:DETSL:LEFT:SETPOINT</p></td>
+<tr class="row-even"><td><p>QRIX:DETSL:LEFT:SETPOINT</p></td>
 <td><p>ao</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -59965,7 +60140,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:DETSL:LEFT:VELO_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:DETSL:LEFT:VELO_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -59973,7 +60148,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:DETSL:LEFT:VELO</p></td>
+<tr class="row-even"><td><p>QRIX:DETSL:LEFT:VELO</p></td>
 <td><p>ao</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -59981,7 +60156,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:DETSL:LEFT:ENCODER_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:DETSL:LEFT:ENCODER_RBV</p></td>
 <td><p>longin</p></td>
 <td><p>Encoder count associated with this state</p></td>
 <td><div class="line-block">
@@ -59989,7 +60164,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:DETSL:LEFT:NAME_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:DETSL:LEFT:NAME_RBV</p></td>
 <td><p>waveform</p></td>
 <td><p>Name of this position state</p></td>
 <td><div class="line-block">
@@ -59997,7 +60172,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:DETSL:RIGHT:AT_STATE_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:DETSL:RIGHT:AT_STATE_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.fbRight.bAtState</p></td>
 <td><div class="line-block">
@@ -60007,7 +60182,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:DETSL:RIGHT:BUSY_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:DETSL:RIGHT:BUSY_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.fbRight.bBusy</p></td>
 <td><div class="line-block">
@@ -60017,7 +60192,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:DETSL:RIGHT:DMOV_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:DETSL:RIGHT:DMOV_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.fbRight.bDone</p></td>
 <td><div class="line-block">
@@ -60027,7 +60202,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:DETSL:RIGHT:ERR_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:DETSL:RIGHT:ERR_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.fbRight.bError</p></td>
 <td><div class="line-block">
@@ -60037,7 +60212,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:DETSL:RIGHT:GO_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:DETSL:RIGHT:GO_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.fbRight.bExecute</p></td>
 <td><div class="line-block">
@@ -60047,7 +60222,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:DETSL:RIGHT:GO</p></td>
+<tr class="row-even"><td><p>QRIX:DETSL:RIGHT:GO</p></td>
 <td><p>bo</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.fbRight.bExecute</p></td>
 <td><div class="line-block">
@@ -60057,7 +60232,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:DETSL:RIGHT:ERRMSG_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:DETSL:RIGHT:ERRMSG_RBV</p></td>
 <td><p>waveform</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.fbRight.sError</p></td>
 <td><div class="line-block">
@@ -60065,7 +60240,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:DETSL:RIGHT:MOVE_OK_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:DETSL:RIGHT:MOVE_OK_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>TRUE if the move would be safe</p></td>
 <td><div class="line-block">
@@ -60075,7 +60250,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:DETSL:RIGHT:SETPOINT_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:DETSL:RIGHT:SETPOINT_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -60083,7 +60258,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:DETSL:RIGHT:SETPOINT</p></td>
+<tr class="row-even"><td><p>QRIX:DETSL:RIGHT:SETPOINT</p></td>
 <td><p>ao</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -60091,7 +60266,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:DETSL:RIGHT:VELO_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:DETSL:RIGHT:VELO_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -60099,7 +60274,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:DETSL:RIGHT:VELO</p></td>
+<tr class="row-even"><td><p>QRIX:DETSL:RIGHT:VELO</p></td>
 <td><p>ao</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -60107,7 +60282,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:DETSL:RIGHT:ENCODER_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:DETSL:RIGHT:ENCODER_RBV</p></td>
 <td><p>longin</p></td>
 <td><p>Encoder count associated with this state</p></td>
 <td><div class="line-block">
@@ -60115,7 +60290,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:DETSL:RIGHT:NAME_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:DETSL:RIGHT:NAME_RBV</p></td>
 <td><p>waveform</p></td>
 <td><p>Name of this position state</p></td>
 <td><div class="line-block">
@@ -60123,7 +60298,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:DETSL:TOP:AT_STATE_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:DETSL:TOP:AT_STATE_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.fbTop.bAtState</p></td>
 <td><div class="line-block">
@@ -60133,7 +60308,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:DETSL:TOP:BUSY_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:DETSL:TOP:BUSY_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.fbTop.bBusy</p></td>
 <td><div class="line-block">
@@ -60143,7 +60318,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:DETSL:TOP:DMOV_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:DETSL:TOP:DMOV_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.fbTop.bDone</p></td>
 <td><div class="line-block">
@@ -60153,7 +60328,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:DETSL:TOP:ERR_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:DETSL:TOP:ERR_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.fbTop.bError</p></td>
 <td><div class="line-block">
@@ -60163,7 +60338,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:DETSL:TOP:GO_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:DETSL:TOP:GO_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.fbTop.bExecute</p></td>
 <td><div class="line-block">
@@ -60173,7 +60348,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:DETSL:TOP:GO</p></td>
+<tr class="row-even"><td><p>QRIX:DETSL:TOP:GO</p></td>
 <td><p>bo</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.fbTop.bExecute</p></td>
 <td><div class="line-block">
@@ -60183,7 +60358,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:DETSL:TOP:ERRMSG_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:DETSL:TOP:ERRMSG_RBV</p></td>
 <td><p>waveform</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.fbTop.sError</p></td>
 <td><div class="line-block">
@@ -60191,7 +60366,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:DETSL:TOP:MOVE_OK_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:DETSL:TOP:MOVE_OK_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>TRUE if the move would be safe</p></td>
 <td><div class="line-block">
@@ -60201,7 +60376,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:DETSL:TOP:SETPOINT_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:DETSL:TOP:SETPOINT_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -60209,7 +60384,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:DETSL:TOP:SETPOINT</p></td>
+<tr class="row-even"><td><p>QRIX:DETSL:TOP:SETPOINT</p></td>
 <td><p>ao</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -60217,7 +60392,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:DETSL:TOP:VELO_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:DETSL:TOP:VELO_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -60225,7 +60400,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:DETSL:TOP:VELO</p></td>
+<tr class="row-even"><td><p>QRIX:DETSL:TOP:VELO</p></td>
 <td><p>ao</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -60233,7 +60408,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:DETSL:TOP:ENCODER_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:DETSL:TOP:ENCODER_RBV</p></td>
 <td><p>longin</p></td>
 <td><p>Encoder count associated with this state</p></td>
 <td><div class="line-block">
@@ -60241,7 +60416,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:DETSL:TOP:NAME_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:DETSL:TOP:NAME_RBV</p></td>
 <td><p>waveform</p></td>
 <td><p>Name of this position state</p></td>
 <td><div class="line-block">
@@ -60249,7 +60424,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:DETSL:ACTUAL_XWIDTH_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:DETSL:ACTUAL_XWIDTH_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.rActApertureSizeX</p></td>
 <td><div class="line-block">
@@ -60257,7 +60432,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:DETSL:ACTUAL_XWIDTH</p></td>
+<tr class="row-even"><td><p>QRIX:DETSL:ACTUAL_XWIDTH</p></td>
 <td><p>ao</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.rActApertureSizeX</p></td>
 <td><div class="line-block">
@@ -60265,7 +60440,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:DETSL:ACTUAL_YWIDTH_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:DETSL:ACTUAL_YWIDTH_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.rActApertureSizeY</p></td>
 <td><div class="line-block">
@@ -60273,7 +60448,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:DETSL:ACTUAL_YWIDTH</p></td>
+<tr class="row-even"><td><p>QRIX:DETSL:ACTUAL_YWIDTH</p></td>
 <td><p>ao</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.rActApertureSizeY</p></td>
 <td><div class="line-block">
@@ -60281,7 +60456,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:DETSL:ACTUAL_XCENTER_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:DETSL:ACTUAL_XCENTER_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.rActCenterX</p></td>
 <td><div class="line-block">
@@ -60289,7 +60464,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:DETSL:ACTUAL_XCENTER</p></td>
+<tr class="row-even"><td><p>QRIX:DETSL:ACTUAL_XCENTER</p></td>
 <td><p>ao</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.rActCenterX</p></td>
 <td><div class="line-block">
@@ -60297,7 +60472,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:DETSL:ACTUAL_YCENTER_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:DETSL:ACTUAL_YCENTER_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.rActCenterY</p></td>
 <td><div class="line-block">
@@ -60305,7 +60480,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:DETSL:ACTUAL_YCENTER</p></td>
+<tr class="row-even"><td><p>QRIX:DETSL:ACTUAL_YCENTER</p></td>
 <td><p>ao</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.rActCenterY</p></td>
 <td><div class="line-block">
@@ -60313,7 +60488,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:DETSL:ZeroOffset_Bottom_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:DETSL:ZeroOffset_Bottom_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.rEncoderOffsetBottom</p></td>
 <td><div class="line-block">
@@ -60321,7 +60496,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:DETSL:ZeroOffset_Bottom</p></td>
+<tr class="row-even"><td><p>QRIX:DETSL:ZeroOffset_Bottom</p></td>
 <td><p>ao</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.rEncoderOffsetBottom</p></td>
 <td><div class="line-block">
@@ -60329,7 +60504,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:DETSL:ZeroOffset_Left_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:DETSL:ZeroOffset_Left_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.rEncoderOffsetLeft</p></td>
 <td><div class="line-block">
@@ -60337,7 +60512,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:DETSL:ZeroOffset_Left</p></td>
+<tr class="row-even"><td><p>QRIX:DETSL:ZeroOffset_Left</p></td>
 <td><p>ao</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.rEncoderOffsetLeft</p></td>
 <td><div class="line-block">
@@ -60345,7 +60520,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:DETSL:ZeroOffset_Right_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:DETSL:ZeroOffset_Right_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.rEncoderOffsetRight</p></td>
 <td><div class="line-block">
@@ -60353,7 +60528,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:DETSL:ZeroOffset_Right</p></td>
+<tr class="row-even"><td><p>QRIX:DETSL:ZeroOffset_Right</p></td>
 <td><p>ao</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.rEncoderOffsetRight</p></td>
 <td><div class="line-block">
@@ -60361,7 +60536,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:DETSL:Offset_Top_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:DETSL:Offset_Top_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.rEncoderOffsetTop</p></td>
 <td><div class="line-block">
@@ -60369,7 +60544,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:DETSL:Offset_Top</p></td>
+<tr class="row-even"><td><p>QRIX:DETSL:Offset_Top</p></td>
 <td><p>ao</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.rEncoderOffsetTop</p></td>
 <td><div class="line-block">
@@ -60377,7 +60552,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:DETSL:XWID_REQ_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:DETSL:XWID_REQ_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.rReqApertureSizeX</p></td>
 <td><div class="line-block">
@@ -60385,7 +60560,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:DETSL:XWID_REQ</p></td>
+<tr class="row-even"><td><p>QRIX:DETSL:XWID_REQ</p></td>
 <td><p>ao</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.rReqApertureSizeX</p></td>
 <td><div class="line-block">
@@ -60393,7 +60568,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:DETSL:YWID_REQ_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:DETSL:YWID_REQ_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.rReqApertureSizeY</p></td>
 <td><div class="line-block">
@@ -60401,7 +60576,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:DETSL:YWID_REQ</p></td>
+<tr class="row-even"><td><p>QRIX:DETSL:YWID_REQ</p></td>
 <td><p>ao</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.rReqApertureSizeY</p></td>
 <td><div class="line-block">
@@ -60409,7 +60584,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:DETSL:XCEN_REQ_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:DETSL:XCEN_REQ_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.rReqCenterX</p></td>
 <td><div class="line-block">
@@ -60417,7 +60592,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:DETSL:XCEN_REQ</p></td>
+<tr class="row-even"><td><p>QRIX:DETSL:XCEN_REQ</p></td>
 <td><p>ao</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.rReqCenterX</p></td>
 <td><div class="line-block">
@@ -60425,7 +60600,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:DETSL:YCEN_REQ_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:DETSL:YCEN_REQ_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.rReqCenterY</p></td>
 <td><div class="line-block">
@@ -60433,7 +60608,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:DETSL:YCEN_REQ</p></td>
+<tr class="row-even"><td><p>QRIX:DETSL:YCEN_REQ</p></td>
 <td><p>ao</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.rReqCenterY</p></td>
 <td><div class="line-block">
@@ -60441,7 +60616,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:DETSL:XCEN_SETZERO_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:DETSL:XCEN_SETZERO_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.rSetCenterX</p></td>
 <td><div class="line-block">
@@ -60449,7 +60624,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:DETSL:XCEN_SETZERO</p></td>
+<tr class="row-even"><td><p>QRIX:DETSL:XCEN_SETZERO</p></td>
 <td><p>bo</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.rSetCenterX</p></td>
 <td><div class="line-block">
@@ -60457,7 +60632,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:DETSL:YCEN_SETZERO_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:DETSL:YCEN_SETZERO_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.rSetCenterY</p></td>
 <td><div class="line-block">
@@ -60465,7 +60640,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:DETSL:YCEN_SETZERO</p></td>
+<tr class="row-even"><td><p>QRIX:DETSL:YCEN_SETZERO</p></td>
 <td><p>bo</p></td>
 <td><p>PRG_DET_SLIT.fbSlits_Det.rSetCenterY</p></td>
 <td><div class="line-block">
@@ -60473,7 +60648,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATES:GET_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATES:GET_RBV</p></td>
 <td><p>mbbi</p></td>
 <td><p>PRG_LAS.eLAS_VIS_StateGet</p></td>
 <td><div class="line-block">
@@ -60481,7 +60656,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATES:SET_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATES:SET_RBV</p></td>
 <td><p>mbbi</p></td>
 <td><p>PRG_LAS.eLAS_VIS_StateSet</p></td>
 <td><div class="line-block">
@@ -60489,7 +60664,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATES:SET</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATES:SET</p></td>
 <td><p>mbbo</p></td>
 <td><p>PRG_LAS.eLAS_VIS_StateSet</p></td>
 <td><div class="line-block">
@@ -60497,7 +60672,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:10:MOVE_OK_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:10:MOVE_OK_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>TRUE if the move would be safe</p></td>
 <td><div class="line-block">
@@ -60508,7 +60683,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:10:SETPOINT_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:10:SETPOINT_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -60517,7 +60692,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:10:SETPOINT</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:10:SETPOINT</p></td>
 <td><p>ao</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -60526,7 +60701,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:10:VELO_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:10:VELO_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -60535,7 +60710,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:10:VELO</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:10:VELO</p></td>
 <td><p>ao</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -60544,7 +60719,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:10:ENCODER_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:10:ENCODER_RBV</p></td>
 <td><p>longin</p></td>
 <td><p>Encoder count associated with this state</p></td>
 <td><div class="line-block">
@@ -60553,7 +60728,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:10:NAME_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:10:NAME_RBV</p></td>
 <td><p>waveform</p></td>
 <td><p>Name of this position state</p></td>
 <td><div class="line-block">
@@ -60562,7 +60737,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:11:MOVE_OK_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:11:MOVE_OK_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>TRUE if the move would be safe</p></td>
 <td><div class="line-block">
@@ -60573,7 +60748,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:11:SETPOINT_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:11:SETPOINT_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -60582,7 +60757,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:11:SETPOINT</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:11:SETPOINT</p></td>
 <td><p>ao</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -60591,7 +60766,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:11:VELO_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:11:VELO_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -60600,7 +60775,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:11:VELO</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:11:VELO</p></td>
 <td><p>ao</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -60609,7 +60784,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:11:ENCODER_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:11:ENCODER_RBV</p></td>
 <td><p>longin</p></td>
 <td><p>Encoder count associated with this state</p></td>
 <td><div class="line-block">
@@ -60618,7 +60793,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:11:NAME_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:11:NAME_RBV</p></td>
 <td><p>waveform</p></td>
 <td><p>Name of this position state</p></td>
 <td><div class="line-block">
@@ -60627,7 +60802,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:12:MOVE_OK_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:12:MOVE_OK_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>TRUE if the move would be safe</p></td>
 <td><div class="line-block">
@@ -60638,7 +60813,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:12:SETPOINT_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:12:SETPOINT_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -60647,7 +60822,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:12:SETPOINT</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:12:SETPOINT</p></td>
 <td><p>ao</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -60656,7 +60831,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:12:VELO_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:12:VELO_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -60665,7 +60840,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:12:VELO</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:12:VELO</p></td>
 <td><p>ao</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -60674,7 +60849,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:12:ENCODER_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:12:ENCODER_RBV</p></td>
 <td><p>longin</p></td>
 <td><p>Encoder count associated with this state</p></td>
 <td><div class="line-block">
@@ -60683,7 +60858,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:12:NAME_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:12:NAME_RBV</p></td>
 <td><p>waveform</p></td>
 <td><p>Name of this position state</p></td>
 <td><div class="line-block">
@@ -60692,7 +60867,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:13:MOVE_OK_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:13:MOVE_OK_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>TRUE if the move would be safe</p></td>
 <td><div class="line-block">
@@ -60703,7 +60878,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:13:SETPOINT_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:13:SETPOINT_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -60712,7 +60887,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:13:SETPOINT</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:13:SETPOINT</p></td>
 <td><p>ao</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -60721,7 +60896,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:13:VELO_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:13:VELO_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -60730,7 +60905,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:13:VELO</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:13:VELO</p></td>
 <td><p>ao</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -60739,7 +60914,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:13:ENCODER_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:13:ENCODER_RBV</p></td>
 <td><p>longin</p></td>
 <td><p>Encoder count associated with this state</p></td>
 <td><div class="line-block">
@@ -60748,7 +60923,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:13:NAME_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:13:NAME_RBV</p></td>
 <td><p>waveform</p></td>
 <td><p>Name of this position state</p></td>
 <td><div class="line-block">
@@ -60757,7 +60932,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:14:MOVE_OK_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:14:MOVE_OK_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>TRUE if the move would be safe</p></td>
 <td><div class="line-block">
@@ -60768,7 +60943,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:14:SETPOINT_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:14:SETPOINT_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -60777,7 +60952,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:14:SETPOINT</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:14:SETPOINT</p></td>
 <td><p>ao</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -60786,7 +60961,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:14:VELO_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:14:VELO_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -60795,7 +60970,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:14:VELO</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:14:VELO</p></td>
 <td><p>ao</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -60804,7 +60979,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:14:ENCODER_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:14:ENCODER_RBV</p></td>
 <td><p>longin</p></td>
 <td><p>Encoder count associated with this state</p></td>
 <td><div class="line-block">
@@ -60813,7 +60988,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:14:NAME_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:14:NAME_RBV</p></td>
 <td><p>waveform</p></td>
 <td><p>Name of this position state</p></td>
 <td><div class="line-block">
@@ -60822,7 +60997,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:15:MOVE_OK_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:15:MOVE_OK_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>TRUE if the move would be safe</p></td>
 <td><div class="line-block">
@@ -60833,7 +61008,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:15:SETPOINT_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:15:SETPOINT_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -60842,7 +61017,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:15:SETPOINT</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:15:SETPOINT</p></td>
 <td><p>ao</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -60851,7 +61026,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:15:VELO_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:15:VELO_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -60860,7 +61035,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:15:VELO</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:15:VELO</p></td>
 <td><p>ao</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -60869,7 +61044,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:15:ENCODER_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:15:ENCODER_RBV</p></td>
 <td><p>longin</p></td>
 <td><p>Encoder count associated with this state</p></td>
 <td><div class="line-block">
@@ -60878,7 +61053,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:15:NAME_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:15:NAME_RBV</p></td>
 <td><p>waveform</p></td>
 <td><p>Name of this position state</p></td>
 <td><div class="line-block">
@@ -60887,7 +61062,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:01:MOVE_OK_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:01:MOVE_OK_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>TRUE if the move would be safe</p></td>
 <td><div class="line-block">
@@ -60898,7 +61073,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:01:SETPOINT_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:01:SETPOINT_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -60907,7 +61082,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:01:SETPOINT</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:01:SETPOINT</p></td>
 <td><p>ao</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -60916,7 +61091,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:01:VELO_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:01:VELO_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -60925,7 +61100,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:01:VELO</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:01:VELO</p></td>
 <td><p>ao</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -60934,7 +61109,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:01:ENCODER_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:01:ENCODER_RBV</p></td>
 <td><p>longin</p></td>
 <td><p>Encoder count associated with this state</p></td>
 <td><div class="line-block">
@@ -60943,7 +61118,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:01:NAME_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:01:NAME_RBV</p></td>
 <td><p>waveform</p></td>
 <td><p>Name of this position state</p></td>
 <td><div class="line-block">
@@ -60952,7 +61127,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:02:MOVE_OK_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:02:MOVE_OK_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>TRUE if the move would be safe</p></td>
 <td><div class="line-block">
@@ -60963,7 +61138,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:02:SETPOINT_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:02:SETPOINT_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -60972,7 +61147,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:02:SETPOINT</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:02:SETPOINT</p></td>
 <td><p>ao</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -60981,7 +61156,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:02:VELO_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:02:VELO_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -60990,7 +61165,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:02:VELO</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:02:VELO</p></td>
 <td><p>ao</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -60999,7 +61174,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:02:ENCODER_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:02:ENCODER_RBV</p></td>
 <td><p>longin</p></td>
 <td><p>Encoder count associated with this state</p></td>
 <td><div class="line-block">
@@ -61008,7 +61183,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:02:NAME_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:02:NAME_RBV</p></td>
 <td><p>waveform</p></td>
 <td><p>Name of this position state</p></td>
 <td><div class="line-block">
@@ -61017,7 +61192,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:03:MOVE_OK_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:03:MOVE_OK_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>TRUE if the move would be safe</p></td>
 <td><div class="line-block">
@@ -61028,7 +61203,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:03:SETPOINT_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:03:SETPOINT_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -61037,7 +61212,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:03:SETPOINT</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:03:SETPOINT</p></td>
 <td><p>ao</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -61046,7 +61221,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:03:VELO_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:03:VELO_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -61055,7 +61230,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:03:VELO</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:03:VELO</p></td>
 <td><p>ao</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -61064,7 +61239,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:03:ENCODER_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:03:ENCODER_RBV</p></td>
 <td><p>longin</p></td>
 <td><p>Encoder count associated with this state</p></td>
 <td><div class="line-block">
@@ -61073,7 +61248,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:03:NAME_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:03:NAME_RBV</p></td>
 <td><p>waveform</p></td>
 <td><p>Name of this position state</p></td>
 <td><div class="line-block">
@@ -61082,7 +61257,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:04:MOVE_OK_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:04:MOVE_OK_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>TRUE if the move would be safe</p></td>
 <td><div class="line-block">
@@ -61093,7 +61268,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:04:SETPOINT_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:04:SETPOINT_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -61102,7 +61277,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:04:SETPOINT</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:04:SETPOINT</p></td>
 <td><p>ao</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -61111,7 +61286,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:04:VELO_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:04:VELO_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -61120,7 +61295,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:04:VELO</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:04:VELO</p></td>
 <td><p>ao</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -61129,7 +61304,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:04:ENCODER_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:04:ENCODER_RBV</p></td>
 <td><p>longin</p></td>
 <td><p>Encoder count associated with this state</p></td>
 <td><div class="line-block">
@@ -61138,7 +61313,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:04:NAME_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:04:NAME_RBV</p></td>
 <td><p>waveform</p></td>
 <td><p>Name of this position state</p></td>
 <td><div class="line-block">
@@ -61147,7 +61322,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:05:MOVE_OK_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:05:MOVE_OK_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>TRUE if the move would be safe</p></td>
 <td><div class="line-block">
@@ -61158,7 +61333,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:05:SETPOINT_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:05:SETPOINT_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -61167,7 +61342,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:05:SETPOINT</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:05:SETPOINT</p></td>
 <td><p>ao</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -61176,7 +61351,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:05:VELO_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:05:VELO_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -61185,7 +61360,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:05:VELO</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:05:VELO</p></td>
 <td><p>ao</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -61194,7 +61369,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:05:ENCODER_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:05:ENCODER_RBV</p></td>
 <td><p>longin</p></td>
 <td><p>Encoder count associated with this state</p></td>
 <td><div class="line-block">
@@ -61203,7 +61378,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:05:NAME_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:05:NAME_RBV</p></td>
 <td><p>waveform</p></td>
 <td><p>Name of this position state</p></td>
 <td><div class="line-block">
@@ -61212,7 +61387,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:06:MOVE_OK_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:06:MOVE_OK_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>TRUE if the move would be safe</p></td>
 <td><div class="line-block">
@@ -61223,7 +61398,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:06:SETPOINT_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:06:SETPOINT_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -61232,7 +61407,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:06:SETPOINT</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:06:SETPOINT</p></td>
 <td><p>ao</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -61241,7 +61416,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:06:VELO_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:06:VELO_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -61250,7 +61425,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:06:VELO</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:06:VELO</p></td>
 <td><p>ao</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -61259,7 +61434,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:06:ENCODER_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:06:ENCODER_RBV</p></td>
 <td><p>longin</p></td>
 <td><p>Encoder count associated with this state</p></td>
 <td><div class="line-block">
@@ -61268,7 +61443,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:06:NAME_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:06:NAME_RBV</p></td>
 <td><p>waveform</p></td>
 <td><p>Name of this position state</p></td>
 <td><div class="line-block">
@@ -61277,7 +61452,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:07:MOVE_OK_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:07:MOVE_OK_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>TRUE if the move would be safe</p></td>
 <td><div class="line-block">
@@ -61288,7 +61463,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:07:SETPOINT_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:07:SETPOINT_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -61297,7 +61472,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:07:SETPOINT</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:07:SETPOINT</p></td>
 <td><p>ao</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -61306,7 +61481,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:07:VELO_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:07:VELO_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -61315,7 +61490,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:07:VELO</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:07:VELO</p></td>
 <td><p>ao</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -61324,7 +61499,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:07:ENCODER_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:07:ENCODER_RBV</p></td>
 <td><p>longin</p></td>
 <td><p>Encoder count associated with this state</p></td>
 <td><div class="line-block">
@@ -61333,7 +61508,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:07:NAME_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:07:NAME_RBV</p></td>
 <td><p>waveform</p></td>
 <td><p>Name of this position state</p></td>
 <td><div class="line-block">
@@ -61342,7 +61517,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:08:MOVE_OK_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:08:MOVE_OK_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>TRUE if the move would be safe</p></td>
 <td><div class="line-block">
@@ -61353,7 +61528,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:08:SETPOINT_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:08:SETPOINT_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -61362,7 +61537,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:08:SETPOINT</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:08:SETPOINT</p></td>
 <td><p>ao</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -61371,7 +61546,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:08:VELO_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:08:VELO_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -61380,7 +61555,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:08:VELO</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:08:VELO</p></td>
 <td><p>ao</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -61389,7 +61564,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:08:ENCODER_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:08:ENCODER_RBV</p></td>
 <td><p>longin</p></td>
 <td><p>Encoder count associated with this state</p></td>
 <td><div class="line-block">
@@ -61398,7 +61573,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:08:NAME_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:08:NAME_RBV</p></td>
 <td><p>waveform</p></td>
 <td><p>Name of this position state</p></td>
 <td><div class="line-block">
@@ -61407,7 +61582,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:09:MOVE_OK_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:09:MOVE_OK_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>TRUE if the move would be safe</p></td>
 <td><div class="line-block">
@@ -61418,7 +61593,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:09:SETPOINT_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:09:SETPOINT_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -61427,7 +61602,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:09:SETPOINT</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:09:SETPOINT</p></td>
 <td><p>ao</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -61436,7 +61611,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:09:VELO_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:09:VELO_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -61445,7 +61620,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:09:VELO</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:09:VELO</p></td>
 <td><p>ao</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -61454,7 +61629,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:09:ENCODER_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:09:ENCODER_RBV</p></td>
 <td><p>longin</p></td>
 <td><p>Encoder count associated with this state</p></td>
 <td><div class="line-block">
@@ -61463,7 +61638,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:09:NAME_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:09:NAME_RBV</p></td>
 <td><p>waveform</p></td>
 <td><p>Name of this position state</p></td>
 <td><div class="line-block">
@@ -61472,7 +61647,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:RESET_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:RESET_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_LAS.fbLAS_VIS_PositionState1D.stEpicsToPlc.bReset</p></td>
 <td><div class="line-block">
@@ -61482,7 +61657,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:RESET</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:RESET</p></td>
 <td><p>bo</p></td>
 <td><p>PRG_LAS.fbLAS_VIS_PositionState1D.stEpicsToPlc.bReset</p></td>
 <td><div class="line-block">
@@ -61492,7 +61667,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:BUSY_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:BUSY_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_LAS.fbLAS_VIS_PositionState1D.stPlcToEpics.bBusy</p></td>
 <td><div class="line-block">
@@ -61502,7 +61677,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:DONE_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:DONE_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_LAS.fbLAS_VIS_PositionState1D.stPlcToEpics.bDone</p></td>
 <td><div class="line-block">
@@ -61512,7 +61687,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:ERR_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:ERR_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_LAS.fbLAS_VIS_PositionState1D.stPlcToEpics.bError</p></td>
 <td><div class="line-block">
@@ -61522,7 +61697,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:ERRID_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:ERRID_RBV</p></td>
 <td><p>longin</p></td>
 <td><p>PRG_LAS.fbLAS_VIS_PositionState1D.stPlcToEpics.nErrorID</p></td>
 <td><div class="line-block">
@@ -61530,7 +61705,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:LAS:MMS:VIS:STATE:ERRMSG_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:LAS:MMS:VIS:STATE:ERRMSG_RBV</p></td>
 <td><p>waveform</p></td>
 <td><p>PRG_LAS.fbLAS_VIS_PositionState1D.stPlcToEpics.sErrorMsg</p></td>
 <td><div class="line-block">
@@ -61538,7 +61713,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPTSL:BLOCK_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:OPTSL:BLOCK_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.bBlock</p></td>
 <td><div class="line-block">
@@ -61548,7 +61723,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPTSL:BLOCK</p></td>
+<tr class="row-odd"><td><p>QRIX:OPTSL:BLOCK</p></td>
 <td><p>bo</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.bBlock</p></td>
 <td><div class="line-block">
@@ -61558,7 +61733,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPTSL:CLOSE_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:OPTSL:CLOSE_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.bClose</p></td>
 <td><div class="line-block">
@@ -61568,7 +61743,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPTSL:CLOSE</p></td>
+<tr class="row-odd"><td><p>QRIX:OPTSL:CLOSE</p></td>
 <td><p>bo</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.bClose</p></td>
 <td><div class="line-block">
@@ -61578,7 +61753,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPTSL:Home_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:OPTSL:Home_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.bHome</p></td>
 <td><div class="line-block">
@@ -61588,7 +61763,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPTSL:HOME_READY_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPTSL:HOME_READY_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.bHomeReady</p></td>
 <td><div class="line-block">
@@ -61598,7 +61773,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPTSL:PMPS_OK_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:OPTSL:PMPS_OK_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.bMoveOk</p></td>
 <td><div class="line-block">
@@ -61608,7 +61783,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPTSL:OPEN_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPTSL:OPEN_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.bOpen</p></td>
 <td><div class="line-block">
@@ -61618,7 +61793,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPTSL:OPEN</p></td>
+<tr class="row-even"><td><p>QRIX:OPTSL:OPEN</p></td>
 <td><p>bo</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.bOpen</p></td>
 <td><div class="line-block">
@@ -61628,7 +61803,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPTSL:BOTTOM:AT_STATE_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPTSL:BOTTOM:AT_STATE_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.fbBottom.bAtState</p></td>
 <td><div class="line-block">
@@ -61638,7 +61813,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPTSL:BOTTOM:BUSY_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:OPTSL:BOTTOM:BUSY_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.fbBottom.bBusy</p></td>
 <td><div class="line-block">
@@ -61648,7 +61823,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPTSL:BOTTOM:DMOV_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPTSL:BOTTOM:DMOV_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.fbBottom.bDone</p></td>
 <td><div class="line-block">
@@ -61658,7 +61833,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPTSL:BOTTOM:ERR_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:OPTSL:BOTTOM:ERR_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.fbBottom.bError</p></td>
 <td><div class="line-block">
@@ -61668,7 +61843,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPTSL:BOTTOM:GO_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPTSL:BOTTOM:GO_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.fbBottom.bExecute</p></td>
 <td><div class="line-block">
@@ -61678,7 +61853,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPTSL:BOTTOM:GO</p></td>
+<tr class="row-even"><td><p>QRIX:OPTSL:BOTTOM:GO</p></td>
 <td><p>bo</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.fbBottom.bExecute</p></td>
 <td><div class="line-block">
@@ -61688,7 +61863,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPTSL:BOTTOM:ERRMSG_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPTSL:BOTTOM:ERRMSG_RBV</p></td>
 <td><p>waveform</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.fbBottom.sError</p></td>
 <td><div class="line-block">
@@ -61696,7 +61871,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPTSL:BOTTOM:MOVE_OK_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:OPTSL:BOTTOM:MOVE_OK_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>TRUE if the move would be safe</p></td>
 <td><div class="line-block">
@@ -61706,7 +61881,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPTSL:BOTTOM:SETPOINT_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPTSL:BOTTOM:SETPOINT_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -61714,7 +61889,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPTSL:BOTTOM:SETPOINT</p></td>
+<tr class="row-even"><td><p>QRIX:OPTSL:BOTTOM:SETPOINT</p></td>
 <td><p>ao</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -61722,7 +61897,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPTSL:BOTTOM:VELO_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPTSL:BOTTOM:VELO_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -61730,7 +61905,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPTSL:BOTTOM:VELO</p></td>
+<tr class="row-even"><td><p>QRIX:OPTSL:BOTTOM:VELO</p></td>
 <td><p>ao</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -61738,7 +61913,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPTSL:BOTTOM:ENCODER_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPTSL:BOTTOM:ENCODER_RBV</p></td>
 <td><p>longin</p></td>
 <td><p>Encoder count associated with this state</p></td>
 <td><div class="line-block">
@@ -61746,7 +61921,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPTSL:BOTTOM:NAME_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:OPTSL:BOTTOM:NAME_RBV</p></td>
 <td><p>waveform</p></td>
 <td><p>Name of this position state</p></td>
 <td><div class="line-block">
@@ -61754,7 +61929,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPTSL:LEFT:AT_STATE_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPTSL:LEFT:AT_STATE_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.fbLeft.bAtState</p></td>
 <td><div class="line-block">
@@ -61764,7 +61939,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPTSL:LEFT:BUSY_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:OPTSL:LEFT:BUSY_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.fbLeft.bBusy</p></td>
 <td><div class="line-block">
@@ -61774,7 +61949,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPTSL:LEFT:DMOV_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPTSL:LEFT:DMOV_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.fbLeft.bDone</p></td>
 <td><div class="line-block">
@@ -61784,7 +61959,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPTSL:LEFT:ERR_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:OPTSL:LEFT:ERR_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.fbLeft.bError</p></td>
 <td><div class="line-block">
@@ -61794,7 +61969,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPTSL:LEFT:GO_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPTSL:LEFT:GO_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.fbLeft.bExecute</p></td>
 <td><div class="line-block">
@@ -61804,7 +61979,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPTSL:LEFT:GO</p></td>
+<tr class="row-even"><td><p>QRIX:OPTSL:LEFT:GO</p></td>
 <td><p>bo</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.fbLeft.bExecute</p></td>
 <td><div class="line-block">
@@ -61814,7 +61989,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPTSL:LEFT:ERRMSG_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPTSL:LEFT:ERRMSG_RBV</p></td>
 <td><p>waveform</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.fbLeft.sError</p></td>
 <td><div class="line-block">
@@ -61822,7 +61997,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPTSL:LEFT:MOVE_OK_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:OPTSL:LEFT:MOVE_OK_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>TRUE if the move would be safe</p></td>
 <td><div class="line-block">
@@ -61832,7 +62007,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPTSL:LEFT:SETPOINT_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPTSL:LEFT:SETPOINT_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -61840,7 +62015,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPTSL:LEFT:SETPOINT</p></td>
+<tr class="row-even"><td><p>QRIX:OPTSL:LEFT:SETPOINT</p></td>
 <td><p>ao</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -61848,7 +62023,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPTSL:LEFT:VELO_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPTSL:LEFT:VELO_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -61856,7 +62031,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPTSL:LEFT:VELO</p></td>
+<tr class="row-even"><td><p>QRIX:OPTSL:LEFT:VELO</p></td>
 <td><p>ao</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -61864,7 +62039,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPTSL:LEFT:ENCODER_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPTSL:LEFT:ENCODER_RBV</p></td>
 <td><p>longin</p></td>
 <td><p>Encoder count associated with this state</p></td>
 <td><div class="line-block">
@@ -61872,7 +62047,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPTSL:LEFT:NAME_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:OPTSL:LEFT:NAME_RBV</p></td>
 <td><p>waveform</p></td>
 <td><p>Name of this position state</p></td>
 <td><div class="line-block">
@@ -61880,7 +62055,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPTSL:RIGHT:AT_STATE_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPTSL:RIGHT:AT_STATE_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.fbRight.bAtState</p></td>
 <td><div class="line-block">
@@ -61890,7 +62065,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPTSL:RIGHT:BUSY_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:OPTSL:RIGHT:BUSY_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.fbRight.bBusy</p></td>
 <td><div class="line-block">
@@ -61900,7 +62075,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPTSL:RIGHT:DMOV_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPTSL:RIGHT:DMOV_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.fbRight.bDone</p></td>
 <td><div class="line-block">
@@ -61910,7 +62085,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPTSL:RIGHT:ERR_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:OPTSL:RIGHT:ERR_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.fbRight.bError</p></td>
 <td><div class="line-block">
@@ -61920,7 +62095,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPTSL:RIGHT:GO_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPTSL:RIGHT:GO_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.fbRight.bExecute</p></td>
 <td><div class="line-block">
@@ -61930,7 +62105,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPTSL:RIGHT:GO</p></td>
+<tr class="row-even"><td><p>QRIX:OPTSL:RIGHT:GO</p></td>
 <td><p>bo</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.fbRight.bExecute</p></td>
 <td><div class="line-block">
@@ -61940,7 +62115,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPTSL:RIGHT:ERRMSG_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPTSL:RIGHT:ERRMSG_RBV</p></td>
 <td><p>waveform</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.fbRight.sError</p></td>
 <td><div class="line-block">
@@ -61948,7 +62123,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPTSL:RIGHT:MOVE_OK_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:OPTSL:RIGHT:MOVE_OK_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>TRUE if the move would be safe</p></td>
 <td><div class="line-block">
@@ -61958,7 +62133,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPTSL:RIGHT:SETPOINT_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPTSL:RIGHT:SETPOINT_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -61966,7 +62141,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPTSL:RIGHT:SETPOINT</p></td>
+<tr class="row-even"><td><p>QRIX:OPTSL:RIGHT:SETPOINT</p></td>
 <td><p>ao</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -61974,7 +62149,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPTSL:RIGHT:VELO_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPTSL:RIGHT:VELO_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -61982,7 +62157,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPTSL:RIGHT:VELO</p></td>
+<tr class="row-even"><td><p>QRIX:OPTSL:RIGHT:VELO</p></td>
 <td><p>ao</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -61990,7 +62165,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPTSL:RIGHT:ENCODER_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPTSL:RIGHT:ENCODER_RBV</p></td>
 <td><p>longin</p></td>
 <td><p>Encoder count associated with this state</p></td>
 <td><div class="line-block">
@@ -61998,7 +62173,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPTSL:RIGHT:NAME_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:OPTSL:RIGHT:NAME_RBV</p></td>
 <td><p>waveform</p></td>
 <td><p>Name of this position state</p></td>
 <td><div class="line-block">
@@ -62006,7 +62181,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPTSL:TOP:AT_STATE_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPTSL:TOP:AT_STATE_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.fbTop.bAtState</p></td>
 <td><div class="line-block">
@@ -62016,7 +62191,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPTSL:TOP:BUSY_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:OPTSL:TOP:BUSY_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.fbTop.bBusy</p></td>
 <td><div class="line-block">
@@ -62026,7 +62201,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPTSL:TOP:DMOV_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPTSL:TOP:DMOV_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.fbTop.bDone</p></td>
 <td><div class="line-block">
@@ -62036,7 +62211,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPTSL:TOP:ERR_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:OPTSL:TOP:ERR_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.fbTop.bError</p></td>
 <td><div class="line-block">
@@ -62046,7 +62221,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPTSL:TOP:GO_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPTSL:TOP:GO_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.fbTop.bExecute</p></td>
 <td><div class="line-block">
@@ -62056,7 +62231,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPTSL:TOP:GO</p></td>
+<tr class="row-even"><td><p>QRIX:OPTSL:TOP:GO</p></td>
 <td><p>bo</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.fbTop.bExecute</p></td>
 <td><div class="line-block">
@@ -62066,7 +62241,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPTSL:TOP:ERRMSG_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPTSL:TOP:ERRMSG_RBV</p></td>
 <td><p>waveform</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.fbTop.sError</p></td>
 <td><div class="line-block">
@@ -62074,7 +62249,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPTSL:TOP:MOVE_OK_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:OPTSL:TOP:MOVE_OK_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>TRUE if the move would be safe</p></td>
 <td><div class="line-block">
@@ -62084,7 +62259,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPTSL:TOP:SETPOINT_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPTSL:TOP:SETPOINT_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -62092,7 +62267,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPTSL:TOP:SETPOINT</p></td>
+<tr class="row-even"><td><p>QRIX:OPTSL:TOP:SETPOINT</p></td>
 <td><p>ao</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -62100,7 +62275,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPTSL:TOP:VELO_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPTSL:TOP:VELO_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -62108,7 +62283,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPTSL:TOP:VELO</p></td>
+<tr class="row-even"><td><p>QRIX:OPTSL:TOP:VELO</p></td>
 <td><p>ao</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -62116,7 +62291,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPTSL:TOP:ENCODER_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPTSL:TOP:ENCODER_RBV</p></td>
 <td><p>longin</p></td>
 <td><p>Encoder count associated with this state</p></td>
 <td><div class="line-block">
@@ -62124,7 +62299,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPTSL:TOP:NAME_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:OPTSL:TOP:NAME_RBV</p></td>
 <td><p>waveform</p></td>
 <td><p>Name of this position state</p></td>
 <td><div class="line-block">
@@ -62132,7 +62307,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPTSL:ACTUAL_XWIDTH_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPTSL:ACTUAL_XWIDTH_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.rActApertureSizeX</p></td>
 <td><div class="line-block">
@@ -62140,7 +62315,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPTSL:ACTUAL_XWIDTH</p></td>
+<tr class="row-even"><td><p>QRIX:OPTSL:ACTUAL_XWIDTH</p></td>
 <td><p>ao</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.rActApertureSizeX</p></td>
 <td><div class="line-block">
@@ -62148,7 +62323,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPTSL:ACTUAL_YWIDTH_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPTSL:ACTUAL_YWIDTH_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.rActApertureSizeY</p></td>
 <td><div class="line-block">
@@ -62156,7 +62331,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPTSL:ACTUAL_YWIDTH</p></td>
+<tr class="row-even"><td><p>QRIX:OPTSL:ACTUAL_YWIDTH</p></td>
 <td><p>ao</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.rActApertureSizeY</p></td>
 <td><div class="line-block">
@@ -62164,7 +62339,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPTSL:ACTUAL_XCENTER_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPTSL:ACTUAL_XCENTER_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.rActCenterX</p></td>
 <td><div class="line-block">
@@ -62172,7 +62347,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPTSL:ACTUAL_XCENTER</p></td>
+<tr class="row-even"><td><p>QRIX:OPTSL:ACTUAL_XCENTER</p></td>
 <td><p>ao</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.rActCenterX</p></td>
 <td><div class="line-block">
@@ -62180,7 +62355,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPTSL:ACTUAL_YCENTER_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPTSL:ACTUAL_YCENTER_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.rActCenterY</p></td>
 <td><div class="line-block">
@@ -62188,7 +62363,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPTSL:ACTUAL_YCENTER</p></td>
+<tr class="row-even"><td><p>QRIX:OPTSL:ACTUAL_YCENTER</p></td>
 <td><p>ao</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.rActCenterY</p></td>
 <td><div class="line-block">
@@ -62196,7 +62371,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPTSL:ZeroOffset_Bottom_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPTSL:ZeroOffset_Bottom_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.rEncoderOffsetBottom</p></td>
 <td><div class="line-block">
@@ -62204,7 +62379,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPTSL:ZeroOffset_Bottom</p></td>
+<tr class="row-even"><td><p>QRIX:OPTSL:ZeroOffset_Bottom</p></td>
 <td><p>ao</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.rEncoderOffsetBottom</p></td>
 <td><div class="line-block">
@@ -62212,7 +62387,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPTSL:ZeroOffset_Left_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPTSL:ZeroOffset_Left_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.rEncoderOffsetLeft</p></td>
 <td><div class="line-block">
@@ -62220,7 +62395,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPTSL:ZeroOffset_Left</p></td>
+<tr class="row-even"><td><p>QRIX:OPTSL:ZeroOffset_Left</p></td>
 <td><p>ao</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.rEncoderOffsetLeft</p></td>
 <td><div class="line-block">
@@ -62228,7 +62403,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPTSL:ZeroOffset_Right_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPTSL:ZeroOffset_Right_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.rEncoderOffsetRight</p></td>
 <td><div class="line-block">
@@ -62236,7 +62411,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPTSL:ZeroOffset_Right</p></td>
+<tr class="row-even"><td><p>QRIX:OPTSL:ZeroOffset_Right</p></td>
 <td><p>ao</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.rEncoderOffsetRight</p></td>
 <td><div class="line-block">
@@ -62244,7 +62419,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPTSL:Offset_Top_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPTSL:Offset_Top_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.rEncoderOffsetTop</p></td>
 <td><div class="line-block">
@@ -62252,7 +62427,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPTSL:Offset_Top</p></td>
+<tr class="row-even"><td><p>QRIX:OPTSL:Offset_Top</p></td>
 <td><p>ao</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.rEncoderOffsetTop</p></td>
 <td><div class="line-block">
@@ -62260,7 +62435,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPTSL:XWID_REQ_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPTSL:XWID_REQ_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.rReqApertureSizeX</p></td>
 <td><div class="line-block">
@@ -62268,7 +62443,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPTSL:XWID_REQ</p></td>
+<tr class="row-even"><td><p>QRIX:OPTSL:XWID_REQ</p></td>
 <td><p>ao</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.rReqApertureSizeX</p></td>
 <td><div class="line-block">
@@ -62276,7 +62451,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPTSL:YWID_REQ_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPTSL:YWID_REQ_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.rReqApertureSizeY</p></td>
 <td><div class="line-block">
@@ -62284,7 +62459,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPTSL:YWID_REQ</p></td>
+<tr class="row-even"><td><p>QRIX:OPTSL:YWID_REQ</p></td>
 <td><p>ao</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.rReqApertureSizeY</p></td>
 <td><div class="line-block">
@@ -62292,7 +62467,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPTSL:XCEN_REQ_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPTSL:XCEN_REQ_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.rReqCenterX</p></td>
 <td><div class="line-block">
@@ -62300,7 +62475,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPTSL:XCEN_REQ</p></td>
+<tr class="row-even"><td><p>QRIX:OPTSL:XCEN_REQ</p></td>
 <td><p>ao</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.rReqCenterX</p></td>
 <td><div class="line-block">
@@ -62308,7 +62483,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPTSL:YCEN_REQ_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPTSL:YCEN_REQ_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.rReqCenterY</p></td>
 <td><div class="line-block">
@@ -62316,7 +62491,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPTSL:YCEN_REQ</p></td>
+<tr class="row-even"><td><p>QRIX:OPTSL:YCEN_REQ</p></td>
 <td><p>ao</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.rReqCenterY</p></td>
 <td><div class="line-block">
@@ -62324,7 +62499,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPTSL:XCEN_SETZERO_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPTSL:XCEN_SETZERO_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.rSetCenterX</p></td>
 <td><div class="line-block">
@@ -62332,7 +62507,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPTSL:XCEN_SETZERO</p></td>
+<tr class="row-even"><td><p>QRIX:OPTSL:XCEN_SETZERO</p></td>
 <td><p>bo</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.rSetCenterX</p></td>
 <td><div class="line-block">
@@ -62340,7 +62515,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPTSL:YCEN_SETZERO_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPTSL:YCEN_SETZERO_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.rSetCenterY</p></td>
 <td><div class="line-block">
@@ -62348,7 +62523,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPTSL:YCEN_SETZERO</p></td>
+<tr class="row-even"><td><p>QRIX:OPTSL:YCEN_SETZERO</p></td>
 <td><p>bo</p></td>
 <td><p>PRG_OPT_SLITS.fbSlits_Opt.rSetCenterY</p></td>
 <td><div class="line-block">
@@ -62356,7 +62531,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:PM:HOME_READY_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:PM:HOME_READY_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_XPM.fb2AxesXPM.bHomeReady</p></td>
 <td><div class="line-block">
@@ -62366,7 +62541,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:PM:PMPS_OK_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:PM:PMPS_OK_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_XPM.fb2AxesXPM.bMoveOk</p></td>
 <td><div class="line-block">
@@ -62376,7 +62551,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:PM:FIRST:AT_STATE_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:PM:FIRST:AT_STATE_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_XPM.fb2AxesXPM.fbFirst.bAtState</p></td>
 <td><div class="line-block">
@@ -62386,7 +62561,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:PM:FIRST:BUSY_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:PM:FIRST:BUSY_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_XPM.fb2AxesXPM.fbFirst.bBusy</p></td>
 <td><div class="line-block">
@@ -62396,7 +62571,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:PM:FIRST:DMOV_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:PM:FIRST:DMOV_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_XPM.fb2AxesXPM.fbFirst.bDone</p></td>
 <td><div class="line-block">
@@ -62406,7 +62581,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:PM:FIRST:ERR_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:PM:FIRST:ERR_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_XPM.fb2AxesXPM.fbFirst.bError</p></td>
 <td><div class="line-block">
@@ -62416,7 +62591,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:PM:FIRST:GO_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:PM:FIRST:GO_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_XPM.fb2AxesXPM.fbFirst.bExecute</p></td>
 <td><div class="line-block">
@@ -62426,7 +62601,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:PM:FIRST:GO</p></td>
+<tr class="row-even"><td><p>QRIX:PM:FIRST:GO</p></td>
 <td><p>bo</p></td>
 <td><p>PRG_OPT_XPM.fb2AxesXPM.fbFirst.bExecute</p></td>
 <td><div class="line-block">
@@ -62436,7 +62611,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:PM:FIRST:ERRMSG_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:PM:FIRST:ERRMSG_RBV</p></td>
 <td><p>waveform</p></td>
 <td><p>PRG_OPT_XPM.fb2AxesXPM.fbFirst.sError</p></td>
 <td><div class="line-block">
@@ -62444,7 +62619,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:PM:FIRST:MOVE_OK_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:PM:FIRST:MOVE_OK_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>TRUE if the move would be safe</p></td>
 <td><div class="line-block">
@@ -62454,7 +62629,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:PM:FIRST:SETPOINT_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:PM:FIRST:SETPOINT_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -62462,7 +62637,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:PM:FIRST:SETPOINT</p></td>
+<tr class="row-even"><td><p>QRIX:PM:FIRST:SETPOINT</p></td>
 <td><p>ao</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -62470,7 +62645,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:PM:FIRST:VELO_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:PM:FIRST:VELO_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -62478,7 +62653,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:PM:FIRST:VELO</p></td>
+<tr class="row-even"><td><p>QRIX:PM:FIRST:VELO</p></td>
 <td><p>ao</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -62486,7 +62661,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:PM:FIRST:ENCODER_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:PM:FIRST:ENCODER_RBV</p></td>
 <td><p>longin</p></td>
 <td><p>Encoder count associated with this state</p></td>
 <td><div class="line-block">
@@ -62494,7 +62669,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:PM:FIRST:NAME_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:PM:FIRST:NAME_RBV</p></td>
 <td><p>waveform</p></td>
 <td><p>Name of this position state</p></td>
 <td><div class="line-block">
@@ -62502,7 +62677,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:PM:SECOND:AT_STATE_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:PM:SECOND:AT_STATE_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_XPM.fb2AxesXPM.fbSecond.bAtState</p></td>
 <td><div class="line-block">
@@ -62512,7 +62687,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:PM:SECOND:BUSY_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:PM:SECOND:BUSY_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_XPM.fb2AxesXPM.fbSecond.bBusy</p></td>
 <td><div class="line-block">
@@ -62522,7 +62697,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:PM:SECOND:DMOV_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:PM:SECOND:DMOV_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_XPM.fb2AxesXPM.fbSecond.bDone</p></td>
 <td><div class="line-block">
@@ -62532,7 +62707,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:PM:SECOND:ERR_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:PM:SECOND:ERR_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_XPM.fb2AxesXPM.fbSecond.bError</p></td>
 <td><div class="line-block">
@@ -62542,7 +62717,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:PM:SECOND:GO_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:PM:SECOND:GO_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_XPM.fb2AxesXPM.fbSecond.bExecute</p></td>
 <td><div class="line-block">
@@ -62552,7 +62727,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:PM:SECOND:GO</p></td>
+<tr class="row-even"><td><p>QRIX:PM:SECOND:GO</p></td>
 <td><p>bo</p></td>
 <td><p>PRG_OPT_XPM.fb2AxesXPM.fbSecond.bExecute</p></td>
 <td><div class="line-block">
@@ -62562,7 +62737,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:PM:SECOND:ERRMSG_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:PM:SECOND:ERRMSG_RBV</p></td>
 <td><p>waveform</p></td>
 <td><p>PRG_OPT_XPM.fb2AxesXPM.fbSecond.sError</p></td>
 <td><div class="line-block">
@@ -62570,7 +62745,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:PM:SECOND:MOVE_OK_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:PM:SECOND:MOVE_OK_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>TRUE if the move would be safe</p></td>
 <td><div class="line-block">
@@ -62580,7 +62755,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:PM:SECOND:SETPOINT_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:PM:SECOND:SETPOINT_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -62588,7 +62763,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:PM:SECOND:SETPOINT</p></td>
+<tr class="row-even"><td><p>QRIX:PM:SECOND:SETPOINT</p></td>
 <td><p>ao</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -62596,7 +62771,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:PM:SECOND:VELO_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:PM:SECOND:VELO_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -62604,7 +62779,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:PM:SECOND:VELO</p></td>
+<tr class="row-even"><td><p>QRIX:PM:SECOND:VELO</p></td>
 <td><p>ao</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -62612,7 +62787,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:PM:SECOND:ENCODER_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:PM:SECOND:ENCODER_RBV</p></td>
 <td><p>longin</p></td>
 <td><p>Encoder count associated with this state</p></td>
 <td><div class="line-block">
@@ -62620,7 +62795,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:PM:SECOND:NAME_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:PM:SECOND:NAME_RBV</p></td>
 <td><p>waveform</p></td>
 <td><p>Name of this position state</p></td>
 <td><div class="line-block">
@@ -62628,7 +62803,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:PM:PITCH_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:PM:PITCH_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>PRG_OPT_XPM.fb2AxesXPM.rActAngle</p></td>
 <td><div class="line-block">
@@ -62636,7 +62811,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:PM:X_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:PM:X_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>PRG_OPT_XPM.fb2AxesXPM.rActPosition</p></td>
 <td><div class="line-block">
@@ -62644,7 +62819,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:PM:PITCH_REQ_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:PM:PITCH_REQ_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>PRG_OPT_XPM.fb2AxesXPM.rReqAngle</p></td>
 <td><div class="line-block">
@@ -62652,7 +62827,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:PM:PITCH_REQ</p></td>
+<tr class="row-even"><td><p>QRIX:PM:PITCH_REQ</p></td>
 <td><p>ao</p></td>
 <td><p>PRG_OPT_XPM.fb2AxesXPM.rReqAngle</p></td>
 <td><div class="line-block">
@@ -62660,7 +62835,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:PM:X_REQ_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:PM:X_REQ_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>PRG_OPT_XPM.fb2AxesXPM.rReqPosition</p></td>
 <td><div class="line-block">
@@ -62668,7 +62843,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:PM:X_REQ</p></td>
+<tr class="row-even"><td><p>QRIX:PM:X_REQ</p></td>
 <td><p>ao</p></td>
 <td><p>PRG_OPT_XPM.fb2AxesXPM.rReqPosition</p></td>
 <td><div class="line-block">
@@ -62676,7 +62851,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPT:Home_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPT:Home_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_YG.fbYGMotion.bHome</p></td>
 <td><div class="line-block">
@@ -62686,7 +62861,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPT:HOME_READY_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:OPT:HOME_READY_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_YG.fbYGMotion.bHomeReady</p></td>
 <td><div class="line-block">
@@ -62696,7 +62871,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPT:PMPS_OK_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPT:PMPS_OK_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_YG.fbYGMotion.bMoveOk</p></td>
 <td><div class="line-block">
@@ -62706,7 +62881,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPT:JACK1:AT_STATE_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:OPT:JACK1:AT_STATE_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_YG.fbYGMotion.fbJack1.bAtState</p></td>
 <td><div class="line-block">
@@ -62716,7 +62891,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPT:JACK1:BUSY_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPT:JACK1:BUSY_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_YG.fbYGMotion.fbJack1.bBusy</p></td>
 <td><div class="line-block">
@@ -62726,7 +62901,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPT:JACK1:DMOV_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:OPT:JACK1:DMOV_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_YG.fbYGMotion.fbJack1.bDone</p></td>
 <td><div class="line-block">
@@ -62736,7 +62911,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPT:JACK1:ERR_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPT:JACK1:ERR_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_YG.fbYGMotion.fbJack1.bError</p></td>
 <td><div class="line-block">
@@ -62746,7 +62921,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPT:JACK1:GO_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:OPT:JACK1:GO_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_YG.fbYGMotion.fbJack1.bExecute</p></td>
 <td><div class="line-block">
@@ -62756,7 +62931,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPT:JACK1:GO</p></td>
+<tr class="row-odd"><td><p>QRIX:OPT:JACK1:GO</p></td>
 <td><p>bo</p></td>
 <td><p>PRG_OPT_YG.fbYGMotion.fbJack1.bExecute</p></td>
 <td><div class="line-block">
@@ -62766,7 +62941,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPT:JACK1:ERRMSG_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:OPT:JACK1:ERRMSG_RBV</p></td>
 <td><p>waveform</p></td>
 <td><p>PRG_OPT_YG.fbYGMotion.fbJack1.sError</p></td>
 <td><div class="line-block">
@@ -62774,7 +62949,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPT:JACK1:MOVE_OK_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPT:JACK1:MOVE_OK_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>TRUE if the move would be safe</p></td>
 <td><div class="line-block">
@@ -62784,7 +62959,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPT:JACK1:SETPOINT_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:OPT:JACK1:SETPOINT_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -62792,7 +62967,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPT:JACK1:SETPOINT</p></td>
+<tr class="row-odd"><td><p>QRIX:OPT:JACK1:SETPOINT</p></td>
 <td><p>ao</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -62800,7 +62975,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPT:JACK1:VELO_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:OPT:JACK1:VELO_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -62808,7 +62983,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPT:JACK1:VELO</p></td>
+<tr class="row-odd"><td><p>QRIX:OPT:JACK1:VELO</p></td>
 <td><p>ao</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -62816,7 +62991,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPT:JACK1:ENCODER_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:OPT:JACK1:ENCODER_RBV</p></td>
 <td><p>longin</p></td>
 <td><p>Encoder count associated with this state</p></td>
 <td><div class="line-block">
@@ -62824,7 +62999,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPT:JACK1:NAME_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPT:JACK1:NAME_RBV</p></td>
 <td><p>waveform</p></td>
 <td><p>Name of this position state</p></td>
 <td><div class="line-block">
@@ -62832,7 +63007,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPT:JACK2:AT_STATE_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:OPT:JACK2:AT_STATE_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_YG.fbYGMotion.fbJack2.bAtState</p></td>
 <td><div class="line-block">
@@ -62842,7 +63017,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPT:JACK2:BUSY_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPT:JACK2:BUSY_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_YG.fbYGMotion.fbJack2.bBusy</p></td>
 <td><div class="line-block">
@@ -62852,7 +63027,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPT:JACK2:DMOV_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:OPT:JACK2:DMOV_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_YG.fbYGMotion.fbJack2.bDone</p></td>
 <td><div class="line-block">
@@ -62862,7 +63037,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPT:JACK2:ERR_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPT:JACK2:ERR_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_YG.fbYGMotion.fbJack2.bError</p></td>
 <td><div class="line-block">
@@ -62872,7 +63047,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPT:JACK2:GO_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:OPT:JACK2:GO_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_YG.fbYGMotion.fbJack2.bExecute</p></td>
 <td><div class="line-block">
@@ -62882,7 +63057,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPT:JACK2:GO</p></td>
+<tr class="row-odd"><td><p>QRIX:OPT:JACK2:GO</p></td>
 <td><p>bo</p></td>
 <td><p>PRG_OPT_YG.fbYGMotion.fbJack2.bExecute</p></td>
 <td><div class="line-block">
@@ -62892,7 +63067,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPT:JACK2:ERRMSG_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:OPT:JACK2:ERRMSG_RBV</p></td>
 <td><p>waveform</p></td>
 <td><p>PRG_OPT_YG.fbYGMotion.fbJack2.sError</p></td>
 <td><div class="line-block">
@@ -62900,7 +63075,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPT:JACK2:MOVE_OK_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPT:JACK2:MOVE_OK_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>TRUE if the move would be safe</p></td>
 <td><div class="line-block">
@@ -62910,7 +63085,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPT:JACK2:SETPOINT_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:OPT:JACK2:SETPOINT_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -62918,7 +63093,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPT:JACK2:SETPOINT</p></td>
+<tr class="row-odd"><td><p>QRIX:OPT:JACK2:SETPOINT</p></td>
 <td><p>ao</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -62926,7 +63101,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPT:JACK2:VELO_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:OPT:JACK2:VELO_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -62934,7 +63109,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPT:JACK2:VELO</p></td>
+<tr class="row-odd"><td><p>QRIX:OPT:JACK2:VELO</p></td>
 <td><p>ao</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -62942,7 +63117,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPT:JACK2:ENCODER_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:OPT:JACK2:ENCODER_RBV</p></td>
 <td><p>longin</p></td>
 <td><p>Encoder count associated with this state</p></td>
 <td><div class="line-block">
@@ -62950,7 +63125,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPT:JACK2:NAME_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPT:JACK2:NAME_RBV</p></td>
 <td><p>waveform</p></td>
 <td><p>Name of this position state</p></td>
 <td><div class="line-block">
@@ -62958,7 +63133,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPT:JACK3:AT_STATE_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:OPT:JACK3:AT_STATE_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_YG.fbYGMotion.fbJack3.bAtState</p></td>
 <td><div class="line-block">
@@ -62968,7 +63143,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPT:JACK3:BUSY_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPT:JACK3:BUSY_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_YG.fbYGMotion.fbJack3.bBusy</p></td>
 <td><div class="line-block">
@@ -62978,7 +63153,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPT:JACK3:DMOV_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:OPT:JACK3:DMOV_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_YG.fbYGMotion.fbJack3.bDone</p></td>
 <td><div class="line-block">
@@ -62988,7 +63163,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPT:JACK3:ERR_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPT:JACK3:ERR_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_YG.fbYGMotion.fbJack3.bError</p></td>
 <td><div class="line-block">
@@ -62998,7 +63173,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPT:JACK3:GO_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:OPT:JACK3:GO_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_OPT_YG.fbYGMotion.fbJack3.bExecute</p></td>
 <td><div class="line-block">
@@ -63008,7 +63183,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPT:JACK3:GO</p></td>
+<tr class="row-odd"><td><p>QRIX:OPT:JACK3:GO</p></td>
 <td><p>bo</p></td>
 <td><p>PRG_OPT_YG.fbYGMotion.fbJack3.bExecute</p></td>
 <td><div class="line-block">
@@ -63018,7 +63193,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPT:JACK3:ERRMSG_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:OPT:JACK3:ERRMSG_RBV</p></td>
 <td><p>waveform</p></td>
 <td><p>PRG_OPT_YG.fbYGMotion.fbJack3.sError</p></td>
 <td><div class="line-block">
@@ -63026,7 +63201,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPT:JACK3:MOVE_OK_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPT:JACK3:MOVE_OK_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>TRUE if the move would be safe</p></td>
 <td><div class="line-block">
@@ -63036,7 +63211,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPT:JACK3:SETPOINT_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:OPT:JACK3:SETPOINT_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -63044,7 +63219,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPT:JACK3:SETPOINT</p></td>
+<tr class="row-odd"><td><p>QRIX:OPT:JACK3:SETPOINT</p></td>
 <td><p>ao</p></td>
 <td><p>Axis position associated with this state</p></td>
 <td><div class="line-block">
@@ -63052,7 +63227,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPT:JACK3:VELO_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:OPT:JACK3:VELO_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -63060,7 +63235,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPT:JACK3:VELO</p></td>
+<tr class="row-odd"><td><p>QRIX:OPT:JACK3:VELO</p></td>
 <td><p>ao</p></td>
 <td><p>Speed at which to move to this state</p></td>
 <td><div class="line-block">
@@ -63068,7 +63243,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPT:JACK3:ENCODER_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:OPT:JACK3:ENCODER_RBV</p></td>
 <td><p>longin</p></td>
 <td><p>Encoder count associated with this state</p></td>
 <td><div class="line-block">
@@ -63076,7 +63251,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPT:JACK3:NAME_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPT:JACK3:NAME_RBV</p></td>
 <td><p>waveform</p></td>
 <td><p>Name of this position state</p></td>
 <td><div class="line-block">
@@ -63084,7 +63259,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPT:PITCH_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:OPT:PITCH_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>PRG_OPT_YG.fbYGMotion.rActPitch</p></td>
 <td><div class="line-block">
@@ -63092,7 +63267,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPT:Y_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPT:Y_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>PRG_OPT_YG.fbYGMotion.rActPosition</p></td>
 <td><div class="line-block">
@@ -63100,7 +63275,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPT:ROLL_RBV</p></td>
+<tr class="row-even"><td><p>QRIX:OPT:ROLL_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>PRG_OPT_YG.fbYGMotion.rActRoll</p></td>
 <td><div class="line-block">
@@ -63108,7 +63283,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPT:ZeroOffset_Jack1_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPT:ZeroOffset_Jack1_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>PRG_OPT_YG.fbYGMotion.rEncoderOffsetJack1</p></td>
 <td><div class="line-block">
@@ -63116,7 +63291,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPT:ZeroOffset_Jack1</p></td>
+<tr class="row-even"><td><p>QRIX:OPT:ZeroOffset_Jack1</p></td>
 <td><p>ao</p></td>
 <td><p>PRG_OPT_YG.fbYGMotion.rEncoderOffsetJack1</p></td>
 <td><div class="line-block">
@@ -63124,7 +63299,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPT:ZeroOffset_Jack2_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPT:ZeroOffset_Jack2_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>PRG_OPT_YG.fbYGMotion.rEncoderOffsetJack2</p></td>
 <td><div class="line-block">
@@ -63132,7 +63307,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPT:ZeroOffset_Jack2</p></td>
+<tr class="row-even"><td><p>QRIX:OPT:ZeroOffset_Jack2</p></td>
 <td><p>ao</p></td>
 <td><p>PRG_OPT_YG.fbYGMotion.rEncoderOffsetJack2</p></td>
 <td><div class="line-block">
@@ -63140,7 +63315,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPT:ZeroOffset_Jack3_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPT:ZeroOffset_Jack3_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>PRG_OPT_YG.fbYGMotion.rEncoderOffsetJack3</p></td>
 <td><div class="line-block">
@@ -63148,7 +63323,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPT:ZeroOffset_Jack3</p></td>
+<tr class="row-even"><td><p>QRIX:OPT:ZeroOffset_Jack3</p></td>
 <td><p>ao</p></td>
 <td><p>PRG_OPT_YG.fbYGMotion.rEncoderOffsetJack3</p></td>
 <td><div class="line-block">
@@ -63156,7 +63331,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPT:PITCH_REQ_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPT:PITCH_REQ_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>PRG_OPT_YG.fbYGMotion.rReqPitch</p></td>
 <td><div class="line-block">
@@ -63164,7 +63339,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPT:PITCH_REQ</p></td>
+<tr class="row-even"><td><p>QRIX:OPT:PITCH_REQ</p></td>
 <td><p>ao</p></td>
 <td><p>PRG_OPT_YG.fbYGMotion.rReqPitch</p></td>
 <td><div class="line-block">
@@ -63172,7 +63347,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPT:Y_REQ_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPT:Y_REQ_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>PRG_OPT_YG.fbYGMotion.rReqPosition</p></td>
 <td><div class="line-block">
@@ -63180,7 +63355,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPT:Y_REQ</p></td>
+<tr class="row-even"><td><p>QRIX:OPT:Y_REQ</p></td>
 <td><p>ao</p></td>
 <td><p>PRG_OPT_YG.fbYGMotion.rReqPosition</p></td>
 <td><div class="line-block">
@@ -63188,7 +63363,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:OPT:ROLL_REQ_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:OPT:ROLL_REQ_RBV</p></td>
 <td><p>ai</p></td>
 <td><p>PRG_OPT_YG.fbYGMotion.rReqRoll</p></td>
 <td><div class="line-block">
@@ -63196,7 +63371,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:OPT:ROLL_REQ</p></td>
+<tr class="row-even"><td><p>QRIX:OPT:ROLL_REQ</p></td>
 <td><p>ao</p></td>
 <td><p>PRG_OPT_YG.fbYGMotion.rReqRoll</p></td>
 <td><div class="line-block">
@@ -63204,7 +63379,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>QRIX:SPCA:COUPLED_RBV</p></td>
+<tr class="row-odd"><td><p>QRIX:SPCA:COUPLED_RBV</p></td>
 <td><p>bi</p></td>
 <td><p>PRG_SSL.bAlreadyCoupled</p></td>
 <td><div class="line-block">
@@ -63212,7 +63387,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>QRIX:SPCA:COUPLED</p></td>
+<tr class="row-even"><td><p>QRIX:SPCA:COUPLED</p></td>
 <td><p>bo</p></td>
 <td><p>PRG_SSL.bAlreadyCoupled</p></td>
 <td><div class="line-block">
@@ -63228,8 +63403,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="lcls-plc-qrix-motion_PLC_QRIX_MOT_summary.html" class="btn btn-neutral float-left" title="Settings" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="lcls-plc-qrix-motion_PLC_QRIX_MOT_source.html" class="btn btn-neutral float-right" title="DUTs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="lcls-plc-qrix-motion_qrix_motion_summary.html" class="btn btn-neutral float-left" title="Settings" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="lcls-plc-qrix-motion_qrix_motion_source.html" class="btn btn-neutral float-right" title="DUTs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
