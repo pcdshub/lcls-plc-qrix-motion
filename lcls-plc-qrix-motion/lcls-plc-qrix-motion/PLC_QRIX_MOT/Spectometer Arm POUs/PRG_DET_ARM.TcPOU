@@ -48,8 +48,27 @@ IF bInit THEN
     Main.M27.bPowerSelf := TRUE;
     Main.M27.fVelocity := 0.1;
 
+    // M25 and M26 are coupled with M25 as the leader.
+    // The motors cannot be set to always enabled, because they have brakes that
+    // only activate when the motors are not moving. Due to the weight
+    // of the frame, it appears that if the brake is not on, the motors
+    // are moving constantly to keep the frame from falling. So essentially,
+    // "is moving" is synonymous with "is enabled" for these motors which
+    // results in the brake only applying if the motors are disabled. Setting M25
+    // to only enable during motion, and M26 to NEVER means that
+    // M25 will be enabled when commanded to move from EPICS but
+    // for M26 the FB_MotionStage will not modify the bEnable boolean
+    // in the state machine. Therefore, we can set the M26 bEnable
+    // status based on the M25 bEnable status after the M25 FB_MotionStage
+    // runs. But this also allows the brake to still activate when M26 is
+    // not moving.
     Main.M25.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
-    Main.M26.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+    // M26 bEnable is coupled to M25 bEnable below. Set M26 enable mode to NEVER
+    // so that the function block does not try to set the bEnable bit unless
+    // it detects an error. This allows the bEnable to be set outside of
+    // the function block.
+    Main.M26.nEnableMode := ENUM_StageEnableMode.NEVER ;
+
     Main.M27.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
 END_IF
 
@@ -72,6 +91,10 @@ Main.M27.bAllEnable := Main.M27.bEnable AND GVL_EPS.bESTOP;
 
 // Call Motion FB instance
 fbMotionYF1(stMotionStage:=Main.M25);
+
+// Set the M26 bEnable equal to the M25 bEnable status to couple their enable bits together.
+Main.M26.bEnable := Main.M25.bEnable;
+
 fbMotionYF2(stMotionStage:=Main.M26);
 fbMotionZF(stMotionStage:=Main.M27);
 

@@ -20,7 +20,7 @@ VAR_GLOBAL
     {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL7047_02_01 - SSL]^STM Status^Status^Digital input 1;
                               .bLimitBackwardEnable := TIIB[EL7047_02_01 - SSL]^STM Status^Status^Digital input 2;
                               .nRawEncoderULINT     := TIIB[EL5042_02_02]^FB Inputs Channel 1^Position'}
-    M1: ST_MotionStage := (sName := 'QRIX:SSL:MMS');
+    M1: ST_MotionStage := (sName := 'QRIX:SC:SSL:MMS');
 
 
     (* Start Adding Spectometer Arm Axes Here*)
@@ -72,7 +72,7 @@ VAR_GLOBAL
                                 .bLimitBackwardEnable	:= TIIB[Rack#2A-10 DR_YG1 (EL7041-0052)]^STM Status^Status^Digital input 2;
                                 .nRawEncoderULINT		:= TIIB[Rack#2B-10 ENC_YG1_YG2 (EL5042)]^FB Inputs Channel 1^Position
     '}
-    M7: ST_MotionStage:= (sName := 'QRIX:OPT:MMS:Y2');
+    M7: ST_MotionStage:= (sName := 'QRIX:OPT:MMS:Y1');
 
     // YG2
     {attribute 'pytmc' := 'pv: QRIX:OPT:MMS:Y2'}
