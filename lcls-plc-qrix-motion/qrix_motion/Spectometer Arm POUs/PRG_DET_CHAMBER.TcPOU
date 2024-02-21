@@ -11,9 +11,12 @@ END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[//Lock stages until they are tested
-Main.M22.nEnableMode := ENUM_StageEnableMode.NEVER ;
-Main.M23.nEnableMode := ENUM_StageEnableMode.NEVER ;
-Main.M24.nEnableMode := ENUM_StageEnableMode.NEVER ;
+//Main.M22.nEnableMode := ENUM_StageEnableMode.NEVER ;
+//Main.M23.nEnableMode := ENUM_StageEnableMode.NEVER ;
+//Main.M24.nEnableMode := ENUM_StageEnableMode.NEVER ;
+Main.M22.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+Main.M23.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+Main.M24.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
 
 
 

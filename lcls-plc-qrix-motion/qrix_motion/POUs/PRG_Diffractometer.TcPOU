@@ -14,24 +14,17 @@ VAR
     bInit : BOOl := TRUE;
 
     //EPS
-    stEPS_Diff_Z : DUT_EPS;
     EPS_Diff_Z : FB_EPS;
 
-    stEPS_Diff_Chi : DUT_EPS;
     EPS_Diff_Chi : FB_EPS;
 
-    stEPS_Diff_Phi : DUT_EPS;
     EPS_Diff_Phi : FB_EPS;
 
-    stEPS_Diff_Theta : DUT_EPS;
     EPS_Diff_Theta : FB_EPS;
 
-    stEPS_Diff_2Theta : DUT_EPS;
     EPS_Diff_2Theta : FB_EPS;
 
-    stEPS_Diff_2ThetaY : DUT_EPS;
     EPS_Diff_2ThetaY : FB_EPS;
-
 
     //Encoders for rotary stages
     fbSetPosition: MC_SetPosition;
@@ -103,33 +96,33 @@ END_VAR
 END_IF
 
 //EPS
-(*
-EPS_Diff_Z.setDescription('Less20mm;LAS_D_H'); // SET DESCRITION FOR BYTE INDICATOR LABELS
-EPS_Diff_Z.setBit(nBits:= 0, bValue:=fb_Diff_Z.stMotionStage.fPosition>=-20);
-EPS_Diff_Z.setBit(nBits:= 1, bValue:=PRG_LAS.fb_LAS_D_H.stMotionStage.fPosition>=50 OR PRG_Diffractometer.fb_Diff_Z.stMotionStage.fPosition>=-20);
-EPS_Diff_Z(eps:=stEPS_Diff_Z);
-fb_Diff_Z.stMotionStage.stEPSBackwardEnable := stEPS_Diff_Z;
+// All bits must be TRUE to enable the specifiied direction (backward or forwards)
+// The bits are populated right to left in typhos screen. So Descriptions highest bit number is at the beginning of the description.
+EPS_Diff_Theta(eps:=Main.M34.stEPSBackwardEnable);
+EPS_Diff_Theta.setDescription('CHI;MIDIR;PHI'); // SET DESCRIPTION FOR BYTE INDICATOR LABELS
+// Diffractometer Theta cannot go less than 5 degrees if the Diffractometer Chi is less than -5 degrees
+EPS_Diff_Theta.setBit(nBits:= 2, bValue:=Main.M34.fPosition>=5 OR Main.M33.fPosition>=-5);
+// Diffractometer Theta cannot go less than 10 degrees if the MID IR (LAS VIS) is IN, which is defined as a position of 90 +/- 1.
+EPS_Diff_Theta.setBit(nBits:= 1, bValue:= Main.M34.fPosition>10 OR F_Limit(Main.M36.fPosition, 91, 89, false));
+// Diffractometer Theta cannot go less than 10 degrees if the Diffractometer phi is at 90 +/- 1.
+EPS_Diff_Theta.setBit(nBits:= 0, bValue:=Main.M34.fPosition>10 OR F_Limit(Main.M32.fPosition, 91, 89, false));
 
-EPS_Diff_Chi.setDescription('Less-5mm;Theta'); // SET DESCRITION FOR BYTE INDICATOR LABELS
-EPS_Diff_Chi.setBit(nBits:= 0, bValue:=fb_Diff_Chi.stMotionStage.fPosition>-5);
-EPS_Diff_Chi.setBit(nBits:= 1, bValue:=fb_Diff_Theta.stMotionStage.fPosition>5 OR PRG_Diffractometer.fb_Diff_Chi.stMotionStage.fPosition>-5);
-EPS_Diff_Chi(eps:=stEPS_Diff_Chi);
-fb_Diff_Chi.stMotionStage.stEPSBackwardEnable := stEPS_Diff_Chi;
+EPS_Diff_Chi(eps:=Main.M33.stEPSBackwardEnable);
+EPS_Diff_Chi.setDescription('Theta'); // SET DESCRIPTION FOR BYTE INDICATOR LABELS
+// Diffractometer Chi cannot go less than -5 degrees if the Diffractometer Theta is less than 5 degrees
+EPS_Diff_Chi.setBit(nBits:= 0, bValue:=Main.M33.fPosition>=-5 OR Main.M34.fPosition>=5);
 
-EPS_Diff_Theta.setDescription('CHI;PHI;MIDIT'); // SET DESCRITION FOR BYTE INDICATOR LABELS
-EPS_Diff_Theta.setBit(nBits:= 0, bValue:=fb_Diff_Theta.stMotionStage.fPosition>=5 OR PRG_Diffractometer.fb_Diff_Chi.stMotionStage.fPosition>-5);
-EPS_Diff_Theta.setBit(nBits:= 1, bValue:=fb_Diff_Theta.stMotionStage.fPosition>10 OR (PRG_Diffractometer.fb_Diff_Phi.stMotionStage.fPosition <90.1 AND PRG_Diffractometer.fb_Diff_Phi.stMotionStage.fPosition>89.9)) ;
-EPS_Diff_Theta.setBit(nBits:= 2, bValue:= fb_Diff_Theta.stMotionStage.fPosition>10 OR (PRG_LAS.fb_LAS_VIS.stMotionStage.fPosition <90.1 AND PRG_LAS.fb_LAS_VIS.stMotionStage.fPosition>89.9));
-EPS_Diff_Theta(eps:=stEPS_Diff_Theta);
-fb_Diff_Theta.stMotionStage.stEPSBackwardEnable := stEPS_Diff_Theta; //Need More
+EPS_Diff_Phi(eps:=Main.M32.stEPSBackwardEnable);
+EPS_Diff_Phi.setDescription('Less_45;MID_IR;Theta'); // SET DESCRIPTION FOR BYTE INDICATOR LABELS
+//
+EPS_Diff_Phi.setBit(nBits:= 2, bValue:=Main.M32.fPosition<=45);
+EPS_Diff_Phi.setBit(nBits:= 1, bValue:=Main.M36.fPosition <45 OR Main.M32.fPosition<=45);
+EPS_Diff_Phi.setBit(nBits:= 0, bValue:=Main.M32.fPosition<=45 OR (Main.M34.fPosition <0.1 AND Main.M34.fPosition>359.5));
 
-EPS_Diff_Phi.setDescription('Less-45;MID_IR;Theta'); // SET DESCRITION FOR BYTE INDICATOR LABELS
-EPS_Diff_Phi.setBit(nBits:= 0, bValue:=fb_Diff_phi.stMotionStage.fPosition<=45);
-EPS_Diff_Phi.setBit(nBits:= 1, bValue:=PRG_LAS.fb_LAS_VIS.stMotionStage.fPosition <45 OR PRG_Diffractometer.fb_Diff_phi.stMotionStage.fPosition<=45);
-EPS_Diff_Phi.setBit(nBits:= 2, PRG_Diffractometer.fb_Diff_phi.stMotionStage.fPosition<=45 OR (PRG_Diffractometer.fb_Diff_Theta.stMotionStage.fPosition <0.1 AND PRG_Diffractometer.fb_Diff_Theta.stMotionStage.fPosition>359.5));
-EPS_Diff_Phi(eps:=stEPS_Diff_Phi);
-FB_Diff_Phi.stMotionStage.stEPSBackwardEnable := stEPS_Diff_Phi;
-*)
+EPS_Diff_Z(eps:=Main.M30.stEPSBackwardEnable);
+EPS_Diff_Z.setDescription('Less20mm;LAS_D_H'); // SET DESCRIPTION FOR BYTE INDICATOR LABELS
+EPS_Diff_Z.setBit(nBits:= 0, bValue:=Main.M36.fPosition>=-20);
+EPS_Diff_Z.setBit(nBits:= 1, bValue:=Main.M37.fPosition>=50 OR Main.M30.fPosition>=-20);
 
 
 
