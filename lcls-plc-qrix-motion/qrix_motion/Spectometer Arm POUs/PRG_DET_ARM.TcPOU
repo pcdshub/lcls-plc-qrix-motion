@@ -17,13 +17,6 @@ VAR
     {attribute 'TcLinkTo' := '	.Count := TIIB[BOX-07 ENC_YF2_ZF (EL5042)]^FB Inputs Channel 1^Position'}
     stRenishawAbsEncSlave: ST_RenishawAbsEnc;
 
-    (*
-    fbPower_AxisM25: MC_POWER;
-    fbPower_AxisM26: MC_POWER;
-    fbPower_AxisM27: MC_POWER;
-
-    tonBrakeRlease_M25, tonBrakeRlease_M26, tonBrakeRlease_M27: TON;
-    // *)
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -85,6 +78,8 @@ fbAutoCoupling(	nGantryTol 			:= 200000, // 50nm/count
                 bExecuteDecouple 	:= bExecuteDecouple,
 );
 
+// I don't think these 3 lines do anything but I am keeping for now.
+// The FB_MotionStage overwrites the bAllEnable bit internally.
 Main.M25.bAllEnable := Main.M25.bEnable AND GVL_EPS.bESTOP;
 Main.M26.bAllEnable := Main.M26.bEnable AND GVL_EPS.bESTOP;
 Main.M27.bAllEnable := Main.M27.bEnable AND GVL_EPS.bESTOP;
@@ -97,48 +92,6 @@ Main.M26.bEnable := Main.M25.bEnable;
 
 fbMotionYF2(stMotionStage:=Main.M26);
 fbMotionZF(stMotionStage:=Main.M27);
-
-(* For test
-// Release brake if axis is enabled.
-tonBrakeRlease_M25(
-    IN:=(GVL_Main.M25.bEnable OR GVL_Main.M25.bAllEnable) AND NOT GVL_Main.M25.Axis.Status.DriveDeviceError,
-    PT:=T#1s,
-    Q=>GVL_Main.M25.bBrakeRelease
-);
-tonBrakeRlease_M26(
-    IN:=(GVL_Main.M26.bEnable OR GVL_Main.M26.bAllEnable) AND NOT GVL_Main.M26.Axis.Status.DriveDeviceError,
-    PT:=T#1s,
-    Q=>GVL_Main.M26.bBrakeRelease
-);
-tonBrakeRlease_M27(
-    IN:=(GVL_Main.M27.bEnable OR GVL_Main.M27.bAllEnable) AND NOT GVL_Main.M27.Axis.Status.DriveDeviceError,
-    PT:=T#1s,
-    Q=>GVL_Main.M27.bBrakeRelease
-);
-fbPower_AxisM25(
-    Axis := GVL_Main.M25.Axis,
-    Enable := GVL_Main.M25.bEnable AND GVL_Main.bESTOP,
-    Enable_Positive := GVL_Main.M25.bLimitForwardEnable AND PLimFwd,
-    Enable_Negative := GVL_Main.M25.bLimitBackwardEnable AND PLimBwd,
-    Override := 100.000,
-);
-fbPower_AxisM26(
-    Axis := GVL_Main.M26.Axis,
-    Enable := GVL_Main.M26.bEnable AND GVL_Main.bESTOP,
-    Enable_Positive := GVL_Main.M26.bLimitForwardEnable AND SLimFwd,
-    Enable_Negative := GVL_Main.M26.bLimitBackwardEnable AND SLimBwd,
-    Override := 100.000,
-);
-fbPower_AxisM27(
-    Axis := GVL_Main.M27.Axis,
-    Enable := GVL_Main.M27.bEnable AND GVL_Main.bESTOP,
-    Enable_Positive := GVL_Main.M27.bLimitForwardEnable,
-    Enable_Negative := GVL_Main.M27.bLimitBackwardEnable,
-    Override := 100.000,
-);
-
-
-// *)
 ]]></ST>
     </Implementation>
   </POU>

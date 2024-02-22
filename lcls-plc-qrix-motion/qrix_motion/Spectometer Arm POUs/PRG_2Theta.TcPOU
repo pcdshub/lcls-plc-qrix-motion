@@ -23,7 +23,6 @@ END_VAR
     // Stepper
     Main.M2.nBrakeMode := ENUM_StageBrakeMode.IF_MOVING;
     Main.M2.bHardwareEnable := TRUE;
-    Main.M2.bPowerSelf := FALSE;
 
     Main.M2.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
 END_IF;
@@ -33,27 +32,19 @@ ACT_Stepper();
     </Implementation>
     <Action Name="ACT_Stepper" Id="{66e0b0b8-d09b-4167-8180-d5937a88b96b}">
       <Implementation>
-        <ST><![CDATA[fb2ThetaStepper(stMotionStage:=Main.M2);
-
-Main.M2.bPowerSelf := FALSE;
-
-Main.M2.bAllEnable := 		Main.M2.bEnable
-                            AND GVL_EPS.bESTOP // ESTOP
+        <ST><![CDATA[// Simplified enabling logic by removing separate fbPower function and
+// making the estop and other permissives drive the bPowerSelf bit.
+// Now, the motor motion is handled entirely within the FB_MotionStage block
+// which makes this usage more standard and easier to work with using our
+// standard typhos widget.
+Main.M2.bPowerSelf := 		GVL_EPS.bESTOP // ESTOP
                             AND	GVL_Sensor.stPS1.fValue > fThresholdPS1
                             AND GVL_Sensor.stPS2.fValue > fThresholdPS2
                             AND GVL_Sensor.stPS3.fValue > fThresholdPS3 // Compressed-air pressure
                             AND GVL_EPS.bOpenSV1
                             AND GVL_EPS.bOpenSV2;
-Main.M2.bAllForwardEnable  := Main.M2.bLimitForwardEnable  AND GVL_EPS.bESTOP;
-Main.M2.bAllBackwardEnable := Main.M2.bLimitBackwardEnable AND GVL_EPS.bESTOP;
 
-fbPower_AxisM2(
-    Axis:= Main.M2.Axis,
-    Enable := Main.M2.bAllEnable,
-    Enable_Positive:= Main.M2.bAllForwardEnable,
-    Enable_Negative:= Main.M2.bAllBackwardEnable,
-    Override:= 100
-);]]></ST>
+fb2ThetaStepper(stMotionStage:=Main.M2);]]></ST>
       </Implementation>
     </Action>
   </POU>

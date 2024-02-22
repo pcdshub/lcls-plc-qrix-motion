@@ -3,22 +3,41 @@
   <GVL Name="GVL_Sensor" Id="{1e8c8953-d9ec-471b-85fd-d0dbdbf1215b}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
-    {attribute 'pytmc' := 'pv: QRIX:SA:FLOATING'}
+    {attribute 'pytmc' := '
+        pv: QRIX:SA:FLOATING
+        io: i
+    '}
     bFloating: BOOL;
 
     // YDF1
+    {attribute 'pytmc' := '
+        pv: QRIX:SA:DDS:YDF1
+        io: i
+    '}
     {attribute 'TcLinkTo' := '	.iRawCnts	:= TIIB[Rack#2D LinearGaugeAmp (SC-HG1-ETC)]^Process Data(In)  TxPDO-Map^Response Data Unit1'}
     stYDF1: DUT_SensorHGS;
 
     // YDF2
+    {attribute 'pytmc' := '
+        pv: QRIX:SA:DDS:YDF2
+        io: i
+    '}
     {attribute 'TcLinkTo' := '	.iRawCnts	:= TIIB[Rack#2D LinearGaugeAmp (SC-HG1-ETC)]^Process Data(In)  TxPDO-Map^Response Data Unit2'}
     stYDF2: DUT_SensorHGS;
 
     // YDF3
+    {attribute 'pytmc' := '
+        pv: QRIX:SA:DDS:YDF3
+        io: i
+    '}
     {attribute 'TcLinkTo' := '	.iRawCnts	:= TIIB[Rack#2D LinearGaugeAmp (SC-HG1-ETC)]^Process Data(In)  TxPDO-Map^Response Data Unit3'}
     stYDF3: DUT_SensorHGS;
 
     // Height difference btw granite shelf and detector frame.
+    {attribute 'pytmc' := '
+        pv: QRIX:SA:DDS:HDF
+        io: i
+    '}
     {attribute 'TcLinkTo' := '	.iRawCnts	:= TIIB[Rack#2D LinearGaugeAmp (SC-HG1-ETC)]^Process Data(In)  TxPDO-Map^Response Data Unit4'}
     stHDF: DUT_SensorHGS;
 
@@ -51,10 +70,22 @@ VAR_GLOBAL
     {attribute 'TcLinkTo' := '	.iRawCnts	:= TIIB[Rack#2B-03 AI_TiltSensor (EL3174-0002)]^AI Standard Channel 3^Value'}
     stFrameR: DUT_Sensor;
 
+    {attribute 'pytmc' := '
+        pv: QRIX:SA:GPT:PS1
+        io: i
+    '}
     {attribute 'TcLinkTo' := '	.iRawCnts	:= TIIB[Rack#2B-04 PS_P (EL3064)]^AI Standard Channel 1^Value'}
     stPS1: DUT_Sensor;
+    {attribute 'pytmc' := '
+        pv: QRIX:SA:GPT:PS2
+        io: i
+    '}
     {attribute 'TcLinkTo' := '	.iRawCnts	:= TIIB[Rack#2B-04 PS_P (EL3064)]^AI Standard Channel 2^Value'}
     stPS2: DUT_Sensor;
+    {attribute 'pytmc' := '
+        pv: QRIX:SA:GPT:PS3
+        io: i
+    '}
     {attribute 'TcLinkTo' := '	.iRawCnts	:= TIIB[Rack#2B-04 PS_P (EL3064)]^AI Standard Channel 3^Value'}
     stPS3: DUT_Sensor;
 END_VAR]]></Declaration>

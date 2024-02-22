@@ -36940,17 +36940,6 @@ record(bi, "QRIX:SA:FLOATING_RBV") {
   info(archive, "VAL")
 }
 
-record(bo, "QRIX:SA:FLOATING") {
-  field(DESC, "GVL_Sensor.bFloating")
-  field(DTYP, "asynInt32")
-  field(UDFS, "0")
-  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/GVL_Sensor.bFloating=")
-  field(ZNAM, "FALSE")
-  field(ONAM, "TRUE")
-  info(autosaveFields_pass0, "COSV DESC DISS OSV SIMS UDFS VAL ZSV")
-  info(archive, "VAL")
-}
-
 record(ai, "QRIX:DF:INM:Z:VALUE_RBV") {
   field(DESC, "GVL_Sensor.stFrameP.fValue")
   field(SCAN, "I/O Intr")
@@ -37103,7 +37092,273 @@ record(waveform, "QRIX:GS:INM:X:EU_RBV") {
   info(archive, "VAL")
 }
 
-record(bi, "QRIX:SA:DoneAdjustingHeight_RBV") {
+record(ai, "QRIX:SA:DDS:HDF:VALUE_RBV") {
+  field(DESC, "GVL_Sensor.stHDF.fValue")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/GVL_Sensor.stHDF.fValue?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(longin, "QRIX:SA:DDS:HDF:RAWCOUNTS_RBV") {
+  field(DESC, "GVL_Sensor.stHDF.iRawCnts")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/GVL_Sensor.stHDF.iRawCnts?")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(waveform, "QRIX:SA:DDS:HDF:EU_RBV") {
+  field(DESC, "GVL_Sensor.stHDF.sEGU")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt8ArrayIn")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/GVL_Sensor.stHDF.sEGU?")
+  field(FTVL, "CHAR")
+  field(NELM, "80")
+  field(MPST, "On Change")
+  field(APST, "On Change")
+  info(autosaveFields_pass0, "DESC DISS SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:SA:GPT:PS1:VALUE_RBV") {
+  field(DESC, "GVL_Sensor.stPS1.fValue")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/GVL_Sensor.stPS1.fValue?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(longin, "QRIX:SA:GPT:PS1:RAWCOUNTS_RBV") {
+  field(DESC, "GVL_Sensor.stPS1.iRawCnts")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/GVL_Sensor.stPS1.iRawCnts?")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(waveform, "QRIX:SA:GPT:PS1:EU_RBV") {
+  field(DESC, "GVL_Sensor.stPS1.sEGU")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt8ArrayIn")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/GVL_Sensor.stPS1.sEGU?")
+  field(FTVL, "CHAR")
+  field(NELM, "80")
+  field(MPST, "On Change")
+  field(APST, "On Change")
+  info(autosaveFields_pass0, "DESC DISS SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:SA:GPT:PS2:VALUE_RBV") {
+  field(DESC, "GVL_Sensor.stPS2.fValue")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/GVL_Sensor.stPS2.fValue?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(longin, "QRIX:SA:GPT:PS2:RAWCOUNTS_RBV") {
+  field(DESC, "GVL_Sensor.stPS2.iRawCnts")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/GVL_Sensor.stPS2.iRawCnts?")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(waveform, "QRIX:SA:GPT:PS2:EU_RBV") {
+  field(DESC, "GVL_Sensor.stPS2.sEGU")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt8ArrayIn")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/GVL_Sensor.stPS2.sEGU?")
+  field(FTVL, "CHAR")
+  field(NELM, "80")
+  field(MPST, "On Change")
+  field(APST, "On Change")
+  info(autosaveFields_pass0, "DESC DISS SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:SA:GPT:PS3:VALUE_RBV") {
+  field(DESC, "GVL_Sensor.stPS3.fValue")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/GVL_Sensor.stPS3.fValue?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(longin, "QRIX:SA:GPT:PS3:RAWCOUNTS_RBV") {
+  field(DESC, "GVL_Sensor.stPS3.iRawCnts")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/GVL_Sensor.stPS3.iRawCnts?")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(waveform, "QRIX:SA:GPT:PS3:EU_RBV") {
+  field(DESC, "GVL_Sensor.stPS3.sEGU")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt8ArrayIn")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/GVL_Sensor.stPS3.sEGU?")
+  field(FTVL, "CHAR")
+  field(NELM, "80")
+  field(MPST, "On Change")
+  field(APST, "On Change")
+  info(autosaveFields_pass0, "DESC DISS SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:SA:DDS:YDF1:VALUE_RBV") {
+  field(DESC, "GVL_Sensor.stYDF1.fValue")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/GVL_Sensor.stYDF1.fValue?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(longin, "QRIX:SA:DDS:YDF1:RAWCOUNTS_RBV") {
+  field(DESC, "GVL_Sensor.stYDF1.iRawCnts")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/GVL_Sensor.stYDF1.iRawCnts?")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(waveform, "QRIX:SA:DDS:YDF1:EU_RBV") {
+  field(DESC, "GVL_Sensor.stYDF1.sEGU")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt8ArrayIn")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/GVL_Sensor.stYDF1.sEGU?")
+  field(FTVL, "CHAR")
+  field(NELM, "80")
+  field(MPST, "On Change")
+  field(APST, "On Change")
+  info(autosaveFields_pass0, "DESC DISS SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:SA:DDS:YDF2:VALUE_RBV") {
+  field(DESC, "GVL_Sensor.stYDF2.fValue")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/GVL_Sensor.stYDF2.fValue?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(longin, "QRIX:SA:DDS:YDF2:RAWCOUNTS_RBV") {
+  field(DESC, "GVL_Sensor.stYDF2.iRawCnts")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/GVL_Sensor.stYDF2.iRawCnts?")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(waveform, "QRIX:SA:DDS:YDF2:EU_RBV") {
+  field(DESC, "GVL_Sensor.stYDF2.sEGU")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt8ArrayIn")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/GVL_Sensor.stYDF2.sEGU?")
+  field(FTVL, "CHAR")
+  field(NELM, "80")
+  field(MPST, "On Change")
+  field(APST, "On Change")
+  info(autosaveFields_pass0, "DESC DISS SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:SA:DDS:YDF3:VALUE_RBV") {
+  field(DESC, "GVL_Sensor.stYDF3.fValue")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/GVL_Sensor.stYDF3.fValue?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(longin, "QRIX:SA:DDS:YDF3:RAWCOUNTS_RBV") {
+  field(DESC, "GVL_Sensor.stYDF3.iRawCnts")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/GVL_Sensor.stYDF3.iRawCnts?")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(waveform, "QRIX:SA:DDS:YDF3:EU_RBV") {
+  field(DESC, "GVL_Sensor.stYDF3.sEGU")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt8ArrayIn")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/GVL_Sensor.stYDF3.sEGU?")
+  field(FTVL, "CHAR")
+  field(NELM, "80")
+  field(MPST, "On Change")
+  field(APST, "On Change")
+  info(autosaveFields_pass0, "DESC DISS SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(bi, "QRIX:SA:bDoneAdjustingHeight_RBV") {
   field(DESC, "GVL_VAR.bDoneAdjustingHeight")
   field(SCAN, "I/O Intr")
   field(PINI, "1")
@@ -37116,18 +37371,7 @@ record(bi, "QRIX:SA:DoneAdjustingHeight_RBV") {
   info(archive, "VAL")
 }
 
-record(bo, "QRIX:SA:DoneAdjustingHeight") {
-  field(DESC, "GVL_VAR.bDoneAdjustingHeight")
-  field(DTYP, "asynInt32")
-  field(UDFS, "0")
-  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/GVL_VAR.bDoneAdjustingHeight=")
-  field(ZNAM, "FALSE")
-  field(ONAM, "TRUE")
-  info(autosaveFields_pass0, "COSV DESC DISS OSV SIMS UDFS VAL ZSV")
-  info(archive, "VAL")
-}
-
-record(bi, "QRIX:SA:DoneAdjustingPitch_RBV") {
+record(bi, "QRIX:SA:bDoneAdjustingPitch_RBV") {
   field(DESC, "GVL_VAR.bDoneAdjustingPitch")
   field(SCAN, "I/O Intr")
   field(PINI, "1")
@@ -37140,18 +37384,7 @@ record(bi, "QRIX:SA:DoneAdjustingPitch_RBV") {
   info(archive, "VAL")
 }
 
-record(bo, "QRIX:SA:DoneAdjustingPitch") {
-  field(DESC, "GVL_VAR.bDoneAdjustingPitch")
-  field(DTYP, "asynInt32")
-  field(UDFS, "0")
-  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/GVL_VAR.bDoneAdjustingPitch=")
-  field(ZNAM, "FALSE")
-  field(ONAM, "TRUE")
-  info(autosaveFields_pass0, "COSV DESC DISS OSV SIMS UDFS VAL ZSV")
-  info(archive, "VAL")
-}
-
-record(bi, "QRIX:SA:DoneAdjustingRoll_RBV") {
+record(bi, "QRIX:SA:bDoneAdjustingRoll_RBV") {
   field(DESC, "GVL_VAR.bDoneAdjustingRoll")
   field(SCAN, "I/O Intr")
   field(PINI, "1")
@@ -37164,18 +37397,7 @@ record(bi, "QRIX:SA:DoneAdjustingRoll_RBV") {
   info(archive, "VAL")
 }
 
-record(bo, "QRIX:SA:DoneAdjustingRoll") {
-  field(DESC, "GVL_VAR.bDoneAdjustingRoll")
-  field(DTYP, "asynInt32")
-  field(UDFS, "0")
-  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/GVL_VAR.bDoneAdjustingRoll=")
-  field(ZNAM, "FALSE")
-  field(ONAM, "TRUE")
-  info(autosaveFields_pass0, "COSV DESC DISS OSV SIMS UDFS VAL ZSV")
-  info(archive, "VAL")
-}
-
-record(bi, "QRIX:SA:JackOff_RBV") {
+record(bi, "QRIX:SA:bDoneJackOff_RBV") {
   field(DESC, "GVL_VAR.bDoneJackOff")
   field(SCAN, "I/O Intr")
   field(PINI, "1")
@@ -37185,17 +37407,6 @@ record(bi, "QRIX:SA:JackOff_RBV") {
   field(ZNAM, "FALSE")
   field(ONAM, "TRUE")
   info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
-  info(archive, "VAL")
-}
-
-record(bo, "QRIX:SA:JackOff") {
-  field(DESC, "GVL_VAR.bDoneJackOff")
-  field(DTYP, "asynInt32")
-  field(UDFS, "0")
-  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/GVL_VAR.bDoneJackOff=")
-  field(ZNAM, "FALSE")
-  field(ONAM, "TRUE")
-  info(autosaveFields_pass0, "COSV DESC DISS OSV SIMS UDFS VAL ZSV")
   info(archive, "VAL")
 }
 
@@ -37212,18 +37423,7 @@ record(bi, "QRIX:SA:bDoneLanding_RBV") {
   info(archive, "VAL")
 }
 
-record(bo, "QRIX:SA:bDoneLanding") {
-  field(DESC, "GVL_VAR.bDoneLanding")
-  field(DTYP, "asynInt32")
-  field(UDFS, "0")
-  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/GVL_VAR.bDoneLanding=")
-  field(ZNAM, "FALSE")
-  field(ONAM, "TRUE")
-  info(autosaveFields_pass0, "COSV DESC DISS OSV SIMS UDFS VAL ZSV")
-  info(archive, "VAL")
-}
-
-record(bi, "QRIX:SA:DoneLevitation_RBV") {
+record(bi, "QRIX:SA:bDoneLevitation_RBV") {
   field(DESC, "GVL_VAR.bDoneLevitation")
   field(SCAN, "I/O Intr")
   field(PINI, "1")
@@ -37233,17 +37433,6 @@ record(bi, "QRIX:SA:DoneLevitation_RBV") {
   field(ZNAM, "FALSE")
   field(ONAM, "TRUE")
   info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
-  info(archive, "VAL")
-}
-
-record(bo, "QRIX:SA:DoneLevitation") {
-  field(DESC, "GVL_VAR.bDoneLevitation")
-  field(DTYP, "asynInt32")
-  field(UDFS, "0")
-  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/GVL_VAR.bDoneLevitation=")
-  field(ZNAM, "FALSE")
-  field(ONAM, "TRUE")
-  info(autosaveFields_pass0, "COSV DESC DISS OSV SIMS UDFS VAL ZSV")
   info(archive, "VAL")
 }
 
@@ -54932,6 +55121,19 @@ record(bi, "$(PREFIX)RequestedBP:Valid_RBV") {
   info(archive, "monitor 1: VAL")
 }
 
+record(bi, "QRIX:SA:bBusy_RBV") {
+  field(DESC, "PRG_DET_FRAME.bBusy")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_DET_FRAME.bBusy?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
 record(bi, "QRIX:DF:EnableAdjustingHeight_RBV") {
   field(DESC, "PRG_DET_FRAME.bEnableAdjustingHeight")
   field(SCAN, "I/O Intr")
@@ -55076,6 +55278,45 @@ record(bo, "QRIX:SA:EnableLevitation") {
   info(archive, "VAL")
 }
 
+record(bi, "QRIX:SA:bEnableMotion_RBV") {
+  field(DESC, "PRG_DET_FRAME.bEnableMotion")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_DET_FRAME.bEnableMotion?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
+record(bi, "QRIX:SA:bEnableMoveRelative_RBV") {
+  field(DESC, "PRG_DET_FRAME.bEnableMoveRelative")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_DET_FRAME.bEnableMoveRelative?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
+record(bi, "QRIX:SA:bEnableSetGaugeValue_RBV") {
+  field(DESC, "PRG_DET_FRAME.bEnableSetGaugeValue")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_DET_FRAME.bEnableSetGaugeValue?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
 record(bi, "QRIX:SA:bError_RBV") {
   field(DESC, "PRG_DET_FRAME.bError")
   field(SCAN, "I/O Intr")
@@ -55086,17 +55327,6 @@ record(bi, "QRIX:SA:bError_RBV") {
   field(ZNAM, "FALSE")
   field(ONAM, "TRUE")
   info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
-  info(archive, "VAL")
-}
-
-record(bo, "QRIX:SA:bError") {
-  field(DESC, "PRG_DET_FRAME.bError")
-  field(DTYP, "asynInt32")
-  field(UDFS, "0")
-  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_DET_FRAME.bError=")
-  field(ZNAM, "FALSE")
-  field(ONAM, "TRUE")
-  info(autosaveFields_pass0, "COSV DESC DISS OSV SIMS UDFS VAL ZSV")
   info(archive, "VAL")
 }
 

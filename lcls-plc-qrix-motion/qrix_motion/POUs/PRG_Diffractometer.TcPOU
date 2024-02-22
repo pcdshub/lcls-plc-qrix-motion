@@ -96,6 +96,7 @@ END_VAR
 END_IF
 
 //EPS
+(*
 // All bits must be TRUE to enable the specifiied direction (backward or forwards)
 // The bits are populated right to left in typhos screen. So Descriptions highest bit number is at the beginning of the description.
 EPS_Diff_Theta(eps:=Main.M34.stEPSBackwardEnable);
@@ -123,7 +124,7 @@ EPS_Diff_Z(eps:=Main.M30.stEPSBackwardEnable);
 EPS_Diff_Z.setDescription('Less20mm;LAS_D_H'); // SET DESCRIPTION FOR BYTE INDICATOR LABELS
 EPS_Diff_Z.setBit(nBits:= 0, bValue:=Main.M36.fPosition>=-20);
 EPS_Diff_Z.setBit(nBits:= 1, bValue:=Main.M37.fPosition>=50 OR Main.M30.fPosition>=-20);
-
+*)
 
 
 fb_Diff_X(stMotionStage:=Main.M28);

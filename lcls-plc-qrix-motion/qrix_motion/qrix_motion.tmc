@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<TcModuleClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2009/05/TcModuleClass" Hash="{7A8C8C8C-C6BA-4CEA-17A8-6582DD13A0D5}" GeneratedBy="TwinCAT XAE Plc">
+<TcModuleClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2009/05/TcModuleClass" Hash="{5BF3D4A4-15CE-9C9B-EC16-2A6B66D04993}" GeneratedBy="TwinCAT XAE Plc">
   <DataTypes>
     <DataType>
       <Name Namespace="LCLS_General">ST_System</Name>
@@ -7323,11 +7323,6 @@
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
-        <Local>
-          <Name>__Index__0</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
       </Method>
       <Method>
         <Name>AssertEquals_BOOL</Name>
@@ -7460,11 +7455,6 @@
         </Local>
         <Local>
           <Name>ActualsIndex</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
-        <Local>
-          <Name>__Index__0</Name>
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
@@ -7624,11 +7614,6 @@
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
-        <Local>
-          <Name>__Index__0</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
       </Method>
       <Method>
         <Name>CalculateAndSetNumberOfAssertsForTest</Name>
@@ -7763,11 +7748,6 @@
         </Local>
         <Local>
           <Name>ActualsIndex</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
-        <Local>
-          <Name>__Index__0</Name>
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
@@ -7926,11 +7906,6 @@
         </Local>
         <Local>
           <Name>ActualsIndex</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
-        <Local>
-          <Name>__Index__0</Name>
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
@@ -8436,11 +8411,6 @@
         </Local>
         <Local>
           <Name>ActualsIndex</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
-        <Local>
-          <Name>__Index__0</Name>
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
@@ -9216,11 +9186,6 @@
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
-        <Local>
-          <Name>__Index__0</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
       </Method>
       <Method>
         <Name>AssertEquals_TIME</Name>
@@ -9599,11 +9564,6 @@
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
-        <Local>
-          <Name>__Index__0</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
       </Method>
       <Method>
         <Name>AssertArrayEquals_INT</Name>
@@ -9695,11 +9655,6 @@
         </Local>
         <Local>
           <Name>ActualsIndex</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
-        <Local>
-          <Name>__Index__0</Name>
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
@@ -9827,11 +9782,6 @@
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
-        <Local>
-          <Name>__Index__0</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
       </Method>
       <Method>
         <Name>AssertArrayEquals_LWORD</Name>
@@ -9933,11 +9883,6 @@
         </Local>
         <Local>
           <Name>ActualsIndex</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
-        <Local>
-          <Name>__Index__0</Name>
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
@@ -10252,11 +10197,6 @@
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
-        <Local>
-          <Name>__Index__0</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
       </Method>
       <Method>
         <Name>AreAllTestsFinished</Name>
@@ -10426,11 +10366,6 @@
         </Local>
         <Local>
           <Name>ActualsIndex</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
-        <Local>
-          <Name>__Index__0</Name>
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
@@ -10615,11 +10550,6 @@
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
-        <Local>
-          <Name>__Index__0</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
       </Method>
       <Method>
         <Name>AssertArrayEquals_LREAL</Name>
@@ -10717,11 +10647,6 @@
         </Local>
         <Local>
           <Name>ActualsIndex</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
-        <Local>
-          <Name>__Index__0</Name>
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
@@ -21867,11 +21792,6 @@ contributing fast faults, unless the FFO is currently vetoed.
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
-        <Local>
-          <Name>__Index__0</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
       </Method>
       <Method>
         <Name>FindTestSuiteInstancePath</Name>
@@ -22130,11 +22050,6 @@ contributing fast faults, unless the FFO is currently vetoed.
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
-        <Local>
-          <Name>__Index__0</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
       </Method>
       <Method>
         <Name>AssertArrayEquals_BYTE</Name>
@@ -22236,11 +22151,6 @@ contributing fast faults, unless the FFO is currently vetoed.
         </Local>
         <Local>
           <Name>ActualsIndex</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
-        <Local>
-          <Name>__Index__0</Name>
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
@@ -22400,11 +22310,6 @@ contributing fast faults, unless the FFO is currently vetoed.
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
-        <Local>
-          <Name>__Index__0</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
       </Method>
       <Method>
         <Name>AssertEquals_LTIME</Name>
@@ -22527,11 +22432,6 @@ contributing fast faults, unless the FFO is currently vetoed.
         </Local>
         <Local>
           <Name>ActualsIndex</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
-        <Local>
-          <Name>__Index__0</Name>
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
@@ -22673,11 +22573,6 @@ contributing fast faults, unless the FFO is currently vetoed.
         </Local>
         <Local>
           <Name>ActualsIndex</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
-        <Local>
-          <Name>__Index__0</Name>
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
@@ -23439,11 +23334,6 @@ contributing fast faults, unless the FFO is currently vetoed.
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
-        <Local>
-          <Name>__Index__0</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
       </Method>
       <Method>
         <Name>SetHasStartedRunning</Name>
@@ -23604,11 +23494,6 @@ contributing fast faults, unless the FFO is currently vetoed.
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
-        <Local>
-          <Name>__Index__0</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
       </Method>
       <Method>
         <Name>GetHasStartedRunning</Name>
@@ -23711,11 +23596,6 @@ contributing fast faults, unless the FFO is currently vetoed.
         </Local>
         <Local>
           <Name>ActualsIndex</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
-        <Local>
-          <Name>__Index__0</Name>
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
@@ -23870,11 +23750,6 @@ contributing fast faults, unless the FFO is currently vetoed.
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
-        <Local>
-          <Name>__Index__0</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
       </Method>
       <Method>
         <Name>AssertEquals_DINT</Name>
@@ -23997,11 +23872,6 @@ contributing fast faults, unless the FFO is currently vetoed.
         </Local>
         <Local>
           <Name>ActualsIndex</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
-        <Local>
-          <Name>__Index__0</Name>
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
@@ -24177,11 +24047,6 @@ contributing fast faults, unless the FFO is currently vetoed.
         </Local>
         <Local>
           <Name>ActualsIndex</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
-        <Local>
-          <Name>__Index__0</Name>
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
@@ -24464,11 +24329,6 @@ contributing fast faults, unless the FFO is currently vetoed.
         </Local>
         <Local>
           <Name>ActualsIndex</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
-        <Local>
-          <Name>__Index__0</Name>
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
@@ -25265,11 +25125,6 @@ contributing fast faults, unless the FFO is currently vetoed.
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
-        <Local>
-          <Name>__Index__0</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
       </Method>
       <Method>
         <Name>AssertArrayEquals_UDINT</Name>
@@ -25361,11 +25216,6 @@ contributing fast faults, unless the FFO is currently vetoed.
         </Local>
         <Local>
           <Name>ActualsIndex</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
-        <Local>
-          <Name>__Index__0</Name>
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
@@ -50996,52 +50846,6 @@ External Setpoint Generation:
       </Properties>
     </DataType>
     <DataType>
-      <Name>DUT_SensorHGS</Name>
-      <BitSize>1440</BitSize>
-      <SubItem>
-        <Name>fCntsInEGU</Name>
-        <Type>REAL</Type>
-        <BitSize>32</BitSize>
-        <BitOffs>0</BitOffs>
-      </SubItem>
-      <SubItem>
-        <Name>sEGU</Name>
-        <Type>STRING(80)</Type>
-        <BitSize>648</BitSize>
-        <BitOffs>32</BitOffs>
-      </SubItem>
-      <SubItem>
-        <Name>sName</Name>
-        <Type>STRING(80)</Type>
-        <BitSize>648</BitSize>
-        <BitOffs>680</BitOffs>
-      </SubItem>
-      <SubItem>
-        <Name>fValue</Name>
-        <Type>REAL</Type>
-        <BitSize>32</BitSize>
-        <BitOffs>1344</BitOffs>
-      </SubItem>
-      <SubItem>
-        <Name>iRawCnts</Name>
-        <Type>DINT</Type>
-        <BitSize>32</BitSize>
-        <BitOffs>1376</BitOffs>
-        <Properties>
-          <Property>
-            <Name>TcAddressType</Name>
-            <Value>Input</Value>
-          </Property>
-        </Properties>
-      </SubItem>
-      <SubItem>
-        <Name>iOffset</Name>
-        <Type>DINT</Type>
-        <BitSize>32</BitSize>
-        <BitOffs>1408</BitOffs>
-      </SubItem>
-    </DataType>
-    <DataType>
       <Name>DUT_Sensor</Name>
       <BitSize>1408</BitSize>
       <SubItem>
@@ -51577,6 +51381,44 @@ External Setpoint Generation:
           <Name>hide</Name>
         </Property>
       </Properties>
+    </DataType>
+    <DataType>
+      <Name GUID="{97CF8247-B59C-4E2C-B4B0-7350D0471457}">LCLSGeneralEventClass</Name>
+      <DisplayName TxtId="">Log event</DisplayName>
+      <EventId>
+        <Name Id="0">Critical</Name>
+        <DisplayName TxtId="">Critical</DisplayName>
+        <Severity>Critical</Severity>
+      </EventId>
+      <EventId>
+        <Name Id="1">Error</Name>
+        <DisplayName TxtId="">Error</DisplayName>
+        <Severity>Error</Severity>
+      </EventId>
+      <EventId>
+        <Name Id="2">Warning</Name>
+        <DisplayName TxtId="">Warning</DisplayName>
+        <Severity>Warning</Severity>
+      </EventId>
+      <EventId>
+        <Name Id="3">Info</Name>
+        <DisplayName TxtId="">Info</DisplayName>
+        <Severity>Info</Severity>
+      </EventId>
+      <EventId>
+        <Name Id="4">Verbose</Name>
+        <DisplayName TxtId="">Verbose</DisplayName>
+        <Severity>Verbose</Severity>
+      </EventId>
+      <Hides>
+        <Hide GUID="{E50B8F82-4C54-4F5A-855E-90970D01354A}"/>
+        <Hide GUID="{772B0B6F-412E-46FD-9006-6E00BFFE1C3D}"/>
+        <Hide GUID="{8FAD87A4-C885-4A4F-85AF-8AB324945AE2}"/>
+        <Hide GUID="{16BEE339-E307-4BC2-8E77-D5FB1794DF5A}"/>
+        <Hide GUID="{B7E60A74-CB5C-4A02-B59C-74B86A888DE9}"/>
+        <Hide GUID="{6B58EF80-AB34-4F6C-81D0-B0589F4FC534}"/>
+        <Hide GUID="{9E76D1D7-D744-4E3D-B111-F6F94B60E6AB}"/>
+      </Hides>
     </DataType>
     <DataType>
       <Name GUID="{11F7FC20-DBF4-4DAF-96C7-1FD6B6156B31}" TcBaseType="true" CName="TcSystemEventClass">TcSystemEventClass</Name>
@@ -52385,42 +52227,75 @@ External Setpoint Generation:
       </Hides>
     </DataType>
     <DataType>
-      <Name GUID="{97CF8247-B59C-4E2C-B4B0-7350D0471457}">LCLSGeneralEventClass</Name>
-      <DisplayName TxtId="">Log event</DisplayName>
-      <EventId>
-        <Name Id="0">Critical</Name>
-        <DisplayName TxtId="">Critical</DisplayName>
-        <Severity>Critical</Severity>
-      </EventId>
-      <EventId>
-        <Name Id="1">Error</Name>
-        <DisplayName TxtId="">Error</DisplayName>
-        <Severity>Error</Severity>
-      </EventId>
-      <EventId>
-        <Name Id="2">Warning</Name>
-        <DisplayName TxtId="">Warning</DisplayName>
-        <Severity>Warning</Severity>
-      </EventId>
-      <EventId>
-        <Name Id="3">Info</Name>
-        <DisplayName TxtId="">Info</DisplayName>
-        <Severity>Info</Severity>
-      </EventId>
-      <EventId>
-        <Name Id="4">Verbose</Name>
-        <DisplayName TxtId="">Verbose</DisplayName>
-        <Severity>Verbose</Severity>
-      </EventId>
-      <Hides>
-        <Hide GUID="{E50B8F82-4C54-4F5A-855E-90970D01354A}"/>
-        <Hide GUID="{772B0B6F-412E-46FD-9006-6E00BFFE1C3D}"/>
-        <Hide GUID="{8FAD87A4-C885-4A4F-85AF-8AB324945AE2}"/>
-        <Hide GUID="{16BEE339-E307-4BC2-8E77-D5FB1794DF5A}"/>
-        <Hide GUID="{B7E60A74-CB5C-4A02-B59C-74B86A888DE9}"/>
-        <Hide GUID="{6B58EF80-AB34-4F6C-81D0-B0589F4FC534}"/>
-        <Hide GUID="{9E76D1D7-D744-4E3D-B111-F6F94B60E6AB}"/>
-      </Hides>
+      <Name>DUT_SensorHGS</Name>
+      <BitSize>1440</BitSize>
+      <SubItem>
+        <Name>fCntsInEGU</Name>
+        <Type>REAL</Type>
+        <BitSize>32</BitSize>
+        <BitOffs>0</BitOffs>
+      </SubItem>
+      <SubItem>
+        <Name>sEGU</Name>
+        <Type>STRING(80)</Type>
+        <BitSize>648</BitSize>
+        <BitOffs>32</BitOffs>
+        <Properties>
+          <Property>
+            <Name>pytmc</Name>
+            <Value>
+        pv: EU
+        io: i
+    </Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>sName</Name>
+        <Type>STRING(80)</Type>
+        <BitSize>648</BitSize>
+        <BitOffs>680</BitOffs>
+      </SubItem>
+      <SubItem>
+        <Name>fValue</Name>
+        <Type>REAL</Type>
+        <BitSize>32</BitSize>
+        <BitOffs>1344</BitOffs>
+        <Properties>
+          <Property>
+            <Name>pytmc</Name>
+            <Value>
+        pv: VALUE
+        io: i
+    </Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>iRawCnts</Name>
+        <Type>DINT</Type>
+        <BitSize>32</BitSize>
+        <BitOffs>1376</BitOffs>
+        <Properties>
+          <Property>
+            <Name>pytmc</Name>
+            <Value>
+        pv: RAWCOUNTS
+        io: i
+    </Value>
+          </Property>
+          <Property>
+            <Name>TcAddressType</Name>
+            <Value>Input</Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>iOffset</Name>
+        <Type>DINT</Type>
+        <BitSize>32</BitSize>
+        <BitOffs>1408</BitOffs>
+      </SubItem>
     </DataType>
   </DataTypes>
   <Modules>
@@ -52448,7 +52323,7 @@ External Setpoint Generation:
           <AreaNo AreaType="InputDst" CreateSymbols="true">0</AreaNo>
           <Name>PlcTask Inputs</Name>
           <ContextId>0</ContextId>
-          <ByteSize>162201600</ByteSize>
+          <ByteSize>162332672</ByteSize>
           <Symbol>
             <Name>PRG_SSL.bLimitBackwardEnable</Name>
             <Comment>EPS Limit switches</Comment>
@@ -53604,54 +53479,6 @@ External Setpoint Generation:
               </Property>
             </Properties>
             <BitOffs>1287852936</BitOffs>
-          </Symbol>
-          <Symbol>
-            <Name>GVL_Sensor.stYDF1.iRawCnts</Name>
-            <BitSize>32</BitSize>
-            <BaseType>DINT</BaseType>
-            <Properties>
-              <Property>
-                <Name>TcAddressType</Name>
-                <Value>Input</Value>
-              </Property>
-            </Properties>
-            <BitOffs>1289317696</BitOffs>
-          </Symbol>
-          <Symbol>
-            <Name>GVL_Sensor.stYDF2.iRawCnts</Name>
-            <BitSize>32</BitSize>
-            <BaseType>DINT</BaseType>
-            <Properties>
-              <Property>
-                <Name>TcAddressType</Name>
-                <Value>Input</Value>
-              </Property>
-            </Properties>
-            <BitOffs>1289319136</BitOffs>
-          </Symbol>
-          <Symbol>
-            <Name>GVL_Sensor.stYDF3.iRawCnts</Name>
-            <BitSize>32</BitSize>
-            <BaseType>DINT</BaseType>
-            <Properties>
-              <Property>
-                <Name>TcAddressType</Name>
-                <Value>Input</Value>
-              </Property>
-            </Properties>
-            <BitOffs>1289320576</BitOffs>
-          </Symbol>
-          <Symbol>
-            <Name>GVL_Sensor.stHDF.iRawCnts</Name>
-            <BitSize>32</BitSize>
-            <BaseType>DINT</BaseType>
-            <Properties>
-              <Property>
-                <Name>TcAddressType</Name>
-                <Value>Input</Value>
-              </Property>
-            </Properties>
-            <BitOffs>1289322016</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_Sensor.stGraniteP.iRawCnts</Name>
@@ -59323,12 +59150,88 @@ External Setpoint Generation:
             </Properties>
             <BitOffs>1290551504</BitOffs>
           </Symbol>
+          <Symbol>
+            <Name>GVL_Sensor.stYDF1.iRawCnts</Name>
+            <BitSize>32</BitSize>
+            <BaseType>DINT</BaseType>
+            <Properties>
+              <Property>
+                <Name>pytmc</Name>
+                <Value>
+        pv: RAWCOUNTS
+        io: i
+    </Value>
+              </Property>
+              <Property>
+                <Name>TcAddressType</Name>
+                <Value>Input</Value>
+              </Property>
+            </Properties>
+            <BitOffs>1297169184</BitOffs>
+          </Symbol>
+          <Symbol>
+            <Name>GVL_Sensor.stYDF2.iRawCnts</Name>
+            <BitSize>32</BitSize>
+            <BaseType>DINT</BaseType>
+            <Properties>
+              <Property>
+                <Name>pytmc</Name>
+                <Value>
+        pv: RAWCOUNTS
+        io: i
+    </Value>
+              </Property>
+              <Property>
+                <Name>TcAddressType</Name>
+                <Value>Input</Value>
+              </Property>
+            </Properties>
+            <BitOffs>1297170624</BitOffs>
+          </Symbol>
+          <Symbol>
+            <Name>GVL_Sensor.stYDF3.iRawCnts</Name>
+            <BitSize>32</BitSize>
+            <BaseType>DINT</BaseType>
+            <Properties>
+              <Property>
+                <Name>pytmc</Name>
+                <Value>
+        pv: RAWCOUNTS
+        io: i
+    </Value>
+              </Property>
+              <Property>
+                <Name>TcAddressType</Name>
+                <Value>Input</Value>
+              </Property>
+            </Properties>
+            <BitOffs>1297172064</BitOffs>
+          </Symbol>
+          <Symbol>
+            <Name>GVL_Sensor.stHDF.iRawCnts</Name>
+            <BitSize>32</BitSize>
+            <BaseType>DINT</BaseType>
+            <Properties>
+              <Property>
+                <Name>pytmc</Name>
+                <Value>
+        pv: RAWCOUNTS
+        io: i
+    </Value>
+              </Property>
+              <Property>
+                <Name>TcAddressType</Name>
+                <Value>Input</Value>
+              </Property>
+            </Properties>
+            <BitOffs>1297173504</BitOffs>
+          </Symbol>
         </DataArea>
         <DataArea>
           <AreaNo AreaType="OutputSrc" CreateSymbols="true">1</AreaNo>
           <Name>PlcTask Outputs</Name>
           <ContextId>0</ContextId>
-          <ByteSize>162201600</ByteSize>
+          <ByteSize>162332672</ByteSize>
           <Symbol>
             <Name>PRG_2_PMPS.fbArbiterIO.q_stRequestedBP</Name>
             <BitSize>1760</BitSize>
@@ -61507,7 +61410,7 @@ External Setpoint Generation:
           <AreaNo AreaType="Internal" CreateSymbols="true">3</AreaNo>
           <Name>PlcTask Internal</Name>
           <ContextId>0</ContextId>
-          <ByteSize>162201600</ByteSize>
+          <ByteSize>162332672</ByteSize>
           <Symbol>
             <Name>DefaultGlobals.stSys</Name>
             <Comment>Included for you</Comment>
@@ -68995,7 +68898,10 @@ External Setpoint Generation:
             <Properties>
               <Property>
                 <Name>pytmc</Name>
-                <Value>pv: QRIX:SA:bError</Value>
+                <Value>
+        pv: QRIX:SA:bError
+        io: i
+    </Value>
               </Property>
             </Properties>
             <BitOffs>1283844232</BitOffs>
@@ -69004,6 +68910,15 @@ External Setpoint Generation:
             <Name>PRG_DET_FRAME.bBusy</Name>
             <BitSize>8</BitSize>
             <BaseType>BOOL</BaseType>
+            <Properties>
+              <Property>
+                <Name>pytmc</Name>
+                <Value>
+        pv: QRIX:SA:bBusy
+        io: i
+    </Value>
+              </Property>
+            </Properties>
             <BitOffs>1283844240</BitOffs>
           </Symbol>
           <Symbol>
@@ -69025,36 +68940,45 @@ External Setpoint Generation:
             <Name>PRG_DET_FRAME.bEnableMotion</Name>
             <BitSize>8</BitSize>
             <BaseType>BOOL</BaseType>
+            <Properties>
+              <Property>
+                <Name>pytmc</Name>
+                <Value>
+        pv: QRIX:SA:bEnableMotion
+        io: i
+    </Value>
+              </Property>
+            </Properties>
             <BitOffs>1283844256</BitOffs>
-          </Symbol>
-          <Symbol>
-            <Name>PRG_DET_FRAME.bEnableMotion_M15</Name>
-            <BitSize>8</BitSize>
-            <BaseType>BOOL</BaseType>
-            <BitOffs>1283844264</BitOffs>
-          </Symbol>
-          <Symbol>
-            <Name>PRG_DET_FRAME.bEnableMotion_M16</Name>
-            <BitSize>8</BitSize>
-            <BaseType>BOOL</BaseType>
-            <BitOffs>1283844272</BitOffs>
-          </Symbol>
-          <Symbol>
-            <Name>PRG_DET_FRAME.bEnableMotion_M17</Name>
-            <BitSize>8</BitSize>
-            <BaseType>BOOL</BaseType>
-            <BitOffs>1283844280</BitOffs>
           </Symbol>
           <Symbol>
             <Name>PRG_DET_FRAME.bEnableSetGaugeValue</Name>
             <BitSize>8</BitSize>
             <BaseType>BOOL</BaseType>
+            <Properties>
+              <Property>
+                <Name>pytmc</Name>
+                <Value>
+        pv: QRIX:SA:bEnableSetGaugeValue
+        io: i
+    </Value>
+              </Property>
+            </Properties>
             <BitOffs>1283844288</BitOffs>
           </Symbol>
           <Symbol>
             <Name>PRG_DET_FRAME.bEnableMoveRelative</Name>
             <BitSize>8</BitSize>
             <BaseType>BOOL</BaseType>
+            <Properties>
+              <Property>
+                <Name>pytmc</Name>
+                <Value>
+        pv: QRIX:SA:bEnableMoveRelative
+        io: i
+    </Value>
+              </Property>
+            </Properties>
             <BitOffs>1283844296</BitOffs>
           </Symbol>
           <Symbol>
@@ -69589,7 +69513,10 @@ External Setpoint Generation:
             <Properties>
               <Property>
                 <Name>pytmc</Name>
-                <Value>pv: QRIX:SA:FLOATING</Value>
+                <Value>
+        pv: QRIX:SA:FLOATING
+        io: i
+    </Value>
               </Property>
               <Property>
                 <Name>TcVarGlobal</Name>
@@ -69604,7 +69531,10 @@ External Setpoint Generation:
             <Properties>
               <Property>
                 <Name>pytmc</Name>
-                <Value>pv: QRIX:SA:JackOff</Value>
+                <Value>
+        pv: QRIX:SA:bDoneJackOff
+        io: i
+    </Value>
               </Property>
               <Property>
                 <Name>TcVarGlobal</Name>
@@ -69619,7 +69549,10 @@ External Setpoint Generation:
             <Properties>
               <Property>
                 <Name>pytmc</Name>
-                <Value>pv: QRIX:SA:DoneLevitation</Value>
+                <Value>
+        pv: QRIX:SA:bDoneLevitation
+        io: i
+    </Value>
               </Property>
               <Property>
                 <Name>TcVarGlobal</Name>
@@ -69634,77 +69567,16 @@ External Setpoint Generation:
             <Properties>
               <Property>
                 <Name>pytmc</Name>
-                <Value>pv: QRIX:SA:bDoneLanding</Value>
+                <Value>
+        pv: QRIX:SA:bDoneLanding
+        io: i
+    </Value>
               </Property>
               <Property>
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
             <BitOffs>1289316312</BitOffs>
-          </Symbol>
-          <Symbol>
-            <Name>GVL_Sensor.stYDF1</Name>
-            <Comment> YDF1</Comment>
-            <BitSize>1440</BitSize>
-            <BaseType>DUT_SensorHGS</BaseType>
-            <Properties>
-              <Property>
-                <Name>TcLinkTo</Name>
-                <Value>	.iRawCnts	:= TIIB[Rack#2D LinearGaugeAmp (SC-HG1-ETC)]^Process Data(In)  TxPDO-Map^Response Data Unit1</Value>
-              </Property>
-              <Property>
-                <Name>TcVarGlobal</Name>
-              </Property>
-            </Properties>
-            <BitOffs>1289316320</BitOffs>
-          </Symbol>
-          <Symbol>
-            <Name>GVL_Sensor.stYDF2</Name>
-            <Comment> YDF2</Comment>
-            <BitSize>1440</BitSize>
-            <BaseType>DUT_SensorHGS</BaseType>
-            <Properties>
-              <Property>
-                <Name>TcLinkTo</Name>
-                <Value>	.iRawCnts	:= TIIB[Rack#2D LinearGaugeAmp (SC-HG1-ETC)]^Process Data(In)  TxPDO-Map^Response Data Unit2</Value>
-              </Property>
-              <Property>
-                <Name>TcVarGlobal</Name>
-              </Property>
-            </Properties>
-            <BitOffs>1289317760</BitOffs>
-          </Symbol>
-          <Symbol>
-            <Name>GVL_Sensor.stYDF3</Name>
-            <Comment> YDF3</Comment>
-            <BitSize>1440</BitSize>
-            <BaseType>DUT_SensorHGS</BaseType>
-            <Properties>
-              <Property>
-                <Name>TcLinkTo</Name>
-                <Value>	.iRawCnts	:= TIIB[Rack#2D LinearGaugeAmp (SC-HG1-ETC)]^Process Data(In)  TxPDO-Map^Response Data Unit3</Value>
-              </Property>
-              <Property>
-                <Name>TcVarGlobal</Name>
-              </Property>
-            </Properties>
-            <BitOffs>1289319200</BitOffs>
-          </Symbol>
-          <Symbol>
-            <Name>GVL_Sensor.stHDF</Name>
-            <Comment> Height difference btw granite shelf and detector frame.</Comment>
-            <BitSize>1440</BitSize>
-            <BaseType>DUT_SensorHGS</BaseType>
-            <Properties>
-              <Property>
-                <Name>TcLinkTo</Name>
-                <Value>	.iRawCnts	:= TIIB[Rack#2D LinearGaugeAmp (SC-HG1-ETC)]^Process Data(In)  TxPDO-Map^Response Data Unit4</Value>
-              </Property>
-              <Property>
-                <Name>TcVarGlobal</Name>
-              </Property>
-            </Properties>
-            <BitOffs>1289320640</BitOffs>
           </Symbol>
           <Symbol>
             <Name>GVL_Sensor.stGraniteP</Name>
@@ -69804,6 +69676,13 @@ External Setpoint Generation:
             <BaseType>DUT_Sensor</BaseType>
             <Properties>
               <Property>
+                <Name>pytmc</Name>
+                <Value>
+        pv: QRIX:SA:GPT:PS1
+        io: i
+    </Value>
+              </Property>
+              <Property>
                 <Name>TcLinkTo</Name>
                 <Value>	.iRawCnts	:= TIIB[Rack#2B-04 PS_P (EL3064)]^AI Standard Channel 1^Value</Value>
               </Property>
@@ -69819,6 +69698,13 @@ External Setpoint Generation:
             <BaseType>DUT_Sensor</BaseType>
             <Properties>
               <Property>
+                <Name>pytmc</Name>
+                <Value>
+        pv: QRIX:SA:GPT:PS2
+        io: i
+    </Value>
+              </Property>
+              <Property>
                 <Name>TcLinkTo</Name>
                 <Value>	.iRawCnts	:= TIIB[Rack#2B-04 PS_P (EL3064)]^AI Standard Channel 2^Value</Value>
               </Property>
@@ -69833,6 +69719,13 @@ External Setpoint Generation:
             <BitSize>1408</BitSize>
             <BaseType>DUT_Sensor</BaseType>
             <Properties>
+              <Property>
+                <Name>pytmc</Name>
+                <Value>
+        pv: QRIX:SA:GPT:PS3
+        io: i
+    </Value>
+              </Property>
               <Property>
                 <Name>TcLinkTo</Name>
                 <Value>	.iRawCnts	:= TIIB[Rack#2B-04 PS_P (EL3064)]^AI Standard Channel 3^Value</Value>
@@ -69850,7 +69743,10 @@ External Setpoint Generation:
             <Properties>
               <Property>
                 <Name>pytmc</Name>
-                <Value>pv: QRIX:SA:DoneAdjustingRoll</Value>
+                <Value>
+        pv: QRIX:SA:bDoneAdjustingRoll
+        io: i
+    </Value>
               </Property>
               <Property>
                 <Name>TcVarGlobal</Name>
@@ -69865,7 +69761,10 @@ External Setpoint Generation:
             <Properties>
               <Property>
                 <Name>pytmc</Name>
-                <Value>pv: QRIX:SA:DoneAdjustingPitch</Value>
+                <Value>
+        pv: QRIX:SA:bDoneAdjustingPitch
+        io: i
+    </Value>
               </Property>
               <Property>
                 <Name>TcVarGlobal</Name>
@@ -69880,7 +69779,10 @@ External Setpoint Generation:
             <Properties>
               <Property>
                 <Name>pytmc</Name>
-                <Value>pv: QRIX:SA:DoneAdjustingHeight</Value>
+                <Value>
+        pv: QRIX:SA:bDoneAdjustingHeight
+        io: i
+    </Value>
               </Property>
               <Property>
                 <Name>TcVarGlobal</Name>
@@ -71607,6 +71509,29 @@ Cryo -X</Comment>
             <BitOffs>1290571968</BitOffs>
           </Symbol>
           <Symbol>
+            <Name>TC_EVENTS.LCLSGeneralEventClass</Name>
+            <Comment> ST_LCLSGeneralEventClass</Comment>
+            <BitSize>960</BitSize>
+            <BaseType GUID="{97CF8247-B59C-4E2C-B4B0-7350D0471457}">ST_LCLSGeneralEventClass</BaseType>
+            <Properties>
+              <Property>
+                <Name>tc_no_symbol</Name>
+                <Value>unused</Value>
+              </Property>
+              <Property>
+                <Name>const_non_replaced</Name>
+              </Property>
+              <Property>
+                <Name>suppress_warning_0</Name>
+                <Value>C0228</Value>
+              </Property>
+              <Property>
+                <Name>TcVarGlobal</Name>
+              </Property>
+            </Properties>
+            <BitOffs>1290615296</BitOffs>
+          </Symbol>
+          <Symbol>
             <Name>TC_EVENT_CLASSES.TcSystemEventClass</Name>
             <Comment> 11F7FC20-DBF4-4DAF-96C7-1FD6B6156B31</Comment>
             <BitSize>128</BitSize>
@@ -71673,7 +71598,7 @@ Cryo -X</Comment>
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>1290585344</BitOffs>
+            <BitOffs>1290624320</BitOffs>
           </Symbol>
           <Symbol>
             <Name>TC_EVENT_CLASSES.TcGeneralAdsEventClass</Name>
@@ -71742,7 +71667,7 @@ Cryo -X</Comment>
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>1290585472</BitOffs>
+            <BitOffs>1290624448</BitOffs>
           </Symbol>
           <Symbol>
             <Name>TC_EVENT_CLASSES.TcRouterEventClass</Name>
@@ -71811,7 +71736,7 @@ Cryo -X</Comment>
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>1290585600</BitOffs>
+            <BitOffs>1290624576</BitOffs>
           </Symbol>
           <Symbol>
             <Name>TC_EVENT_CLASSES.TcRTimeEventClass</Name>
@@ -71880,7 +71805,7 @@ Cryo -X</Comment>
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>1290585728</BitOffs>
+            <BitOffs>1290624704</BitOffs>
           </Symbol>
           <Symbol>
             <Name>TC_EVENT_CLASSES.Win32EventClass</Name>
@@ -71949,7 +71874,7 @@ Cryo -X</Comment>
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>1290585856</BitOffs>
+            <BitOffs>1290624832</BitOffs>
           </Symbol>
           <Symbol>
             <Name>TC_EVENT_CLASSES.LCLSGeneralEventClass</Name>
@@ -72018,37 +71943,106 @@ Cryo -X</Comment>
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>1290585984</BitOffs>
+            <BitOffs>1290624960</BitOffs>
           </Symbol>
           <Symbol>
-            <Name>TC_EVENTS.LCLSGeneralEventClass</Name>
-            <Comment> ST_LCLSGeneralEventClass</Comment>
-            <BitSize>960</BitSize>
-            <BaseType GUID="{97CF8247-B59C-4E2C-B4B0-7350D0471457}">ST_LCLSGeneralEventClass</BaseType>
+            <Name>GVL_Sensor.stYDF1</Name>
+            <Comment> YDF1</Comment>
+            <BitSize>1440</BitSize>
+            <BaseType>DUT_SensorHGS</BaseType>
             <Properties>
               <Property>
-                <Name>tc_no_symbol</Name>
-                <Value>unused</Value>
+                <Name>pytmc</Name>
+                <Value>
+        pv: QRIX:SA:DDS:YDF1
+        io: i
+    </Value>
               </Property>
               <Property>
-                <Name>const_non_replaced</Name>
-              </Property>
-              <Property>
-                <Name>suppress_warning_0</Name>
-                <Value>C0228</Value>
+                <Name>TcLinkTo</Name>
+                <Value>	.iRawCnts	:= TIIB[Rack#2D LinearGaugeAmp (SC-HG1-ETC)]^Process Data(In)  TxPDO-Map^Response Data Unit1</Value>
               </Property>
               <Property>
                 <Name>TcVarGlobal</Name>
               </Property>
             </Properties>
-            <BitOffs>1290616320</BitOffs>
+            <BitOffs>1297167808</BitOffs>
+          </Symbol>
+          <Symbol>
+            <Name>GVL_Sensor.stYDF2</Name>
+            <Comment> YDF2</Comment>
+            <BitSize>1440</BitSize>
+            <BaseType>DUT_SensorHGS</BaseType>
+            <Properties>
+              <Property>
+                <Name>pytmc</Name>
+                <Value>
+        pv: QRIX:SA:DDS:YDF2
+        io: i
+    </Value>
+              </Property>
+              <Property>
+                <Name>TcLinkTo</Name>
+                <Value>	.iRawCnts	:= TIIB[Rack#2D LinearGaugeAmp (SC-HG1-ETC)]^Process Data(In)  TxPDO-Map^Response Data Unit2</Value>
+              </Property>
+              <Property>
+                <Name>TcVarGlobal</Name>
+              </Property>
+            </Properties>
+            <BitOffs>1297169248</BitOffs>
+          </Symbol>
+          <Symbol>
+            <Name>GVL_Sensor.stYDF3</Name>
+            <Comment> YDF3</Comment>
+            <BitSize>1440</BitSize>
+            <BaseType>DUT_SensorHGS</BaseType>
+            <Properties>
+              <Property>
+                <Name>pytmc</Name>
+                <Value>
+        pv: QRIX:SA:DDS:YDF3
+        io: i
+    </Value>
+              </Property>
+              <Property>
+                <Name>TcLinkTo</Name>
+                <Value>	.iRawCnts	:= TIIB[Rack#2D LinearGaugeAmp (SC-HG1-ETC)]^Process Data(In)  TxPDO-Map^Response Data Unit3</Value>
+              </Property>
+              <Property>
+                <Name>TcVarGlobal</Name>
+              </Property>
+            </Properties>
+            <BitOffs>1297170688</BitOffs>
+          </Symbol>
+          <Symbol>
+            <Name>GVL_Sensor.stHDF</Name>
+            <Comment> Height difference btw granite shelf and detector frame.</Comment>
+            <BitSize>1440</BitSize>
+            <BaseType>DUT_SensorHGS</BaseType>
+            <Properties>
+              <Property>
+                <Name>pytmc</Name>
+                <Value>
+        pv: QRIX:SA:DDS:HDF
+        io: i
+    </Value>
+              </Property>
+              <Property>
+                <Name>TcLinkTo</Name>
+                <Value>	.iRawCnts	:= TIIB[Rack#2D LinearGaugeAmp (SC-HG1-ETC)]^Process Data(In)  TxPDO-Map^Response Data Unit4</Value>
+              </Property>
+              <Property>
+                <Name>TcVarGlobal</Name>
+              </Property>
+            </Properties>
+            <BitOffs>1297172128</BitOffs>
           </Symbol>
         </DataArea>
         <DataArea>
           <AreaNo AreaType="RetainSrc" CreateSymbols="true">4</AreaNo>
           <Name>PlcTask Retains</Name>
           <ContextId>0</ContextId>
-          <ByteSize>162201600</ByteSize>
+          <ByteSize>162332672</ByteSize>
           <Symbol>
             <Name>PMPS_GVL.SuccessfulPreemption</Name>
             <Comment> Any time BPTM applies a new BP request which is confirmed</Comment>
@@ -72103,6 +72097,9 @@ Cryo -X</Comment>
       <Deployment/>
       <EventClasses>
         <EventClass>
+          <Type GUID="{97CF8247-B59C-4E2C-B4B0-7350D0471457}">LCLSGeneralEventClass</Type>
+        </EventClass>
+        <EventClass>
           <Type GUID="{11F7FC20-DBF4-4DAF-96C7-1FD6B6156B31}">TcSystemEventClass</Type>
         </EventClass>
         <EventClass>
@@ -72117,9 +72114,6 @@ Cryo -X</Comment>
         <EventClass>
           <Type GUID="{1D0C4BAC-ECF3-4F33-8F20-A12E77AB6387}">Win32EventClass</Type>
         </EventClass>
-        <EventClass>
-          <Type GUID="{97CF8247-B59C-4E2C-B4B0-7350D0471457}">LCLSGeneralEventClass</Type>
-        </EventClass>
       </EventClasses>
       <Properties>
         <Property>
@@ -72128,7 +72122,7 @@ Cryo -X</Comment>
         </Property>
         <Property>
           <Name>ChangeDate</Name>
-          <Value>2024-02-21T14:29:24</Value>
+          <Value>2024-02-22T15:04:45</Value>
         </Property>
         <Property>
           <Name>GeneratedCodeSize</Name>

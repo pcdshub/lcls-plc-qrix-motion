@@ -3,17 +3,35 @@
   <GVL Name="GVL_VAR" Id="{7acc2ff9-c54c-4632-8d7c-23ce929a99e3}">
     <Declaration><![CDATA[VAR_GLOBAL
 
-    {attribute 'pytmc' := 'pv: QRIX:SA:JackOff'}
+    {attribute 'pytmc' := '
+        pv: QRIX:SA:bDoneJackOff
+        io: i
+    '}
     bDoneJackOff: BOOL;
-    {attribute 'pytmc' := 'pv: QRIX:SA:DoneLevitation'}
+    {attribute 'pytmc' := '
+        pv: QRIX:SA:bDoneLevitation
+        io: i
+    '}
     bDoneLevitation: BOOL;
-    {attribute 'pytmc' := 'pv: QRIX:SA:bDoneLanding'}
+    {attribute 'pytmc' := '
+        pv: QRIX:SA:bDoneLanding
+        io: i
+    '}
     bDoneLanding: BOOL;
-    {attribute 'pytmc' := 'pv: QRIX:SA:DoneAdjustingRoll'}
+    {attribute 'pytmc' := '
+        pv: QRIX:SA:bDoneAdjustingRoll
+        io: i
+    '}
     bDoneAdjustingRoll: BOOL;
-    {attribute 'pytmc' := 'pv: QRIX:SA:DoneAdjustingPitch'}
+    {attribute 'pytmc' := '
+        pv: QRIX:SA:bDoneAdjustingPitch
+        io: i
+    '}
     bDoneAdjustingPitch: BOOL;
-    {attribute 'pytmc' := 'pv: QRIX:SA:DoneAdjustingHeight'}
+    {attribute 'pytmc' := '
+        pv: QRIX:SA:bDoneAdjustingHeight
+        io: i
+    '}
     bDoneAdjustingHeight: BOOL;
 
 END_VAR]]></Declaration>

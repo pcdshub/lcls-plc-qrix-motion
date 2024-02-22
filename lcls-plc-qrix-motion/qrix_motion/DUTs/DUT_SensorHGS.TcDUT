@@ -4,9 +4,21 @@
     <Declaration><![CDATA[TYPE DUT_SensorHGS:
 STRUCT
     fCntsInEGU:			REAL;
+    {attribute 'pytmc' := '
+        pv: EU
+        io: i
+    '}
     sEGU:				STRING;
     sName:				STRING;
+    {attribute 'pytmc' := '
+        pv: VALUE
+        io: i
+    '}
     fValue:				REAL;
+    {attribute 'pytmc' := '
+        pv: RAWCOUNTS
+        io: i
+    '}
     iRawCnts AT %I*:	DINT;
     iOffset:			DINT;
 END_STRUCT

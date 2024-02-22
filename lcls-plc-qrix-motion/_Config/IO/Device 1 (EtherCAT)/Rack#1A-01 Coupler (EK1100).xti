@@ -283,7 +283,7 @@
 					<ModuleIdent>691</ModuleIdent>
 					<Module Id="#x03090002" Type="FSLOGIC" Class="FSLOGIC">
 						<Name>Module 2 (FSLOGIC)</Name>
-						<ImageId>416</ImageId>
+						<ImageId>417</ImageId>
 						<ModuleData>02000000b3020000000004000000000000000000000000000000000000000000</ModuleData>
 						<PdoIndex>7167</PdoIndex>
 						<PdoIndex>6143</PdoIndex>
@@ -407,7 +407,7 @@
 					<ModuleIdent>2912</ModuleIdent>
 					<Module Id="#x03090004" Type="FSOE" Class="2912">
 						<Name>Module 1 (FSOE)</Name>
-						<ImageId>416</ImageId>
+						<ImageId>417</ImageId>
 						<ModuleData>02000000600b000000000c000000000000000000000000000000000000000000</ModuleData>
 						<PdoIndex>6656</PdoIndex>
 						<PdoIndex>5632</PdoIndex>
@@ -419,7 +419,7 @@
 					<ModuleIdent>201</ModuleIdent>
 					<Module Id="#x03090005" Type="FSOUT" Class="FSOUT">
 						<Name>Module 2 (FSOUT)</Name>
-						<ImageId>416</ImageId>
+						<ImageId>417</ImageId>
 						<ModuleData>02000000c9000000000004000000000000000000000000000000000000000000</ModuleData>
 						<PdoIndex>6142</PdoIndex>
 					</Module>
@@ -429,7 +429,7 @@
 					<ModuleIdent>1950</ModuleIdent>
 					<Module Id="#x03090006" Type="DEVICEIO" Class="DEVICEIO">
 						<Name>Module 3 (DEVICEIO)</Name>
-						<ImageId>416</ImageId>
+						<ImageId>417</ImageId>
 						<ModuleData>020000009e070000000004000000000000000000000000000000000000000000</ModuleData>
 						<PdoIndex>7166</PdoIndex>
 					</Module>
@@ -439,7 +439,7 @@
 					<ModuleIdent>691</ModuleIdent>
 					<Module Id="#x0309000e" Type="FSLOGIC" Class="FSLOGIC">
 						<Name>Module 4 (FSLOGIC)</Name>
-						<ImageId>416</ImageId>
+						<ImageId>417</ImageId>
 						<ModuleData>02000000b3020000000004000000000000000000000000000000000000000000</ModuleData>
 						<PdoIndex>7167</PdoIndex>
 						<PdoIndex>6143</PdoIndex>
@@ -454,7 +454,7 @@
 				<SyncMan>001080002600010001000000400080008000001026010000</SyncMan>
 				<SyncMan>801080002200010002000000400080008000801022010000</SyncMan>
 				<SyncMan>001108002400010003000000000000000800001124010000</SyncMan>
-				<SyncMan>801108002000010004000000000000000800801120010000</SyncMan>
+				<SyncMan>80110c002000010004000000000000000800801120010000</SyncMan>
 				<Fmmu>0000000000000000001100020100000001000000000000000000000000000000</Fmmu>
 				<Fmmu>0000000000000000801100010100000002000000000000000000000000000000</Fmmu>
 				<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
@@ -621,7 +621,7 @@
 						<Type>BIT</Type>
 					</Entry>
 				</Pdo>
-				<Pdo Name="STM Synchron info data" Index="#x1a04" Flags="#x0010">
+				<Pdo Name="STM Synchron info data" Index="#x1a04" Flags="#x0010" SyncMan="3">
 					<Entry Name="Info data 1" Index="#x6010" Sub="#x11">
 						<Type>UINT</Type>
 					</Entry>
@@ -773,7 +773,7 @@
 					<Entry Name="Control__">
 						<Type GUID="{18071995-0000-0000-0000-002000000008}">ARRAY [0..0] OF BYTE</Type>
 					</Entry>
-					<Entry Name="Control__Digital output 1" Index="#x7010" Sub="#x0c">
+					<Entry Name="Control__Digital output 1" Index="#x7010" Sub="#x0c" Flags="#x00008020">
 						<Type>BIT</Type>
 					</Entry>
 					<Entry Name="Control__">

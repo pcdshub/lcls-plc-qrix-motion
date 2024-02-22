@@ -4,16 +4,32 @@
     <Declaration><![CDATA[PROGRAM PRG_DET_FRAME
 VAR
     bInit: BOOL := TRUE;
-    {attribute 'pytmc' := 'pv: QRIX:SA:bError'}
+    {attribute 'pytmc' := '
+        pv: QRIX:SA:bError
+        io: i
+    '}
     bError: BOOL := FALSE;
+    {attribute 'pytmc' := '
+        pv: QRIX:SA:bBusy
+        io: i
+    '}
     bBusy: BOOL;
     {attribute 'pytmc' := 'pv: QRIX:SA:bResetError'}
     bResetError: BOOL := FALSE;
+    {attribute 'pytmc' := '
+        pv: QRIX:SA:bEnableMotion
+        io: i
+    '}
     bEnableMotion : BOOL;
-    bEnableMotion_M15 : BOOL;
-    bEnableMotion_M16 : BOOL;
-    bEnableMotion_M17 : BOOL;
+    {attribute 'pytmc' := '
+        pv: QRIX:SA:bEnableSetGaugeValue
+        io: i
+    '}
     bEnableSetGaugeValue: BOOL;
+    {attribute 'pytmc' := '
+        pv: QRIX:SA:bEnableMoveRelative
+        io: i
+    '}
     bEnableMoveRelative: BOOL;
     {attribute 'pytmc' := 'pv: QRIX:SA:EnableJackOff'}
     bEnableJackOff: BOOL;
@@ -27,7 +43,6 @@ VAR
     bEnableAdjustingPitch: BOOL;
     {attribute 'pytmc' := 'pv: QRIX:DF:EnableAdjustingHeight'}
     bEnableAdjustingHeight: BOOL;
-
 
     bDone_M15, bDone_M16, bDone_M17: BOOL;
 
@@ -68,7 +83,6 @@ END_VAR
     <Implementation>
       <ST><![CDATA[IF bInit THEN
     bInit := FALSE;
-
 
     Main.M15.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
     Main.M15.bHardwareEnable := TRUE;
@@ -553,9 +567,6 @@ IF bResetError THEN
     bError:= FALSE;
     bBusy:=FALSE;
     bEnableMotion := FALSE;
-    bEnableMotion_M15 := FALSE;
-    bEnableMotion_M16 := FALSE;
-    bEnableMotion_M17 := FALSE;
     bEnableSetGaugeValue := FALSE;
     bEnableMoveRelative := FALSE;
     bEnableJackOff := FALSE;

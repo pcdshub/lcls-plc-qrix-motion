@@ -4110,22 +4110,6 @@ External Setpoint Generation:
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
-					<Name>GVL_Sensor.stYDF1.iRawCnts</Name>
-					<Type>DINT</Type>
-				</Var>
-				<Var>
-					<Name>GVL_Sensor.stYDF2.iRawCnts</Name>
-					<Type>DINT</Type>
-				</Var>
-				<Var>
-					<Name>GVL_Sensor.stYDF3.iRawCnts</Name>
-					<Type>DINT</Type>
-				</Var>
-				<Var>
-					<Name>GVL_Sensor.stHDF.iRawCnts</Name>
-					<Type>DINT</Type>
-				</Var>
-				<Var>
 					<Name>GVL_Sensor.stGraniteP.iRawCnts</Name>
 					<Type>INT</Type>
 				</Var>
@@ -8954,6 +8938,22 @@ External Setpoint Generation:
 						<![CDATA[ Raw encoder IO for INT (LVDT)]]>
 					</Comment>
 					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>GVL_Sensor.stYDF1.iRawCnts</Name>
+					<Type>DINT</Type>
+				</Var>
+				<Var>
+					<Name>GVL_Sensor.stYDF2.iRawCnts</Name>
+					<Type>DINT</Type>
+				</Var>
+				<Var>
+					<Name>GVL_Sensor.stYDF3.iRawCnts</Name>
+					<Type>DINT</Type>
+				</Var>
+				<Var>
+					<Name>GVL_Sensor.stHDF.iRawCnts</Name>
+					<Type>DINT</Type>
 				</Var>
 			</Vars>
 			<Vars VarGrpType="2">
