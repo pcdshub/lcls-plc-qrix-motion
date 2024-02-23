@@ -29,7 +29,6 @@ IF bInit THEN
     Main.M24.bPowerSelf:= TRUE;
     Main.M24.nBrakeMode:= ENUM_StageBrakeMode.NO_BRAKE;
     Main.M24.nEnableMode := ENUM_StageEnableMode.ALWAYS ; // This axis should always be enables due to belows
-    Main.M24.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
     Main.M24.fVelocity := 0.1;
 END_IF;
 
