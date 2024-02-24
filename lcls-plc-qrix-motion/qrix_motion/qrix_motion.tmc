@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<TcModuleClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2009/05/TcModuleClass" Hash="{1E437A2B-579A-CEB6-E869-4DB4E0C39667}" GeneratedBy="TwinCAT XAE Plc">
+<TcModuleClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2009/05/TcModuleClass" Hash="{AE5BA7F2-33B0-4BDC-E1B3-52B13C91F39B}" GeneratedBy="TwinCAT XAE Plc">
   <DataTypes>
     <DataType>
       <Name Namespace="LCLS_General">ST_System</Name>
@@ -72272,15 +72272,15 @@ Cryo -X</Comment>
         </Property>
         <Property>
           <Name>ChangeDate</Name>
-          <Value>2024-02-23T09:36:42</Value>
+          <Value>2024-02-23T14:42:54</Value>
         </Property>
         <Property>
           <Name>GeneratedCodeSize</Name>
-          <Value>798720</Value>
+          <Value>720896</Value>
         </Property>
         <Property>
           <Name>GlobalDataSize</Name>
-          <Value>160907264</Value>
+          <Value>160833536</Value>
         </Property>
       </Properties>
     </Module>

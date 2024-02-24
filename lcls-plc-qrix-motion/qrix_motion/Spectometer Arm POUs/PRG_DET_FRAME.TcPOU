@@ -88,7 +88,10 @@ END_VAR
     bEnableSetGaugeValue := TRUE;
 END_IF
 
-Main.M15.bEnable := bEnableJackOff OR bEnableLevitation OR bEnableLanding OR bEnableAdjustingRoll OR bEnableAdjustingPitch OR bEnableAdjustingHeight;
+//Main.M15.bEnable := bEnableJackOff OR bEnableLevitation OR bEnableLanding OR
+//    bEnableAdjustingRoll OR bEnableAdjustingPitch OR bEnableAdjustingHeight
+//    OR bEnableMoveRelative OR bEnableMotion;
+Main.M15.bEnable := TRUE;
 Main.M16.bEnable := Main.M15.bEnable;
 Main.M17.bEnable := Main.M16.bEnable;
 
@@ -559,6 +562,9 @@ IF bResetError THEN
     bEnableAdjustingRoll := FALSE;
     bEnableAdjustingPitch := FALSE;
     bEnableAdjustingHeight := FALSE;
+
+    Main.M2.bReset := TRUE;
+    Main.M2.bError := FALSE;
 
     bDone_M15 := bDone_M16 := bDone_M17 := FALSE;
 
