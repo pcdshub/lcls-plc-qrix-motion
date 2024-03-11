@@ -78,6 +78,10 @@ VAR
     fbMoveRelative_M15: MC_MoveRelative;
     fbMoveRelative_M16: MC_MoveRelative;
     fbMoveRelative_M17: MC_MoveRelative;
+
+    fbReset_M15: MC_Reset;
+    fbReset_M16: MC_Reset;
+    fbReset_M17: MC_Reset;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -565,6 +569,29 @@ IF bResetError THEN
 
     Main.M2.bReset := TRUE;
     Main.M2.bError := FALSE;
+
+    (*Reset*)
+    fbReset_M15(
+        Execute:=Main.M15.Axis.Status.Error,
+        Axis:=Main.M15.Axis,
+        Done=> ,
+        Busy=> ,
+        Error=> ,
+        ErrorID=> );
+    fbReset_M16(
+        Execute:=Main.M16.Axis.Status.Error,
+        Axis:=Main.M16.Axis,
+        Done=> ,
+        Busy=> ,
+        Error=> ,
+        ErrorID=> );
+    fbReset_M17(
+        Execute:=Main.M17.Axis.Status.Error,
+        Axis:=Main.M17.Axis,
+        Done=> ,
+        Busy=> ,
+        Error=> ,
+        ErrorID=> );
 
     bDone_M15 := bDone_M16 := bDone_M17 := FALSE;
 
