@@ -1,0 +1,21 @@
+
+Pragmas
+-------
+
+.. csv-table::
+    :header: PLC Name, Total Pragmas, Errors
+    :align: center
+
+    :ref:`qrix_motion <qrix_motion_overview_pragmas>`, 261, 0
+
+
+.. _qrix_motion_overview_pragmas:
+
+
+qrix_motion
+^^^^^^^^^^^
+
+Total pragmas found: 261
+Total linter errors: 0
+
+
