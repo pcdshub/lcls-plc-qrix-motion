@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="PRG_DET_ARM" Id="{5258bb24-11af-4169-8ff7-86951daba536}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM PRG_DET_ARM
+VAR
+    bInit: BOOL := TRUE;
+    bExecuteCouple: BOOL := FALSE;
+    bExecuteDecouple: BOOL := FALSE;
+
+    fbMotionYF1: FB_MotionStage;
+    fbMotionYF2: FB_MotionStage;
+    fbMotionZF: FB_MotionStage;
+    fbAutoCoupling: FB_GantryAutoCoupling;
+
+    {attribute 'TcLinkTo' := '	.Count := TIIB[BOX-06 ENC_ZDC_YF1 (EL5042)]^FB Inputs Channel 2^Position'}
+    stRenishawAbsEncMaster: ST_RenishawAbsEnc;
+    {attribute 'TcLinkTo' := '	.Count := TIIB[BOX-07 ENC_YF2_ZF (EL5042)]^FB Inputs Channel 1^Position'}
+    stRenishawAbsEncSlave: ST_RenishawAbsEnc;
+
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+
+IF bInit THEN
+    bInit := FALSE;
+    bExecuteCouple := TRUE;
+
+    Main.M25.nBrakeMode := ENUM_StageBrakeMode.IF_MOVING;
+    Main.M25.bHardwareEnable := TRUE;
+    Main.M25.bPowerSelf := TRUE;
+    Main.M25.fVelocity := 0.1;
+
+    Main.M26.nBrakeMode := ENUM_StageBrakeMode.IF_MOVING;
+    Main.M26.bHardwareEnable := TRUE;
+    Main.M26.bPowerSelf := TRUE;
+    Main.M26.fVelocity := 0.1;
+
+    Main.M27.nBrakeMode := ENUM_StageBrakeMode.IF_ENABLED;
+    Main.M27.bHardwareEnable := TRUE;
+    Main.M27.bPowerSelf := TRUE;
+    Main.M27.fVelocity := 0.1;
+
+    // M25 and M26 are coupled with M25 as the leader.
+    // The motors cannot be set to always enabled, because they have brakes that
+    // only activate when the motors are not moving. Due to the weight
+    // of the frame, it appears that if the brake is not on, the motors
+    // are moving constantly to keep the frame from falling. So essentially,
+    // "is moving" is synonymous with "is enabled" for these motors which
+    // results in the brake only applying if the motors are disabled. Setting M25
+    // to only enable during motion, and M26 to NEVER means that
+    // M25 will be enabled when commanded to move from EPICS but
+    // for M26 the FB_MotionStage will not modify the bEnable boolean
+    // in the state machine. Therefore, we can set the M26 bEnable
+    // status based on the M25 bEnable status after the M25 FB_MotionStage
+    // runs. But this also allows the brake to still activate when M26 is
+    // not moving.
+    Main.M25.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+    // M26 bEnable is coupled to M25 bEnable below. Set M26 enable mode to NEVER
+    // so that the function block does not try to set the bEnable bit unless
+    // it detects an error. This allows the bEnable to be set outside of
+    // the function block.
+    Main.M26.nEnableMode := ENUM_StageEnableMode.NEVER ;
+
+    Main.M27.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+END_IF
+
+stRenishawAbsEncMaster.Ref := 15370335;
+stRenishawAbsEncSlave.Ref := 15347257;
+
+// AutoCoupling
+fbAutoCoupling(	nGantryTol 			:= 200000, // 50nm/count
+                Master				:= Main.M25,
+                MasterEnc			:= stRenishawAbsEncMaster,
+                Slave				:= Main.M26,
+                SlaveEnc			:= stRenishawAbsEncSlave,
+                bExecuteCouple 		:= bExecuteCouple,
+                bExecuteDecouple 	:= bExecuteDecouple,
+);
+
+// I don't think these 3 lines do anything but I am keeping for now.
+// The FB_MotionStage overwrites the bAllEnable bit internally.
+Main.M25.bAllEnable := Main.M25.bEnable AND GVL_EPS.bESTOP;
+Main.M26.bAllEnable := Main.M26.bEnable AND GVL_EPS.bESTOP;
+Main.M27.bAllEnable := Main.M27.bEnable AND GVL_EPS.bESTOP;
+
+// Call Motion FB instance
+fbMotionYF1(stMotionStage:=Main.M25);
+
+// Set the M26 bEnable equal to the M25 bEnable status to couple their enable bits together.
+Main.M26.bEnable := Main.M25.bEnable;
+
+fbMotionYF2(stMotionStage:=Main.M26);
+fbMotionZF(stMotionStage:=Main.M27);
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

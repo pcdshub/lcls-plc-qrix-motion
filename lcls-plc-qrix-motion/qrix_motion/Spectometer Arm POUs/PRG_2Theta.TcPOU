@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="PRG_2Theta" Id="{49979313-c6aa-43cf-b80a-b1a64d0ce087}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM PRG_2Theta
+VAR
+    bInit: BOOL := TRUE;
+    fbPower_AxisM2:  MC_Power;
+    fb2ThetaStepper : FB_MotionStage;
+    bMoveOk: BOOL;
+
+END_VAR
+
+VAR CONSTANT
+    fThresholdPS1: REAL := 0.15;
+    fThresholdPS2: REAL := 0.15;
+    fThresholdPS3: REAL := 0.15;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF binit THEN
+    bInit := FALSE;
+
+    // Stepper
+    Main.M2.nBrakeMode := ENUM_StageBrakeMode.IF_MOVING;
+    Main.M2.bHardwareEnable := TRUE;
+
+    Main.M2.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+END_IF;
+
+ACT_Stepper();
+]]></ST>
+    </Implementation>
+    <Action Name="ACT_Stepper" Id="{66e0b0b8-d09b-4167-8180-d5937a88b96b}">
+      <Implementation>
+        <ST><![CDATA[// Simplified enabling logic by removing separate fbPower function and
+// making the estop and other permissives drive the bPowerSelf bit.
+// Now, the motor motion is handled entirely within the FB_MotionStage block
+// which makes this usage more standard and easier to work with using our
+// standard typhos widget.
+Main.M2.bPowerSelf := 		GVL_EPS.bESTOP // ESTOP
+                            AND	GVL_Sensor.stPS1.fValue > fThresholdPS1
+                            AND GVL_Sensor.stPS2.fValue > fThresholdPS2
+                            AND GVL_Sensor.stPS3.fValue > fThresholdPS3 // Compressed-air pressure
+                            AND GVL_EPS.bOpenSV1
+                            AND GVL_EPS.bOpenSV2;
+
+fb2ThetaStepper(stMotionStage:=Main.M2);]]></ST>
+      </Implementation>
+    </Action>
+  </POU>
+</TcPlcObject>

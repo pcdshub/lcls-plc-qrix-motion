@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="PRG_DET_CHAMBER" Id="{7779e44c-5234-499f-9f61-3fec67c64546}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM PRG_DET_CHAMBER
+VAR
+    bInit: BOOL := TRUE;
+    fbMotionXDC: FB_MotionStage;
+    fbMotionRyDC: FB_MotionStage;
+    fbMotionZDC: FB_MotionStage;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// Det. Chmber
+IF bInit THEN
+    bInit :=FALSE;
+    Main.M22.bHardwareEnable:= TRUE;
+    Main.M22.bPowerSelf:= TRUE;
+    Main.M22.nBrakeMode:= ENUM_StageBrakeMode.NO_BRAKE;
+    Main.M22.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+    Main.M22.fVelocity := 0.1;
+
+    Main.M23.bHardwareEnable:= TRUE;
+    Main.M23.bPowerSelf:= TRUE;
+    Main.M23.nBrakeMode:= ENUM_StageBrakeMode.NO_BRAKE;
+    Main.M23.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+    Main.M23.fVelocity := 0.1;
+
+    Main.M24.bHardwareEnable:= TRUE;
+    Main.M24.bPowerSelf:= TRUE;
+    Main.M24.nBrakeMode:= ENUM_StageBrakeMode.NO_BRAKE;
+    Main.M24.nEnableMode := ENUM_StageEnableMode.ALWAYS ; // This axis should always be enables due to belows
+    Main.M24.fVelocity := 0.1;
+END_IF;
+
+
+fbMotionXDC(stMotionStage:= Main.M22);
+fbMotionRyDC(stMotionStage:= Main.M23);
+fbMotionZDC(stMotionStage:= Main.M24);]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

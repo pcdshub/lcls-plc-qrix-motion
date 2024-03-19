@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="PRG_OPT" Id="{9fd4ef96-d0b3-4d92-a155-89dc0eb4c6d2}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM PRG_OPT
+VAR
+    bInit: BOOL := TRUE;
+    fbMotionRxG: FB_MotionStage;
+    fbMotionXG: FB_MotionStage;
+    fbMotionRzPM: FB_MotionStage;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+IF bInit THEN
+
+    Main.M10.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+    Main.M10.bHardwareEnable := TRUE;
+    Main.M10.bPowerSelf := TRUE;
+    Main.M10.fVelocity := 0.1;
+
+    Main.M11.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+    Main.M11.bHardwareEnable := TRUE;
+    Main.M11.bPowerSelf := TRUE;
+    Main.M11.fVelocity := 0.1;
+
+    Main.M14.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+    Main.M14.bHardwareEnable := TRUE;
+    Main.M14.bPowerSelf := TRUE;
+    Main.M14.fVelocity := 0.1;
+
+    Main.M10.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+    Main.M11.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+    Main.M14.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+
+    bInit := FALSE;
+END_IF;
+
+
+fbMotionRxG(stMotionStage:= Main.M10);
+fbMotionXG(stMotionStage:= Main.M11);
+fbMotionRzPM(stMotionStage:= Main.M14);
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

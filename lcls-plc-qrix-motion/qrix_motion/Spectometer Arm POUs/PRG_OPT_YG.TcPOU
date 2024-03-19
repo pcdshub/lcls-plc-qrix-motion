@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="PRG_OPT_YG" Id="{173d90db-406f-4d99-a17e-cb9894f5d5de}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM PRG_OPT_YG
+VAR
+    bDebug: BOOL;
+    bExecuteMotion: BOOL := TRUE;
+    bMoveOk: BOOL :=TRUE;
+    {attribute 'pytmc' := 'pv: QRIX:OPT'}
+    fbYGMotion: FB_3AxesJack;
+
+    bInit: BOOL :=TRUE;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+
+
+IF bInit THEN
+    bInit := FALSE;
+
+    Main.M7.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+    Main.M7.bHardwareEnable := TRUE;
+    Main.M7.bPowerSelf := TRUE;
+
+    Main.M8.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+    Main.M8.bHardwareEnable := TRUE;
+    Main.M8.bPowerSelf := TRUE;
+
+    Main.M9.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+    Main.M9.bHardwareEnable := TRUE;
+    Main.M9.bPowerSelf := TRUE;
+
+    Main.M7.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+    Main.M8.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+    Main.M9.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+END_IF
+
+
+
+fbYGMotion(
+    bExecuteMotion	:= bExecuteMotion,
+    bMoveOk			:= bMoveOk,
+    stJack1Axis		:= Main.M7,
+    stJack2Axis		:= Main.M8,
+    stJack3Axis		:= Main.M9,
+    i_DevName		:= 'OPT_YG'
+);]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>
