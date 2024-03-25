@@ -11,14 +11,26 @@ VAR
     bLimitForwardEnable AT %I* :BOOL;
     {attribute 'pytmc' := 'pv: QRIX:SPCA:COUPLED'}
 
-    bAlreadyCoupled :BOOL := FALSE;
-    bExecuteCouple :BOOL := TRUE;
-    // Current coupled motion difference
-    nCurrGantryDiff : LINT;
-    // Autocoupling  Axes
-    couple : MC_GEARIN;
-    bInitComplete : BOOL;
+    bExecuteCouple: BOOL := FALSE;
+    bExecuteDecouple: BOOL := FALSE;
+
     bInit : BOOl := TRUE;
+
+    // Function block to couple sliding seal motor motion to 2Theta motion
+    fbSSLTo2ThetaCoupling: FB_GantryAutoCoupling;
+
+    {attribute 'TcLinkTo' := '	.Count := TIID^Device 1 (EtherCAT)^Rack#1A-01 Coupler (EK1100)^Rack#1A-06 ENC_2Th (EL5042)^FB Inputs Channel 1^Position'}
+    stRenishawAbsEncMaster: ST_RenishawAbsEnc;
+
+    {attribute 'TcLinkTo' := 'TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL5042_02_02^FB Inputs Channel 1^Position'}
+    nRenishawAbsEncSlaveCounts AT %I*: ULINT; // Connect to encoder "Position" inputULINT
+    fSlaveCountsToMasterCountsScalingFactor: LREAL;
+    fRenishawAbsEncSlaveCountsInMasterScale: LREAL;
+    nRenishawAbsEncSlaveCountsInMasterScale: ULINT;
+    stRenishawAbsEncSlave: ST_RenishawAbsEnc;
+
+    nGantryTolerance: LINT;
+    fAngleOffset: LREAL;
 END_VAR
 
 VAR CONSTANT
@@ -37,30 +49,55 @@ IF ( bInit) THEN
     Main.M1.bPowerSelf := TRUE;
     Main.M1.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
     Main.M1.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+    //Main.M1.nEnableMode := ENUM_StageEnableMode.NEVER;
 END_IF
-// couple axes
 
-// Couple both axes
-// Auto-coupling at init and auto-reset of coupling boolean
-(*bExecuteCouple S= NOT bInitComplete;
+// Set the encoder counts at the zero position
+// CHOOSING TO SET THE COUNTS IN UNITS OF THE SCALE OF THE PRIMARY AXIS ENCODER.
+// THE VIRTUAL LIMIT SWITCH FUNCTION BLOCK IN THE GANTRY AUTOCOUPLING FB ASSUMES
+// THAT THE ENCODERS HAVE THE SAME SCALE. HOWEVER IN THIS CASE, THEY DO NOT HAVE
+// THE SAME SCALE. IN ORDER TO COMPARE THEM USING THE GANTRY FB, THE SECONDARY
+// AXIS ENCODER COUNTS HAVE TO BE SCALED TO MATCH THE PRIMARY AXIS ENCODER COUNTS.
+fSlaveCountsToMasterCountsScalingFactor := Main.M1.stAxisParameters.fEncScaleFactorInternal / Main.M2.stAxisParameters.fEncScaleFactorInternal;
+fRenishawAbsEncSlaveCountsInMasterScale := ULINT_TO_LREAL(nRenishawAbsEncSlaveCounts) * fSlaveCountsToMasterCountsScalingFactor;
+nRenishawAbsEncSlaveCountsInMasterScale := LREAL_TO_ULINT(fRenishawAbsEncSlaveCountsInMasterScale);
+stRenishawAbsEncSlave.Count := nRenishawAbsEncSlaveCountsInMasterScale;
 
-bExecuteCouple R= couple.Busy OR bAlreadyCoupled;
-couple (Master:= Main.M1.Axis,
-        Slave:=Main.M25.Axis,
-        Execute:=bExecuteCouple,
-        RatioNumerator := 1,
-        RatioDenominator :=1
+// Going to use 90 degree position as the reference position because the Ref value is an unsigned value. This makes it so I
+// can't set the reference to actual 0 because that requires a negative number.
+stRenishawAbsEncMaster.Ref := LREAL_TO_ULINT((90.0 - Main.M2.stAxisParameters.fEncOffset) / Main.M2.stAxisParameters.fEncScaleFactorInternal);
+stRenishawAbsEncSlave.Ref := LREAL_TO_ULINT((90.0 - Main.M1.stAxisParameters.fEncOffset) / Main.M1.stAxisParameters.fEncScaleFactorInternal * fSlaveCountsToMasterCountsScalingFactor);
+
+// Compute the gantry tolerance
+// Tolerance = 0.1 degrees TO BE CONFIRMED
+// 0.000003001664895 deg/count => For 0.1 deg tolerance then 0.1 deg / 0.000003001664895 deg/count = 33315 counts for 0.1 deg
+nGantryTolerance := LREAL_TO_LINT(0.1 / Main.M2.stAxisParameters.fEncScaleFactorInternal);
+
+fAngleOffset := LINT_TO_LREAL(
+        ( ULINT_TO_LINT(stRenishawAbsEncMaster.Count) - ULINT_TO_LINT(stRenishawAbsEncMaster.Ref) ) - 
+        ( ULINT_TO_LINT(stRenishawAbsEncSlave.Count) - ULINT_TO_LINT(stRenishawAbsEncSlave.Ref) )
+    ) * Main.M2.stAxisParameters.fEncScaleFactorInternal;
+
+// AutoCoupling
+fbSSLTo2ThetaCoupling(	nGantryTol 			:= nGantryTolerance, 
+                        Master				:= Main.M2,
+                        MasterEnc			:= stRenishawAbsEncMaster,
+                        Slave				:= Main.M1,
+                        SlaveEnc			:= stRenishawAbsEncSlave,
+                        bExecuteCouple 		:= bExecuteCouple,
+                        bExecuteDecouple 	:= bExecuteDecouple,
 );
 
-bInitComplete S= bAlreadyCoupled;
-nCurrGantryDiff := ((ULINT_TO_LINT(Main.M1.nRawEncoderULINT) - ULINT_TO_LINT(nSSL_ENC_REF)) - (ULINT_TO_LINT(Main.M25.nRawEncoderULINT) - ULINT_TO_LINT(nSSL_ENC_REF)));
-
-*)
-//EPS needs to be implemented and coupling of axes servo and wheel from spectometer arm
-// hpw to recover from this situation?!
-//Main.M1.bHardwareEnable := bLimitBackwardEnable AND bLimitForwardEnable AND (ABS(nCurrGantryDiff) > nGANTRY_TOLERANCE); //Include STO from SPCA
-//Main.M1.bHardwareEnable := bLimitBackwardEnable AND bLimitForwardEnable;
 fb_SSL_Motor(stMotionStage:=Main.M1);]]></ST>
     </Implementation>
+    <LineIds Name="PRG_SSL">
+      <LineId Id="284" Count="26" />
+      <LineId Id="323" Count="0" />
+      <LineId Id="311" Count="0" />
+      <LineId Id="324" Count="1" />
+      <LineId Id="327" Count="2" />
+      <LineId Id="312" Count="10" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
   </POU>
 </TcPlcObject>

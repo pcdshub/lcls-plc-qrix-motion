@@ -1446,6 +1446,41 @@ External Setpoint Generation:
 					</SubVar>
 				</Var>
 				<Var>
+					<Name>PRG_SSL.fbSSLTo2ThetaCoupling.gantry_diff_limit.PEnc.Count</Name>
+					<Comment>
+						<![CDATA[ Connect to encoder "Position" input]]>
+					</Comment>
+					<Type>ULINT</Type>
+				</Var>
+				<Var>
+					<Name>PRG_SSL.fbSSLTo2ThetaCoupling.gantry_diff_limit.SEnc.Count</Name>
+					<Comment>
+						<![CDATA[ Connect to encoder "Position" input]]>
+					</Comment>
+					<Type>ULINT</Type>
+				</Var>
+				<Var>
+					<Name>PRG_SSL.stRenishawAbsEncMaster.Count</Name>
+					<Comment>
+						<![CDATA[ Connect to encoder "Position" input]]>
+					</Comment>
+					<Type>ULINT</Type>
+				</Var>
+				<Var>
+					<Name>PRG_SSL.nRenishawAbsEncSlaveCounts</Name>
+					<Comment>
+						<![CDATA[ Connect to encoder "Position" inputULINT]]>
+					</Comment>
+					<Type>ULINT</Type>
+				</Var>
+				<Var>
+					<Name>PRG_SSL.stRenishawAbsEncSlave.Count</Name>
+					<Comment>
+						<![CDATA[ Connect to encoder "Position" input]]>
+					</Comment>
+					<Type>ULINT</Type>
+				</Var>
+				<Var>
 					<Name>PRG_Diffractometer.fb_Diff_Theta.fbDriveVirtual.MasterAxis.NcToPlc</Name>
 					<Type GUID="{6A65C767-34E5-42BF-AD87-E1A503EAC7BE}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 					<SubVar>
@@ -3955,6 +3990,10 @@ External Setpoint Generation:
 					</SubVar>
 				</Var>
 				<Var>
+					<Name>PRG_Sensor.bResetSensorMode</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
 					<Name>PRG_OPT.fbMotionRxG.fbDriveVirtual.MasterAxis.NcToPlc</Name>
 					<Type GUID="{6A65C767-34E5-42BF-AD87-E1A503EAC7BE}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 					<SubVar>
@@ -4100,10 +4139,6 @@ External Setpoint Generation:
 ]]>
 						</Comment>
 					</SubVar>
-				</Var>
-				<Var>
-					<Name>PRG_Sensor.bResetSensorMode</Name>
-					<Type>BOOL</Type>
 				</Var>
 				<Var>
 					<Name>GVL_EPS.bESTOP</Name>
@@ -9145,18 +9180,6 @@ External Setpoint Generation:
 					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 				</Var>
 				<Var>
-					<Name>PRG_SpetrometerArm.bEnaIclk</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>PRG_SpetrometerArm.bEnaIclkErrAck</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>PRG_SpetrometerArm.bEnaIclkRestartESTOP</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
 					<Name>PRG_LAS.fbLAS_VIS_PositionState1D.astMotionStageMax[1].Axis.PlcToNc</Name>
 					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 				</Var>
@@ -9216,6 +9239,18 @@ External Setpoint Generation:
 				<Var>
 					<Name>PRG_SDS.fb_SDS_H.fbDriveVirtual.MasterAxis.PlcToNc</Name>
 					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
+				</Var>
+				<Var>
+					<Name>PRG_SpetrometerArm.bEnaIclk</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_SpetrometerArm.bEnaIclkErrAck</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_SpetrometerArm.bEnaIclkRestartESTOP</Name>
+					<Type>BOOL</Type>
 				</Var>
 				<Var>
 					<Name>PRG_RotDet.fb_Rot_Det.fbDriveVirtual.MasterAxis.PlcToNc</Name>
@@ -9354,6 +9389,10 @@ External Setpoint Generation:
 					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 				</Var>
 				<Var>
+					<Name>PRG_Sensor.bSensorHeadValueMode</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
 					<Name>PRG_OPT_XPM.fb2AxesXPM.fbFirstStage.fbDriveVirtual.MasterAxis.PlcToNc</Name>
 					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 				</Var>
@@ -9384,6 +9423,14 @@ External Setpoint Generation:
 					</SubVar>
 				</Var>
 				<Var>
+					<Name>PRG_Sensor.bSensorHeadNormalValueMode</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_Sensor.uintTest</Name>
+					<Type>UINT</Type>
+				</Var>
+				<Var>
 					<Name>PRG_OPT.fbMotionRxG.fbDriveVirtual.MasterAxis.PlcToNc</Name>
 					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 				</Var>
@@ -9394,18 +9441,6 @@ External Setpoint Generation:
 				<Var>
 					<Name>PRG_OPT.fbMotionRzPM.fbDriveVirtual.MasterAxis.PlcToNc</Name>
 					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
-				</Var>
-				<Var>
-					<Name>PRG_Sensor.bSensorHeadValueMode</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>PRG_Sensor.bSensorHeadNormalValueMode</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>PRG_Sensor.uintTest</Name>
-					<Type>UINT</Type>
 				</Var>
 				<Var>
 					<Name>GVL_EPS.bOpenSV1</Name>
@@ -10016,6 +10051,7 @@ External Setpoint Generation:
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL5042_02_02">
 				<Link VarA="PlcTask Inputs^Main.M1.nRawEncoderULINT" VarB="FB Inputs Channel 1^Position" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^PRG_SSL.nRenishawAbsEncSlaveCounts" VarB="FB Inputs Channel 1^Position" AutoLink="true"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL5042_02_05 - LAS_VIS">
 				<Link VarA="PlcTask Inputs^Main.M36.nRawEncoderULINT" VarB="FB Inputs Channel 1^Position" AutoLink="true"/>
@@ -10224,6 +10260,7 @@ External Setpoint Generation:
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Rack#1A-01 Coupler (EK1100)^Rack#1A-06 ENC_2Th (EL5042)">
 				<Link VarA="PlcTask Inputs^Main.M2.nRawEncoderULINT" VarB="FB Inputs Channel 1^Position" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^PRG_SSL.stRenishawAbsEncMaster.Count" VarB="FB Inputs Channel 1^Position" AutoLink="true"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Rack#2A-01 Coupler (EK1100)^Rack#2A-03 DR_XS1 (EL7041-0052)">
 				<Link VarA="PlcTask Inputs^Main.M3.bLimitBackwardEnable" VarB="STM Status^Status^Digital input 2" AutoLink="true"/>
