@@ -74,12 +74,12 @@ stRenishawAbsEncSlave.Ref := LREAL_TO_ULINT((90.0 - Main.M1.stAxisParameters.fEn
 nGantryTolerance := LREAL_TO_LINT(0.1 / Main.M2.stAxisParameters.fEncScaleFactorInternal);
 
 fAngleOffset := LINT_TO_LREAL(
-        ( ULINT_TO_LINT(stRenishawAbsEncMaster.Count) - ULINT_TO_LINT(stRenishawAbsEncMaster.Ref) ) - 
+        ( ULINT_TO_LINT(stRenishawAbsEncMaster.Count) - ULINT_TO_LINT(stRenishawAbsEncMaster.Ref) ) -
         ( ULINT_TO_LINT(stRenishawAbsEncSlave.Count) - ULINT_TO_LINT(stRenishawAbsEncSlave.Ref) )
     ) * Main.M2.stAxisParameters.fEncScaleFactorInternal;
 
 // AutoCoupling
-fbSSLTo2ThetaCoupling(	nGantryTol 			:= nGantryTolerance, 
+fbSSLTo2ThetaCoupling(	nGantryTol 			:= nGantryTolerance,
                         Master				:= Main.M2,
                         MasterEnc			:= stRenishawAbsEncMaster,
                         Slave				:= Main.M1,
@@ -90,14 +90,5 @@ fbSSLTo2ThetaCoupling(	nGantryTol 			:= nGantryTolerance,
 
 fb_SSL_Motor(stMotionStage:=Main.M1);]]></ST>
     </Implementation>
-    <LineIds Name="PRG_SSL">
-      <LineId Id="284" Count="26" />
-      <LineId Id="323" Count="0" />
-      <LineId Id="311" Count="0" />
-      <LineId Id="324" Count="1" />
-      <LineId Id="327" Count="2" />
-      <LineId Id="312" Count="10" />
-      <LineId Id="2" Count="0" />
-    </LineIds>
   </POU>
 </TcPlcObject>
