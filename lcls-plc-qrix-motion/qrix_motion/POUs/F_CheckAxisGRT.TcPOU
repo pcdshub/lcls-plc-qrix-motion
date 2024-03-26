@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="F_CheckAxisGRT" Id="{731dc843-c335-44d1-b5ac-400491a2bf7a}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION F_CheckAxisGRT : BOOL
+VAR_INPUT
+    stMotionStage: ST_MotionStage;
+    fQueryValue: LREAL;
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[F_CheckAxisGRT := F_CheckAxis(stMotionStage, 2, fQueryValue);]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>
