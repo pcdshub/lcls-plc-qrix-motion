@@ -35,12 +35,18 @@ End_If;
 GVL_Sensor.stYDF1.sName			:= 'YDF1 Panasonic HG-S';
 GVL_Sensor.stYDF1.sEGU			:= 'mm';
 GVL_Sensor.stYDF1.fCntsInEGU	:= 10000;
+GVL_Sensor.nYDF1                := DINT_TO_UDINT(GVL_Sensor.stYDF1.iRawCnts + 10000);
+
 GVL_Sensor.stYDF2.sName			:= 'YDF2 Panasonic HG-S';
 GVL_Sensor.stYDF2.sEGU			:= 'mm';
 GVL_Sensor.stYDF2.fCntsInEGU	:= 10000;
+GVL_Sensor.nYDF2                := DINT_TO_UDINT(GVL_Sensor.stYDF2.iRawCnts + 10000);
+
 GVL_Sensor.stYDF3.sName			:= 'YDF3 Panasonic HG-S';
 GVL_Sensor.stYDF3.sEGU			:= 'mm';
 GVL_Sensor.stYDF3.fCntsInEGU	:= 10000;
+GVL_Sensor.nYDF3                := DINT_TO_UDINT(GVL_Sensor.stYDF3.iRawCnts + 10000);
+
 GVL_Sensor.stHDF.sName			:= 'HDF Panasonic HG-S';
 GVL_Sensor.stHDF.sEGU			:= 'mm';
 GVL_Sensor.stHDF.fCntsInEGU		:= 10000;

@@ -1100,7 +1100,7 @@ Bit1: Value bigger/equal Limit2]]>
 					<ModuleIdent>1050494</ModuleIdent>
 					<Module Id="#x0309000a" Type="FSOE" Class="1918">
 						<Name>Module 1 (FSOE)</Name>
-						<ImageId>417</ImageId>
+						<ImageId>418</ImageId>
 						<ModuleData>020000007e07100000000c000000000000000000000000000000000000000000</ModuleData>
 						<PdoIndex>6656</PdoIndex>
 						<PdoIndex>5632</PdoIndex>
@@ -1112,7 +1112,7 @@ Bit1: Value bigger/equal Limit2]]>
 					<ModuleIdent>691</ModuleIdent>
 					<Module Id="#x0309000b" Type="FSLOGIC" Class="FSLOGIC">
 						<Name>Module 2 (FSLOGIC)</Name>
-						<ImageId>417</ImageId>
+						<ImageId>418</ImageId>
 						<ModuleData>02000000b3020000000004000000000000000000000000000000000000000000</ModuleData>
 						<PdoIndex>7167</PdoIndex>
 						<PdoIndex>6143</PdoIndex>

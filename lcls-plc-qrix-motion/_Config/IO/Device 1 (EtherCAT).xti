@@ -1,6 +1,6 @@
-<?xml version="1.0"?>
-<TcSmItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.35" ClassName="CDevEtherCATDef" SubType="111">
-	<Device Id="1" DevType="111" DevFlags="#x0003" AmsPort="28673" AmsNetId="0.0.0.0.2.1" RemoteName="Device 1 (EtherCAT)" InfoImageId="3">
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TcSmItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmItem" TcSmVersion="1.0" TcVersion="3.1.4022.30" ClassName="CDevEtherCATDef" SubType="111">
+	<Device Id="1" DevType="111" DevFlags="#x0003" AmsPort="28673" AmsNetId="0.0.0.0.2.1" RemoteName="Device 1 (EtherCAT)">
 		<Name>__FILENAME__</Name>
 		<AddressInfo>
 			<Ccat>
@@ -60,26 +60,32 @@
 		<Box File="Rack#2D LinearGaugeAmp (SC-HG1-ETC).xti" Id="70">
 			<EtherCAT PortABoxInfo="#x01000045"/>
 		</Box>
-		<EtherCAT DcSyncMode="3">
+		<EtherCAT DcSyncMode="3" EnableVirtualSwitch="true" MaxSwitchPorts="2" MaxSwitchFrames="120">
 			<SyncUnit Name="SPECTROMETER" NoDeleteIfUnused="true"/>
 			<SyncUnit Name="SDS_05" NoDeleteIfUnused="true"/>
 		</EtherCAT>
 	</Device>
 	<Mappings>
 		<OwnerA>
-			<OwnerB Name="TIID^Device 1 (EtherCAT)">
-				<Link VarA="BOX-01 Coupler (EK1100)^BOX-02 SFIN(EL1904)^Module 1 (FSOES)^RxPDO^FSOE" VarB="Rack#1A-01 Coupler (EK1100)^Rack#1A-02 SFIN (EL1918)^ConnectionInputs^Message_4 TxPDO"/>
-				<Link VarA="BOX-01 Coupler (EK1100)^BOX-02 SFIN(EL1904)^Module 1 (FSOES)^TxPDO^FSOE" VarB="Rack#1A-01 Coupler (EK1100)^Rack#1A-02 SFIN (EL1918)^ConnectionOutputs^Message_4 RxPDO"/>
-				<Link VarA="Rack#1A-01 Coupler (EK1100)^Rack#1A-02 SFIN (EL1918)^ConnectionInputs^Message_3 TxPDO" VarB="Rack#1A-01 Coupler (EK1100)^Rack#1A-03 SFOUT(EL2912)^Module 1 (FSOE)^FSoE Outputs^FSOE"/>
-				<Link VarA="Rack#1A-01 Coupler (EK1100)^Rack#1A-02 SFIN (EL1918)^ConnectionInputs^Message_4 TxPDO" VarB="BOX-01 Coupler (EK1100)^BOX-02 SFIN(EL1904)^Module 1 (FSOES)^RxPDO^FSOE"/>
-				<Link VarA="Rack#1A-01 Coupler (EK1100)^Rack#1A-02 SFIN (EL1918)^ConnectionInputs^Message_6 TxPDO" VarB="Rack#2B-01 Coupler (EK1100)^Rack#2B-06 SFIN (EL1918)^Module 1 (FSOE)^FSoE Outputs^FSOE"/>
-				<Link VarA="Rack#1A-01 Coupler (EK1100)^Rack#1A-02 SFIN (EL1918)^ConnectionOutputs^Message_3 RxPDO" VarB="Rack#1A-01 Coupler (EK1100)^Rack#1A-03 SFOUT(EL2912)^Module 1 (FSOE)^FSoE Inputs^FSOE"/>
-				<Link VarA="Rack#1A-01 Coupler (EK1100)^Rack#1A-02 SFIN (EL1918)^ConnectionOutputs^Message_4 RxPDO" VarB="BOX-01 Coupler (EK1100)^BOX-02 SFIN(EL1904)^Module 1 (FSOES)^TxPDO^FSOE"/>
-				<Link VarA="Rack#1A-01 Coupler (EK1100)^Rack#1A-02 SFIN (EL1918)^ConnectionOutputs^Message_6 RxPDO" VarB="Rack#2B-01 Coupler (EK1100)^Rack#2B-06 SFIN (EL1918)^Module 1 (FSOE)^FSoE Inputs^FSOE"/>
-				<Link VarA="Rack#1A-01 Coupler (EK1100)^Rack#1A-03 SFOUT(EL2912)^Module 1 (FSOE)^FSoE Inputs^FSOE" VarB="Rack#1A-01 Coupler (EK1100)^Rack#1A-02 SFIN (EL1918)^ConnectionOutputs^Message_3 RxPDO"/>
-				<Link VarA="Rack#1A-01 Coupler (EK1100)^Rack#1A-03 SFOUT(EL2912)^Module 1 (FSOE)^FSoE Outputs^FSOE" VarB="Rack#1A-01 Coupler (EK1100)^Rack#1A-02 SFIN (EL1918)^ConnectionInputs^Message_3 TxPDO"/>
-				<Link VarA="Rack#2B-01 Coupler (EK1100)^Rack#2B-06 SFIN (EL1918)^Module 1 (FSOE)^FSoE Inputs^FSOE" VarB="Rack#1A-01 Coupler (EK1100)^Rack#1A-02 SFIN (EL1918)^ConnectionOutputs^Message_6 RxPDO"/>
-				<Link VarA="Rack#2B-01 Coupler (EK1100)^Rack#2B-06 SFIN (EL1918)^Module 1 (FSOE)^FSoE Outputs^FSOE" VarB="Rack#1A-01 Coupler (EK1100)^Rack#1A-02 SFIN (EL1918)^ConnectionInputs^Message_6 TxPDO"/>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^BOX-01 Coupler (EK1100)^BOX-02 SFIN(EL1904)">
+				<Link VarA="Rack#1A-01 Coupler (EK1100)^Rack#1A-02 SFIN (EL1918)^ConnectionInputs^Message_4 TxPDO" VarB="Module 1 (FSOES)^RxPDO^FSOE"/>
+				<Link VarA="Rack#1A-01 Coupler (EK1100)^Rack#1A-02 SFIN (EL1918)^ConnectionOutputs^Message_4 RxPDO" VarB="Module 1 (FSOES)^TxPDO^FSOE"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Rack#1A-01 Coupler (EK1100)^Rack#1A-02 SFIN (EL1918)">
+				<Link VarA="BOX-01 Coupler (EK1100)^BOX-02 SFIN(EL1904)^Module 1 (FSOES)^RxPDO^FSOE" VarB="ConnectionInputs^Message_4 TxPDO"/>
+				<Link VarA="BOX-01 Coupler (EK1100)^BOX-02 SFIN(EL1904)^Module 1 (FSOES)^TxPDO^FSOE" VarB="ConnectionOutputs^Message_4 RxPDO"/>
+				<Link VarA="Rack#1A-01 Coupler (EK1100)^Rack#1A-03 SFOUT(EL2912)^Module 1 (FSOE)^FSoE Inputs^FSOE" VarB="ConnectionOutputs^Message_3 RxPDO"/>
+				<Link VarA="Rack#1A-01 Coupler (EK1100)^Rack#1A-03 SFOUT(EL2912)^Module 1 (FSOE)^FSoE Outputs^FSOE" VarB="ConnectionInputs^Message_3 TxPDO"/>
+				<Link VarA="Rack#2B-01 Coupler (EK1100)^Rack#2B-06 SFIN (EL1918)^Module 1 (FSOE)^FSoE Inputs^FSOE" VarB="ConnectionOutputs^Message_6 RxPDO"/>
+				<Link VarA="Rack#2B-01 Coupler (EK1100)^Rack#2B-06 SFIN (EL1918)^Module 1 (FSOE)^FSoE Outputs^FSOE" VarB="ConnectionInputs^Message_6 TxPDO"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Rack#1A-01 Coupler (EK1100)^Rack#1A-03 SFOUT(EL2912)">
+				<Link VarA="Rack#1A-01 Coupler (EK1100)^Rack#1A-02 SFIN (EL1918)^ConnectionInputs^Message_3 TxPDO" VarB="Module 1 (FSOE)^FSoE Outputs^FSOE"/>
+				<Link VarA="Rack#1A-01 Coupler (EK1100)^Rack#1A-02 SFIN (EL1918)^ConnectionOutputs^Message_3 RxPDO" VarB="Module 1 (FSOE)^FSoE Inputs^FSOE"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Rack#2B-01 Coupler (EK1100)^Rack#2B-06 SFIN (EL1918)">
+				<Link VarA="Rack#1A-01 Coupler (EK1100)^Rack#1A-02 SFIN (EL1918)^ConnectionInputs^Message_6 TxPDO" VarB="Module 1 (FSOE)^FSoE Outputs^FSOE"/>
+				<Link VarA="Rack#1A-01 Coupler (EK1100)^Rack#1A-02 SFIN (EL1918)^ConnectionOutputs^Message_6 RxPDO" VarB="Module 1 (FSOE)^FSoE Inputs^FSOE"/>
 			</OwnerB>
 		</OwnerA>
 	</Mappings>
