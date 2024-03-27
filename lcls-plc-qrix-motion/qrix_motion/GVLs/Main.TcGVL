@@ -134,21 +134,24 @@ VAR_GLOBAL
     // YDF1
     {attribute 'pytmc' := 'pv: QRIX:DF:MMS:Y1'}
     {attribute 'TcLinkTo' := '	.bLimitForwardEnable  	:= TIIB[Rack#2B-15 DR_YDF1 (EL7041-0052)]^STM Status^Status^Digital input 1;
-                                .bLimitBackwardEnable 	:= TIIB[Rack#2B-15 DR_YDF1 (EL7041-0052)]^STM Status^Status^Digital input 2
+                                .bLimitBackwardEnable 	:= TIIB[Rack#2B-15 DR_YDF1 (EL7041-0052)]^STM Status^Status^Digital input 2;
+                                .nRawEncoderULINT		:= TIPC^qrix_motion^qrix_motion Instance^PlcTask Outputs^PRG_DET_FRAME.nYDF1RawCountsULINT
     '}
     M15: ST_MotionStage :=(sName := 'QRIX:DF:MMS:Y1');
 
     // YDF2
     {attribute 'pytmc' := 'pv: QRIX:DF:MMS:Y2'}
     {attribute 'TcLinkTo' := '	.bLimitForwardEnable  	:= TIIB[Rack#2B-16 DR_YDF2 (EL7041-0052)]^STM Status^Status^Digital input 1;
-                                .bLimitBackwardEnable 	:= TIIB[Rack#2B-16 DR_YDF2 (EL7041-0052)]^STM Status^Status^Digital input 2
+                                .bLimitBackwardEnable 	:= TIIB[Rack#2B-16 DR_YDF2 (EL7041-0052)]^STM Status^Status^Digital input 2;
+                                .nRawEncoderULINT		:= TIPC^qrix_motion^qrix_motion Instance^PlcTask Outputs^PRG_DET_FRAME.nYDF2RawCountsULINT
     '}
     M16: ST_MotionStage:=(sName := 'QRIX:DF:MMS:Y2');
 
     // YDF3
     {attribute 'pytmc' := 'pv: QRIX:DF:MMS:Y3'}
     {attribute 'TcLinkTo' := '	.bLimitForwardEnable  	:= TIIB[Rack#2B-19 DR_YDF3 (EL7041-0052)]^STM Status^Status^Digital input 1;
-                                .bLimitBackwardEnable 	:= TIIB[Rack#2B-19 DR_YDF3 (EL7041-0052)]^STM Status^Status^Digital input 2
+                                .bLimitBackwardEnable 	:= TIIB[Rack#2B-19 DR_YDF3 (EL7041-0052)]^STM Status^Status^Digital input 2;
+                                .nRawEncoderULINT		:= TIPC^qrix_motion^qrix_motion Instance^PlcTask Outputs^PRG_DET_FRAME.nYDF3RawCountsULINT
     '}
     M17: ST_MotionStage :=(sName := 'QRIX:DF:MMS:Y3');
 

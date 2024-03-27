@@ -8990,6 +8990,25 @@ External Setpoint Generation:
 					</Comment>
 					<Type>INT</Type>
 				</Var>
+				<Var>
+					<Name>GVL_Interface.QRIX_VAC_VGC_03_OPEN_LIMIT_SWITCH</Name>
+					<Comment>
+						<![CDATA[I/O Inputs from QRIX Vacuum PLC]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_Interface.QRIX_VAC_VGC_03_CLOSED_LIMIT_SWITCH</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_Interface.QRIX_VAC_VGC_03_OP_CMD</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_Interface.QRIX_VAC_VGC_03_CL_CMD</Name>
+					<Type>BOOL</Type>
+				</Var>
 			</Vars>
 			<Vars VarGrpType="2">
 				<Name>PlcTask Outputs</Name>
@@ -10005,6 +10024,21 @@ External Setpoint Generation:
 					</Comment>
 					<Type>BOOL</Type>
 				</Var>
+				<Var>
+					<Name>GVL_Interface.QRIX_MOT_SDS_MMS_H_FORWARD_EN</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_Interface.QRIX_MOT_SDS_MMS_H_RAW_ENC_CNTS</Name>
+					<Comment>
+						<![CDATA[I/O Outputs to QRIX Vacuum PLC]]>
+					</Comment>
+					<Type>UINT</Type>
+				</Var>
+				<Var>
+					<Name>GVL_Interface.QRIX_MOT_SDS_MMS_H_BACKWARD_EN</Name>
+					<Type>BOOL</Type>
+				</Var>
 			</Vars>
 			<Vars VarGrpType="8">
 				<Name>PlcTask Retains</Name>
@@ -10030,6 +10064,15 @@ External Setpoint Generation:
 					<InOut>7</InOut>
 				</Var>
 			</Vars>
+			<UnrestoredVarLinks ImportTime="2024-03-26T17:32:08">
+				<OwnerA Name="InputDst" Prefix="TIPC^qrix_motion^qrix_motion Instance" Type="1">
+					<OwnerB Name="TIPC^qrix_motion^qrix_motion Instance">
+						<Link VarA="Main.M15.nRawEncoderULINT" TypeA="ULINT" InOutA="0" GuidA="{18071995-0000-0000-0000-00000000000B}" VarB="PlcTask Outputs^PRG_DET_FRAME.nYDF1RawCountsULINT" AutoLink="true" RestoreInfo="BNotFound"/>
+						<Link VarA="Main.M16.nRawEncoderULINT" TypeA="ULINT" InOutA="0" GuidA="{18071995-0000-0000-0000-00000000000B}" VarB="PlcTask Outputs^PRG_DET_FRAME.nYDF2RawCountsULINT" AutoLink="true" RestoreInfo="BNotFound"/>
+						<Link VarA="Main.M17.nRawEncoderULINT" TypeA="ULINT" InOutA="0" GuidA="{18071995-0000-0000-0000-00000000000B}" VarB="PlcTask Outputs^PRG_DET_FRAME.nYDF3RawCountsULINT" AutoLink="true" RestoreInfo="BNotFound"/>
+					</OwnerB>
+				</OwnerA>
+			</UnrestoredVarLinks>
 			<TaskPouOids>
 				<TaskPouOid Prio="20" OTCID="#x08502001"/>
 			</TaskPouOids>
@@ -10037,6 +10080,12 @@ External Setpoint Generation:
 	</Project>
 	<Mappings>
 		<OwnerA Name="qrix_motion Instance">
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^B950-233-R03-DRL-01 (EK1200)^Term 141 (EL6692)">
+				<Link VarA="PlcTask Inputs^GVL_Interface.QRIX_VAC_VGC_03_CLOSED_LIMIT_SWITCH" VarB="IO Inputs^QRIX_VAC_VGC_03_CLOSED_LIMIT_SWITCH" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^GVL_Interface.QRIX_VAC_VGC_03_CL_CMD" VarB="IO Inputs^QRIX_VAC_VGC_03_CL_CMD" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^GVL_Interface.QRIX_VAC_VGC_03_OPEN_LIMIT_SWITCH" VarB="IO Inputs^QRIX_VAC_VGC_03_OPEN_LIMIT_SWITCH" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^GVL_Interface.QRIX_VAC_VGC_03_OP_CMD" VarB="IO Inputs^QRIX_VAC_VGC_03_OP_CMD" AutoLink="true"/>
+			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL1004_02_03">
 				<Link VarA="PlcTask Inputs^PRG_SSL.bLimitBackwardEnable" VarB="Channel 2^Input" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^PRG_SSL.bLimitForwardEnable" VarB="Channel 3^Input" AutoLink="true"/>
@@ -10144,6 +10193,7 @@ External Setpoint Generation:
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-03_SDS^EK1122_04_17^B950-233-K2S13-DRL-01^EL5101_05_03">
 				<Link VarA="PlcTask Inputs^Main.M44.nRawEncoderUINT" VarB="ENC Status compact^Counter value" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^GVL_Interface.QRIX_MOT_SDS_MMS_H_RAW_ENC_CNTS" VarB="ENC Status compact^Counter value" AutoLink="true"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-03_SDS^EL1004_04_04">
 				<Link VarA="PlcTask Inputs^Main.M39.bHome" VarB="Channel 1^Input" AutoLink="true"/>
@@ -10181,6 +10231,8 @@ External Setpoint Generation:
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-03_SDS^EL7047_04_12">
 				<Link VarA="PlcTask Inputs^Main.M44.bLimitBackwardEnable" VarB="STM Status^Status^Digital input 2" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^Main.M44.bLimitForwardEnable" VarB="STM Status^Status^Digital input 1" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^GVL_Interface.QRIX_MOT_SDS_MMS_H_BACKWARD_EN" VarB="STM Status^Status^Digital input 2" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^GVL_Interface.QRIX_MOT_SDS_MMS_H_FORWARD_EN" VarB="STM Status^Status^Digital input 1" AutoLink="true"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^BOX-01 Coupler (EK1100)^BOX-03 ENC_X1_X2 (EL5042)">
 				<Link VarA="PlcTask Inputs^Main.M18.nRawEncoderULINT" VarB="FB Inputs Channel 1^Position" AutoLink="true"/>

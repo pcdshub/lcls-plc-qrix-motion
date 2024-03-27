@@ -19,8 +19,11 @@
 		<Box File="EK1521_00_05.xti" Id="5">
 			<EtherCAT PortABoxInfo="#x01000004"/>
 		</Box>
-		<Box File="EK1110_00_06.xti" Id="6">
+		<Box File="Term 141 (EL6692).xti" Id="141">
 			<EtherCAT PortABoxInfo="#x02000005"/>
+		</Box>
+		<Box File="EK1110_00_06.xti" Id="6">
+			<EtherCAT PortABoxInfo="#x0100008d"/>
 		</Box>
 	</Box>
 </TcSmItem>
