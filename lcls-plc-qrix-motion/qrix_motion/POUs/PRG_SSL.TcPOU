@@ -47,9 +47,10 @@ END_VAR
 IF ( bInit) THEN
     bInit := FALSE;
     Main.M1.bPowerSelf := TRUE;
+    Main.M1.bHardwareEnable := TRUE;
     Main.M1.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
-    Main.M1.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
-    //Main.M1.nEnableMode := ENUM_StageEnableMode.NEVER;
+    //Main.M1.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+    Main.M1.nEnableMode := ENUM_StageEnableMode.NEVER;
 END_IF
 
 // Set the encoder counts at the zero position

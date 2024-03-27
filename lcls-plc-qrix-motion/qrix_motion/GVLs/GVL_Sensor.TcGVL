@@ -16,6 +16,7 @@ VAR_GLOBAL
     '}
     {attribute 'TcLinkTo' := '	.iRawCnts	:= TIIB[Rack#2D LinearGaugeAmp (SC-HG1-ETC)]^Process Data(In)  TxPDO-Map^Response Data Unit1'}
     stYDF1: DUT_SensorHGS;
+    nYDF1 AT %Q*: UDINT;
 
     // YDF2
     {attribute 'pytmc' := '
@@ -24,6 +25,7 @@ VAR_GLOBAL
     '}
     {attribute 'TcLinkTo' := '	.iRawCnts	:= TIIB[Rack#2D LinearGaugeAmp (SC-HG1-ETC)]^Process Data(In)  TxPDO-Map^Response Data Unit2'}
     stYDF2: DUT_SensorHGS;
+    nYDF2 AT %Q*: UDINT;
 
     // YDF3
     {attribute 'pytmc' := '
@@ -32,6 +34,7 @@ VAR_GLOBAL
     '}
     {attribute 'TcLinkTo' := '	.iRawCnts	:= TIIB[Rack#2D LinearGaugeAmp (SC-HG1-ETC)]^Process Data(In)  TxPDO-Map^Response Data Unit3'}
     stYDF3: DUT_SensorHGS;
+    nYDF3 AT %Q*: UDINT;
 
     // Height difference btw granite shelf and detector frame.
     {attribute 'pytmc' := '

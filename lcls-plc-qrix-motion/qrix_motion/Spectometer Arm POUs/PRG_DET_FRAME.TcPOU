@@ -95,7 +95,7 @@ END_IF
 //Main.M15.bEnable := bEnableJackOff OR bEnableLevitation OR bEnableLanding OR
 //    bEnableAdjustingRoll OR bEnableAdjustingPitch OR bEnableAdjustingHeight
 //    OR bEnableMoveRelative OR bEnableMotion;
-Main.M15.bEnable := TRUE;
+//Main.M15.bEnable := TRUE;
 Main.M16.bEnable := Main.M15.bEnable;
 Main.M17.bEnable := Main.M16.bEnable;
 
@@ -137,7 +137,8 @@ ACT_4_AdjustingRoll();
 ACT_5_AdjustingPitch();
 ACT_6_AdjustingHeight();
 ACT_INIT();
-ACT_SetGaugeValue();
+//ACT_SetGaugeValue();
+bEnableSetGaugeValue := FALSE;
 ACT_MoveRelative();
 ACT_ResetError();
 ]]></ST>

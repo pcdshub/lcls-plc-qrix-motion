@@ -4145,6 +4145,25 @@ External Setpoint Generation:
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
+					<Name>GVL_Interface.QRIX_VAC_VGC_03_OPEN_LIMIT_SWITCH</Name>
+					<Comment>
+						<![CDATA[I/O Inputs from QRIX Vacuum PLC]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_Interface.QRIX_VAC_VGC_03_CLOSED_LIMIT_SWITCH</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_Interface.QRIX_VAC_VGC_03_OP_CMD</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_Interface.QRIX_VAC_VGC_03_CL_CMD</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
 					<Name>GVL_Sensor.stYDF1.iRawCnts</Name>
 					<Type>DINT</Type>
 				</Var>
@@ -8990,25 +9009,6 @@ External Setpoint Generation:
 					</Comment>
 					<Type>INT</Type>
 				</Var>
-				<Var>
-					<Name>GVL_Interface.QRIX_VAC_VGC_03_OPEN_LIMIT_SWITCH</Name>
-					<Comment>
-						<![CDATA[I/O Inputs from QRIX Vacuum PLC]]>
-					</Comment>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>GVL_Interface.QRIX_VAC_VGC_03_CLOSED_LIMIT_SWITCH</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>GVL_Interface.QRIX_VAC_VGC_03_OP_CMD</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>GVL_Interface.QRIX_VAC_VGC_03_CL_CMD</Name>
-					<Type>BOOL</Type>
-				</Var>
 			</Vars>
 			<Vars VarGrpType="2">
 				<Name>PlcTask Outputs</Name>
@@ -9478,12 +9478,39 @@ External Setpoint Generation:
 					<Type>UINT</Type>
 				</Var>
 				<Var>
+					<Name>GVL_Interface.QRIX_MOT_SDS_MMS_H_RAW_ENC_CNTS</Name>
+					<Comment>
+						<![CDATA[I/O Outputs to QRIX Vacuum PLC]]>
+					</Comment>
+					<Type>UINT</Type>
+				</Var>
+				<Var>
+					<Name>GVL_Interface.QRIX_MOT_SDS_MMS_H_FORWARD_EN</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_Interface.QRIX_MOT_SDS_MMS_H_BACKWARD_EN</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
 					<Name>GVL_PMPS.fbFastFaultOutput1.q_xFastFaultOut</Name>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
 					<Name>GVL_PMPS.fbFastFaultOutput2.q_xFastFaultOut</Name>
 					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_Sensor.nYDF1</Name>
+					<Type>UDINT</Type>
+				</Var>
+				<Var>
+					<Name>GVL_Sensor.nYDF2</Name>
+					<Type>UDINT</Type>
+				</Var>
+				<Var>
+					<Name>GVL_Sensor.nYDF3</Name>
+					<Type>UDINT</Type>
 				</Var>
 				<Var>
 					<Name>Main.M1.Axis.PlcToNc</Name>
@@ -10024,21 +10051,6 @@ External Setpoint Generation:
 					</Comment>
 					<Type>BOOL</Type>
 				</Var>
-				<Var>
-					<Name>GVL_Interface.QRIX_MOT_SDS_MMS_H_FORWARD_EN</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>GVL_Interface.QRIX_MOT_SDS_MMS_H_RAW_ENC_CNTS</Name>
-					<Comment>
-						<![CDATA[I/O Outputs to QRIX Vacuum PLC]]>
-					</Comment>
-					<Type>UINT</Type>
-				</Var>
-				<Var>
-					<Name>GVL_Interface.QRIX_MOT_SDS_MMS_H_BACKWARD_EN</Name>
-					<Type>BOOL</Type>
-				</Var>
 			</Vars>
 			<Vars VarGrpType="8">
 				<Name>PlcTask Retains</Name>
@@ -10421,6 +10433,9 @@ External Setpoint Generation:
 				<Link VarA="PlcTask Inputs^GVL_Sensor.stYDF1.iRawCnts" VarB="Process Data(In)  TxPDO-Map^Response Data Unit1" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^GVL_Sensor.stYDF2.iRawCnts" VarB="Process Data(In)  TxPDO-Map^Response Data Unit2" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^GVL_Sensor.stYDF3.iRawCnts" VarB="Process Data(In)  TxPDO-Map^Response Data Unit3" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^Main.M15.nRawEncoderULINT" VarB="Process Data(In)  TxPDO-Map^Response Data Unit1" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^Main.M16.nRawEncoderULINT" VarB="Process Data(In)  TxPDO-Map^Response Data Unit2" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^Main.M17.nRawEncoderULINT" VarB="Process Data(In)  TxPDO-Map^Response Data Unit3" AutoLink="true"/>
 				<Link VarA="PlcTask Outputs^PRG_Sensor.bSensorHeadNormalValueMode" VarB="Process Data(Out) RxPDO-Map^Normal Value Mode" AutoLink="true"/>
 				<Link VarA="PlcTask Outputs^PRG_Sensor.bSensorHeadValueMode" VarB="Process Data(Out) RxPDO-Map^Head Value Mode" AutoLink="true"/>
 			</OwnerB>
@@ -10450,14 +10465,17 @@ External Setpoint Generation:
 			</OwnerB>
 			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^M15 - YDF1">
 				<Link VarA="PlcTask Inputs^Main.M15.Axis.NcToPlc" VarB="Outputs^ToPlc"/>
+				<Link VarA="PlcTask Outputs^GVL_Sensor.nYDF1" VarB="Enc^Inputs^In^nDataIn1[0]"/>
 				<Link VarA="PlcTask Outputs^Main.M15.Axis.PlcToNc" VarB="Inputs^FromPlc"/>
 			</OwnerB>
 			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^M16 - YDF2">
 				<Link VarA="PlcTask Inputs^Main.M16.Axis.NcToPlc" VarB="Outputs^ToPlc"/>
+				<Link VarA="PlcTask Outputs^GVL_Sensor.nYDF2" VarB="Enc^Inputs^In^nDataIn1[0]"/>
 				<Link VarA="PlcTask Outputs^Main.M16.Axis.PlcToNc" VarB="Inputs^FromPlc"/>
 			</OwnerB>
 			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^M17 - YDF3">
 				<Link VarA="PlcTask Inputs^Main.M17.Axis.NcToPlc" VarB="Outputs^ToPlc"/>
+				<Link VarA="PlcTask Outputs^GVL_Sensor.nYDF3" VarB="Enc^Inputs^In^nDataIn1[0]"/>
 				<Link VarA="PlcTask Outputs^Main.M17.Axis.PlcToNc" VarB="Inputs^FromPlc"/>
 			</OwnerB>
 			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^M18 - XSDC1">
