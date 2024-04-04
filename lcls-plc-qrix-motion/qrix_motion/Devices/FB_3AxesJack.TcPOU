@@ -14,19 +14,22 @@ VAR_IN_OUT
     // whether JAck3 is an axis that does only roll or only pitch.
     stJack3Axis: ST_MotionStage;
 END_VAR
-VAR_OUTPUT
-    //old values
-    rOldReqPosition : REAL;
-    rOldReqPitch: REAL;
-    rOldReqRoll: REAL;
-    rReqPosOut: REAL;
-    rReqPitchOut: REAL;
-    rReqRollOut: REAL;
-END_VAR
 VAR_INPUT
 
+    {attribute 'pytmc' := '
+        pv: bMoveToPosition;
+        io: i;
+    '}
     bMoveToPosition: BOOL;
+    {attribute 'pytmc' := '
+        pv: bMoveToPitch;
+        io: i;
+    '}
     bMoveToPitch: BOOL;
+    {attribute 'pytmc' := '
+        pv: bMoveToRoll;
+        io: i;
+    '}
     bMoveToRoll: BOOL;
 
     {attribute 'pytmc' := '
@@ -122,6 +125,11 @@ VAR
     fbJack2: FB_StatePTPMove;
     {attribute 'pytmc' := 'pv: JACK3'}
     fbJack3: FB_StatePTPMove;
+
+    //old values
+    rOldReqPosition : REAL;
+    rOldReqPitch: REAL;
+    rOldReqRoll: REAL;
 
     (*EPICS pvs*)
     {attribute 'pytmc' := '

@@ -1328,12 +1328,11 @@ External Setpoint Generation:
 			<Velo SlowManual="0.025" FastManual="0.05" Maximum="0.05"/>
 			<PositionAreaControl Range="0.5"/>
 			<OtherSettings AllowMotionCmdToSlave="true"/>
-			<ParameterChanged>18</ParameterChanged>
 		</AxisPara>
 		<Encoder Name="Enc" EncType="29">
 			<EncPara Offset="-1" MaxCount="#xffffffff">
 				<SoftEndMinControl Enable="true" Range="-0.5"/>
-				<SoftEndMaxControl Range="21.5"/>
+				<SoftEndMaxControl Enable="true" Range="21.5"/>
 				<Inc RefSoftSyncMask="#x0000ffff"/>
 			</EncPara>
 			<Vars VarGrpType="1">
