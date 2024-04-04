@@ -10,13 +10,12 @@ VAR
     fbYGMotion: FB_3AxesJack;
 
     bInit: BOOL :=TRUE;
+
+    tonDelayUpdate: TON;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[
-
-
-IF bInit THEN
+      <ST><![CDATA[IF bInit THEN
     bInit := FALSE;
 
     Main.M7.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
@@ -36,15 +35,21 @@ IF bInit THEN
     Main.M9.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
 END_IF
 
-
-
 fbYGMotion(
-    bExecuteMotion	:= bExecuteMotion,
     bMoveOk			:= bMoveOk,
-    stJack1Axis		:= Main.M7,
-    stJack2Axis		:= Main.M8,
-    stJack3Axis		:= Main.M9,
-    i_DevName		:= 'OPT_YG'
+    stJack1Axis		:= Main.M9,
+    stJack2Axis		:= Main.M7,
+    stJack3Axis		:= Main.M8,
+    rDistanceX        := 0.24,
+    rDistanceZ        := 0.88,
+    bJack3DoesPitch   :=  FALSE,
+    rLimitPositionMax :=  8.0,
+    rLimitPositionMin := -8.0,
+    rLimitPitchMin    := -18,
+    rLimitPitchMax    :=  18,
+    rLimitRollMin     := -18,
+    rLimitRollMax     :=  18,
+    fMaxVelocity      :=  0.1,
 );]]></ST>
     </Implementation>
   </POU>

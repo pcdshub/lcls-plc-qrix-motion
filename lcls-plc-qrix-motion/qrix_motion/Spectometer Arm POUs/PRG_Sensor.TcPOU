@@ -86,10 +86,10 @@ GVL_Sensor.stYDF1.fValue		:= DINT_TO_REAL(GVL_Sensor.stYDF1.iRawCnts - GVL_Senso
 GVL_Sensor.stYDF2.fValue		:= DINT_TO_REAL(GVL_Sensor.stYDF2.iRawCnts - GVL_Sensor.stYDF2.iOffset) / GVL_Sensor.stYDF2.fCntsInEGU;
 GVL_Sensor.stYDF3.fValue		:= DINT_TO_REAL(GVL_Sensor.stYDF3.iRawCnts - GVL_Sensor.stYDF3.iOffset) / GVL_Sensor.stYDF3.fCntsInEGU;
 GVL_Sensor.stHDF.fValue			:= DINT_TO_REAL(GVL_Sensor.stHDF.iRawCnts  - GVL_Sensor.stHDF.iOffset)  / GVL_Sensor.stHDF.fCntsInEGU;
-GVL_Sensor.stGraniteP.fValue	:= INT_TO_REAL(GVL_Sensor.stGraniteP.iRawCnts - GVL_Sensor.stGraniteP.iOffset) / GVL_Sensor.stGraniteP.fCntsInEGU;
+GVL_Sensor.stGraniteP.fValue	:= -1 * INT_TO_REAL(GVL_Sensor.stGraniteP.iRawCnts - GVL_Sensor.stGraniteP.iOffset) / GVL_Sensor.stGraniteP.fCntsInEGU;
 GVL_Sensor.stGraniteR.fValue	:= INT_TO_REAL(GVL_Sensor.stGraniteR.iRawCnts - GVL_Sensor.stGraniteR.iOffset) / GVL_Sensor.stGraniteR.fCntsInEGU;
 GVL_Sensor.stFrameP.fValue		:= INT_TO_REAL(GVL_Sensor.stFrameP.iRawCnts - GVL_Sensor.stFrameP.iOffset) / GVL_Sensor.stFrameP.fCntsInEGU;
-GVL_Sensor.stFrameR.fValue		:= INT_TO_REAL(GVL_Sensor.stFrameR.iRawCnts - GVL_Sensor.stFrameR.iOffset) / GVL_Sensor.stFrameR.fCntsInEGU;
+GVL_Sensor.stFrameR.fValue		:= -1 * INT_TO_REAL(GVL_Sensor.stFrameR.iRawCnts - GVL_Sensor.stFrameR.iOffset) / GVL_Sensor.stFrameR.fCntsInEGU;
 
 GVL_Sensor.stPS1.fValue			:= INT_TO_REAL(GVL_Sensor.stPS1.iRawCnts - GVL_Sensor.stPS1.iOffset) / GVL_Sensor.stPS1.fCntsInEGU;
 GVL_Sensor.stPS2.fValue			:= INT_TO_REAL(GVL_Sensor.stPS2.iRawCnts - GVL_Sensor.stPS2.iOffset) / GVL_Sensor.stPS2.fCntsInEGU;

@@ -115,12 +115,6 @@
     <Compile Include="POUs\PRG_SSL.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Spectometer Arm POUs\FB_2AxesTrans_1.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Spectometer Arm POUs\FB_3AxesJack_1.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Spectometer Arm POUs\PRG_2Theta.TcPOU">
       <SubType>Code</SubType>
     </Compile>

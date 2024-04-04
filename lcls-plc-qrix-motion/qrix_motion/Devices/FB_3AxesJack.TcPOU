@@ -3,12 +3,31 @@
   <POU Name="FB_3AxesJack" Id="{e52940dd-3407-4f5b-86fe-1c81eaa8a8e3}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_3AxesJack
 VAR_IN_OUT
+    // Jack 1 is the axis that, when higher than Jack 2, creates a negative pitch/roll
     stJack1Axis: ST_MotionStage;
+    // Jack 2 is the axis that, when higher than Jack1, creates a positive pitch/roll
     stJack2Axis: ST_MotionStage;
+    // Jack 3 must be used as the jack that only contributes to Roll OR only contributes to Pitch
+    // Assign your axes such that this jack is the jack that can only do roll OR pitch.
+    // Jack 3 is assumed on the positive side of the pitch/roll, so to reverse the sign simply
+    // supply a negative rDistanceX or rDistanceY, the choice of which is negative depends on
+    // whether JAck3 is an axis that does only roll or only pitch.
     stJack3Axis: ST_MotionStage;
-    bExecuteMotion:BOOL ;
+END_VAR
+VAR_OUTPUT
+    //old values
+    rOldReqPosition : REAL;
+    rOldReqPitch: REAL;
+    rOldReqRoll: REAL;
+    rReqPosOut: REAL;
+    rReqPitchOut: REAL;
+    rReqRollOut: REAL;
 END_VAR
 VAR_INPUT
+
+    bMoveToPosition: BOOL;
+    bMoveToPitch: BOOL;
+    bMoveToRoll: BOOL;
 
     {attribute 'pytmc' := '
     pv: PMPS_OK;
@@ -17,6 +36,25 @@ VAR_INPUT
     field: ONAM True
     '}
     bMoveOk:BOOL;
+
+    // Desired height, pitch, and roll
+    {attribute 'pytmc' := '
+    pv: Y_REQ;
+    io: io;
+    '}
+    rReqPosition : REAL;
+
+    {attribute 'pytmc' := '
+    pv: PITCH_REQ;
+    io: io;
+    '}
+    rReqPitch : REAL;
+
+    {attribute 'pytmc' := '
+    pv: ROLL_REQ;
+    io: io;
+    '}
+    rReqRoll : REAL;
 
     (*Offsets*)
     {attribute 'pytmc' := '
@@ -37,10 +75,11 @@ VAR_INPUT
     '}
     rEncoderOffsetJack3: REAL;
 
-    (*Distance X*)
+    // The distance along the pitch axis between the two sides of jacks.
     rDistanceX: REAL := 0.24;
-    (*Distance Z*)
+    // The distance along the roll axis between the two sides of jacks.
     rDistanceZ: REAL := 0.88;
+    bJack3DoesPitch: BOOL;
 
     rLimitPositionMax: REAL := 8;
     rLimitPositionMin: REAL := -8;
@@ -49,7 +88,12 @@ VAR_INPUT
     rLimitRollMin: REAL  := -18;
     rLimitRollMax: REAL  :=  18;
 
-    i_DevName : STRING; //device name for FFO and PMPS diagnostics
+    (*Motion Parameters*)
+    fSmallDelta: LREAL := 0.01;
+    fBigDelta: LREAL := 10;
+    fMaxVelocity: LREAL := 0.1;
+    fHighAccel: LREAL := 0.8;
+    fLowAccel: LREAL := 0.1;
 
      {attribute 'pytmc' := '
     pv: Home;
@@ -68,13 +112,6 @@ VAR
     fPosJack2Stage: LREAL;
     fPosJack3Stage: LREAL;
 
-    (*Motion Parameters*)
-    fSmallDelta: LREAL := 0.01;
-    fBigDelta: LREAL := 10;
-    fMaxVelocity: LREAL := 0.1;
-    fHighAccel: LREAL := 0.8;
-    fLowAccel: LREAL := 0.1;
-
     stJack1: ST_PositionState;
     stJack2: ST_PositionState;
     stJack3: ST_PositionState;
@@ -87,25 +124,6 @@ VAR
     fbJack3: FB_StatePTPMove;
 
     (*EPICS pvs*)
-    {attribute 'pytmc' := '
-    pv: Y_REQ;
-    io: io;
-    '}
-    rReqPosition : REAL;
-
-    {attribute 'pytmc' := '
-    pv: PITCH_REQ;
-    io: io;
-    '}
-    rReqPitch : REAL;
-
-    {attribute 'pytmc' := '
-    pv: ROLL_REQ;
-    io: io;
-    '}
-    rReqRoll : REAL;
-
-
     {attribute 'pytmc' := '
     pv: Y;
     io: i;
@@ -137,14 +155,7 @@ VAR
     //Local variables
     bInit: BOOL :=true;
 
-    //old values
-    rOldReqPosition : REAL;
-    rOldReqPitch: REAL;
-    rOldReqRoll: REAL;
-
     bExecuteMotionX: BOOL;
-
-    rPosAvgJAck1_3: REAL;
 
     fPosBlock: LREAL;
     fPosClose: LREAL;
@@ -163,13 +174,16 @@ VAR
     bTest: BOOL;
 
     fbPower: MC_POWER;
+
+    y1: LREAL;
+    y2: LREAL;
+    y3: LREAL;
+    y12Ave: LREAL;
+    y12Diff: LREAL;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[// Initialize
-ACT_init();
-
-// Instantiate Function block for all the blades
+      <ST><![CDATA[// Instantiate Function block for all the blades
 ACT_Motion();
 
 //SET and GET the requested and Actual values
@@ -182,49 +196,63 @@ ACT_VirtualLimitSW();]]></ST>
       <Implementation>
         <ST><![CDATA[//check if requested center or gap has changed
 //check that the requested values are within acceptable motion range
-IF (rOldReqPosition <> rReqPosition) THEN
+IF abs(rReqPosition - rOldReqPosition) > 0.01 OR bMoveToPosition THEN
         rOldReqPosition := rReqPosition;
         bExecuteMotionX := TRUE;
         fbLogger(sMsg:='Requested new Position.', eSevr:=TcEventSeverity.Verbose);
+ELSE
+    rReqPosition := rActPosition;
+    rOldReqPosition := rReqPosition;
 END_IF
 
-IF (rOldReqPitch <> rReqPitch) THEN
+IF abs(rReqPitch - rOldReqPitch) > 0.01 OR bMoveToPitch THEN
     rOldReqPitch := rReqPitch;
     bExecuteMotionX := TRUE;
     fbLogger(sMsg:='Requested new Pitch', eSevr:=TcEventSeverity.Verbose);
+ELSE
+    rReqPitch := rActPitch;
+    rOldReqPitch := rReqPitch;
 END_IF
 
-IF (rOldReqRoll <> rReqRoll) THEN
+IF abs(rReqRoll - rOldReqRoll) > 0.01 OR bMoveToRoll THEN
     rOldReqRoll := rReqRoll;
     bExecuteMotionX := TRUE;
     fbLogger(sMsg:='Requested new Roll', eSevr:=TcEventSeverity.Verbose);
+ELSE
+    rReqRoll := rActRoll;
+    rOldReqRoll := rReqRoll;
 END_IF
 
-//Calculate requested target positions from requested gap and center
-fPosJack1Stage	:= rReqPosition + rDistanceX / 2 * rReqRoll + rDistanceZ / 2 * rReqPitch + rEncoderOffsetJack1;
-fPosJack2Stage	:= rReqPosition - rDistanceX / 2 * rReqRoll + rEncoderOffsetJack2;
-fPosJack3Stage	:= rReqPosition + rDistanceX / 2 * rReqRoll - rDistanceZ / 2 * rReqPitch + rEncoderOffsetJack3;
+//Calculate requested target positions from requested roll, pitch, and midpoint height.
+IF bJack3DoesPitch THEN
+    fPosJack1Stage := rReqPosition - rDistanceX / 2.0 * rReqRoll - rDistanceZ / 2.0 * rReqPitch + rEncoderOffsetJack1;
+    fPosJack2Stage := rReqPosition + rDistanceX / 2.0 * rReqRoll - rDistanceZ / 2.0 * rReqPitch + rEncoderOffsetJack2;
+    fPosJack3Stage := rReqPosition + rDistanceZ / 2.0 * rReqPitch + rEncoderOffsetJack3;
+ELSE
+    fPosJack1Stage := rReqPosition - rDistanceX / 2.0 * rReqRoll - rDistanceZ / 2.0 * rReqPitch + rEncoderOffsetJack1;
+    fPosJack2Stage := rReqPosition - rDistanceX / 2.0 * rReqRoll + rDistanceZ / 2.0 * rReqPitch + rEncoderOffsetJack2;
+    fPosJack3Stage := rReqPosition + rDistanceX / 2.0 * rReqRoll + rEncoderOffsetJack3;
+END_IF;
 
 //Calculate actual gap and center from actual stages positions
-rPosAvgJack1_3	:= LREAL_TO_REAL( ((stJack1Axis.stAxisStatus.fActPosition - rEncoderOffsetJack1) + (stJack3Axis.stAxisStatus.fActPosition - rEncoderOffsetJack3)) / 2 );
-rActPosition	:= LREAL_TO_REAL( ((rPosAvgJAck1_3 + (stJack2Axis.stAxisStatus.fActPosition - rEncoderOffsetJack2)) / 2 ));
-rActPitch		:= LREAL_TO_REAL( ((stJack1Axis.stAxisStatus.fActPosition - rEncoderOffsetJack1) - (stJack3Axis.stAxisStatus.fActPosition - rEncoderOffsetJack3)) / rDistanceZ);
-rActRoll		:= LREAL_TO_REAL( (rActPosition - (stJack2Axis.stAxisStatus.fActPosition - rEncoderOffsetJack2)) / (rDistanceX/2)); // mrad
-]]></ST>
-      </Implementation>
-    </Action>
-    <Action Name="ACT_Init" Id="{9d30aadd-5716-4b90-9d43-7446f24978f4}">
-      <Implementation>
-        <ST><![CDATA[
-//  init the motion stages parameters
-IF ( bInit) THEN
-    stJack1Axis.bHardwareEnable := TRUE;
-    stJack2Axis.bHardwareEnable := TRUE;
-    stJack3Axis.bHardwareEnable := TRUE;
-    stJack1Axis.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
-    stJack2Axis.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
-    stJack3Axis.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
-END_IF
+y1 := stJack1Axis.stAxisStatus.fActPosition;
+y2 := stJack2Axis.stAxisStatus.fActPosition;
+y3 := stJack3Axis.stAxisStatus.fActPosition;
+y12Ave := (y1 + y2) / 2.0;
+y12Diff := y2 - y1;
+
+// Compute the actual height of the midpoint of the three jacks.
+rActPosition := (y12Ave + y3) / 2;
+
+// Compute the roll and pitch based on the the relative position of the three jacks.
+IF bJack3DoesPitch THEN
+    rActPitch := (y3 - y12Ave) / rDistanceZ;
+    rActRoll  := y12Diff / rDistanceX;
+ELSE
+    rActRoll := (y3 - y12Ave) / rDistanceX;
+    rActPitch  := y12Diff / rDistanceZ;
+END_IF;
+
 ]]></ST>
       </Implementation>
     </Action>
@@ -234,8 +262,6 @@ END_IF
 fbJack1Stage(stMotionStage:=stJack1Axis);
 fbJack2Stage(stMotionStage:=stJack2Axis);
 fbJack3Stage(stMotionStage:=stJack3Axis);
-
-
 
 // PTP Motion for each blade
 stJack1.sName := 'Jack1';
@@ -259,12 +285,10 @@ stJack3.fVelocity := fMaxVelocity;
 stJack3.fAccel := fHighAccel;
 stJack3.fDecel := fHighAccel;
 
-
 IF (bExecuteMotionX) THEN
     fbJack1.bExecute := fbJack2.bExecute := fbJack3.bExecute := bExecuteMotionX;
     bExecuteMotionX:= FALSE;
 END_IF
-
 
 fbJack1(
     stPositionState:=stJack1,
@@ -287,18 +311,12 @@ fbJack3(
     </Action>
     <Action Name="ACT_VirtualLimitSW" Id="{19951cbb-ec0a-4f31-800e-72e65097a361}">
       <Implementation>
-        <ST><![CDATA[
-// Force set to false
-//stJack1Axis.bPowerSelf := stJack2Axis.bPowerSelf := stJack3Axis.bPowerSelf := FALSE;
-
-// Set SafetyReady flags manually
+        <ST><![CDATA[// Set SafetyReady flags manually
 stJack1Axis.bSafetyReady:= TRUE;
 stJack2Axis.bSafetyReady:= TRUE;
 stJack3Axis.bSafetyReady:= TRUE;
 
-
 // Note: FB_MotionStage calls FB_SetEnables internally that overwrites .bAllForwardEnable/.bAllBackwardEnable flags
-
 fbPower(
     Axis := stJack1Axis.Axis,
     Enable := stJack1Axis.bAllEnable,
