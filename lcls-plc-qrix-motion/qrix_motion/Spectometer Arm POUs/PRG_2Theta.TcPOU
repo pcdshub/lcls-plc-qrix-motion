@@ -21,7 +21,13 @@ END_VAR
     bInit := FALSE;
 
     // Stepper
-    Main.M2.nBrakeMode := ENUM_StageBrakeMode.IF_MOVING;
+    //Main.M2.nBrakeMode := ENUM_StageBrakeMode.IF_ENABLED;
+    // Disabled brake. It actually doesn't help with anything and we found that it
+    // is sometimes interfering with the movement of the motor. We think it might be
+    // some sort of lag in the brake disengaging that causes it to fight with the
+    // drive for a bit, which causes overcurrent faults.
+    Main.M2.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+    Main.M2.bBrakeRelease := TRUE;
     Main.M2.bHardwareEnable := TRUE;
 
     Main.M2.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
@@ -38,6 +44,7 @@ ACT_Stepper();
 // which makes this usage more standard and easier to work with using our
 // standard typhos widget.
 Main.M2.bPowerSelf := 		GVL_EPS.bESTOP // ESTOP
+                            AND GVL_Sensor.bFloating
                             AND	GVL_Sensor.stPS1.fValue > fThresholdPS1
                             AND GVL_Sensor.stPS2.fValue > fThresholdPS2
                             AND GVL_Sensor.stPS3.fValue > fThresholdPS3 // Compressed-air pressure

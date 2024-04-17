@@ -91,6 +91,9 @@
     <Compile Include="POUs\PRG_3_LOG.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\PRG_Collect_Scope_Info.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\PRG_Cryo.TcPOU">
       <SubType>Code</SubType>
     </Compile>

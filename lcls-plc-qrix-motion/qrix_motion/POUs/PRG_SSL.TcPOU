@@ -31,17 +31,42 @@ VAR
 
     nGantryTolerance: LINT;
     fAngleOffset: LREAL;
-END_VAR
 
-VAR CONSTANT
-    // Encoder reference values in counts ???!!! degrees?!!
-    // Enc Ref Vals from alignment
-    nSSL_ENC_REF : ULINT := 16171800;
-    nSPCA_ENC_REF : ULINT := 14866900;
-    nGANTRY_TOLERANCE : LINT := 100; // default gantry tolerance in encoder counts = units???
 
-END_VAR
-]]></Declaration>
+    {attribute 'pytmc' := '
+        pv: SSL2ThetaDegTol
+        io: io
+    '}
+    fAngleTolerance: REAL := 0.2;
+
+    {attribute 'pytmc' := '
+        pv: SSL2ThetaPosDiff
+        io: i
+    '}
+    fPosDiff: REAL;
+
+    fbExtSetPointGenEnable: MC_ExtSetPointGenEnable;
+    fbExtSetPointGenDisable: MC_ExtSetPointGenDisable;
+
+    {attribute 'pytmc' := '
+        pv: bRealignCouple
+        io: io
+    '}
+    bRealignCouple: BOOL;
+    {attribute 'pytmc' := '
+        pv: iRealignStep
+        io: i
+    '}
+    iRealignStep: UINT := 0;
+    {attribute 'pytmc' := '
+        pv: bRealignSpeed
+        io: io
+    '}
+    fRealignSpeed: LREAL := 0.05;
+    rtStopSSL: R_TRIG;
+    tonRealignCoupleTimeout: TON;
+    timeRealignTimeout: TIME;
+END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[
 IF ( bInit) THEN
@@ -49,7 +74,6 @@ IF ( bInit) THEN
     Main.M1.bPowerSelf := TRUE;
     Main.M1.bHardwareEnable := TRUE;
     Main.M1.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
-    //Main.M1.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
     Main.M1.nEnableMode := ENUM_StageEnableMode.NEVER;
 END_IF
 
@@ -70,9 +94,9 @@ stRenishawAbsEncMaster.Ref := LREAL_TO_ULINT((90.0 - Main.M2.stAxisParameters.fE
 stRenishawAbsEncSlave.Ref := LREAL_TO_ULINT((90.0 - Main.M1.stAxisParameters.fEncOffset) / Main.M1.stAxisParameters.fEncScaleFactorInternal * fSlaveCountsToMasterCountsScalingFactor);
 
 // Compute the gantry tolerance
-// Tolerance = 0.1 degrees TO BE CONFIRMED
+// Tolerance = X degrees
 // 0.000003001664895 deg/count => For 0.1 deg tolerance then 0.1 deg / 0.000003001664895 deg/count = 33315 counts for 0.1 deg
-nGantryTolerance := LREAL_TO_LINT(0.1 / Main.M2.stAxisParameters.fEncScaleFactorInternal);
+nGantryTolerance := LREAL_TO_LINT(fAngleTolerance / Main.M2.stAxisParameters.fEncScaleFactorInternal);
 
 fAngleOffset := LINT_TO_LREAL(
         ( ULINT_TO_LINT(stRenishawAbsEncMaster.Count) - ULINT_TO_LINT(stRenishawAbsEncMaster.Ref) ) -
@@ -80,14 +104,86 @@ fAngleOffset := LINT_TO_LREAL(
     ) * Main.M2.stAxisParameters.fEncScaleFactorInternal;
 
 // AutoCoupling
-(*fbSSLTo2ThetaCoupling(	nGantryTol 			:= nGantryTolerance,
+fbSSLTo2ThetaCoupling(	nGantryTol 			:= nGantryTolerance,
                         Master				:= Main.M2,
                         MasterEnc			:= stRenishawAbsEncMaster,
                         Slave				:= Main.M1,
                         SlaveEnc			:= stRenishawAbsEncSlave,
                         bExecuteCouple 		:= bExecuteCouple,
                         bExecuteDecouple 	:= bExecuteDecouple,
-);*)
+);
+
+// Calculate twice the expected amount of time to make the realignment move.
+timeRealignTimeout := LREAL_TO_TIME(abs(Main.M1.stAxisStatus.fActPosition - Main.M2.stAxisStatus.fActPosition) / fRealignSpeed * 2.0 * 1000.0);
+tonRealignCoupleTimeout(IN:=bRealignCouple,PT:=timeRealignTimeout);
+CASE iRealignStep OF
+    0:
+        IF bRealignCouple THEN
+            iRealignStep := 1;
+        END_IF
+    1:
+        // Step 1: If the gantry is already coupled, the motor is not busy, and it is enabled, then decouple the axes.
+        IF fbSSLTo2ThetaCoupling.bGantryAlreadyCoupled AND NOT Main.M1.bBusy AND Main.M1.bAllEnable THEN
+            bExecuteDecouple := TRUE;
+            iRealignStep := 2;
+        END_IF
+    2:
+        // Step 2: If the gantry is no longer coupled, the motor is not busy, and it is enabled, then reset the decouple command and
+        //         command the axis to align the SSL motor to the 2Theta motor. Set the bTriedToRealign bit to true to record that
+        //         the realign sequence is what commanded the move.
+        IF NOT fbSSLTo2ThetaCoupling.bGantryAlreadyCoupled AND NOT Main.M1.bBusy AND Main.M1.bAllEnable THEN
+            bExecuteDecouple := FALSE;
+            Main.M1.fPosition := Main.M2.stAxisStatus.fActPosition;
+            Main.M1.fVelocity := fRealignSpeed;
+            Main.M1.bMoveCmd := TRUE;
+            iRealignStep := 3;
+        END_IF
+    3:
+        // Step 3: Wait for the SSL motor to reach the busy status, then proceed.
+        IF Main.M1.bBusy THEN
+            iRealignStep := 4;
+        END_IF
+    4:
+        // Step 4: If the SSL motor is no longer busy (finished or errored or stopped) then recouple the SSL motor to
+        //         the 2Theta motor.
+        IF NOT Main.M1.bBusy THEN
+            bExecuteCouple := TRUE;
+            iRealignStep := 5;
+        END_IF
+    5:
+        // Step 5: If the motors are coupled again then reinitialize the bits to
+        //         get them ready for another realignment attempt in the future.
+        IF fbSSLTo2ThetaCoupling.bGantryAlreadyCoupled THEN
+            iRealignStep := 0;
+            bRealignCouple := FALSE;
+            bExecuteDecouple := FALSE;
+            bExecuteCouple := FALSE;
+            tonRealignCoupleTimeout(IN:=FALSE);
+        END_IF
+END_CASE
+
+// Timeout: In case something bad happens, have the timeout timer in place to reset the bits to guarantee we do not get
+//          stuck in this recoupling and alignment sequence.
+IF bRealignCouple AND tonRealignCoupleTimeout.Q THEN
+    iRealignStep := 0;
+    bRealignCouple := FALSE;
+    bExecuteDecouple := FALSE;
+    bExecuteCouple := FALSE;
+    tonRealignCoupleTimeout(IN:=FALSE);
+END_IF
+
+IF fbSSLTo2ThetaCoupling.bGantryAlreadyCoupled THEN
+    Main.M1.nEnableMode := ENUM_StageEnableMode.ALWAYS;
+    rtStopSSL(CLK:=Main.M2.Axis.Status.Disabled);
+    IF rtStopSSL.Q THEN
+        Main.M1.nEnableMode := ENUM_StageEnableMode.NEVER;
+        Main.M1.bEnable := FALSE;
+    END_IF
+ELSE
+    Main.M1.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+END_IF
+
+fPosDiff := Main.M1.stAxisStatus.fActPosition - Main.M2.stAxisStatus.fActPosition;
 
 fb_SSL_Motor(stMotionStage:=Main.M1);]]></ST>
     </Implementation>

@@ -92,8 +92,8 @@ END_IF
 
 // Disable M1(Servo) and M2(Stepper) if the frame is landing...
 IF NOT GVL_Sensor.bFloating THEN
-    Main.M1.bEnable := FALSE;
-    Main.M2.bEnable := FALSE;
+    //Main.M1.bEnable := FALSE;
+    //Main.M2.bEnable := FALSE;
 END_IF
 
 

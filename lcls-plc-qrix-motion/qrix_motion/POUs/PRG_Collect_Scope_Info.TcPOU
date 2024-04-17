@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="PRG_Collect_Scope_Info" Id="{92d54351-351e-48a0-9a5c-cc2f3d4f7f8b}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM PRG_Collect_Scope_Info
+VAR
+    {attribute 'TcLinkTo' := 'TIID^Device 1 (EtherCAT)^Rack#1A-01 Coupler (EK1100)^Rack#1A-04 DR_2Th (EL7047)^STM Synchron info data^Info data 2;'}
+    Theta2_Current_mA AT %I*: UINT;
+    {attribute 'TcLinkTo' := 'TIID^Device 1 (EtherCAT)^Rack#1A-01 Coupler (EK1100)^Rack#1A-04 DR_2Th (EL7047)^STM Synchron info data^Info data 1;'}
+    Theta2_Load AT %I*: UINT;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

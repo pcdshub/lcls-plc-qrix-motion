@@ -1326,7 +1326,7 @@ External Setpoint Generation:
 		<AxisPara>
 			<General UnitName="Degree"/>
 			<Velo Maximum="3"/>
-			<OtherSettings AllowMotionCmdToSlave="true"/>
+			<OtherSettings SwitchToActValuesIfDisabled="true" AllowMotionCmdToSlave="true" AllowMotionCmdToExtSetGenAxis="true" NoMotionWindow="0.1"/>
 		</AxisPara>
 		<Encoder Name="Enc" EncType="29">
 			<EncPara ScaleFactorNumerator="4.881027e-06" Offset="35.8" MaxCount="#xffffffff">
@@ -1466,6 +1466,7 @@ Drive Status 4 (manually linked):
 		<Controller Name="Ctrl" CtrType="1">
 			<CtrPara PriorControlFactor="1">
 				<PosDiffControl Range="0.5"/>
+				<PID PosDiffCoupleKcp="1"/>
 				<Observer BandWidth="20"/>
 			</CtrPara>
 		</Controller>
