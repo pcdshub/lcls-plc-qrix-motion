@@ -66,6 +66,7 @@ VAR
     rtStopSSL: R_TRIG;
     tonRealignCoupleTimeout: TON;
     timeRealignTimeout: TIME;
+    bFullyDecouple: BOOL;
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[
@@ -114,7 +115,7 @@ fbSSLTo2ThetaCoupling(	nGantryTol 			:= nGantryTolerance,
 );
 
 // Calculate twice the expected amount of time to make the realignment move.
-timeRealignTimeout := LREAL_TO_TIME(abs(Main.M1.stAxisStatus.fActPosition - Main.M2.stAxisStatus.fActPosition) / fRealignSpeed * 2.0 * 1000.0);
+timeRealignTimeout := LREAL_TO_TIME(abs(Main.M1.stAxisStatus.fActPosition - Main.M2.stAxisStatus.fActPosition) / fRealignSpeed * 3.0 * 1000.0);
 tonRealignCoupleTimeout(IN:=bRealignCouple,PT:=timeRealignTimeout);
 CASE iRealignStep OF
     0:
@@ -123,15 +124,17 @@ CASE iRealignStep OF
         END_IF
     1:
         // Step 1: If the gantry is already coupled, the motor is not busy, and it is enabled, then decouple the axes.
-        IF fbSSLTo2ThetaCoupling.bGantryAlreadyCoupled AND NOT Main.M1.bBusy AND Main.M1.bAllEnable THEN
+        IF fbSSLTo2ThetaCoupling.bGantryAlreadyCoupled AND NOT Main.M1.bBusy AND NOT Main.M1.bError THEN
             bExecuteDecouple := TRUE;
+            iRealignStep := 2;
+        ELSIF NOT fbSSLTo2ThetaCoupling.bGantryAlreadyCoupled AND NOT Main.M1.bBusy AND NOT Main.M1.bError THEN
             iRealignStep := 2;
         END_IF
     2:
         // Step 2: If the gantry is no longer coupled, the motor is not busy, and it is enabled, then reset the decouple command and
         //         command the axis to align the SSL motor to the 2Theta motor. Set the bTriedToRealign bit to true to record that
         //         the realign sequence is what commanded the move.
-        IF NOT fbSSLTo2ThetaCoupling.bGantryAlreadyCoupled AND NOT Main.M1.bBusy AND Main.M1.bAllEnable THEN
+        IF NOT fbSSLTo2ThetaCoupling.bGantryAlreadyCoupled AND NOT Main.M1.bBusy AND NOT Main.M1.bError THEN
             bExecuteDecouple := FALSE;
             Main.M1.fPosition := Main.M2.stAxisStatus.fActPosition;
             Main.M1.fVelocity := fRealignSpeed;
@@ -146,7 +149,7 @@ CASE iRealignStep OF
     4:
         // Step 4: If the SSL motor is no longer busy (finished or errored or stopped) then recouple the SSL motor to
         //         the 2Theta motor.
-        IF NOT Main.M1.bBusy THEN
+        IF NOT Main.M1.bBusy AND NOT Main.M1.bError THEN
             bExecuteCouple := TRUE;
             iRealignStep := 5;
         END_IF
@@ -159,17 +162,25 @@ CASE iRealignStep OF
             bExecuteDecouple := FALSE;
             bExecuteCouple := FALSE;
             tonRealignCoupleTimeout(IN:=FALSE);
+        ELSE
+            iRealignStep := 4;
         END_IF
 END_CASE
 
 // Timeout: In case something bad happens, have the timeout timer in place to reset the bits to guarantee we do not get
 //          stuck in this recoupling and alignment sequence.
+// If coupled axis fails to move due to axis not ready, may need to force the SSL motor ready status to TRUE. Then is allows it to move.
+// seems like some sort of bug with decoupling/coupling the axes too much.
 IF bRealignCouple AND tonRealignCoupleTimeout.Q THEN
-    iRealignStep := 0;
-    bRealignCouple := FALSE;
-    bExecuteDecouple := FALSE;
-    bExecuteCouple := FALSE;
-    tonRealignCoupleTimeout(IN:=FALSE);
+    IF fbSSLTo2ThetaCoupling.bGantryAlreadyCoupled OR Main.M1.bError THEN
+        iRealignStep := 0;
+        bRealignCouple := FALSE;
+        bExecuteDecouple := FALSE;
+        bExecuteCouple := FALSE;
+        tonRealignCoupleTimeout(IN:=FALSE);
+    ELSIF NOT Main.M1.bBusy THEN
+        bExecuteCouple := TRUE;
+    END_IF
 END_IF
 
 IF fbSSLTo2ThetaCoupling.bGantryAlreadyCoupled THEN

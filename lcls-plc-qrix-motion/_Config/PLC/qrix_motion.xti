@@ -2720,6 +2720,14 @@ External Setpoint Generation:
 					<Type>ULINT</Type>
 				</Var>
 				<Var>
+					<Name>PRG_Collect_Scope_Info.Theta2_Current_mA</Name>
+					<Type>UINT</Type>
+				</Var>
+				<Var>
+					<Name>PRG_Collect_Scope_Info.Theta2_Load</Name>
+					<Type>UINT</Type>
+				</Var>
+				<Var>
 					<Name>PRG_Cryo.fb_Cryo_ROT.fbDriveVirtual.MasterAxis.NcToPlc</Name>
 					<Type GUID="{6A65C767-34E5-42BF-AD87-E1A503EAC7BE}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 					<SubVar>
@@ -2914,14 +2922,6 @@ External Setpoint Generation:
 ]]>
 						</Comment>
 					</SubVar>
-				</Var>
-				<Var>
-					<Name>PRG_Collect_Scope_Info.Theta2_Current_mA</Name>
-					<Type>UINT</Type>
-				</Var>
-				<Var>
-					<Name>PRG_Collect_Scope_Info.Theta2_Load</Name>
-					<Type>UINT</Type>
 				</Var>
 				<Var>
 					<Name>PRG_2Theta.fb2ThetaStepper.fbDriveVirtual.MasterAxis.NcToPlc</Name>
@@ -9605,6 +9605,14 @@ External Setpoint Generation:
 					</SubVar>
 				</Var>
 				<Var>
+					<Name>PRG_Sensor.bSensorHeadValueMode</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_Sensor.bSensorHeadNormalValueMode</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
 					<Name>PRG_OPT.fbMotionRxG.fbDriveVirtual.MasterAxis.PlcToNc</Name>
 					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 				</Var>
@@ -9617,14 +9625,6 @@ External Setpoint Generation:
 					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 				</Var>
 				<Var>
-					<Name>PRG_Sensor.bSensorHeadValueMode</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>PRG_Sensor.bSensorHeadNormalValueMode</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
 					<Name>PRG_Sensor.uintTest</Name>
 					<Type>UINT</Type>
 				</Var>
@@ -9634,6 +9634,10 @@ External Setpoint Generation:
 				</Var>
 				<Var>
 					<Name>GVL_EPS.bOpenSV2</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_Interface.QRIX_MOT_SDS_MMS_H_FORWARD_EN</Name>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
@@ -9652,12 +9656,12 @@ External Setpoint Generation:
 					<Type>UINT</Type>
 				</Var>
 				<Var>
-					<Name>GVL_Interface.QRIX_MOT_SDS_MMS_H_FORWARD_EN</Name>
+					<Name>GVL_Interface.QRIX_MOT_SDS_MMS_H_BACKWARD_EN</Name>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
-					<Name>GVL_Interface.QRIX_MOT_SDS_MMS_H_BACKWARD_EN</Name>
-					<Type>BOOL</Type>
+					<Name>GVL_Sensor.nYDF1</Name>
+					<Type>UDINT</Type>
 				</Var>
 				<Var>
 					<Name>GVL_PMPS.fbFastFaultOutput1.q_xFastFaultOut</Name>
@@ -9666,10 +9670,6 @@ External Setpoint Generation:
 				<Var>
 					<Name>GVL_PMPS.fbFastFaultOutput2.q_xFastFaultOut</Name>
 					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>GVL_Sensor.nYDF1</Name>
-					<Type>UDINT</Type>
 				</Var>
 				<Var>
 					<Name>GVL_Sensor.nYDF2</Name>
