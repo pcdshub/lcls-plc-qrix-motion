@@ -10,6 +10,9 @@ VAR
     fb_SDS_ROT_H : FB_MotionStage;
     fb_SDS_H : FB_MotionStage;
     bInit : BOOl := TRUE;
+
+    EPS_SDS_H_Backward : FB_EPS;
+    EPS_SDS_H_Forward : FB_EPS;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -41,14 +44,35 @@ END_VAR
     Main.M43.bPowerSelf := TRUE;
     Main.M43.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
     Main.M43.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+    Main.M43.nHomingMode := ENUM_EpicsHomeCmd.LOW_LIMIT;
+    Main.M43.fHomePosition := 0.0;
 
     Main.M44.bHardwareEnable := TRUE;
     Main.M44.bPowerSelf := TRUE;
     Main.M44.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
     Main.M44.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+    Main.M44.nHomingMode := ENUM_EpicsHomeCmd.HOME_VIA_LOW;
+    Main.M44.fHomePosition := 1.176;
 
 END_IF
-//EPS??
+
+GVL_Interface.QRIX_MOT_SDS_MMS_H_FORWARD_EN := Main.M44.bLimitForwardEnable;
+GVL_Interface.QRIX_MOT_SDS_MMS_H_BACKWARD_EN := Main.M44.bLimitBackwardEnable;
+
+
+//EPS
+
+// Sample Delivery System
+// Disable movement in negative direction.
+EPS_SDS_H_Backward(eps:=Main.M44.stEPSBackwardEnable);
+EPS_SDS_H_Backward.setDescription('NEGATIVE MOTION ALLOWED UNTIL LIMIT'); // SET DESCRIPTION FOR BYTE INDICATOR LABELS
+
+// Disable movement in positive direction.
+EPS_SDS_H_Forward(eps:=Main.M44.stEPSForwardEnable);
+EPS_SDS_H_Forward.setDescription('POSITIVE MOTION REQ: NA|NA|NA|NA|NA|NA| VGC Valve Not Closed | VGC Valve Open'); // SET DESCRIPTION FOR BYTE INDICATOR LABELS
+// Sample Delivery Arm can Extend if the VGC valve is open and not closed.
+EPS_SDS_H_Forward.setBit(nBits:= 1, bValue:=NOT GVL_Interface.QRIX_VAC_VGC_03_CLOSED_LIMIT_SWITCH);
+EPS_SDS_H_Forward.setBit(nBits:= 0, bValue:=GVL_Interface.QRIX_VAC_VGC_03_OPEN_LIMIT_SWITCH);
 
 fb_SDS_X(stMotionStage:=Main.M39);
 fb_SDS_Y(stMotionStage:=Main.M40);

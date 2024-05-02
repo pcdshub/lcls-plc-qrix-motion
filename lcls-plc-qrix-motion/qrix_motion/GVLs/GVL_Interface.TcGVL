@@ -10,12 +10,8 @@ VAR_GLOBAL
     '}
     QRIX_MOT_SDS_MMS_H_RAW_ENC_CNTS AT %Q* : UINT;
 
-    {attribute 'TcLinkTo' :=  'TIIB[EL7047_04_12]^STM Status^Status^Digital input 1
-    '}
     QRIX_MOT_SDS_MMS_H_FORWARD_EN AT %Q* : BOOL;
 
-    {attribute 'TcLinkTo' :=  'TIIB[EL7047_04_12]^STM Status^Status^Digital input 2
-    '}
     QRIX_MOT_SDS_MMS_H_BACKWARD_EN AT %Q* : BOOL;
 
     (*I/O Inputs from QRIX Vacuum PLC*)
