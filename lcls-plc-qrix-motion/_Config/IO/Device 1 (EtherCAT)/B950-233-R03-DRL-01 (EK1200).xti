@@ -16,11 +16,11 @@
 		<Box File="EL6070_00_04.xti" Id="4">
 			<EtherCAT PortABoxInfo="#x01000003"/>
 		</Box>
-		<Box File="EK1521_00_05.xti" Id="5">
+		<Box File="Term 140 (EK1521-0010).xti" Id="140">
 			<EtherCAT PortABoxInfo="#x01000004"/>
 		</Box>
 		<Box File="Term 141 (EL6692).xti" Id="141">
-			<EtherCAT PortABoxInfo="#x02000005"/>
+			<EtherCAT PortABoxInfo="#x0200008c"/>
 		</Box>
 		<Box File="EK1110_00_06.xti" Id="6">
 			<EtherCAT PortABoxInfo="#x0100008d"/>

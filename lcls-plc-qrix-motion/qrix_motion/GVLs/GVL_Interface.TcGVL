@@ -6,12 +6,16 @@ VAR_GLOBAL
 
     (*I/O Outputs to QRIX Vacuum PLC*)
 
-    {attribute 'TcLinkTo' :=  'TIIB[EL5101_05_03]^ENC Status compact^Counter value
+    {attribute 'TcLinkTo' :=  'TIID^Device 1 (EtherCAT)^B950-233-R03-DRL-01 (EK1200)^Term 141 (EL6692)^IO Outputs^QRIX_MOT_SDS_MMS_H_RAW_ENC_CNTS
     '}
     QRIX_MOT_SDS_MMS_H_RAW_ENC_CNTS AT %Q* : UINT;
 
+    {attribute 'TcLinkTo' :=  'TIID^Device 1 (EtherCAT)^B950-233-R03-DRL-01 (EK1200)^Term 141 (EL6692)^IO Outputs^QRIX_MOT_SDS_MMS_H_FORWARD_EN
+    '}
     QRIX_MOT_SDS_MMS_H_FORWARD_EN AT %Q* : BOOL;
 
+    {attribute 'TcLinkTo' :=  'TIID^Device 1 (EtherCAT)^B950-233-R03-DRL-01 (EK1200)^Term 141 (EL6692)^IO Outputs^QRIX_MOT_SDS_MMS_H_BACKWARD_EN
+    '}
     QRIX_MOT_SDS_MMS_H_BACKWARD_EN AT %Q* : BOOL;
 
     (*I/O Inputs from QRIX Vacuum PLC*)

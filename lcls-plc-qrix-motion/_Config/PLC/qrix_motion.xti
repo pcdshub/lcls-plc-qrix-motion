@@ -4300,6 +4300,69 @@ External Setpoint Generation:
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
+					<Name>GVL_Interface.QRIX_VAC_VGC_03_OPEN_LIMIT_SWITCH</Name>
+					<Comment>
+						<![CDATA[I/O Inputs from QRIX Vacuum PLC]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_Interface.QRIX_VAC_VGC_03_CLOSED_LIMIT_SWITCH</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_Interface.QRIX_VAC_VGC_03_OP_CMD</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_Interface.QRIX_VAC_VGC_03_CL_CMD</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_Sensor.stYDF1.iRawCnts</Name>
+					<Type>DINT</Type>
+				</Var>
+				<Var>
+					<Name>GVL_Sensor.stYDF2.iRawCnts</Name>
+					<Type>DINT</Type>
+				</Var>
+				<Var>
+					<Name>GVL_Sensor.stYDF3.iRawCnts</Name>
+					<Type>DINT</Type>
+				</Var>
+				<Var>
+					<Name>GVL_Sensor.stHDF.iRawCnts</Name>
+					<Type>DINT</Type>
+				</Var>
+				<Var>
+					<Name>GVL_Sensor.stGraniteP.iRawCnts</Name>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>GVL_Sensor.stGraniteR.iRawCnts</Name>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>GVL_Sensor.stFrameP.iRawCnts</Name>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>GVL_Sensor.stFrameR.iRawCnts</Name>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>GVL_Sensor.stPS1.iRawCnts</Name>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>GVL_Sensor.stPS2.iRawCnts</Name>
+					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>GVL_Sensor.stPS3.iRawCnts</Name>
+					<Type>INT</Type>
+				</Var>
+				<Var>
 					<Name>Main.M1.Axis.NcToPlc</Name>
 					<Type GUID="{6A65C767-34E5-42BF-AD87-E1A503EAC7BE}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 					<SubVar>
@@ -9101,69 +9164,6 @@ External Setpoint Generation:
 					</Comment>
 					<Type>INT</Type>
 				</Var>
-				<Var>
-					<Name>GVL_Interface.QRIX_VAC_VGC_03_OPEN_LIMIT_SWITCH</Name>
-					<Comment>
-						<![CDATA[I/O Inputs from QRIX Vacuum PLC]]>
-					</Comment>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>GVL_Interface.QRIX_VAC_VGC_03_CLOSED_LIMIT_SWITCH</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>GVL_Interface.QRIX_VAC_VGC_03_OP_CMD</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>GVL_Interface.QRIX_VAC_VGC_03_CL_CMD</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>GVL_Sensor.stYDF1.iRawCnts</Name>
-					<Type>DINT</Type>
-				</Var>
-				<Var>
-					<Name>GVL_Sensor.stYDF2.iRawCnts</Name>
-					<Type>DINT</Type>
-				</Var>
-				<Var>
-					<Name>GVL_Sensor.stYDF3.iRawCnts</Name>
-					<Type>DINT</Type>
-				</Var>
-				<Var>
-					<Name>GVL_Sensor.stHDF.iRawCnts</Name>
-					<Type>DINT</Type>
-				</Var>
-				<Var>
-					<Name>GVL_Sensor.stGraniteP.iRawCnts</Name>
-					<Type>INT</Type>
-				</Var>
-				<Var>
-					<Name>GVL_Sensor.stGraniteR.iRawCnts</Name>
-					<Type>INT</Type>
-				</Var>
-				<Var>
-					<Name>GVL_Sensor.stFrameP.iRawCnts</Name>
-					<Type>INT</Type>
-				</Var>
-				<Var>
-					<Name>GVL_Sensor.stFrameR.iRawCnts</Name>
-					<Type>INT</Type>
-				</Var>
-				<Var>
-					<Name>GVL_Sensor.stPS1.iRawCnts</Name>
-					<Type>INT</Type>
-				</Var>
-				<Var>
-					<Name>GVL_Sensor.stPS2.iRawCnts</Name>
-					<Type>INT</Type>
-				</Var>
-				<Var>
-					<Name>GVL_Sensor.stPS3.iRawCnts</Name>
-					<Type>INT</Type>
-				</Var>
 			</Vars>
 			<Vars VarGrpType="2">
 				<Name>PlcTask Outputs</Name>
@@ -9639,6 +9639,45 @@ External Setpoint Generation:
 				<Var>
 					<Name>GVL_Interface.QRIX_MOT_SDS_MMS_H_FORWARD_EN</Name>
 					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_EPS.iServoTorqueLimitPositive</Name>
+					<Type>UINT</Type>
+				</Var>
+				<Var>
+					<Name>GVL_EPS.iServoTorqueLimitNegative</Name>
+					<Type>UINT</Type>
+				</Var>
+				<Var>
+					<Name>GVL_Interface.QRIX_MOT_SDS_MMS_H_RAW_ENC_CNTS</Name>
+					<Comment>
+						<![CDATA[I/O Outputs to QRIX Vacuum PLC]]>
+					</Comment>
+					<Type>UINT</Type>
+				</Var>
+				<Var>
+					<Name>GVL_Interface.QRIX_MOT_SDS_MMS_H_BACKWARD_EN</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_Sensor.nYDF1</Name>
+					<Type>UDINT</Type>
+				</Var>
+				<Var>
+					<Name>GVL_PMPS.fbFastFaultOutput1.q_xFastFaultOut</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_PMPS.fbFastFaultOutput2.q_xFastFaultOut</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_Sensor.nYDF2</Name>
+					<Type>UDINT</Type>
+				</Var>
+				<Var>
+					<Name>GVL_Sensor.nYDF3</Name>
+					<Type>UDINT</Type>
 				</Var>
 				<Var>
 					<Name>Main.M1.Axis.PlcToNc</Name>
@@ -10178,45 +10217,6 @@ External Setpoint Generation:
 						<![CDATA[ NC Brake Output: TRUE to release brake]]>
 					</Comment>
 					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>GVL_EPS.iServoTorqueLimitPositive</Name>
-					<Type>UINT</Type>
-				</Var>
-				<Var>
-					<Name>GVL_EPS.iServoTorqueLimitNegative</Name>
-					<Type>UINT</Type>
-				</Var>
-				<Var>
-					<Name>GVL_Interface.QRIX_MOT_SDS_MMS_H_RAW_ENC_CNTS</Name>
-					<Comment>
-						<![CDATA[I/O Outputs to QRIX Vacuum PLC]]>
-					</Comment>
-					<Type>UINT</Type>
-				</Var>
-				<Var>
-					<Name>GVL_Interface.QRIX_MOT_SDS_MMS_H_BACKWARD_EN</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>GVL_Sensor.nYDF1</Name>
-					<Type>UDINT</Type>
-				</Var>
-				<Var>
-					<Name>GVL_PMPS.fbFastFaultOutput1.q_xFastFaultOut</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>GVL_PMPS.fbFastFaultOutput2.q_xFastFaultOut</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>GVL_Sensor.nYDF2</Name>
-					<Type>UDINT</Type>
-				</Var>
-				<Var>
-					<Name>GVL_Sensor.nYDF3</Name>
-					<Type>UDINT</Type>
 				</Var>
 			</Vars>
 			<Vars VarGrpType="8">

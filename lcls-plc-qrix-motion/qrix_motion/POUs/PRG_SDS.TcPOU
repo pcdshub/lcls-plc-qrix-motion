@@ -56,9 +56,9 @@ END_VAR
 
 END_IF
 
+GVL_Interface.QRIX_MOT_SDS_MMS_H_RAW_ENC_CNTS := Main.M44.nRawEncoderUINT;
 GVL_Interface.QRIX_MOT_SDS_MMS_H_FORWARD_EN := Main.M44.bLimitForwardEnable;
 GVL_Interface.QRIX_MOT_SDS_MMS_H_BACKWARD_EN := Main.M44.bLimitBackwardEnable;
-
 
 //EPS
 
