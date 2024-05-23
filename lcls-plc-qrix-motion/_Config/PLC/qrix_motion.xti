@@ -10375,7 +10375,6 @@ External Setpoint Generation:
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-03_SDS^EK1122_04_17^B950-233-K2S13-DRL-01^EL5101_05_03">
 				<Link VarA="PlcTask Inputs^Main.M44.nRawEncoderUINT" VarB="ENC Status compact^Counter value" AutoLink="true"/>
-				<Link VarA="PlcTask Outputs^GVL_Interface.QRIX_MOT_SDS_MMS_H_RAW_ENC_CNTS" VarB="ENC Status compact^Counter value" AutoLink="true"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-03_SDS^EL1004_04_04">
 				<Link VarA="PlcTask Inputs^Main.M39.bHome" VarB="Channel 1^Input" AutoLink="true"/>

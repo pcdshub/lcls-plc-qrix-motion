@@ -39,7 +39,7 @@ fb2AxesXPM(	i_DevName		:=	'OPT_XPM',
             bExecuteMotion	:=	bExecuteMotionXPM,
             io_fbFFHWO		:=	GVL_PMPS.fbFastFaultOutput1,
             fbArbiter		:=	GVL_PMPS.fbArbiter,
-            rDistance		:=	rDistance,//0.4, // 0.4m
+            rDistance		:=	rDistance,//actually 0.48m?? //0.4, // 0.4m
             bMoveOk			:= bMoveOkXPM
 );
 ]]></ST>

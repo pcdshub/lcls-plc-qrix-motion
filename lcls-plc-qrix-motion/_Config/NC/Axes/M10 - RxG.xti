@@ -1331,9 +1331,9 @@ External Setpoint Generation:
 			<OtherSettings AllowMotionCmdToSlave="true"/>
 		</AxisPara>
 		<Encoder Name="Enc" EncType="19">
-			<EncPara ScaleFactorNumerator="1.462918079" ScaleFactorDenominator="1000000" Offset="2351.695" MaxCount="#xffffffff">
-				<SoftEndMinControl Enable="true" Range="-17.5"/>
-				<SoftEndMaxControl Enable="true" Range="87.5"/>
+			<EncPara ScaleFactorNumerator="1.462918079" ScaleFactorDenominator="1000000" Offset="2352.4301" MaxCount="#xffffffff">
+				<SoftEndMinControl Enable="true" Range="-16.8"/>
+				<SoftEndMaxControl Enable="true" Range="88.2"/>
 				<Inc RefSoftSyncMask="#x0000ffff"/>
 			</EncPara>
 			<Vars VarGrpType="1">

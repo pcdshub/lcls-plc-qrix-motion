@@ -24,7 +24,7 @@ VAR_INPUT
     rEncoderOffsetSecound: REAL;
 
     (*Distance between 1st stage and 2nd stage*)
-    rDistance: REAL := 0.40;
+    rDistance: REAL := 0.48;
 
     i_DevName : STRING; //device name for FFO and PMPS diagnostics
 
