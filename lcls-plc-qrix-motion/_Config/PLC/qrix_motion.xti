@@ -1988,6 +1988,17 @@ External Setpoint Generation:
 					</SubVar>
 				</Var>
 				<Var>
+					<Name>PRG_SSL.bLimitBackwardEnable</Name>
+					<Comment>
+						<![CDATA[EPS Limit switches]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_SSL.bLimitForwardEnable</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
 					<Name>PRG_LAS.fbLAS_VIS_PositionState1D.astMotionStageMax[1].Axis.NcToPlc</Name>
 					<Type GUID="{6A65C767-34E5-42BF-AD87-E1A503EAC7BE}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 					<SubVar>
@@ -2674,17 +2685,6 @@ External Setpoint Generation:
 					</SubVar>
 				</Var>
 				<Var>
-					<Name>PRG_SSL.bLimitBackwardEnable</Name>
-					<Comment>
-						<![CDATA[EPS Limit switches]]>
-					</Comment>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>PRG_SSL.bLimitForwardEnable</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
 					<Name>PRG_SSL.fbSSLTo2ThetaCoupling.gantry_diff_limit.PEnc.Count</Name>
 					<Comment>
 						<![CDATA[ Connect to encoder "Position" input]]>
@@ -2718,14 +2718,6 @@ External Setpoint Generation:
 						<![CDATA[ Connect to encoder "Position" input]]>
 					</Comment>
 					<Type>ULINT</Type>
-				</Var>
-				<Var>
-					<Name>PRG_Collect_Scope_Info.Theta2_Current_mA</Name>
-					<Type>UINT</Type>
-				</Var>
-				<Var>
-					<Name>PRG_Collect_Scope_Info.Theta2_Load</Name>
-					<Type>UINT</Type>
 				</Var>
 				<Var>
 					<Name>PRG_Cryo.fb_Cryo_ROT.fbDriveVirtual.MasterAxis.NcToPlc</Name>
@@ -2922,6 +2914,14 @@ External Setpoint Generation:
 ]]>
 						</Comment>
 					</SubVar>
+				</Var>
+				<Var>
+					<Name>PRG_Collect_Scope_Info.Theta2_Current_mA</Name>
+					<Type>UINT</Type>
+				</Var>
+				<Var>
+					<Name>PRG_Collect_Scope_Info.Theta2_Load</Name>
+					<Type>UINT</Type>
 				</Var>
 				<Var>
 					<Name>PRG_2Theta.fb2ThetaStepper.fbDriveVirtual.MasterAxis.NcToPlc</Name>
@@ -4145,6 +4145,10 @@ External Setpoint Generation:
 					</SubVar>
 				</Var>
 				<Var>
+					<Name>PRG_Sensor.bResetSensorMode</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
 					<Name>PRG_OPT.fbMotionRxG.fbDriveVirtual.MasterAxis.NcToPlc</Name>
 					<Type GUID="{6A65C767-34E5-42BF-AD87-E1A503EAC7BE}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 					<SubVar>
@@ -4290,10 +4294,6 @@ External Setpoint Generation:
 ]]>
 						</Comment>
 					</SubVar>
-				</Var>
-				<Var>
-					<Name>PRG_Sensor.bResetSensorMode</Name>
-					<Type>BOOL</Type>
 				</Var>
 				<Var>
 					<Name>GVL_EPS.bESTOP</Name>
