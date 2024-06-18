@@ -25,6 +25,12 @@
     <Compile Include="Devices\FB_3AxesJack.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Devices\FB_MeasureReferenceVelocity.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Devices\FB_ReadCoE.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Devices\FB_Slits.TcPOU">
       <SubType>Code</SubType>
     </Compile>
@@ -173,6 +179,10 @@
     <PlaceholderReference Include="PMPS">
       <DefaultResolution>PMPS, * (SLAC - LCLS)</DefaultResolution>
       <Namespace>PMPS</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="Tc2_EtherCAT">
+      <DefaultResolution>Tc2_EtherCAT, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc2_EtherCAT</Namespace>
     </PlaceholderReference>
     <PlaceholderReference Include="Tc2_MC2">
       <DefaultResolution>Tc2_MC2, * (Beckhoff Automation GmbH)</DefaultResolution>

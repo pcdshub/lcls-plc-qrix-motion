@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="FB_ReadCoE" Id="{2a5ee850-af09-41cc-80fc-1c9eff8bf19e}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_ReadCoE
+VAR_INPUT
+    bExecute: BOOL;
+    pBuffer: PVOID; // ADR(buffer)
+    sNetId: T_AmsNetId; // Have to be entered
+    nSlaveAddr: UINT; // Have to be entered
+    nDesiredCoEIndex: WORD; // Ex: CoE 16#9000 (9000:1)
+    nDesiredCoESubIndex: Byte; // Ex: CoE 1 (9000:1)
+    nBufferLength: UDINT; // number of bytes in the CoE to be read
+END_VAR
+VAR_OUTPUT
+    bBusy: BOOL;
+    bError: BOOL;
+END_VAR
+VAR
+    fbCoERead: FB_EcCoESdoRead; // Function Block for reading from CoE
+    nState: INT := -1; // RW-status
+    rtExecute: R_TRIG;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+CASE nState OF
+-1:
+    rtExecute(CLK:=bExecute);
+    IF rtExecute.Q THEN
+        nState := 0;
+        bBusy := TRUE;
+        bError := FALSE;
+    ELSE
+        bBusy := FALSE;
+    END_IF
+0:
+   // Read entry
+    fbCoERead(
+       sNetId:= sNetId,
+       nSlaveAddr:= nSlaveAddr,
+       nSubIndex:= nDesiredCoeSubIndex,
+       nIndex:= nDesiredCoEIndex,
+       pDstBuf:= pBuffer,
+       cbBufLen:= nBufferLength,
+       bExecute:= FALSE,
+       tTimeout:= T#1S
+   );
+   fbCoERead(
+       sNetId:= sNetId,
+       nSlaveAddr:= nSlaveAddr,
+       nSubIndex:= nDesiredCoeSubIndex,
+       nIndex:= nDesiredCoEIndex,
+       pDstBuf:= pBuffer,
+       cbBufLen:= nBufferLength,
+       bExecute:= TRUE,
+       tTimeout:= T#1S
+   );
+   nState := nState + 1; // Next state
+1: // Execute CoE read until done
+    fbCoERead(
+       sNetId:= sNetId,
+       nSlaveAddr:= nSlaveAddr,
+       nSubIndex:= nDesiredCoeSubIndex,
+       nIndex:= nDesiredCoEIndex,
+       pDstBuf:= pBuffer,
+       cbBufLen:= nBufferLength,
+       bExecute:= TRUE,
+       tTimeout:= T#1S
+    );
+    IF fbCoERead.bError THEN
+      nState := 100;     // Error case
+    ELSE
+        IF NOT fbCoERead.bBusy THEN
+            nState := -1;    // Done
+            bBusy := FALSE;
+        END_IF
+    END_IF
+100: // Error handling..
+    nState := -1;
+    bBusy := FALSE;
+    bError := TRUE;
+END_CASE
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

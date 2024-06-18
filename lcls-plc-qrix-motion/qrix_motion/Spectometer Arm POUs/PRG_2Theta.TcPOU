@@ -7,7 +7,6 @@ VAR
     fbPower_AxisM2:  MC_Power;
     fb2ThetaStepper : FB_MotionStage;
     bMoveOk: BOOL;
-
 END_VAR
 
 VAR CONSTANT

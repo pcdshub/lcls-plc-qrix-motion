@@ -84,6 +84,12 @@ VAR
         io: io
     '}
     rJackingAccel: LREAL := 0.005;
+
+    {attribute 'pytmc' := '
+        pv: QRIX:SA:bStopAxes
+        io: io
+    '}
+    bStopAxes: BOOL;
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[IF bInit THEN
@@ -109,7 +115,7 @@ END_IF;
 // FRAME JACKS EPS RESTRICTIONS
 // YDF1 Disable movement in upward (positive/forward) direction.
 EPS_YDF1_Up(eps:=Main.M15.stEPSForwardEnable);
-EPS_YDF1_Up.setDescription('UPWARD MOVEMENT ALLOWED IF: N/A | N/A | N/A | N/A | N/A | N/A | YDF1 - YDF2 < 5mm | YDF1 - YDF3 < 5mm |'); // SET DESCRIPTION FOR BYTE INDICATOR LABELS
+EPS_YDF1_Up.setDescription('UPWARD MOVEMENT ALLOWED IF: YDF1 - YDF2 < 5mm AND YDF1 - YDF3 < 5mm |'); // SET DESCRIPTION FOR BYTE INDICATOR LABELS
 // Prevent YDF1 from rising any more if it is more than fPositionMaxDeviation above YDF2
 EPS_YDF1_Up.setBit(nBits:= 1, bValue:= Main.M15.stAxisStatus.fActPosition - Main.M16.stAxisStatus.fActPosition < fPositionMaxDeviation);
 // Prevent YDF1 from rising any more if it is more than fPositionMaxDeviation above YDF3
@@ -117,7 +123,7 @@ EPS_YDF1_Up.setBit(nBits:= 0, bValue:= Main.M15.stAxisStatus.fActPosition - Main
 
 // YDF1 Disable movement in downward (negative/downward) direction.
 EPS_YDF1_Down(eps:=Main.M15.stEPSBackwardEnable);
-EPS_YDF1_Down.setDescription('DOWNWARD MOVEMENT ALLOWED IF: N/A | N/A | N/A | N/A | N/A | N/A | YDF1 - YDF2 > -5mm | YDF1 - YDF3 > -5mm |'); // SET DESCRIPTION FOR BYTE INDICATOR LABELS
+EPS_YDF1_Down.setDescription('DOWNWARD MOVEMENT ALLOWED IF: YDF1 - YDF2 > -5mm AND YDF1 - YDF3 > -5mm |'); // SET DESCRIPTION FOR BYTE INDICATOR LABELS
 // Prevent YDF1 from lowering any more if it is more than fPositionMaxDeviation below YDF2
 EPS_YDF1_Down.setBit(nBits:= 1, bValue:= Main.M15.stAxisStatus.fActPosition - Main.M16.stAxisStatus.fActPosition > -fPositionMaxDeviation);
 // Prevent YDF1 from lowering any more if it is more than fPositionMaxDeviation below YDF3
@@ -125,7 +131,7 @@ EPS_YDF1_Down.setBit(nBits:= 0, bValue:= Main.M15.stAxisStatus.fActPosition - Ma
 
 // YDF2 Disable movement in upward (positive/forward) direction.
 EPS_YDF2_Up(eps:=Main.M16.stEPSForwardEnable);
-EPS_YDF2_Up.setDescription('UPWARD MOVEMENT ALLOWED IF: N/A | N/A | N/A | N/A | N/A | N/A | YDF2 - YDF1 < 5mm | YDF2 - YDF3 < 5mm |'); // SET DESCRIPTION FOR BYTE INDICATOR LABELS
+EPS_YDF2_Up.setDescription('UPWARD MOVEMENT ALLOWED IF:  YDF2 - YDF1 < 5mm AND YDF2 - YDF3 < 5mm |'); // SET DESCRIPTION FOR BYTE INDICATOR LABELS
 // Prevent YDF2 from rising any more if it is more than fPositionMaxDeviation above YDF1
 EPS_YDF2_Up.setBit(nBits:= 1, bValue:= Main.M16.stAxisStatus.fActPosition - Main.M15.stAxisStatus.fActPosition < fPositionMaxDeviation);
 // Prevent YDF2 from rising any more if it is more than fPositionMaxDeviation above YDF3
@@ -133,7 +139,7 @@ EPS_YDF2_Up.setBit(nBits:= 0, bValue:= Main.M16.stAxisStatus.fActPosition - Main
 
 // YDF2 Disable movement in downward (negative/downward) direction.
 EPS_YDF2_Down(eps:=Main.M16.stEPSBackwardEnable);
-EPS_YDF2_Down.setDescription('DOWNWARD MOVEMENT ALLOWED IF: N/A | N/A | N/A | N/A | N/A | N/A | YDF2 - YDF1 > -5mm | YDF2 - YDF3 > -5mm |'); // SET DESCRIPTION FOR BYTE INDICATOR LABELS
+EPS_YDF2_Down.setDescription('DOWNWARD MOVEMENT ALLOWED IF: YDF2 - YDF1 > -5mm AND YDF2 - YDF3 > -5mm |'); // SET DESCRIPTION FOR BYTE INDICATOR LABELS
 // Prevent YDF2 from lowering any more if it is more than fPositionMaxDeviation below YDF1
 EPS_YDF2_Down.setBit(nBits:= 1, bValue:= Main.M16.stAxisStatus.fActPosition - Main.M15.stAxisStatus.fActPosition > -fPositionMaxDeviation);
 // Prevent YDF2 from lowering any more if it is more than fPositionMaxDeviation below YDF3
@@ -141,7 +147,7 @@ EPS_YDF2_Down.setBit(nBits:= 0, bValue:= Main.M16.stAxisStatus.fActPosition - Ma
 
 // YDF3 Disable movement in upward (positive/forward) direction.
 EPS_YDF3_Up(eps:=Main.M17.stEPSForwardEnable);
-EPS_YDF3_Up.setDescription('UPWARD MOVEMENT ALLOWED IF: N/A | N/A | N/A | N/A | N/A | N/A | YDF3 - YDF2 < 5mm | YDF3 - YDF1 < 5mm |'); // SET DESCRIPTION FOR BYTE INDICATOR LABELS
+EPS_YDF3_Up.setDescription('UPWARD MOVEMENT ALLOWED IF: YDF3 - YDF2 < 5mm AND YDF3 - YDF1 < 5mm |'); // SET DESCRIPTION FOR BYTE INDICATOR LABELS
 // Prevent YDF3 from rising any more if it is more than fPositionMaxDeviation above YDF2
 EPS_YDF3_Up.setBit(nBits:= 1, bValue:= Main.M17.stAxisStatus.fActPosition - Main.M16.stAxisStatus.fActPosition < fPositionMaxDeviation);
 // Prevent YDF3 from rising any more if it is more than fPositionMaxDeviation above YDF1
@@ -149,7 +155,7 @@ EPS_YDF3_Up.setBit(nBits:= 0, bValue:= Main.M17.stAxisStatus.fActPosition - Main
 
 // YDF3 Disable movement in downward (negative/downward) direction.
 EPS_YDF3_Down(eps:=Main.M17.stEPSBackwardEnable);
-EPS_YDF3_Down.setDescription('DOWNWARD MOVEMENT ALLOWED IF: N/A | N/A | N/A | N/A | N/A | N/A | YDF3 - YDF2 > -5mm | YDF3 - YDF1 > -5mm |'); // SET DESCRIPTION FOR BYTE INDICATOR LABELS
+EPS_YDF3_Down.setDescription('DOWNWARD MOVEMENT ALLOWED IF: YDF3 - YDF2 > -5mm AND YDF3 - YDF1 > -5mm |'); // SET DESCRIPTION FOR BYTE INDICATOR LABELS
 // Prevent YDF3 from lowering any more if it is more than fPositionMaxDeviation below YDF2
 EPS_YDF3_Down.setBit(nBits:= 1, bValue:= Main.M17.stAxisStatus.fActPosition - Main.M16.stAxisStatus.fActPosition > -fPositionMaxDeviation);
 // Prevent YDF3 from lowering any more if it is more than fPositionMaxDeviation below YDF1
@@ -200,7 +206,19 @@ fbYDFMotion(
     rLimitRollMax     :=  10,
     fMaxVelocity      :=  rJackingSpeed,
     fHighAccel        :=  rJackingAccel
-);]]></ST>
+);
+
+IF bStopAxes THEN
+    Main.M1.bExecute := FALSE;
+    Main.M2.bExecute := FALSE;
+    Main.M7.bExecute := FALSE;
+    Main.M8.bExecute := FALSE;
+    Main.M9.bExecute := FALSE;
+    Main.M15.bExecute := FALSE;
+    Main.M16.bExecute := FALSE;
+    Main.M17.bExecute := FALSE;
+    bStopAxes := FALSE;
+END_IF]]></ST>
     </Implementation>
     <Action Name="ACT_1_JACK_OFF" Id="{09afe1fc-0e24-49bc-b799-7093c0737ca7}">
       <Implementation>
@@ -528,6 +546,8 @@ IF bResetError THEN
     fbYDFMotion.rReqPosition := fbYDFMotion.rActPosition;
     fbYDFMotion.rReqPitch := fbYDFMotion.rActPitch;
     fbYDFMotion.rReqRoll := fbYDFMotion.rActRoll;
+
+    bStopAxes := TRUE;
 END_IF;]]></ST>
       </Implementation>
     </Action>

@@ -1995,10 +1995,6 @@ External Setpoint Generation:
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
-					<Name>PRG_SSL.bLimitForwardEnable</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
 					<Name>PRG_LAS.fbLAS_VIS_PositionState1D.astMotionStageMax[1].Axis.NcToPlc</Name>
 					<Type GUID="{6A65C767-34E5-42BF-AD87-E1A503EAC7BE}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 					<SubVar>
@@ -2683,6 +2679,10 @@ External Setpoint Generation:
 ]]>
 						</Comment>
 					</SubVar>
+				</Var>
+				<Var>
+					<Name>PRG_SSL.bLimitForwardEnable</Name>
+					<Type>BOOL</Type>
 				</Var>
 				<Var>
 					<Name>PRG_SSL.fbSSLTo2ThetaCoupling.gantry_diff_limit.PEnc.Count</Name>
@@ -4145,10 +4145,6 @@ External Setpoint Generation:
 					</SubVar>
 				</Var>
 				<Var>
-					<Name>PRG_Sensor.bResetSensorMode</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
 					<Name>PRG_OPT.fbMotionRxG.fbDriveVirtual.MasterAxis.NcToPlc</Name>
 					<Type GUID="{6A65C767-34E5-42BF-AD87-E1A503EAC7BE}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 					<SubVar>
@@ -4294,6 +4290,10 @@ External Setpoint Generation:
 ]]>
 						</Comment>
 					</SubVar>
+				</Var>
+				<Var>
+					<Name>PRG_Sensor.bResetSensorMode</Name>
+					<Type>BOOL</Type>
 				</Var>
 				<Var>
 					<Name>GVL_EPS.bESTOP</Name>
@@ -9164,6 +9164,21 @@ External Setpoint Generation:
 					</Comment>
 					<Type>INT</Type>
 				</Var>
+				<Var>
+					<Name>PRG_DET_ARM.fbMeasureReferenceVelocity.nMicrostepCounter</Name>
+					<Comment>
+						<![CDATA[ In microsteps (64 microsteps per step)]]>
+					</Comment>
+					<Type>UINT</Type>
+				</Var>
+				<Var>
+					<Name>PRG_DET_ARM.fbMeasureReferenceVelocity.bCounterOverflow</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_DET_ARM.fbMeasureReferenceVelocity.bCounterUnderflow</Name>
+					<Type>BOOL</Type>
+				</Var>
 			</Vars>
 			<Vars VarGrpType="2">
 				<Name>PlcTask Outputs</Name>
@@ -10466,6 +10481,11 @@ External Setpoint Generation:
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^BOX-01 Coupler (EK1100)^BOX-19 MB_YF1_YF2 (EL2602)">
 				<Link VarA="PlcTask Outputs^Main.M25.bBrakeRelease" VarB="Channel 1^Output" AutoLink="true"/>
 				<Link VarA="PlcTask Outputs^Main.M26.bBrakeRelease" VarB="Channel 2^Output" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^BOX-01 Coupler (EK1100)^BOX-20 DR_YF1 (EL7047)">
+				<Link VarA="PlcTask Inputs^PRG_DET_ARM.fbMeasureReferenceVelocity.bCounterOverflow" VarB="ENC Status compact^Status^Counter overflow" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^PRG_DET_ARM.fbMeasureReferenceVelocity.bCounterUnderflow" VarB="ENC Status compact^Status^Counter underflow" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^PRG_DET_ARM.fbMeasureReferenceVelocity.nMicrostepCounter" VarB="ENC Status compact^Counter value" AutoLink="true"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^BOX-01 Coupler (EK1100)^BOX-22 DET_ROT (EL5042)">
 				<Link VarA="PlcTask Inputs^Main.M45.nRawEncoderULINT" VarB="FB Inputs Channel 1^Position" AutoLink="true"/>

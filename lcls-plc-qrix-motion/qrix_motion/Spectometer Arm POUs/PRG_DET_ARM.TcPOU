@@ -17,6 +17,18 @@ VAR
     {attribute 'TcLinkTo' := '	.Count := TIIB[BOX-07 ENC_YF2_ZF (EL5042)]^FB Inputs Channel 1^Position'}
     stRenishawAbsEncSlave: ST_RenishawAbsEnc;
 
+    tonDelay: TON;
+    tonDelay2: TON;
+    rtDelay: R_TRIG;
+    bRunTimer: BOOL;
+    nState: INT := -1;
+    bDisableStateMachine: BOOL;
+
+
+    {attribute 'TcLinkTo' := '.nMicrostepCounter := TIID^Device 1 (EtherCAT)^BOX-01 Coupler (EK1100)^BOX-20 DR_YF1 (EL7047)^ENC Status compact^Counter value;
+                              .bCounterOverflow  := TIID^Device 1 (EtherCAT)^BOX-01 Coupler (EK1100)^BOX-20 DR_YF1 (EL7047)^ENC Status compact^Status^Counter overflow;
+                              .bCounterUnderflow := TIID^Device 1 (EtherCAT)^BOX-01 Coupler (EK1100)^BOX-20 DR_YF1 (EL7047)^ENC Status compact^Status^Counter underflow'}
+    fbMeasureReferenceVelocity: FB_MeasureReferenceVelocity;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -26,12 +38,12 @@ IF bInit THEN
     bInit := FALSE;
     bExecuteCouple := TRUE;
 
-    Main.M25.nBrakeMode := ENUM_StageBrakeMode.IF_MOVING;
+    Main.M25.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
     Main.M25.bHardwareEnable := TRUE;
     Main.M25.bPowerSelf := TRUE;
     Main.M25.fVelocity := 0.1;
 
-    Main.M26.nBrakeMode := ENUM_StageBrakeMode.IF_MOVING;
+    Main.M26.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
     Main.M26.bHardwareEnable := TRUE;
     Main.M26.bPowerSelf := TRUE;
     Main.M26.fVelocity := 0.1;
@@ -55,7 +67,7 @@ IF bInit THEN
     // status based on the M25 bEnable status after the M25 FB_MotionStage
     // runs. But this also allows the brake to still activate when M26 is
     // not moving.
-    Main.M25.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
+    Main.M25.nEnableMode := ENUM_StageEnableMode.NEVER ;
     // M26 bEnable is coupled to M25 bEnable below. Set M26 enable mode to NEVER
     // so that the function block does not try to set the bEnable bit unless
     // it detects an error. This allows the bEnable to be set outside of
@@ -85,6 +97,42 @@ Main.M26.bAllEnable := Main.M26.bEnable AND GVL_EPS.bESTOP;
 Main.M27.bAllEnable := Main.M27.bEnable AND GVL_EPS.bESTOP;
 
 // Call Motion FB instance
+IF NOT bDisableStateMachine THEN
+    CASE nState OF
+    -1:
+        IF Main.M25.bExecute THEN
+            Main.M25.bExecute := FALSE;
+            Main.M25.bEnable := TRUE;
+            nState := 0;
+        ELSE
+            Main.M25.bEnable := FALSE;
+            Main.M25.bBrakeRelease := FALSE;
+            Main.M26.bBrakeRelease := FALSE;
+        END_IF
+    0:
+        tonDelay(IN:=TRUE, PT:=t#1s);
+        IF tonDelay.Q THEN
+            Main.M25.bBrakeRelease := TRUE;
+            Main.M26.bBrakeRelease := TRUE;
+            tonDelay(IN:=FALSE);
+            nState := 1;
+        END_IF
+    1:
+        tonDelay2(IN:=TRUE, PT:=t#1s);
+        IF tonDelay2.Q THEN
+            Main.M25.bExecute := TRUE;
+            tonDelay2(IN:=FALSE);
+            nState := 2;
+        END_IF
+    2:
+        IF NOT Main.M25.bBusy AND NOT Main.M26.bBusy THEN
+            nState := -1;
+        END_IF
+    100:
+        nState := -1;
+    END_CASE
+END_IF
+
 fbMotionYF1(stMotionStage:=Main.M25);
 
 // Set the M26 bEnable equal to the M25 bEnable status to couple their enable bits together.
@@ -92,7 +140,13 @@ Main.M26.bEnable := Main.M25.bEnable;
 
 fbMotionYF2(stMotionStage:=Main.M26);
 fbMotionZF(stMotionStage:=Main.M27);
-]]></ST>
+
+fbMeasureReferenceVelocity(
+    stMotionStage:=Main.M25,
+    nMicrostepsPerStep:=64,
+    bBusy=>,
+    fMeasuredReferenceVelocity=>
+);]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>
