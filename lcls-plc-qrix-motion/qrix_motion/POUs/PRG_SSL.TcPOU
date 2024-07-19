@@ -34,13 +34,13 @@ VAR
 
 
     {attribute 'pytmc' := '
-        pv: SSL2ThetaDegTol
+        pv: QRIX:SSL2ThetaDegTol
         io: io
     '}
     fAngleTolerance: REAL := 0.2;
 
     {attribute 'pytmc' := '
-        pv: SSL2ThetaPosDiff
+        pv: QRIX:SSL2ThetaPosDiff
         io: i
     '}
     fPosDiff: REAL;
@@ -49,17 +49,17 @@ VAR
     fbExtSetPointGenDisable: MC_ExtSetPointGenDisable;
 
     {attribute 'pytmc' := '
-        pv: bRealignCouple
+        pv: QRIX:bRealignCouple
         io: io
     '}
     bRealignCouple: BOOL;
     {attribute 'pytmc' := '
-        pv: iRealignStep
+        pv: QRIX:iRealignStep
         io: i
     '}
     iRealignStep: UINT := 0;
     {attribute 'pytmc' := '
-        pv: bRealignSpeed
+        pv: QRIX:bRealignSpeed
         io: io
     '}
     fRealignSpeed: LREAL := 0.05;

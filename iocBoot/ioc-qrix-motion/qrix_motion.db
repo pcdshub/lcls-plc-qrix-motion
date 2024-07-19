@@ -68496,7 +68496,7 @@ record(bo, "QRIX:SPCA:COUPLED") {
   info(archive, "VAL")
 }
 
-record(bi, "bRealignCouple_RBV") {
+record(bi, "QRIX:bRealignCouple_RBV") {
   field(DESC, "PRG_SSL.bRealignCouple")
   field(SCAN, "I/O Intr")
   field(PINI, "1")
@@ -68509,7 +68509,7 @@ record(bi, "bRealignCouple_RBV") {
   info(archive, "VAL")
 }
 
-record(bo, "bRealignCouple") {
+record(bo, "QRIX:bRealignCouple") {
   field(DESC, "PRG_SSL.bRealignCouple")
   field(DTYP, "asynInt32")
   field(UDFS, "0")
@@ -68520,7 +68520,7 @@ record(bo, "bRealignCouple") {
   info(archive, "VAL")
 }
 
-record(ai, "SSL2ThetaDegTol_RBV") {
+record(ai, "QRIX:SSL2ThetaDegTol_RBV") {
   field(DESC, "PRG_SSL.fAngleTolerance")
   field(SCAN, "I/O Intr")
   field(PINI, "1")
@@ -68532,7 +68532,7 @@ record(ai, "SSL2ThetaDegTol_RBV") {
   info(archive, "VAL")
 }
 
-record(ao, "SSL2ThetaDegTol") {
+record(ao, "QRIX:SSL2ThetaDegTol") {
   field(DESC, "PRG_SSL.fAngleTolerance")
   field(DTYP, "asynFloat64")
   field(UDFS, "0")
@@ -68542,7 +68542,7 @@ record(ao, "SSL2ThetaDegTol") {
   info(archive, "VAL")
 }
 
-record(ai, "SSL2ThetaPosDiff_RBV") {
+record(ai, "QRIX:SSL2ThetaPosDiff_RBV") {
   field(DESC, "PRG_SSL.fPosDiff")
   field(SCAN, "I/O Intr")
   field(PINI, "1")
@@ -68554,7 +68554,7 @@ record(ai, "SSL2ThetaPosDiff_RBV") {
   info(archive, "VAL")
 }
 
-record(ai, "bRealignSpeed_RBV") {
+record(ai, "QRIX:bRealignSpeed_RBV") {
   field(DESC, "PRG_SSL.fRealignSpeed")
   field(SCAN, "I/O Intr")
   field(PINI, "1")
@@ -68566,7 +68566,7 @@ record(ai, "bRealignSpeed_RBV") {
   info(archive, "VAL")
 }
 
-record(ao, "bRealignSpeed") {
+record(ao, "QRIX:bRealignSpeed") {
   field(DESC, "PRG_SSL.fRealignSpeed")
   field(DTYP, "asynFloat64")
   field(UDFS, "0")
@@ -68576,7 +68576,7 @@ record(ao, "bRealignSpeed") {
   info(archive, "VAL")
 }
 
-record(longin, "iRealignStep_RBV") {
+record(longin, "QRIX:iRealignStep_RBV") {
   field(DESC, "PRG_SSL.iRealignStep")
   field(SCAN, "I/O Intr")
   field(PINI, "1")
