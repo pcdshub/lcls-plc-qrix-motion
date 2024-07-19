@@ -12,8 +12,6 @@ VAR_GLOBAL
     This should be refactored once the IOC
     supports arbitrary ads paths for motors
 *)
-
-
     // Sample Chamber Sliding Seal - 1 axis
     //connect EPS limits
     {attribute 'pytmc' := 'pv: QRIX:SC:SSL:MMS'}
@@ -387,9 +385,7 @@ VAR_GLOBAL
     M48: ST_MotionStage := (sName := 'QRIX:CRYO:MMS:Z');
     // CRYO-ROT
     {attribute 'pytmc' := 'pv: QRIX:CRYO:MMS:ROT'}
-    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL7047_02_11]^STM Status^Status^Digital input 1;
-                              .bLimitBackwardEnable := TIIB[EL7047_02_11]^STM Status^Status^Digital input 2;
-                              .nRawEncoderULINT     := TIIB[EL5042_02_16]^FB Inputs Channel 2^Position'}
+    {attribute 'TcLinkTo' := '.nRawEncoderULINT     := TIIB[EL5042_02_16]^FB Inputs Channel 2^Position'}
     M49: ST_MotionStage := (sName := 'QRIX:CRYO:MMS:ROT');
 
 (*

@@ -105,7 +105,7 @@ END_IF
 // DIFFRACTOMETER THETA ANGLE RESTRICTIONS
 // Disable movement in negative direction.
 EPS_Diff_Theta_Backward(eps:=Main.M34.stEPSBackwardEnable);
-EPS_Diff_Theta_Backward.setDescription('NEGATIVE MOTION ALLOWED IF: THETA >= 5mm OR CHI >= -5mm AND THETA > 10 DEG OR MIDIR NOT WITHIN 1 DEG OF 90 DEG AND THETA > 10 OR PHI NOT WITHIN 1 DEG OF 90 DEG'); // SET DESCRIPTION FOR BYTE INDICATOR LABELS
+EPS_Diff_Theta_Backward.setDescription('NEGATIVE MOTION'); // SET DESCRIPTION FOR BYTE INDICATOR LABELS
 // Diffractometer Theta cannot go less than 5 degrees if the Diffractometer Chi is less than -5 degrees
 EPS_Diff_Theta_Backward.setBit(nBits:= 2, bValue:=F_CheckAxisGEQ(Main.M34,5) OR F_CheckAxisGEQ(Main.M33,-5));
 // Diffractometer Theta cannot go less than 10 degrees if the MID IR (LAS VIS) is IN, which is defined as a position of 90 +/- 1.
@@ -129,7 +129,7 @@ EPS_Diff_Chi_Backward.setBit(nBits:= 0, bValue:=F_CheckAxisGEQ(Main.M33,-5) OR F
 // DIFFRACTOMETER PHI ANGLE RESTRICTIONS
 // Disable movement in positive direction.
 EPS_Diff_Phi_Forward(eps:=Main.M32.stEPSForwardEnable);
-EPS_Diff_Phi_Forward.setDescription('POSITIVE MOTION ALLOWED IF: PHI <= 45 DEG OR MID_IR <= 5 DEG AND PHI <= 45 DEG OR THETA NOT WITHIN 1 DEG OF 0 DEG'); // SET DESCRIPTION FOR BYTE INDICATOR LABELS
+EPS_Diff_Phi_Forward.setDescription('POSITIVE MOTION'); // SET DESCRIPTION FOR BYTE INDICATOR LABELS
 // Diffractometer Phi cannot go greater than 45 degrees when the MID IR (LAS VIS) is greater than 45 degrees
 EPS_Diff_Phi_Forward.setBit(nBits:= 1, bValue:=F_CheckAxisLEQ(Main.M36,45) OR F_CheckAxisLEQ(Main.M32,5));
 // Diffractometer Phi cannot go greater than 45 degrees when theta is within 1 degree of 0 degrees.

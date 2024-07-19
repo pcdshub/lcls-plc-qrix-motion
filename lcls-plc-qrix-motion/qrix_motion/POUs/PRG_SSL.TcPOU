@@ -67,6 +67,7 @@ VAR
     tonRealignCoupleTimeout: TON;
     timeRealignTimeout: TIME;
     bFullyDecouple: BOOL;
+
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[
@@ -183,7 +184,7 @@ IF bRealignCouple AND tonRealignCoupleTimeout.Q THEN
     END_IF
 END_IF
 
-IF fbSSLTo2ThetaCoupling.bGantryAlreadyCoupled THEN
+(*IF fbSSLTo2ThetaCoupling.bGantryAlreadyCoupled THEN
     Main.M1.nEnableMode := ENUM_StageEnableMode.ALWAYS;
     rtStopSSL(CLK:=Main.M2.Axis.Status.Disabled);
     IF rtStopSSL.Q THEN
@@ -192,7 +193,7 @@ IF fbSSLTo2ThetaCoupling.bGantryAlreadyCoupled THEN
     END_IF
 ELSE
     Main.M1.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
-END_IF
+END_IF*)
 
 fPosDiff := Main.M1.stAxisStatus.fActPosition - Main.M2.stAxisStatus.fActPosition;
 

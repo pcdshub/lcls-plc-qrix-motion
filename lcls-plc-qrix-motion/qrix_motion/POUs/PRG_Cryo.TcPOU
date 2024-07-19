@@ -8,6 +8,23 @@ VAR
     fb_Cryo_Y : FB_MotionStage;
     fb_Cryo_Z : FB_MotionStage;
     bInit : BOOl := TRUE;
+
+    {attribute 'TcLinkTo' := '.nMicrostepCounter := TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_11^ENC Status compact^Counter value;
+                              .bCounterOverflow  := TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_11^ENC Status compact^Status^Counter overflow;
+                              .bCounterUnderflow := TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_11^ENC Status compact^Status^Counter underflow'}
+    fbMeasureReferenceVelocityCryoROT: FB_MeasureReferenceVelocity;
+    {attribute 'TcLinkTo' := '.nMicrostepCounter := TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_12^ENC Status compact^Counter value;
+                              .bCounterOverflow  := TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_12^ENC Status compact^Status^Counter overflow;
+                              .bCounterUnderflow := TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_12^ENC Status compact^Status^Counter underflow'}
+    fbMeasureReferenceVelocityCryoX: FB_MeasureReferenceVelocity;
+    {attribute 'TcLinkTo' := '.nMicrostepCounter := TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_14^ENC Status compact^Counter value;
+                              .bCounterOverflow  := TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_14^ENC Status compact^Status^Counter overflow;
+                              .bCounterUnderflow := TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_14^ENC Status compact^Status^Counter underflow'}
+    fbMeasureReferenceVelocityCryoY: FB_MeasureReferenceVelocity;
+    {attribute 'TcLinkTo' := '.nMicrostepCounter := TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_15^ENC Status compact^Counter value;
+                              .bCounterOverflow  := TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_15^ENC Status compact^Status^Counter overflow;
+                              .bCounterUnderflow := TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_15^ENC Status compact^Status^Counter underflow'}
+    fbMeasureReferenceVelocityCryoZ: FB_MeasureReferenceVelocity;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -36,6 +53,8 @@ END_VAR
     Main.M49.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
     Main.M49.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
     Main.M49.fVelocity := 0.1;
+    Main.M49.bLimitBackwardEnable := TRUE;
+    Main.M49.bLimitForwardEnable := TRUE;
 END_IF
 
 
@@ -46,6 +65,30 @@ fb_Cryo_Y(stMotionStage:=Main.M47);
 fb_Cryo_Z(stMotionStage:=Main.M48);
 fb_Cryo_ROT(stMotionStage:=Main.M49);
 
+fbMeasureReferenceVelocityCryoX(
+    stMotionStage:=Main.M46,
+    nMicrostepsPerStep:=64,
+    bBusy=>,
+    fMeasuredReferenceVelocity=>
+);
+fbMeasureReferenceVelocityCryoY(
+    stMotionStage:=Main.M47,
+    nMicrostepsPerStep:=64,
+    bBusy=>,
+    fMeasuredReferenceVelocity=>
+);
+fbMeasureReferenceVelocityCryoZ(
+    stMotionStage:=Main.M48,
+    nMicrostepsPerStep:=64,
+    bBusy=>,
+    fMeasuredReferenceVelocity=>
+);
+fbMeasureReferenceVelocityCryoROT(
+    stMotionStage:=Main.M49,
+    nMicrostepsPerStep:=64,
+    bBusy=>,
+    fMeasuredReferenceVelocity=>
+);
 ]]></ST>
     </Implementation>
   </POU>

@@ -13,6 +13,17 @@ VAR
 
     EPS_SDS_H_Backward : FB_EPS;
     EPS_SDS_H_Forward : FB_EPS;
+    fSDSYEPSOverride: REAL := -120;
+
+    EPS_SDS_Y_Backward : FB_EPS;
+    EPS_SDS_Y_Forward : FB_EPS;
+
+    bHomingRequired : BOOL := TRUE;
+    tHomingRequiredTimeoutTime : TIME := T#1h;
+    tonHomingRequiredTimeout : TON;
+    tonHomingStateTimeout : TON;
+    nHomingState : INT := 0;
+    fMaxSampleDeliveryArmPositionWithValveClosed : REAL := 50;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -52,7 +63,9 @@ END_VAR
     Main.M44.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
     Main.M44.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
     Main.M44.nHomingMode := ENUM_EpicsHomeCmd.HOME_VIA_LOW;
-    Main.M44.fHomePosition := 1.176;
+    Main.M44.fHomePosition := 0;//1.176; distance from home switch trigger to lower limit trigger
+
+    bHomingRequired := TRUE;
 
 END_IF
 
@@ -69,17 +82,73 @@ EPS_SDS_H_Backward.setDescription('NEGATIVE MOTION ALLOWED UNTIL LIMIT'); // SET
 
 // Disable movement in positive direction.
 EPS_SDS_H_Forward(eps:=Main.M44.stEPSForwardEnable);
-EPS_SDS_H_Forward.setDescription('POSITIVE MOTION REQ: NA|NA|NA|NA|NA|NA| VGC Valve Not Closed | VGC Valve Open'); // SET DESCRIPTION FOR BYTE INDICATOR LABELS
-// Sample Delivery Arm can Extend if the VGC valve is open and not closed.
-EPS_SDS_H_Forward.setBit(nBits:= 1, bValue:=NOT GVL_Interface.QRIX_VAC_VGC_03_CLOSED_LIMIT_SWITCH);
-EPS_SDS_H_Forward.setBit(nBits:= 0, bValue:=GVL_Interface.QRIX_VAC_VGC_03_OPEN_LIMIT_SWITCH);
+EPS_SDS_H_Forward.setDescription('POS MOTION IF VGC_03 closed: (cmd<50mm | pos<50mm | Homing Valid | SDS Y<-45mm)'); // SET DESCRIPTION FOR BYTE INDICATOR LABELS
+// Sample Delivery Arm can Extend if the VGC valve is open and not closed, and it has been homed.
+EPS_SDS_H_Forward.setBit(nBits:= 3, bValue:=(NOT GVL_Interface.QRIX_VAC_VGC_03_CLOSED_LIMIT_SWITCH AND
+    GVL_Interface.QRIX_VAC_VGC_03_OPEN_LIMIT_SWITCH) OR Main.M44.stAxisStatus.fPosition < fMaxSampleDeliveryArmPositionWithValveClosed);
+EPS_SDS_H_Forward.setBit(nBits:= 2, bValue:=(NOT GVL_Interface.QRIX_VAC_VGC_03_CLOSED_LIMIT_SWITCH AND
+    GVL_Interface.QRIX_VAC_VGC_03_OPEN_LIMIT_SWITCH) OR Main.M44.stAxisStatus.fActPosition < fMaxSampleDeliveryArmPositionWithValveClosed);
+EPS_SDS_H_Forward.setBit(nBits:= 1, bValue:=(NOT GVL_Interface.QRIX_VAC_VGC_03_CLOSED_LIMIT_SWITCH AND
+    GVL_Interface.QRIX_VAC_VGC_03_OPEN_LIMIT_SWITCH) OR NOT bHomingRequired);
+EPS_SDS_H_Forward.setBit(nBits:= 0, bValue:=(NOT GVL_Interface.QRIX_VAC_VGC_03_CLOSED_LIMIT_SWITCH AND
+    GVL_Interface.QRIX_VAC_VGC_03_OPEN_LIMIT_SWITCH) OR Main.M40.stAxisStatus.fActPosition < fSDSYEPSOverride);
+
+// Disable movement in negative direction.
+EPS_SDS_Y_Backward(eps:=Main.M40.stEPSBackwardEnable);
+EPS_SDS_Y_Backward.setDescription('POSITIVE MOTION ALLOWED UNTIL LIMIT'); // SET DESCRIPTION FOR BYTE INDICATOR LABELS
+
+// Disable movement in positive direction.
+EPS_SDS_Y_Forward(eps:=Main.M40.stEPSForwardEnable);
+EPS_SDS_Y_Forward.setDescription('POSITIVE MOTION ALLOWED UNTIL LIMIT'); // SET DESCRIPTION FOR BYTE INDICATOR LABELS
 
 fb_SDS_X(stMotionStage:=Main.M39);
 fb_SDS_Y(stMotionStage:=Main.M40);
 fb_SDS_Z(stMotionStage:=Main.M41);
 fb_SDS_ROT_V(stMotionStage:=Main.M42);
 fb_SDS_ROT_H(stMotionStage:=Main.M43);
-fb_SDS_H(stMotionStage:=Main.M44);]]></ST>
+fb_SDS_H(stMotionStage:=Main.M44);
+
+CASE nHomingState OF
+    0: // Initialization
+        IF Main.M44.nCommand = E_EpicsMotorCmd.HOME AND Main.M44.bBusy THEN
+            nHomingState := nHomingState + 1;
+        END_IF
+    1: // Homing Sequence Triggered
+        IF Main.M44.nCommand = E_EpicsMotorCmd.HOME AND Main.M44.bHome THEN
+            nHomingState := nHomingState + 1;
+            tonHomingStateTimeout(IN:=FALSE);
+        ELSIF NOT Main.M44.bBusy THEN
+            tonHomingStateTimeout(IN:=TRUE,PT:=T#5s);
+            IF tonHomingStateTimeout.Q THEN
+                nHomingState := -1;
+            END_IF
+        END_IF
+    2: // Homing Sequence Successful
+        IF F_Limit(Main.M44.stAxisStatus.fActPosition, Main.M44.fHomePosition-0.1, Main.M44.fHomePosition+0.1, TRUE) THEN
+            bHomingRequired := FALSE;
+            nHomingState := 0;
+            tonHomingRequiredTimeout(IN:=FALSE);
+            tonHomingStateTimeout(IN:=FALSE);
+        ELSIF NOT Main.M44.bBusy THEN
+            tonHomingStateTimeout(IN:=TRUE,PT:=T#5s);
+            IF tonHomingStateTimeout.Q THEN
+                nHomingState := -1;
+            END_IF
+        END_IF
+    -1: // Error Handling
+        nHomingState := 0;
+END_CASE
+
+tonHomingRequiredTimeout(IN:=NOT bHomingRequired,PT:=tHomingRequiredTimeoutTime);
+IF tonHomingRequiredTimeout.Q THEN
+    bHomingRequired := TRUE;
+END_IF
+
+IF Main.M44.bExecute AND bHomingRequired AND Main.M44.fPosition > Main.M44.stAxisStatus.fActPosition AND Main.M44.nCommand <> E_EpicsMotorCmd.HOME THEN
+    Main.M44.bError := TRUE;
+    Main.M44.sCustomErrorMessage := 'Axis homing status overdue. Please home the axis.';
+END_IF
+]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>
