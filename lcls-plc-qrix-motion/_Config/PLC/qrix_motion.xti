@@ -4228,10 +4228,6 @@ External Setpoint Generation:
 					</SubVar>
 				</Var>
 				<Var>
-					<Name>PRG_Sensor.bResetSensorMode</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
 					<Name>PRG_OPT.fbMotionRxG.fbDriveVirtual.MasterAxis.NcToPlc</Name>
 					<Type GUID="{6A65C767-34E5-42BF-AD87-E1A503EAC7BE}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 					<SubVar>
@@ -4379,6 +4375,10 @@ External Setpoint Generation:
 					</SubVar>
 				</Var>
 				<Var>
+					<Name>PRG_Sensor.bResetSensorMode</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
 					<Name>GVL_EPS.bESTOP</Name>
 					<Type>BOOL</Type>
 				</Var>
@@ -4444,6 +4444,38 @@ External Setpoint Generation:
 				<Var>
 					<Name>GVL_Sensor.stPS3.iRawCnts</Name>
 					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>GVL_VAR.bCircuitBreakerB0108Tripped</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_VAR.bCircuitBreakerB0113Tripped</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_VAR.bCircuitBreakerB0118Tripped</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_VAR.bCircuitBreakerR2A02Tripped</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_VAR.bCircuitBreakerR2A07Tripped</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_VAR.bCircuitBreakerR2A13Tripped</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_VAR.bCircuitBreakerR2B14Tripped</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_VAR.bCircuitBreakerR2B17Tripped</Name>
+					<Type>BOOL</Type>
 				</Var>
 				<Var>
 					<Name>Main.M1.Axis.NcToPlc</Name>
@@ -9646,10 +9678,6 @@ External Setpoint Generation:
 					</SubVar>
 				</Var>
 				<Var>
-					<Name>PRG_Sensor.bSensorHeadValueMode</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
 					<Name>PRG_OPT_YG.fbYGMotion.fbJack1Stage.fbDriveVirtual.MasterAxis.PlcToNc</Name>
 					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 				</Var>
@@ -9692,14 +9720,6 @@ External Setpoint Generation:
 					</SubVar>
 				</Var>
 				<Var>
-					<Name>PRG_Sensor.bSensorHeadNormalValueMode</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>PRG_Sensor.uintTest</Name>
-					<Type>UINT</Type>
-				</Var>
-				<Var>
 					<Name>PRG_OPT.fbMotionRxG.fbDriveVirtual.MasterAxis.PlcToNc</Name>
 					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 				</Var>
@@ -9710,6 +9730,18 @@ External Setpoint Generation:
 				<Var>
 					<Name>PRG_OPT.fbMotionRzPM.fbDriveVirtual.MasterAxis.PlcToNc</Name>
 					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
+				</Var>
+				<Var>
+					<Name>PRG_Sensor.bSensorHeadValueMode</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_Sensor.bSensorHeadNormalValueMode</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_Sensor.uintTest</Name>
+					<Type>UINT</Type>
 				</Var>
 				<Var>
 					<Name>GVL_EPS.bOpenSV1</Name>
@@ -9761,6 +9793,63 @@ External Setpoint Generation:
 				<Var>
 					<Name>GVL_Sensor.nYDF3</Name>
 					<Type>UDINT</Type>
+				</Var>
+				<Var>
+					<Name>GVL_VAR.bCircuitBreakerB0108Reset</Name>
+					<Comment>
+						<![CDATA[ Reset and monitor circuit breakers on spectrometer arm
+ BOX0108 Circuit Breaker]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_VAR.bCircuitBreakerB0113Reset</Name>
+					<Comment>
+						<![CDATA[ BOX0113 Circuit Breaker]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_VAR.bCircuitBreakerB0118Reset</Name>
+					<Comment>
+						<![CDATA[ BOX0118 Circuit Breaker]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_VAR.bCircuitBreakerR2A02Reset</Name>
+					<Comment>
+						<![CDATA[ Rack 2A02 Circuit Breaker]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_VAR.bCircuitBreakerR2A07Reset</Name>
+					<Comment>
+						<![CDATA[ Rack 2A07 Circuit Breaker]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_VAR.bCircuitBreakerR2A13Reset</Name>
+					<Comment>
+						<![CDATA[ Rack 2A13 Circuit Breaker]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_VAR.bCircuitBreakerR2B14Reset</Name>
+					<Comment>
+						<![CDATA[ Rack 2B14 Circuit Breaker]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_VAR.bCircuitBreakerR2B17Reset</Name>
+					<Comment>
+						<![CDATA[ Rack 2B17 Circuit Breaker]]>
+					</Comment>
+					<Type>BOOL</Type>
 				</Var>
 				<Var>
 					<Name>Main.M1.Axis.PlcToNc</Name>
@@ -10539,6 +10628,10 @@ External Setpoint Generation:
 				<Link VarA="PlcTask Inputs^Main.M27.nRawEncoderULINT" VarB="FB Inputs Channel 2^Position" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^PRG_DET_ARM.stRenishawAbsEncSlave.Count" VarB="FB Inputs Channel 1^Position" AutoLink="true"/>
 			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^BOX-01 Coupler (EK1100)^BOX-08 CP_SDC (EL9221-5000)">
+				<Link VarA="PlcTask Inputs^GVL_VAR.bCircuitBreakerB0108Tripped" VarB="OCP Inputs^Status^Tripped" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^GVL_VAR.bCircuitBreakerB0108Reset" VarB="OCP Outputs^Control^Reset" AutoLink="true"/>
+			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^BOX-01 Coupler (EK1100)^BOX-09 DR_XSDC1 (EL7041-0052)">
 				<Link VarA="PlcTask Inputs^Main.M18.bLimitBackwardEnable" VarB="STM Status^Status^Digital input 2" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^Main.M18.bLimitForwardEnable" VarB="STM Status^Status^Digital input 1" AutoLink="true"/>
@@ -10555,6 +10648,10 @@ External Setpoint Generation:
 				<Link VarA="PlcTask Inputs^Main.M21.bLimitBackwardEnable" VarB="STM Status^Status^Digital input 2" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^Main.M21.bLimitForwardEnable" VarB="STM Status^Status^Digital input 1" AutoLink="true"/>
 			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^BOX-01 Coupler (EK1100)^BOX-13 CP_DC (EL9221-5000)">
+				<Link VarA="PlcTask Inputs^GVL_VAR.bCircuitBreakerB0113Tripped" VarB="OCP Inputs^Status^Tripped" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^GVL_VAR.bCircuitBreakerB0113Reset" VarB="OCP Outputs^Control^Reset" AutoLink="true"/>
+			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^BOX-01 Coupler (EK1100)^BOX-14 DR_XDC (EL7041-0052)">
 				<Link VarA="PlcTask Inputs^Main.M22.bLimitBackwardEnable" VarB="STM Status^Status^Digital input 2" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^Main.M22.bLimitForwardEnable" VarB="STM Status^Status^Digital input 1" AutoLink="true"/>
@@ -10566,6 +10663,10 @@ External Setpoint Generation:
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^BOX-01 Coupler (EK1100)^BOX-16 DR_ZDC (EL7041-0052)">
 				<Link VarA="PlcTask Inputs^Main.M24.bLimitBackwardEnable" VarB="STM Status^Status^Digital input 2" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^Main.M24.bLimitForwardEnable" VarB="STM Status^Status^Digital input 1" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^BOX-01 Coupler (EK1100)^BOX-18 CP_YF1_YF2 (EL9221-5000)">
+				<Link VarA="PlcTask Inputs^GVL_VAR.bCircuitBreakerB0118Tripped" VarB="OCP Inputs^Status^Tripped" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^GVL_VAR.bCircuitBreakerB0118Reset" VarB="OCP Outputs^Control^Reset" AutoLink="true"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^BOX-01 Coupler (EK1100)^BOX-19 MB_YF1_YF2 (EL2602)">
 				<Link VarA="PlcTask Outputs^Main.M25.bBrakeRelease" VarB="Channel 1^Output" AutoLink="true"/>
@@ -10605,6 +10706,10 @@ External Setpoint Generation:
 				<Link VarA="PlcTask Inputs^Main.M2.nRawEncoderULINT" VarB="FB Inputs Channel 1^Position" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^PRG_SSL.stRenishawAbsEncMaster.Count" VarB="FB Inputs Channel 1^Position" AutoLink="true"/>
 			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Rack#2A-01 Coupler (EK1100)^Rack#2A-02 CP_SLIT (EL9221-5000)">
+				<Link VarA="PlcTask Inputs^GVL_VAR.bCircuitBreakerR2A02Tripped" VarB="OCP Inputs^Status^Tripped" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^GVL_VAR.bCircuitBreakerR2A02Reset" VarB="OCP Outputs^Control^Reset" AutoLink="true"/>
+			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Rack#2A-01 Coupler (EK1100)^Rack#2A-03 DR_XS1 (EL7041-0052)">
 				<Link VarA="PlcTask Inputs^Main.M3.bLimitBackwardEnable" VarB="STM Status^Status^Digital input 2" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^Main.M3.bLimitForwardEnable" VarB="STM Status^Status^Digital input 1" AutoLink="true"/>
@@ -10620,6 +10725,10 @@ External Setpoint Generation:
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Rack#2A-01 Coupler (EK1100)^Rack#2A-06 DR_YS2 (EL7041-0052)">
 				<Link VarA="PlcTask Inputs^Main.M6.bLimitBackwardEnable" VarB="STM Status^Status^Digital input 2" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^Main.M6.bLimitForwardEnable" VarB="STM Status^Status^Digital input 1" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Rack#2A-01 Coupler (EK1100)^Rack#2A-07 CP_G (EL9221-5000)">
+				<Link VarA="PlcTask Inputs^GVL_VAR.bCircuitBreakerR2A07Tripped" VarB="OCP Inputs^Status^Tripped" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^GVL_VAR.bCircuitBreakerR2A07Reset" VarB="OCP Outputs^Control^Reset" AutoLink="true"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Rack#2A-01 Coupler (EK1100)^Rack#2A-08 DR_RxG (EL7041-0052)">
 				<Link VarA="PlcTask Inputs^Main.M10.bLimitBackwardEnable" VarB="STM Status^Status^Digital input 2" AutoLink="true"/>
@@ -10640,6 +10749,10 @@ External Setpoint Generation:
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Rack#2A-01 Coupler (EK1100)^Rack#2A-12 DR_YG3 (EL7041-0052)">
 				<Link VarA="PlcTask Inputs^Main.M9.bLimitBackwardEnable" VarB="STM Status^Status^Digital input 2" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^Main.M9.bLimitForwardEnable" VarB="STM Status^Status^Digital input 1" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Rack#2A-01 Coupler (EK1100)^Rack#2A-13 CP_PM (EL9221-5000)">
+				<Link VarA="PlcTask Inputs^GVL_VAR.bCircuitBreakerR2A13Tripped" VarB="OCP Inputs^Status^Tripped" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^GVL_VAR.bCircuitBreakerR2A13Reset" VarB="OCP Outputs^Control^Reset" AutoLink="true"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Rack#2A-01 Coupler (EK1100)^Rack#2A-14 DR_XPM1 (EL7041-0052)">
 				<Link VarA="PlcTask Inputs^Main.M12.bLimitBackwardEnable" VarB="STM Status^Status^Digital input 2" AutoLink="true"/>
@@ -10692,6 +10805,10 @@ External Setpoint Generation:
 				<Link VarA="PlcTask Inputs^Main.M13.nRawEncoderULINT" VarB="FB Inputs Channel 1^Position" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^Main.M14.nRawEncoderULINT" VarB="FB Inputs Channel 2^Position" AutoLink="true"/>
 			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Rack#2B-01 Coupler (EK1100)^Rack#2B-14 CP_YDF (EL9221-5000)">
+				<Link VarA="PlcTask Inputs^GVL_VAR.bCircuitBreakerR2B14Tripped" VarB="OCP Inputs^Status^Tripped" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^GVL_VAR.bCircuitBreakerR2B14Reset" VarB="OCP Outputs^Control^Reset" AutoLink="true"/>
+			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Rack#2B-01 Coupler (EK1100)^Rack#2B-15 DR_YDF1 (EL7041-0052)">
 				<Link VarA="PlcTask Inputs^Main.M15.bLimitBackwardEnable" VarB="STM Status^Status^Digital input 2" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^Main.M15.bLimitForwardEnable" VarB="STM Status^Status^Digital input 1" AutoLink="true"/>
@@ -10699,6 +10816,10 @@ External Setpoint Generation:
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Rack#2B-01 Coupler (EK1100)^Rack#2B-16 DR_YDF2 (EL7041-0052)">
 				<Link VarA="PlcTask Inputs^Main.M16.bLimitBackwardEnable" VarB="STM Status^Status^Digital input 2" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^Main.M16.bLimitForwardEnable" VarB="STM Status^Status^Digital input 1" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Rack#2B-01 Coupler (EK1100)^Rack#2B-17 CP_YDF_ZF (EL9221-5000)">
+				<Link VarA="PlcTask Inputs^GVL_VAR.bCircuitBreakerR2B17Tripped" VarB="OCP Outputs^Control^Reset" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^GVL_VAR.bCircuitBreakerR2B17Reset" VarB="OCP Inputs^Status^Tripped" AutoLink="true"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Rack#2B-01 Coupler (EK1100)^Rack#2B-18 MB_ZF (EL2602)">
 				<Link VarA="PlcTask Outputs^Main.M27.bBrakeRelease" VarB="Channel 1^Output" AutoLink="true"/>

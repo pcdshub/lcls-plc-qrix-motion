@@ -78,7 +78,7 @@ VAR
         pv: QRIX:SA:rJackingSpeed
         io: io
     '}
-    rJackingSpeed: LREAL := 0.025;
+    rJackingSpeed: LREAL := 0.05;
     {attribute 'pytmc' := '
         pv: QRIX:SA:rJackingAccel
         io: io

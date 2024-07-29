@@ -34,6 +34,112 @@
     '}
     bDoneAdjustingHeight: BOOL;
 
+    // Reset and monitor circuit breakers on spectrometer arm
+    // BOX0108 Circuit Breaker
+    {attribute 'pytmc' := '
+        pv: QRIX:SA:CB:B0108:Reset
+        io: io
+    '}
+    {attribute 'TcLinkTo' := 'TIID^Device 1 (EtherCAT)^BOX-01 Coupler (EK1100)^BOX-08 CP_SDC (EL9221-5000)^OCP Outputs^Control^Reset'}
+    bCircuitBreakerB0108Reset AT %Q*: BOOL;
+    {attribute 'pytmc' := '
+        pv: QRIX:SA:CB:B0108:Tripped
+        io: i
+    '}
+    {attribute 'TcLinkTo' := 'TIID^Device 1 (EtherCAT)^BOX-01 Coupler (EK1100)^BOX-08 CP_SDC (EL9221-5000)^OCP Inputs^Status^Tripped'}
+    bCircuitBreakerB0108Tripped AT %I*: BOOL;
+    // BOX0113 Circuit Breaker
+    {attribute 'pytmc' := '
+        pv: QRIX:SA:CB:B0113:Reset
+        io: io
+    '}
+    {attribute 'TcLinkTo' := 'TIID^Device 1 (EtherCAT)^BOX-01 Coupler (EK1100)^BOX-13 CP_DC (EL9221-5000)^OCP Outputs^Control^Reset'}
+    bCircuitBreakerB0113Reset AT %Q*: BOOL;
+    {attribute 'pytmc' := '
+        pv: QRIX:SA:CB:B0113:Tripped
+        io: i
+    '}
+    {attribute 'TcLinkTo' := 'TIID^Device 1 (EtherCAT)^BOX-01 Coupler (EK1100)^BOX-13 CP_DC (EL9221-5000)^OCP Inputs^Status^Tripped'}
+    bCircuitBreakerB0113Tripped AT %I*: BOOL;
+    // BOX0118 Circuit Breaker
+    {attribute 'pytmc' := '
+        pv: QRIX:SA:CB:B0118:Reset
+        io: io
+    '}
+    {attribute 'TcLinkTo' := 'TIID^Device 1 (EtherCAT)^BOX-01 Coupler (EK1100)^BOX-18 CP_YF1_YF2 (EL9221-5000)^OCP Outputs^Control^Reset'}
+    bCircuitBreakerB0118Reset AT %Q*: BOOL;
+    {attribute 'pytmc' := '
+        pv: QRIX:SA:CB:B0118:Tripped
+        io: i
+    '}
+    {attribute 'TcLinkTo' := 'TIID^Device 1 (EtherCAT)^BOX-01 Coupler (EK1100)^BOX-18 CP_YF1_YF2 (EL9221-5000)^OCP Inputs^Status^Tripped'}
+    bCircuitBreakerB0118Tripped AT %I*: BOOL;
+    // Rack 2A02 Circuit Breaker
+    {attribute 'pytmc' := '
+        pv: QRIX:SA:CB:R2A02:Reset
+        io: io
+    '}
+    {attribute 'TcLinkTo' := 'TIID^Device 1 (EtherCAT)^Rack#2A-01 Coupler (EK1100)^Rack#2A-02 CP_SLIT (EL9221-5000)^OCP Outputs^Control^Reset'}
+    bCircuitBreakerR2A02Reset AT %Q*: BOOL;
+    {attribute 'pytmc' := '
+        pv: QRIX:SA:CB:R2A02:Tripped
+        io: i
+    '}
+    {attribute 'TcLinkTo' := 'TIID^Device 1 (EtherCAT)^Rack#2A-01 Coupler (EK1100)^Rack#2A-02 CP_SLIT (EL9221-5000)^OCP Inputs^Status^Tripped'}
+    bCircuitBreakerR2A02Tripped AT %I*: BOOL;
+    // Rack 2A07 Circuit Breaker
+    {attribute 'pytmc' := '
+        pv: QRIX:SA:CB:R2A07:Reset
+        io: io
+    '}
+    {attribute 'TcLinkTo' := 'TIID^Device 1 (EtherCAT)^Rack#2A-01 Coupler (EK1100)^Rack#2A-07 CP_G (EL9221-5000)^OCP Outputs^Control^Reset'}
+    bCircuitBreakerR2A07Reset AT %Q*: BOOL;
+    {attribute 'pytmc' := '
+        pv: QRIX:SA:CB:R2A07:Tripped
+        io: i
+    '}
+    {attribute 'TcLinkTo' := 'TIID^Device 1 (EtherCAT)^Rack#2A-01 Coupler (EK1100)^Rack#2A-07 CP_G (EL9221-5000)^OCP Inputs^Status^Tripped'}
+    bCircuitBreakerR2A07Tripped AT %I*: BOOL;
+    // Rack 2A13 Circuit Breaker
+    {attribute 'pytmc' := '
+        pv: QRIX:SA:CB:R2A13:Reset
+        io: io
+    '}
+    {attribute 'TcLinkTo' := 'TIID^Device 1 (EtherCAT)^Rack#2A-01 Coupler (EK1100)^Rack#2A-13 CP_PM (EL9221-5000)^OCP Outputs^Control^Reset'}
+    bCircuitBreakerR2A13Reset AT %Q*: BOOL;
+    {attribute 'pytmc' := '
+        pv: QRIX:SA:CB:R2A13:Tripped
+        io: i
+    '}
+    {attribute 'TcLinkTo' := 'TIID^Device 1 (EtherCAT)^Rack#2A-01 Coupler (EK1100)^Rack#2A-13 CP_PM (EL9221-5000)^OCP Inputs^Status^Tripped'}
+    bCircuitBreakerR2A13Tripped AT %I*: BOOL;
+    // Rack 2B14 Circuit Breaker
+    {attribute 'pytmc' := '
+        pv: QRIX:SA:CB:R2B14:Reset
+        io: io
+    '}
+    {attribute 'TcLinkTo' := 'TIID^Device 1 (EtherCAT)^Rack#2B-01 Coupler (EK1100)^Rack#2B-14 CP_YDF (EL9221-5000)^OCP Outputs^Control^Reset'}
+    bCircuitBreakerR2B14Reset AT %Q*: BOOL;
+    {attribute 'pytmc' := '
+        pv: QRIX:SA:CB:R2B14:Tripped
+        io: i
+    '}
+    {attribute 'TcLinkTo' := 'TIID^Device 1 (EtherCAT)^Rack#2B-01 Coupler (EK1100)^Rack#2B-14 CP_YDF (EL9221-5000)^OCP Inputs^Status^Tripped'}
+    bCircuitBreakerR2B14Tripped AT %I*: BOOL;
+    // Rack 2B17 Circuit Breaker
+    {attribute 'pytmc' := '
+        pv: QRIX:SA:CB:R2B17:Reset
+        io: io
+    '}
+    {attribute 'TcLinkTo' := 'TIID^Device 1 (EtherCAT)^Rack#2B-01 Coupler (EK1100)^Rack#2B-17 CP_YDF_ZF (EL9221-5000)^OCP Outputs^Control^Reset'}
+    bCircuitBreakerR2B17Reset AT %Q*: BOOL;
+    {attribute 'pytmc' := '
+        pv: QRIX:SA:CB:R2B17:Tripped
+        io: i
+    '}
+    {attribute 'TcLinkTo' := 'TIID^Device 1 (EtherCAT)^Rack#2B-01 Coupler (EK1100)^Rack#2B-17 CP_YDF_ZF (EL9221-5000)^OCP Inputs^Status^Tripped'}
+    bCircuitBreakerR2B17Tripped AT %I*: BOOL;
+
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>
