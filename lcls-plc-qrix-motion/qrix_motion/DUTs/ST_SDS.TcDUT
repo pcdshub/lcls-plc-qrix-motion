@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <DUT Name="ST_SDS" Id="{e874ed18-3d3e-42d0-8455-a32137294415}">
+    <Declaration><![CDATA[TYPE ST_SDS :
+(*
+    Structure to represent the data used for the sample delivery system that is not
+    needed to be persistent.
+*)
+STRUCT
+    {attribute 'pytmc' := '
+        pv: bInitialized
+        io: io
+        field: DESC TRUE if the non-persistent data has been initialized. FALSE if it has not.
+    '}
+    bInitialized: BOOL;
+
+    {attribute 'pytmc' := '
+        pv: bMaint
+        io: io
+        field: DESC TRUE if in maintenance mode. FALSE if NOT.
+    '}
+    bMaint: BOOL;
+
+    {attribute 'pytmc' := '
+        pv: bProceed
+        io: io
+        field: DESC TRUE to proceed to next sequence step. Will be reset to FALSE after one scan.
+    '}
+    bProceed: BOOL;
+
+    {attribute 'pytmc' := '
+        pv: bCancel
+        io: io
+        field: DESC TRUE to cancel next sequence step. Will be reset to FALSE after one scan.
+    '}
+    bCancel: BOOL;
+
+    // Variables used for homing
+    {attribute 'pytmc' := '
+        pv: bHomeReq
+        io: i
+        field: DESC TRUE if homing is required for the sample transfer arm.
+    '}
+    bHomingRequired : BOOL := TRUE;
+    tHomingRequiredTimeoutTime : TIME := T#1h;
+    tonHomingRequiredTimeout : TON;
+    tonHomingStateTimeout : TON;
+    nHomingState : INT := 0;
+    {attribute 'pytmc' := '
+        pv: fMinHomeReq
+        io: i
+        field: DESC Minutes until homing is required again for the sample transfer arm.
+    '}
+    fMinUntilHomingRequired: REAL;
+
+    {attribute 'pytmc' := '
+        pv: eFaceState
+        io: io
+        field: DESC Enum to describe which way the sample garage should face.
+    '}
+    eSDSFaceState: E_SDSFaceState;
+
+    {attribute 'pytmc' := '
+        pv: fFacePortOffset
+        io: io
+        field: DESC Degree offset when trying to face the side port.
+    '}
+    fFacePortOffset: REAL; // degree offset when trying to face the side port.
+
+    asTags: ARRAY[0..11] OF STRING := ['T1','M1','B1','T2','M2','B2','T3','M3','B3','T4','M4','B4']; // Definition of slot tags.
+
+    {attribute 'pytmc' := '
+        pv: nGarageSlots
+        io: i
+        field: DESC The number of slots in the garage.
+    '}
+    nGarageSlots: UINT := 12;
+
+    stArmEpicsToPlc: ST_StateEpicsToPlc;
+    stArmPlcToEpics: ST_StatePlcToEpics;
+
+    {attribute 'pytmc' := '
+      pv: eArmStateGet
+      io: i
+    '}
+    eArmStateGet: E_SDSArmStates; // get state enum for transfer arm horizontal and rotational position states.
+
+    {attribute 'pytmc' := '
+      pv: eArmStateSet
+      io: io
+    '}
+    eArmStateSet: E_SDSArmStates; // set state enum for transfer arm horizontal and rotational position states.
+
+    stGarEpicsToPlc: ST_StateEpicsToPlc;
+    stGarPlcToEpics: ST_StatePlcToEpics;
+
+    {attribute 'pytmc' := '
+      pv: eGarStateGet
+      io: i
+    '}
+    eGarStateGet: E_SDSGarageStates; // get state enum for garage y and rotational position states.
+
+    {attribute 'pytmc' := '
+      pv: eGarStateSet
+      io: io
+    '}
+    eGarStateSet: E_SDSGarageStates; // set state enum for garage y and rotational position states.
+
+    astArmHPosState: ARRAY[1..GeneralConstants.MAX_STATES] OF ST_PositionState;
+    astArmRPosState: ARRAY[1..GeneralConstants.MAX_STATES] OF ST_PositionState;
+    {attribute 'pytmc' := '
+        pv: ARM:PS2D
+        field: DESC Position State 2D used for transfer arm horizontal and rotational position states.
+    '}
+    fbArmPos2D: FB_PositionState2D; // Position State 2D used for transfer arm horizontal and rotational position states.
+
+    astGarYPosState: ARRAY[1..GeneralConstants.MAX_STATES] OF ST_PositionState;
+    astGarRPosState: ARRAY[1..GeneralConstants.MAX_STATES] OF ST_PositionState;
+    {attribute 'pytmc' := '
+        pv: GAR:PS2D
+        field: DESC Position State 2D used for garage rotation and y-position.
+    '}
+    fbGarPos2D: FB_PositionState2D; // Position State 2D used for garage rotation and y-position.
+
+    {attribute 'pytmc' := '
+        pv: eSequenceState
+        field: DESC Present sequence state for sample delivery system.
+    '}
+    eSequenceState: E_SDSSequenceStates;
+
+    {attribute 'pytmc' := '
+        pv: fSecRemaining
+        field: DESC Seconds remaining before current sequence step times out.
+    '}
+    fSecRemaining: REAL;
+
+    {attribute 'pytmc' := '
+        pv: eLoadArmStep
+        field: DESC Present sequence state for sequence to load the transfer arm from the garage.
+    '}
+    eLoadArmFromGarageStep: E_SDSSequenceStates;
+
+    {attribute 'pytmc' := '
+        pv: sInstruction
+        field: DESC Instructions for the present sequence state.
+    '}
+    sInstructions: STRING;
+
+    {attribute 'pytmc' := '
+        pv: sStatus
+        field: DESC Status for the present sequence state.
+    '}
+    sStatus: STRING;
+
+    // Booleans to track what is currently possible to do.
+    {attribute 'pytmc' := '
+        pv: bArmLoadable
+        io: i
+        field: DESC True if it is currently possible to load the transfer arm slot. False if the transfer arm slot is full or disabled.
+    '}
+    bArmLoadable: BOOL;
+
+    {attribute 'pytmc' := '
+        pv: bArmUnloadable
+        io: i
+        field: DESC True if it is currently possible to unload the transfer arm slot. False if the transfer arm slot is empty or disabled.
+    '}
+    bArmUnloadable: BOOL;
+
+    {attribute 'pytmc' := '
+        pv: bGarLoadable
+        io: i
+        field: DESC True if it is currently possible to load a garage slot. False if all garage slots are full or disabled.
+    '}
+    bGarLoadable: BOOL;
+
+    {attribute 'pytmc' := '
+        pv: bGarUnloadable
+        io: i
+        field: DESC True if it is currently possible to unload a garage slot. False if all garage slots are empty or disabled.
+    '}
+    bGarUnloadable: BOOL;
+
+    // Booleans to allow operator to choose what they want to do.
+    {attribute 'pytmc' := '
+        pv: bLoadArm
+        io: io
+        field: DESC Write True to command an arm loading sequence. Write False to cancel a command.
+    '}
+    bLoadArm: BOOL;
+
+    {attribute 'pytmc' := '
+        pv: bUnloadArm
+        io: io
+        field: DESC Write True to command an arm unloading sequence. Write False to cancel a command.
+    '}
+    bUnloadArm: BOOL;
+
+    {attribute 'pytmc' := '
+        pv: bLoadGar
+        io: io
+        field: DESC Write True to command a garage loading sequence. Write False to cancel a command.
+    '}
+    bLoadGar: BOOL;
+
+    {attribute 'pytmc' := '
+        pv: bUnloadGar
+        io: io
+        field: DESC Write True to command a garage unloading sequence. Write False to cancel a command.
+    '}
+    bUnloadGar: BOOL;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

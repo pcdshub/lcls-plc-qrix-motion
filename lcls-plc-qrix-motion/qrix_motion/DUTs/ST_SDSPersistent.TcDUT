@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <DUT Name="ST_SDSPersistent" Id="{ed2c355c-17e8-495a-9e76-3484d89c2199}">
+    <Declaration><![CDATA[TYPE ST_SDSPersistent :
+(*
+    Structure to represent the data used for the sample delivery system that is
+    needed to be persistent.
+*)
+STRUCT
+    {attribute 'pytmc' := '
+        pv: bInitialized
+        io: i
+        field: DESC TRUE if the persistent data has been initialized. FALSE if it has not.
+    '}
+    bInitialized: BOOL;
+    {attribute 'pytmc' := '
+        pv: Garage:Slot
+        io: i
+        field: DESC Represents an array of structures which each define a sample slot in the SDS garage.
+    '}
+    astGarageSlot: ARRAY[0..11] OF ST_GarageSlot;
+    {attribute 'pytmc' := '
+        pv: Transfer:Slot
+        io: i
+        field: DESC Represents a structure which defines a sample slot in the transfer arm.
+    '}
+    stTransferSlot: ST_TransferSlot;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

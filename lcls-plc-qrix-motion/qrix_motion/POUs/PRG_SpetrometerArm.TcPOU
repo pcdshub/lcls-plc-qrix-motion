@@ -18,6 +18,8 @@ VAR
     fbPower_AxisM14: MC_Power;
 
     rtESTOPDeactivated: R_TRIG;
+
+    tonTurnoffCBReset: TON;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -32,7 +34,30 @@ PRG_OPT_SLITS();
 PRG_OPT_YG();
 PRG_OPT_XPM();
 PRG_OPT();
-PRG_Sensor();]]></ST>
+PRG_Sensor();
+
+tonTurnOffCBReset(IN:=
+    GVL_VAR.bCircuitBreakerB0108Reset OR
+    GVL_VAR.bCircuitBreakerB0113Reset OR
+    GVL_VAR.bCircuitBreakerB0118Reset OR
+    GVL_VAR.bCircuitBreakerR2A02Reset OR
+    GVL_VAR.bCircuitBreakerR2A07Reset OR
+    GVL_VAR.bCircuitBreakerR2A13Reset OR
+    GVL_VAR.bCircuitBreakerR2B14Reset OR
+    GVL_VAR.bCircuitBreakerR2B17Reset,
+    PT:=T#2s
+);
+IF tonTurnOffCBReset.Q THEN
+    GVL_VAR.bCircuitBreakerB0108Reset := FALSE;
+    GVL_VAR.bCircuitBreakerB0113Reset := FALSE;
+    GVL_VAR.bCircuitBreakerB0118Reset := FALSE;
+    GVL_VAR.bCircuitBreakerR2A02Reset := FALSE;
+    GVL_VAR.bCircuitBreakerR2A07Reset := FALSE;
+    GVL_VAR.bCircuitBreakerR2A13Reset := FALSE;
+    GVL_VAR.bCircuitBreakerR2B14Reset := FALSE;
+    GVL_VAR.bCircuitBreakerR2B17Reset := FALSE;
+END_IF
+]]></ST>
     </Implementation>
     <Action Name="ACT_ESTOP" Id="{7f369682-d550-4605-a510-2370c6ba3316}">
       <Implementation>

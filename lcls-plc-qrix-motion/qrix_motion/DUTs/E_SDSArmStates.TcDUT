@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <DUT Name="E_SDSArmStates" Id="{9eac08e5-b916-49f2-b996-f36b11fb0296}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE E_SDSArmStates :
+(
+    UNKNOWN := 0,
+    HOME := 1,
+    PREROTATE_ARM_FOR_SAMPLE_REMOVAL := 2,
+    EXTEND_ARM_FOR_SAMPLE_REMOVAL := 3,
+    ROTATE_SAMPLE_OUT_OF_GARAGE := 4,
+    EXTEND_ARM_FOR_SAMPLE_INSERTION := 5,
+    INSERT_SAMPLE_INTO_GARAGE := 6
+) UINT;
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

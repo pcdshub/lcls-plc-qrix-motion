@@ -1,0 +1,712 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="FB_SDS" Id="{bf132679-4d4c-411f-a447-cbfc956c233d}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_SDS
+VAR_IN_OUT
+    stSDS: ST_SDS;
+    stSDSPersistent: ST_SDSPersistent;
+    stGarYStage: ST_MotionStage;
+    stGarRStage: ST_MotionStage;
+    stArmHStage: ST_MotionStage;
+    stArmRStage: ST_MotionStage;
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+    nIndex: UINT;
+
+    fbStateSetup: FB_StateSetupHelper;
+    stDefault: ST_PositionState := (
+        fDelta := 0.5,
+        fVelocity := 1,
+        bMoveOk := TRUE,
+        bValid := TRUE
+    );
+
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+// Check to see if initialization is required and initialize if necessary.
+ACT_Init();
+
+// Check the present homing status
+ACT_CheckHomeStatus();
+
+// Control the sequencing of the sample delivery system.
+ACT_Sequence();
+
+// Update the position states
+ACT_UpdatePositionStates();
+
+// Call state position function blocks.
+stSDS.fbArmPos2D(
+    stMotionStage1:=stArmHStage,
+    stMotionStage2:=stArmRStage,
+    astPositionState1:=stSDS.astArmHPosState,
+    astPositionState2:=stSDS.astArmRPosState,
+    eEnumSet:=stSDS.eArmStateSet,
+    eEnumGet:=stSDS.eArmStateGet,
+    bEnable:=TRUE,
+    stEpicsToPlc:=stSDS.stArmEpicsToPlc,
+    stPlcToEpics=>stSDS.stArmPlcToEpics
+);
+
+stSDS.fbGarPos2D(
+    stMotionStage1:=stGarYStage,
+    stMotionStage2:=stGarRStage,
+    astPositionState1:=stSDS.astGarYPosState,
+    astPositionState2:=stSDS.astGarRPosState,
+    eEnumSet:=stSDS.eGarStateSet,
+    eEnumGet:=stSDS.eGarStateSet,
+    bEnable:=TRUE,
+    stEpicsToPlc:=stSDS.stGarEpicsToPlc,
+    stPlcToEpics=>stSDS.stGarPlcToEpics
+);
+]]></ST>
+    </Implementation>
+    <Action Name="ACT_CheckHomeStatus" Id="{2164ae39-f7d0-4dc9-a63c-01d4fb087899}">
+      <Implementation>
+        <ST><![CDATA[
+// ACTION - Check home status
+
+CASE stSDS.nHomingState OF
+    0: // Initialization
+        IF stArmHStage.nCommand = E_EpicsMotorCmd.HOME AND stArmHStage.bBusy THEN
+            stSDS.nHomingState := stSDS.nHomingState + 1;
+        END_IF
+    1: // Homing Sequence Triggered
+        IF stArmHStage.nCommand = E_EpicsMotorCmd.HOME AND stArmHStage.bHome THEN
+            stSDS.nHomingState := stSDS.nHomingState + 1;
+            stSDS.tonHomingStateTimeout(IN:=FALSE);
+        ELSIF NOT stArmHStage.bBusy THEN
+            stSDS.tonHomingStateTimeout(IN:=TRUE,PT:=T#5s);
+            IF stSDS.tonHomingStateTimeout.Q THEN
+                stSDS.nHomingState := -1;
+            END_IF
+        END_IF
+    2: // Homing Sequence Successful
+        IF F_Limit(stArmHStage.stAxisStatus.fActPosition, stArmHStage.fHomePosition-0.1, stArmHStage.fHomePosition+0.1, TRUE) THEN
+            stSDS.bHomingRequired := FALSE;
+            stSDS.nHomingState := 0;
+            stSDS.bProceed := TRUE;
+            stSDS.tonHomingRequiredTimeout(IN:=FALSE);
+            stSDS.tonHomingStateTimeout(IN:=FALSE);
+        ELSIF NOT stArmHStage.bBusy THEN
+            stSDS.tonHomingStateTimeout(IN:=TRUE,PT:=T#5s);
+            IF stSDS.tonHomingStateTimeout.Q THEN
+                stSDS.nHomingState := -1;
+            END_IF
+        END_IF
+    -1: // Error Handling
+        stSDS.nHomingState := 0;
+END_CASE
+
+stSDS.tonHomingRequiredTimeout(IN:=NOT stSDS.bHomingRequired,PT:=stSDS.tHomingRequiredTimeoutTime);
+IF stSDS.tonHomingRequiredTimeout.Q THEN
+    stSDS.bHomingRequired := TRUE;
+END_IF
+stSDS.fMinUntilHomingRequired := TIME_TO_REAL(stSDS.tonHomingRequiredTimeout.PT - stSDS.tonHomingRequiredTimeout.ET) / 60000;
+
+IF stArmHStage.bExecute AND stSDS.bHomingRequired AND stArmHStage.fPosition > stArmHStage.stAxisStatus.fActPosition AND
+    stArmHStage.nCommand <> E_EpicsMotorCmd.HOME THEN
+
+    stArmHStage.bError := TRUE;
+    stArmHStage.sCustomErrorMessage := 'Axis homing status overdue. Please home the axis.';
+END_IF
+]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="ACT_ExtendArmSampleRemoval" Id="{8c146974-5a4a-4072-be1f-59bfa9d8f4dc}">
+      <Implementation>
+        <ST><![CDATA[
+// ACTION - Home transfer arm
+
+stSDS.eArmStateSet := E_SDSArmStates.EXTEND_ARM_FOR_SAMPLE_REMOVAL;
+
+CASE stSDS.eArmStateGet OF
+    E_SDSArmStates.EXTEND_ARM_FOR_SAMPLE_REMOVAL:
+        IF NOT stArmHStage.bBusy THEN
+            stSDS.bProceed := TRUE;
+        END_IF
+END_CASE
+]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="ACT_HomeArm" Id="{d8e98cb2-c128-4cbf-b123-97c8384aea4f}">
+      <Implementation>
+        <ST><![CDATA[
+// ACTION - Home transfer arm
+
+stArmHStage.bHomeCmd := TRUE;
+]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="ACT_HomeGar" Id="{59f4a3cd-7252-4161-a08b-81e8e4bc2c72}">
+      <Implementation>
+        <ST><![CDATA[
+// ACTION - Home garage
+
+stSDS.eGarStateSet := E_SDSGarageStates.HOME;
+
+CASE stSDS.eGarStateGet OF
+    E_SDSGarageStates.HOME:
+        IF NOT stGarYStage.bBusy AND NOT stGarRStage.bBusy THEN
+            stSDS.bProceed := TRUE;
+        END_IF
+END_CASE
+]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="ACT_Init" Id="{52f905ec-5187-483d-a501-8b5e4f364ae9}">
+      <Implementation>
+        <ST><![CDATA[
+// ACTION - Initialization
+
+IF NOT stSDSPersistent.bInitialized THEN
+    // Do all the required initialization for the persistent data of the sample delivery system.
+    FOR nIndex := 0 to stSDS.nGarageSlots - 1 BY 1 DO
+        stSDSPersistent.astGarageSlot[nIndex].sTag   := stSDS.asTags[nIndex];
+        stSDSPersistent.astGarageSlot[nIndex].eState := E_SampleSlotStates.EMPTY;
+        stSDSPersistent.astGarageSlot[nIndex].sDesc  := '';
+    END_FOR
+
+    // Populate base angular position for side 1.
+    FOR nIndex := 0 to 2 BY 1 DO
+        stSDSPersistent.astGarageSlot[nIndex].fDeg := 0;
+    END_FOR
+
+    // Populate base angular position for side 2.
+    FOR nIndex := 3 to 5 BY 1 DO
+        stSDSPersistent.astGarageSlot[nIndex].fDeg := 90;
+    END_FOR
+
+    // Populate base angular position for side 3.
+    FOR nIndex := 6 to 8 BY 1 DO
+        stSDSPersistent.astGarageSlot[nIndex].fDeg := 180;
+    END_FOR
+
+    // Populate base angular position for side 4.
+    FOR nIndex := 9 to 11 BY 1 DO
+        stSDSPersistent.astGarageSlot[nIndex].fDeg := 270;
+    END_FOR
+
+    // Populate garage y-positions to align top slot (T) with transfer arm.
+    FOR nIndex := 0 to 11 BY 3 DO
+        stSDSPersistent.astGarageSlot[nIndex].fYPos := -100.5;
+    END_FOR
+
+    // Populate garage y-positions to align middle slot (M) with transfer arm.
+    FOR nIndex := 1 to 11 BY 3 DO
+        stSDSPersistent.astGarageSlot[nIndex].fYPos := -74.5;
+    END_FOR
+
+    // Populate garage y-positions to align bottom slot (B) with transfer arm.
+    FOR nIndex := 2 to 11 BY 3 DO
+        stSDSPersistent.astGarageSlot[nIndex].fYPos := -44.5;
+    END_FOR
+
+    stSDSPersistent.bInitialized := TRUE;
+END_IF
+
+IF NOT stSDS.bInitialized THEN
+    // Do all the required initialization for the non-persistent data of the sample delivery system.
+    stSDS.bHomingRequired := TRUE;
+
+    fbStateSetup(stPositionState:=stDefault, bSetDefault:=TRUE);
+
+    stSDS.bInitialized := TRUE;
+END_IF
+]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="ACT_MoveGarSlot" Id="{4cde747c-7389-4aba-83c9-31bb675d0480}">
+      <Implementation>
+        <ST><![CDATA[
+// ACTION - Move to the selected slot
+
+IF stSDS.eGarStateGet <> E_SDSGarageStates.UNKNOWN AND stSDS.eGarStateGet <> E_SDSGarageStates.HOME AND
+    NOT stGarYStage.bBusy AND NOT stGarRStage.bBusy THEN
+    stSDS.bProceed := TRUE;
+END_IF
+]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="ACT_RotateArmSampleRemoval" Id="{61c47ca2-3f7c-4b29-b445-6169f48804eb}">
+      <Implementation>
+        <ST><![CDATA[
+// ACTION - Home transfer arm
+
+stSDS.eArmStateSet := E_SDSArmStates.ROTATE_SAMPLE_OUT_OF_GARAGE;
+
+CASE stSDS.eArmStateGet OF
+    E_SDSArmStates.ROTATE_SAMPLE_OUT_OF_GARAGE:
+        IF NOT stArmRStage.bBusy THEN
+            stSDS.bProceed := TRUE;
+        END_IF
+END_CASE
+]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="ACT_SelGarSlotRemoval" Id="{f858efd7-109e-44b5-8921-ae698cdc1bcc}">
+      <Implementation>
+        <ST><![CDATA[
+// ACTION - Select the garage slot for removing the puck from
+
+stSDS.sInstructions := 'Select the garage slot to extract from.';
+
+IF stSDS.eGarStateSet <> E_SDSGarageStates.UNKNOWN THEN
+    CASE stSDS.eGarStateSet OF
+        E_SDSGarageStates.T1:
+            stSDS.bProceed := METH_SlotIsFull(eState:=stSDSPersistent.astGarageSlot[0].eState);
+        E_SDSGarageStates.T2:
+            stSDS.bProceed := METH_SlotIsFull(eState:=stSDSPersistent.astGarageSlot[3].eState);
+        E_SDSGarageStates.T3:
+            stSDS.bProceed := METH_SlotIsFull(eState:=stSDSPersistent.astGarageSlot[6].eState);
+        E_SDSGarageStates.T4:
+            stSDS.bProceed := METH_SlotIsFull(eState:=stSDSPersistent.astGarageSlot[9].eState);
+        E_SDSGarageStates.M1:
+            stSDS.bProceed := METH_SlotIsFull(eState:=stSDSPersistent.astGarageSlot[1].eState);
+        E_SDSGarageStates.M2:
+            stSDS.bProceed := METH_SlotIsFull(eState:=stSDSPersistent.astGarageSlot[4].eState);
+        E_SDSGarageStates.M3:
+            stSDS.bProceed := METH_SlotIsFull(eState:=stSDSPersistent.astGarageSlot[7].eState);
+        E_SDSGarageStates.M4:
+            stSDS.bProceed := METH_SlotIsFull(eState:=stSDSPersistent.astGarageSlot[10].eState);
+        E_SDSGarageStates.B1:
+            stSDS.bProceed := METH_SlotIsFull(eState:=stSDSPersistent.astGarageSlot[2].eState);
+        E_SDSGarageStates.B2:
+            stSDS.bProceed := METH_SlotIsFull(eState:=stSDSPersistent.astGarageSlot[5].eState);
+        E_SDSGarageStates.B3:
+            stSDS.bProceed := METH_SlotIsFull(eState:=stSDSPersistent.astGarageSlot[8].eState);
+        E_SDSGarageStates.B4:
+            stSDS.bProceed := METH_SlotIsFull(eState:=stSDSPersistent.astGarageSlot[11].eState);
+    END_CASE
+    IF NOT stSDS.bProceed THEN
+        stSDS.eGarStateSet := E_SDSGarageStates.UNKNOWN;
+        stSDS.sStatus := 'The selected slot is empty or disabled.';
+    END_IF
+END_IF
+]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="ACT_Sequence" Id="{0bd825ad-04fd-47e0-9bc4-ea812b4a4d1a}">
+      <Implementation>
+        <ST><![CDATA[
+// ACTION - Sequence
+
+IF NOT stSDS.bMaint THEN
+    CASE stSDS.eSequenceState OF
+        E_SDSSequenceStates.STANDBY:
+
+            // Determine whether the transfer arm is loadable or unloadable.
+            // If the transfer arm is disabled, then nothing is allowed.
+            // If the transfer arm is empty, it can be loaded.
+            // If the transfer arm is full, it can be unloaded.
+            CASE stSDSPersistent.stTransferSlot.eState OF
+                E_SampleSlotStates.EMPTY:
+                    stSDS.bArmLoadable   := TRUE;
+                    stSDS.bArmUnloadable := FALSE;
+                E_SampleSlotStates.FULL:
+                    stSDS.bArmLoadable   := FALSE;
+                    stSDS.bArmUnloadable := TRUE;
+                E_SampleSlotStates.DISABLED:
+                    stSDS.bArmLoadable   := FALSE;
+                    stSDS.bArmUnloadable := FALSE;
+            END_CASE
+
+            // Determine whether the garage is loadable or unloadable.
+            // If all slots in the garage are disabled, then nothing is allowed.
+            // If at least one slot in the garage is empty, it can be loaded.
+            // If at least one slot in the garage is full, it can be unloaded.
+            stSDS.bGarLoadable := FALSE;
+            stSDS.bGarUnloadable := FALSE;
+            FOR nIndex := 0 TO stSDS.nGarageSlots - 1 BY 1 DO
+                CASE stSDSPersistent.astGarageSlot[nIndex].eState OF
+                    E_SampleSlotStates.EMPTY:
+                        stSDS.bGarLoadable   := TRUE;
+                    E_SampleSlotStates.FULL:
+                        stSDS.bGarUnloadable := TRUE;
+                    E_SampleSlotStates.DISABLED:
+                END_CASE
+            END_FOR
+
+            // Logic to allow loading a puck from the garage to the transfer arm slot.
+            IF stSDS.bArmLoadable AND stSDS.bGarUnloadable AND stSDS.bLoadArm THEN
+                stSDS.eSequenceState := E_SDSSequenceStates.LOAD_ARM_FROM_GARAGE;
+            ELSIF NOT stSDS.bArmLoadable AND stSDS.bGarUnloadable AND stSDS.bLoadArm THEN
+                stSDS.sStatus  := 'Transfer arm is not currently loadable. It is disabled or full.';
+                stSDS.eSequenceState := E_SDSSequenceStates.ERROR;
+            ELSIF stSDS.bArmLoadable AND NOT stSDS.bGarUnloadable AND stSDS.bLoadArm THEN
+                stSDS.sStatus  := 'Transfer arm is not currently loadable. The garage is disabled or empty.';
+                stSDS.eSequenceState := E_SDSSequenceStates.ERROR;
+
+            // Logic to allow unloading a puck from the transfer arm to a slot in the garage.
+            ELSIF stSDS.bArmUnloadable AND stSDS.bGarLoadable AND stSDS.bUnloadArm THEN
+                stSDS.eSequenceState := E_SDSSequenceStates.UNLOAD_ARM_TO_GARAGE;
+            ELSIF NOT stSDS.bArmUnloadable AND stSDS.bGarLoadable AND stSDS.bUnloadArm THEN
+                stSDS.sStatus  := 'Transfer arm is not currently unloadable. It is disabled or empty.';
+                stSDS.eSequenceState := E_SDSSequenceStates.ERROR;
+            ELSIF stSDS.bArmUnloadable AND NOT stSDS.bGarLoadable AND stSDS.bLoadArm THEN
+                stSDS.sStatus  := 'Transfer arm is not currently unloadable. The garage is disabled or full.';
+                stSDS.eSequenceState := E_SDSSequenceStates.ERROR;
+
+            // Logic to allow loading a puck from the side port to the garage.
+            ELSIF stSDS.bGarLoadable AND stSDS.bLoadGar THEN
+                stSDS.eSequenceState := E_SDSSequenceStates.LOAD_GARAGE_FROM_PORT;
+            ELSIF NOT stSDS.bGarLoadable AND stSDS.bLoadGar THEN
+                stSDS.sStatus  := 'Garage is not currently loadable. It might be disabled or full.';
+                stSDS.eSequenceState := E_SDSSequenceStates.ERROR;
+
+            // Logic to allow unloading a puck from the garage to the side port.
+            ELSIF stSDS.bGarUnloadable AND stSDS.bUnloadGar THEN
+                stSDS.eSequenceState := E_SDSSequenceStates.UNLOAD_GARAGE_FROM_PORT;
+            ELSIF NOT stSDS.bGarUnloadable AND stSDS.bUnloadGar THEN
+                stSDS.sStatus  := 'Garage is not currently unloadable. It might be disabled or empty.';
+                stSDS.eSequenceState := E_SDSSequenceStates.ERROR;
+            END_IF
+           stSDS.sInstructions := 'Select an available sample delivery sequence.';
+
+           stSDS.eLoadArmFromGarageStep := E_SDSSequenceStates.STANDBY;
+
+        E_SDSSequenceStates.LOAD_ARM_FROM_GARAGE:
+
+            // Garage needs to face the transfer arm
+            stSDS.eSDSFaceState := E_SDSFaceState.FACE_TRANSFER_ARM;
+
+            // Step through the whole sequence to use the transfer arm to remove a sample from the garage.
+            CASE stSDS.eLoadArmFromGarageStep OF
+                E_SDSSequenceStates.STANDBY:
+                    stSDS.eLoadArmFromGarageStep := E_SDSSequenceStates.HOME_TRANSFER_ARM;
+                E_SDSSequenceStates.HOME_TRANSFER_ARM:
+                    ACT_HomeArm();
+                    METH_AdvanceStep(
+                        nStep:=stSDS.eLoadArmFromGarageStep,
+                        nSuccessStep:=E_SDSSequenceStates.HOME_GARAGE,
+                        nFailureStep:=E_SDSSequenceStates.ERROR,
+                        tTimeout:=T#60s
+                    );
+                E_SDSSequenceStates.HOME_GARAGE:
+                    ACT_HomeGar();
+                    METH_AdvanceStep(
+                        nStep:=stSDS.eLoadArmFromGarageStep,
+                        nSuccessStep:=E_SDSSequenceStates.SELECT_GARAGE_SLOT_REMOVAL,
+                        nFailureStep:=E_SDSSequenceStates.ERROR,
+                        tTimeout:=T#60s
+                    );
+                E_SDSSequenceStates.SELECT_GARAGE_SLOT_REMOVAL:
+                    ACT_SelGarSlotRemoval();
+                    METH_AdvanceStep(
+                        nStep:=stSDS.eLoadArmFromGarageStep,
+                        nSuccessStep:=E_SDSSequenceStates.MOVE_GARAGE_SLOT,
+                        nFailureStep:=E_SDSSequenceStates.ERROR,
+                        tTimeout:=T#60s
+                    );
+                E_SDSSequenceStates.MOVE_GARAGE_SLOT:
+                    ACT_MoveGarSlot();
+                    METH_AdvanceStep(
+                        nStep:=stSDS.eLoadArmFromGarageStep,
+                        nSuccessStep:=E_SDSSequenceStates.EXTEND_TRANSFER_ARM_TO_EXTRACT_SAMPLE,
+                        nFailureStep:=E_SDSSequenceStates.ERROR,
+                        tTimeout:=T#60s
+                    );
+                E_SDSSequenceStates.EXTEND_TRANSFER_ARM_TO_EXTRACT_SAMPLE:
+                    ACT_ExtendArmSampleRemoval();
+                    METH_AdvanceStep(
+                        nStep:=stSDS.eLoadArmFromGarageStep,
+                        nSuccessStep:=E_SDSSequenceStates.ROTATE_TRANSFER_ARM_TO_EXTRACT_SAMPLE,
+                        nFailureStep:=E_SDSSequenceStates.ERROR,
+                        tTimeout:=T#60s
+                    );
+                E_SDSSequenceStates.ROTATE_TRANSFER_ARM_TO_EXTRACT_SAMPLE:
+                    ACT_RotateArmSampleRemoval();
+                    METH_AdvanceStep(
+                        nStep:=stSDS.eSequenceState,
+                        nSuccessStep:=E_SDSSequenceStates.HOME_TRANSFER_ARM,
+                        nFailureStep:=E_SDSSequenceStates.ERROR,
+                        tTimeout:=T#60s
+                    );
+                E_SDSSequenceStates.ERROR:
+                    // Need to add in error handling.
+                    stSDS.eSequenceState := E_SDSSequenceStates.STANDBY;
+            END_CASE
+
+        E_SDSSequenceStates.UNLOAD_ARM_TO_GARAGE:
+            // TODO
+
+        E_SDSSequenceStates.LOAD_GARAGE_FROM_PORT:
+            // TODO
+
+        E_SDSSequenceStates.UNLOAD_GARAGE_FROM_PORT:
+            // TODO
+
+        E_SDSSequenceStates.HOME_TRANSFER_ARM:
+            ACT_HomeArm();
+            METH_AdvanceStep(
+                nStep:=stSDS.eSequenceState,
+                nSuccessStep:=E_SDSSequenceStates.STANDBY,
+                nFailureStep:=E_SDSSequenceStates.ERROR,
+                tTimeout:=T#60s
+            );
+
+        E_SDSSequenceStates.HOME_GARAGE:
+            ACT_HomeGar();
+            METH_AdvanceStep(
+                nStep:=stSDS.eSequenceState,
+                nSuccessStep:=E_SDSSequenceStates.STANDBY,
+                nFailureStep:=E_SDSSequenceStates.ERROR,
+                tTimeout:=T#60s
+            );
+
+        E_SDSSequenceStates.ERROR:
+            // Need to add in error handling.
+            stSDS.bLoadArm   := FALSE;
+            stSDS.bUnloadArm := FALSE;
+            stSDS.bLoadGar   := FALSE;
+            stSDS.bUnloadGar := FALSE;
+            stSDS.eSequenceState := E_SDSSequenceStates.STANDBY;
+    END_CASE
+ELSE
+    stSDS.eSequenceState := E_SDSSequenceStates.STANDBY;
+END_IF
+
+stSDS.bProceed := FALSE;
+]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="ACT_UpdatePositionStates" Id="{fa4d712c-550f-44d5-aa78-eabca267dcf2}">
+      <Implementation>
+        <ST><![CDATA[
+// ACTION - Update Position States
+
+// Update parameters for transfer arm states.
+// Horizontal axis states
+nIndex := 1;
+fbStateSetup(stPositionState:=stSDS.astArmHPosState[nIndex], sName:='HOME',
+    fPosition:=0,
+    fVelocity:=10
+); nIndex := nIndex + 1;
+fbStateSetup(stPositionState:=stSDS.astArmHPosState[nIndex], sName:='PREROTATE_ARM_FOR_SAMPLE_REMOVAL',
+    fPosition:=0,
+    fVelocity:=10
+); nIndex := nIndex + 1;
+fbStateSetup(stPositionState:=stSDS.astArmHPosState[nIndex], sName:='EXTEND_ARM_FOR_SAMPLE_REMOVAL',
+    fPosition:=28,
+    fVelocity:=10
+); nIndex := nIndex + 1;
+fbStateSetup(stPositionState:=stSDS.astArmHPosState[nIndex], sName:='ROTATE_SAMPLE_OUT_OF_GARAGE',
+    fPosition:=stArmHStage.stAxisStatus.fActPosition,
+    fVelocity:=10
+); nIndex := nIndex + 1;
+fbStateSetup(stPositionState:=stSDS.astArmHPosState[nIndex], sName:='EXTEND_ARM_FOR_SAMPLE_INSERTION',
+    fPosition:=30,
+    fVelocity:=10
+); nIndex := nIndex + 1;
+fbStateSetup(stPositionState:=stSDS.astArmHPosState[nIndex], sName:='INSERT_SAMPLE_INTO_GARAGE',
+    fPosition:=stArmHStage.stAxisStatus.fActPosition,
+    fVelocity:=10
+); nIndex := nIndex + 1;
+
+// Rotational axis states
+nIndex := 1;
+fbStateSetup(stPositionState:=stSDS.astArmRPosState[nIndex], sName:='HOME',
+    fPosition:=0,
+    fVelocity:=10
+); nIndex := nIndex + 1;
+fbStateSetup(stPositionState:=stSDS.astArmHPosState[nIndex], sName:='PREROTATE_ARM_FOR_SAMPLE_REMOVAL',
+    fPosition:=2000,
+    fVelocity:=10
+); nIndex := nIndex + 1;
+fbStateSetup(stPositionState:=stSDS.astArmRPosState[nIndex], sName:='EXTEND_ARM_FOR_SAMPLE_REMOVAL',
+    fPosition:=2000,
+    fVelocity:=10
+); nIndex := nIndex + 1;
+fbStateSetup(stPositionState:=stSDS.astArmRPosState[nIndex], sName:='ROTATE_SAMPLE_OUT_OF_GARAGE',
+    fPosition:=0,
+    fVelocity:=10
+); nIndex := nIndex + 1;
+fbStateSetup(stPositionState:=stSDS.astArmRPosState[nIndex], sName:='EXTEND_ARM_FOR_SAMPLE_INSERTION',
+    fPosition:=0,
+    fVelocity:=10
+); nIndex := nIndex + 1;
+fbStateSetup(stPositionState:=stSDS.astArmRPosState[nIndex], sName:='INSERT_SAMPLE_INTO_GARAGE',
+    fPosition:=1700,
+    fVelocity:=10
+); nIndex := nIndex + 1;
+
+// Update parameters for garage states.
+// Y axis states
+nIndex := 1;
+fbStateSetup(stPositionState:=stSDS.astGarYPosState[nIndex], sName:='HOME',
+    fPosition:=0,
+    fVelocity:=2
+); nIndex := nIndex + 1;
+fbStateSetup(stPositionState:=stSDS.astGarYPosState[nIndex], sName:='T1',
+    fPosition:=stSDSPersistent.astGarageSlot[0].fYPos,
+    fVelocity:=2
+); nIndex := nIndex + 1;
+fbStateSetup(stPositionState:=stSDS.astGarYPosState[nIndex], sName:='T2',
+    fPosition:=stSDSPersistent.astGarageSlot[3].fYPos,
+    fVelocity:=2
+); nIndex := nIndex + 1;
+fbStateSetup(stPositionState:=stSDS.astGarYPosState[nIndex], sName:='T3',
+    fPosition:=stSDSPersistent.astGarageSlot[6].fYPos,
+    fVelocity:=2
+); nIndex := nIndex + 1;
+fbStateSetup(stPositionState:=stSDS.astGarYPosState[nIndex], sName:='T4',
+    fPosition:=stSDSPersistent.astGarageSlot[9].fYPos,
+    fVelocity:=2
+); nIndex := nIndex + 1;
+fbStateSetup(stPositionState:=stSDS.astGarYPosState[nIndex], sName:='M1',
+    fPosition:=stSDSPersistent.astGarageSlot[1].fYPos,
+    fVelocity:=2
+); nIndex := nIndex + 1;
+fbStateSetup(stPositionState:=stSDS.astGarYPosState[nIndex], sName:='M2',
+    fPosition:=stSDSPersistent.astGarageSlot[4].fYPos,
+    fVelocity:=2
+); nIndex := nIndex + 1;
+fbStateSetup(stPositionState:=stSDS.astGarYPosState[nIndex], sName:='M3',
+    fPosition:=stSDSPersistent.astGarageSlot[7].fYPos,
+    fVelocity:=2
+); nIndex := nIndex + 1;
+fbStateSetup(stPositionState:=stSDS.astGarYPosState[nIndex], sName:='M4',
+    fPosition:=stSDSPersistent.astGarageSlot[10].fYPos,
+    fVelocity:=2
+); nIndex := nIndex + 1;
+fbStateSetup(stPositionState:=stSDS.astGarYPosState[nIndex], sName:='B1',
+    fPosition:=stSDSPersistent.astGarageSlot[2].fYPos,
+    fVelocity:=2
+); nIndex := nIndex + 1;
+fbStateSetup(stPositionState:=stSDS.astGarYPosState[nIndex], sName:='B2',
+    fPosition:=stSDSPersistent.astGarageSlot[5].fYPos,
+    fVelocity:=2
+); nIndex := nIndex + 1;
+fbStateSetup(stPositionState:=stSDS.astGarYPosState[nIndex], sName:='B3',
+    fPosition:=stSDSPersistent.astGarageSlot[8].fYPos,
+    fVelocity:=2
+); nIndex := nIndex + 1;
+fbStateSetup(stPositionState:=stSDS.astGarYPosState[nIndex], sName:='B4',
+    fPosition:=stSDSPersistent.astGarageSlot[11].fYPos,
+    fVelocity:=2
+); nIndex := nIndex + 1;
+
+// Rotational axis states
+nIndex := 1;
+fbStateSetup(stPositionState:=stSDS.astGarRPosState[nIndex], sName:='HOME',
+    fPosition:=0,
+    fVelocity:=10
+); nIndex := nIndex + 1;
+fbStateSetup(stPositionState:=stSDS.astGarRPosState[nIndex], sName:='T1',
+    fPosition:=stSDSPersistent.astGarageSlot[0].fDeg,
+    fVelocity:=2
+); nIndex := nIndex + 1;
+fbStateSetup(stPositionState:=stSDS.astGarRPosState[nIndex], sName:='T2',
+    fPosition:=stSDSPersistent.astGarageSlot[3].fDeg,
+    fVelocity:=2
+); nIndex := nIndex + 1;
+fbStateSetup(stPositionState:=stSDS.astGarRPosState[nIndex], sName:='T3',
+    fPosition:=stSDSPersistent.astGarageSlot[6].fDeg,
+    fVelocity:=2
+); nIndex := nIndex + 1;
+fbStateSetup(stPositionState:=stSDS.astGarRPosState[nIndex], sName:='T4',
+    fPosition:=stSDSPersistent.astGarageSlot[9].fDeg,
+    fVelocity:=2
+); nIndex := nIndex + 1;
+fbStateSetup(stPositionState:=stSDS.astGarRPosState[nIndex], sName:='M1',
+    fPosition:=stSDSPersistent.astGarageSlot[1].fDeg,
+    fVelocity:=2
+); nIndex := nIndex + 1;
+fbStateSetup(stPositionState:=stSDS.astGarRPosState[nIndex], sName:='M2',
+    fPosition:=stSDSPersistent.astGarageSlot[4].fDeg,
+    fVelocity:=2
+); nIndex := nIndex + 1;
+fbStateSetup(stPositionState:=stSDS.astGarRPosState[nIndex], sName:='M3',
+    fPosition:=stSDSPersistent.astGarageSlot[7].fDeg,
+    fVelocity:=2
+); nIndex := nIndex + 1;
+fbStateSetup(stPositionState:=stSDS.astGarRPosState[nIndex], sName:='M4',
+    fPosition:=stSDSPersistent.astGarageSlot[10].fDeg,
+    fVelocity:=2
+); nIndex := nIndex + 1;
+fbStateSetup(stPositionState:=stSDS.astGarRPosState[nIndex], sName:='B1',
+    fPosition:=stSDSPersistent.astGarageSlot[2].fDeg,
+    fVelocity:=2
+); nIndex := nIndex + 1;
+fbStateSetup(stPositionState:=stSDS.astGarRPosState[nIndex], sName:='B2',
+    fPosition:=stSDSPersistent.astGarageSlot[5].fDeg,
+    fVelocity:=2
+); nIndex := nIndex + 1;
+fbStateSetup(stPositionState:=stSDS.astGarRPosState[nIndex], sName:='B3',
+    fPosition:=stSDSPersistent.astGarageSlot[8].fDeg,
+    fVelocity:=2
+); nIndex := nIndex + 1;
+fbStateSetup(stPositionState:=stSDS.astGarRPosState[nIndex], sName:='B4',
+    fPosition:=stSDSPersistent.astGarageSlot[11].fDeg,
+    fVelocity:=2
+); nIndex := nIndex + 1;
+
+CASE stSDS.eSDSFaceState OF
+    E_SDSFaceState.FACE_SIDE_PORT:
+        FOR nIndex := 0 TO stSDS.nGarageSlots - 1 BY 1 DO
+            stSDS.astGarRPosState[nIndex].fPosition := stSDS.astGarRPosState[nIndex].fPosition + stSDS.fFacePortOffset;
+        END_FOR
+END_CASE
+]]></ST>
+      </Implementation>
+    </Action>
+    <Method Name="METH_AdvanceStep" Id="{7941e366-8cff-430f-a57c-138257d2e7e6}">
+      <Declaration><![CDATA[METHOD METH_AdvanceStep : UINT
+VAR_IN_OUT
+    nStep: UINT;
+END_VAR
+VAR_INPUT
+    nSuccessStep: UINT;
+    nFailureStep: UINT;
+    tTimeout: TIME;
+END_VAR
+VAR_OUTPUT
+    tTimeRemaining: TIME;
+END_VAR
+VAR_INST
+    bInit: BOOL := TRUE;
+    tonTimeout: TON;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[
+IF bInit THEN
+    tonTimeout(IN:=FALSE);
+ELSE
+    tonTimeout(IN:=TRUE,PT:=tTimeout,ET=>);
+END_If
+
+tTimeRemaining := tTimeout - tonTimeout.ET;
+stSDS.fSecRemaining := TIME_TO_REAL(tTimeRemaining) / 1000;
+
+IF stSDS.bProceed THEN
+    bInit := TRUE;
+    nStep := nSuccessStep;
+ELSIF stSDS.bCancel OR tonTimeout.Q THEN
+    bInit := TRUE;
+    nStep := nFailureStep;
+END_IF
+       ]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="METH_SlotIsFull" Id="{792661d3-73c6-4d3f-bc08-6d16e351d246}">
+      <Declaration><![CDATA[METHOD METH_SlotIsFull : BOOL
+VAR_INPUT
+    eState: E_SampleSlotStates;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[
+IF eState = E_SampleSlotStates.FULL THEN
+    METH_SlotIsFull := TRUE;
+ELSE
+    METH_SlotIsFull := FALSE;
+END_IF]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>

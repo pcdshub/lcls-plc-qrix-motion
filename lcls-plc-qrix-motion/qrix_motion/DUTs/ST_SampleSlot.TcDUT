@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <DUT Name="ST_SampleSlot" Id="{09c3dd66-8f5a-4524-bfed-dea9564f5621}">
+    <Declaration><![CDATA[TYPE ST_SampleSlot :
+(*
+    Represents a general slot for a sample puck.
+*)
+STRUCT
+    {attribute 'pytmc' := '
+        pv: eState
+        io: io
+        field: DESC Enumeration of possible states for a slot in the sample delivery system. (empty, full, or disabled)
+    '}
+    eState: E_SampleSlotStates;
+    {attribute 'pytmc' := '
+        pv: sTag
+        io: i
+        field: DESC A two character identifier for the slot. e.g., T1, B3, etc...
+    '}
+    sTag: STRING;
+    {attribute 'pytmc' := '
+        pv: sDesc
+        io: io
+        field: DESC If the slot is in the full state, this value is supposed to describe what is in the slot.
+    '}
+    sDesc: STRING;
+    {attribute 'pytmc' := '
+        pv: fYPos
+        io: io
+        field: DESC The y-position of the garage, in units of mm, which corresponds to the slot being approximately level with the transfer arm.
+    '}
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

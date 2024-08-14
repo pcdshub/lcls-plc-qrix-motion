@@ -31,6 +31,9 @@
     <Compile Include="Devices\FB_ReadCoE.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Devices\FB_SDS.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Devices\FB_Slits.TcPOU">
       <SubType>Code</SubType>
     </Compile>
@@ -41,6 +44,36 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DUTs\ENUM_LAS_VIS_States.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\E_SampleSlotStates.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\E_SDSFaceState.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\E_SDSGarageStates.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\E_SDSArmStates.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\E_SDSSequenceStates.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\ST_GarageSlot.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\ST_SampleSlot.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\ST_SDS.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\ST_SDSPersistent.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\ST_TransferSlot.TcDUT">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="GVLs\GVL_EPS.TcGVL">

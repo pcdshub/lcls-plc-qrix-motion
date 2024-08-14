@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <DUT Name="ST_GarageSlot" Id="{154c905a-6f0c-4ea3-8f88-759737fb4c9a}">
+    <Declaration><![CDATA[TYPE ST_GarageSlot EXTENDS ST_SampleSlot :
+(*
+    Represents a slot in the SDS garage.
+*)
+STRUCT
+    {attribute 'pytmc' := '
+        pv: fYPos
+        io: io
+        field: DESC The y-position of the garage, in units of mm, which corresponds to the slot being approximately level with the transfer arm.
+    '}
+    fYPos: REAL;
+    {attribute 'pytmc' := '
+        pv: fDeg
+        io: io
+        field: DESC The angular position of the slot in the garage in units of degrees.
+    '}
+    fDeg: REAL;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

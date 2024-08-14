@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <DUT Name="E_SDSFaceState" Id="{6d8a622b-81c8-4cf8-adfa-d15a25824ce2}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE E_SDSFaceState :
+(
+    UNKNOWN := 0,
+    FACE_TRANSFER_ARM := 1,
+    FACE_SIDE_PORT := 2
+) UINT;
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

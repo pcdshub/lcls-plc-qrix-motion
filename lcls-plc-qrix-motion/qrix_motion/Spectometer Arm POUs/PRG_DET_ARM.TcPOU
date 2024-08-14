@@ -100,7 +100,7 @@ Main.M27.bAllEnable := Main.M27.bEnable AND GVL_EPS.bESTOP;
 IF NOT bDisableStateMachine THEN
     CASE nState OF
     -1:
-        IF Main.M25.bExecute THEN
+        IF Main.M25.bExecute AND NOT (Main.M25.bError OR Main.M26.bError)  THEN
             Main.M25.bExecute := FALSE;
             Main.M25.bEnable := TRUE;
             nState := 0;
@@ -116,6 +116,8 @@ IF NOT bDisableStateMachine THEN
             Main.M26.bBrakeRelease := TRUE;
             tonDelay(IN:=FALSE);
             nState := 1;
+        ELSIF Main.M25.bError OR Main.M26.bError THEN
+            nState := -1;
         END_IF
     1:
         tonDelay2(IN:=TRUE, PT:=t#1s);
@@ -123,6 +125,8 @@ IF NOT bDisableStateMachine THEN
             Main.M25.bExecute := TRUE;
             tonDelay2(IN:=FALSE);
             nState := 2;
+        ELSIF Main.M25.bError OR Main.M26.bError THEN
+            nState := -1;
         END_IF
     2:
         IF NOT Main.M25.bBusy AND NOT Main.M26.bBusy THEN

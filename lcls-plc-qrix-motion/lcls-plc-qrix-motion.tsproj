@@ -2,6 +2,9 @@
 <TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4022.30" TcVersionFixed="true">
 	<Project ProjectGUID="{32AC45EB-466B-4A24-9780-13410D68D88C}" TargetNetId="172.21.140.101.1.1" RelativeTargetNetId="true" RelativeIpAddresses="true" ShowHideConfigurations="#x306">
 		<System>
+			<Settings RouterMemory="67108864">
+				<Cpu RtLimit="50" LatencyWarning="200"/>
+			</Settings>
 			<Licenses>
 				<Target>
 					<ManualSelect>{3EBB9639-5FF3-42B6-8847-35C70DC013C8}</ManualSelect>
