@@ -24,11 +24,6 @@ STRUCT
         field: DESC If the slot is in the full state, this value is supposed to describe what is in the slot.
     '}
     sDesc: STRING;
-    {attribute 'pytmc' := '
-        pv: fYPos
-        io: io
-        field: DESC The y-position of the garage, in units of mm, which corresponds to the slot being approximately level with the transfer arm.
-    '}
 END_STRUCT
 END_TYPE
 ]]></Declaration>

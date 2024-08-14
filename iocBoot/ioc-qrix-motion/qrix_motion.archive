@@ -5369,7 +5369,6 @@ QRIX:SDS:NP:bGarLoadable_RBV.VAL	1	scan
 QRIX:SDS:NP:bGarUnloadable_RBV.VAL	1	scan
 QRIX:SDS:NP:bHomeReq_RBV.VAL	1	scan
 QRIX:SDS:NP:bInitialized_RBV.VAL	1	scan
-QRIX:SDS:NP:bInitialized.VAL	1	scan
 QRIX:SDS:NP:bLoadArm_RBV.VAL	1	scan
 QRIX:SDS:NP:bLoadArm.VAL	1	scan
 QRIX:SDS:NP:bLoadGar_RBV.VAL	1	scan

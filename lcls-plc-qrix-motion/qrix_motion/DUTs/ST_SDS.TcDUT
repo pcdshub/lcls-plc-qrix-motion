@@ -9,7 +9,7 @@
 STRUCT
     {attribute 'pytmc' := '
         pv: bInitialized
-        io: io
+        io: i
         field: DESC TRUE if the non-persistent data has been initialized. FALSE if it has not.
     '}
     bInitialized: BOOL;

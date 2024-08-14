@@ -68878,18 +68878,6 @@ record(bi, "QRIX:SDS:NP:bInitialized_RBV") {
   info(archive, "VAL")
 }
 
-record(bo, "QRIX:SDS:NP:bInitialized") {
-  # TRUE if the non-persistent data has been initialized. FALSE if it has not.
-  field(DESC, "TRUE if the non-pers...SE if it has not.")
-  field(DTYP, "asynInt32")
-  field(UDFS, "0")
-  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_SDS.stSDS.bInitialized=")
-  field(ZNAM, "FALSE")
-  field(ONAM, "TRUE")
-  info(autosaveFields_pass0, "COSV DESC DISS OSV SIMS UDFS VAL ZSV")
-  info(archive, "VAL")
-}
-
 record(bi, "QRIX:SDS:NP:bLoadArm_RBV") {
   # Write True to command an arm loading sequence. Write False to cancel a command.
   field(DESC, "Write True to comman...cancel a command.")
