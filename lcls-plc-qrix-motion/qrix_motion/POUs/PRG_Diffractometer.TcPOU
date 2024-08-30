@@ -44,7 +44,8 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[IF ( bInit) THEN
+      <ST><![CDATA[
+IF ( bInit) THEN
     bInit := FALSE;
     Main.M28.bHardwareEnable := TRUE;
     Main.M28.bPowerSelf := TRUE;
@@ -117,7 +118,7 @@ EPS_Diff_Theta_Backward.setBit(nBits:= 0, bValue:=F_CheckAxisGRT(Main.M34,10) OR
 EPS_Diff_Theta_Forward(eps:=Main.M34.stEPSForwardEnable);
 EPS_Diff_Theta_Forward.setDescription('POSITIVE MOTION ALLOWED IF: THETA < 2THETA + 21 DEG'); // SET DESCRIPTION FOR BYTE INDICATOR LABELS
 // Diffractometer Theta cannot go more than Diffractometer 2Theta plus 21 degrees
-EPS_Diff_Theta_Forward.setBit(nBits:= 0, bValue:=F_CheckAxisLES(Main.M34,Main.M35.stAxisStatus.fActPosition+21));
+EPS_Diff_Theta_Forward.setBit(nBits:= 0, bValue:=Main.M34.Axis.NcToPlc.ActPos < Main.M35.stAxisStatus.fActPosition+21);
 
 // DIFFRACTOMETER CHI ANGLE RESTRICTIONS
 // Disable movement in negative direction.
@@ -147,7 +148,7 @@ EPS_Diff_Z_Backward.setBit(nBits:= 0, bValue:=F_CheckAxisLEQ(Main.M37,50) OR F_C
 EPS_Diff_2Theta_Backward(eps:=Main.M35.stEPSBackwardEnable);
 EPS_Diff_2Theta_Backward.setDescription('NEGATIVE MOTION ALLOWED IF: 2THETA > THETA - 21 DEG'); // SET DESCRIPTION FOR BYTE INDICATOR LABELS
 // Diffractometer 2 Theta cannot go less than the diffractometer theta angle minus 21 degrees.
-EPS_Diff_2Theta_Backward.setBit(nBits:= 0, bValue:=F_CheckAxisGRT(Main.M35,Main.M34.stAxisStatus.fActPosition-21));
+EPS_Diff_2Theta_Backward.setBit(nBits:= 0, bValue:=Main.M35.Axis.NcToPlc.ActPos > Main.M34.stAxisStatus.fActPosition-21);
 
 fb_Diff_X(stMotionStage:=Main.M28);
 fb_Diff_Y(stMotionStage:=Main.M29);
@@ -156,7 +157,8 @@ fb_Diff_2ThetaY(stMotionStage:=Main.M31);
 fb_Diff_Phi(stMotionStage:=Main.M32);
 fb_Diff_Chi(stMotionStage:=Main.M33);
 fb_Diff_Theta(stMotionStage:=Main.M34);
-fb_Diff_2Theta(stMotionStage:=Main.M35);]]></ST>
+fb_Diff_2Theta(stMotionStage:=Main.M35);
+]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

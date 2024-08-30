@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <DUT Name="ST_AutoRealignCouple" Id="{bc0e2621-dc74-4de3-b44d-fa350b6a4f93}">
+    <Declaration><![CDATA[TYPE ST_AutoRealignCouple :
+STRUCT
+    {attribute 'pytmc' := '
+        pv: eState
+        io: i
+        field: DESC Gives the current coupling realignment state.
+    '}
+    eState: E_RealignCoupleState;
+    {attribute 'pytmc' := '
+        pv: bExecute
+        io: io
+        field: DESC Hold TRUE to run an automatic realignment sequence. FALSE to cancel.
+    '}
+    bExecute: BOOL;
+    {attribute 'pytmc' := '
+        pv: bExecuteCouple
+        io: io
+        field: DESC Write TRUE to couple axes.
+    '}
+    bExecuteCouple: BOOL;
+    {attribute 'pytmc' := '
+        pv: bExecuteDecouple
+        io: io
+        field: DESC Write FALSE to decouple axes.
+    '}
+    bExecuteDecouple: BOOL;
+    {attribute 'pytmc' := '
+        pv: fRealignSpeed
+        io: io
+        field: DESC The speed at which the axis will be moved when realigning.
+    '}
+    fRealignSpeed: LREAL;
+    {attribute 'pytmc' := '
+        pv: bCoupled
+        io: i
+        field: DESC TRUE if the axes are coupled. FALSE if they are not coupled.
+    '}
+    bCoupled: BOOL;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

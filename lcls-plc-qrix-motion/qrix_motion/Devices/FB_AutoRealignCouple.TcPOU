@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="FB_AutoRealignCouple" Id="{c8bd7e6d-d001-4300-8b80-51958269e0fb}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_AutoRealignCouple
+VAR_IN_OUT
+    stMotionStageLeader:  ST_MotionStage;
+    stMotionStageFollow:  ST_MotionStage;
+    stAutoRealignCouple:  ST_AutoRealignCouple;
+END_VAR
+VAR
+    bInit: BOOL := TRUE;
+    tTimeout: TIME;
+    tStateTimeout: TIME := T#1s;
+    tonTimeout: TON;
+    tonRecouple: TON;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+IF bInit THEN
+    stAutoRealignCouple.eState := E_RealignCoupleState.STANDBY;
+END_IF
+
+stAutoRealignCouple.bCoupled := stMotionStageLeader.Axis.NcToPlc.CoupleState = 1 AND stMotionStageFollow.Axis.NcToPlc.CoupleState = 3;
+
+CASE stAutoRealignCouple.eState OF
+
+    E_RealignCoupleState.STANDBY:
+        IF stAutoRealignCouple.bExecute THEN
+            stAutoRealignCouple.bExecute := FALSE;
+            stAutoRealignCouple.eState := E_RealignCoupleState.DECOUPLE_AXES;
+        END_IF
+        tonTimeout(IN:=FALSE);
+
+    E_RealignCoupleState.DECOUPLE_AXES:
+        // If the gantry is already coupled, the motor is not busy, and it is enabled, then decouple the axes.
+        tonTimeout(IN:=TRUE,PT:=tStateTimeout);
+        IF stAutoRealignCouple.bCoupled AND NOT stMotionStageFollow.bBusy AND NOT stMotionStageFollow.bError THEN
+            stAutoRealignCouple.bExecuteDecouple := TRUE;
+            stAutoRealignCouple.eState := E_RealignCoupleState.COMMAND_AXES_INTO_REALIGNMENT;
+            tonTimeout(IN:=FALSE);
+        ELSIF NOT stAutoRealignCouple.bCoupled AND NOT stMotionStageFollow.bBusy AND NOT stMotionStageFollow.bError THEN
+            stAutoRealignCouple.eState := E_RealignCoupleState.COMMAND_AXES_INTO_REALIGNMENT;
+            tonTimeout(IN:=FALSE);
+        ELSIF stMotionStageFollow.bError THEN
+            stAutoRealignCouple.eState := E_RealignCoupleState.ERROR;
+            stMotionStageFollow.bError := TRUE;
+            stMotionStageFollow.sCustomErrorMessage := 'Cannot autorealign axes if the follower axis is in an error state.';
+        ELSIF tonTimeout.Q THEN
+            stAutoRealignCouple.eState := E_RealignCoupleState.ERROR;
+            stMotionStageFollow.bError := TRUE;
+            stMotionStageFollow.sCustomErrorMessage := 'Failed to decouple axes before timeout.';
+        END_IF
+
+    E_RealignCoupleState.COMMAND_AXES_INTO_REALIGNMENT:
+        // If the gantry is no longer coupled, the motor is not busy, and it is enabled, then reset the decouple command and
+        // command the follower axis to align with the leader axis.
+        tonTimeout(IN:=TRUE,PT:=tStateTimeout);
+        IF NOT stAutoRealignCouple.bCoupled AND NOT stMotionStageFollow.bBusy AND NOT stMotionStageFollow.bError THEN
+            stAutoRealignCouple.bExecuteDecouple := FALSE;
+            stMotionStageFollow.fPosition := stMotionStageLeader.Axis.NcToPlc.ActPos;
+            stMotionStageFollow.fVelocity := stAutoRealignCouple.fRealignSpeed;
+            stMotionStageFollow.bMoveCmd := TRUE;
+            stAutoRealignCouple.eState := E_RealignCoupleState.WAIT_FOR_MOVE_START;
+            tonTimeout(IN:=FALSE);
+        ELSIF stMotionStageFollow.bError THEN
+            stAutoRealignCouple.eState := E_RealignCoupleState.ERROR;
+            stMotionStageFollow.bError := TRUE;
+            stMotionStageFollow.sCustomErrorMessage := 'Cannot autorealign axes if the follower axis is in an error state.';
+        ELSIF tonTimeout.Q THEN
+            stAutoRealignCouple.eState := E_RealignCoupleState.ERROR;
+            stMotionStageFollow.bError := TRUE;
+            stMotionStageFollow.sCustomErrorMessage := 'Failed to decouple axes before timeout.';
+            tonTimeout(IN:=FALSE);
+        ELSIF NOT stMotionStageFollow.bBusy AND NOT stMotionStageFollow.bError THEN
+            stAutoRealignCouple.bExecuteDecouple := TRUE;
+            tonTimeout(IN:=FALSE);
+        END_IF
+
+    E_RealignCoupleState.WAIT_FOR_MOVE_START:
+        // Wait for the following motor to reach the busy status, then proceed.
+        tonTimeout(IN:=TRUE,PT:=tStateTimeout);
+        IF stMotionStageFollow.bBusy THEN
+            stAutoRealignCouple.eState := E_RealignCoupleState.RECOUPLE_AXES;
+
+            // Estimate the amount of time it should take to make the move, use a minimum time of the state timeout time.
+            tTimeout := LREAL_TO_TIME(abs(stMotionStageFollow.Axis.NcToPlc.ActPos - stMotionStageLeader.Axis.NcToPlc.ActPos) / stAutoRealignCouple.fRealignSpeed * 3.0 * 1000.0);
+            IF tTimeout < tStateTimeout THEN
+                tTimeout := tStateTimeout;
+            END_IF
+
+            tonTimeout(IN:=FALSE);
+        ELSIF tonTimeout.Q THEN
+            stAutoRealignCouple.eState := E_RealignCoupleState.ERROR;
+            stMotionStageFollow.bError := TRUE;
+            stMotionStageFollow.sCustomErrorMessage := 'Failed to start motor move before timeout.';
+        END_IF
+
+    E_RealignCoupleState.RECOUPLE_AXES:
+        // If the follower motor is no longer busy (finished or errored or stopped) then recouple the follower motor to
+        // the leader motor.
+        tonTimeout(IN:=TRUE,PT:=tTimeout + T#250ms);
+        tonRecouple(IN:=NOT stMotionStageFollow.bBusy AND NOT stMotionStageFollow.bError,PT:=T#250ms);
+        IF tonRecouple.Q THEN
+            stAutoRealignCouple.bExecuteCouple := TRUE;
+            stAutoRealignCouple.eState := E_RealignCoupleState.CLEANUP;
+            tonRecouple(IN:=FALSE);
+        ELSIF tonTimeout.Q THEN
+            stAutoRealignCouple.eState := E_RealignCoupleState.ERROR;
+            stMotionStageFollow.bError := TRUE;
+            stMotionStageFollow.sCustomErrorMessage := 'Failed to recouple motors after move.';
+            tonRecouple(IN:=FALSE);
+            tonTimeout(IN:=FALSE);
+        END_IF
+
+    E_RealignCoupleState.CLEANUP:
+        // If the motors are coupled again then reinitialize the bits to
+        // get them ready for another realignment attempt in the future.
+        IF stAutoRealignCouple.bCoupled THEN
+            stAutoRealignCouple.eState := E_RealignCoupleState.STANDBY;
+            stAutoRealignCouple.bExecute := FALSE;
+            stAutoRealignCouple.bExecuteDecouple := FALSE;
+            stAutoRealignCouple.bExecuteCouple := FALSE;
+            tonTimeout(IN:=FALSE);
+        ELSE
+            stAutoRealignCouple.eState := E_RealignCoupleState.RECOUPLE_AXES;
+        END_IF
+
+    E_RealignCoupleState.ERROR:
+        // Timeout: In case something bad happens, have the timeout timer in place to reset the bits to guarantee we do not get
+        //          stuck in this recoupling and alignment sequence.
+        IF stAutoRealignCouple.bCoupled OR stMotionStageFollow.bError THEN
+            stAutoRealignCouple.bExecuteCouple := FALSE;
+        ELSIF NOT stMotionStageFollow.bBusy THEN
+            stAutoRealignCouple.bExecuteCouple := TRUE;
+        END_IF
+        stAutoRealignCouple.bExecute := FALSE;
+        stAutoRealignCouple.bExecuteDecouple := FALSE;
+        stAutoRealignCouple.eState := E_RealignCoupleState.STANDBY;
+        tonTimeout(IN:=FALSE);
+        tonRecouple(IN:=FALSE);
+END_CASE
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

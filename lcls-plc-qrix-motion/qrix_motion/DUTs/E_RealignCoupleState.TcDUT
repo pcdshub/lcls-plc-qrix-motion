@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <DUT Name="E_RealignCoupleState" Id="{2bdf7f23-00db-4c48-baed-ff9ae91e01ca}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE E_RealignCoupleState :
+(
+    STANDBY,
+    DECOUPLE_AXES,
+    COMMAND_AXES_INTO_REALIGNMENT,
+    WAIT_FOR_MOVE_START,
+    RECOUPLE_AXES,
+    CLEANUP,
+    ERROR
+);
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

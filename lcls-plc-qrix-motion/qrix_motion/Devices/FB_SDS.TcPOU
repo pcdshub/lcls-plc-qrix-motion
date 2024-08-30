@@ -58,7 +58,7 @@ stSDS.fbGarPos2D(
     astPositionState1:=stSDS.astGarYPosState,
     astPositionState2:=stSDS.astGarRPosState,
     eEnumSet:=stSDS.eGarStateSet,
-    eEnumGet:=stSDS.eGarStateSet,
+    eEnumGet:=stSDS.eGarStateGet,
     bEnable:=TRUE,
     stEpicsToPlc:=stSDS.stGarEpicsToPlc,
     stPlcToEpics=>stSDS.stGarPlcToEpics
@@ -165,6 +165,9 @@ END_CASE
 
 IF NOT stSDSPersistent.bInitialized THEN
     // Do all the required initialization for the persistent data of the sample delivery system.
+
+    stSDSPersistent.stTransferSlot.sTag := 'TA';
+
     FOR nIndex := 0 to stSDS.nGarageSlots - 1 BY 1 DO
         stSDSPersistent.astGarageSlot[nIndex].sTag   := stSDS.asTags[nIndex];
         stSDSPersistent.astGarageSlot[nIndex].eState := E_SampleSlotStates.EMPTY;
@@ -225,9 +228,14 @@ END_IF
         <ST><![CDATA[
 // ACTION - Move to the selected slot
 
-IF stSDS.eGarStateGet <> E_SDSGarageStates.UNKNOWN AND stSDS.eGarStateGet <> E_SDSGarageStates.HOME AND
-    NOT stGarYStage.bBusy AND NOT stGarRStage.bBusy THEN
-    stSDS.bProceed := TRUE;
+IF NOT (stSDS.eGarStateGet <> E_SDSGarageStates.UNKNOWN AND stSDS.eGarStateGet <> E_SDSGarageStates.HOME AND
+    NOT stGarYStage.bBusy AND NOT stGarRStage.bBusy) THEN
+    stSDS.bProceed := FALSE;
+    stSDS.sStatus := 'Move to selected garage slot in progress.';
+    stSDS.sInstructions := 'Please wait for the move to complete.';
+ELSE
+    stSDS.sStatus := 'Move to selected garage slot is complete.';
+    stSDS.sInstructions := 'Please visually validate position and click proceed.';
 END_IF
 ]]></ST>
       </Implementation>
@@ -426,6 +434,10 @@ IF NOT stSDS.bMaint THEN
                         nFailureStep:=E_SDSSequenceStates.ERROR,
                         tTimeout:=T#60s
                     );
+                    IF stSDS.eSequenceState = E_SDSSequenceStates.HOME_TRANSFER_ARM THEN
+                        // If the sequence was successful, update the sample slot descriptions and states appropriately.
+                        // to do
+                    END_IF
                 E_SDSSequenceStates.ERROR:
                     // Need to add in error handling.
                     stSDS.eSequenceState := E_SDSSequenceStates.STANDBY;

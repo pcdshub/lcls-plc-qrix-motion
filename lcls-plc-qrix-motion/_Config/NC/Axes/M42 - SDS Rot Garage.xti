@@ -1326,7 +1326,7 @@ External Setpoint Generation:
 		<AxisPara>
 			<General UnitName="Degree" UnitFlags="#x00000004"/>
 			<Dynamic AccelerationMaximum="100" DecelerationMaximum="100" Acceleration="50" Deceleration="50" Jerk="25"/>
-			<Velo Maximum="50"/>
+			<Velo RefSearch="15" RefSync="15" SlowManual="7" FastManual="15" Maximum="50"/>
 			<BacklashCompensation Enable="true" Range="0.1"/>
 			<OtherSettings AllowMotionCmdToSlave="true"/>
 		</AxisPara>

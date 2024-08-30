@@ -3512,6 +3512,48 @@ External Setpoint Generation:
 					<Type>UINT</Type>
 				</Var>
 				<Var>
+					<Name>PRG_Cryo.stDiffThetaEnc.Count</Name>
+					<Comment>
+						<![CDATA[ Connect to encoder "Position" input]]>
+					</Comment>
+					<Type>ULINT</Type>
+				</Var>
+				<Var>
+					<Name>PRG_Cryo.stCryoRotEnc.Count</Name>
+					<Comment>
+						<![CDATA[ Connect to encoder "Position" input]]>
+					</Comment>
+					<Type>ULINT</Type>
+				</Var>
+				<Var>
+					<Name>PRG_Cryo.fbCryoRotDiffThetaCoupling.gantry_diff_limit.PEnc.Count</Name>
+					<Comment>
+						<![CDATA[ Connect to encoder "Position" input]]>
+					</Comment>
+					<Type>ULINT</Type>
+				</Var>
+				<Var>
+					<Name>PRG_Cryo.fbCryoRotDiffThetaCoupling.gantry_diff_limit.SEnc.Count</Name>
+					<Comment>
+						<![CDATA[ Connect to encoder "Position" input]]>
+					</Comment>
+					<Type>ULINT</Type>
+				</Var>
+				<Var>
+					<Name>PRG_Cryo.stCryoRotDiffThetaCoordinateGantryAxisEnable.bLeaderDriveReady</Name>
+					<Comment>
+						<![CDATA[ Intended to be linked to the leader drive ready status.]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_Cryo.stCryoRotDiffThetaCoordinateGantryAxisEnable.bFollowDriveReady</Name>
+					<Comment>
+						<![CDATA[ Intended to be linked to the follow drive ready status.]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
 					<Name>PRG_Cryo.fbMeasureReferenceVelocityCryoROT.nMicrostepCounter</Name>
 					<Comment>
 						<![CDATA[ In microsteps (64 microsteps per step)]]>
@@ -9867,6 +9909,27 @@ External Setpoint Generation:
 					</Comment>
 					<Type>INT</Type>
 				</Var>
+				<Var>
+					<Name>PRG_Cryo.stCryoXMultiLeader.bFollowerDriveReady</Name>
+					<Comment>
+						<![CDATA[ Link to the ready status of the drive]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_Cryo.stCryoYMultiLeader.bFollowerDriveReady</Name>
+					<Comment>
+						<![CDATA[ Link to the ready status of the drive]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_Cryo.stCryoZMultiLeader.bFollowerDriveReady</Name>
+					<Comment>
+						<![CDATA[ Link to the ready status of the drive]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
 			</Vars>
 			<Vars VarGrpType="2">
 				<Name>PlcTask Outputs</Name>
@@ -10200,6 +10263,14 @@ External Setpoint Generation:
 					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 				</Var>
 				<Var>
+					<Name>PRG_Cryo.nCryoRotOutEncoderCounts</Name>
+					<Type>ULINT</Type>
+				</Var>
+				<Var>
+					<Name>PRG_Cryo.nDiffThetaOutEncoderCounts</Name>
+					<Type>ULINT</Type>
+				</Var>
+				<Var>
 					<Name>PRG_Cryo.fb_Cryo_ROT.fbDriveVirtual.MasterAxis.PlcToNc</Name>
 					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 				</Var>
@@ -10382,10 +10453,6 @@ External Setpoint Generation:
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
-					<Name>PRG_Sensor.uintTest</Name>
-					<Type>UINT</Type>
-				</Var>
-				<Var>
 					<Name>PRG_OPT.fbMotionRxG.fbDriveVirtual.MasterAxis.PlcToNc</Name>
 					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 				</Var>
@@ -10396,6 +10463,10 @@ External Setpoint Generation:
 				<Var>
 					<Name>PRG_OPT.fbMotionRzPM.fbDriveVirtual.MasterAxis.PlcToNc</Name>
 					<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
+				</Var>
+				<Var>
+					<Name>PRG_Sensor.uintTest</Name>
+					<Type>UINT</Type>
 				</Var>
 				<Var>
 					<Name>GVL_EPS.bOpenSV1</Name>
@@ -10429,16 +10500,16 @@ External Setpoint Generation:
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
+					<Name>GVL_Sensor.nYDF1</Name>
+					<Type>UDINT</Type>
+				</Var>
+				<Var>
 					<Name>GVL_PMPS.fbFastFaultOutput1.q_xFastFaultOut</Name>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
 					<Name>GVL_PMPS.fbFastFaultOutput2.q_xFastFaultOut</Name>
 					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>GVL_Sensor.nYDF1</Name>
-					<Type>UDINT</Type>
 				</Var>
 				<Var>
 					<Name>GVL_Sensor.nYDF2</Name>
@@ -11088,6 +11159,13 @@ External Setpoint Generation:
 					</OwnerB>
 				</OwnerA>
 			</UnrestoredVarLinks>
+			<UnrestoredVarLinks ImportTime="2024-08-30T09:09:37">
+				<OwnerA Name="InputDst" Prefix="TIPC^qrix_motion^qrix_motion Instance" Type="1">
+					<OwnerB Name="TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL5042_02_16">
+						<Link VarA="PRG_Cryo.nCryoRotRawEncoderCounts" TypeA="ULINT" InOutA="0" GuidA="{18071995-0000-0000-0000-00000000000B}" VarB="FB Inputs Channel 2^Position" AutoLink="true" RestoreInfo="ANotFound"/>
+					</OwnerB>
+				</OwnerA>
+			</UnrestoredVarLinks>
 			<TaskPouOids>
 				<TaskPouOid Prio="20" OTCID="#x08502001"/>
 			</TaskPouOids>
@@ -11134,6 +11212,7 @@ External Setpoint Generation:
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL5042_02_16">
 				<Link VarA="PlcTask Inputs^Main.M48.nRawEncoderULINT" VarB="FB Inputs Channel 1^Position" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^Main.M49.nRawEncoderULINT" VarB="FB Inputs Channel 2^Position" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^PRG_Cryo.stCryoRotEnc.Count" VarB="FB Inputs Channel 2^Position" AutoLink="true"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_01 - SSL">
 				<Link VarA="PlcTask Inputs^Main.M1.bLimitBackwardEnable" VarB="STM Status^Status^Digital input 2" AutoLink="true"/>
@@ -11144,6 +11223,7 @@ External Setpoint Generation:
 				<Link VarA="PlcTask Inputs^PRG_Cryo.fbMeasureReferenceVelocityCryoROT.bCounterOverflow" VarB="ENC Status compact^Status^Counter overflow" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^PRG_Cryo.fbMeasureReferenceVelocityCryoROT.bCounterUnderflow" VarB="ENC Status compact^Status^Counter underflow" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^PRG_Cryo.fbMeasureReferenceVelocityCryoROT.nMicrostepCounter" VarB="ENC Status compact^Counter value" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^PRG_Cryo.stCryoRotDiffThetaCoordinateGantryAxisEnable.bFollowDriveReady" VarB="STM Status^Status^Ready" AutoLink="true"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_12">
 				<Link VarA="PlcTask Inputs^Main.M46.bLimitBackwardEnable" VarB="STM Status^Status^Digital input 2" AutoLink="true"/>
@@ -11151,6 +11231,7 @@ External Setpoint Generation:
 				<Link VarA="PlcTask Inputs^PRG_Cryo.fbMeasureReferenceVelocityCryoX.bCounterOverflow" VarB="ENC Status compact^Status^Counter overflow" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^PRG_Cryo.fbMeasureReferenceVelocityCryoX.bCounterUnderflow" VarB="ENC Status compact^Status^Counter underflow" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^PRG_Cryo.fbMeasureReferenceVelocityCryoX.nMicrostepCounter" VarB="ENC Status compact^Counter value" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^PRG_Cryo.stCryoXMultiLeader.bFollowerDriveReady" VarB="STM Status^Status^Ready" AutoLink="true"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_14">
 				<Link VarA="PlcTask Inputs^Main.M47.bLimitBackwardEnable" VarB="STM Status^Status^Digital input 1" AutoLink="true"/>
@@ -11158,6 +11239,7 @@ External Setpoint Generation:
 				<Link VarA="PlcTask Inputs^PRG_Cryo.fbMeasureReferenceVelocityCryoY.bCounterOverflow" VarB="ENC Status compact^Status^Counter overflow" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^PRG_Cryo.fbMeasureReferenceVelocityCryoY.bCounterUnderflow" VarB="ENC Status compact^Status^Counter underflow" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^PRG_Cryo.fbMeasureReferenceVelocityCryoY.nMicrostepCounter" VarB="ENC Status compact^Counter value" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^PRG_Cryo.stCryoYMultiLeader.bFollowerDriveReady" VarB="STM Status^Status^Ready" AutoLink="true"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_15">
 				<Link VarA="PlcTask Inputs^Main.M48.bLimitBackwardEnable" VarB="STM Status^Status^Digital input 2" AutoLink="true"/>
@@ -11165,6 +11247,7 @@ External Setpoint Generation:
 				<Link VarA="PlcTask Inputs^PRG_Cryo.fbMeasureReferenceVelocityCryoZ.bCounterOverflow" VarB="ENC Status compact^Status^Counter overflow" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^PRG_Cryo.fbMeasureReferenceVelocityCryoZ.bCounterUnderflow" VarB="ENC Status compact^Status^Counter underflow" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^PRG_Cryo.fbMeasureReferenceVelocityCryoZ.nMicrostepCounter" VarB="ENC Status compact^Counter value" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^PRG_Cryo.stCryoZMultiLeader.bFollowerDriveReady" VarB="STM Status^Status^Ready" AutoLink="true"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-02^EL1088_03_04">
 				<Link VarA="PlcTask Inputs^Main.M28.bLimitBackwardEnable" VarB="Channel 1^Input" AutoLink="true"/>
@@ -11213,6 +11296,10 @@ External Setpoint Generation:
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-02^EL5042_03_17 - Diff - Theta - 2Theta">
 				<Link VarA="PlcTask Inputs^Main.M34.nRawEncoderULINT" VarB="FB Inputs Channel 1^Position" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^Main.M35.nRawEncoderULINT" VarB="FB Inputs Channel 2^Position" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^PRG_Cryo.stDiffThetaEnc.Count" VarB="FB Inputs Channel 1^Position" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-02^EL7047_03_16 - Diff - Theta">
+				<Link VarA="PlcTask Inputs^PRG_Cryo.stCryoRotDiffThetaCoordinateGantryAxisEnable.bLeaderDriveReady" VarB="STM Status^Status^Ready" AutoLink="true"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-03_SDS^EK1122_04_17^B950-233-K2S13-DRL-01^EL5101_05_01">
 				<Link VarA="PlcTask Inputs^Main.M42.nRawEncoderUINT" VarB="ENC Status compact^Counter value" AutoLink="true"/>
@@ -11607,6 +11694,7 @@ External Setpoint Generation:
 			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^M34 - Diff Theta">
 				<Link VarA="PlcTask Inputs^Main.M34.Axis.NcToPlc" VarB="Outputs^ToPlc"/>
 				<Link VarA="PlcTask Outputs^Main.M34.Axis.PlcToNc" VarB="Inputs^FromPlc"/>
+				<Link VarA="PlcTask Outputs^PRG_Cryo.nDiffThetaOutEncoderCounts" VarB="Enc^Inputs^In^nDataIn1"/>
 			</OwnerB>
 			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^M35 - Diff 2Theta">
 				<Link VarA="PlcTask Inputs^Main.M35.Axis.NcToPlc" VarB="Outputs^ToPlc"/>
@@ -11671,6 +11759,7 @@ External Setpoint Generation:
 			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^M49 - CRYO ROT">
 				<Link VarA="PlcTask Inputs^Main.M49.Axis.NcToPlc" VarB="Outputs^ToPlc"/>
 				<Link VarA="PlcTask Outputs^Main.M49.Axis.PlcToNc" VarB="Inputs^FromPlc"/>
+				<Link VarA="PlcTask Outputs^PRG_Cryo.nCryoRotOutEncoderCounts" VarB="Enc^Inputs^In^nDataIn1"/>
 			</OwnerB>
 			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^M5 - YS1">
 				<Link VarA="PlcTask Inputs^Main.M5.Axis.NcToPlc" VarB="Outputs^ToPlc"/>

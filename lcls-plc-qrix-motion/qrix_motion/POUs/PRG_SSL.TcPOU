@@ -184,17 +184,6 @@ IF bRealignCouple AND tonRealignCoupleTimeout.Q THEN
     END_IF
 END_IF
 
-(*IF fbSSLTo2ThetaCoupling.bGantryAlreadyCoupled THEN
-    Main.M1.nEnableMode := ENUM_StageEnableMode.ALWAYS;
-    rtStopSSL(CLK:=Main.M2.Axis.Status.Disabled);
-    IF rtStopSSL.Q THEN
-        Main.M1.nEnableMode := ENUM_StageEnableMode.NEVER;
-        Main.M1.bEnable := FALSE;
-    END_IF
-ELSE
-    Main.M1.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
-END_IF*)
-
 fPosDiff := Main.M1.stAxisStatus.fActPosition - Main.M2.stAxisStatus.fActPosition;
 
 fb_SSL_Motor(stMotionStage:=Main.M1);]]></ST>

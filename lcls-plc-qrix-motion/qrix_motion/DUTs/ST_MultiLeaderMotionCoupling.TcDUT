@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <DUT Name="ST_MultiLeaderMotionCoupling" Id="{3deae775-0f2c-41fa-8a74-ef3b2b206a82}">
+    <Declaration><![CDATA[TYPE ST_MultiLeaderMotionCoupling :
+STRUCT
+    {attribute 'pytmc' := '
+        pv: bEnable
+        io: io
+        field: DESC Set and hold TRUE to allow the axis to run in multi-leader mode.
+    '}
+    bEnable: BOOL;
+    {attribute 'pytmc' := '
+        pv: bReset
+        io: io
+        field: DESC Set and release TRUE to fully reset errors and state machine.
+    '}
+    bReset: BOOL;
+    {attribute 'pytmc' := '
+        pv: bBusy
+        io: i
+        field: DESC TRUE indicates state machine running and not in error state.
+    '}
+    bBusy: BOOL;
+    {attribute 'pytmc' := '
+        pv: sStatusMsg
+        io: i
+        field: DESC String used to give helpful messages.
+    '}
+    sStatusMsg: T_MaxString;
+    // Ex: TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_11^STM Status^Status^Ready
+    {attribute 'pytmc' := '
+        pv: bFollowerDriveReady
+        io: i
+        field: DESC Linked to the ready status of the drive.
+    '}
+    bFollowerDriveReady AT %I*: BOOL; // Link to the ready status of the drive
+
+    {attribute 'pytmc' := '
+        pv: bUseDynamicLimits
+        io: io
+        field: DESC Set and hold TRUE to enable dynami limits to acc, vel, and pos.
+    '}
+    bUseDynamicLimits: BOOL;
+
+    fTargetAcc: LREAL; // Set in software to allow axis to target an acceleration based on multiple leaders.
+    fTargetVel: LREAL; // Set in software to allow axis to target a velocity based on multiple leaders.
+    fTargetPos: LREAL; // Set in software to allow axis to target a position based on multiple leaders.
+    fPosDelta : LREAL; // Difference between current position and target position.
+    fTargetTrackingGain: LREAL; // Gain used to tune target tracking when within target position window.
+    fHaltPos: LREAL; // Position at which halt is called. Allows for centering deadband.
+
+    {attribute 'pytmc' := '
+        pv: stAcc
+        io: io
+        field: DESC Bounded value structure representing acceleration.
+    '}
+    stAcc: ST_BoundedValue;
+    {attribute 'pytmc' := '
+        pv: stVel
+        io: io
+        field: DESC Bounded value structure representing velocity.
+    '}
+    stVel: ST_BoundedValue;
+    {attribute 'pytmc' := '
+        pv: stPos
+        io: io
+        field: DESC Bounded value structure representing position.
+    '}
+    stPos: ST_BoundedValue;
+
+    {attribute 'pytmc' := '
+        pv: nDir
+        io: i
+        field: DESC Internally calculated direction value for external setpoint generator.
+    '}
+    nDir: DINT;
+
+    {attribute 'pytmc' := '
+        pv: bError
+        io: i
+        field: DESC TRUE if an error is active.
+    '}
+    bError: BOOL;
+    {attribute 'pytmc' := '
+        pv: sErrorMsg
+        io: i
+        field: DESC Displays error message relevant to the active error. Empty otherwise.
+    '}
+    sErrorMsg: T_MaxString;
+    {attribute 'pytmc' := '
+        pv: sErrorHelp
+        io: i
+        field: DESC Displays additional help for the active rror. Empty otherwise.
+    '}
+    sErrorHelp: T_MaxString;
+    {attribute 'pytmc' := '
+        pv: eState
+        io: i
+        field: DESC Records the current state of the multi-leader function block.
+    '}
+    eState: E_MultiLeaderMotionCoupling;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

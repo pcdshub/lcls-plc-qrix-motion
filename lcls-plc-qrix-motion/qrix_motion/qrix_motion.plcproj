@@ -25,7 +25,16 @@
     <Compile Include="Devices\FB_3AxesJack.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Devices\FB_AutoRealignCouple.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Devices\FB_CoordinateGantryAxisEnable.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Devices\FB_MeasureReferenceVelocity.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Devices\FB_MultiLeaderMotionCoupling.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Devices\FB_ReadCoE.TcPOU">
@@ -46,6 +55,15 @@
     <Compile Include="DUTs\ENUM_LAS_VIS_States.TcDUT">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DUTs\E_GantryEnableState.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\E_MultiLeaderMotionCoupling.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\E_RealignCoupleState.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="DUTs\E_SampleSlotStates.TcDUT">
       <SubType>Code</SubType>
     </Compile>
@@ -61,7 +79,19 @@
     <Compile Include="DUTs\E_SDSSequenceStates.TcDUT">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DUTs\ST_AutoRealignCouple.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\ST_CoordinateGantryAxisEnable.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="DUTs\ST_GarageSlot.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\ST_BoundedValue.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\ST_MultiLeaderMotionCoupling.TcDUT">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DUTs\ST_SampleSlot.TcDUT">

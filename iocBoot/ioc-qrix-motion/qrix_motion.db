@@ -62816,6 +62816,1687 @@ record(bi, "$(PREFIX)RequestedBP:Valid_RBV") {
   info(archive, "monitor 1: VAL")
 }
 
+record(bi, "QRIX:CRYO:ROT:bExecuteCouple_RBV") {
+  # Write TRUE to couple cryo rotation axis with diffractometer theta axis.
+  field(DESC, "Write TRUE to couple...meter theta axis.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.bCryoRotDiffThetaExecuteCouple?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
+record(bo, "QRIX:CRYO:ROT:bExecuteCouple") {
+  # Write TRUE to couple cryo rotation axis with diffractometer theta axis.
+  field(DESC, "Write TRUE to couple...meter theta axis.")
+  field(DTYP, "asynInt32")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.bCryoRotDiffThetaExecuteCouple=")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "COSV DESC DISS OSV SIMS UDFS VAL ZSV")
+  info(archive, "VAL")
+}
+
+record(bi, "QRIX:CRYO:ROT:bExecuteDecouple_RBV") {
+  # Write FALSE to decouple cryo rotation axis from diffractometer theta axis.
+  field(DESC, "Write FALSE to decou...meter theta axis.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.bCryoRotDiffThetaExecuteDecouple?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
+record(bo, "QRIX:CRYO:ROT:bExecuteDecouple") {
+  # Write FALSE to decouple cryo rotation axis from diffractometer theta axis.
+  field(DESC, "Write FALSE to decou...meter theta axis.")
+  field(DTYP, "asynInt32")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.bCryoRotDiffThetaExecuteDecouple=")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "COSV DESC DISS OSV SIMS UDFS VAL ZSV")
+  info(archive, "VAL")
+}
+
+record(bi, "QRIX:DIFF:THETACOUPLING:bCoupled_RBV") {
+  # TRUE if the axes are coupled. FALSE if they are not coupled.
+  field(DESC, "TRUE if the axes are... are not coupled.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoRotDiffThetaAutoRealignCouple.bCoupled?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
+record(bi, "QRIX:DIFF:THETACOUPLING:bExecute_RBV") {
+  # Hold TRUE to run an automatic realignment sequence. FALSE to cancel.
+  field(DESC, "Hold TRUE to run an ... FALSE to cancel.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoRotDiffThetaAutoRealignCouple.bExecute?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
+record(bo, "QRIX:DIFF:THETACOUPLING:bExecute") {
+  # Hold TRUE to run an automatic realignment sequence. FALSE to cancel.
+  field(DESC, "Hold TRUE to run an ... FALSE to cancel.")
+  field(DTYP, "asynInt32")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoRotDiffThetaAutoRealignCouple.bExecute=")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "COSV DESC DISS OSV SIMS UDFS VAL ZSV")
+  info(archive, "VAL")
+}
+
+record(bi, "QRIX:DIFF:THETACOUPLING:bExecuteCouple_RBV") {
+  field(DESC, "Write TRUE to couple axes.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoRotDiffThetaAutoRealignCouple.bExecuteCouple?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
+record(bo, "QRIX:DIFF:THETACOUPLING:bExecuteCouple") {
+  field(DESC, "Write TRUE to couple axes.")
+  field(DTYP, "asynInt32")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoRotDiffThetaAutoRealignCouple.bExecuteCouple=")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "COSV DESC DISS OSV SIMS UDFS VAL ZSV")
+  info(archive, "VAL")
+}
+
+record(bi, "QRIX:DIFF:THETACOUPLING:bExecuteDecouple_RBV") {
+  field(DESC, "Write FALSE to decouple axes.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoRotDiffThetaAutoRealignCouple.bExecuteDecouple?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
+record(bo, "QRIX:DIFF:THETACOUPLING:bExecuteDecouple") {
+  field(DESC, "Write FALSE to decouple axes.")
+  field(DTYP, "asynInt32")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoRotDiffThetaAutoRealignCouple.bExecuteDecouple=")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "COSV DESC DISS OSV SIMS UDFS VAL ZSV")
+  info(archive, "VAL")
+}
+
+record(mbbi, "QRIX:DIFF:THETACOUPLING:eState_RBV") {
+  # Gives the current coupling realignment state.
+  field(DESC, "Gives the current co...ealignment state.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoRotDiffThetaAutoRealignCouple.eState?")
+  field(ZRVL, "0")
+  field(ONVL, "1")
+  field(TWVL, "2")
+  field(THVL, "3")
+  field(FRVL, "4")
+  field(FVVL, "5")
+  field(SXVL, "6")
+  field(ZRST, "STANDBY")
+  field(ONST, "DECOUPLE_AXES")
+  field(TWST, "COMMAND_AXES_INTO_REALIGNMENT")
+  field(THST, "WAIT_FOR_MOVE_START")
+  field(FRST, "RECOUPLE_AXES")
+  field(FVST, "CLEANUP")
+  field(SXST, "ERROR")
+  info(autosaveFields_pass0, "DESC DISS EISV ELSV FFSV FRSV FTSV FVSV NISV ONSV SIMS SVSV SXSV TESV THSV TTSV TVSV TWSV UDFS UNSV ZRSV")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:DIFF:THETACOUPLING:fRealignSpeed_RBV") {
+  # The speed at which the axis will be moved when realigning.
+  field(DESC, "The speed at which t... when realigning.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoRotDiffThetaAutoRealignCouple.fRealignSpeed?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ao, "QRIX:DIFF:THETACOUPLING:fRealignSpeed") {
+  # The speed at which the axis will be moved when realigning.
+  field(DESC, "The speed at which t... when realigning.")
+  field(DTYP, "asynFloat64")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoRotDiffThetaAutoRealignCouple.fRealignSpeed=")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS VAL")
+  info(archive, "VAL")
+}
+
+record(bi, "QRIX:DIFFCRYO:Coord:bEnable_RBV") {
+  # Set false to prevent this function block from allowing the motors to enable.
+  field(DESC, "Set false to prevent...motors to enable.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoRotDiffThetaCoordinateGantryAxisEnable.bEnable?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
+record(bi, "QRIX:DIFFCRYO:Coord:bFollowDriveReady_RBV") {
+  # Intended to be linked to the follow drive ready status.
+  field(DESC, "Intended to be linke...ive ready status.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoRotDiffThetaCoordinateGantryAxisEnable.bFollowDriveReady?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
+record(bi, "QRIX:DIFFCRYO:Coord:bLeaderDriveReady_RBV") {
+  # Intended to be linked to the leader drive ready status.
+  field(DESC, "Intended to be linke...ive ready status.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoRotDiffThetaCoordinateGantryAxisEnable.bLeaderDriveReady?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
+record(mbbi, "QRIX:DIFFCRYO:Coord:eState_RBV") {
+  field(DESC, "Present enable sequence state.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoRotDiffThetaCoordinateGantryAxisEnable.eState?")
+  field(ZRVL, "0")
+  field(ONVL, "1")
+  field(TWVL, "2")
+  field(THVL, "3")
+  field(FRVL, "4")
+  field(ZRST, "STANDBY")
+  field(ONST, "ERROR")
+  field(TWST, "WAIT_FOR_FULLY_ENABLED")
+  field(THST, "WAIT_FOR_READY_STATE")
+  field(FRST, "DELAY_FOR_MOVE_START")
+  info(autosaveFields_pass0, "DESC DISS EISV ELSV FFSV FRSV FTSV FVSV NISV ONSV SIMS SVSV SXSV TESV THSV TTSV TVSV TWSV UDFS UNSV ZRSV")
+  info(archive, "VAL")
+}
+
+record(bi, "QRIX:CRYO:MLC:X:bBusy_RBV") {
+  # TRUE indicates state machine running and not in error state.
+  field(DESC, "TRUE indicates state...t in error state.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoXMultiLeader.bBusy?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
+record(bi, "QRIX:CRYO:MLC:X:bEnable_RBV") {
+  # Set and hold TRUE to allow the axis to run in multi-leader mode.
+  field(DESC, "Set and hold TRUE to...ulti-leader mode.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoXMultiLeader.bEnable?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
+record(bo, "QRIX:CRYO:MLC:X:bEnable") {
+  # Set and hold TRUE to allow the axis to run in multi-leader mode.
+  field(DESC, "Set and hold TRUE to...ulti-leader mode.")
+  field(DTYP, "asynInt32")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoXMultiLeader.bEnable=")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "COSV DESC DISS OSV SIMS UDFS VAL ZSV")
+  info(archive, "VAL")
+}
+
+record(bi, "QRIX:CRYO:MLC:X:bError_RBV") {
+  field(DESC, "TRUE if an error is active.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoXMultiLeader.bError?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
+record(bi, "QRIX:CRYO:MLC:X:bFollowerDriveReady_RBV") {
+  field(DESC, "Linked to the ready status of the drive.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoXMultiLeader.bFollowerDriveReady?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
+record(bi, "QRIX:CRYO:MLC:X:bReset_RBV") {
+  # Set and release TRUE to fully reset errors and state machine.
+  field(DESC, "Set and release TRUE...nd state machine.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoXMultiLeader.bReset?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
+record(bo, "QRIX:CRYO:MLC:X:bReset") {
+  # Set and release TRUE to fully reset errors and state machine.
+  field(DESC, "Set and release TRUE...nd state machine.")
+  field(DTYP, "asynInt32")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoXMultiLeader.bReset=")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "COSV DESC DISS OSV SIMS UDFS VAL ZSV")
+  info(archive, "VAL")
+}
+
+record(bi, "QRIX:CRYO:MLC:X:bUseDynamicLimits_RBV") {
+  # Set and hold TRUE to enable dynami limits to acc, vel, and pos.
+  field(DESC, "Set and hold TRUE to...cc, vel, and pos.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoXMultiLeader.bUseDynamicLimits?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
+record(bo, "QRIX:CRYO:MLC:X:bUseDynamicLimits") {
+  # Set and hold TRUE to enable dynami limits to acc, vel, and pos.
+  field(DESC, "Set and hold TRUE to...cc, vel, and pos.")
+  field(DTYP, "asynInt32")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoXMultiLeader.bUseDynamicLimits=")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "COSV DESC DISS OSV SIMS UDFS VAL ZSV")
+  info(archive, "VAL")
+}
+
+record(mbbi, "QRIX:CRYO:MLC:X:eState_RBV") {
+  # Records the current state of the multi-leader function block.
+  field(DESC, "Records the current ...r function block.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoXMultiLeader.eState?")
+  field(ZRVL, "0")
+  field(ONVL, "1")
+  field(TWVL, "2")
+  field(THVL, "3")
+  field(FRVL, "4")
+  field(FVVL, "5")
+  field(SXVL, "6")
+  field(SVVL, "7")
+  field(EIVL, "8")
+  field(NIVL, "9")
+  field(ZRST, "STATE_STANDBY")
+  field(ONST, "STATE_WAIT_FOR_FOLLOWER_NOT_BUSY")
+  field(TWST, "STATE_WAIT_FOR_FOLLOWER_ENABLED")
+  field(THST, "STATE_WAIT_FOR_FOLLOWER_READY")
+  field(FRST, "STATE_ENABLE_EXTERNAL_SETPOINT_GENERATOR")
+  field(FVST, "STATE_FOLLOWING_ACTIVE")
+  field(SXST, "STATE_DISABLE_EXTERNAL_SETPOINT_GENERATOR")
+  field(SVST, "STATE_ERROR")
+  field(EIST, "STATE_MONITOR_TARGET_WINDOW")
+  field(NIST, "STATE_HALT_MOTION")
+  info(autosaveFields_pass0, "DESC DISS EISV ELSV FFSV FRSV FTSV FVSV NISV ONSV SIMS SVSV SXSV TESV THSV TTSV TVSV TWSV UDFS UNSV ZRSV")
+  info(archive, "VAL")
+}
+
+record(longin, "QRIX:CRYO:MLC:X:nDir_RBV") {
+  # Internally calculated direction value for external setpoint generator.
+  field(DESC, "Internally calculate...tpoint generator.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoXMultiLeader.nDir?")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(waveform, "QRIX:CRYO:MLC:X:sErrorHelp_RBV") {
+  # Displays additional help for the active rror. Empty otherwise.
+  field(DESC, "Displays additional ... Empty otherwise.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt8ArrayIn")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoXMultiLeader.sErrorHelp?")
+  field(FTVL, "CHAR")
+  field(NELM, "255")
+  field(MPST, "On Change")
+  field(APST, "On Change")
+  info(autosaveFields_pass0, "DESC DISS SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(waveform, "QRIX:CRYO:MLC:X:sErrorMsg_RBV") {
+  # Displays error message relevant to the active error. Empty otherwise.
+  field(DESC, "Displays error messa... Empty otherwise.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt8ArrayIn")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoXMultiLeader.sErrorMsg?")
+  field(FTVL, "CHAR")
+  field(NELM, "255")
+  field(MPST, "On Change")
+  field(APST, "On Change")
+  info(autosaveFields_pass0, "DESC DISS SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(waveform, "QRIX:CRYO:MLC:X:sStatusMsg_RBV") {
+  field(DESC, "String used to give helpful messages.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt8ArrayIn")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoXMultiLeader.sStatusMsg?")
+  field(FTVL, "CHAR")
+  field(NELM, "255")
+  field(MPST, "On Change")
+  field(APST, "On Change")
+  info(autosaveFields_pass0, "DESC DISS SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(bi, "QRIX:CRYO:MLC:X:stAcc:bMaxLim_RBV") {
+  # TRUE if the output value has been limited by the upper bound.
+  field(DESC, "TRUE if the output v... the upper bound.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoXMultiLeader.stAcc.bMaxLim?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
+record(bi, "QRIX:CRYO:MLC:X:stAcc:bMinLim_RBV") {
+  # TRUE if the output value has been limited by the lower bound.
+  field(DESC, "TRUE if the output v... the lower bound.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoXMultiLeader.stAcc.bMinLim?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:CRYO:MLC:X:stAcc:fIn_RBV") {
+  # The input value before bounds are applied.
+  field(DESC, "The input value befo...unds are applied.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoXMultiLeader.stAcc.fIn?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ao, "QRIX:CRYO:MLC:X:stAcc:fIn") {
+  # The input value before bounds are applied.
+  field(DESC, "The input value befo...unds are applied.")
+  field(DTYP, "asynFloat64")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoXMultiLeader.stAcc.fIn=")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS VAL")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:CRYO:MLC:X:stAcc:fMax_RBV") {
+  field(DESC, "The maximum bound for the output value.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoXMultiLeader.stAcc.fMax?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:CRYO:MLC:X:stAcc:fMin_RBV") {
+  field(DESC, "The minimum bound for the output value.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoXMultiLeader.stAcc.fMin?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:CRYO:MLC:X:stAcc:fOut_RBV") {
+  # The output value after bounds are applied.
+  field(DESC, "The output value aft...unds are applied.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoXMultiLeader.stAcc.fOut?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(bi, "QRIX:CRYO:MLC:X:stPos:bMaxLim_RBV") {
+  # TRUE if the output value has been limited by the upper bound.
+  field(DESC, "TRUE if the output v... the upper bound.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoXMultiLeader.stPos.bMaxLim?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
+record(bi, "QRIX:CRYO:MLC:X:stPos:bMinLim_RBV") {
+  # TRUE if the output value has been limited by the lower bound.
+  field(DESC, "TRUE if the output v... the lower bound.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoXMultiLeader.stPos.bMinLim?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:CRYO:MLC:X:stPos:fIn_RBV") {
+  # The input value before bounds are applied.
+  field(DESC, "The input value befo...unds are applied.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoXMultiLeader.stPos.fIn?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ao, "QRIX:CRYO:MLC:X:stPos:fIn") {
+  # The input value before bounds are applied.
+  field(DESC, "The input value befo...unds are applied.")
+  field(DTYP, "asynFloat64")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoXMultiLeader.stPos.fIn=")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS VAL")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:CRYO:MLC:X:stPos:fMax_RBV") {
+  field(DESC, "The maximum bound for the output value.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoXMultiLeader.stPos.fMax?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:CRYO:MLC:X:stPos:fMin_RBV") {
+  field(DESC, "The minimum bound for the output value.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoXMultiLeader.stPos.fMin?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:CRYO:MLC:X:stPos:fOut_RBV") {
+  # The output value after bounds are applied.
+  field(DESC, "The output value aft...unds are applied.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoXMultiLeader.stPos.fOut?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(bi, "QRIX:CRYO:MLC:X:stVel:bMaxLim_RBV") {
+  # TRUE if the output value has been limited by the upper bound.
+  field(DESC, "TRUE if the output v... the upper bound.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoXMultiLeader.stVel.bMaxLim?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
+record(bi, "QRIX:CRYO:MLC:X:stVel:bMinLim_RBV") {
+  # TRUE if the output value has been limited by the lower bound.
+  field(DESC, "TRUE if the output v... the lower bound.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoXMultiLeader.stVel.bMinLim?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:CRYO:MLC:X:stVel:fIn_RBV") {
+  # The input value before bounds are applied.
+  field(DESC, "The input value befo...unds are applied.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoXMultiLeader.stVel.fIn?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ao, "QRIX:CRYO:MLC:X:stVel:fIn") {
+  # The input value before bounds are applied.
+  field(DESC, "The input value befo...unds are applied.")
+  field(DTYP, "asynFloat64")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoXMultiLeader.stVel.fIn=")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS VAL")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:CRYO:MLC:X:stVel:fMax_RBV") {
+  field(DESC, "The maximum bound for the output value.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoXMultiLeader.stVel.fMax?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:CRYO:MLC:X:stVel:fMin_RBV") {
+  field(DESC, "The minimum bound for the output value.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoXMultiLeader.stVel.fMin?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:CRYO:MLC:X:stVel:fOut_RBV") {
+  # The output value after bounds are applied.
+  field(DESC, "The output value aft...unds are applied.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoXMultiLeader.stVel.fOut?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(bi, "QRIX:CRYO:MLC:Y:bBusy_RBV") {
+  # TRUE indicates state machine running and not in error state.
+  field(DESC, "TRUE indicates state...t in error state.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoYMultiLeader.bBusy?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
+record(bi, "QRIX:CRYO:MLC:Y:bEnable_RBV") {
+  # Set and hold TRUE to allow the axis to run in multi-leader mode.
+  field(DESC, "Set and hold TRUE to...ulti-leader mode.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoYMultiLeader.bEnable?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
+record(bo, "QRIX:CRYO:MLC:Y:bEnable") {
+  # Set and hold TRUE to allow the axis to run in multi-leader mode.
+  field(DESC, "Set and hold TRUE to...ulti-leader mode.")
+  field(DTYP, "asynInt32")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoYMultiLeader.bEnable=")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "COSV DESC DISS OSV SIMS UDFS VAL ZSV")
+  info(archive, "VAL")
+}
+
+record(bi, "QRIX:CRYO:MLC:Y:bError_RBV") {
+  field(DESC, "TRUE if an error is active.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoYMultiLeader.bError?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
+record(bi, "QRIX:CRYO:MLC:Y:bFollowerDriveReady_RBV") {
+  field(DESC, "Linked to the ready status of the drive.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoYMultiLeader.bFollowerDriveReady?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
+record(bi, "QRIX:CRYO:MLC:Y:bReset_RBV") {
+  # Set and release TRUE to fully reset errors and state machine.
+  field(DESC, "Set and release TRUE...nd state machine.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoYMultiLeader.bReset?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
+record(bo, "QRIX:CRYO:MLC:Y:bReset") {
+  # Set and release TRUE to fully reset errors and state machine.
+  field(DESC, "Set and release TRUE...nd state machine.")
+  field(DTYP, "asynInt32")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoYMultiLeader.bReset=")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "COSV DESC DISS OSV SIMS UDFS VAL ZSV")
+  info(archive, "VAL")
+}
+
+record(bi, "QRIX:CRYO:MLC:Y:bUseDynamicLimits_RBV") {
+  # Set and hold TRUE to enable dynami limits to acc, vel, and pos.
+  field(DESC, "Set and hold TRUE to...cc, vel, and pos.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoYMultiLeader.bUseDynamicLimits?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
+record(bo, "QRIX:CRYO:MLC:Y:bUseDynamicLimits") {
+  # Set and hold TRUE to enable dynami limits to acc, vel, and pos.
+  field(DESC, "Set and hold TRUE to...cc, vel, and pos.")
+  field(DTYP, "asynInt32")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoYMultiLeader.bUseDynamicLimits=")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "COSV DESC DISS OSV SIMS UDFS VAL ZSV")
+  info(archive, "VAL")
+}
+
+record(mbbi, "QRIX:CRYO:MLC:Y:eState_RBV") {
+  # Records the current state of the multi-leader function block.
+  field(DESC, "Records the current ...r function block.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoYMultiLeader.eState?")
+  field(ZRVL, "0")
+  field(ONVL, "1")
+  field(TWVL, "2")
+  field(THVL, "3")
+  field(FRVL, "4")
+  field(FVVL, "5")
+  field(SXVL, "6")
+  field(SVVL, "7")
+  field(EIVL, "8")
+  field(NIVL, "9")
+  field(ZRST, "STATE_STANDBY")
+  field(ONST, "STATE_WAIT_FOR_FOLLOWER_NOT_BUSY")
+  field(TWST, "STATE_WAIT_FOR_FOLLOWER_ENABLED")
+  field(THST, "STATE_WAIT_FOR_FOLLOWER_READY")
+  field(FRST, "STATE_ENABLE_EXTERNAL_SETPOINT_GENERATOR")
+  field(FVST, "STATE_FOLLOWING_ACTIVE")
+  field(SXST, "STATE_DISABLE_EXTERNAL_SETPOINT_GENERATOR")
+  field(SVST, "STATE_ERROR")
+  field(EIST, "STATE_MONITOR_TARGET_WINDOW")
+  field(NIST, "STATE_HALT_MOTION")
+  info(autosaveFields_pass0, "DESC DISS EISV ELSV FFSV FRSV FTSV FVSV NISV ONSV SIMS SVSV SXSV TESV THSV TTSV TVSV TWSV UDFS UNSV ZRSV")
+  info(archive, "VAL")
+}
+
+record(longin, "QRIX:CRYO:MLC:Y:nDir_RBV") {
+  # Internally calculated direction value for external setpoint generator.
+  field(DESC, "Internally calculate...tpoint generator.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoYMultiLeader.nDir?")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(waveform, "QRIX:CRYO:MLC:Y:sErrorHelp_RBV") {
+  # Displays additional help for the active rror. Empty otherwise.
+  field(DESC, "Displays additional ... Empty otherwise.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt8ArrayIn")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoYMultiLeader.sErrorHelp?")
+  field(FTVL, "CHAR")
+  field(NELM, "255")
+  field(MPST, "On Change")
+  field(APST, "On Change")
+  info(autosaveFields_pass0, "DESC DISS SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(waveform, "QRIX:CRYO:MLC:Y:sErrorMsg_RBV") {
+  # Displays error message relevant to the active error. Empty otherwise.
+  field(DESC, "Displays error messa... Empty otherwise.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt8ArrayIn")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoYMultiLeader.sErrorMsg?")
+  field(FTVL, "CHAR")
+  field(NELM, "255")
+  field(MPST, "On Change")
+  field(APST, "On Change")
+  info(autosaveFields_pass0, "DESC DISS SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(waveform, "QRIX:CRYO:MLC:Y:sStatusMsg_RBV") {
+  field(DESC, "String used to give helpful messages.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt8ArrayIn")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoYMultiLeader.sStatusMsg?")
+  field(FTVL, "CHAR")
+  field(NELM, "255")
+  field(MPST, "On Change")
+  field(APST, "On Change")
+  info(autosaveFields_pass0, "DESC DISS SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(bi, "QRIX:CRYO:MLC:Y:stAcc:bMaxLim_RBV") {
+  # TRUE if the output value has been limited by the upper bound.
+  field(DESC, "TRUE if the output v... the upper bound.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoYMultiLeader.stAcc.bMaxLim?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
+record(bi, "QRIX:CRYO:MLC:Y:stAcc:bMinLim_RBV") {
+  # TRUE if the output value has been limited by the lower bound.
+  field(DESC, "TRUE if the output v... the lower bound.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoYMultiLeader.stAcc.bMinLim?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:CRYO:MLC:Y:stAcc:fIn_RBV") {
+  # The input value before bounds are applied.
+  field(DESC, "The input value befo...unds are applied.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoYMultiLeader.stAcc.fIn?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ao, "QRIX:CRYO:MLC:Y:stAcc:fIn") {
+  # The input value before bounds are applied.
+  field(DESC, "The input value befo...unds are applied.")
+  field(DTYP, "asynFloat64")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoYMultiLeader.stAcc.fIn=")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS VAL")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:CRYO:MLC:Y:stAcc:fMax_RBV") {
+  field(DESC, "The maximum bound for the output value.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoYMultiLeader.stAcc.fMax?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:CRYO:MLC:Y:stAcc:fMin_RBV") {
+  field(DESC, "The minimum bound for the output value.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoYMultiLeader.stAcc.fMin?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:CRYO:MLC:Y:stAcc:fOut_RBV") {
+  # The output value after bounds are applied.
+  field(DESC, "The output value aft...unds are applied.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoYMultiLeader.stAcc.fOut?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(bi, "QRIX:CRYO:MLC:Y:stPos:bMaxLim_RBV") {
+  # TRUE if the output value has been limited by the upper bound.
+  field(DESC, "TRUE if the output v... the upper bound.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoYMultiLeader.stPos.bMaxLim?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
+record(bi, "QRIX:CRYO:MLC:Y:stPos:bMinLim_RBV") {
+  # TRUE if the output value has been limited by the lower bound.
+  field(DESC, "TRUE if the output v... the lower bound.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoYMultiLeader.stPos.bMinLim?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:CRYO:MLC:Y:stPos:fIn_RBV") {
+  # The input value before bounds are applied.
+  field(DESC, "The input value befo...unds are applied.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoYMultiLeader.stPos.fIn?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ao, "QRIX:CRYO:MLC:Y:stPos:fIn") {
+  # The input value before bounds are applied.
+  field(DESC, "The input value befo...unds are applied.")
+  field(DTYP, "asynFloat64")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoYMultiLeader.stPos.fIn=")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS VAL")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:CRYO:MLC:Y:stPos:fMax_RBV") {
+  field(DESC, "The maximum bound for the output value.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoYMultiLeader.stPos.fMax?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:CRYO:MLC:Y:stPos:fMin_RBV") {
+  field(DESC, "The minimum bound for the output value.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoYMultiLeader.stPos.fMin?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:CRYO:MLC:Y:stPos:fOut_RBV") {
+  # The output value after bounds are applied.
+  field(DESC, "The output value aft...unds are applied.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoYMultiLeader.stPos.fOut?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(bi, "QRIX:CRYO:MLC:Y:stVel:bMaxLim_RBV") {
+  # TRUE if the output value has been limited by the upper bound.
+  field(DESC, "TRUE if the output v... the upper bound.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoYMultiLeader.stVel.bMaxLim?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
+record(bi, "QRIX:CRYO:MLC:Y:stVel:bMinLim_RBV") {
+  # TRUE if the output value has been limited by the lower bound.
+  field(DESC, "TRUE if the output v... the lower bound.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoYMultiLeader.stVel.bMinLim?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:CRYO:MLC:Y:stVel:fIn_RBV") {
+  # The input value before bounds are applied.
+  field(DESC, "The input value befo...unds are applied.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoYMultiLeader.stVel.fIn?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ao, "QRIX:CRYO:MLC:Y:stVel:fIn") {
+  # The input value before bounds are applied.
+  field(DESC, "The input value befo...unds are applied.")
+  field(DTYP, "asynFloat64")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoYMultiLeader.stVel.fIn=")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS VAL")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:CRYO:MLC:Y:stVel:fMax_RBV") {
+  field(DESC, "The maximum bound for the output value.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoYMultiLeader.stVel.fMax?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:CRYO:MLC:Y:stVel:fMin_RBV") {
+  field(DESC, "The minimum bound for the output value.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoYMultiLeader.stVel.fMin?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:CRYO:MLC:Y:stVel:fOut_RBV") {
+  # The output value after bounds are applied.
+  field(DESC, "The output value aft...unds are applied.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoYMultiLeader.stVel.fOut?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(bi, "QRIX:CRYO:MLC:Z:bBusy_RBV") {
+  # TRUE indicates state machine running and not in error state.
+  field(DESC, "TRUE indicates state...t in error state.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoZMultiLeader.bBusy?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
+record(bi, "QRIX:CRYO:MLC:Z:bEnable_RBV") {
+  # Set and hold TRUE to allow the axis to run in multi-leader mode.
+  field(DESC, "Set and hold TRUE to...ulti-leader mode.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoZMultiLeader.bEnable?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
+record(bo, "QRIX:CRYO:MLC:Z:bEnable") {
+  # Set and hold TRUE to allow the axis to run in multi-leader mode.
+  field(DESC, "Set and hold TRUE to...ulti-leader mode.")
+  field(DTYP, "asynInt32")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoZMultiLeader.bEnable=")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "COSV DESC DISS OSV SIMS UDFS VAL ZSV")
+  info(archive, "VAL")
+}
+
+record(bi, "QRIX:CRYO:MLC:Z:bError_RBV") {
+  field(DESC, "TRUE if an error is active.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoZMultiLeader.bError?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
+record(bi, "QRIX:CRYO:MLC:Z:bFollowerDriveReady_RBV") {
+  field(DESC, "Linked to the ready status of the drive.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoZMultiLeader.bFollowerDriveReady?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
+record(bi, "QRIX:CRYO:MLC:Z:bReset_RBV") {
+  # Set and release TRUE to fully reset errors and state machine.
+  field(DESC, "Set and release TRUE...nd state machine.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoZMultiLeader.bReset?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
+record(bo, "QRIX:CRYO:MLC:Z:bReset") {
+  # Set and release TRUE to fully reset errors and state machine.
+  field(DESC, "Set and release TRUE...nd state machine.")
+  field(DTYP, "asynInt32")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoZMultiLeader.bReset=")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "COSV DESC DISS OSV SIMS UDFS VAL ZSV")
+  info(archive, "VAL")
+}
+
+record(bi, "QRIX:CRYO:MLC:Z:bUseDynamicLimits_RBV") {
+  # Set and hold TRUE to enable dynami limits to acc, vel, and pos.
+  field(DESC, "Set and hold TRUE to...cc, vel, and pos.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoZMultiLeader.bUseDynamicLimits?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
+record(bo, "QRIX:CRYO:MLC:Z:bUseDynamicLimits") {
+  # Set and hold TRUE to enable dynami limits to acc, vel, and pos.
+  field(DESC, "Set and hold TRUE to...cc, vel, and pos.")
+  field(DTYP, "asynInt32")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoZMultiLeader.bUseDynamicLimits=")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "COSV DESC DISS OSV SIMS UDFS VAL ZSV")
+  info(archive, "VAL")
+}
+
+record(mbbi, "QRIX:CRYO:MLC:Z:eState_RBV") {
+  # Records the current state of the multi-leader function block.
+  field(DESC, "Records the current ...r function block.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoZMultiLeader.eState?")
+  field(ZRVL, "0")
+  field(ONVL, "1")
+  field(TWVL, "2")
+  field(THVL, "3")
+  field(FRVL, "4")
+  field(FVVL, "5")
+  field(SXVL, "6")
+  field(SVVL, "7")
+  field(EIVL, "8")
+  field(NIVL, "9")
+  field(ZRST, "STATE_STANDBY")
+  field(ONST, "STATE_WAIT_FOR_FOLLOWER_NOT_BUSY")
+  field(TWST, "STATE_WAIT_FOR_FOLLOWER_ENABLED")
+  field(THST, "STATE_WAIT_FOR_FOLLOWER_READY")
+  field(FRST, "STATE_ENABLE_EXTERNAL_SETPOINT_GENERATOR")
+  field(FVST, "STATE_FOLLOWING_ACTIVE")
+  field(SXST, "STATE_DISABLE_EXTERNAL_SETPOINT_GENERATOR")
+  field(SVST, "STATE_ERROR")
+  field(EIST, "STATE_MONITOR_TARGET_WINDOW")
+  field(NIST, "STATE_HALT_MOTION")
+  info(autosaveFields_pass0, "DESC DISS EISV ELSV FFSV FRSV FTSV FVSV NISV ONSV SIMS SVSV SXSV TESV THSV TTSV TVSV TWSV UDFS UNSV ZRSV")
+  info(archive, "VAL")
+}
+
+record(longin, "QRIX:CRYO:MLC:Z:nDir_RBV") {
+  # Internally calculated direction value for external setpoint generator.
+  field(DESC, "Internally calculate...tpoint generator.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoZMultiLeader.nDir?")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(waveform, "QRIX:CRYO:MLC:Z:sErrorHelp_RBV") {
+  # Displays additional help for the active rror. Empty otherwise.
+  field(DESC, "Displays additional ... Empty otherwise.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt8ArrayIn")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoZMultiLeader.sErrorHelp?")
+  field(FTVL, "CHAR")
+  field(NELM, "255")
+  field(MPST, "On Change")
+  field(APST, "On Change")
+  info(autosaveFields_pass0, "DESC DISS SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(waveform, "QRIX:CRYO:MLC:Z:sErrorMsg_RBV") {
+  # Displays error message relevant to the active error. Empty otherwise.
+  field(DESC, "Displays error messa... Empty otherwise.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt8ArrayIn")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoZMultiLeader.sErrorMsg?")
+  field(FTVL, "CHAR")
+  field(NELM, "255")
+  field(MPST, "On Change")
+  field(APST, "On Change")
+  info(autosaveFields_pass0, "DESC DISS SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(waveform, "QRIX:CRYO:MLC:Z:sStatusMsg_RBV") {
+  field(DESC, "String used to give helpful messages.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt8ArrayIn")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoZMultiLeader.sStatusMsg?")
+  field(FTVL, "CHAR")
+  field(NELM, "255")
+  field(MPST, "On Change")
+  field(APST, "On Change")
+  info(autosaveFields_pass0, "DESC DISS SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(bi, "QRIX:CRYO:MLC:Z:stAcc:bMaxLim_RBV") {
+  # TRUE if the output value has been limited by the upper bound.
+  field(DESC, "TRUE if the output v... the upper bound.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoZMultiLeader.stAcc.bMaxLim?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
+record(bi, "QRIX:CRYO:MLC:Z:stAcc:bMinLim_RBV") {
+  # TRUE if the output value has been limited by the lower bound.
+  field(DESC, "TRUE if the output v... the lower bound.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoZMultiLeader.stAcc.bMinLim?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:CRYO:MLC:Z:stAcc:fIn_RBV") {
+  # The input value before bounds are applied.
+  field(DESC, "The input value befo...unds are applied.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoZMultiLeader.stAcc.fIn?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ao, "QRIX:CRYO:MLC:Z:stAcc:fIn") {
+  # The input value before bounds are applied.
+  field(DESC, "The input value befo...unds are applied.")
+  field(DTYP, "asynFloat64")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoZMultiLeader.stAcc.fIn=")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS VAL")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:CRYO:MLC:Z:stAcc:fMax_RBV") {
+  field(DESC, "The maximum bound for the output value.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoZMultiLeader.stAcc.fMax?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:CRYO:MLC:Z:stAcc:fMin_RBV") {
+  field(DESC, "The minimum bound for the output value.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoZMultiLeader.stAcc.fMin?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:CRYO:MLC:Z:stAcc:fOut_RBV") {
+  # The output value after bounds are applied.
+  field(DESC, "The output value aft...unds are applied.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoZMultiLeader.stAcc.fOut?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(bi, "QRIX:CRYO:MLC:Z:stPos:bMaxLim_RBV") {
+  # TRUE if the output value has been limited by the upper bound.
+  field(DESC, "TRUE if the output v... the upper bound.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoZMultiLeader.stPos.bMaxLim?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
+record(bi, "QRIX:CRYO:MLC:Z:stPos:bMinLim_RBV") {
+  # TRUE if the output value has been limited by the lower bound.
+  field(DESC, "TRUE if the output v... the lower bound.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoZMultiLeader.stPos.bMinLim?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:CRYO:MLC:Z:stPos:fIn_RBV") {
+  # The input value before bounds are applied.
+  field(DESC, "The input value befo...unds are applied.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoZMultiLeader.stPos.fIn?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ao, "QRIX:CRYO:MLC:Z:stPos:fIn") {
+  # The input value before bounds are applied.
+  field(DESC, "The input value befo...unds are applied.")
+  field(DTYP, "asynFloat64")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoZMultiLeader.stPos.fIn=")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS VAL")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:CRYO:MLC:Z:stPos:fMax_RBV") {
+  field(DESC, "The maximum bound for the output value.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoZMultiLeader.stPos.fMax?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:CRYO:MLC:Z:stPos:fMin_RBV") {
+  field(DESC, "The minimum bound for the output value.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoZMultiLeader.stPos.fMin?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:CRYO:MLC:Z:stPos:fOut_RBV") {
+  # The output value after bounds are applied.
+  field(DESC, "The output value aft...unds are applied.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoZMultiLeader.stPos.fOut?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(bi, "QRIX:CRYO:MLC:Z:stVel:bMaxLim_RBV") {
+  # TRUE if the output value has been limited by the upper bound.
+  field(DESC, "TRUE if the output v... the upper bound.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoZMultiLeader.stVel.bMaxLim?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
+record(bi, "QRIX:CRYO:MLC:Z:stVel:bMinLim_RBV") {
+  # TRUE if the output value has been limited by the lower bound.
+  field(DESC, "TRUE if the output v... the lower bound.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoZMultiLeader.stVel.bMinLim?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:CRYO:MLC:Z:stVel:fIn_RBV") {
+  # The input value before bounds are applied.
+  field(DESC, "The input value befo...unds are applied.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoZMultiLeader.stVel.fIn?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ao, "QRIX:CRYO:MLC:Z:stVel:fIn") {
+  # The input value before bounds are applied.
+  field(DESC, "The input value befo...unds are applied.")
+  field(DTYP, "asynFloat64")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoZMultiLeader.stVel.fIn=")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS VAL")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:CRYO:MLC:Z:stVel:fMax_RBV") {
+  field(DESC, "The maximum bound for the output value.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoZMultiLeader.stVel.fMax?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:CRYO:MLC:Z:stVel:fMin_RBV") {
+  field(DESC, "The minimum bound for the output value.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoZMultiLeader.stVel.fMin?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:CRYO:MLC:Z:stVel:fOut_RBV") {
+  # The output value after bounds are applied.
+  field(DESC, "The output value aft...unds are applied.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoZMultiLeader.stVel.fOut?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
 record(bi, "QRIX:SA:bBusy_RBV") {
   field(DESC, "PRG_DET_FRAME.bBusy")
   field(SCAN, "I/O Intr")
