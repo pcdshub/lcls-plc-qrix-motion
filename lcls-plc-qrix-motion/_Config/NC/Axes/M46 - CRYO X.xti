@@ -1433,8 +1433,8 @@ External Setpoint Generation:
 	<Axis Id="46" CreateSymbols="true" AxisType="1" AxisFolder="Cryo">
 		<Name>__FILENAME__</Name>
 		<AxisPara>
-			<Dynamic AccelerationMaximum="150" DecelerationMaximum="150" Acceleration="150" Deceleration="150"/>
-			<Velo Maximum="12.7"/>
+			<Dynamic AccelerationMaximum="10" DecelerationMaximum="10" Acceleration="10" Deceleration="10"/>
+			<Velo SlowManual="0.5" FastManual="1" Maximum="5"/>
 			<OtherSettings AllowMotionCmdToSlave="true"/>
 		</AxisPara>
 		<Encoder Name="Enc" EncType="29">
@@ -1484,7 +1484,7 @@ External Setpoint Generation:
 		</Encoder>
 		<Drive Name="Drive" DrvType="24">
 			<DrvPara>
-				<Analog VeloReferenz="12.7" ScaleFactorActTorque="0.1"/>
+				<Analog VeloReferenz="6.35" ScaleFactorActTorque="0.1"/>
 				<TimeComp TaskDelayCycles="1"/>
 			</DrvPara>
 			<Vars VarGrpType="1">

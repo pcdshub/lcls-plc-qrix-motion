@@ -82,6 +82,8 @@ VAR
     stCryoZMultiLeader: ST_MultiLeaderMotionCoupling;
     fbCryoZMultiLeader: FB_MultiLeaderMotionCoupling;
 
+    fCryoYNeutralPosition : LREAL;
+
     {attribute 'TcLinkTo' := '.nMicrostepCounter := TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_11^ENC Status compact^Counter value;
                               .bCounterOverflow  := TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_11^ENC Status compact^Status^Counter overflow;
                               .bCounterUnderflow := TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_11^ENC Status compact^Status^Counter underflow'}
@@ -168,6 +170,8 @@ IF bInit THEN
     stCryoYMultiLeader.stPos.fMin := 0;
     stCryoYMultiLeader.stVel.fMin := -5;
     stCryoYMultiLeader.stAcc.fMin := -100;
+
+    fCryoYNeutralPosition := 50.7;
 END_IF
 
 // Offset the raw value to ensure the rollover point is not in the path of motion.
@@ -224,7 +228,7 @@ fbCryoXMultiLeader(
     tTimeout:=T#5s
 );
 
-stCryoYMultiLeader.fTargetPos := 60 - ABS(fBraidDiameter * (1 - Cos(Main.M32.Axis.NcToPlc.ActPos * 3.1415 / 180)));
+stCryoYMultiLeader.fTargetPos := fCryoYNeutralPosition - ABS(fBraidDiameter * (1 - Cos(Main.M32.Axis.NcToPlc.ActPos * 3.1415 / 180)));
 fbCryoYMultiLeader(
     stMotionStageFollow:=Main.M47,
     stMultiLeaderMotionCoupling:=stCryoYMultiLeader,

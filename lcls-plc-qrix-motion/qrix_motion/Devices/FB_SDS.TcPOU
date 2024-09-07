@@ -72,15 +72,19 @@ stSDS.fbGarPos2D(
 
 CASE stSDS.nHomingState OF
     0: // Initialization
+        stSDS.tonForwardHomingLimit(IN:=FALSE);
         IF stArmHStage.nCommand = E_EpicsMotorCmd.HOME AND stArmHStage.bBusy THEN
             stSDS.nHomingState := stSDS.nHomingState + 1;
         END_IF
     1: // Homing Sequence Triggered
+        stSDS.tonForwardHomingLimit(IN:=stArmHStage.Axis.NcToPlc.SetVelo > 0,PT:=T#1s);
         IF stArmHStage.nCommand = E_EpicsMotorCmd.HOME AND stArmHStage.bHome THEN
             stSDS.nHomingState := stSDS.nHomingState + 1;
             stSDS.tonHomingStateTimeout(IN:=FALSE);
+            stSDS.tonForwardHomingLimit(IN:=FALSE);
         ELSIF NOT stArmHStage.bBusy THEN
             stSDS.tonHomingStateTimeout(IN:=TRUE,PT:=T#5s);
+            stSDS.tonForwardHomingLimit(IN:=FALSE);
             IF stSDS.tonHomingStateTimeout.Q THEN
                 stSDS.nHomingState := -1;
             END_IF

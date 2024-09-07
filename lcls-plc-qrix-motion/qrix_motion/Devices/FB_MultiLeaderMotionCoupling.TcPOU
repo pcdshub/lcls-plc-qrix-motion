@@ -13,6 +13,7 @@ VAR
     bInit:      BOOL  := TRUE;
     nTimeout:   ULINT;
     tonTimeout: TON;
+    tonHaltDelay: TON;
 
     tonTargetPositionTimer: TON;
 
@@ -21,6 +22,7 @@ VAR
     tonMoveProgressCounter: TON;
     GetCurrentTaskIndex: GETCURTASKINDEX;
     fSecPerScan: LREAL;
+    fDistanceThisScan: LREAL;
 
     EnableSetPointGenerator		: MC_ExtSetPointGenEnable;
     DisableSetPointGenerator	: MC_ExtSetPointGenDisable;
@@ -32,6 +34,7 @@ END_VAR
 // During initialization or reset, restore state values to defaults.
 IF bInit OR stMultiLeaderMotionCoupling.bReset THEN
     bInit := FALSE;
+    stMotionStageFollow.bReset             := TRUE;
     stMultiLeaderMotionCoupling.bReset     := FALSE;
     stMultiLeaderMotionCoupling.bBusy      := FALSE;
     stMultiLeaderMotionCoupling.sStatusMsg := '';
@@ -314,14 +317,20 @@ ELSE
             GetCurrentTaskIndex();
         END_IF
         fSecPerScan := UDINT_TO_LREAL(TwinCAT_SystemInfoVarList._TaskInfo[GetCurrentTaskIndex.index].cycleTime) / 1E7;
+        IF fMoveTime <> 0 THEN
+            fDistanceThisScan := stMultiLeaderMotionCoupling.fPosDelta / fMoveTime * stMultiLeaderMotionCoupling.nDir * fSecPerScan;
+        ELSE
+            fDistanceThisScan := 0;
+        END_IF
         MC_ExtSetPointGenFeed(
-            Position     := stMotionStageFollow.Axis.NcToPlc.ActPos + stMultiLeaderMotionCoupling.stVel.fOut * fSecPerScan,
+            Position     := stMotionStageFollow.Axis.NcToPlc.ActPos + fDistanceThisScan,
             Velocity     := stMultiLeaderMotionCoupling.stVel.fOut,
             Acceleration := stMultiLeaderMotionCoupling.stAcc.fOut,
             Direction    := stMultiLeaderMotionCoupling.nDir,
             Axis         := stMotionStageFollow.Axis
         );
         tonTimeout(IN:=FALSE);
+        tonHaltDelay(IN:=FALSE);
     ELSE
         MC_ExtSetPointGenFeed(
             Position     := stMultiLeaderMotionCoupling.stPos.fOut, // stMotionStageFollow.Axis.NcToPlc.ActPos,
@@ -330,10 +339,10 @@ ELSE
             Direction    := stMultiLeaderMotionCoupling.nDir,
             Axis         := stMotionStageFollow.Axis
         );
-        tonTimeout(IN:=TRUE,PT:=tTimeout);
-        IF tonTimeout.Q THEN
+        tonHaltDelay(IN:=TRUE,PT:=tTimeout);
+        IF tonHaltDelay.Q THEN
             stMultiLeaderMotionCoupling.eState := E_MultiLeaderMotionCoupling.STATE_HALT_MOTION;
-            tonTimeout(IN:=FALSE);
+            tonHaltDelay(IN:=FALSE);
         END_IF
     END_IF
 END_IF
@@ -485,15 +494,22 @@ mcHalt(
 );
 
 IF NOT stMultiLeaderMotionCoupling.bEnable THEN
-    stMultiLeaderMotionCoupling.eState := E_MultiLeaderMotionCoupling.STATE_DISABLE_EXTERNAL_SETPOINT_GENERATOR;
-ELSIF NOT stMotionStageFollow.Axis.NcToPlc.StateDWord.14 AND mcHalt.Done THEN
     mcHalt(
         Axis:=stMotionStageFollow.Axis,
         Execute:=FALSE,
         Deceleration:=stMultiLeaderMotionCoupling.stAcc.fOut,
         BufferMode:=MC_BufferMode.MC_Aborting
     );
-    stMultiLeaderMotionCoupling.eState := E_MultiLeaderMotionCoupling.STATE_MONITOR_TARGET_WINDOW;
+    stMultiLeaderMotionCoupling.eState := E_MultiLeaderMotionCoupling.STATE_DISABLE_EXTERNAL_SETPOINT_GENERATOR;
+ELSIF mcHalt.Done THEN
+    mcHalt(
+        Axis:=stMotionStageFollow.Axis,
+        Execute:=FALSE,
+        Deceleration:=stMultiLeaderMotionCoupling.stAcc.fOut,
+        BufferMode:=MC_BufferMode.MC_Aborting
+    );
+    stMultiLeaderMotionCoupling.fHaltPos := stMotionStageFollow.Axis.NcToPlc.ActPos;
+    stMultiLeaderMotionCoupling.eState   := E_MultiLeaderMotionCoupling.STATE_MONITOR_TARGET_WINDOW;
     tonTimeout(IN:=FALSE);
 ELSIF mcHalt.Error THEN
     mcHalt(

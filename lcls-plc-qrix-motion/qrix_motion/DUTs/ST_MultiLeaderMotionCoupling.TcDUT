@@ -46,7 +46,7 @@ STRUCT
     fTargetVel: LREAL; // Set in software to allow axis to target a velocity based on multiple leaders.
     fTargetPos: LREAL; // Set in software to allow axis to target a position based on multiple leaders.
     fPosDelta : LREAL; // Difference between current position and target position.
-    fTargetTrackingGain: LREAL; // Gain used to tune target tracking when within target position window.
+    fTargetTrackingGain: LREAL := 1; // Gain used to tune target tracking when within target position window.
     fHaltPos: LREAL; // Position at which halt is called. Allows for centering deadband.
 
     {attribute 'pytmc' := '

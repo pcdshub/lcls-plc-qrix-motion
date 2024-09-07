@@ -209,6 +209,8 @@ STRUCT
         field: DESC Write True to command a garage unloading sequence. Write False to cancel a command.
     '}
     bUnloadGar: BOOL;
+
+    tonForwardHomingLimit: TON;
 END_STRUCT
 END_TYPE
 ]]></Declaration>

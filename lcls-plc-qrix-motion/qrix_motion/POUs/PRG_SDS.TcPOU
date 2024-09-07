@@ -13,7 +13,7 @@ VAR
 
     EPS_SDS_H_Backward : FB_EPS;
     EPS_SDS_H_Forward : FB_EPS;
-    fSDSYEPSOverride: REAL := -120;
+    fSDSYEPSOverride: REAL;
 
     EPS_SDS_Y_Backward : FB_EPS;
     EPS_SDS_Y_Forward : FB_EPS;
@@ -75,6 +75,7 @@ IF bInit THEN
     Main.M44.nHomingMode := ENUM_EpicsHomeCmd.HOME_VIA_LOW;
     Main.M44.fHomePosition := 0;//1.176; distance from home switch trigger to lower limit trigger
 
+    fSDSYEPSOverride := -40;
 END_IF
 
 GVL_Interface.QRIX_MOT_SDS_MMS_H_RAW_ENC_CNTS := Main.M44.nRawEncoderUINT;
@@ -92,6 +93,7 @@ EPS_SDS_H_Backward.setDescription('NEGATIVE MOTION ALLOWED UNTIL LIMIT'); // SET
 EPS_SDS_H_Forward(eps:=Main.M44.stEPSForwardEnable);
 EPS_SDS_H_Forward.setDescription('POS MOTION IF VGC_03 closed: (cmd<50mm | pos<50mm | Homing Valid | SDS Y<-45mm)'); // SET DESCRIPTION FOR BYTE INDICATOR LABELS
 // Sample Delivery Arm can Extend if the VGC valve is open and not closed, and it has been homed.
+EPS_SDS_H_Forward.setBit(nBits:= 4, bValue:= NOT stSDS.tonForwardHomingLimit.Q);
 EPS_SDS_H_Forward.setBit(nBits:= 3, bValue:=(NOT GVL_Interface.QRIX_VAC_VGC_03_CLOSED_LIMIT_SWITCH AND
     GVL_Interface.QRIX_VAC_VGC_03_OPEN_LIMIT_SWITCH) OR Main.M44.stAxisStatus.fPosition < fMaxSampleDeliveryArmPositionWithValveClosed);
 EPS_SDS_H_Forward.setBit(nBits:= 2, bValue:=(NOT GVL_Interface.QRIX_VAC_VGC_03_CLOSED_LIMIT_SWITCH AND
