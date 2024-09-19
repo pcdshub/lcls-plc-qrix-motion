@@ -1,12 +1,14 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
   <POU Name="PRG_1_PlcTask" Id="{ffe71f0c-bf77-4cce-b8e1-24b1bdf50732}" SpecialFunc="None">
-    <Declaration><![CDATA[PROGRAM PRG_1_PlcTask
+    <Declaration><![CDATA[
+PROGRAM PRG_1_PlcTask
 VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[PRG_2_PMPS();
+      <ST><![CDATA[
+PRG_2_PMPS();
 PRG_3_LOG();
 PRG_Diffractometer();
 PRG_LAS();
@@ -17,7 +19,6 @@ PRG_SpetrometerArm();
 PRG_SSL();
 PRG_Cryo();
 PRG_Collect_Scope_Info();
-
 ]]></ST>
     </Implementation>
   </POU>

@@ -1,7 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
   <POU Name="PRG_Cryo" Id="{d8649ca7-c26e-4e28-a279-17f291a3cb8e}" SpecialFunc="None">
-    <Declaration><![CDATA[PROGRAM PRG_Cryo
+    <Declaration><![CDATA[
+PROGRAM PRG_Cryo
 VAR
     nCryoRotOutEncoderCounts AT %Q*: ULINT;
     nCryoRotEncoderOffset: ULINT;
@@ -82,6 +83,7 @@ VAR
     stCryoZMultiLeader: ST_MultiLeaderMotionCoupling;
     fbCryoZMultiLeader: FB_MultiLeaderMotionCoupling;
 
+    fCryoYNeutralPositionAtDiffY0 : LREAL;
     fCryoYNeutralPosition : LREAL;
 
     {attribute 'TcLinkTo' := '.nMicrostepCounter := TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_11^ENC Status compact^Counter value;
@@ -149,8 +151,8 @@ IF bInit THEN
     stCryoYMultiLeader.bUseDynamicLimits := TRUE;
     stCryoZMultiLeader.bUseDynamicLimits := TRUE;
 
-    //stCryoXMultiLeader.bEnable := TRUE;
-    //stCryoYMultiLeader.bEnable := TRUE;
+    stCryoXMultiLeader.bEnable := TRUE;
+    stCryoYMultiLeader.bEnable := TRUE;
     //stCryoZMultiLeader.bEnable := TRUE;
 
     stCryoXMultiLeader.fTargetVel := 1;
@@ -171,7 +173,7 @@ IF bInit THEN
     stCryoYMultiLeader.stVel.fMin := -5;
     stCryoYMultiLeader.stAcc.fMin := -100;
 
-    fCryoYNeutralPosition := 50.7;
+    fCryoYNeutralPositionAtDiffY0 := 50.7;
 END_IF
 
 // Offset the raw value to ensure the rollover point is not in the path of motion.
@@ -219,14 +221,14 @@ IF NOT stCryoZMultiLeader.bEnable THEN
     Main.M48.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
 END_IF
 
-stCryoXMultiLeader.fTargetPos :=
-    Main.M28.Axis.NcToPlc.ActPos * cos(Main.M32.Axis.NcToPlc.ActPos * 3.1415 / 180) +
-    Main.M29.Axis.NcToPlc.ActPos * sin(Main.M32.Axis.NcToPlc.ActPos * 3.1415 / 180);
+stCryoXMultiLeader.fTargetPos := Main.M28.Axis.NcToPlc.ActPos;
 fbCryoXMultiLeader(
     stMotionStageFollow:=Main.M46,
     stMultiLeaderMotionCoupling:=stCryoXMultiLeader,
     tTimeout:=T#5s
 );
+
+fCryoYNeutralPosition := fCryoYNeutralPositionAtDiffY0 + Main.M29.Axis.NcToPlc.ActPos;
 
 stCryoYMultiLeader.fTargetPos := fCryoYNeutralPosition - ABS(fBraidDiameter * (1 - Cos(Main.M32.Axis.NcToPlc.ActPos * 3.1415 / 180)));
 fbCryoYMultiLeader(

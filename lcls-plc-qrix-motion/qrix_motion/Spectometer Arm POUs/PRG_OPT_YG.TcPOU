@@ -1,7 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
   <POU Name="PRG_OPT_YG" Id="{173d90db-406f-4d99-a17e-cb9894f5d5de}" SpecialFunc="None">
-    <Declaration><![CDATA[PROGRAM PRG_OPT_YG
+    <Declaration><![CDATA[
+PROGRAM PRG_OPT_YG
 VAR
     bDebug: BOOL;
     bExecuteMotion: BOOL := TRUE;
@@ -15,7 +16,8 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[IF bInit THEN
+      <ST><![CDATA[
+IF bInit THEN
     bInit := FALSE;
 
     Main.M7.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
@@ -50,7 +52,8 @@ fbYGMotion(
     rLimitRollMin     := -18,
     rLimitRollMax     :=  18,
     fMaxVelocity      :=  0.1,
-);]]></ST>
+);
+]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

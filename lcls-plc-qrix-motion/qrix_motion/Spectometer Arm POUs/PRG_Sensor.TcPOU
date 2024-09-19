@@ -1,7 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
   <POU Name="PRG_Sensor" Id="{3a285490-8ff2-4f17-b9dd-5ad55de9cea5}" SpecialFunc="None">
-    <Declaration><![CDATA[PROGRAM PRG_Sensor
+    <Declaration><![CDATA[
+PROGRAM PRG_Sensor
 VAR
     bInit : bool :=TRUE;
 
@@ -96,7 +97,8 @@ GVL_Sensor.stPS2.fValue			:= INT_TO_REAL(GVL_Sensor.stPS2.iRawCnts - GVL_Sensor.
 GVL_Sensor.stPS3.fValue			:= INT_TO_REAL(GVL_Sensor.stPS3.iRawCnts - GVL_Sensor.stPS3.iOffset) / GVL_Sensor.stPS3.fCntsInEGU;
 
 
-//uintTest:= REAL_TO_UINT(GVL_Sensor.stYDF1.fValue);]]></ST>
+//uintTest:= REAL_TO_UINT(GVL_Sensor.stYDF1.fValue);
+]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

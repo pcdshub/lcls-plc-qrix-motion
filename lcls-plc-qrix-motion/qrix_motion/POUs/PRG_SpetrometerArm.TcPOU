@@ -1,7 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
   <POU Name="PRG_SpetrometerArm" Id="{eed80c44-a4f8-44e5-b6b2-59148c825f2f}" SpecialFunc="None">
-    <Declaration><![CDATA[PROGRAM PRG_SpetrometerArm
+    <Declaration><![CDATA[
+PROGRAM PRG_SpetrometerArm
 VAR
         {attribute 'TcLinkTo' := 'TIIB[Rack#1A-01 Coupler (EK1100)]^Rack#1A-02 SFIN (EL1918)^StandardOutputs^Standard In Var 2'}
     bEnaIclk AT %Q*: BOOL := TRUE;
@@ -23,7 +24,8 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[ACT_ESTOP();
+      <ST><![CDATA[
+ACT_ESTOP();
 
 PRG_2Theta();
 PRG_DET_ARM();

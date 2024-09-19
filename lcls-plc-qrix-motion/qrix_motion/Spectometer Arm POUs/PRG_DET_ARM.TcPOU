@@ -1,7 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
   <POU Name="PRG_DET_ARM" Id="{5258bb24-11af-4169-8ff7-86951daba536}" SpecialFunc="None">
-    <Declaration><![CDATA[PROGRAM PRG_DET_ARM
+    <Declaration><![CDATA[
+PROGRAM PRG_DET_ARM
 VAR
     bInit: BOOL := TRUE;
     bExecuteCouple: BOOL := FALSE;
@@ -33,7 +34,6 @@ END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[
-
 IF bInit THEN
     bInit := FALSE;
     bExecuteCouple := TRUE;
@@ -150,7 +150,8 @@ fbMeasureReferenceVelocity(
     nMicrostepsPerStep:=64,
     bBusy=>,
     fMeasuredReferenceVelocity=>
-);]]></ST>
+);
+]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

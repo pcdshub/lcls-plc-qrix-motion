@@ -1,7 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
   <POU Name="PRG_DET_CHAMBER" Id="{7779e44c-5234-499f-9f61-3fec67c64546}" SpecialFunc="None">
-    <Declaration><![CDATA[PROGRAM PRG_DET_CHAMBER
+    <Declaration><![CDATA[
+PROGRAM PRG_DET_CHAMBER
 VAR
     bInit: BOOL := TRUE;
     fbMotionXDC: FB_MotionStage;
@@ -10,7 +11,8 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[// Det. Chmber
+      <ST><![CDATA[
+// Det. Chmber
 IF bInit THEN
     bInit :=FALSE;
     Main.M22.bHardwareEnable:= TRUE;
@@ -35,7 +37,8 @@ END_IF;
 
 fbMotionXDC(stMotionStage:= Main.M22);
 fbMotionRyDC(stMotionStage:= Main.M23);
-fbMotionZDC(stMotionStage:= Main.M24);]]></ST>
+fbMotionZDC(stMotionStage:= Main.M24);
+]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

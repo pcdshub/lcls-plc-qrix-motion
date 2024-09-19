@@ -1,7 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
   <POU Name="PRG_SSL" Id="{35c5b597-c1e5-471b-bc57-49572aa20da4}" SpecialFunc="None">
-    <Declaration><![CDATA[PROGRAM PRG_SSL
+    <Declaration><![CDATA[
+PROGRAM PRG_SSL
 VAR
     fb_SSL_Motor : FB_MotionStage;
     (*EPS Limit switches*)
@@ -68,7 +69,8 @@ VAR
     timeRealignTimeout: TIME;
     bFullyDecouple: BOOL;
 
-END_VAR]]></Declaration>
+END_VAR
+]]></Declaration>
     <Implementation>
       <ST><![CDATA[
 IF ( bInit) THEN
@@ -186,7 +188,8 @@ END_IF
 
 fPosDiff := Main.M1.stAxisStatus.fActPosition - Main.M2.stAxisStatus.fActPosition;
 
-fb_SSL_Motor(stMotionStage:=Main.M1);]]></ST>
+fb_SSL_Motor(stMotionStage:=Main.M1);
+]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

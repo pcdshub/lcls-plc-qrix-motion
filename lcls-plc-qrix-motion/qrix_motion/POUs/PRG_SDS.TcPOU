@@ -1,7 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
   <POU Name="PRG_SDS" Id="{e8b6628f-8c08-4322-8d03-c947275863d3}" SpecialFunc="None">
-    <Declaration><![CDATA[PROGRAM PRG_SDS
+    <Declaration><![CDATA[
+PROGRAM PRG_SDS
 VAR
     fb_SDS_ROT_V : FB_MotionStage;
     fb_SDS_X : FB_MotionStage;
@@ -58,6 +59,7 @@ IF bInit THEN
     Main.M42.bPowerSelf := TRUE;
     Main.M42.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
     Main.M42.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+    Main.M42.nHomingMode := ENUM_EpicsHomeCmd.HOME_VIA_LOW;
     Main.M42.bLimitBackwardEnable := TRUE;
     Main.M42.bLimitForwardEnable := TRUE;
 
@@ -114,6 +116,9 @@ EPS_SDS_Y_Forward.setDescription('POSITIVE MOTION ALLOWED UNTIL LIMIT'); // SET 
 fb_SDS_X(stMotionStage:=Main.M39);
 fb_SDS_Y(stMotionStage:=Main.M40);
 fb_SDS_Z(stMotionStage:=Main.M41);
+
+Main.M42.bHome := NOT Main.M42.bHome;
+
 fb_SDS_ROT_V(stMotionStage:=Main.M42);
 fb_SDS_ROT_H(stMotionStage:=Main.M43);
 fb_SDS_H(stMotionStage:=Main.M44);

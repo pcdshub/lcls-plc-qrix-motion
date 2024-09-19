@@ -1,7 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
   <POU Name="FB_CoordinateGantryAxisEnable" Id="{91dabd2d-6f24-4e77-b8b3-8a1bfcd3f76e}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION_BLOCK FB_CoordinateGantryAxisEnable
+    <Declaration><![CDATA[
+FUNCTION_BLOCK FB_CoordinateGantryAxisEnable
 VAR_IN_OUT
     stMotionStageLeader: ST_MotionStage;
     stMotionStageFollow: ST_MotionStage;

@@ -1,7 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
   <POU Name="PRG_Diffractometer" Id="{47cc6d87-f16c-4ab2-afb0-97aaa2cfa842}" SpecialFunc="None">
-    <Declaration><![CDATA[PROGRAM PRG_Diffractometer
+    <Declaration><![CDATA[
+PROGRAM PRG_Diffractometer
 VAR
     fb_Diff_Theta : FB_MotionStage;
     fb_Diff_2Theta : FB_MotionStage;

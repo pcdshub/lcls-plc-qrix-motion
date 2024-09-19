@@ -1,7 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
   <GVL Name="GVL_VAR" Id="{7acc2ff9-c54c-4632-8d7c-23ce929a99e3}">
-    <Declaration><![CDATA[VAR_GLOBAL
+    <Declaration><![CDATA[
+VAR_GLOBAL
 
     {attribute 'pytmc' := '
         pv: QRIX:SA:bDoneJackOff
@@ -140,6 +141,7 @@
     {attribute 'TcLinkTo' := 'TIID^Device 1 (EtherCAT)^Rack#2B-01 Coupler (EK1100)^Rack#2B-17 CP_YDF_ZF (EL9221-5000)^OCP Inputs^Status^Tripped'}
     bCircuitBreakerR2B17Tripped AT %I*: BOOL;
 
-END_VAR]]></Declaration>
+END_VAR
+]]></Declaration>
   </GVL>
 </TcPlcObject>

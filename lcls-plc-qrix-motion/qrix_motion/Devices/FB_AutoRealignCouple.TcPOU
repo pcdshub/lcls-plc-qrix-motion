@@ -1,7 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
   <POU Name="FB_AutoRealignCouple" Id="{c8bd7e6d-d001-4300-8b80-51958269e0fb}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION_BLOCK FB_AutoRealignCouple
+    <Declaration><![CDATA[
+FUNCTION_BLOCK FB_AutoRealignCouple
 VAR_IN_OUT
     stMotionStageLeader:  ST_MotionStage;
     stMotionStageFollow:  ST_MotionStage;

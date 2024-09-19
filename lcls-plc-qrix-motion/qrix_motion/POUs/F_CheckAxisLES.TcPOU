@@ -1,7 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
   <POU Name="F_CheckAxisLES" Id="{0c65dbf2-5903-404f-946d-2e0fda97e3ea}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION F_CheckAxisLES : BOOL
+    <Declaration><![CDATA[
+FUNCTION F_CheckAxisLES : BOOL
 VAR_INPUT
     stMotionStage: ST_MotionStage;
     fQueryValue: LREAL;
@@ -10,7 +11,9 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[F_CheckAxisLES := F_CheckAxis(stMotionStage, 0, fQueryValue);]]></ST>
+      <ST><![CDATA[
+F_CheckAxisLES := F_CheckAxis(stMotionStage, 0, fQueryValue);
+]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

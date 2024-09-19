@@ -1,7 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
   <POU Name="PRG_OPT_XPM" Id="{22739f85-3eea-4d07-957d-370832f3ada0}" SpecialFunc="None">
-    <Declaration><![CDATA[PROGRAM PRG_OPT_XPM
+    <Declaration><![CDATA[
+PROGRAM PRG_OPT_XPM
 VAR
     bInit: BOOL :=TRUE;
     {attribute 'pytmc' := 'pv: QRIX:PM'}
@@ -12,7 +13,8 @@ END_VAR
 
 VAR CONSTANT
     rDistance	:REAL	:=	0.4;
-END_VAR]]></Declaration>
+END_VAR
+]]></Declaration>
     <Implementation>
       <ST><![CDATA[
 IF bINIT THEN

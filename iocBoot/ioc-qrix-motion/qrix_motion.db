@@ -63162,8 +63162,8 @@ record(bo, "QRIX:CRYO:MLC:X:bReset") {
 }
 
 record(bi, "QRIX:CRYO:MLC:X:bUseDynamicLimits_RBV") {
-  # Set and hold TRUE to enable dynami limits to acc, vel, and pos.
-  field(DESC, "Set and hold TRUE to...cc, vel, and pos.")
+  # Set AND hold TRUE to enable dynamic limits to acc, vel, AND pos.
+  field(DESC, "Set AND hold TRUE to...cc, vel, AND pos.")
   field(SCAN, "I/O Intr")
   field(PINI, "1")
   field(TSE, "-2")
@@ -63176,8 +63176,8 @@ record(bi, "QRIX:CRYO:MLC:X:bUseDynamicLimits_RBV") {
 }
 
 record(bo, "QRIX:CRYO:MLC:X:bUseDynamicLimits") {
-  # Set and hold TRUE to enable dynami limits to acc, vel, and pos.
-  field(DESC, "Set and hold TRUE to...cc, vel, and pos.")
+  # Set AND hold TRUE to enable dynamic limits to acc, vel, AND pos.
+  field(DESC, "Set AND hold TRUE to...cc, vel, AND pos.")
   field(DTYP, "asynInt32")
   field(UDFS, "0")
   field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoXMultiLeader.bUseDynamicLimits=")
@@ -63216,6 +63216,88 @@ record(mbbi, "QRIX:CRYO:MLC:X:eState_RBV") {
   field(EIST, "STATE_MONITOR_TARGET_WINDOW")
   field(NIST, "STATE_HALT_MOTION")
   info(autosaveFields_pass0, "DESC DISS EISV ELSV FFSV FRSV FTSV FVSV NISV ONSV SIMS SVSV SXSV TESV THSV TTSV TVSV TWSV UDFS UNSV ZRSV")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:CRYO:MLC:X:fHaltPos_RBV") {
+  field(DESC, "Position at which axis halted.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoXMultiLeader.fHaltPos?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:CRYO:MLC:X:fPosDelta_RBV") {
+  field(DESC, "Target position minus position.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoXMultiLeader.fPosDelta?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:CRYO:MLC:X:fTargetAcc_RBV") {
+  field(DESC, "The target acceleration.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoXMultiLeader.fTargetAcc?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:CRYO:MLC:X:fTargetPos_RBV") {
+  field(DESC, "The target position.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoXMultiLeader.fTargetPos?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:CRYO:MLC:X:fTTGain_RBV") {
+  field(DESC, "Target tracking gain.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoXMultiLeader.fTargetTrackingGain?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ao, "QRIX:CRYO:MLC:X:fTTGain") {
+  field(DESC, "Target tracking gain.")
+  field(DTYP, "asynFloat64")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoXMultiLeader.fTargetTrackingGain=")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS VAL")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:CRYO:MLC:X:fTargetVel_RBV") {
+  field(DESC, "The target velocity.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoXMultiLeader.fTargetVel?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
   info(archive, "VAL")
 }
 
@@ -63638,8 +63720,8 @@ record(bo, "QRIX:CRYO:MLC:Y:bReset") {
 }
 
 record(bi, "QRIX:CRYO:MLC:Y:bUseDynamicLimits_RBV") {
-  # Set and hold TRUE to enable dynami limits to acc, vel, and pos.
-  field(DESC, "Set and hold TRUE to...cc, vel, and pos.")
+  # Set AND hold TRUE to enable dynamic limits to acc, vel, AND pos.
+  field(DESC, "Set AND hold TRUE to...cc, vel, AND pos.")
   field(SCAN, "I/O Intr")
   field(PINI, "1")
   field(TSE, "-2")
@@ -63652,8 +63734,8 @@ record(bi, "QRIX:CRYO:MLC:Y:bUseDynamicLimits_RBV") {
 }
 
 record(bo, "QRIX:CRYO:MLC:Y:bUseDynamicLimits") {
-  # Set and hold TRUE to enable dynami limits to acc, vel, and pos.
-  field(DESC, "Set and hold TRUE to...cc, vel, and pos.")
+  # Set AND hold TRUE to enable dynamic limits to acc, vel, AND pos.
+  field(DESC, "Set AND hold TRUE to...cc, vel, AND pos.")
   field(DTYP, "asynInt32")
   field(UDFS, "0")
   field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoYMultiLeader.bUseDynamicLimits=")
@@ -63692,6 +63774,88 @@ record(mbbi, "QRIX:CRYO:MLC:Y:eState_RBV") {
   field(EIST, "STATE_MONITOR_TARGET_WINDOW")
   field(NIST, "STATE_HALT_MOTION")
   info(autosaveFields_pass0, "DESC DISS EISV ELSV FFSV FRSV FTSV FVSV NISV ONSV SIMS SVSV SXSV TESV THSV TTSV TVSV TWSV UDFS UNSV ZRSV")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:CRYO:MLC:Y:fHaltPos_RBV") {
+  field(DESC, "Position at which axis halted.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoYMultiLeader.fHaltPos?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:CRYO:MLC:Y:fPosDelta_RBV") {
+  field(DESC, "Target position minus position.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoYMultiLeader.fPosDelta?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:CRYO:MLC:Y:fTargetAcc_RBV") {
+  field(DESC, "The target acceleration.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoYMultiLeader.fTargetAcc?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:CRYO:MLC:Y:fTargetPos_RBV") {
+  field(DESC, "The target position.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoYMultiLeader.fTargetPos?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:CRYO:MLC:Y:fTTGain_RBV") {
+  field(DESC, "Target tracking gain.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoYMultiLeader.fTargetTrackingGain?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ao, "QRIX:CRYO:MLC:Y:fTTGain") {
+  field(DESC, "Target tracking gain.")
+  field(DTYP, "asynFloat64")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoYMultiLeader.fTargetTrackingGain=")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS VAL")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:CRYO:MLC:Y:fTargetVel_RBV") {
+  field(DESC, "The target velocity.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoYMultiLeader.fTargetVel?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
   info(archive, "VAL")
 }
 
@@ -64114,8 +64278,8 @@ record(bo, "QRIX:CRYO:MLC:Z:bReset") {
 }
 
 record(bi, "QRIX:CRYO:MLC:Z:bUseDynamicLimits_RBV") {
-  # Set and hold TRUE to enable dynami limits to acc, vel, and pos.
-  field(DESC, "Set and hold TRUE to...cc, vel, and pos.")
+  # Set AND hold TRUE to enable dynamic limits to acc, vel, AND pos.
+  field(DESC, "Set AND hold TRUE to...cc, vel, AND pos.")
   field(SCAN, "I/O Intr")
   field(PINI, "1")
   field(TSE, "-2")
@@ -64128,8 +64292,8 @@ record(bi, "QRIX:CRYO:MLC:Z:bUseDynamicLimits_RBV") {
 }
 
 record(bo, "QRIX:CRYO:MLC:Z:bUseDynamicLimits") {
-  # Set and hold TRUE to enable dynami limits to acc, vel, and pos.
-  field(DESC, "Set and hold TRUE to...cc, vel, and pos.")
+  # Set AND hold TRUE to enable dynamic limits to acc, vel, AND pos.
+  field(DESC, "Set AND hold TRUE to...cc, vel, AND pos.")
   field(DTYP, "asynInt32")
   field(UDFS, "0")
   field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoZMultiLeader.bUseDynamicLimits=")
@@ -64168,6 +64332,88 @@ record(mbbi, "QRIX:CRYO:MLC:Z:eState_RBV") {
   field(EIST, "STATE_MONITOR_TARGET_WINDOW")
   field(NIST, "STATE_HALT_MOTION")
   info(autosaveFields_pass0, "DESC DISS EISV ELSV FFSV FRSV FTSV FVSV NISV ONSV SIMS SVSV SXSV TESV THSV TTSV TVSV TWSV UDFS UNSV ZRSV")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:CRYO:MLC:Z:fHaltPos_RBV") {
+  field(DESC, "Position at which axis halted.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoZMultiLeader.fHaltPos?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:CRYO:MLC:Z:fPosDelta_RBV") {
+  field(DESC, "Target position minus position.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoZMultiLeader.fPosDelta?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:CRYO:MLC:Z:fTargetAcc_RBV") {
+  field(DESC, "The target acceleration.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoZMultiLeader.fTargetAcc?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:CRYO:MLC:Z:fTargetPos_RBV") {
+  field(DESC, "The target position.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoZMultiLeader.fTargetPos?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:CRYO:MLC:Z:fTTGain_RBV") {
+  field(DESC, "Target tracking gain.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoZMultiLeader.fTargetTrackingGain?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ao, "QRIX:CRYO:MLC:Z:fTTGain") {
+  field(DESC, "Target tracking gain.")
+  field(DTYP, "asynFloat64")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoZMultiLeader.fTargetTrackingGain=")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS VAL")
+  info(archive, "VAL")
+}
+
+record(ai, "QRIX:CRYO:MLC:Z:fTargetVel_RBV") {
+  field(DESC, "The target velocity.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoZMultiLeader.fTargetVel?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
   info(archive, "VAL")
 }
 

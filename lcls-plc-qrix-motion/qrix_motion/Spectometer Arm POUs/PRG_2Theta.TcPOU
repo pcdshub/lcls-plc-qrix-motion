@@ -1,7 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
   <POU Name="PRG_2Theta" Id="{49979313-c6aa-43cf-b80a-b1a64d0ce087}" SpecialFunc="None">
-    <Declaration><![CDATA[PROGRAM PRG_2Theta
+    <Declaration><![CDATA[
+PROGRAM PRG_2Theta
 VAR
     bInit: BOOL := TRUE;
     fbPower_AxisM2:  MC_Power;
@@ -29,7 +30,8 @@ VAR CONSTANT
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[IF binit THEN
+      <ST><![CDATA[
+IF binit THEN
     bInit := FALSE;
 
     // Stepper
@@ -38,7 +40,7 @@ END_VAR
     // is sometimes interfering with the movement of the motor. We think it might be
     // some sort of lag in the brake disengaging that causes it to fight with the
     // drive for a bit, which causes overcurrent faults.
-    Main.M2.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+    Main.M2.nBrakeMode := ENUM_StageBrakeMode.IF_MOVING;
     Main.M2.bBrakeRelease := TRUE;
     Main.M2.bHardwareEnable := TRUE;
     Main.M2.bPowerSelf := TRUE;
@@ -51,7 +53,8 @@ ACT_Stepper();
     </Implementation>
     <Action Name="ACT_Stepper" Id="{66e0b0b8-d09b-4167-8180-d5937a88b96b}">
       <Implementation>
-        <ST><![CDATA[// Simplified enabling logic by removing separate fbPower function and
+        <ST><![CDATA[
+// Simplified enabling logic by removing separate fbPower function and
 // making the estop and other permissives drive the bPowerSelf bit.
 // Now, the motor motion is handled entirely within the FB_MotionStage block
 // which makes this usage more standard and easier to work with using our
@@ -224,7 +227,8 @@ ELSE
     Main.M1.bEnable := TRUE;
 END_IF
 
-fb2ThetaStepper(stMotionStage:=Main.M2);]]></ST>
+fb2ThetaStepper(stMotionStage:=Main.M2);
+]]></ST>
       </Implementation>
     </Action>
   </POU>

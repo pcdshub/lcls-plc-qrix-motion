@@ -1,7 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
   <DUT Name="ST_SDS" Id="{e874ed18-3d3e-42d0-8455-a32137294415}">
-    <Declaration><![CDATA[TYPE ST_SDS :
+    <Declaration><![CDATA[
+TYPE ST_SDS :
 (*
     Structure to represent the data used for the sample delivery system that is not
     needed to be persistent.

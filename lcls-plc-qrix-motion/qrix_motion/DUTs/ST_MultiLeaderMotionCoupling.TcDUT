@@ -1,7 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
   <DUT Name="ST_MultiLeaderMotionCoupling" Id="{3deae775-0f2c-41fa-8a74-ef3b2b206a82}">
-    <Declaration><![CDATA[TYPE ST_MultiLeaderMotionCoupling :
+    <Declaration><![CDATA[
+TYPE ST_MultiLeaderMotionCoupling :
 STRUCT
     {attribute 'pytmc' := '
         pv: bEnable
@@ -9,24 +10,28 @@ STRUCT
         field: DESC Set and hold TRUE to allow the axis to run in multi-leader mode.
     '}
     bEnable: BOOL;
+
     {attribute 'pytmc' := '
         pv: bReset
         io: io
         field: DESC Set and release TRUE to fully reset errors and state machine.
     '}
     bReset: BOOL;
+
     {attribute 'pytmc' := '
         pv: bBusy
         io: i
         field: DESC TRUE indicates state machine running and not in error state.
     '}
     bBusy: BOOL;
+
     {attribute 'pytmc' := '
         pv: sStatusMsg
         io: i
         field: DESC String used to give helpful messages.
     '}
     sStatusMsg: T_MaxString;
+
     // Ex: TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_11^STM Status^Status^Ready
     {attribute 'pytmc' := '
         pv: bFollowerDriveReady
@@ -38,34 +43,59 @@ STRUCT
     {attribute 'pytmc' := '
         pv: bUseDynamicLimits
         io: io
-        field: DESC Set and hold TRUE to enable dynami limits to acc, vel, and pos.
+        field: DESC Set AND hold TRUE to enable dynamic limits to acc, vel, AND pos.
     '}
     bUseDynamicLimits: BOOL;
 
+    {attribute 'pytmc' := '
+        pv: fTargetAcc
+        io: i
+        field: DESC The target acceleration.
+    '}
     fTargetAcc: LREAL; // Set in software to allow axis to target an acceleration based on multiple leaders.
-    fTargetVel: LREAL; // Set in software to allow axis to target a velocity based on multiple leaders.
-    fTargetPos: LREAL; // Set in software to allow axis to target a position based on multiple leaders.
-    fPosDelta : LREAL; // Difference between current position and target position.
-    fTargetTrackingGain: LREAL := 1; // Gain used to tune target tracking when within target position window.
-    fHaltPos: LREAL; // Position at which halt is called. Allows for centering deadband.
 
     {attribute 'pytmc' := '
-        pv: stAcc
-        io: io
-        field: DESC Bounded value structure representing acceleration.
+        pv: fTargetVel
+        io: i
+        field: DESC The target velocity.
     '}
+    fTargetVel: LREAL; // Set in software to allow axis to target a velocity based on multiple leaders.
+
+    {attribute 'pytmc' := '
+        pv: fTargetPos
+        io: i
+        field: DESC The target position.
+    '}
+    fTargetPos: LREAL; // Set in software to allow axis to target a position based on multiple leaders.
+
+    {attribute 'pytmc' := '
+        pv: fPosDelta
+        io: i
+        field: DESC Target position minus position.
+    '}
+    fPosDelta : LREAL; // Difference between current position and target position.
+
+    {attribute 'pytmc' := '
+        pv: fTTGain
+        io: io
+        field: DESC Target tracking gain.
+    '}
+    fTargetTrackingGain: LREAL := 1; // Gain used to tune target tracking when within target position window.
+
+    {attribute 'pytmc' := '
+        pv: fHaltPos
+        io: i
+        field: DESC Position at which axis halted.
+    '}
+    fHaltPos: LREAL; // Position at which halt is called. Allows for centering deadband.
+
+    {attribute 'pytmc' := 'pv: stAcc'}
     stAcc: ST_BoundedValue;
-    {attribute 'pytmc' := '
-        pv: stVel
-        io: io
-        field: DESC Bounded value structure representing velocity.
-    '}
+
+    {attribute 'pytmc' := 'pv: stVel'}
     stVel: ST_BoundedValue;
-    {attribute 'pytmc' := '
-        pv: stPos
-        io: io
-        field: DESC Bounded value structure representing position.
-    '}
+
+    {attribute 'pytmc' := 'pv: stPos'}
     stPos: ST_BoundedValue;
 
     {attribute 'pytmc' := '
@@ -81,18 +111,21 @@ STRUCT
         field: DESC TRUE if an error is active.
     '}
     bError: BOOL;
+
     {attribute 'pytmc' := '
         pv: sErrorMsg
         io: i
         field: DESC Displays error message relevant to the active error. Empty otherwise.
     '}
     sErrorMsg: T_MaxString;
+
     {attribute 'pytmc' := '
         pv: sErrorHelp
         io: i
         field: DESC Displays additional help for the active rror. Empty otherwise.
     '}
     sErrorHelp: T_MaxString;
+
     {attribute 'pytmc' := '
         pv: eState
         io: i

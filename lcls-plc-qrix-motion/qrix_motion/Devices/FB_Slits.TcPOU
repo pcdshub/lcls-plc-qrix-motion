@@ -1,7 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
   <POU Name="FB_Slits" Id="{15da2eaf-9159-456d-aec4-1d1fd7c9b7dc}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION_BLOCK FB_Slits
+    <Declaration><![CDATA[
+FUNCTION_BLOCK FB_Slits
 VAR_IN_OUT
     stTopBlade: ST_MotionStage;
     stBottomBlade: ST_MotionStage;
@@ -221,11 +222,10 @@ VAR
 
     fbPower: MC_Power;
 END_VAR
-
-
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[// Initialize
+      <ST><![CDATA[
+// Initialize
 ACT_init();
 // Instantiate Function block for all the blades
 ACT_Motion();
@@ -233,11 +233,13 @@ ACT_Motion();
 ACT_CalculatePositions();
 
 // Software Limits to protect blades
-ACT_VirtualLimitSW();]]></ST>
+ACT_VirtualLimitSW();
+]]></ST>
     </Implementation>
     <Action Name="ACT_BLOCK" Id="{a2ccb34c-6fd9-4dd4-9c34-6b05abd6ed66}">
       <Implementation>
-        <ST><![CDATA[rTrig_Block (CLK:= bBlock);
+        <ST><![CDATA[
+rTrig_Block (CLK:= bBlock);
 rTrig_Open (CLK:= bOpen);
 rTrig_Close (CLK:= bClose);
 
@@ -257,12 +259,14 @@ if (rTrig_Close.Q) THEN
 
 
     bClose := false;
-END_IF]]></ST>
+END_IF
+]]></ST>
       </Implementation>
     </Action>
     <Action Name="ACT_CalculatePositions" Id="{c41c207a-ac10-4b51-863c-78b57cd3eb8d}">
       <Implementation>
-        <ST><![CDATA[//check if requested center or gap has changed
+        <ST><![CDATA[
+//check if requested center or gap has changed
 //check that the requested values are within acceptable motion range
 IF (rOldReqApertureSizeX <> rReqApertureSizeX) THEN
         rOldReqApertureSizeX := rReqApertureSizeX;
@@ -315,8 +319,6 @@ rActCenterY := LREAL_TO_REAL((((stTopBlade.stAxisStatus.fActPosition - rEncoderO
 // Prevent collision
 bCollisionLimitationHorz	:= (rActApertureSizeX > -0.1);
 bCollisionLimitationVert	:= (rActApertureSizeY > -0.1);
-
-
 ]]></ST>
       </Implementation>
     </Action>
@@ -339,13 +341,13 @@ IF ( bInit) THEN
     stRightBlade.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
     FFO.i_DevName := i_DevName;
 END_IF
-
 ]]></ST>
       </Implementation>
     </Action>
     <Action Name="ACT_Motion" Id="{06fa9539-6085-470b-bd8c-9679adaf67a5}">
       <Implementation>
-        <ST><![CDATA[// Instantiate Function block for all the blades
+        <ST><![CDATA[
+// Instantiate Function block for all the blades
 fbTopBlade(stMotionStage:=stTopBlade);
 fbBottomBlade(stMotionStage:=stBottomBlade);
 fbLeftBlade(stMotionStage:=stLeftBlade);
@@ -458,8 +460,6 @@ fbPower(
     Enable_Negative := stRightBlade.bAllBackwardEnable,
     Override := 100.000
 );
-
-
 ]]></ST>
       </Implementation>
     </Action>

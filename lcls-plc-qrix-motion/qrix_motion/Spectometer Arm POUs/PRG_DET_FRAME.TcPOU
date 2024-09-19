@@ -1,7 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
   <POU Name="PRG_DET_FRAME" Id="{ae792a1e-17b4-441d-8662-87ba0956d9c2}" SpecialFunc="None">
-    <Declaration><![CDATA[PROGRAM PRG_DET_FRAME
+    <Declaration><![CDATA[
+PROGRAM PRG_DET_FRAME
 VAR
     bInit: BOOL := TRUE;
     {attribute 'pytmc' := '
@@ -90,9 +91,11 @@ VAR
         io: io
     '}
     bStopAxes: BOOL;
-END_VAR]]></Declaration>
+END_VAR
+]]></Declaration>
     <Implementation>
-      <ST><![CDATA[IF bInit THEN
+      <ST><![CDATA[
+IF bInit THEN
     bInit := FALSE;
 
     Main.M15.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
@@ -218,11 +221,13 @@ IF bStopAxes THEN
     Main.M16.bExecute := FALSE;
     Main.M17.bExecute := FALSE;
     bStopAxes := FALSE;
-END_IF]]></ST>
+END_IF
+]]></ST>
     </Implementation>
     <Action Name="ACT_1_JACK_OFF" Id="{09afe1fc-0e24-49bc-b799-7093c0737ca7}">
       <Implementation>
-        <ST><![CDATA[CASE iStepJackOff OF
+        <ST><![CDATA[
+CASE iStepJackOff OF
     1:
         IF bEnableJackOff AND NOT(bBusy AND bError) THEN
             iStepJackOff := 2;
@@ -274,12 +279,14 @@ END_IF]]></ST>
         fbYDFMotion.bMoveToPitch := FALSE;
         fbYDFMotion.bMoveToRoll := FALSE;
 
-END_CASE;]]></ST>
+END_CASE;
+]]></ST>
       </Implementation>
     </Action>
     <Action Name="ACT_2_Levitation" Id="{1a03c01c-79f3-40e9-8f85-fa3729e0ff5d}">
       <Implementation>
-        <ST><![CDATA[IF bEnableLevitation AND NOT (bBusy OR bError) THEN
+        <ST><![CDATA[
+IF bEnableLevitation AND NOT (bBusy OR bError) THEN
     bBusy := TRUE;
     IF GVL_Sensor.stPS1.fValue > 0.15 AND GVL_Sensor.stPS2.fValue > 0.15 THEN
         GVL_EPS.bOpenSV1 := TRUE;
@@ -298,12 +305,14 @@ IF tonSV2Open.Q THEN
     bEnableLevitation := FALSE;
     bDoneLevitation := TRUE;
     bBusy := FALSE;
-END_IF;]]></ST>
+END_IF;
+]]></ST>
       </Implementation>
     </Action>
     <Action Name="ACT_3_Landing" Id="{3bd8bb9a-fa83-47b4-b111-8c64a2c33f1d}">
       <Implementation>
-        <ST><![CDATA[IF bEnableLanding AND NOT (bBusy OR bError) THEN
+        <ST><![CDATA[
+IF bEnableLanding AND NOT (bBusy OR bError) THEN
     GVL_EPS.bOpenSV2 := FALSE;
     bBusy:= TRUE;
     bDoneLanding := FALSE;
@@ -319,12 +328,14 @@ IF tonSV1Close.Q THEN
     bEnableLanding := FALSE;
     bBusy:= FALSE;
     bDoneLanding := TRUE;
-END_IF;]]></ST>
+END_IF;
+]]></ST>
       </Implementation>
     </Action>
     <Action Name="ACT_4_AdjustingRoll" Id="{f84b9517-e50c-4b86-bce7-a61f7bf2814f}">
       <Implementation>
-        <ST><![CDATA[CASE iStepAdjustingRoll OF
+        <ST><![CDATA[
+CASE iStepAdjustingRoll OF
     1:
         IF bEnableAdjustingRoll AND NOT(bBusy AND bError) THEN
             iStepAdjustingRoll := 2;
@@ -377,12 +388,14 @@ END_IF;]]></ST>
         iStepAdjustingRoll:=1;
         bDoneAdjustingRoll := FALSE;
         fbYDFMotion.bMoveToRoll := FALSE;
-END_CASE;]]></ST>
+END_CASE;
+]]></ST>
       </Implementation>
     </Action>
     <Action Name="ACT_5_AdjustingPitch" Id="{96ae706d-13dc-4d26-978b-353a0e965687}">
       <Implementation>
-        <ST><![CDATA[CASE iStepAdjustingPitch OF
+        <ST><![CDATA[
+CASE iStepAdjustingPitch OF
     1:
         IF bEnableAdjustingPitch AND NOT(bBusy AND bError) THEN
             iStepAdjustingPitch := 2;
@@ -435,12 +448,14 @@ END_CASE;]]></ST>
         iStepAdjustingPitch:=1;
         bDoneAdjustingPitch := FALSE;
         fbYDFMotion.bMoveToPitch := FALSE;
-END_CASE;]]></ST>
+END_CASE;
+]]></ST>
       </Implementation>
     </Action>
     <Action Name="ACT_6_AdjustingHeight" Id="{ecff2fe2-4916-403e-be1d-379dbc38b465}">
       <Implementation>
-        <ST><![CDATA[CASE iStepAdjustingHeight OF
+        <ST><![CDATA[
+CASE iStepAdjustingHeight OF
     1:
         IF bEnableAdjustingHeight AND NOT(bBusy AND bError) THEN
             iStepAdjustingHeight := 2;
@@ -492,7 +507,8 @@ END_CASE;]]></ST>
         bEnableAdjustingHeight:= FALSE;
         iStepAdjustingHeight:=1;
         bDoneAdjustingHeight := FALSE;
-END_CASE;]]></ST>
+END_CASE;
+]]></ST>
       </Implementation>
     </Action>
     <Action Name="ACT_ResetError" Id="{06590c9c-35f1-44d5-8e2b-6f518c77179c}">
@@ -548,7 +564,8 @@ IF bResetError THEN
     fbYDFMotion.rReqRoll := fbYDFMotion.rActRoll;
 
     bStopAxes := TRUE;
-END_IF;]]></ST>
+END_IF;
+]]></ST>
       </Implementation>
     </Action>
   </POU>
