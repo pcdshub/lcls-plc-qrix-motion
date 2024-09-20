@@ -49,21 +49,21 @@ STRUCT
 
     {attribute 'pytmc' := '
         pv: fTargetAcc
-        io: i
+        io: io
         field: DESC The target acceleration.
     '}
     fTargetAcc: LREAL; // Set in software to allow axis to target an acceleration based on multiple leaders.
 
     {attribute 'pytmc' := '
         pv: fTargetVel
-        io: i
+        io: io
         field: DESC The target velocity.
     '}
     fTargetVel: LREAL; // Set in software to allow axis to target a velocity based on multiple leaders.
 
     {attribute 'pytmc' := '
         pv: fTargetPos
-        io: i
+        io: io
         field: DESC The target position.
     '}
     fTargetPos: LREAL; // Set in software to allow axis to target a position based on multiple leaders.

@@ -3504,14 +3504,6 @@ External Setpoint Generation:
 					</SubVar>
 				</Var>
 				<Var>
-					<Name>PRG_Collect_Scope_Info.Theta2_Current_mA</Name>
-					<Type>UINT</Type>
-				</Var>
-				<Var>
-					<Name>PRG_Collect_Scope_Info.Theta2_Load</Name>
-					<Type>UINT</Type>
-				</Var>
-				<Var>
 					<Name>PRG_Cryo.stDiffThetaEnc.Count</Name>
 					<Comment>
 						<![CDATA[ Connect to encoder "Position" input]]>
@@ -3550,27 +3542,6 @@ External Setpoint Generation:
 					<Name>PRG_Cryo.stCryoRotDiffThetaCoordinateGantryAxisEnable.bFollowDriveReady</Name>
 					<Comment>
 						<![CDATA[ Intended to be linked to the follow drive ready status.]]>
-					</Comment>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>PRG_Cryo.stCryoXMultiLeader.bFollowerDriveReady</Name>
-					<Comment>
-						<![CDATA[ Link to the ready status of the drive]]>
-					</Comment>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>PRG_Cryo.stCryoYMultiLeader.bFollowerDriveReady</Name>
-					<Comment>
-						<![CDATA[ Link to the ready status of the drive]]>
-					</Comment>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>PRG_Cryo.stCryoZMultiLeader.bFollowerDriveReady</Name>
-					<Comment>
-						<![CDATA[ Link to the ready status of the drive]]>
 					</Comment>
 					<Type>BOOL</Type>
 				</Var>
@@ -9930,6 +9901,27 @@ External Setpoint Generation:
 					</Comment>
 					<Type>INT</Type>
 				</Var>
+				<Var>
+					<Name>PRG_Cryo.stCryoXMultiLeader.bFollowerDriveReady</Name>
+					<Comment>
+						<![CDATA[ Link to the ready status of the drive]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_Cryo.stCryoYMultiLeader.bFollowerDriveReady</Name>
+					<Comment>
+						<![CDATA[ Link to the ready status of the drive]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_Cryo.stCryoZMultiLeader.bFollowerDriveReady</Name>
+					<Comment>
+						<![CDATA[ Link to the ready status of the drive]]>
+					</Comment>
+					<Type>BOOL</Type>
+				</Var>
 			</Vars>
 			<Vars VarGrpType="2">
 				<Name>PlcTask Outputs</Name>
@@ -11166,6 +11158,14 @@ External Setpoint Generation:
 					</OwnerB>
 				</OwnerA>
 			</UnrestoredVarLinks>
+			<UnrestoredVarLinks ImportTime="2024-09-20T10:49:59">
+				<OwnerA Name="InputDst" Prefix="TIPC^qrix_motion^qrix_motion Instance" Type="1">
+					<OwnerB Name="TIID^Device 1 (EtherCAT)^Rack#1A-01 Coupler (EK1100)^Rack#1A-04 DR_2Th (EL7047)">
+						<Link VarA="PRG_Collect_Scope_Info.Theta2_Current_mA" TypeA="UINT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000005}" VarB="STM Synchron info data^Info data 2" RestoreInfo="ANotFound"/>
+						<Link VarA="PRG_Collect_Scope_Info.Theta2_Load" TypeA="UINT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000005}" VarB="STM Synchron info data^Info data 1" RestoreInfo="ANotFound"/>
+					</OwnerB>
+				</OwnerA>
+			</UnrestoredVarLinks>
 			<TaskPouOids>
 				<TaskPouOid Prio="20" OTCID="#x08502001"/>
 			</TaskPouOids>
@@ -11437,8 +11437,6 @@ External Setpoint Generation:
 				<Link VarA="PlcTask Inputs^Main.M2.bLimitBackwardEnable" VarB="STM Status^Status^Digital input 2" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^Main.M2.bLimitForwardEnable" VarB="STM Status^Status^Digital input 1" AutoLink="true"/>
 				<Link VarA="PlcTask Inputs^PRG_2Theta.b2ThetaDriveReady" VarB="STM Status^Status^Ready" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^PRG_Collect_Scope_Info.Theta2_Current_mA" VarB="STM Synchron info data^Info data 2"/>
-				<Link VarA="PlcTask Inputs^PRG_Collect_Scope_Info.Theta2_Load" VarB="STM Synchron info data^Info data 1"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Rack#1A-01 Coupler (EK1100)^Rack#1A-05 MB_2Th (EL2602)">
 				<Link VarA="PlcTask Outputs^Main.M2.bBrakeRelease" VarB="Channel 1^Output" AutoLink="true"/>

@@ -103,91 +103,95 @@ IF NOT PRG_SSL.bRealignCouple THEN
                     iEnableMotorState := iEnableMotorState + 1;
                     tonEnableMotorTimeout(IN:=FALSE);
                 ELSE
-                    // Direction of motion is not enabled, so let's report the error and give a helpful error message.
-                    Main.M2.bError := TRUE;
-                    Main.M1.bError := TRUE;
-                    IF bMovePos THEN
-                        IF NOT Main.M2.bLimitForwardEnable THEN
-                            Main.M2.sCustomErrorMessage := 'Move forward failed due to forward limit switch.';
-                            Main.M1.sCustomErrorMessage := 'Move forward failed due to forward limit switch for 2 theta motor.';
-                        ELSIF NOT Main.M1.bLimitForwardEnable THEN
-                            Main.M1.sCustomErrorMessage := 'Move forward failed due to forward limit switch.';
-                            Main.M2.sCustomErrorMessage := 'Move forward failed due to forward limit switch for SSL motor.';
-                        ELSIF NOT Main.M2.bGantryForwardEnable AND Main.M2.bGantryAxis THEN
-                            Main.M2.sCustomErrorMessage := 'Move forward failed due to gantry motion tolerance limit.';
-                            Main.M1.sCustomErrorMessage := 'Move forward failed due to gantry motion tolerance limit for 2 theta motor.';
-                        ELSIF NOT Main.M1.bGantryForwardEnable AND Main.M1.bGantryAxis THEN
-                            Main.M1.sCustomErrorMessage := 'Move forward failed due to gantry motion tolerance limit.';
-                            Main.M2.sCustomErrorMessage := 'Move forward failed due to gantry motion tolerance limit for SSL motor.';
-                        ELSIF NOT Main.M2.stEPSForwardEnable.bEPS_OK THEN
-                            Main.M2.sCustomErrorMessage := 'Move forward failed due to EPS condition.';
-                            Main.M1.sCustomErrorMessage := 'Move forward failed due to EPS condition for 2 theta motor.';
-                        ELSIF NOT Main.M1.stEPSForwardEnable.bEPS_OK THEN
-                            Main.M1.sCustomErrorMessage := 'Move forward failed due to EPS condition.';
-                            Main.M2.sCustomErrorMessage := 'Move forward failed due to EPS condition for SSL motor.';
+                    IF NOT Main.M2.bError OR Main.M1.bError THEN
+                        // Direction of motion is not enabled, so let's report the error and give a helpful error message.
+                        Main.M2.bError := TRUE;
+                        Main.M1.bError := TRUE;
+                        IF bMovePos THEN
+                            IF NOT Main.M2.bLimitForwardEnable THEN
+                                Main.M2.sCustomErrorMessage := 'Move forward failed due to forward limit switch.';
+                                Main.M1.sCustomErrorMessage := 'Move forward failed due to forward limit switch for 2 theta motor.';
+                            ELSIF NOT Main.M1.bLimitForwardEnable THEN
+                                Main.M1.sCustomErrorMessage := 'Move forward failed due to forward limit switch.';
+                                Main.M2.sCustomErrorMessage := 'Move forward failed due to forward limit switch for SSL motor.';
+                            ELSIF NOT Main.M2.bGantryForwardEnable AND Main.M2.bGantryAxis THEN
+                                Main.M2.sCustomErrorMessage := 'Move forward failed due to gantry motion tolerance limit.';
+                                Main.M1.sCustomErrorMessage := 'Move forward failed due to gantry motion tolerance limit for 2 theta motor.';
+                            ELSIF NOT Main.M1.bGantryForwardEnable AND Main.M1.bGantryAxis THEN
+                                Main.M1.sCustomErrorMessage := 'Move forward failed due to gantry motion tolerance limit.';
+                                Main.M2.sCustomErrorMessage := 'Move forward failed due to gantry motion tolerance limit for SSL motor.';
+                            ELSIF NOT Main.M2.stEPSForwardEnable.bEPS_OK THEN
+                                Main.M2.sCustomErrorMessage := 'Move forward failed due to EPS condition.';
+                                Main.M1.sCustomErrorMessage := 'Move forward failed due to EPS condition for 2 theta motor.';
+                            ELSIF NOT Main.M1.stEPSForwardEnable.bEPS_OK THEN
+                                Main.M1.sCustomErrorMessage := 'Move forward failed due to EPS condition.';
+                                Main.M2.sCustomErrorMessage := 'Move forward failed due to EPS condition for SSL motor.';
+                            ELSE
+                                Main.M1.sCustomErrorMessage := 'Move forward failed for unspecified reason.';
+                                Main.M2.sCustomErrorMessage := 'Move forward failed for unspecified reason.';
+                            END_IF
+                        ELSIF bMoveNeg THEN
+                            IF NOT Main.M2.bLimitBackwardEnable THEN
+                                Main.M2.sCustomErrorMessage := 'Move backward failed due to forward limit switch.';
+                                Main.M1.sCustomErrorMessage := 'Move backward failed due to forward limit switch for 2 theta motor.';
+                            ELSIF NOT Main.M1.bLimitBackwardEnable THEN
+                                Main.M1.sCustomErrorMessage := 'Move backward failed due to forward limit switch.';
+                                Main.M2.sCustomErrorMessage := 'Move backward failed due to forward limit switch for SSL motor.';
+                            ELSIF NOT Main.M2.bGantryBackwardEnable AND Main.M2.bGantryAxis THEN
+                                Main.M2.sCustomErrorMessage := 'Move backward failed due to gantry motion tolerance limit.';
+                                Main.M1.sCustomErrorMessage := 'Move backward failed due to gantry motion tolerance limit for 2 theta motor.';
+                            ELSIF NOT Main.M1.bGantryBackwardEnable AND Main.M1.bGantryAxis THEN
+                                Main.M1.sCustomErrorMessage := 'Move backward failed due to gantry motion tolerance limit.';
+                                Main.M2.sCustomErrorMessage := 'Move backward failed due to gantry motion tolerance limit for SSL motor.';
+                            ELSIF NOT Main.M2.stEPSBackwardEnable.bEPS_OK THEN
+                                Main.M2.sCustomErrorMessage := 'Move backward failed due to EPS condition.';
+                                Main.M1.sCustomErrorMessage := 'Move backward failed due to EPS condition for 2 theta motor.';
+                            ELSIF NOT Main.M1.stEPSBackwardEnable.bEPS_OK THEN
+                                Main.M1.sCustomErrorMessage := 'Move backward failed due to EPS condition.';
+                                Main.M2.sCustomErrorMessage := 'Move backward failed due to EPS condition for SSL motor.';
+                            ELSE
+                                Main.M2.sCustomErrorMessage := 'Move backward failed for unspecified reason.';
+                                Main.M1.sCustomErrorMessage := 'Move backward failed for unspecified reason.';
+                            END_IF
                         ELSE
-                            Main.M1.sCustomErrorMessage := 'Move forward failed for unspecified reason.';
-                            Main.M2.sCustomErrorMessage := 'Move forward failed for unspecified reason.';
+                            Main.M2.sCustomErrorMessage := 'Move failed because it was not large enough to register.';
+                            Main.M1.sCustomErrorMessage := 'Move failed because it was not large enough to register.';
                         END_IF
-                    ELSIF bMoveNeg THEN
-                        IF NOT Main.M2.bLimitBackwardEnable THEN
-                            Main.M2.sCustomErrorMessage := 'Move backward failed due to forward limit switch.';
-                            Main.M1.sCustomErrorMessage := 'Move backward failed due to forward limit switch for 2 theta motor.';
-                        ELSIF NOT Main.M1.bLimitBackwardEnable THEN
-                            Main.M1.sCustomErrorMessage := 'Move backward failed due to forward limit switch.';
-                            Main.M2.sCustomErrorMessage := 'Move backward failed due to forward limit switch for SSL motor.';
-                        ELSIF NOT Main.M2.bGantryBackwardEnable AND Main.M2.bGantryAxis THEN
-                            Main.M2.sCustomErrorMessage := 'Move backward failed due to gantry motion tolerance limit.';
-                            Main.M1.sCustomErrorMessage := 'Move backward failed due to gantry motion tolerance limit for 2 theta motor.';
-                        ELSIF NOT Main.M1.bGantryBackwardEnable AND Main.M1.bGantryAxis THEN
-                            Main.M1.sCustomErrorMessage := 'Move backward failed due to gantry motion tolerance limit.';
-                            Main.M2.sCustomErrorMessage := 'Move backward failed due to gantry motion tolerance limit for SSL motor.';
-                        ELSIF NOT Main.M2.stEPSBackwardEnable.bEPS_OK THEN
-                            Main.M2.sCustomErrorMessage := 'Move backward failed due to EPS condition.';
-                            Main.M1.sCustomErrorMessage := 'Move backward failed due to EPS condition for 2 theta motor.';
-                        ELSIF NOT Main.M1.stEPSBackwardEnable.bEPS_OK THEN
-                            Main.M1.sCustomErrorMessage := 'Move backward failed due to EPS condition.';
-                            Main.M2.sCustomErrorMessage := 'Move backward failed due to EPS condition for SSL motor.';
-                        ELSE
-                            Main.M2.sCustomErrorMessage := 'Move backward failed for unspecified reason.';
-                            Main.M1.sCustomErrorMessage := 'Move backward failed for unspecified reason.';
-                        END_IF
-                    ELSE
-                        Main.M2.sCustomErrorMessage := 'Move failed because it was not large enough to register.';
-                        Main.M1.sCustomErrorMessage := 'Move failed because it was not large enough to register.';
                     END_IF
-                iEnableMotorState := 0;
+                    iEnableMotorState := 0;
                 END_IF
             ELSIF tonEnableMotorTimeout.Q THEN
-                Main.M2.bError := TRUE;
-                Main.M1.bError := TRUE;
-                IF NOT Main.M2.bEnable THEN
-                    Main.M2.sCustomErrorMessage := 'Move never enabled because bEnable never received.';
-                    Main.M1.sCustomErrorMessage := 'Move never enabled because bEnable never received on 2 theta motor.';
-                ELSIF NOT Main.M1.bEnable THEN
-                    Main.M1.sCustomErrorMessage := 'Move never enabled because bEnable never received.';
-                    Main.M2.sCustomErrorMessage := 'Move never enabled because bEnable never received on SSL motor.';
-                ELSIF NOT Main.M2.bHardwareEnable THEN
-                    Main.M2.sCustomErrorMessage := 'Move never enabled because bHardwareEnable set false.';
-                    Main.M1.sCustomErrorMessage := 'Move never enabled because bHardwareEnable set false on 2 theta motor.';
-                ELSIF NOT Main.M1.bHardwareEnable THEN
-                    Main.M1.sCustomErrorMessage := 'Move never enabled because bHardwareEnable set false.';
-                    Main.M2.sCustomErrorMessage := 'Move never enabled because bHardwareEnable set false on SSL motor.';
-                ELSIF NOT Main.M2.stEPSPowerEnable.bEPS_OK THEN
-                    Main.M2.sCustomErrorMessage := 'Move never enabled because of EPS condition.';
-                    Main.M1.sCustomErrorMessage := 'Move never enabled because of EPS condition on 2 theta motor.';
-                ELSIF NOT Main.M1.stEPSPowerEnable.bEPS_OK THEN
-                    Main.M1.sCustomErrorMessage := 'Move never enabled because of EPS condition.';
-                    Main.M2.sCustomErrorMessage := 'Move never enabled because of EPS condition on SSL motor.';
-                ELSIF NOT Main.M2.bUserEnable THEN
-                    Main.M2.sCustomErrorMessage := 'Move never enabled because user enable is set to false.';
-                    Main.M1.sCustomErrorMessage := 'Move never enabled because user enable is set to false on 2 theta motor.';
-                ELSIF NOT Main.M1.bUserEnable THEN
-                    Main.M1.sCustomErrorMessage := 'Move never enabled because user enable is set to false.';
-                    Main.M2.sCustomErrorMessage := 'Move never enabled because user enable is set to false on SSL motor.';
-                ELSE
-                    Main.M2.sCustomErrorMessage := 'Move never enabled in the timeout duration.';
-                    Main.M1.sCustomErrorMessage := 'Move never enabled in the timeout duration.';
+                IF NOT Main.M2.bError OR Main.M1.bError THEN
+                    Main.M2.bError := TRUE;
+                    Main.M1.bError := TRUE;
+                    IF NOT Main.M2.bEnable THEN
+                        Main.M2.sCustomErrorMessage := 'Move never enabled because bEnable never received.';
+                        Main.M1.sCustomErrorMessage := 'Move never enabled because bEnable never received on 2 theta motor.';
+                    ELSIF NOT Main.M1.bEnable THEN
+                        Main.M1.sCustomErrorMessage := 'Move never enabled because bEnable never received.';
+                        Main.M2.sCustomErrorMessage := 'Move never enabled because bEnable never received on SSL motor.';
+                    ELSIF NOT Main.M2.bHardwareEnable THEN
+                        Main.M2.sCustomErrorMessage := 'Move never enabled because bHardwareEnable set false.';
+                        Main.M1.sCustomErrorMessage := 'Move never enabled because bHardwareEnable set false on 2 theta motor.';
+                    ELSIF NOT Main.M1.bHardwareEnable THEN
+                        Main.M1.sCustomErrorMessage := 'Move never enabled because bHardwareEnable set false.';
+                        Main.M2.sCustomErrorMessage := 'Move never enabled because bHardwareEnable set false on SSL motor.';
+                    ELSIF NOT Main.M2.stEPSPowerEnable.bEPS_OK THEN
+                        Main.M2.sCustomErrorMessage := 'Move never enabled because of EPS condition.';
+                        Main.M1.sCustomErrorMessage := 'Move never enabled because of EPS condition on 2 theta motor.';
+                    ELSIF NOT Main.M1.stEPSPowerEnable.bEPS_OK THEN
+                        Main.M1.sCustomErrorMessage := 'Move never enabled because of EPS condition.';
+                        Main.M2.sCustomErrorMessage := 'Move never enabled because of EPS condition on SSL motor.';
+                    ELSIF NOT Main.M2.bUserEnable THEN
+                        Main.M2.sCustomErrorMessage := 'Move never enabled because user enable is set to false.';
+                        Main.M1.sCustomErrorMessage := 'Move never enabled because user enable is set to false on 2 theta motor.';
+                    ELSIF NOT Main.M1.bUserEnable THEN
+                        Main.M1.sCustomErrorMessage := 'Move never enabled because user enable is set to false.';
+                        Main.M2.sCustomErrorMessage := 'Move never enabled because user enable is set to false on SSL motor.';
+                    ELSE
+                        Main.M2.sCustomErrorMessage := 'Move never enabled in the timeout duration.';
+                        Main.M1.sCustomErrorMessage := 'Move never enabled in the timeout duration.';
+                    END_IF
                 END_IF
                 iEnableMotorState := 0;
             END_IF
@@ -199,14 +203,16 @@ IF NOT PRG_SSL.bRealignCouple THEN
                 iEnableMotorState := iEnableMotorState + 1;
                 tonEnableMotorTimeout(IN:=FALSE);
             ELSIF tonEnableMotorTimeout.Q THEN
-                Main.M2.bError := TRUE;
-                Main.M1.bError := TRUE;
-                IF NOT b2ThetaDriveReady THEN
-                    Main.M2.sCustomErrorMessage := 'Move failed because motor drive did not get ready status before timeout.';
-                    Main.M1.sCustomErrorMessage := 'Move failed because 2 theta motor drive did not get ready status before timeout.';
-                ELSE
-                    Main.M1.sCustomErrorMessage := 'Move failed because motor drive did not get ready status before timeout.';
-                    Main.M2.sCustomErrorMessage := 'Move failed because SSL motor drive did not get ready status before timeout.';
+                IF NOT Main.M2.bError OR Main.M1.bError THEN
+                    Main.M2.bError := TRUE;
+                    Main.M1.bError := TRUE;
+                    IF NOT b2ThetaDriveReady THEN
+                        Main.M2.sCustomErrorMessage := 'Move failed because motor drive did not get ready status before timeout.';
+                        Main.M1.sCustomErrorMessage := 'Move failed because 2 theta motor drive did not get ready status before timeout.';
+                    ELSE
+                        Main.M1.sCustomErrorMessage := 'Move failed because motor drive did not get ready status before timeout.';
+                        Main.M2.sCustomErrorMessage := 'Move failed because SSL motor drive did not get ready status before timeout.';
+                    END_IF
                 END_IF
                 iEnableMotorState := 0;
             END_IF

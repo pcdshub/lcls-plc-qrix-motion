@@ -63255,6 +63255,16 @@ record(ai, "QRIX:CRYO:MLC:X:fTargetAcc_RBV") {
   info(archive, "VAL")
 }
 
+record(ao, "QRIX:CRYO:MLC:X:fTargetAcc") {
+  field(DESC, "The target acceleration.")
+  field(DTYP, "asynFloat64")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoXMultiLeader.fTargetAcc=")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS VAL")
+  info(archive, "VAL")
+}
+
 record(ai, "QRIX:CRYO:MLC:X:fTargetPos_RBV") {
   field(DESC, "The target position.")
   field(SCAN, "I/O Intr")
@@ -63264,6 +63274,16 @@ record(ai, "QRIX:CRYO:MLC:X:fTargetPos_RBV") {
   field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoXMultiLeader.fTargetPos?")
   field(PREC, "3")
   info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ao, "QRIX:CRYO:MLC:X:fTargetPos") {
+  field(DESC, "The target position.")
+  field(DTYP, "asynFloat64")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoXMultiLeader.fTargetPos=")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS VAL")
   info(archive, "VAL")
 }
 
@@ -63298,6 +63318,16 @@ record(ai, "QRIX:CRYO:MLC:X:fTargetVel_RBV") {
   field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoXMultiLeader.fTargetVel?")
   field(PREC, "3")
   info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ao, "QRIX:CRYO:MLC:X:fTargetVel") {
+  field(DESC, "The target velocity.")
+  field(DTYP, "asynFloat64")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoXMultiLeader.fTargetVel=")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS VAL")
   info(archive, "VAL")
 }
 
@@ -63424,6 +63454,16 @@ record(ai, "QRIX:CRYO:MLC:X:stAcc:fMax_RBV") {
   info(archive, "VAL")
 }
 
+record(ao, "QRIX:CRYO:MLC:X:stAcc:fMax") {
+  field(DESC, "The maximum bound for the output value.")
+  field(DTYP, "asynFloat64")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoXMultiLeader.stAcc.fMax=")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS VAL")
+  info(archive, "VAL")
+}
+
 record(ai, "QRIX:CRYO:MLC:X:stAcc:fMin_RBV") {
   field(DESC, "The minimum bound for the output value.")
   field(SCAN, "I/O Intr")
@@ -63433,6 +63473,16 @@ record(ai, "QRIX:CRYO:MLC:X:stAcc:fMin_RBV") {
   field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoXMultiLeader.stAcc.fMin?")
   field(PREC, "3")
   info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ao, "QRIX:CRYO:MLC:X:stAcc:fMin") {
+  field(DESC, "The minimum bound for the output value.")
+  field(DTYP, "asynFloat64")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoXMultiLeader.stAcc.fMin=")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS VAL")
   info(archive, "VAL")
 }
 
@@ -63513,6 +63563,16 @@ record(ai, "QRIX:CRYO:MLC:X:stPos:fMax_RBV") {
   info(archive, "VAL")
 }
 
+record(ao, "QRIX:CRYO:MLC:X:stPos:fMax") {
+  field(DESC, "The maximum bound for the output value.")
+  field(DTYP, "asynFloat64")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoXMultiLeader.stPos.fMax=")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS VAL")
+  info(archive, "VAL")
+}
+
 record(ai, "QRIX:CRYO:MLC:X:stPos:fMin_RBV") {
   field(DESC, "The minimum bound for the output value.")
   field(SCAN, "I/O Intr")
@@ -63522,6 +63582,16 @@ record(ai, "QRIX:CRYO:MLC:X:stPos:fMin_RBV") {
   field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoXMultiLeader.stPos.fMin?")
   field(PREC, "3")
   info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ao, "QRIX:CRYO:MLC:X:stPos:fMin") {
+  field(DESC, "The minimum bound for the output value.")
+  field(DTYP, "asynFloat64")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoXMultiLeader.stPos.fMin=")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS VAL")
   info(archive, "VAL")
 }
 
@@ -63602,6 +63672,16 @@ record(ai, "QRIX:CRYO:MLC:X:stVel:fMax_RBV") {
   info(archive, "VAL")
 }
 
+record(ao, "QRIX:CRYO:MLC:X:stVel:fMax") {
+  field(DESC, "The maximum bound for the output value.")
+  field(DTYP, "asynFloat64")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoXMultiLeader.stVel.fMax=")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS VAL")
+  info(archive, "VAL")
+}
+
 record(ai, "QRIX:CRYO:MLC:X:stVel:fMin_RBV") {
   field(DESC, "The minimum bound for the output value.")
   field(SCAN, "I/O Intr")
@@ -63611,6 +63691,16 @@ record(ai, "QRIX:CRYO:MLC:X:stVel:fMin_RBV") {
   field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoXMultiLeader.stVel.fMin?")
   field(PREC, "3")
   info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ao, "QRIX:CRYO:MLC:X:stVel:fMin") {
+  field(DESC, "The minimum bound for the output value.")
+  field(DTYP, "asynFloat64")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoXMultiLeader.stVel.fMin=")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS VAL")
   info(archive, "VAL")
 }
 
@@ -63813,6 +63903,16 @@ record(ai, "QRIX:CRYO:MLC:Y:fTargetAcc_RBV") {
   info(archive, "VAL")
 }
 
+record(ao, "QRIX:CRYO:MLC:Y:fTargetAcc") {
+  field(DESC, "The target acceleration.")
+  field(DTYP, "asynFloat64")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoYMultiLeader.fTargetAcc=")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS VAL")
+  info(archive, "VAL")
+}
+
 record(ai, "QRIX:CRYO:MLC:Y:fTargetPos_RBV") {
   field(DESC, "The target position.")
   field(SCAN, "I/O Intr")
@@ -63822,6 +63922,16 @@ record(ai, "QRIX:CRYO:MLC:Y:fTargetPos_RBV") {
   field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoYMultiLeader.fTargetPos?")
   field(PREC, "3")
   info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ao, "QRIX:CRYO:MLC:Y:fTargetPos") {
+  field(DESC, "The target position.")
+  field(DTYP, "asynFloat64")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoYMultiLeader.fTargetPos=")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS VAL")
   info(archive, "VAL")
 }
 
@@ -63856,6 +63966,16 @@ record(ai, "QRIX:CRYO:MLC:Y:fTargetVel_RBV") {
   field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoYMultiLeader.fTargetVel?")
   field(PREC, "3")
   info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ao, "QRIX:CRYO:MLC:Y:fTargetVel") {
+  field(DESC, "The target velocity.")
+  field(DTYP, "asynFloat64")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoYMultiLeader.fTargetVel=")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS VAL")
   info(archive, "VAL")
 }
 
@@ -63982,6 +64102,16 @@ record(ai, "QRIX:CRYO:MLC:Y:stAcc:fMax_RBV") {
   info(archive, "VAL")
 }
 
+record(ao, "QRIX:CRYO:MLC:Y:stAcc:fMax") {
+  field(DESC, "The maximum bound for the output value.")
+  field(DTYP, "asynFloat64")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoYMultiLeader.stAcc.fMax=")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS VAL")
+  info(archive, "VAL")
+}
+
 record(ai, "QRIX:CRYO:MLC:Y:stAcc:fMin_RBV") {
   field(DESC, "The minimum bound for the output value.")
   field(SCAN, "I/O Intr")
@@ -63991,6 +64121,16 @@ record(ai, "QRIX:CRYO:MLC:Y:stAcc:fMin_RBV") {
   field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoYMultiLeader.stAcc.fMin?")
   field(PREC, "3")
   info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ao, "QRIX:CRYO:MLC:Y:stAcc:fMin") {
+  field(DESC, "The minimum bound for the output value.")
+  field(DTYP, "asynFloat64")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoYMultiLeader.stAcc.fMin=")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS VAL")
   info(archive, "VAL")
 }
 
@@ -64071,6 +64211,16 @@ record(ai, "QRIX:CRYO:MLC:Y:stPos:fMax_RBV") {
   info(archive, "VAL")
 }
 
+record(ao, "QRIX:CRYO:MLC:Y:stPos:fMax") {
+  field(DESC, "The maximum bound for the output value.")
+  field(DTYP, "asynFloat64")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoYMultiLeader.stPos.fMax=")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS VAL")
+  info(archive, "VAL")
+}
+
 record(ai, "QRIX:CRYO:MLC:Y:stPos:fMin_RBV") {
   field(DESC, "The minimum bound for the output value.")
   field(SCAN, "I/O Intr")
@@ -64080,6 +64230,16 @@ record(ai, "QRIX:CRYO:MLC:Y:stPos:fMin_RBV") {
   field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoYMultiLeader.stPos.fMin?")
   field(PREC, "3")
   info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ao, "QRIX:CRYO:MLC:Y:stPos:fMin") {
+  field(DESC, "The minimum bound for the output value.")
+  field(DTYP, "asynFloat64")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoYMultiLeader.stPos.fMin=")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS VAL")
   info(archive, "VAL")
 }
 
@@ -64160,6 +64320,16 @@ record(ai, "QRIX:CRYO:MLC:Y:stVel:fMax_RBV") {
   info(archive, "VAL")
 }
 
+record(ao, "QRIX:CRYO:MLC:Y:stVel:fMax") {
+  field(DESC, "The maximum bound for the output value.")
+  field(DTYP, "asynFloat64")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoYMultiLeader.stVel.fMax=")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS VAL")
+  info(archive, "VAL")
+}
+
 record(ai, "QRIX:CRYO:MLC:Y:stVel:fMin_RBV") {
   field(DESC, "The minimum bound for the output value.")
   field(SCAN, "I/O Intr")
@@ -64169,6 +64339,16 @@ record(ai, "QRIX:CRYO:MLC:Y:stVel:fMin_RBV") {
   field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoYMultiLeader.stVel.fMin?")
   field(PREC, "3")
   info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ao, "QRIX:CRYO:MLC:Y:stVel:fMin") {
+  field(DESC, "The minimum bound for the output value.")
+  field(DTYP, "asynFloat64")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoYMultiLeader.stVel.fMin=")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS VAL")
   info(archive, "VAL")
 }
 
@@ -64371,6 +64551,16 @@ record(ai, "QRIX:CRYO:MLC:Z:fTargetAcc_RBV") {
   info(archive, "VAL")
 }
 
+record(ao, "QRIX:CRYO:MLC:Z:fTargetAcc") {
+  field(DESC, "The target acceleration.")
+  field(DTYP, "asynFloat64")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoZMultiLeader.fTargetAcc=")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS VAL")
+  info(archive, "VAL")
+}
+
 record(ai, "QRIX:CRYO:MLC:Z:fTargetPos_RBV") {
   field(DESC, "The target position.")
   field(SCAN, "I/O Intr")
@@ -64380,6 +64570,16 @@ record(ai, "QRIX:CRYO:MLC:Z:fTargetPos_RBV") {
   field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoZMultiLeader.fTargetPos?")
   field(PREC, "3")
   info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ao, "QRIX:CRYO:MLC:Z:fTargetPos") {
+  field(DESC, "The target position.")
+  field(DTYP, "asynFloat64")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoZMultiLeader.fTargetPos=")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS VAL")
   info(archive, "VAL")
 }
 
@@ -64414,6 +64614,16 @@ record(ai, "QRIX:CRYO:MLC:Z:fTargetVel_RBV") {
   field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoZMultiLeader.fTargetVel?")
   field(PREC, "3")
   info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ao, "QRIX:CRYO:MLC:Z:fTargetVel") {
+  field(DESC, "The target velocity.")
+  field(DTYP, "asynFloat64")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoZMultiLeader.fTargetVel=")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS VAL")
   info(archive, "VAL")
 }
 
@@ -64540,6 +64750,16 @@ record(ai, "QRIX:CRYO:MLC:Z:stAcc:fMax_RBV") {
   info(archive, "VAL")
 }
 
+record(ao, "QRIX:CRYO:MLC:Z:stAcc:fMax") {
+  field(DESC, "The maximum bound for the output value.")
+  field(DTYP, "asynFloat64")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoZMultiLeader.stAcc.fMax=")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS VAL")
+  info(archive, "VAL")
+}
+
 record(ai, "QRIX:CRYO:MLC:Z:stAcc:fMin_RBV") {
   field(DESC, "The minimum bound for the output value.")
   field(SCAN, "I/O Intr")
@@ -64549,6 +64769,16 @@ record(ai, "QRIX:CRYO:MLC:Z:stAcc:fMin_RBV") {
   field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoZMultiLeader.stAcc.fMin?")
   field(PREC, "3")
   info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ao, "QRIX:CRYO:MLC:Z:stAcc:fMin") {
+  field(DESC, "The minimum bound for the output value.")
+  field(DTYP, "asynFloat64")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoZMultiLeader.stAcc.fMin=")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS VAL")
   info(archive, "VAL")
 }
 
@@ -64629,6 +64859,16 @@ record(ai, "QRIX:CRYO:MLC:Z:stPos:fMax_RBV") {
   info(archive, "VAL")
 }
 
+record(ao, "QRIX:CRYO:MLC:Z:stPos:fMax") {
+  field(DESC, "The maximum bound for the output value.")
+  field(DTYP, "asynFloat64")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoZMultiLeader.stPos.fMax=")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS VAL")
+  info(archive, "VAL")
+}
+
 record(ai, "QRIX:CRYO:MLC:Z:stPos:fMin_RBV") {
   field(DESC, "The minimum bound for the output value.")
   field(SCAN, "I/O Intr")
@@ -64638,6 +64878,16 @@ record(ai, "QRIX:CRYO:MLC:Z:stPos:fMin_RBV") {
   field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoZMultiLeader.stPos.fMin?")
   field(PREC, "3")
   info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ao, "QRIX:CRYO:MLC:Z:stPos:fMin") {
+  field(DESC, "The minimum bound for the output value.")
+  field(DTYP, "asynFloat64")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoZMultiLeader.stPos.fMin=")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS VAL")
   info(archive, "VAL")
 }
 
@@ -64718,6 +64968,16 @@ record(ai, "QRIX:CRYO:MLC:Z:stVel:fMax_RBV") {
   info(archive, "VAL")
 }
 
+record(ao, "QRIX:CRYO:MLC:Z:stVel:fMax") {
+  field(DESC, "The maximum bound for the output value.")
+  field(DTYP, "asynFloat64")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoZMultiLeader.stVel.fMax=")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS VAL")
+  info(archive, "VAL")
+}
+
 record(ai, "QRIX:CRYO:MLC:Z:stVel:fMin_RBV") {
   field(DESC, "The minimum bound for the output value.")
   field(SCAN, "I/O Intr")
@@ -64727,6 +64987,16 @@ record(ai, "QRIX:CRYO:MLC:Z:stVel:fMin_RBV") {
   field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_Cryo.stCryoZMultiLeader.stVel.fMin?")
   field(PREC, "3")
   info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ao, "QRIX:CRYO:MLC:Z:stVel:fMin") {
+  field(DESC, "The minimum bound for the output value.")
+  field(DTYP, "asynFloat64")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_Cryo.stCryoZMultiLeader.stVel.fMin=")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS VAL")
   info(archive, "VAL")
 }
 

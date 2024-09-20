@@ -1435,7 +1435,7 @@ External Setpoint Generation:
 		<AxisPara>
 			<Dynamic AccelerationMaximum="10" DecelerationMaximum="10" Acceleration="10" Deceleration="10"/>
 			<Velo SlowManual="0.5" FastManual="1" Maximum="5"/>
-			<OtherSettings AllowMotionCmdToSlave="true"/>
+			<OtherSettings AllowMotionCmdToSlave="true" AllowMotionCmdToExtSetGenAxis="true"/>
 		</AxisPara>
 		<Encoder Name="Enc" EncType="29">
 			<EncPara ScaleFactorNumerator="5e-05" Offset="-46.2536" MaxCount="#xffffffff">

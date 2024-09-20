@@ -12,13 +12,13 @@ STRUCT
     fIn    : LREAL; // The input value before bounds are applied.
     {attribute 'pytmc' := '
         pv: fMax
-        io: i
+        io: io
         field: DESC The maximum bound for the output value.
     '}
     fMax   : LREAL; // The maximum bound for the output value.
     {attribute 'pytmc' := '
         pv: fMin
-        io: i
+        io: io
         field: DESC The minimum bound for the output value.
     '}
     fMin   : LREAL; // The minimum bound for the output value.

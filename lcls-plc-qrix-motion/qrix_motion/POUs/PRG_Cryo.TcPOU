@@ -84,7 +84,8 @@ VAR
     fbCryoZMultiLeader: FB_MultiLeaderMotionCoupling;
 
     fCryoYNeutralPositionAtDiffY0 : LREAL;
-    fCryoYNeutralPosition : LREAL;
+    fCryoYNeutralPosition         : LREAL;
+    fCryoZNeutralPositionAtDiffZ0 : LREAL;
 
     {attribute 'TcLinkTo' := '.nMicrostepCounter := TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_11^ENC Status compact^Counter value;
                               .bCounterOverflow  := TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_11^ENC Status compact^Status^Counter overflow;
@@ -147,35 +148,68 @@ IF bInit THEN
     stDiffThetaEnc.Ref := 121223792;
     stCryoRotEnc.Ref   := 0;
 
-    stCryoXMultiLeader.bUseDynamicLimits := TRUE;
-    stCryoYMultiLeader.bUseDynamicLimits := TRUE;
-    stCryoZMultiLeader.bUseDynamicLimits := TRUE;
-
-    stCryoXMultiLeader.bEnable := TRUE;
-    stCryoYMultiLeader.bEnable := TRUE;
-    //stCryoZMultiLeader.bEnable := TRUE;
-
-    stCryoXMultiLeader.fTargetVel := 1;
-    stCryoXMultiLeader.fTargetAcc := 100;
-    stCryoXMultiLeader.stPos.fMax := 20;
-    stCryoXMultiLeader.stVel.fMax := 5;
-    stCryoXMultiLeader.stAcc.fMax := 100;
-    stCryoXMultiLeader.stPos.fMin := -20;
-    stCryoXMultiLeader.stVel.fMin := -5;
-    stCryoXMultiLeader.stAcc.fMin := -100;
-
-    stCryoYMultiLeader.fTargetVel := 0.5;
-    stCryoYMultiLeader.fTargetAcc := 100;
-    stCryoYMultiLeader.stPos.fMax := 100;
-    stCryoYMultiLeader.stVel.fMax := 5;
-    stCryoYMultiLeader.stAcc.fMax := 100;
-    stCryoYMultiLeader.stPos.fMin := 0;
-    stCryoYMultiLeader.stVel.fMin := -5;
-    stCryoYMultiLeader.stAcc.fMin := -100;
+    fbCryoXMultiLeader.METH_Init(
+        stMotionStage               := Main.M46,
+        stMultiLeaderMotionCoupling := stCryoXMultiLeader,
+        bEnableByDefault            := TRUE,
+        bUseDynamicLimits           := TRUE
+    );
 
     fCryoYNeutralPositionAtDiffY0 := 50.7;
+    fbCryoYMultiLeader.METH_Init(
+        stMotionStage               := Main.M47,
+        stMultiLeaderMotionCoupling := stCryoYMultiLeader,
+        bEnableByDefault            := TRUE,
+        bUseDynamicLimits           := TRUE
+    );
+
+    fCryoZNeutralPositionAtDiffZ0 := 4.0;
+    fbCryoZMultiLeader.METH_Init(
+        stMotionStage               := Main.M48,
+        stMultiLeaderMotionCoupling := stCryoZMultiLeader,
+        bEnableByDefault            := TRUE,
+        bUseDynamicLimits           := TRUE
+    );
 END_IF
 
+ACT_CryoThetaDiffThetaCoupling();
+
+ACT_CryoXYZCoupling();
+
+fb_Cryo_X(stMotionStage:=Main.M46);
+fb_Cryo_Y(stMotionStage:=Main.M47);
+fb_Cryo_Z(stMotionStage:=Main.M48);
+fb_Cryo_ROT(stMotionStage:=Main.M49);
+
+fbMeasureReferenceVelocityCryoX(
+    stMotionStage:=Main.M46,
+    nMicrostepsPerStep:=64,
+    bBusy=>,
+    fMeasuredReferenceVelocity=>
+);
+fbMeasureReferenceVelocityCryoY(
+    stMotionStage:=Main.M47,
+    nMicrostepsPerStep:=64,
+    bBusy=>,
+    fMeasuredReferenceVelocity=>
+);
+fbMeasureReferenceVelocityCryoZ(
+    stMotionStage:=Main.M48,
+    nMicrostepsPerStep:=64,
+    bBusy=>,
+    fMeasuredReferenceVelocity=>
+);
+fbMeasureReferenceVelocityCryoROT(
+    stMotionStage:=Main.M49,
+    nMicrostepsPerStep:=64,
+    bBusy=>,
+    fMeasuredReferenceVelocity=>
+);
+]]></ST>
+    </Implementation>
+    <Action Name="ACT_CryoThetaDiffThetaCoupling" Id="{b4e052dd-1912-4dc5-9f79-94db1318275d}">
+      <Implementation>
+        <ST><![CDATA[
 // Offset the raw value to ensure the rollover point is not in the path of motion.
 // offset of 90 degrees negative for -90 to 270 degree range. 90 degrees because 90/360*2^32 = 1,073,741,824.
 nCryoRotOutEncoderCounts   :=  stCryoRotEnc.Count + nCryoRotEncoderOffset;
@@ -207,70 +241,60 @@ fbCryoRotDiffThetaAutoRealignCouple(
     stCoordinateGantryAxisEnable:=stCryoRotDiffThetaCoordinateGantryAxisEnable
 );*)
 
-Main.M49.bEnable := TRUE;
-
-fb_Cryo_ROT(stMotionStage:=Main.M49);
-
-IF NOT stCryoXMultiLeader.bEnable THEN
-    Main.M46.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+IF stCryoRotDiffThetaAutoRealignCouple.bCoupled THEN
+    Main.M49.nEnableMode := E_StageEnableMode.NEVER;
+    Main.M49.bEnable := TRUE;
+ELSE
+    Main.M49.nEnableMode := E_StageEnableMode.DURING_MOTION;
 END_IF
-IF NOT stCryoYMultiLeader.bEnable THEN
-    Main.M47.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
-END_IF
-IF NOT stCryoZMultiLeader.bEnable THEN
-    Main.M48.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
-END_IF
-
-stCryoXMultiLeader.fTargetPos := Main.M28.Axis.NcToPlc.ActPos;
+]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="ACT_CryoXYZCoupling" Id="{17aa7c6c-0504-491d-bccb-b6655ed0e0d8}">
+      <Implementation>
+        <ST><![CDATA[
 fbCryoXMultiLeader(
-    stMotionStageFollow:=Main.M46,
-    stMultiLeaderMotionCoupling:=stCryoXMultiLeader,
-    tTimeout:=T#5s
+    stMotionStageFollow := Main.M46,
+    stMultiLeaderMotionCoupling := stCryoXMultiLeader,
+    fTargetPos := Main.M28.Axis.NcToPlc.ActPos,
+    fTargetVel := Main.M28.Axis.NcToPlc.SetVelo,
+    fTargetAcc := Main.M28.Axis.NcToPlc.SetAcc,
+    bError     := Main.M28.bError,
+    tTimeout   := T#5s
 );
+IF stCryoXMultiLeader.bError THEN
+    Main.M28.bError := TRUE;
+END_IF
 
 fCryoYNeutralPosition := fCryoYNeutralPositionAtDiffY0 + Main.M29.Axis.NcToPlc.ActPos;
-
-stCryoYMultiLeader.fTargetPos := fCryoYNeutralPosition - ABS(fBraidDiameter * (1 - Cos(Main.M32.Axis.NcToPlc.ActPos * 3.1415 / 180)));
 fbCryoYMultiLeader(
-    stMotionStageFollow:=Main.M47,
-    stMultiLeaderMotionCoupling:=stCryoYMultiLeader,
-    tTimeout:=T#5s
+    stMotionStageFollow := Main.M47,
+    stMultiLeaderMotionCoupling := stCryoYMultiLeader,
+    fTargetPos := fCryoYNeutralPosition - ABS(fBraidDiameter * (1 - Cos(Main.M32.Axis.NcToPlc.ActPos * 3.1415 / 180))),
+    fTargetVel := Main.M28.Axis.NcToPlc.SetVelo,
+    fTargetAcc := Main.M28.Axis.NcToPlc.SetAcc,
+    bError     := Main.M29.bError OR Main.M32.bError,
+    tTimeout   := T#5s
 );
+IF stCryoYMultiLeader.bError THEN
+    Main.M29.bError := TRUE;
+    Main.M32.bError := TRUE;
+END_IF
+
 fbCryoZMultiLeader(
     stMotionStageFollow:=Main.M48,
     stMultiLeaderMotionCoupling:=stCryoZMultiLeader,
-    tTimeout:=T#5s
+    fTargetPos := fCryoZNeutralPositionAtDiffZ0 + Main.M30.Axis.NcToPlc.ActPos,
+    fTargetVel := Main.M30.Axis.NcToPlc.SetVelo,
+    fTargetAcc := Main.M30.Axis.NcToPlc.SetAcc,
+    bError     := Main.M30.bError,
+    tTimeout   := T#5s
 );
-
-fb_Cryo_X(stMotionStage:=Main.M46);
-fb_Cryo_Y(stMotionStage:=Main.M47);
-fb_Cryo_Z(stMotionStage:=Main.M48);
-
-fbMeasureReferenceVelocityCryoX(
-    stMotionStage:=Main.M46,
-    nMicrostepsPerStep:=64,
-    bBusy=>,
-    fMeasuredReferenceVelocity=>
-);
-fbMeasureReferenceVelocityCryoY(
-    stMotionStage:=Main.M47,
-    nMicrostepsPerStep:=64,
-    bBusy=>,
-    fMeasuredReferenceVelocity=>
-);
-fbMeasureReferenceVelocityCryoZ(
-    stMotionStage:=Main.M48,
-    nMicrostepsPerStep:=64,
-    bBusy=>,
-    fMeasuredReferenceVelocity=>
-);
-fbMeasureReferenceVelocityCryoROT(
-    stMotionStage:=Main.M49,
-    nMicrostepsPerStep:=64,
-    bBusy=>,
-    fMeasuredReferenceVelocity=>
-);
+IF stCryoZMultiLeader.bError THEN
+    Main.M30.bError := TRUE;
+END_IF
 ]]></ST>
-    </Implementation>
+      </Implementation>
+    </Action>
   </POU>
 </TcPlcObject>

@@ -8,7 +8,11 @@ VAR_IN_OUT
     stMultiLeaderMotionCoupling: ST_MultiLeaderMotionCoupling;
 END_VAR
 VAR_INPUT
-    tTimeout:   TIME  := T#5s;
+    fTargetPos : LREAL;
+    fTargetVel : LREAL;
+    fTargetAcc : LREAL;
+    bError     : BOOL;
+    tTimeout   :   TIME  := T#5s;
 END_VAR
 VAR
     bInit        : BOOL := TRUE;
@@ -41,6 +45,7 @@ IF bInit OR stMultiLeaderMotionCoupling.bReset THEN
     stMultiLeaderMotionCoupling.sStatusMsg := '';
     stMultiLeaderMotionCoupling.bError     := FALSE;
     stMultiLeaderMotionCoupling.sErrorMsg  := '';
+    stMultiLeaderMotionCoupling.sErrorHelp := '';
     stMultiLeaderMotionCoupling.eState     := E_MultiLeaderMotionCoupling.STATE_STANDBY;
 END_IF
 
@@ -126,6 +131,8 @@ END_CASE
       <Implementation>
         <ST><![CDATA[
 (* ACTION - STATE STANDBY *)
+
+stMotionStageFollow.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
 
 IF stMultiLeaderMotionCoupling.bEnable AND NOT stMultiLeaderMotionCoupling.bError THEN
     stMultiLeaderMotionCoupling.bBusy      := TRUE;
@@ -588,6 +595,10 @@ IF stMultiLeaderMotionCoupling.stPos.fMin < stMotionStageFollow.stAxisParameters
     stMultiLeaderMotionCoupling.stPos.fMin := stMotionStageFollow.stAxisParameters.fEncSoftEndMin;
 END_IF
 
+stMultiLeaderMotionCoupling.fTargetPos := fTargetPos;
+stMultiLeaderMotionCoupling.fTargetVel := fTargetVel;
+stMultiLeaderMotionCoupling.fTargetAcc := fTargetAcc;
+
 stMultiLeaderMotionCoupling.stAcc.fIn := stMultiLeaderMotionCoupling.fTargetAcc;
 stMultiLeaderMotionCoupling.stVel.fIn := stMultiLeaderMotionCoupling.fTargetVel;
 stMultiLeaderMotionCoupling.stPos.fIn := stMultiLeaderMotionCoupling.fTargetPos;
@@ -633,6 +644,36 @@ ELSE
     stVel.fOut := stVel.fIn;
     stPos.fOut := stPos.fIn;
 END_IF
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="METH_Init" Id="{b11fedd0-22c9-4b4d-ac6d-a13ac4344499}">
+      <Declaration><![CDATA[
+METHOD METH_Init : BOOL
+VAR_IN_OUT
+    stMotionStage : ST_MotionStage;
+    stMultiLeaderMotionCoupling : ST_MultiLeaderMotionCoupling;
+END_VAR
+VAR_INPUT
+    bEnableByDefault  : BOOL;
+    bUseDynamicLimits : BOOL;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[
+stMultiLeaderMotionCoupling.stAcc.fMax := stMotionStageFollow.stAxisParameters.fAccelerationMax;
+stMultiLeaderMotionCoupling.stAcc.fMin := -stMotionStageFollow.stAxisParameters.fDecelerationMax;
+
+stMultiLeaderMotionCoupling.stVel.fMax := stMotionStageFollow.stAxisParameters.fVeloMaximum;
+stMultiLeaderMotionCoupling.stVel.fMin := -stMotionStageFollow.stAxisParameters.fVeloMaximum;
+
+stMultiLeaderMotionCoupling.stPos.fMax := stMotionStageFollow.stAxisParameters.fEncSoftEndMax;
+stMultiLeaderMotionCoupling.stPos.fMin := stMotionStageFollow.stAxisParameters.fEncSoftEndMin;
+
+stMultiLeaderMotionCoupling.fTargetPos := stMotionStage.Axis.NcToPlc.ActPos;
+
+stMultiLeaderMotionCoupling.bEnable           := bEnableByDefault;
+stMultiLeaderMotionCoupling.bUseDynamicLimits := bUseDynamicLimits;
 ]]></ST>
       </Implementation>
     </Method>

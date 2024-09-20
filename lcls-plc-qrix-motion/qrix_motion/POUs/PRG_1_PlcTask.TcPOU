@@ -18,7 +18,6 @@ PRG_RotDet();
 PRG_SpetrometerArm();
 PRG_SSL();
 PRG_Cryo();
-PRG_Collect_Scope_Info();
 ]]></ST>
     </Implementation>
   </POU>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<TcModuleClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2009/05/TcModuleClass" Hash="{64DE66D4-723F-CDC9-1ECD-6F9C4A1C2BB8}" GeneratedBy="TwinCAT XAE Plc">
+<TcModuleClass xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2009/05/TcModuleClass" Hash="{9D3C7C6A-3158-3F98-5887-F6EF599C22CD}" GeneratedBy="TwinCAT XAE Plc">
   <DataTypes>
     <DataType>
       <Name Namespace="LCLS_General">ST_System</Name>
@@ -7323,11 +7323,6 @@
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
-        <Local>
-          <Name>__Index__0</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
       </Method>
       <Method>
         <Name>AssertEquals_BOOL</Name>
@@ -7460,11 +7455,6 @@
         </Local>
         <Local>
           <Name>ActualsIndex</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
-        <Local>
-          <Name>__Index__0</Name>
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
@@ -7624,11 +7614,6 @@
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
-        <Local>
-          <Name>__Index__0</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
       </Method>
       <Method>
         <Name>CalculateAndSetNumberOfAssertsForTest</Name>
@@ -7763,11 +7748,6 @@
         </Local>
         <Local>
           <Name>ActualsIndex</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
-        <Local>
-          <Name>__Index__0</Name>
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
@@ -7926,11 +7906,6 @@
         </Local>
         <Local>
           <Name>ActualsIndex</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
-        <Local>
-          <Name>__Index__0</Name>
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
@@ -8436,11 +8411,6 @@
         </Local>
         <Local>
           <Name>ActualsIndex</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
-        <Local>
-          <Name>__Index__0</Name>
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
@@ -9216,11 +9186,6 @@
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
-        <Local>
-          <Name>__Index__0</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
       </Method>
       <Method>
         <Name>AssertEquals_TIME</Name>
@@ -9599,11 +9564,6 @@
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
-        <Local>
-          <Name>__Index__0</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
       </Method>
       <Method>
         <Name>AssertArrayEquals_INT</Name>
@@ -9695,11 +9655,6 @@
         </Local>
         <Local>
           <Name>ActualsIndex</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
-        <Local>
-          <Name>__Index__0</Name>
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
@@ -9827,11 +9782,6 @@
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
-        <Local>
-          <Name>__Index__0</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
       </Method>
       <Method>
         <Name>AssertArrayEquals_LWORD</Name>
@@ -9933,11 +9883,6 @@
         </Local>
         <Local>
           <Name>ActualsIndex</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
-        <Local>
-          <Name>__Index__0</Name>
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
@@ -10252,11 +10197,6 @@
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
-        <Local>
-          <Name>__Index__0</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
       </Method>
       <Method>
         <Name>AreAllTestsFinished</Name>
@@ -10426,11 +10366,6 @@
         </Local>
         <Local>
           <Name>ActualsIndex</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
-        <Local>
-          <Name>__Index__0</Name>
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
@@ -10615,11 +10550,6 @@
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
-        <Local>
-          <Name>__Index__0</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
       </Method>
       <Method>
         <Name>AssertArrayEquals_LREAL</Name>
@@ -10717,11 +10647,6 @@
         </Local>
         <Local>
           <Name>ActualsIndex</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
-        <Local>
-          <Name>__Index__0</Name>
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
@@ -26386,11 +26311,6 @@ contributing fast faults, unless the FFO is currently vetoed.
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
-        <Local>
-          <Name>__Index__0</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
       </Method>
       <Method>
         <Name>FindTestSuiteInstancePath</Name>
@@ -26649,11 +26569,6 @@ contributing fast faults, unless the FFO is currently vetoed.
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
-        <Local>
-          <Name>__Index__0</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
       </Method>
       <Method>
         <Name>AssertArrayEquals_BYTE</Name>
@@ -26755,11 +26670,6 @@ contributing fast faults, unless the FFO is currently vetoed.
         </Local>
         <Local>
           <Name>ActualsIndex</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
-        <Local>
-          <Name>__Index__0</Name>
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
@@ -26919,11 +26829,6 @@ contributing fast faults, unless the FFO is currently vetoed.
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
-        <Local>
-          <Name>__Index__0</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
       </Method>
       <Method>
         <Name>AssertEquals_LTIME</Name>
@@ -27046,11 +26951,6 @@ contributing fast faults, unless the FFO is currently vetoed.
         </Local>
         <Local>
           <Name>ActualsIndex</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
-        <Local>
-          <Name>__Index__0</Name>
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
@@ -27192,11 +27092,6 @@ contributing fast faults, unless the FFO is currently vetoed.
         </Local>
         <Local>
           <Name>ActualsIndex</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
-        <Local>
-          <Name>__Index__0</Name>
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
@@ -27958,11 +27853,6 @@ contributing fast faults, unless the FFO is currently vetoed.
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
-        <Local>
-          <Name>__Index__0</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
       </Method>
       <Method>
         <Name>SetHasStartedRunning</Name>
@@ -28123,11 +28013,6 @@ contributing fast faults, unless the FFO is currently vetoed.
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
-        <Local>
-          <Name>__Index__0</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
       </Method>
       <Method>
         <Name>GetHasStartedRunning</Name>
@@ -28230,11 +28115,6 @@ contributing fast faults, unless the FFO is currently vetoed.
         </Local>
         <Local>
           <Name>ActualsIndex</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
-        <Local>
-          <Name>__Index__0</Name>
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
@@ -28389,11 +28269,6 @@ contributing fast faults, unless the FFO is currently vetoed.
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
-        <Local>
-          <Name>__Index__0</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
       </Method>
       <Method>
         <Name>AssertEquals_DINT</Name>
@@ -28516,11 +28391,6 @@ contributing fast faults, unless the FFO is currently vetoed.
         </Local>
         <Local>
           <Name>ActualsIndex</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
-        <Local>
-          <Name>__Index__0</Name>
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
@@ -28696,11 +28566,6 @@ contributing fast faults, unless the FFO is currently vetoed.
         </Local>
         <Local>
           <Name>ActualsIndex</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
-        <Local>
-          <Name>__Index__0</Name>
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
@@ -28983,11 +28848,6 @@ contributing fast faults, unless the FFO is currently vetoed.
         </Local>
         <Local>
           <Name>ActualsIndex</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
-        <Local>
-          <Name>__Index__0</Name>
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
@@ -29784,11 +29644,6 @@ contributing fast faults, unless the FFO is currently vetoed.
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
-        <Local>
-          <Name>__Index__0</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
       </Method>
       <Method>
         <Name>AssertArrayEquals_UDINT</Name>
@@ -29880,11 +29735,6 @@ contributing fast faults, unless the FFO is currently vetoed.
         </Local>
         <Local>
           <Name>ActualsIndex</Name>
-          <Type>DINT</Type>
-          <BitSize>32</BitSize>
-        </Local>
-        <Local>
-          <Name>__Index__0</Name>
           <Type>DINT</Type>
           <BitSize>32</BitSize>
         </Local>
@@ -55667,712 +55517,6 @@ External Setpoint Generation:
       </Properties>
     </DataType>
     <DataType>
-      <Name>ST_BoundedValue</Name>
-      <BitSize>320</BitSize>
-      <SubItem>
-        <Name>fIn</Name>
-        <Type>LREAL</Type>
-        <Comment> The input value before bounds are applied.</Comment>
-        <BitSize>64</BitSize>
-        <BitOffs>0</BitOffs>
-        <Properties>
-          <Property>
-            <Name>pytmc</Name>
-            <Value>
-        pv: fIn
-        io: io
-        field: DESC The input value before bounds are applied.
-    </Value>
-          </Property>
-        </Properties>
-      </SubItem>
-      <SubItem>
-        <Name>fMax</Name>
-        <Type>LREAL</Type>
-        <Comment> The maximum bound for the output value.</Comment>
-        <BitSize>64</BitSize>
-        <BitOffs>64</BitOffs>
-        <Properties>
-          <Property>
-            <Name>pytmc</Name>
-            <Value>
-        pv: fMax
-        io: i
-        field: DESC The maximum bound for the output value.
-    </Value>
-          </Property>
-        </Properties>
-      </SubItem>
-      <SubItem>
-        <Name>fMin</Name>
-        <Type>LREAL</Type>
-        <Comment> The minimum bound for the output value.</Comment>
-        <BitSize>64</BitSize>
-        <BitOffs>128</BitOffs>
-        <Properties>
-          <Property>
-            <Name>pytmc</Name>
-            <Value>
-        pv: fMin
-        io: i
-        field: DESC The minimum bound for the output value.
-    </Value>
-          </Property>
-        </Properties>
-      </SubItem>
-      <SubItem>
-        <Name>fOut</Name>
-        <Type>LREAL</Type>
-        <Comment> The output value after bounds are applied.</Comment>
-        <BitSize>64</BitSize>
-        <BitOffs>192</BitOffs>
-        <Properties>
-          <Property>
-            <Name>pytmc</Name>
-            <Value>
-        pv: fOut
-        io: i
-        field: DESC The output value after bounds are applied.
-    </Value>
-          </Property>
-        </Properties>
-      </SubItem>
-      <SubItem>
-        <Name>bMaxLim</Name>
-        <Type>BOOL</Type>
-        <Comment> TRUE if the output value has been limited by the upper bound.</Comment>
-        <BitSize>8</BitSize>
-        <BitOffs>256</BitOffs>
-        <Properties>
-          <Property>
-            <Name>pytmc</Name>
-            <Value>
-        pv: bMaxLim
-        io: i
-        field: DESC TRUE if the output value has been limited by the upper bound.
-    </Value>
-          </Property>
-        </Properties>
-      </SubItem>
-      <SubItem>
-        <Name>bMinLim</Name>
-        <Type>BOOL</Type>
-        <Comment> TRUE if the output value has been limited by the lower bound.</Comment>
-        <BitSize>8</BitSize>
-        <BitOffs>264</BitOffs>
-        <Properties>
-          <Property>
-            <Name>pytmc</Name>
-            <Value>
-        pv: bMinLim
-        io: i
-        field: DESC TRUE if the output value has been limited by the lower bound.
-    </Value>
-          </Property>
-        </Properties>
-      </SubItem>
-    </DataType>
-    <DataType>
-      <Name>E_MultiLeaderMotionCoupling</Name>
-      <BitSize>32</BitSize>
-      <BaseType>UDINT</BaseType>
-      <EnumInfo>
-        <Text>STATE_STANDBY</Text>
-        <Enum>0</Enum>
-      </EnumInfo>
-      <EnumInfo>
-        <Text>STATE_WAIT_FOR_FOLLOWER_NOT_BUSY</Text>
-        <Enum>1</Enum>
-      </EnumInfo>
-      <EnumInfo>
-        <Text>STATE_WAIT_FOR_FOLLOWER_ENABLED</Text>
-        <Enum>2</Enum>
-      </EnumInfo>
-      <EnumInfo>
-        <Text>STATE_WAIT_FOR_FOLLOWER_READY</Text>
-        <Enum>3</Enum>
-      </EnumInfo>
-      <EnumInfo>
-        <Text>STATE_ENABLE_EXTERNAL_SETPOINT_GENERATOR</Text>
-        <Enum>4</Enum>
-      </EnumInfo>
-      <EnumInfo>
-        <Text>STATE_FOLLOWING_ACTIVE</Text>
-        <Enum>5</Enum>
-      </EnumInfo>
-      <EnumInfo>
-        <Text>STATE_DISABLE_EXTERNAL_SETPOINT_GENERATOR</Text>
-        <Enum>6</Enum>
-      </EnumInfo>
-      <EnumInfo>
-        <Text>STATE_ERROR</Text>
-        <Enum>7</Enum>
-      </EnumInfo>
-      <EnumInfo>
-        <Text>STATE_MONITOR_TARGET_WINDOW</Text>
-        <Enum>8</Enum>
-      </EnumInfo>
-      <EnumInfo>
-        <Text>STATE_HALT_MOTION</Text>
-        <Enum>9</Enum>
-      </EnumInfo>
-    </DataType>
-    <DataType>
-      <Name>ST_MultiLeaderMotionCoupling</Name>
-      <BitSize>7680</BitSize>
-      <SubItem>
-        <Name>bEnable</Name>
-        <Type>BOOL</Type>
-        <BitSize>8</BitSize>
-        <BitOffs>0</BitOffs>
-        <Properties>
-          <Property>
-            <Name>pytmc</Name>
-            <Value>
-        pv: bEnable
-        io: io
-        field: DESC Set and hold TRUE to allow the axis to run in multi-leader mode.
-    </Value>
-          </Property>
-        </Properties>
-      </SubItem>
-      <SubItem>
-        <Name>bReset</Name>
-        <Type>BOOL</Type>
-        <BitSize>8</BitSize>
-        <BitOffs>8</BitOffs>
-        <Properties>
-          <Property>
-            <Name>pytmc</Name>
-            <Value>
-        pv: bReset
-        io: io
-        field: DESC Set and release TRUE to fully reset errors and state machine.
-    </Value>
-          </Property>
-        </Properties>
-      </SubItem>
-      <SubItem>
-        <Name>bBusy</Name>
-        <Type>BOOL</Type>
-        <BitSize>8</BitSize>
-        <BitOffs>16</BitOffs>
-        <Properties>
-          <Property>
-            <Name>pytmc</Name>
-            <Value>
-        pv: bBusy
-        io: i
-        field: DESC TRUE indicates state machine running and not in error state.
-    </Value>
-          </Property>
-        </Properties>
-      </SubItem>
-      <SubItem>
-        <Name>sStatusMsg</Name>
-        <Type Namespace="Tc2_System">T_MaxString</Type>
-        <BitSize>2048</BitSize>
-        <BitOffs>24</BitOffs>
-        <Properties>
-          <Property>
-            <Name>pytmc</Name>
-            <Value>
-        pv: sStatusMsg
-        io: i
-        field: DESC String used to give helpful messages.
-    </Value>
-          </Property>
-        </Properties>
-      </SubItem>
-      <SubItem>
-        <Name>bFollowerDriveReady</Name>
-        <Type>BOOL</Type>
-        <Comment> Link to the ready status of the drive</Comment>
-        <BitSize>8</BitSize>
-        <BitOffs>2072</BitOffs>
-        <Properties>
-          <Property>
-            <Name>pytmc</Name>
-            <Value>
-        pv: bFollowerDriveReady
-        io: i
-        field: DESC Linked to the ready status of the drive.
-    </Value>
-          </Property>
-          <Property>
-            <Name>TcAddressType</Name>
-            <Value>Input</Value>
-          </Property>
-        </Properties>
-      </SubItem>
-      <SubItem>
-        <Name>bUseDynamicLimits</Name>
-        <Type>BOOL</Type>
-        <BitSize>8</BitSize>
-        <BitOffs>2080</BitOffs>
-        <Properties>
-          <Property>
-            <Name>pytmc</Name>
-            <Value>
-        pv: bUseDynamicLimits
-        io: io
-        field: DESC Set AND hold TRUE to enable dynamic limits to acc, vel, AND pos.
-    </Value>
-          </Property>
-        </Properties>
-      </SubItem>
-      <SubItem>
-        <Name>fTargetAcc</Name>
-        <Type>LREAL</Type>
-        <Comment> Set in software to allow axis to target an acceleration based on multiple leaders.</Comment>
-        <BitSize>64</BitSize>
-        <BitOffs>2112</BitOffs>
-        <Properties>
-          <Property>
-            <Name>pytmc</Name>
-            <Value>
-        pv: fTargetAcc
-        io: i
-        field: DESC The target acceleration.
-    </Value>
-          </Property>
-        </Properties>
-      </SubItem>
-      <SubItem>
-        <Name>fTargetVel</Name>
-        <Type>LREAL</Type>
-        <Comment> Set in software to allow axis to target a velocity based on multiple leaders.</Comment>
-        <BitSize>64</BitSize>
-        <BitOffs>2176</BitOffs>
-        <Properties>
-          <Property>
-            <Name>pytmc</Name>
-            <Value>
-        pv: fTargetVel
-        io: i
-        field: DESC The target velocity.
-    </Value>
-          </Property>
-        </Properties>
-      </SubItem>
-      <SubItem>
-        <Name>fTargetPos</Name>
-        <Type>LREAL</Type>
-        <Comment> Set in software to allow axis to target a position based on multiple leaders.</Comment>
-        <BitSize>64</BitSize>
-        <BitOffs>2240</BitOffs>
-        <Properties>
-          <Property>
-            <Name>pytmc</Name>
-            <Value>
-        pv: fTargetPos
-        io: i
-        field: DESC The target position.
-    </Value>
-          </Property>
-        </Properties>
-      </SubItem>
-      <SubItem>
-        <Name>fPosDelta</Name>
-        <Type>LREAL</Type>
-        <Comment> Difference between current position and target position.</Comment>
-        <BitSize>64</BitSize>
-        <BitOffs>2304</BitOffs>
-        <Properties>
-          <Property>
-            <Name>pytmc</Name>
-            <Value>
-        pv: fPosDelta
-        io: i
-        field: DESC Target position minus position.
-    </Value>
-          </Property>
-        </Properties>
-      </SubItem>
-      <SubItem>
-        <Name>fTargetTrackingGain</Name>
-        <Type>LREAL</Type>
-        <Comment> Gain used to tune target tracking when within target position window.</Comment>
-        <BitSize>64</BitSize>
-        <BitOffs>2368</BitOffs>
-        <Default>
-          <Value>1</Value>
-        </Default>
-        <Properties>
-          <Property>
-            <Name>pytmc</Name>
-            <Value>
-        pv: fTTGain
-        io: io
-        field: DESC Target tracking gain.
-    </Value>
-          </Property>
-        </Properties>
-      </SubItem>
-      <SubItem>
-        <Name>fHaltPos</Name>
-        <Type>LREAL</Type>
-        <Comment> Position at which halt is called. Allows for centering deadband.</Comment>
-        <BitSize>64</BitSize>
-        <BitOffs>2432</BitOffs>
-        <Properties>
-          <Property>
-            <Name>pytmc</Name>
-            <Value>
-        pv: fHaltPos
-        io: i
-        field: DESC Position at which axis halted.
-    </Value>
-          </Property>
-        </Properties>
-      </SubItem>
-      <SubItem>
-        <Name>stAcc</Name>
-        <Type>ST_BoundedValue</Type>
-        <BitSize>320</BitSize>
-        <BitOffs>2496</BitOffs>
-        <Properties>
-          <Property>
-            <Name>pytmc</Name>
-            <Value>pv: stAcc</Value>
-          </Property>
-        </Properties>
-      </SubItem>
-      <SubItem>
-        <Name>stVel</Name>
-        <Type>ST_BoundedValue</Type>
-        <BitSize>320</BitSize>
-        <BitOffs>2816</BitOffs>
-        <Properties>
-          <Property>
-            <Name>pytmc</Name>
-            <Value>pv: stVel</Value>
-          </Property>
-        </Properties>
-      </SubItem>
-      <SubItem>
-        <Name>stPos</Name>
-        <Type>ST_BoundedValue</Type>
-        <BitSize>320</BitSize>
-        <BitOffs>3136</BitOffs>
-        <Properties>
-          <Property>
-            <Name>pytmc</Name>
-            <Value>pv: stPos</Value>
-          </Property>
-        </Properties>
-      </SubItem>
-      <SubItem>
-        <Name>nDir</Name>
-        <Type>DINT</Type>
-        <BitSize>32</BitSize>
-        <BitOffs>3456</BitOffs>
-        <Properties>
-          <Property>
-            <Name>pytmc</Name>
-            <Value>
-        pv: nDir
-        io: i
-        field: DESC Internally calculated direction value for external setpoint generator.
-    </Value>
-          </Property>
-        </Properties>
-      </SubItem>
-      <SubItem>
-        <Name>bError</Name>
-        <Type>BOOL</Type>
-        <BitSize>8</BitSize>
-        <BitOffs>3488</BitOffs>
-        <Properties>
-          <Property>
-            <Name>pytmc</Name>
-            <Value>
-        pv: bError
-        io: i
-        field: DESC TRUE if an error is active.
-    </Value>
-          </Property>
-        </Properties>
-      </SubItem>
-      <SubItem>
-        <Name>sErrorMsg</Name>
-        <Type Namespace="Tc2_System">T_MaxString</Type>
-        <BitSize>2048</BitSize>
-        <BitOffs>3496</BitOffs>
-        <Properties>
-          <Property>
-            <Name>pytmc</Name>
-            <Value>
-        pv: sErrorMsg
-        io: i
-        field: DESC Displays error message relevant to the active error. Empty otherwise.
-    </Value>
-          </Property>
-        </Properties>
-      </SubItem>
-      <SubItem>
-        <Name>sErrorHelp</Name>
-        <Type Namespace="Tc2_System">T_MaxString</Type>
-        <BitSize>2048</BitSize>
-        <BitOffs>5544</BitOffs>
-        <Properties>
-          <Property>
-            <Name>pytmc</Name>
-            <Value>
-        pv: sErrorHelp
-        io: i
-        field: DESC Displays additional help for the active rror. Empty otherwise.
-    </Value>
-          </Property>
-        </Properties>
-      </SubItem>
-      <SubItem>
-        <Name>eState</Name>
-        <Type>E_MultiLeaderMotionCoupling</Type>
-        <BitSize>32</BitSize>
-        <BitOffs>7616</BitOffs>
-        <Properties>
-          <Property>
-            <Name>pytmc</Name>
-            <Value>
-        pv: eState
-        io: i
-        field: DESC Records the current state of the multi-leader function block.
-    </Value>
-          </Property>
-        </Properties>
-      </SubItem>
-    </DataType>
-    <DataType>
-      <Name>FB_MultiLeaderMotionCoupling</Name>
-      <BitSize>14080</BitSize>
-      <SubItem>
-        <Name>stMotionStageFollow</Name>
-        <Type Namespace="lcls_twincat_motion" ReferenceTo="true">ST_MotionStage</Type>
-        <BitSize>32</BitSize>
-        <BitOffs>32</BitOffs>
-        <Properties>
-          <Property>
-            <Name>ItemType</Name>
-            <Value>InOut</Value>
-          </Property>
-        </Properties>
-      </SubItem>
-      <SubItem>
-        <Name>stMultiLeaderMotionCoupling</Name>
-        <Type ReferenceTo="true">ST_MultiLeaderMotionCoupling</Type>
-        <BitSize>32</BitSize>
-        <BitOffs>64</BitOffs>
-        <Properties>
-          <Property>
-            <Name>ItemType</Name>
-            <Value>InOut</Value>
-          </Property>
-        </Properties>
-      </SubItem>
-      <SubItem>
-        <Name>tTimeout</Name>
-        <Type>TIME</Type>
-        <BitSize>32</BitSize>
-        <BitOffs>96</BitOffs>
-        <Default>
-          <Value>5000</Value>
-        </Default>
-        <Properties>
-          <Property>
-            <Name>ItemType</Name>
-            <Value>Input</Value>
-          </Property>
-        </Properties>
-      </SubItem>
-      <SubItem>
-        <Name>bInit</Name>
-        <Type>BOOL</Type>
-        <BitSize>8</BitSize>
-        <BitOffs>128</BitOffs>
-        <Default>
-          <Value>1</Value>
-        </Default>
-      </SubItem>
-      <SubItem>
-        <Name>nTimeout</Name>
-        <Type>ULINT</Type>
-        <BitSize>64</BitSize>
-        <BitOffs>192</BitOffs>
-      </SubItem>
-      <SubItem>
-        <Name>tonTimeout</Name>
-        <Type Namespace="Tc2_Standard">TON</Type>
-        <BitSize>224</BitSize>
-        <BitOffs>256</BitOffs>
-      </SubItem>
-      <SubItem>
-        <Name>tonHaltDelay</Name>
-        <Type Namespace="Tc2_Standard">TON</Type>
-        <BitSize>224</BitSize>
-        <BitOffs>480</BitOffs>
-      </SubItem>
-      <SubItem>
-        <Name>tonTargetPositionTimer</Name>
-        <Type Namespace="Tc2_Standard">TON</Type>
-        <BitSize>224</BitSize>
-        <BitOffs>704</BitOffs>
-      </SubItem>
-      <SubItem>
-        <Name>fMoveTime</Name>
-        <Type>LREAL</Type>
-        <Comment> in seconds</Comment>
-        <BitSize>64</BitSize>
-        <BitOffs>960</BitOffs>
-      </SubItem>
-      <SubItem>
-        <Name>tMove</Name>
-        <Type>TIME</Type>
-        <BitSize>32</BitSize>
-        <BitOffs>1024</BitOffs>
-      </SubItem>
-      <SubItem>
-        <Name>tonMoveProgressCounter</Name>
-        <Type Namespace="Tc2_Standard">TON</Type>
-        <BitSize>224</BitSize>
-        <BitOffs>1056</BitOffs>
-      </SubItem>
-      <SubItem>
-        <Name>GetCurrentTaskIndex</Name>
-        <Type Namespace="Tc2_System">GETCURTASKINDEX</Type>
-        <BitSize>128</BitSize>
-        <BitOffs>1280</BitOffs>
-      </SubItem>
-      <SubItem>
-        <Name>fSecPerScan</Name>
-        <Type>LREAL</Type>
-        <BitSize>64</BitSize>
-        <BitOffs>1408</BitOffs>
-      </SubItem>
-      <SubItem>
-        <Name>fDistanceThisScan</Name>
-        <Type>LREAL</Type>
-        <BitSize>64</BitSize>
-        <BitOffs>1472</BitOffs>
-      </SubItem>
-      <SubItem>
-        <Name>EnableSetPointGenerator</Name>
-        <Type Namespace="Tc2_MC2">MC_ExtSetPointGenEnable</Type>
-        <BitSize>2176</BitSize>
-        <BitOffs>1536</BitOffs>
-      </SubItem>
-      <SubItem>
-        <Name>DisableSetPointGenerator</Name>
-        <Type Namespace="Tc2_MC2">MC_ExtSetPointGenDisable</Type>
-        <BitSize>1792</BitSize>
-        <BitOffs>3712</BitOffs>
-      </SubItem>
-      <SubItem>
-        <Name>mcHalt</Name>
-        <Type Namespace="Tc2_MC2">MC_Halt</Type>
-        <BitSize>8576</BitSize>
-        <BitOffs>5504</BitOffs>
-      </SubItem>
-      <Action>
-        <Name>ACT_04_STATE_WAIT_FOR_FOLLOWER_READY</Name>
-      </Action>
-      <Action>
-        <Name>ACT_05_STATE_ENABLE_EXTERNAL_SETPOINT_GENERATOR</Name>
-      </Action>
-      <Action>
-        <Name>ACT_02_STATE_WAIT_FOR_FOLLOWER_NOT_BUSY</Name>
-      </Action>
-      <Action>
-        <Name>ACT_07_STATE_DISABLE_EXTERNAL_SETPOINT_GENERATOR</Name>
-      </Action>
-      <Action>
-        <Name>ACT_06_STATE_FOLLOWING_ACTIVE</Name>
-      </Action>
-      <Action>
-        <Name>ACT_01_STATE_STANDBY</Name>
-      </Action>
-      <Action>
-        <Name>ACT_ComputeTargets</Name>
-      </Action>
-      <Action>
-        <Name>ACT_09_STATE_MONITOR_TARGET_WINDOW</Name>
-      </Action>
-      <Action>
-        <Name>ACT_03_STATE_WAIT_FOR_FOLLOWER_ENABLED</Name>
-      </Action>
-      <Action>
-        <Name>ACT_08_STATE_ERROR</Name>
-      </Action>
-      <Action>
-        <Name>ACT_10_STATE_HALT_MOTION</Name>
-      </Action>
-      <Method>
-        <Name>METH_ApplyKinematicLimits</Name>
-        <ReturnType>BOOL</ReturnType>
-        <ReturnBitSize>8</ReturnBitSize>
-        <Parameter>
-          <Name>stAcc</Name>
-          <Type ReferenceTo="true">ST_BoundedValue</Type>
-          <BitSize>32</BitSize>
-          <Properties>
-            <Property>
-              <Name>ItemType</Name>
-              <Value>InOut</Value>
-            </Property>
-          </Properties>
-        </Parameter>
-        <Parameter>
-          <Name>stVel</Name>
-          <Type ReferenceTo="true">ST_BoundedValue</Type>
-          <BitSize>32</BitSize>
-          <Properties>
-            <Property>
-              <Name>ItemType</Name>
-              <Value>InOut</Value>
-            </Property>
-          </Properties>
-        </Parameter>
-        <Parameter>
-          <Name>stPos</Name>
-          <Type ReferenceTo="true">ST_BoundedValue</Type>
-          <BitSize>32</BitSize>
-          <Properties>
-            <Property>
-              <Name>ItemType</Name>
-              <Value>InOut</Value>
-            </Property>
-          </Properties>
-        </Parameter>
-        <Parameter>
-          <Name>bEnable</Name>
-          <Type>BOOL</Type>
-          <BitSize>8</BitSize>
-        </Parameter>
-      </Method>
-      <Method>
-        <Name>METH_MaxMinLim</Name>
-        <ReturnType>BOOL</ReturnType>
-        <ReturnBitSize>8</ReturnBitSize>
-        <Parameter>
-          <Name>stVal</Name>
-          <Type ReferenceTo="true">ST_BoundedValue</Type>
-          <BitSize>32</BitSize>
-          <Properties>
-            <Property>
-              <Name>ItemType</Name>
-              <Value>InOut</Value>
-            </Property>
-          </Properties>
-        </Parameter>
-      </Method>
-      <Properties>
-        <Property>
-          <Name>PouType</Name>
-          <Value>FunctionBlock</Value>
-        </Property>
-      </Properties>
-    </DataType>
-    <DataType>
       <Name Namespace="Tc2_MC2">MC_ReadDriveAddress</Name>
       <BitSize>2752</BitSize>
       <SubItem>
@@ -61028,6 +60172,797 @@ External Setpoint Generation:
         <Hide GUID="{1F50550E-82AC-4486-B681-048F0AEF9609}"/>
       </Hides>
     </DataType>
+    <DataType>
+      <Name>ST_BoundedValue</Name>
+      <BitSize>320</BitSize>
+      <SubItem>
+        <Name>fIn</Name>
+        <Type>LREAL</Type>
+        <Comment> The input value before bounds are applied.</Comment>
+        <BitSize>64</BitSize>
+        <BitOffs>0</BitOffs>
+        <Properties>
+          <Property>
+            <Name>pytmc</Name>
+            <Value>
+        pv: fIn
+        io: io
+        field: DESC The input value before bounds are applied.
+    </Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>fMax</Name>
+        <Type>LREAL</Type>
+        <Comment> The maximum bound for the output value.</Comment>
+        <BitSize>64</BitSize>
+        <BitOffs>64</BitOffs>
+        <Properties>
+          <Property>
+            <Name>pytmc</Name>
+            <Value>
+        pv: fMax
+        io: io
+        field: DESC The maximum bound for the output value.
+    </Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>fMin</Name>
+        <Type>LREAL</Type>
+        <Comment> The minimum bound for the output value.</Comment>
+        <BitSize>64</BitSize>
+        <BitOffs>128</BitOffs>
+        <Properties>
+          <Property>
+            <Name>pytmc</Name>
+            <Value>
+        pv: fMin
+        io: io
+        field: DESC The minimum bound for the output value.
+    </Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>fOut</Name>
+        <Type>LREAL</Type>
+        <Comment> The output value after bounds are applied.</Comment>
+        <BitSize>64</BitSize>
+        <BitOffs>192</BitOffs>
+        <Properties>
+          <Property>
+            <Name>pytmc</Name>
+            <Value>
+        pv: fOut
+        io: i
+        field: DESC The output value after bounds are applied.
+    </Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>bMaxLim</Name>
+        <Type>BOOL</Type>
+        <Comment> TRUE if the output value has been limited by the upper bound.</Comment>
+        <BitSize>8</BitSize>
+        <BitOffs>256</BitOffs>
+        <Properties>
+          <Property>
+            <Name>pytmc</Name>
+            <Value>
+        pv: bMaxLim
+        io: i
+        field: DESC TRUE if the output value has been limited by the upper bound.
+    </Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>bMinLim</Name>
+        <Type>BOOL</Type>
+        <Comment> TRUE if the output value has been limited by the lower bound.</Comment>
+        <BitSize>8</BitSize>
+        <BitOffs>264</BitOffs>
+        <Properties>
+          <Property>
+            <Name>pytmc</Name>
+            <Value>
+        pv: bMinLim
+        io: i
+        field: DESC TRUE if the output value has been limited by the lower bound.
+    </Value>
+          </Property>
+        </Properties>
+      </SubItem>
+    </DataType>
+    <DataType>
+      <Name>E_MultiLeaderMotionCoupling</Name>
+      <BitSize>32</BitSize>
+      <BaseType>UDINT</BaseType>
+      <EnumInfo>
+        <Text>STATE_STANDBY</Text>
+        <Enum>0</Enum>
+      </EnumInfo>
+      <EnumInfo>
+        <Text>STATE_WAIT_FOR_FOLLOWER_NOT_BUSY</Text>
+        <Enum>1</Enum>
+      </EnumInfo>
+      <EnumInfo>
+        <Text>STATE_WAIT_FOR_FOLLOWER_ENABLED</Text>
+        <Enum>2</Enum>
+      </EnumInfo>
+      <EnumInfo>
+        <Text>STATE_WAIT_FOR_FOLLOWER_READY</Text>
+        <Enum>3</Enum>
+      </EnumInfo>
+      <EnumInfo>
+        <Text>STATE_ENABLE_EXTERNAL_SETPOINT_GENERATOR</Text>
+        <Enum>4</Enum>
+      </EnumInfo>
+      <EnumInfo>
+        <Text>STATE_FOLLOWING_ACTIVE</Text>
+        <Enum>5</Enum>
+      </EnumInfo>
+      <EnumInfo>
+        <Text>STATE_DISABLE_EXTERNAL_SETPOINT_GENERATOR</Text>
+        <Enum>6</Enum>
+      </EnumInfo>
+      <EnumInfo>
+        <Text>STATE_ERROR</Text>
+        <Enum>7</Enum>
+      </EnumInfo>
+      <EnumInfo>
+        <Text>STATE_MONITOR_TARGET_WINDOW</Text>
+        <Enum>8</Enum>
+      </EnumInfo>
+      <EnumInfo>
+        <Text>STATE_HALT_MOTION</Text>
+        <Enum>9</Enum>
+      </EnumInfo>
+    </DataType>
+    <DataType>
+      <Name>ST_MultiLeaderMotionCoupling</Name>
+      <BitSize>7680</BitSize>
+      <SubItem>
+        <Name>bEnable</Name>
+        <Type>BOOL</Type>
+        <BitSize>8</BitSize>
+        <BitOffs>0</BitOffs>
+        <Properties>
+          <Property>
+            <Name>pytmc</Name>
+            <Value>
+        pv: bEnable
+        io: io
+        field: DESC Set and hold TRUE to allow the axis to run in multi-leader mode.
+    </Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>bReset</Name>
+        <Type>BOOL</Type>
+        <BitSize>8</BitSize>
+        <BitOffs>8</BitOffs>
+        <Properties>
+          <Property>
+            <Name>pytmc</Name>
+            <Value>
+        pv: bReset
+        io: io
+        field: DESC Set and release TRUE to fully reset errors and state machine.
+    </Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>bBusy</Name>
+        <Type>BOOL</Type>
+        <BitSize>8</BitSize>
+        <BitOffs>16</BitOffs>
+        <Properties>
+          <Property>
+            <Name>pytmc</Name>
+            <Value>
+        pv: bBusy
+        io: i
+        field: DESC TRUE indicates state machine running and not in error state.
+    </Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>sStatusMsg</Name>
+        <Type Namespace="Tc2_System">T_MaxString</Type>
+        <BitSize>2048</BitSize>
+        <BitOffs>24</BitOffs>
+        <Properties>
+          <Property>
+            <Name>pytmc</Name>
+            <Value>
+        pv: sStatusMsg
+        io: i
+        field: DESC String used to give helpful messages.
+    </Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>bFollowerDriveReady</Name>
+        <Type>BOOL</Type>
+        <Comment> Link to the ready status of the drive</Comment>
+        <BitSize>8</BitSize>
+        <BitOffs>2072</BitOffs>
+        <Properties>
+          <Property>
+            <Name>pytmc</Name>
+            <Value>
+        pv: bFollowerDriveReady
+        io: i
+        field: DESC Linked to the ready status of the drive.
+    </Value>
+          </Property>
+          <Property>
+            <Name>TcAddressType</Name>
+            <Value>Input</Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>bUseDynamicLimits</Name>
+        <Type>BOOL</Type>
+        <BitSize>8</BitSize>
+        <BitOffs>2080</BitOffs>
+        <Properties>
+          <Property>
+            <Name>pytmc</Name>
+            <Value>
+        pv: bUseDynamicLimits
+        io: io
+        field: DESC Set AND hold TRUE to enable dynamic limits to acc, vel, AND pos.
+    </Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>fTargetAcc</Name>
+        <Type>LREAL</Type>
+        <Comment> Set in software to allow axis to target an acceleration based on multiple leaders.</Comment>
+        <BitSize>64</BitSize>
+        <BitOffs>2112</BitOffs>
+        <Properties>
+          <Property>
+            <Name>pytmc</Name>
+            <Value>
+        pv: fTargetAcc
+        io: io
+        field: DESC The target acceleration.
+    </Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>fTargetVel</Name>
+        <Type>LREAL</Type>
+        <Comment> Set in software to allow axis to target a velocity based on multiple leaders.</Comment>
+        <BitSize>64</BitSize>
+        <BitOffs>2176</BitOffs>
+        <Properties>
+          <Property>
+            <Name>pytmc</Name>
+            <Value>
+        pv: fTargetVel
+        io: io
+        field: DESC The target velocity.
+    </Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>fTargetPos</Name>
+        <Type>LREAL</Type>
+        <Comment> Set in software to allow axis to target a position based on multiple leaders.</Comment>
+        <BitSize>64</BitSize>
+        <BitOffs>2240</BitOffs>
+        <Properties>
+          <Property>
+            <Name>pytmc</Name>
+            <Value>
+        pv: fTargetPos
+        io: io
+        field: DESC The target position.
+    </Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>fPosDelta</Name>
+        <Type>LREAL</Type>
+        <Comment> Difference between current position and target position.</Comment>
+        <BitSize>64</BitSize>
+        <BitOffs>2304</BitOffs>
+        <Properties>
+          <Property>
+            <Name>pytmc</Name>
+            <Value>
+        pv: fPosDelta
+        io: i
+        field: DESC Target position minus position.
+    </Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>fTargetTrackingGain</Name>
+        <Type>LREAL</Type>
+        <Comment> Gain used to tune target tracking when within target position window.</Comment>
+        <BitSize>64</BitSize>
+        <BitOffs>2368</BitOffs>
+        <Default>
+          <Value>1</Value>
+        </Default>
+        <Properties>
+          <Property>
+            <Name>pytmc</Name>
+            <Value>
+        pv: fTTGain
+        io: io
+        field: DESC Target tracking gain.
+    </Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>fHaltPos</Name>
+        <Type>LREAL</Type>
+        <Comment> Position at which halt is called. Allows for centering deadband.</Comment>
+        <BitSize>64</BitSize>
+        <BitOffs>2432</BitOffs>
+        <Properties>
+          <Property>
+            <Name>pytmc</Name>
+            <Value>
+        pv: fHaltPos
+        io: i
+        field: DESC Position at which axis halted.
+    </Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>stAcc</Name>
+        <Type>ST_BoundedValue</Type>
+        <BitSize>320</BitSize>
+        <BitOffs>2496</BitOffs>
+        <Properties>
+          <Property>
+            <Name>pytmc</Name>
+            <Value>pv: stAcc</Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>stVel</Name>
+        <Type>ST_BoundedValue</Type>
+        <BitSize>320</BitSize>
+        <BitOffs>2816</BitOffs>
+        <Properties>
+          <Property>
+            <Name>pytmc</Name>
+            <Value>pv: stVel</Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>stPos</Name>
+        <Type>ST_BoundedValue</Type>
+        <BitSize>320</BitSize>
+        <BitOffs>3136</BitOffs>
+        <Properties>
+          <Property>
+            <Name>pytmc</Name>
+            <Value>pv: stPos</Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>nDir</Name>
+        <Type>DINT</Type>
+        <BitSize>32</BitSize>
+        <BitOffs>3456</BitOffs>
+        <Properties>
+          <Property>
+            <Name>pytmc</Name>
+            <Value>
+        pv: nDir
+        io: i
+        field: DESC Internally calculated direction value for external setpoint generator.
+    </Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>bError</Name>
+        <Type>BOOL</Type>
+        <BitSize>8</BitSize>
+        <BitOffs>3488</BitOffs>
+        <Properties>
+          <Property>
+            <Name>pytmc</Name>
+            <Value>
+        pv: bError
+        io: i
+        field: DESC TRUE if an error is active.
+    </Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>sErrorMsg</Name>
+        <Type Namespace="Tc2_System">T_MaxString</Type>
+        <BitSize>2048</BitSize>
+        <BitOffs>3496</BitOffs>
+        <Properties>
+          <Property>
+            <Name>pytmc</Name>
+            <Value>
+        pv: sErrorMsg
+        io: i
+        field: DESC Displays error message relevant to the active error. Empty otherwise.
+    </Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>sErrorHelp</Name>
+        <Type Namespace="Tc2_System">T_MaxString</Type>
+        <BitSize>2048</BitSize>
+        <BitOffs>5544</BitOffs>
+        <Properties>
+          <Property>
+            <Name>pytmc</Name>
+            <Value>
+        pv: sErrorHelp
+        io: i
+        field: DESC Displays additional help for the active rror. Empty otherwise.
+    </Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>eState</Name>
+        <Type>E_MultiLeaderMotionCoupling</Type>
+        <BitSize>32</BitSize>
+        <BitOffs>7616</BitOffs>
+        <Properties>
+          <Property>
+            <Name>pytmc</Name>
+            <Value>
+        pv: eState
+        io: i
+        field: DESC Records the current state of the multi-leader function block.
+    </Value>
+          </Property>
+        </Properties>
+      </SubItem>
+    </DataType>
+    <DataType>
+      <Name>FB_MultiLeaderMotionCoupling</Name>
+      <BitSize>14336</BitSize>
+      <SubItem>
+        <Name>stMotionStageFollow</Name>
+        <Type Namespace="lcls_twincat_motion" ReferenceTo="true">ST_MotionStage</Type>
+        <BitSize>32</BitSize>
+        <BitOffs>32</BitOffs>
+        <Properties>
+          <Property>
+            <Name>ItemType</Name>
+            <Value>InOut</Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>stMultiLeaderMotionCoupling</Name>
+        <Type ReferenceTo="true">ST_MultiLeaderMotionCoupling</Type>
+        <BitSize>32</BitSize>
+        <BitOffs>64</BitOffs>
+        <Properties>
+          <Property>
+            <Name>ItemType</Name>
+            <Value>InOut</Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>fTargetPos</Name>
+        <Type>LREAL</Type>
+        <BitSize>64</BitSize>
+        <BitOffs>128</BitOffs>
+        <Properties>
+          <Property>
+            <Name>ItemType</Name>
+            <Value>Input</Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>fTargetVel</Name>
+        <Type>LREAL</Type>
+        <BitSize>64</BitSize>
+        <BitOffs>192</BitOffs>
+        <Properties>
+          <Property>
+            <Name>ItemType</Name>
+            <Value>Input</Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>fTargetAcc</Name>
+        <Type>LREAL</Type>
+        <BitSize>64</BitSize>
+        <BitOffs>256</BitOffs>
+        <Properties>
+          <Property>
+            <Name>ItemType</Name>
+            <Value>Input</Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>bError</Name>
+        <Type>BOOL</Type>
+        <BitSize>8</BitSize>
+        <BitOffs>320</BitOffs>
+        <Properties>
+          <Property>
+            <Name>ItemType</Name>
+            <Value>Input</Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>tTimeout</Name>
+        <Type>TIME</Type>
+        <BitSize>32</BitSize>
+        <BitOffs>352</BitOffs>
+        <Default>
+          <Value>5000</Value>
+        </Default>
+        <Properties>
+          <Property>
+            <Name>ItemType</Name>
+            <Value>Input</Value>
+          </Property>
+        </Properties>
+      </SubItem>
+      <SubItem>
+        <Name>bInit</Name>
+        <Type>BOOL</Type>
+        <BitSize>8</BitSize>
+        <BitOffs>384</BitOffs>
+        <Default>
+          <Value>1</Value>
+        </Default>
+      </SubItem>
+      <SubItem>
+        <Name>nTimeout</Name>
+        <Type>ULINT</Type>
+        <BitSize>64</BitSize>
+        <BitOffs>448</BitOffs>
+      </SubItem>
+      <SubItem>
+        <Name>tonTimeout</Name>
+        <Type Namespace="Tc2_Standard">TON</Type>
+        <BitSize>224</BitSize>
+        <BitOffs>512</BitOffs>
+      </SubItem>
+      <SubItem>
+        <Name>tonHaltDelay</Name>
+        <Type Namespace="Tc2_Standard">TON</Type>
+        <BitSize>224</BitSize>
+        <BitOffs>736</BitOffs>
+      </SubItem>
+      <SubItem>
+        <Name>tonTargetPositionTimer</Name>
+        <Type Namespace="Tc2_Standard">TON</Type>
+        <BitSize>224</BitSize>
+        <BitOffs>960</BitOffs>
+      </SubItem>
+      <SubItem>
+        <Name>fMoveTime</Name>
+        <Type>LREAL</Type>
+        <Comment> in seconds</Comment>
+        <BitSize>64</BitSize>
+        <BitOffs>1216</BitOffs>
+      </SubItem>
+      <SubItem>
+        <Name>tMove</Name>
+        <Type>TIME</Type>
+        <BitSize>32</BitSize>
+        <BitOffs>1280</BitOffs>
+      </SubItem>
+      <SubItem>
+        <Name>tonMoveProgressCounter</Name>
+        <Type Namespace="Tc2_Standard">TON</Type>
+        <BitSize>224</BitSize>
+        <BitOffs>1312</BitOffs>
+      </SubItem>
+      <SubItem>
+        <Name>GetCurrentTaskIndex</Name>
+        <Type Namespace="Tc2_System">GETCURTASKINDEX</Type>
+        <BitSize>128</BitSize>
+        <BitOffs>1536</BitOffs>
+      </SubItem>
+      <SubItem>
+        <Name>fSecPerScan</Name>
+        <Type>LREAL</Type>
+        <BitSize>64</BitSize>
+        <BitOffs>1664</BitOffs>
+      </SubItem>
+      <SubItem>
+        <Name>fDistanceThisScan</Name>
+        <Type>LREAL</Type>
+        <BitSize>64</BitSize>
+        <BitOffs>1728</BitOffs>
+      </SubItem>
+      <SubItem>
+        <Name>EnableSetPointGenerator</Name>
+        <Type Namespace="Tc2_MC2">MC_ExtSetPointGenEnable</Type>
+        <BitSize>2176</BitSize>
+        <BitOffs>1792</BitOffs>
+      </SubItem>
+      <SubItem>
+        <Name>DisableSetPointGenerator</Name>
+        <Type Namespace="Tc2_MC2">MC_ExtSetPointGenDisable</Type>
+        <BitSize>1792</BitSize>
+        <BitOffs>3968</BitOffs>
+      </SubItem>
+      <SubItem>
+        <Name>mcHalt</Name>
+        <Type Namespace="Tc2_MC2">MC_Halt</Type>
+        <BitSize>8576</BitSize>
+        <BitOffs>5760</BitOffs>
+      </SubItem>
+      <Action>
+        <Name>ACT_04_STATE_WAIT_FOR_FOLLOWER_READY</Name>
+      </Action>
+      <Action>
+        <Name>ACT_05_STATE_ENABLE_EXTERNAL_SETPOINT_GENERATOR</Name>
+      </Action>
+      <Action>
+        <Name>ACT_02_STATE_WAIT_FOR_FOLLOWER_NOT_BUSY</Name>
+      </Action>
+      <Action>
+        <Name>ACT_07_STATE_DISABLE_EXTERNAL_SETPOINT_GENERATOR</Name>
+      </Action>
+      <Action>
+        <Name>ACT_06_STATE_FOLLOWING_ACTIVE</Name>
+      </Action>
+      <Action>
+        <Name>ACT_01_STATE_STANDBY</Name>
+      </Action>
+      <Action>
+        <Name>ACT_ComputeTargets</Name>
+      </Action>
+      <Action>
+        <Name>ACT_09_STATE_MONITOR_TARGET_WINDOW</Name>
+      </Action>
+      <Action>
+        <Name>ACT_03_STATE_WAIT_FOR_FOLLOWER_ENABLED</Name>
+      </Action>
+      <Action>
+        <Name>ACT_08_STATE_ERROR</Name>
+      </Action>
+      <Action>
+        <Name>ACT_10_STATE_HALT_MOTION</Name>
+      </Action>
+      <Method>
+        <Name>METH_ApplyKinematicLimits</Name>
+        <ReturnType>BOOL</ReturnType>
+        <ReturnBitSize>8</ReturnBitSize>
+        <Parameter>
+          <Name>stAcc</Name>
+          <Type ReferenceTo="true">ST_BoundedValue</Type>
+          <BitSize>32</BitSize>
+          <Properties>
+            <Property>
+              <Name>ItemType</Name>
+              <Value>InOut</Value>
+            </Property>
+          </Properties>
+        </Parameter>
+        <Parameter>
+          <Name>stVel</Name>
+          <Type ReferenceTo="true">ST_BoundedValue</Type>
+          <BitSize>32</BitSize>
+          <Properties>
+            <Property>
+              <Name>ItemType</Name>
+              <Value>InOut</Value>
+            </Property>
+          </Properties>
+        </Parameter>
+        <Parameter>
+          <Name>stPos</Name>
+          <Type ReferenceTo="true">ST_BoundedValue</Type>
+          <BitSize>32</BitSize>
+          <Properties>
+            <Property>
+              <Name>ItemType</Name>
+              <Value>InOut</Value>
+            </Property>
+          </Properties>
+        </Parameter>
+        <Parameter>
+          <Name>bEnable</Name>
+          <Type>BOOL</Type>
+          <BitSize>8</BitSize>
+        </Parameter>
+      </Method>
+      <Method>
+        <Name>METH_Init</Name>
+        <ReturnType>BOOL</ReturnType>
+        <ReturnBitSize>8</ReturnBitSize>
+        <Parameter>
+          <Name>stMotionStage</Name>
+          <Type Namespace="lcls_twincat_motion" ReferenceTo="true">ST_MotionStage</Type>
+          <BitSize>32</BitSize>
+          <Properties>
+            <Property>
+              <Name>ItemType</Name>
+              <Value>InOut</Value>
+            </Property>
+          </Properties>
+        </Parameter>
+        <Parameter>
+          <Name>stMultiLeaderMotionCoupling</Name>
+          <Type ReferenceTo="true">ST_MultiLeaderMotionCoupling</Type>
+          <BitSize>32</BitSize>
+          <Properties>
+            <Property>
+              <Name>ItemType</Name>
+              <Value>InOut</Value>
+            </Property>
+          </Properties>
+        </Parameter>
+        <Parameter>
+          <Name>bEnableByDefault</Name>
+          <Type>BOOL</Type>
+          <BitSize>8</BitSize>
+        </Parameter>
+        <Parameter>
+          <Name>bUseDynamicLimits</Name>
+          <Type>BOOL</Type>
+          <BitSize>8</BitSize>
+        </Parameter>
+      </Method>
+      <Method>
+        <Name>METH_MaxMinLim</Name>
+        <ReturnType>BOOL</ReturnType>
+        <ReturnBitSize>8</ReturnBitSize>
+        <Parameter>
+          <Name>stVal</Name>
+          <Type ReferenceTo="true">ST_BoundedValue</Type>
+          <BitSize>32</BitSize>
+          <Properties>
+            <Property>
+              <Name>ItemType</Name>
+              <Value>InOut</Value>
+            </Property>
+          </Properties>
+        </Parameter>
+      </Method>
+      <Properties>
+        <Property>
+          <Name>PouType</Name>
+          <Value>FunctionBlock</Value>
+        </Property>
+      </Properties>
+    </DataType>
   </DataTypes>
   <Modules>
     <Module GUID="{428ECB78-8B90-4622-9114-79185B086A58}" TcSmClass="TComPlcObjDef">
@@ -61054,7 +60989,7 @@ External Setpoint Generation:
           <AreaNo AreaType="InputDst" CreateSymbols="true">0</AreaNo>
           <Name>PlcTask Inputs</Name>
           <ContextId>0</ContextId>
-          <ByteSize>162725888</ByteSize>
+          <ByteSize>162856960</ByteSize>
           <Symbol>
             <Name>lcls_twincat_optics.GVL_TestStructs.TestPitch_LimitSwitches.diEncCnt</Name>
             <Comment>Raw encoder count</Comment>
@@ -62560,38 +62495,6 @@ External Setpoint Generation:
             <BitOffs>1282223040</BitOffs>
           </Symbol>
           <Symbol>
-            <Name>PRG_Collect_Scope_Info.Theta2_Current_mA</Name>
-            <BitSize>16</BitSize>
-            <BaseType>UINT</BaseType>
-            <Properties>
-              <Property>
-                <Name>TcLinkTo</Name>
-                <Value>TIID^Device 1 (EtherCAT)^Rack#1A-01 Coupler (EK1100)^Rack#1A-04 DR_2Th (EL7047)^STM Synchron info data^Info data 2;</Value>
-              </Property>
-              <Property>
-                <Name>TcAddressType</Name>
-                <Value>Input</Value>
-              </Property>
-            </Properties>
-            <BitOffs>1282518496</BitOffs>
-          </Symbol>
-          <Symbol>
-            <Name>PRG_Collect_Scope_Info.Theta2_Load</Name>
-            <BitSize>16</BitSize>
-            <BaseType>UINT</BaseType>
-            <Properties>
-              <Property>
-                <Name>TcLinkTo</Name>
-                <Value>TIID^Device 1 (EtherCAT)^Rack#1A-01 Coupler (EK1100)^Rack#1A-04 DR_2Th (EL7047)^STM Synchron info data^Info data 1;</Value>
-              </Property>
-              <Property>
-                <Name>TcAddressType</Name>
-                <Value>Input</Value>
-              </Property>
-            </Properties>
-            <BitOffs>1282518512</BitOffs>
-          </Symbol>
-          <Symbol>
             <Name>PRG_Cryo.stDiffThetaEnc.Count</Name>
             <Comment> Connect to encoder "Position" input</Comment>
             <BitSize>64</BitSize>
@@ -62684,69 +62587,6 @@ External Setpoint Generation:
               </Property>
             </Properties>
             <BitOffs>1282529232</BitOffs>
-          </Symbol>
-          <Symbol>
-            <Name>PRG_Cryo.stCryoXMultiLeader.bFollowerDriveReady</Name>
-            <Comment> Link to the ready status of the drive</Comment>
-            <BitSize>8</BitSize>
-            <BaseType>BOOL</BaseType>
-            <Properties>
-              <Property>
-                <Name>pytmc</Name>
-                <Value>
-        pv: bFollowerDriveReady
-        io: i
-        field: DESC Linked to the ready status of the drive.
-    </Value>
-              </Property>
-              <Property>
-                <Name>TcAddressType</Name>
-                <Value>Input</Value>
-              </Property>
-            </Properties>
-            <BitOffs>1282531928</BitOffs>
-          </Symbol>
-          <Symbol>
-            <Name>PRG_Cryo.stCryoYMultiLeader.bFollowerDriveReady</Name>
-            <Comment> Link to the ready status of the drive</Comment>
-            <BitSize>8</BitSize>
-            <BaseType>BOOL</BaseType>
-            <Properties>
-              <Property>
-                <Name>pytmc</Name>
-                <Value>
-        pv: bFollowerDriveReady
-        io: i
-        field: DESC Linked to the ready status of the drive.
-    </Value>
-              </Property>
-              <Property>
-                <Name>TcAddressType</Name>
-                <Value>Input</Value>
-              </Property>
-            </Properties>
-            <BitOffs>1282553688</BitOffs>
-          </Symbol>
-          <Symbol>
-            <Name>PRG_Cryo.stCryoZMultiLeader.bFollowerDriveReady</Name>
-            <Comment> Link to the ready status of the drive</Comment>
-            <BitSize>8</BitSize>
-            <BaseType>BOOL</BaseType>
-            <Properties>
-              <Property>
-                <Name>pytmc</Name>
-                <Value>
-        pv: bFollowerDriveReady
-        io: i
-        field: DESC Linked to the ready status of the drive.
-    </Value>
-              </Property>
-              <Property>
-                <Name>TcAddressType</Name>
-                <Value>Input</Value>
-              </Property>
-            </Properties>
-            <BitOffs>1282575448</BitOffs>
           </Symbol>
           <Symbol>
             <Name>PRG_Cryo.fbMeasureReferenceVelocityCryoROT.nMicrostepCounter</Name>
@@ -69435,12 +69275,75 @@ External Setpoint Generation:
             </Properties>
             <BitOffs>1293787984</BitOffs>
           </Symbol>
+          <Symbol>
+            <Name>PRG_Cryo.stCryoXMultiLeader.bFollowerDriveReady</Name>
+            <Comment> Link to the ready status of the drive</Comment>
+            <BitSize>8</BitSize>
+            <BaseType>BOOL</BaseType>
+            <Properties>
+              <Property>
+                <Name>pytmc</Name>
+                <Value>
+        pv: bFollowerDriveReady
+        io: i
+        field: DESC Linked to the ready status of the drive.
+    </Value>
+              </Property>
+              <Property>
+                <Name>TcAddressType</Name>
+                <Value>Input</Value>
+              </Property>
+            </Properties>
+            <BitOffs>1301413080</BitOffs>
+          </Symbol>
+          <Symbol>
+            <Name>PRG_Cryo.stCryoYMultiLeader.bFollowerDriveReady</Name>
+            <Comment> Link to the ready status of the drive</Comment>
+            <BitSize>8</BitSize>
+            <BaseType>BOOL</BaseType>
+            <Properties>
+              <Property>
+                <Name>pytmc</Name>
+                <Value>
+        pv: bFollowerDriveReady
+        io: i
+        field: DESC Linked to the ready status of the drive.
+    </Value>
+              </Property>
+              <Property>
+                <Name>TcAddressType</Name>
+                <Value>Input</Value>
+              </Property>
+            </Properties>
+            <BitOffs>1301435096</BitOffs>
+          </Symbol>
+          <Symbol>
+            <Name>PRG_Cryo.stCryoZMultiLeader.bFollowerDriveReady</Name>
+            <Comment> Link to the ready status of the drive</Comment>
+            <BitSize>8</BitSize>
+            <BaseType>BOOL</BaseType>
+            <Properties>
+              <Property>
+                <Name>pytmc</Name>
+                <Value>
+        pv: bFollowerDriveReady
+        io: i
+        field: DESC Linked to the ready status of the drive.
+    </Value>
+              </Property>
+              <Property>
+                <Name>TcAddressType</Name>
+                <Value>Input</Value>
+              </Property>
+            </Properties>
+            <BitOffs>1301457112</BitOffs>
+          </Symbol>
         </DataArea>
         <DataArea>
           <AreaNo AreaType="OutputSrc" CreateSymbols="true">1</AreaNo>
           <Name>PlcTask Outputs</Name>
           <ContextId>0</ContextId>
-          <ByteSize>162725888</ByteSize>
+          <ByteSize>162856960</ByteSize>
           <Symbol>
             <Name>PRG_2_PMPS.fbArbiterIO.q_stRequestedBP</Name>
             <BitSize>1760</BitSize>
@@ -72152,7 +72055,7 @@ External Setpoint Generation:
           <AreaNo AreaType="Internal" CreateSymbols="true">3</AreaNo>
           <Name>PlcTask Internal</Name>
           <ContextId>0</ContextId>
-          <ByteSize>162725888</ByteSize>
+          <ByteSize>162856960</ByteSize>
           <Symbol>
             <Name>DefaultGlobals.stSys</Name>
             <Comment>Included for you</Comment>
@@ -81706,87 +81609,6 @@ External Setpoint Generation:
             <BitOffs>1282529792</BitOffs>
           </Symbol>
           <Symbol>
-            <Name>PRG_Cryo.stCryoXMultiLeader</Name>
-            <BitSize>7680</BitSize>
-            <BaseType>ST_MultiLeaderMotionCoupling</BaseType>
-            <Properties>
-              <Property>
-                <Name>TcLinkTo</Name>
-                <Value>.bFollowerDriveReady := TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_12^STM Status^Status^Ready
-    </Value>
-              </Property>
-              <Property>
-                <Name>pytmc</Name>
-                <Value>
-        pv: QRIX:CRYO:MLC:X
-        io: io
-        field: DESC Structure representing Cryo X multi-leader coupling.
-    </Value>
-              </Property>
-            </Properties>
-            <BitOffs>1282529856</BitOffs>
-          </Symbol>
-          <Symbol>
-            <Name>PRG_Cryo.fbCryoXMultiLeader</Name>
-            <BitSize>14080</BitSize>
-            <BaseType>FB_MultiLeaderMotionCoupling</BaseType>
-            <BitOffs>1282537536</BitOffs>
-          </Symbol>
-          <Symbol>
-            <Name>PRG_Cryo.stCryoYMultiLeader</Name>
-            <BitSize>7680</BitSize>
-            <BaseType>ST_MultiLeaderMotionCoupling</BaseType>
-            <Properties>
-              <Property>
-                <Name>TcLinkTo</Name>
-                <Value>.bFollowerDriveReady := TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_14^STM Status^Status^Ready
-    </Value>
-              </Property>
-              <Property>
-                <Name>pytmc</Name>
-                <Value>
-        pv: QRIX:CRYO:MLC:Y
-        io: io
-        field: DESC Structure representing Cryo Y multi-leader coupling.
-    </Value>
-              </Property>
-            </Properties>
-            <BitOffs>1282551616</BitOffs>
-          </Symbol>
-          <Symbol>
-            <Name>PRG_Cryo.fbCryoYMultiLeader</Name>
-            <BitSize>14080</BitSize>
-            <BaseType>FB_MultiLeaderMotionCoupling</BaseType>
-            <BitOffs>1282559296</BitOffs>
-          </Symbol>
-          <Symbol>
-            <Name>PRG_Cryo.stCryoZMultiLeader</Name>
-            <BitSize>7680</BitSize>
-            <BaseType>ST_MultiLeaderMotionCoupling</BaseType>
-            <Properties>
-              <Property>
-                <Name>TcLinkTo</Name>
-                <Value>.bFollowerDriveReady := TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_15^STM Status^Status^Ready
-    </Value>
-              </Property>
-              <Property>
-                <Name>pytmc</Name>
-                <Value>
-        pv: QRIX:CRYO:MLC:Z
-        io: io
-        field: DESC Structure representing Cryo Z multi-leader coupling.
-    </Value>
-              </Property>
-            </Properties>
-            <BitOffs>1282573376</BitOffs>
-          </Symbol>
-          <Symbol>
-            <Name>PRG_Cryo.fbCryoZMultiLeader</Name>
-            <BitSize>14080</BitSize>
-            <BaseType>FB_MultiLeaderMotionCoupling</BaseType>
-            <BitOffs>1282581056</BitOffs>
-          </Symbol>
-          <Symbol>
             <Name>PRG_Cryo.fCryoYNeutralPositionAtDiffY0</Name>
             <BitSize>64</BitSize>
             <BaseType>LREAL</BaseType>
@@ -85467,12 +85289,99 @@ Cryo -X</Comment>
             </Properties>
             <BitOffs>1293853760</BitOffs>
           </Symbol>
+          <Symbol>
+            <Name>PRG_Cryo.fCryoZNeutralPositionAtDiffZ0</Name>
+            <BitSize>64</BitSize>
+            <BaseType>LREAL</BaseType>
+            <BitOffs>1298664384</BitOffs>
+          </Symbol>
+          <Symbol>
+            <Name>PRG_Cryo.stCryoXMultiLeader</Name>
+            <BitSize>7680</BitSize>
+            <BaseType>ST_MultiLeaderMotionCoupling</BaseType>
+            <Properties>
+              <Property>
+                <Name>TcLinkTo</Name>
+                <Value>.bFollowerDriveReady := TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_12^STM Status^Status^Ready
+    </Value>
+              </Property>
+              <Property>
+                <Name>pytmc</Name>
+                <Value>
+        pv: QRIX:CRYO:MLC:X
+        io: io
+        field: DESC Structure representing Cryo X multi-leader coupling.
+    </Value>
+              </Property>
+            </Properties>
+            <BitOffs>1301411008</BitOffs>
+          </Symbol>
+          <Symbol>
+            <Name>PRG_Cryo.fbCryoXMultiLeader</Name>
+            <BitSize>14336</BitSize>
+            <BaseType>FB_MultiLeaderMotionCoupling</BaseType>
+            <BitOffs>1301418688</BitOffs>
+          </Symbol>
+          <Symbol>
+            <Name>PRG_Cryo.stCryoYMultiLeader</Name>
+            <BitSize>7680</BitSize>
+            <BaseType>ST_MultiLeaderMotionCoupling</BaseType>
+            <Properties>
+              <Property>
+                <Name>TcLinkTo</Name>
+                <Value>.bFollowerDriveReady := TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_14^STM Status^Status^Ready
+    </Value>
+              </Property>
+              <Property>
+                <Name>pytmc</Name>
+                <Value>
+        pv: QRIX:CRYO:MLC:Y
+        io: io
+        field: DESC Structure representing Cryo Y multi-leader coupling.
+    </Value>
+              </Property>
+            </Properties>
+            <BitOffs>1301433024</BitOffs>
+          </Symbol>
+          <Symbol>
+            <Name>PRG_Cryo.fbCryoYMultiLeader</Name>
+            <BitSize>14336</BitSize>
+            <BaseType>FB_MultiLeaderMotionCoupling</BaseType>
+            <BitOffs>1301440704</BitOffs>
+          </Symbol>
+          <Symbol>
+            <Name>PRG_Cryo.stCryoZMultiLeader</Name>
+            <BitSize>7680</BitSize>
+            <BaseType>ST_MultiLeaderMotionCoupling</BaseType>
+            <Properties>
+              <Property>
+                <Name>TcLinkTo</Name>
+                <Value>.bFollowerDriveReady := TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_15^STM Status^Status^Ready
+    </Value>
+              </Property>
+              <Property>
+                <Name>pytmc</Name>
+                <Value>
+        pv: QRIX:CRYO:MLC:Z
+        io: io
+        field: DESC Structure representing Cryo Z multi-leader coupling.
+    </Value>
+              </Property>
+            </Properties>
+            <BitOffs>1301455040</BitOffs>
+          </Symbol>
+          <Symbol>
+            <Name>PRG_Cryo.fbCryoZMultiLeader</Name>
+            <BitSize>14336</BitSize>
+            <BaseType>FB_MultiLeaderMotionCoupling</BaseType>
+            <BitOffs>1301462720</BitOffs>
+          </Symbol>
         </DataArea>
         <DataArea>
           <AreaNo AreaType="RetainSrc" CreateSymbols="true">4</AreaNo>
           <Name>PlcTask Retains</Name>
           <ContextId>0</ContextId>
-          <ByteSize>162725888</ByteSize>
+          <ByteSize>162856960</ByteSize>
           <Symbol>
             <Name>PMPS_GVL.SuccessfulPreemption</Name>
             <Comment> Any time BPTM applies a new BP request which is confirmed</Comment>
@@ -85558,7 +85467,7 @@ Cryo -X</Comment>
         </Property>
         <Property>
           <Name>ChangeDate</Name>
-          <Value>2024-09-19T16:09:55</Value>
+          <Value>2024-09-20T10:56:00</Value>
         </Property>
         <Property>
           <Name>GeneratedCodeSize</Name>
