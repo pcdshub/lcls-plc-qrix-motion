@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<TcPlcObject Version="1.1.0.1">
   <POU Name="FB_MultiLeaderMotionCoupling" Id="{7a6ad094-6232-44ec-af8d-1b0e9853827f}" SpecialFunc="None">
     <Declaration><![CDATA[
 FUNCTION_BLOCK FB_MultiLeaderMotionCoupling
@@ -47,7 +47,20 @@ IF bInit OR stMultiLeaderMotionCoupling.bReset THEN
     stMultiLeaderMotionCoupling.sErrorMsg  := '';
     stMultiLeaderMotionCoupling.sErrorHelp := '';
     stMultiLeaderMotionCoupling.eState     := E_MultiLeaderMotionCoupling.STATE_STANDBY;
+
+    METH_Init(
+        stMotionStage     := stMotionStageFollow,
+        stMultiLeader     := stMultiLeaderMotionCoupling,
+        bEnableByDefault  := stMultiLeaderMotionCoupling.bEnable,
+        bUseDynamicLimits := stMultiLeaderMotionCoupling.bUseDynamicLimits
+    );
 END_IF
+
+stMultiLeaderMotionCoupling.fTargetPos := fTargetPos;
+stMultiLeaderMotionCoupling.fTargetVel := ABS(fTargetVel);
+stMultiLeaderMotionCoupling.fTargetAcc := fTargetAcc;
+
+stMultiLeaderMotionCoupling.fPosDelta := stMultiLeaderMotionCoupling.stPos.fOut - stMotionStageFollow.Axis.NcToPlc.ActPos;
 
 nTimeout := TIME_TO_ULINT(tTimeout - tonTimeout.ET); // Get the remaining timeout time in ms.
 
@@ -224,6 +237,8 @@ END_IF
       <Implementation>
         <ST><![CDATA[
 (* ACTION - STATE ENABLE EXTERNAL SETPOINT GENERATOR *)
+
+ACT_ComputeTargets();
 
 tonTimeout(IN:=TRUE,PT:=tTimeout);
 EnableSetPointGenerator(
@@ -470,12 +485,14 @@ END_IF
 
 ACT_ComputeTargets();
 
+stMotionStageFollow.bEnable := FALSE;
+
 stMultiLeaderMotionCoupling.fPosDelta := stMultiLeaderMotionCoupling.stPos.fOut - stMultiLeaderMotionCoupling.fHaltPos;
 
 IF NOT stMultiLeaderMotionCoupling.bEnable THEN
-    stMultiLeaderMotionCoupling.eState := E_MultiLeaderMotionCoupling.STATE_DISABLE_EXTERNAL_SETPOINT_GENERATOR;
+    stMultiLeaderMotionCoupling.eState := E_MultiLeaderMotionCoupling.STATE_STANDBY;
 ELSIF ABS(stMultiLeaderMotionCoupling.fPosDelta) >= stMotionStageFollow.stAxisParameters.fTargetPosControlRange THEN
-    stMultiLeaderMotionCoupling.eState := E_MultiLeaderMotionCoupling.STATE_ENABLE_EXTERNAL_SETPOINT_GENERATOR;
+    stMultiLeaderMotionCoupling.eState := E_MultiLeaderMotionCoupling.STATE_WAIT_FOR_FOLLOWER_ENABLED;
 ELSE
     stMultiLeaderMotionCoupling.sStatusMsg := 'Holding mode active. Monitoring target position window for changes.';
 END_IF
@@ -563,41 +580,14 @@ END_IF
 // would otherwise lead to errors from the axis being commanded. Flags are set to indicate if one
 // of the limiters is active.
 
-IF stMultiLeaderMotionCoupling.stAcc.fMax <= 0 THEN
-    stMultiLeaderMotionCoupling.stAcc.fMax := stMotionStageFollow.stAxisParameters.fAccelerationMax;
-ELSIF stMultiLeaderMotionCoupling.stAcc.fMax > stMotionStageFollow.stAxisParameters.fAccelerationMax THEN
-    stMultiLeaderMotionCoupling.stAcc.fMax := stMotionStageFollow.stAxisParameters.fAccelerationMax;
-END_IF
+stMultiLeaderMotionCoupling.stAcc.fMax := stMotionStageFollow.stAxisParameters.fAccelerationMax;
+stMultiLeaderMotionCoupling.stAcc.fMin := -stMotionStageFollow.stAxisParameters.fDecelerationMax;
 
-IF stMultiLeaderMotionCoupling.stAcc.fMin >= 0 THEN
-    stMultiLeaderMotionCoupling.stAcc.fMin := -stMotionStageFollow.stAxisParameters.fDecelerationMax;
-ELSIF stMultiLeaderMotionCoupling.stAcc.fMin < -stMotionStageFollow.stAxisParameters.fDecelerationMax THEN
-    stMultiLeaderMotionCoupling.stAcc.fMin := -stMotionStageFollow.stAxisParameters.fDecelerationMax;
-END_IF
+stMultiLeaderMotionCoupling.stVel.fMax := stMotionStageFollow.stAxisParameters.fVeloMaximum;
+stMultiLeaderMotionCoupling.stVel.fMin := -stMotionStageFollow.stAxisParameters.fVeloMaximum;
 
-IF stMultiLeaderMotionCoupling.stVel.fMax <= 0 THEN
-    stMultiLeaderMotionCoupling.stVel.fMax := stMotionStageFollow.stAxisParameters.fVeloMaximum;
-ELSIF stMultiLeaderMotionCoupling.stVel.fMax > stMotionStageFollow.stAxisParameters.fVeloMaximum THEN
-    stMultiLeaderMotionCoupling.stVel.fMax := stMotionStageFollow.stAxisParameters.fVeloMaximum;
-END_IF
-
-IF stMultiLeaderMotionCoupling.stVel.fMin >= 0 THEN
-    stMultiLeaderMotionCoupling.stVel.fMin := -stMotionStageFollow.stAxisParameters.fVeloMaximum;
-ELSIF stMultiLeaderMotionCoupling.stVel.fMin < -stMotionStageFollow.stAxisParameters.fVeloMaximum THEN
-    stMultiLeaderMotionCoupling.stVel.fMin := -stMotionStageFollow.stAxisParameters.fVeloMaximum;
-END_IF
-
-IF stMultiLeaderMotionCoupling.stPos.fMax > stMotionStageFollow.stAxisParameters.fEncSoftEndMax THEN
-    stMultiLeaderMotionCoupling.stPos.fMax := stMotionStageFollow.stAxisParameters.fEncSoftEndMax;
-END_IF
-
-IF stMultiLeaderMotionCoupling.stPos.fMin < stMotionStageFollow.stAxisParameters.fEncSoftEndMin THEN
-    stMultiLeaderMotionCoupling.stPos.fMin := stMotionStageFollow.stAxisParameters.fEncSoftEndMin;
-END_IF
-
-stMultiLeaderMotionCoupling.fTargetPos := fTargetPos;
-stMultiLeaderMotionCoupling.fTargetVel := fTargetVel;
-stMultiLeaderMotionCoupling.fTargetAcc := fTargetAcc;
+stMultiLeaderMotionCoupling.stPos.fMax := stMotionStageFollow.stAxisParameters.fEncSoftEndMax;
+stMultiLeaderMotionCoupling.stPos.fMin := stMotionStageFollow.stAxisParameters.fEncSoftEndMin;
 
 stMultiLeaderMotionCoupling.stAcc.fIn := stMultiLeaderMotionCoupling.fTargetAcc;
 stMultiLeaderMotionCoupling.stVel.fIn := stMultiLeaderMotionCoupling.fTargetVel;
@@ -652,28 +642,52 @@ END_IF
 METHOD METH_Init : BOOL
 VAR_IN_OUT
     stMotionStage : ST_MotionStage;
-    stMultiLeaderMotionCoupling : ST_MultiLeaderMotionCoupling;
+    stMultiLeader : ST_MultiLeaderMotionCoupling;
 END_VAR
 VAR_INPUT
     bEnableByDefault  : BOOL;
     bUseDynamicLimits : BOOL;
 END_VAR
+VAR
+    mcReadParams: MC_ReadParameterSet;
+END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[
-stMultiLeaderMotionCoupling.stAcc.fMax := stMotionStageFollow.stAxisParameters.fAccelerationMax;
-stMultiLeaderMotionCoupling.stAcc.fMin := -stMotionStageFollow.stAxisParameters.fDecelerationMax;
+mcReadParams(
+    Parameter := stMotionStage.stAxisParameters,
+    Axis := stMotionStage.Axis,
+    Execute := TRUE,
+    Error =>
+);
 
-stMultiLeaderMotionCoupling.stVel.fMax := stMotionStageFollow.stAxisParameters.fVeloMaximum;
-stMultiLeaderMotionCoupling.stVel.fMin := -stMotionStageFollow.stAxisParameters.fVeloMaximum;
+IF NOT mcReadParams.Error THEN
+    stMultiLeader.stAcc.fMax := stMotionStage.stAxisParameters.fAccelerationMax;
+    stMultiLeader.stAcc.fMin := -stMotionStage.stAxisParameters.fDecelerationMax;
 
-stMultiLeaderMotionCoupling.stPos.fMax := stMotionStageFollow.stAxisParameters.fEncSoftEndMax;
-stMultiLeaderMotionCoupling.stPos.fMin := stMotionStageFollow.stAxisParameters.fEncSoftEndMin;
+    stMultiLeader.stVel.fMax := stMotionStage.stAxisParameters.fVeloMaximum;
+    stMultiLeader.stVel.fMin := -stMotionStage.stAxisParameters.fVeloMaximum;
 
-stMultiLeaderMotionCoupling.fTargetPos := stMotionStage.Axis.NcToPlc.ActPos;
+    stMultiLeader.stPos.fMax := stMotionStage.stAxisParameters.fEncSoftEndMax;
+    stMultiLeader.stPos.fMin := stMotionStage.stAxisParameters.fEncSoftEndMin;
+ELSE
+    stMultiLeaderMotionCoupling.bError     := TRUE;
+    stMultiLeaderMotionCoupling.sErrorMsg  := 'MultiLeaderMotionCoupling failed to load axis parameters.';
+    stMultiLeaderMotionCoupling.sErrorHelp := stMotionStageFollow.sErrorMessage;
+    stMultiLeaderMotionCoupling.eState     := E_MultiLeaderMotionCoupling.STATE_ERROR;
+END_IF
 
-stMultiLeaderMotionCoupling.bEnable           := bEnableByDefault;
-stMultiLeaderMotionCoupling.bUseDynamicLimits := bUseDynamicLimits;
+mcReadParams(
+    Parameter := stMotionStage.stAxisParameters,
+    Axis := stMotionStage.Axis,
+    Execute := FALSE,
+    Error =>
+);
+
+stMultiLeader.fTargetPos := stMotionStage.Axis.NcToPlc.ActPos;
+
+stMultiLeader.bEnable           := bEnableByDefault;
+stMultiLeader.bUseDynamicLimits := bUseDynamicLimits;
 ]]></ST>
       </Implementation>
     </Method>

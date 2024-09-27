@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<TcPlcObject Version="1.1.0.1">
   <GVL Name="GVL_PMPS" Id="{3a21f405-831e-4bf0-92c1-62f30c7f9e94}">
     <Declaration><![CDATA[
 {attribute 'qualified_only'}

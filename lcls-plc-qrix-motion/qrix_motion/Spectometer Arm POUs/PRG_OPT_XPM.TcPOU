@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<TcPlcObject Version="1.1.0.1">
   <POU Name="PRG_OPT_XPM" Id="{22739f85-3eea-4d07-957d-370832f3ada0}" SpecialFunc="None">
     <Declaration><![CDATA[
 PROGRAM PRG_OPT_XPM

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<TcPlcObject Version="1.1.0.1">
   <POU Name="PRG_2Theta" Id="{49979313-c6aa-43cf-b80a-b1a64d0ce087}" SpecialFunc="None">
     <Declaration><![CDATA[
 PROGRAM PRG_2Theta
@@ -17,10 +17,11 @@ VAR
     bMoveNegAndOK: BOOL;
     rtExecuteMove: R_TRIG;
 
-    {attribute 'TcLinkTo' :=  'TIID^Device 1 (EtherCAT)^Rack#1A-01 Coupler (EK1100)^Rack#1A-04 DR_2Th (EL7047)^STM Status^Status^Ready'}
+    {attribute 'TcLinkTo' :=  'TIID^Device 2 (EtherCAT)^Rack#1A-01 Coupler (EK1100)^Rack#1A-04 DR_2Th (EL7047)^STM Status^Status^Ready'}
     b2ThetaDriveReady AT %I*: BOOL;
-    {attribute 'TcLinkTo' :=  'TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_01 - SSL^STM Status^Status^Ready'}
-    bSSLDriveReady AT %I*: BOOL;
+    {attribute 'TcLinkTo' :=  'TIPC^qrix_motion^qrix_motion Instance^PlcTask Outputs^PRG_SSL.EL7047_02_01_SSL_Status_to_NC'}
+    nSSLDriveStatus AT %I* : USINT;
+    bSSLDriveReady : BOOL;
 END_VAR
 
 VAR CONSTANT
@@ -47,6 +48,8 @@ IF binit THEN
 
     Main.M2.nEnableMode := ENUM_StageEnableMode.NEVER ;
 END_IF;
+
+bSSLDriveReady := nSSLDriveStatus.1; // Drive status ready bit after tying it to bFloating.
 
 ACT_Stepper();
 ]]></ST>

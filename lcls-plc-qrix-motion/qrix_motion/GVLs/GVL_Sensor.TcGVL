@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<TcPlcObject Version="1.1.0.1">
   <GVL Name="GVL_Sensor" Id="{1e8c8953-d9ec-471b-85fd-d0dbdbf1215b}">
     <Declaration><![CDATA[
 {attribute 'qualified_only'}

@@ -12,11 +12,12 @@
     <Implicit_KindOfTask>{3a814baf-682a-4c71-ac6d-3df088fa5f2d}</Implicit_KindOfTask>
     <Implicit_Jitter_Distribution>{a56db53a-8dc4-458d-965b-56cadc319851}</Implicit_Jitter_Distribution>
     <LibraryReferences>{8cf74047-d834-494f-9acc-d498e2d4e57a}</LibraryReferences>
-    <CombineIds>false</CombineIds>
+    <CombineIds>true</CombineIds>
     <Released>false</Released>
     <ProjectVersion>0.0.0</ProjectVersion>
     <Company>SLAC - LCLS</Company>
     <Title>qrix-motion</Title>
+    <WriteProductVersion>false</WriteProductVersion>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Devices\FB_2AxesTrans.TcPOU">
@@ -149,6 +150,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\F_Limit.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\F_TargetCryoYPosition.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\PRG_1_PlcTask.TcPOU">

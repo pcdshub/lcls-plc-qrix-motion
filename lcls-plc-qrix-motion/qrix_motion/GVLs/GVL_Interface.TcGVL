@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<TcPlcObject Version="1.1.0.1">
   <GVL Name="GVL_Interface" Id="{9015c516-d8f9-43e2-a009-77e4a7b6c942}">
     <Declaration><![CDATA[
 {attribute 'qualified_only'}
@@ -7,32 +7,32 @@ VAR_GLOBAL
 
     (*I/O Outputs to QRIX Vacuum PLC*)
 
-    {attribute 'TcLinkTo' :=  'TIID^Device 1 (EtherCAT)^B950-233-R03-DRL-01 (EK1200)^Term 141 (EL6692)^IO Outputs^QRIX_MOT_SDS_MMS_H_RAW_ENC_CNTS
+    {attribute 'TcLinkTo' :=  'TIID^Device 2 (EtherCAT)^B950-233-R03-DRL-01 (EK1200)^Term 141 (EL6692)^IO Outputs^QRIX_MOT_SDS_MMS_H_RAW_ENC_CNTS
     '}
     QRIX_MOT_SDS_MMS_H_RAW_ENC_CNTS AT %Q* : UINT;
 
-    {attribute 'TcLinkTo' :=  'TIID^Device 1 (EtherCAT)^B950-233-R03-DRL-01 (EK1200)^Term 141 (EL6692)^IO Outputs^QRIX_MOT_SDS_MMS_H_FORWARD_EN
+    {attribute 'TcLinkTo' :=  'TIID^Device 2 (EtherCAT)^B950-233-R03-DRL-01 (EK1200)^Term 141 (EL6692)^IO Outputs^QRIX_MOT_SDS_MMS_H_FORWARD_EN
     '}
     QRIX_MOT_SDS_MMS_H_FORWARD_EN AT %Q* : BOOL;
 
-    {attribute 'TcLinkTo' :=  'TIID^Device 1 (EtherCAT)^B950-233-R03-DRL-01 (EK1200)^Term 141 (EL6692)^IO Outputs^QRIX_MOT_SDS_MMS_H_BACKWARD_EN
+    {attribute 'TcLinkTo' :=  'TIID^Device 2 (EtherCAT)^B950-233-R03-DRL-01 (EK1200)^Term 141 (EL6692)^IO Outputs^QRIX_MOT_SDS_MMS_H_BACKWARD_EN
     '}
     QRIX_MOT_SDS_MMS_H_BACKWARD_EN AT %Q* : BOOL;
 
     (*I/O Inputs from QRIX Vacuum PLC*)
 
-    {attribute 'TcLinkTo' :=  'TIID^Device 1 (EtherCAT)^B950-233-R03-DRL-01 (EK1200)^Term 141 (EL6692)^IO Inputs^QRIX_VAC_VGC_03_OPEN_LIMIT_SWITCH
+    {attribute 'TcLinkTo' :=  'TIID^Device 2 (EtherCAT)^B950-233-R03-DRL-01 (EK1200)^Term 141 (EL6692)^IO Inputs^QRIX_VAC_VGC_03_OPEN_LIMIT_SWITCH
     '}
     QRIX_VAC_VGC_03_OPEN_LIMIT_SWITCH AT %I* : BOOL;
 
-    {attribute 'TcLinkTo' :=  'TIID^Device 1 (EtherCAT)^B950-233-R03-DRL-01 (EK1200)^Term 141 (EL6692)^IO Inputs^QRIX_VAC_VGC_03_CLOSED_LIMIT_SWITCH
+    {attribute 'TcLinkTo' :=  'TIID^Device 2 (EtherCAT)^B950-233-R03-DRL-01 (EK1200)^Term 141 (EL6692)^IO Inputs^QRIX_VAC_VGC_03_CLOSED_LIMIT_SWITCH
     '}
     QRIX_VAC_VGC_03_CLOSED_LIMIT_SWITCH AT %I* : BOOL;
-    {attribute 'TcLinkTo' :=  'TIID^Device 1 (EtherCAT)^B950-233-R03-DRL-01 (EK1200)^Term 141 (EL6692)^IO Inputs^QRIX_VAC_VGC_03_OP_CMD
+    {attribute 'TcLinkTo' :=  'TIID^Device 2 (EtherCAT)^B950-233-R03-DRL-01 (EK1200)^Term 141 (EL6692)^IO Inputs^QRIX_VAC_VGC_03_OP_CMD
     '}
     QRIX_VAC_VGC_03_OP_CMD AT %I* : BOOL;
 
-    {attribute 'TcLinkTo' :=  'TIID^Device 1 (EtherCAT)^B950-233-R03-DRL-01 (EK1200)^Term 141 (EL6692)^IO Inputs^QRIX_VAC_VGC_03_CL_CMD
+    {attribute 'TcLinkTo' :=  'TIID^Device 2 (EtherCAT)^B950-233-R03-DRL-01 (EK1200)^Term 141 (EL6692)^IO Inputs^QRIX_VAC_VGC_03_CL_CMD
     '}
     QRIX_VAC_VGC_03_CL_CMD AT %I* : BOOL;
 END_VAR

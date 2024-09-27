@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<TcPlcObject Version="1.1.0.1">
   <DUT Name="ST_SampleSlot" Id="{09c3dd66-8f5a-4524-bfed-dea9564f5621}">
     <Declaration><![CDATA[
 TYPE ST_SampleSlot :

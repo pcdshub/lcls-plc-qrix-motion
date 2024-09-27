@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<TargetSystemConfig Crc="252203" Version="1.5">
+<TargetSystemConfig Crc="943496675" Version="1.4">
   <TargetSystemType>HSafetyPLC</TargetSystemType>
   <TargetSystemSubType>EL1918</TargetSystemSubType>
   <IsExternalDevice>false</IsExternalDevice>

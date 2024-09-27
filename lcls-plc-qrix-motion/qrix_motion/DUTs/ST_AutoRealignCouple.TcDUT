@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<TcPlcObject Version="1.1.0.1">
   <DUT Name="ST_AutoRealignCouple" Id="{bc0e2621-dc74-4de3-b44d-fa350b6a4f93}">
     <Declaration><![CDATA[
 TYPE ST_AutoRealignCouple :

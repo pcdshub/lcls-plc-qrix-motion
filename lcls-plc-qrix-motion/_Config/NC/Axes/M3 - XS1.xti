@@ -1536,7 +1536,7 @@ External Setpoint Generation:
 	</Axis>
 	<Mappings>
 		<OwnerA>
-			<OwnerB Name="TIID^Device 1 (EtherCAT)^Rack#2A-01 Coupler (EK1100)^Rack#2A-03 DR_XS1 (EL7041-0052)">
+			<OwnerB Name="TIID^Device 2 (EtherCAT)^Rack#2A-01 Coupler (EK1100)^Rack#2A-03 DR_XS1 (EL7041-0052)">
 				<Link VarA="Drive^Inputs^In^nDcOutputTime" VarB="InfoData^DcOutputShift"/>
 				<Link VarA="Drive^Inputs^In^nState1" VarB="STM Status^Status^Error" Size="1" OffsA="3"/>
 				<Link VarA="Drive^Inputs^In^nState1" VarB="STM Status^Status^Moving negative" Size="1" OffsA="5"/>
@@ -1556,7 +1556,7 @@ External Setpoint Generation:
 				<Link VarA="Drive^Outputs^Out^nCtrl1" VarB="STM Control^Control^Reset" Size="1" OffsA="1"/>
 				<Link VarA="Drive^Outputs^Out^nDataOut2[0]" VarB="STM Velocity^Velocity"/>
 			</OwnerB>
-			<OwnerB Name="TIID^Device 1 (EtherCAT)^Rack#2B-01 Coupler (EK1100)^Rack#2B-07 ENC_X1_X2 (EL5042)">
+			<OwnerB Name="TIID^Device 2 (EtherCAT)^Rack#2B-01 Coupler (EK1100)^Rack#2B-07 ENC_X1_X2 (EL5042)">
 				<Link VarA="Enc^Inputs^In^nComState" VarB="WcState^InputToggle" Size="1" OffsA="1"/>
 				<Link VarA="Enc^Inputs^In^nComState" VarB="WcState^WcState"/>
 				<Link VarA="Enc^Inputs^In^nDataIn1" VarB="FB Inputs Channel 1^Position"/>

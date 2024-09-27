@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<TcPlcObject Version="1.1.0.1">
   <POU Name="PRG_DET_ARM" Id="{5258bb24-11af-4169-8ff7-86951daba536}" SpecialFunc="None">
     <Declaration><![CDATA[
 PROGRAM PRG_DET_ARM
@@ -26,9 +26,9 @@ VAR
     bDisableStateMachine: BOOL;
 
 
-    {attribute 'TcLinkTo' := '.nMicrostepCounter := TIID^Device 1 (EtherCAT)^BOX-01 Coupler (EK1100)^BOX-20 DR_YF1 (EL7047)^ENC Status compact^Counter value;
-                              .bCounterOverflow  := TIID^Device 1 (EtherCAT)^BOX-01 Coupler (EK1100)^BOX-20 DR_YF1 (EL7047)^ENC Status compact^Status^Counter overflow;
-                              .bCounterUnderflow := TIID^Device 1 (EtherCAT)^BOX-01 Coupler (EK1100)^BOX-20 DR_YF1 (EL7047)^ENC Status compact^Status^Counter underflow'}
+    {attribute 'TcLinkTo' := '.nMicrostepCounter := TIID^Device 2 (EtherCAT)^BOX-01 Coupler (EK1100)^BOX-20 DR_YF1 (EL7047)^ENC Status compact^Counter value;
+                              .bCounterOverflow  := TIID^Device 2 (EtherCAT)^BOX-01 Coupler (EK1100)^BOX-20 DR_YF1 (EL7047)^ENC Status compact^Status^Counter overflow;
+                              .bCounterUnderflow := TIID^Device 2 (EtherCAT)^BOX-01 Coupler (EK1100)^BOX-20 DR_YF1 (EL7047)^ENC Status compact^Status^Counter underflow'}
     fbMeasureReferenceVelocity: FB_MeasureReferenceVelocity;
 END_VAR
 ]]></Declaration>

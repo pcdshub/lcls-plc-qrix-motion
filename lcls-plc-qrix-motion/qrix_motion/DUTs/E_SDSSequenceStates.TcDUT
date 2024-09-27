@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<TcPlcObject Version="1.1.0.1">
   <DUT Name="E_SDSSequenceStates" Id="{f9d11688-3081-47d2-9c3b-e9dffa282e49}">
     <Declaration><![CDATA[
 {attribute 'qualified_only'}

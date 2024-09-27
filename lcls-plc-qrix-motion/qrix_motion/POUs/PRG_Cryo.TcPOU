@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<TcPlcObject Version="1.1.0.1">
   <POU Name="PRG_Cryo" Id="{d8649ca7-c26e-4e28-a279-17f291a3cb8e}" SpecialFunc="None">
     <Declaration><![CDATA[
 PROGRAM PRG_Cryo
@@ -12,6 +12,16 @@ VAR
     fb_Cryo_X : FB_MotionStage;
     fb_Cryo_Y : FB_MotionStage;
     fb_Cryo_Z : FB_MotionStage;
+
+    fbEPSCryoXBackward : FB_EPS;
+    fbEPSCryoXForward  : FB_EPS;
+    fbEPSCryoYBackward : FB_EPS;
+    fbEPSCryoYForward  : FB_EPS;
+    fbEPSCryoZBackward : FB_EPS;
+    fbEPSCryoZForward  : FB_EPS;
+    fbEPSCryoThetaBackward : FB_EPS;
+    fbEPSCryoThetaForward  : FB_EPS;
+
     bInit : BOOl := TRUE;
 
     nGantryTolerance: LINT;
@@ -27,9 +37,9 @@ VAR
         field: DESC Write FALSE to decouple cryo rotation axis from diffractometer theta axis.
     '}
     bCryoRotDiffThetaExecuteDecouple: BOOL := FALSE;
-    {attribute 'TcLinkTo' := '.Count := TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-02^EL5042_03_17 - Diff - Theta - 2Theta^FB Inputs Channel 1^Position'}
+    {attribute 'TcLinkTo' := '.Count := TIID^Device 2 (EtherCAT)^B950-233-WALL-S-R01-DRL-02^EL5042_03_17 - Diff - Theta - 2Theta^FB Inputs Channel 1^Position'}
     stDiffThetaEnc: ST_RenishawAbsEnc;
-    {attribute 'TcLinkTo' := '.Count := TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL5042_02_16^FB Inputs Channel 2^Position'}
+    {attribute 'TcLinkTo' := '.Count := TIID^Device 2 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL5042_02_16^FB Inputs Channel 2^Position'}
     stCryoRotEnc: ST_RenishawAbsEnc;
 
     {attribute 'pytmc' := '
@@ -42,8 +52,8 @@ VAR
 
     fbCryoRotDiffThetaCoupling: FB_GantryAutoCoupling;
 
-    {attribute 'TcLinkTo' := '.bLeaderDriveReady := TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-02^EL7047_03_16 - Diff - Theta^STM Status^Status^Ready;
-                              .bFollowDriveReady := TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_11^STM Status^Status^Ready
+    {attribute 'TcLinkTo' := '.bLeaderDriveReady := TIID^Device 2 (EtherCAT)^B950-233-WALL-S-R01-DRL-02^EL7047_03_16 - Diff - Theta^STM Status^Status^Ready;
+                              .bFollowDriveReady := TIID^Device 2 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_11^STM Status^Status^Ready
     '}
     {attribute 'pytmc' := '
         pv: QRIX:DIFFCRYO:Coord
@@ -53,9 +63,7 @@ VAR
     stCryoRotDiffThetaCoordinateGantryAxisEnable: ST_CoordinateGantryAxisEnable;
     fbCryoRotDiffThetaCoordinateGantryAxisEnable: FB_CoordinateGantryAxisEnable;
 
-    fBraidDiameter: LREAL := 70; // mm
-
-    {attribute 'TcLinkTo' := '.bFollowerDriveReady := TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_12^STM Status^Status^Ready
+    {attribute 'TcLinkTo' := '.bFollowerDriveReady := TIID^Device 2 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_12^STM Status^Status^Ready
     '}
     {attribute 'pytmc' := '
         pv: QRIX:CRYO:MLC:X
@@ -64,7 +72,7 @@ VAR
     '}
     stCryoXMultiLeader: ST_MultiLeaderMotionCoupling;
     fbCryoXMultiLeader: FB_MultiLeaderMotionCoupling;
-    {attribute 'TcLinkTo' := '.bFollowerDriveReady := TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_14^STM Status^Status^Ready
+    {attribute 'TcLinkTo' := '.bFollowerDriveReady := TIID^Device 2 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_14^STM Status^Status^Ready
     '}
     {attribute 'pytmc' := '
         pv: QRIX:CRYO:MLC:Y
@@ -73,7 +81,7 @@ VAR
     '}
     stCryoYMultiLeader: ST_MultiLeaderMotionCoupling;
     fbCryoYMultiLeader: FB_MultiLeaderMotionCoupling;
-    {attribute 'TcLinkTo' := '.bFollowerDriveReady := TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_15^STM Status^Status^Ready
+    {attribute 'TcLinkTo' := '.bFollowerDriveReady := TIID^Device 2 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_15^STM Status^Status^Ready
     '}
     {attribute 'pytmc' := '
         pv: QRIX:CRYO:MLC:Z
@@ -83,25 +91,23 @@ VAR
     stCryoZMultiLeader: ST_MultiLeaderMotionCoupling;
     fbCryoZMultiLeader: FB_MultiLeaderMotionCoupling;
 
-    fCryoYNeutralPositionAtDiffY0 : LREAL;
     fCryoYNeutralPosition         : LREAL;
-    fCryoZNeutralPositionAtDiffZ0 : LREAL;
 
-    {attribute 'TcLinkTo' := '.nMicrostepCounter := TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_11^ENC Status compact^Counter value;
-                              .bCounterOverflow  := TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_11^ENC Status compact^Status^Counter overflow;
-                              .bCounterUnderflow := TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_11^ENC Status compact^Status^Counter underflow'}
+    {attribute 'TcLinkTo' := '.nMicrostepCounter := TIID^Device 2 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_11^ENC Status compact^Counter value;
+                              .bCounterOverflow  := TIID^Device 2 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_11^ENC Status compact^Status^Counter overflow;
+                              .bCounterUnderflow := TIID^Device 2 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_11^ENC Status compact^Status^Counter underflow'}
     fbMeasureReferenceVelocityCryoROT: FB_MeasureReferenceVelocity;
-    {attribute 'TcLinkTo' := '.nMicrostepCounter := TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_12^ENC Status compact^Counter value;
-                              .bCounterOverflow  := TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_12^ENC Status compact^Status^Counter overflow;
-                              .bCounterUnderflow := TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_12^ENC Status compact^Status^Counter underflow'}
+    {attribute 'TcLinkTo' := '.nMicrostepCounter := TIID^Device 2 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_12^ENC Status compact^Counter value;
+                              .bCounterOverflow  := TIID^Device 2 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_12^ENC Status compact^Status^Counter overflow;
+                              .bCounterUnderflow := TIID^Device 2 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_12^ENC Status compact^Status^Counter underflow'}
     fbMeasureReferenceVelocityCryoX: FB_MeasureReferenceVelocity;
-    {attribute 'TcLinkTo' := '.nMicrostepCounter := TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_14^ENC Status compact^Counter value;
-                              .bCounterOverflow  := TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_14^ENC Status compact^Status^Counter overflow;
-                              .bCounterUnderflow := TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_14^ENC Status compact^Status^Counter underflow'}
+    {attribute 'TcLinkTo' := '.nMicrostepCounter := TIID^Device 2 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_14^ENC Status compact^Counter value;
+                              .bCounterOverflow  := TIID^Device 2 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_14^ENC Status compact^Status^Counter overflow;
+                              .bCounterUnderflow := TIID^Device 2 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_14^ENC Status compact^Status^Counter underflow'}
     fbMeasureReferenceVelocityCryoY: FB_MeasureReferenceVelocity;
-    {attribute 'TcLinkTo' := '.nMicrostepCounter := TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_15^ENC Status compact^Counter value;
-                              .bCounterOverflow  := TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_15^ENC Status compact^Status^Counter overflow;
-                              .bCounterUnderflow := TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_15^ENC Status compact^Status^Counter underflow'}
+    {attribute 'TcLinkTo' := '.nMicrostepCounter := TIID^Device 2 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_15^ENC Status compact^Counter value;
+                              .bCounterOverflow  := TIID^Device 2 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_15^ENC Status compact^Status^Counter overflow;
+                              .bCounterUnderflow := TIID^Device 2 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL7047_02_15^ENC Status compact^Status^Counter underflow'}
     fbMeasureReferenceVelocityCryoZ: FB_MeasureReferenceVelocity;
 END_VAR
 ]]></Declaration>
@@ -142,39 +148,29 @@ IF bInit THEN
     nDiffThetaEncoderOffset := 1073741824;
     // 0.000000083819 deg/inc => 11,930,469.225 inc/degree
     // For 1 degree tolerance, need 11930469 inc
-    nGantryTolerance := 11930469;
+    nGantryTolerance := 119304690000;
     stCryoRotDiffThetaCoordinateGantryAxisEnable.bEnable := TRUE;
     // Allow setting of the reference position for gantry diff limit calculation
     stDiffThetaEnc.Ref := 121223792;
     stCryoRotEnc.Ref   := 0;
 
-    fbCryoXMultiLeader.METH_Init(
-        stMotionStage               := Main.M46,
-        stMultiLeaderMotionCoupling := stCryoXMultiLeader,
-        bEnableByDefault            := TRUE,
-        bUseDynamicLimits           := TRUE
-    );
+    stCryoXMultiLeader.bEnable := TRUE;
+    stCryoXMultiLeader.bUseDynamicLimits := TRUE;
 
-    fCryoYNeutralPositionAtDiffY0 := 50.7;
-    fbCryoYMultiLeader.METH_Init(
-        stMotionStage               := Main.M47,
-        stMultiLeaderMotionCoupling := stCryoYMultiLeader,
-        bEnableByDefault            := TRUE,
-        bUseDynamicLimits           := TRUE
-    );
+    GVL_VAR.fCryoYNeutralPositionAtDiffY0 := 50.7;
+    stCryoYMultiLeader.bEnable := TRUE;
+    stCryoYMultiLeader.bUseDynamicLimits := TRUE;
 
-    fCryoZNeutralPositionAtDiffZ0 := 4.0;
-    fbCryoZMultiLeader.METH_Init(
-        stMotionStage               := Main.M48,
-        stMultiLeaderMotionCoupling := stCryoZMultiLeader,
-        bEnableByDefault            := TRUE,
-        bUseDynamicLimits           := TRUE
-    );
+    GVL_VAR.fCryoZNeutralPositionAtDiffZ0 := 4.0;
+    stCryoZMultiLeader.bEnable := TRUE;
+    stCryoZMultiLeader.bUseDynamicLimits := TRUE;
 END_IF
 
 ACT_CryoThetaDiffThetaCoupling();
 
 ACT_CryoXYZCoupling();
+
+ACT_EPS();
 
 fb_Cryo_X(stMotionStage:=Main.M46);
 fb_Cryo_Y(stMotionStage:=Main.M47);
@@ -253,46 +249,141 @@ END_IF
     <Action Name="ACT_CryoXYZCoupling" Id="{17aa7c6c-0504-491d-bccb-b6655ed0e0d8}">
       <Implementation>
         <ST><![CDATA[
-fbCryoXMultiLeader(
-    stMotionStageFollow := Main.M46,
-    stMultiLeaderMotionCoupling := stCryoXMultiLeader,
-    fTargetPos := Main.M28.Axis.NcToPlc.ActPos,
-    fTargetVel := Main.M28.Axis.NcToPlc.SetVelo,
-    fTargetAcc := Main.M28.Axis.NcToPlc.SetAcc,
-    bError     := Main.M28.bError,
-    tTimeout   := T#5s
-);
-IF stCryoXMultiLeader.bError THEN
+IF Main.M28.bBusy THEN
+    fbCryoXMultiLeader(
+        stMotionStageFollow := Main.M46,
+        stMultiLeaderMotionCoupling := stCryoXMultiLeader,
+        fTargetPos := Main.M28.Axis.NcToPlc.ActPos,
+        fTargetVel := Main.M28.Axis.NcToPlc.SetVelo,
+        fTargetAcc := Main.M28.Axis.NcToPlc.SetAcc,
+        bError     := Main.M28.bError,
+        tTimeout   := T#5s
+    );
+ELSE
+    fbCryoXMultiLeader(
+        stMotionStageFollow := Main.M46,
+        stMultiLeaderMotionCoupling := stCryoXMultiLeader,
+        fTargetPos := Main.M28.Axis.NcToPlc.ActPos,
+        fTargetVel := 1.0,
+        fTargetAcc := 10.0,
+        bError     := Main.M28.bError,
+        tTimeout   := T#5s
+    );
+END_IF
+IF stCryoXMultiLeader.bEnable AND stCryoXMultiLeader.bError THEN
     Main.M28.bError := TRUE;
 END_IF
 
-fCryoYNeutralPosition := fCryoYNeutralPositionAtDiffY0 + Main.M29.Axis.NcToPlc.ActPos;
+fCryoYNeutralPosition := GVL_VAR.fCryoYNeutralPositionAtDiffY0 + Main.M29.Axis.NcToPlc.ActPos;
+
 fbCryoYMultiLeader(
     stMotionStageFollow := Main.M47,
     stMultiLeaderMotionCoupling := stCryoYMultiLeader,
-    fTargetPos := fCryoYNeutralPosition - ABS(fBraidDiameter * (1 - Cos(Main.M32.Axis.NcToPlc.ActPos * 3.1415 / 180))),
-    fTargetVel := Main.M28.Axis.NcToPlc.SetVelo,
-    fTargetAcc := Main.M28.Axis.NcToPlc.SetAcc,
+    fTargetPos := F_TargetCryoYPosition(
+        fNeutralPosition := GVL_VAR.fCryoYNeutralPositionAtDiffY0 + Main.M29.Axis.NcToPlc.ActPos,
+        fBraidDiameter   := GVL_VAR.fBraidDiameter,
+        fPhiAngleDeg     := Main.M32.Axis.NcToPlc.ActPos),
+    fTargetVel := 0.5,
+    fTargetAcc := 5,
     bError     := Main.M29.bError OR Main.M32.bError,
     tTimeout   := T#5s
 );
-IF stCryoYMultiLeader.bError THEN
+IF stCryoYMultiLeader.bEnable AND stCryoYMultiLeader.bError THEN
     Main.M29.bError := TRUE;
     Main.M32.bError := TRUE;
 END_IF
 
-fbCryoZMultiLeader(
-    stMotionStageFollow:=Main.M48,
-    stMultiLeaderMotionCoupling:=stCryoZMultiLeader,
-    fTargetPos := fCryoZNeutralPositionAtDiffZ0 + Main.M30.Axis.NcToPlc.ActPos,
-    fTargetVel := Main.M30.Axis.NcToPlc.SetVelo,
-    fTargetAcc := Main.M30.Axis.NcToPlc.SetAcc,
-    bError     := Main.M30.bError,
-    tTimeout   := T#5s
-);
-IF stCryoZMultiLeader.bError THEN
+IF Main.M30.bBusy THEN
+    fbCryoZMultiLeader(
+        stMotionStageFollow:=Main.M48,
+        stMultiLeaderMotionCoupling:=stCryoZMultiLeader,
+        fTargetPos := fCryoZNeutralPositionAtDiffZ0 + Main.M30.Axis.NcToPlc.ActPos,
+        fTargetVel := Main.M30.Axis.NcToPlc.SetVelo,
+        fTargetAcc := Main.M30.Axis.NcToPlc.SetAcc,
+        bError     := Main.M30.bError,
+        tTimeout   := T#5s
+    );
+ELSE
+    fbCryoZMultiLeader(
+        stMotionStageFollow:=Main.M48,
+        stMultiLeaderMotionCoupling:=stCryoZMultiLeader,
+        fTargetPos := fCryoZNeutralPositionAtDiffZ0 + Main.M30.Axis.NcToPlc.ActPos,
+        fTargetVel := 1.0,
+        fTargetAcc := 10.0,
+        bError     := Main.M30.bError,
+        tTimeout   := T#5s
+    );
+END_IF
+IF stCryoZMultiLeader.bEnable AND stCryoZMultiLeader.bError THEN
     Main.M30.bError := TRUE;
 END_IF
+]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="ACT_EPS" Id="{2523363a-138f-4156-9bed-c5b2daefd4dd}">
+      <Implementation>
+        <ST><![CDATA[
+// Disable movement in the negative direction.
+fbEPSCryoXBackward(eps:=Main.M46.stEPSBackwardEnable);
+fbEPSCryoXBackward.setDescription('NEGATIVE MOTION');
+fbEPSCryoXBackward.setBit(nBits := 0,
+    bValue := Main.M46.Axis.NcToPlc.ActPos - Main.M28.Axis.NcToPlc.ActPos > -1.0
+);
+
+// Disable movement in positive direction.
+fbEPSCryoXForward(eps:=Main.M46.stEPSForwardEnable);
+fbEPSCryoXForward.setDescription('POSITIVE MOTION');
+fbEPSCryoXForward.setBit(nBits:= 0,
+    bValue := Main.M46.Axis.NcToPlc.ActPos - Main.M28.Axis.NcToPlc.ActPos < 1.0
+);
+
+// Disable movement in the negative direction.
+fbEPSCryoYBackward(eps:=Main.M47.stEPSBackwardEnable);
+fbEPSCryoYBackward.setDescription('NEGATIVE MOTION');
+fbEPSCryoYBackward.setBit(nBits := 0,
+    bValue := Main.M47.Axis.NcToPlc.ActPos - F_TargetCryoYPosition(
+        fNeutralPosition := GVL_VAR.fCryoYNeutralPositionAtDiffY0 + Main.M29.Axis.NcToPlc.ActPos,
+        fBraidDiameter   := GVL_VAR.fBraidDiameter,
+        fPhiAngleDeg     := Main.M32.Axis.NcToPlc.ActPos) > -1.0
+);
+
+// Disable movement in positive direction.
+fbEPSCryoYForward(eps:=Main.M47.stEPSForwardEnable);
+fbEPSCryoYForward.setDescription('POSITIVE MOTION');
+fbEPSCryoYForward.setBit(nBits:= 0,
+    bValue := Main.M47.Axis.NcToPlc.ActPos - F_TargetCryoYPosition(
+        fNeutralPosition := GVL_VAR.fCryoYNeutralPositionAtDiffY0 + Main.M29.Axis.NcToPlc.ActPos,
+        fBraidDiameter   := GVL_VAR.fBraidDiameter,
+        fPhiAngleDeg     := Main.M32.Axis.NcToPlc.ActPos) < 1.0
+);
+
+// Disable movement in the negative direction.
+fbEPSCryoZBackward(eps:=Main.M48.stEPSBackwardEnable);
+fbEPSCryoZBackward.setDescription('NEGATIVE MOTION');
+fbEPSCryoZBackward.setBit(nBits := 0,
+    bValue := Main.M48.Axis.NcToPlc.ActPos - (GVL_VAR.fCryoZNeutralPositionAtDiffZ0 + Main.M30.Axis.NcToPlc.ActPos) > -1.0
+);
+
+// Disable movement in positive direction.
+fbEPSCryoZForward(eps:=Main.M48.stEPSForwardEnable);
+fbEPSCryoZForward.setDescription('POSITIVE MOTION');
+fbEPSCryoZForward.setBit(nBits:= 0,
+    bValue := Main.M48.Axis.NcToPlc.ActPos - (GVL_VAR.fCryoZNeutralPositionAtDiffZ0 + Main.M30.Axis.NcToPlc.ActPos) < 1.0
+);
+
+// Disable movement in the negative direction.
+fbEPSCryoThetaBackward(eps:=Main.M49.stEPSBackwardEnable);
+fbEPSCryoThetaBackward.setDescription('NEGATIVE MOTION');
+fbEPSCryoThetaBackward.setBit(nBits := 0,
+    bValue := Main.M49.Axis.NcToPlc.ActPos - Main.M34.Axis.NcToPlc.ActPos > -1.0
+);
+
+// Disable movement in positive direction.
+fbEPSCryoThetaForward(eps:=Main.M49.stEPSForwardEnable);
+fbEPSCryoThetaForward.setDescription('POSITIVE MOTION');
+fbEPSCryoThetaForward.setBit(nBits:= 0,
+    bValue := Main.M49.Axis.NcToPlc.ActPos - Main.M34.Axis.NcToPlc.ActPos < 1.0
+);
 ]]></ST>
       </Implementation>
     </Action>

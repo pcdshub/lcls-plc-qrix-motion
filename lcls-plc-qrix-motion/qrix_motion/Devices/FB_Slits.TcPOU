@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<TcPlcObject Version="1.1.0.1">
   <POU Name="FB_Slits" Id="{15da2eaf-9159-456d-aec4-1d1fd7c9b7dc}" SpecialFunc="None">
     <Declaration><![CDATA[
 FUNCTION_BLOCK FB_Slits

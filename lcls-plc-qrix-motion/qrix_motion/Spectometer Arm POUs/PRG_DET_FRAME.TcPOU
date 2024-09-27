@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<TcPlcObject Version="1.1.0.1">
   <POU Name="PRG_DET_FRAME" Id="{ae792a1e-17b4-441d-8662-87ba0956d9c2}" SpecialFunc="None">
     <Declaration><![CDATA[
 PROGRAM PRG_DET_FRAME

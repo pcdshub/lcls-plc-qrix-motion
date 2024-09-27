@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<TcPlcObject Version="1.1.0.1">
   <POU Name="PRG_Questar" Id="{a13b4cbe-0334-43ca-a474-80a981d3c693}" SpecialFunc="None">
     <Declaration><![CDATA[
 PROGRAM PRG_Questar

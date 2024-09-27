@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<TcPlcObject Version="1.1.0.1">
   <POU Name="FB_CoordinateGantryAxisEnable" Id="{91dabd2d-6f24-4e77-b8b3-8a1bfcd3f76e}" SpecialFunc="None">
     <Declaration><![CDATA[
 FUNCTION_BLOCK FB_CoordinateGantryAxisEnable
@@ -38,7 +38,7 @@ CASE stCoordinateGantryAxisEnable.eState OF
             stMotionStageLeader.bExecute := FALSE;
             stMotionStageLeader.bError := TRUE;
             stMotionStageFollow.bError := TRUE;
-            stMotionStageLeader.sCustomErrorMessage := 'Move Failed. The gantry enable function block used for this axis is currently disabled.';
+            stMotionStageLeader.sCustomErrorMessage := 'Move Failed. The gantry is currently disabled.';
             stMotionStageFollow.sCustomErrorMessage := stMotionStageLeader.sCustomErrorMessage;
         ELSE
             stMotionStageLeader.bEnable := FALSE;

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<TcPlcObject Version="1.1.0.1">
   <POU Name="PRG_SSL" Id="{35c5b597-c1e5-471b-bc57-49572aa20da4}" SpecialFunc="None">
     <Declaration><![CDATA[
 PROGRAM PRG_SSL
@@ -20,10 +20,10 @@ VAR
     // Function block to couple sliding seal motor motion to 2Theta motion
     fbSSLTo2ThetaCoupling: FB_GantryAutoCoupling;
 
-    {attribute 'TcLinkTo' := '	.Count := TIID^Device 1 (EtherCAT)^Rack#1A-01 Coupler (EK1100)^Rack#1A-06 ENC_2Th (EL5042)^FB Inputs Channel 1^Position'}
+    {attribute 'TcLinkTo' := '	.Count := TIID^Device 2 (EtherCAT)^Rack#1A-01 Coupler (EK1100)^Rack#1A-06 ENC_2Th (EL5042)^FB Inputs Channel 1^Position'}
     stRenishawAbsEncMaster: ST_RenishawAbsEnc;
 
-    {attribute 'TcLinkTo' := 'TIID^Device 1 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL5042_02_02^FB Inputs Channel 1^Position'}
+    {attribute 'TcLinkTo' := 'TIID^Device 2 (EtherCAT)^B950-233-WALL-S-R01-DRL-01^EL5042_02_02^FB Inputs Channel 1^Position'}
     nRenishawAbsEncSlaveCounts AT %I*: ULINT; // Connect to encoder "Position" inputULINT
     fSlaveCountsToMasterCountsScalingFactor: LREAL;
     fRenishawAbsEncSlaveCountsInMasterScale: LREAL;
@@ -69,17 +69,24 @@ VAR
     timeRealignTimeout: TIME;
     bFullyDecouple: BOOL;
 
+    EL7047_02_01_SSL_Status AT %I*: USINT;
+    EL7047_02_01_SSL_Status_to_NC AT %Q*: USINT;
+
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[
-IF ( bInit) THEN
+IF bInit THEN
     bInit := FALSE;
     Main.M1.bPowerSelf := TRUE;
     Main.M1.bHardwareEnable := TRUE;
     Main.M1.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
     Main.M1.nEnableMode := ENUM_StageEnableMode.NEVER;
 END_IF
+
+// Due to bug in SSL drive, ready bit is not being reported properly. This will tie the ready bit to the floating status.
+EL7047_02_01_SSL_Status.1 := GVL_Sensor.bFloating;
+EL7047_02_01_SSL_Status_to_NC := EL7047_02_01_SSL_Status;
 
 // Set the encoder counts at the zero position
 // CHOOSING TO SET THE COUNTS IN UNITS OF THE SCALE OF THE PRIMARY AXIS ENCODER.

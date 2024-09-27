@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<TcPlcObject Version="1.1.0.1">
   <POU Name="F_Limit" Id="{110c4ed8-1696-490e-8f8e-19d67e06929f}" SpecialFunc="None">
     <Declaration><![CDATA[
 FUNCTION F_Limit : BOOL
