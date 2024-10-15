@@ -24,7 +24,7 @@ STRUCT
         io: io
         field: DESC If the slot is in the full state, this value is supposed to describe what is in the slot.
     '}
-    sDesc: STRING;
+    sDesc: T_MaxString;
 END_STRUCT
 END_TYPE
 ]]></Declaration>

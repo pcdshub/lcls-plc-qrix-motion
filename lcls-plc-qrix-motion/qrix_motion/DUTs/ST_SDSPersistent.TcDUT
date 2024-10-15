@@ -14,18 +14,29 @@ STRUCT
         field: DESC TRUE if the persistent data has been initialized. FALSE if it has not.
     '}
     bInitialized: BOOL;
+
+    {attribute 'pytmc' := 'pv: Garage:Slot'}
+    astGarageSlot: ARRAY[E_SDSGarageYStates.T1..E_SDSGarageYStates.B4] OF ST_GarageSlot;
+
+    {attribute 'pytmc' := 'pv: Transfer:Slot'}
+    stTransferArmSlot: ST_TransferSlot;
+
+    {attribute 'pytmc' := 'pv: Diff:Slot'}
+    stDiffractometerSlot: ST_DiffractometerSlot;
+
     {attribute 'pytmc' := '
-        pv: Garage:Slot
+        pv: GarHSafeFromCol
         io: i
-        field: DESC Represents an array of structures which each define a sample slot in the SDS garage.
+        field: DESC Height at which garage consider safe from collisions.
     '}
-    astGarageSlot: ARRAY[0..11] OF ST_GarageSlot;
+    fGarageHeightSafeFromCollision : LREAL;
+
     {attribute 'pytmc' := '
-        pv: Transfer:Slot
+        pv: GarRClearOff
         io: i
-        field: DESC Represents a structure which defines a sample slot in the transfer arm.
+        field: DESC Garage rotational offset for clearance when moving up and down with loading transfer arm.
     '}
-    stTransferSlot: ST_TransferSlot;
+    fGarageRotationClearanceOffset : LREAL;
 END_STRUCT
 END_TYPE
 ]]></Declaration>

@@ -671,10 +671,10 @@ IF NOT mcReadParams.Error THEN
     stMultiLeader.stPos.fMax := stMotionStage.stAxisParameters.fEncSoftEndMax;
     stMultiLeader.stPos.fMin := stMotionStage.stAxisParameters.fEncSoftEndMin;
 ELSE
-    stMultiLeaderMotionCoupling.bError     := TRUE;
-    stMultiLeaderMotionCoupling.sErrorMsg  := 'MultiLeaderMotionCoupling failed to load axis parameters.';
-    stMultiLeaderMotionCoupling.sErrorHelp := stMotionStageFollow.sErrorMessage;
-    stMultiLeaderMotionCoupling.eState     := E_MultiLeaderMotionCoupling.STATE_ERROR;
+    stMultiLeader.bError     := TRUE;
+    stMultiLeader.sErrorMsg  := 'MultiLeaderMotionCoupling failed to load axis parameters.';
+    stMultiLeader.sErrorHelp := stMotionStageFollow.sErrorMessage;
+    stMultiLeader.eState     := E_MultiLeaderMotionCoupling.STATE_ERROR;
 END_IF
 
 mcReadParams(

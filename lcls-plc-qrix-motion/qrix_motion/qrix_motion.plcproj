@@ -71,13 +71,25 @@
     <Compile Include="DUTs\E_SDSFaceState.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DUTs\E_SDSGarageStates.TcDUT">
+    <Compile Include="DUTs\E_SDSGarageYStates.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DUTs\E_SDSArmStates.TcDUT">
+    <Compile Include="DUTs\E_SDSGarageRStates.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\E_SDSTransferArmHStates.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\E_SDSHomingState.TcDUT">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DUTs\E_SDSSequenceStates.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\E_SDSState.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\E_SDSTransferArmRStates.TcDUT">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DUTs\ST_AutoRealignCouple.TcDUT">
@@ -90,6 +102,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DUTs\ST_BoundedValue.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\ST_DiffractometerSlot.TcDUT">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DUTs\ST_MultiLeaderMotionCoupling.TcDUT">
@@ -105,6 +120,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DUTs\ST_TransferSlot.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\ST_UISelect.TcDUT">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="GVLs\GVL_EPS.TcGVL">
@@ -264,6 +282,12 @@
       <DefaultResolution>Tc3_Module, * (Beckhoff Automation GmbH)</DefaultResolution>
       <Namespace>Tc3_Module</Namespace>
     </PlaceholderReference>
+    <PlaceholderReference Include="UML State Chart Types">
+      <DefaultResolution>UML Statechart Types, 4.1.1.0 (3S - Smart Software Solutions GmbH)</DefaultResolution>
+      <Namespace>UML_SC</Namespace>
+      <SystemLibrary>true</SystemLibrary>
+      <ResolverGuid>d9a6b70a-92f0-4827-8ca3-8ce8a61652d9</ResolverGuid>
+    </PlaceholderReference>
   </ItemGroup>
   <ItemGroup>
     <PlaceholderResolution Include="LCLS General">
@@ -273,7 +297,7 @@
       <Resolution>lcls-twincat-motion, 4.1.1 (SLAC)</Resolution>
     </PlaceholderResolution>
     <PlaceholderResolution Include="lcls-twincat-optics">
-      <Resolution>lcls-twincat-optics, 0.6.1 (SLAC)</Resolution>
+      <Resolution>lcls-twincat-optics, 0.8.0 (SLAC)</Resolution>
     </PlaceholderResolution>
     <PlaceholderResolution Include="PMPS">
       <Resolution>PMPS, 3.0.14 (SLAC - LCLS)</Resolution>
@@ -283,9 +307,6 @@
     </PlaceholderResolution>
     <PlaceholderResolution Include="SysFile">
       <Resolution>SysFile, 3.5.9.0 (System)</Resolution>
-    </PlaceholderResolution>
-    <PlaceholderResolution Include="Tc2_ControllerToolbox">
-      <Resolution>Tc2_ControllerToolbox, 3.4.3.0 (Beckhoff Automation GmbH)</Resolution>
     </PlaceholderResolution>
     <PlaceholderResolution Include="Tc2_EtherCAT">
       <Resolution>Tc2_EtherCAT, 3.3.15.0 (Beckhoff Automation GmbH)</Resolution>
@@ -329,6 +350,9 @@
     <PlaceholderResolution Include="TcUnit">
       <Resolution>TcUnit, 1.1.0.0 (www.tcunit.org)</Resolution>
     </PlaceholderResolution>
+    <PlaceholderResolution Include="UML State Chart Types">
+      <Resolution>UML Statechart Types, 4.1.1.0 (3S - Smart Software Solutions GmbH)</Resolution>
+    </PlaceholderResolution>
   </ItemGroup>
   <ItemGroup>
     <None Include="qrix_motion.tmc">
@@ -346,11 +370,33 @@
         <o>
           <v n="Name">"{192FAD59-8248-4824-A8DE-9177C94C195A}"</v>
           <d n="SubKeys" t="Hashtable" />
-          <d n="Values" t="Hashtable" />
+          <d n="Values" t="Hashtable" ckt="String" cvt="String">
+            <v>CurrentUmlCompilerVersion</v>
+            <v>4.2.1.0</v>
+          </d>
         </o>
         <v>{246001F4-279D-43AC-B241-948EB31120E1}</v>
         <o>
           <v n="Name">"{246001F4-279D-43AC-B241-948EB31120E1}"</v>
+          <d n="SubKeys" t="Hashtable" />
+          <d n="Values" t="Hashtable" />
+        </o>
+        <v>{29BD8D0C-3586-4548-BB48-497B9A01693F}</v>
+        <o>
+          <v n="Name">"{29BD8D0C-3586-4548-BB48-497B9A01693F}"</v>
+          <d n="SubKeys" t="Hashtable" ckt="String" cvt="OptionKey">
+            <v>Rules</v>
+            <o>
+              <v n="Name">"Rules"</v>
+              <d n="SubKeys" t="Hashtable" />
+              <d n="Values" t="Hashtable" />
+            </o>
+          </d>
+          <d n="Values" t="Hashtable" />
+        </o>
+        <v>{8F99A816-E488-41E4-9FA3-846536012284}</v>
+        <o>
+          <v n="Name">"{8F99A816-E488-41E4-9FA3-846536012284}"</v>
           <d n="SubKeys" t="Hashtable" />
           <d n="Values" t="Hashtable" />
         </o>

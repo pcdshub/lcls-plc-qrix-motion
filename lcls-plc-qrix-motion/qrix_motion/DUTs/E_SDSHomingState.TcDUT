@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="E_SDSHomingState" Id="{e1dfb655-f154-005d-003b-eb56c249e79f}">
+    <Declaration><![CDATA[
+{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE E_SDSHomingState :
+(
+    INIT,
+    WAIT_NOT_BUSY,
+    TRIGGER_HOMING,
+    WAIT_FOR_HOMED,
+    HOMED
+) UINT;
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>
