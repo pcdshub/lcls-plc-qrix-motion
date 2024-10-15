@@ -26,10 +26,7 @@ VAR
         field: DESC Structure defining qrixs sample delivery system non-persistent data.
     '}
     stSDS: ST_SDS;
-    fbSDS: FB_SDS(
-        stSDS := stSDS,
-        stSDSPersistent := stSDSPersistent
-    );
+    fbSDS: FB_SDS;
 END_VAR
 VAR PERSISTENT
     {attribute 'pytmc' := '
@@ -133,8 +130,8 @@ stSDS.stTransferArmRStage:=Main.M43;
 
 // Function block containing logic for sample delivery system motion automation.
 fbSDS(
-    stSDS:=stSDS,
-    stSDSPersistent:=stSDSPersistent,
+    stSDS := stSDS,
+    stSDSPersistent := stSDSPersistent
 );
 ]]></ST>
     </Implementation>
