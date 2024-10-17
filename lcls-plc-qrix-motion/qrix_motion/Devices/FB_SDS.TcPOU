@@ -256,6 +256,47 @@ END_IF
 ]]></ST>
       </Implementation>
     </Method>
+    <Method Name="CheckCanHomeGarage" Id="{890a1d31-ace4-054c-09fc-653e907d57b4}">
+      <Declaration><![CDATA[
+METHOD PRIVATE CheckCanHomeGarage
+VAR_IN_OUT
+    stSDS : ST_SDS;
+    stSDSP : ST_SDSPersistent;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[
+stSDS.bSuccess := FALSE;
+
+stSDS.sStatusMsg := 'Checking if garage can be homed.';
+
+IF stSDS.bGarageAboveCollisionHeight THEN
+    stSDS.bSuccess := TRUE;
+ELSE
+    stSDS.bError := TRUE;
+    stSDS.sErrorMsg := CONCAT('The garage must be above ',
+        CONCAT(LREAL_TO_STRING(stSDSP.fGarageHeightSafeFromCollision),
+        ' mm for the rotation axis to be homed.'));
+END_IF
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="CheckCanHomeTransferArm" Id="{fbca667e-ce63-0155-1370-5275037d5135}">
+      <Declaration><![CDATA[
+METHOD PRIVATE CheckCanHomeTransferArm
+VAR_IN_OUT
+    stSDS : ST_SDS;
+    stSDSP : ST_SDSPersistent;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[
+stSDS.sStatusMsg := 'Checking if transfer arm can be homed.';
+
+stSDS.bSuccess := TRUE;
+]]></ST>
+      </Implementation>
+    </Method>
     <Method Name="CheckCanLoadArmFromGarage" Id="{d135d403-d5a2-0876-3e20-9dcee1c040ff}">
       <Declaration><![CDATA[
 METHOD PRIVATE CheckCanLoadArmFromGarage
@@ -266,6 +307,8 @@ END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[
+stSDS.bSuccess := FALSE;
+
 stSDS.sStatusMsg := 'Checking if there is an open slot in the transfer arm and at least one full slot in the garage.';
 
 CheckCanDo2Criteria(
@@ -291,6 +334,8 @@ END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[
+stSDS.bSuccess := FALSE;
+
 stSDS.sStatusMsg := 'Checking if the diffractometer slot is open and if the transfer arm is carrying a sample.';
 
 CheckCanDo2Criteria(
@@ -322,6 +367,22 @@ stSDS.bSuccess := TRUE;
 ]]></ST>
       </Implementation>
     </Method>
+    <Method Name="CheckCanManualControl" Id="{5683863f-d057-0819-1182-dc7a29ed7d7d}">
+      <Declaration><![CDATA[
+METHOD PRIVATE CheckCanManualControl
+VAR_IN_OUT
+    stSDS : ST_SDS;
+    stSDSP : ST_SDSPersistent;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[
+stSDS.sStatusMsg := 'Checking if we can switch to manual control.';
+
+stSDS.bSuccess := TRUE;
+]]></ST>
+      </Implementation>
+    </Method>
     <Method Name="CheckCanUnloadArmToGarage" Id="{bb78d83b-b077-07a7-1d29-968f5b337faf}">
       <Declaration><![CDATA[
 METHOD PRIVATE CheckCanUnloadArmToGarage
@@ -332,6 +393,8 @@ END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[
+stSDS.bSuccess := FALSE;
+
 stSDS.sStatusMsg := 'Checking if there is an open slot in the garage and if the transfer arm is carrying a sample.';
 
 CheckCanDo2Criteria(
@@ -357,6 +420,8 @@ END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[
+stSDS.bSuccess := FALSE;
+
 stSDS.sStatusMsg := 'Checking if the diffractometer slot is full and if the transfer arm is empty.';
 
 CheckCanDo2Criteria(
@@ -404,10 +469,20 @@ VAR_IN_OUT
     stSDS : ST_SDS;
     stSDSP : ST_SDSPersistent;
 END_VAR
+VAR_INST
+    tonHoldDelay : TON;
+END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[
-stSDS.bGarageAboveCollisionHeight := stSDS.stGarageYStage.Axis.NcToPlc.ActPos <= stSDSP.fGarageHeightSafeFromCollision;
+// Missing handling for erroring encoder.
+
+tonHoldDelay(
+    IN := stSDS.stGarageYStage.Axis.NcToPlc.ActPos >= stSDSP.fGarageHeightSafeFromCollision,
+    PT := T#1s
+);
+
+stSDS.bGarageAboveCollisionHeight := tonHoldDelay.Q;
 ]]></ST>
       </Implementation>
     </Method>
@@ -460,49 +535,6 @@ END_VAR
 ]]></ST>
       </Implementation>
     </Method>
-    <Method Name="ExtendPrerotateTransferArmForExtraction" Id="{571dc7b2-1f9e-05ae-158e-96ba0d810ede}">
-      <Declaration><![CDATA[
-METHOD PRIVATE ExtendPrerotateTransferArmForExtraction
-VAR_IN_OUT
-    stSDS : ST_SDS;
-END_VAR
-VAR
-    bHArrived : BOOL;
-    bRArrived : BOOL;
-END_VAR
-]]></Declaration>
-      <Implementation>
-        <ST><![CDATA[
-stSDS.bSuccess := FALSE;
-
-stSDS.sStatusMsg := 'Moving transfer arm to nominal sample extraction position and pre-rotating to allow full rotation for unscrewing sample.';
-
-SetPositionStateWaitForArrivalQuitIfError(
-    eStateGet := stSDS.eTransferArmHStateGet,
-    stMotionStage := stSDS.stTransferArmHStage,
-    eStateSet := stSDS.eTransferArmHStateSet,
-    eEnumSet := E_SDSTransferArmHStates.GARAGE_SAMPLE_REMOVAL,
-    bError := stSDS.bError,
-    sErrorMsg := stSDS.sErrorMsg,
-    bArrived => bHArrived
-);
-
-SetPositionStateWaitForArrivalQuitIfError(
-    eStateGet := stSDS.eTransferArmRStateGet,
-    stMotionStage := stSDS.stTransferArmRStage,
-    eStateSet := stSDS.eTransferArmRStateSet,
-    eEnumSet := E_SDSTransferArmRStates.PREROTATE_SAMPLE_REMOVAL,
-    bError := stSDS.bError,
-    sErrorMsg := stSDS.sErrorMsg,
-    bArrived => bRArrived
-);
-
-IF bHArrived AND bRArrived THEN
-    stSDS.bSuccess := TRUE;
-END_IF
-]]></ST>
-      </Implementation>
-    </Method>
     <Method Name="ExtendPrerotateTransferArmForLoading" Id="{b432a359-f29f-08b6-14e5-baa64277214a}">
       <Declaration><![CDATA[
 METHOD PRIVATE ExtendPrerotateTransferArmForLoading
@@ -546,15 +578,101 @@ END_IF
 ]]></ST>
       </Implementation>
     </Method>
+    <Method Name="ExtendTransferArmForExtraction" Id="{571dc7b2-1f9e-05ae-158e-96ba0d810ede}">
+      <Declaration><![CDATA[
+METHOD PRIVATE ExtendTransferArmForExtraction
+VAR_IN_OUT
+    stSDS : ST_SDS;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[
+stSDS.bSuccess := FALSE;
+
+stSDS.sStatusMsg := 'Moving transfer arm to nominal sample extraction position.';
+
+SetPositionStateWaitForArrivalQuitIfError(
+    eStateGet := stSDS.eTransferArmHStateGet,
+    stMotionStage := stSDS.stTransferArmHStage,
+    eStateSet := stSDS.eTransferArmHStateSet,
+    eEnumSet := E_SDSTransferArmHStates.GARAGE_SAMPLE_REMOVAL,
+    bError := stSDS.bError,
+    sErrorMsg := stSDS.sErrorMsg,
+    bArrived => stSDS.bSuccess
+);
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="ExtendTransferArmForInsertion" Id="{ce88fcc1-22b7-0eae-3580-6dc8b72fb033}">
+      <Declaration><![CDATA[
+METHOD PRIVATE ExtendTransferArmForInsertion
+VAR_IN_OUT
+    stSDS : ST_SDS;
+END_VAR
+VAR
+    bHArrived : BOOL;
+    bRArrived : BOOL;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[
+stSDS.bSuccess := FALSE;
+
+stSDS.sStatusMsg := 'Moving transfer arm to nominal sample loading position.';
+
+SetPositionStateWaitForArrivalQuitIfError(
+    eStateGet := stSDS.eTransferArmHStateGet,
+    stMotionStage := stSDS.stTransferArmHStage,
+    eStateSet := stSDS.eTransferArmHStateSet,
+    eEnumSet := E_SDSTransferArmHStates.GARAGE_SAMPLE_INSERTION,
+    bError := stSDS.bError,
+    sErrorMsg := stSDS.sErrorMsg,
+    bArrived => stSDS.bSuccess
+);
+]]></ST>
+      </Implementation>
+    </Method>
     <Method Name="FineAdjustment" Id="{51bb2359-fcd7-0761-04cb-c7da836e46a0}">
       <Declaration><![CDATA[
 METHOD PRIVATE FineAdjustment
-VAR_INPUT
+VAR_IN_OUT
+    stSDS : ST_SDS;
 END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[
 stSDS.sStatusMsg := 'Use the individual motor control to do fine adjustment. Click "proceed" to move to the next step.';
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="GarageFaceTransferArm" Id="{56fa921e-2ad5-0f31-3b5c-5461e4f980fa}">
+      <Declaration><![CDATA[
+METHOD PRIVATE GarageFaceTransferArm
+VAR_IN_OUT
+    stSDS : ST_SDS;
+END_VAR
+VAR
+    bYArrived : BOOL;
+    bRArrived : BOOL;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[
+stSDS.bSuccess := FALSE;
+
+stSDS.sStatusMsg := 'Facing garage towards the transfer arm.';
+
+stSDS.eFaceState := E_SDSFaceState.FACE_TRANSFER_ARM;
+
+SetPositionStateWaitForArrivalQuitIfError(
+    eStateGet := stSDS.eGarageRStateGet,
+    stMotionStage := stSDS.stGarageRStage,
+    eStateSet := stSDS.eGarageRStateSet,
+    eEnumSet := stSDS.eSelectedGarageSlot,
+    bError := stSDS.bError,
+    sErrorMsg := stSDS.sErrorMsg,
+    bArrived => stSDS.bSuccess
+);
 ]]></ST>
       </Implementation>
     </Method>
@@ -782,16 +900,228 @@ END_IF
 ]]></ST>
       </Implementation>
     </Method>
-    <Method Name="ManualControl" Id="{75581a9d-1fae-0f7c-133f-c967f378fea2}">
+    <Method Name="LoadArmFromGarage" Id="{f4c1a898-93e4-09a9-3ef9-8a882daf2138}">
       <Declaration><![CDATA[
-METHOD PRIVATE ManualControl
-VAR_INPUT
+METHOD PRIVATE LoadArmFromGarage
+VAR_IN_OUT
     stSDS : ST_SDS;
+    stSDSP : ST_SDSPersistent;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[
+CASE stSDS.eSeqState OF
+    E_SDSSeqState.Inactive:
+        ; // Do nothing
+    E_SDSSeqState.Home_Transfer_Arm:
+        HomeTransferArm(
+            stSDS := stSDS
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSeqState := E_SDSSeqState.Check_Garage_Height;
+        END_IF
+    E_SDSSeqState.Check_Garage_Height:
+        IF stSDS.bGarageAboveCollisionHeight THEN
+            stSDS.eSeqState := E_SDSSeqState.Home_Garage;
+        ELSE
+            stSDS.eSeqState := E_SDSSeqState.Manually_Rotate_Garage_for_Clearance_to_Raise;
+        END_IF
+    E_SDSSeqState.Manually_Rotate_Garage_for_Clearance_to_Raise:
+        RotateGarageForClearanceManual(
+            stSDS := stSDS
+        );
+        IF stSDS.stUISelect.bProceed THEN
+            stSDS.eSeqState := E_SDSSeqState.Retract_Garage_1;
+        END_IF
+    E_SDSSeqState.Retract_Garage_1:
+        RetractGarage(
+            stSDS := stSDS
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSeqState := E_SDSSeqState.Home_Garage;
+        END_IF
+    E_SDSSeqState.Home_Garage:
+        HomeGarage(
+            stSDS := stSDS
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSeqState := E_SDSSeqState.Select_Garage_Slot_for_Removal;
+        END_IF
+    E_SDSSeqState.Select_Garage_Slot_for_Removal:
+        SelectGarageSlotForRemoval(
+            stSDS := stSDS,
+            stSDSP := stSDSP
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSeqState := E_SDSSeqState.Garage_Face_Transfer_Arm;
+        END_IF
+    E_SDSSeqState.Garage_Face_Transfer_Arm:
+        GarageFaceTransferArm(
+            stSDS := stSDS
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSeqState := E_SDSSeqState.Rotate_Garage_for_Clearance_to_Lower;
+        END_IF
+    E_SDSSeqState.Rotate_Garage_for_Clearance_to_Lower:
+        RotateGarageForClearance(
+            stSDS := stSDS
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSeqState := E_SDSSeqState.Move_Garage_to_Slot_Height;
+        END_IF
+    E_SDSSeqState.Move_Garage_to_Slot_Height:
+        MoveGarageToSlotHeight(
+            stSDS := stSDS
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSeqState := E_SDSSeqState.Prerotate_Transfer_Arm_for_Extraction;
+        END_IF
+    E_SDSSeqState.Prerotate_Transfer_Arm_for_Extraction:
+        PrerotateTransferArmForExtraction(
+            stSDS := stSDS
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSeqState := E_SDSSeqState.Extend_Transfer_Arm_for_Extraction;
+        END_IF
+    E_SDSSeqState.Extend_Transfer_Arm_for_Extraction:
+        ExtendTransferArmForExtraction(
+            stSDS := stSDS
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSeqState := E_SDSSeqState.Screw_in_Half_Turn;
+        END_IF
+    E_SDSSeqState.Screw_in_Half_Turn:
+        ScrewInHalfTurn(
+            stSDS := stSDS
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSeqState := E_SDSSeqState.Fine_Adjustment;
+        END_IF
+    E_SDSSeqState.Fine_Adjustment:
+        FineAdjustment(
+            stSDS := stSDS
+        );
+        IF stSDS.stUISelect.bProceed THEN
+            stSDS.eSeqState := E_SDSSeqState.Unscrew_Sample_from_Garage;
+        END_IF
+    E_SDSSeqState.Unscrew_Sample_from_Garage:
+        UnscrewSampleFromGarage(
+            stSDS := stSDS
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSeqState := E_SDSSeqState.Confirm_Extraction;
+        END_IF
+    E_SDSSeqState.Confirm_Extraction:
+        ConfirmExtraction(
+            stSDS := stSDS
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSeqState := E_SDSSeqState.Update_Sample_Database;
+        END_IF
+    E_SDSSeqState.Update_Sample_Database:
+        UpdateSampleLocationDatabaseGarageToArm(
+            stSDS := stSDS,
+            stSDSP := stSDSP
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSeqState := E_SDSSeqState.Retract_Transfer_Arm;
+        END_IF
+    E_SDSSeqState.Retract_Transfer_Arm:
+        HomeTransferArm(
+            stSDS := stSDS
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSeqState := E_SDSSeqState.Rotate_Garage_for_Clearance_to_Raise;
+        END_IF
+    E_SDSSeqState.Rotate_Garage_for_Clearance_to_Raise:
+        RotateGarageForClearance(
+            stSDS := stSDS
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSeqState := E_SDSSeqState.Retract_Garage_2;
+        END_IF
+    E_SDSSeqState.Retract_Garage_2:
+        RetractGarage(
+            stSDS := stSDS
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSeqState := E_SDSSeqState.Return_Garage_to_Home;
+        END_IF
+    E_SDSSeqState.Return_Garage_to_Home:
+        HomeGarage(
+            stSDS := stSDS
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eState := E_SDSState.Standby;
+        END_IF
+END_CASE
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="LoadDiffractometerFromArm" Id="{9ebcef9e-8a5d-03b3-1d4a-5d4a85fa1a0e}">
+      <Declaration><![CDATA[
+METHOD PRIVATE LoadDiffractometerFromArm
+VAR_IN_OUT
+    stSDS : ST_SDS;
+    stSDSP : ST_SDSPersistent;
 END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[
 
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="LoadUnloadGarageFromPort" Id="{7a1c1865-8cc1-022a-2317-4c9a3b79069a}">
+      <Declaration><![CDATA[
+METHOD PRIVATE LoadUnloadGarageFromPort
+VAR_IN_OUT
+    stSDS : ST_SDS;
+    stSDSP : ST_SDSPersistent;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[
+
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="ManualControl" Id="{75581a9d-1fae-0f7c-133f-c967f378fea2}">
+      <Declaration><![CDATA[
+METHOD PRIVATE ManualControl
+VAR_IN_OUT
+    stSDS : ST_SDS;
+    stSDSP : ST_SDSPersistent;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[
+
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="MoveGarageToSlotHeight" Id="{50a35882-1804-0b08-1081-a423427c611f}">
+      <Declaration><![CDATA[
+METHOD PRIVATE MoveGarageToSlotHeight
+VAR_IN_OUT
+    stSDS : ST_SDS;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[
+stSDS.bSuccess := FALSE;
+
+stSDS.sStatusMsg := 'Moving garage to selected slot height.';
+
+SetPositionStateWaitForArrivalQuitIfError(
+    eStateGet := stSDS.eGarageYStateGet,
+    stMotionStage := stSDS.stGarageYStage,
+    eStateSet := stSDS.eGarageYStateSet,
+    eEnumSet := stSDS.eSelectedGarageSlot,
+    bError := stSDS.bError,
+    sErrorMsg := stSDS.sErrorMsg,
+    bArrived => stSDS.bSuccess
+);
 ]]></ST>
       </Implementation>
     </Method>
@@ -840,9 +1170,9 @@ END_IF
 ]]></ST>
       </Implementation>
     </Method>
-    <Method Name="MoveToGarageSlotHeight" Id="{50a35882-1804-0b08-1081-a423427c611f}">
+    <Method Name="PrerotateTransferArmForExtraction" Id="{69fe999c-9454-0a1a-232b-58e4a267f3fb}">
       <Declaration><![CDATA[
-METHOD PRIVATE MoveToGarageSlotHeight
+METHOD PRIVATE PrerotateTransferArmForExtraction
 VAR_IN_OUT
     stSDS : ST_SDS;
 END_VAR
@@ -851,13 +1181,42 @@ END_VAR
         <ST><![CDATA[
 stSDS.bSuccess := FALSE;
 
-stSDS.sStatusMsg := 'Moving garage to selected slot height.';
+stSDS.sStatusMsg := 'Pre-rotating transfer arm to allow full rotation for unscrewing the sample.';
 
 SetPositionStateWaitForArrivalQuitIfError(
-    eStateGet := stSDS.eGarageYStateGet,
-    stMotionStage := stSDS.stGarageYStage,
-    eStateSet := stSDS.eGarageYStateSet,
-    eEnumSet := stSDS.eSelectedGarageSlot,
+    eStateGet := stSDS.eTransferArmRStateGet,
+    stMotionStage := stSDS.stTransferArmRStage,
+    eStateSet := stSDS.eTransferArmRStateSet,
+    eEnumSet := E_SDSTransferArmRStates.PREROTATE_SAMPLE_REMOVAL,
+    bError := stSDS.bError,
+    sErrorMsg := stSDS.sErrorMsg,
+    bArrived => stSDS.bSuccess
+);
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="PrerotateTransferArmForInsertion" Id="{35045289-d22d-014e-1719-711d2bc74ced}">
+      <Declaration><![CDATA[
+METHOD PRIVATE PrerotateTransferArmForInsertion
+VAR_IN_OUT
+    stSDS : ST_SDS;
+END_VAR
+VAR
+    bHArrived : BOOL;
+    bRArrived : BOOL;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[
+stSDS.bSuccess := FALSE;
+
+stSDS.sStatusMsg := 'Pre-rotating to allow full rotation for screwing in sample.';
+
+SetPositionStateWaitForArrivalQuitIfError(
+    eStateGet := stSDS.eTransferArmRStateGet,
+    stMotionStage := stSDS.stTransferArmRStage,
+    eStateSet := stSDS.eTransferArmRStateSet,
+    eEnumSet := E_SDSTransferArmRStates.PREROTATE_SAMPLE_INSERTION,
     bError := stSDS.bError,
     sErrorMsg := stSDS.sErrorMsg,
     bArrived => stSDS.bSuccess
@@ -958,9 +1317,9 @@ SetPositionStateWaitForArrivalQuitIfError(
 ]]></ST>
       </Implementation>
     </Method>
-    <Method Name="RotateToFaceTransferArm" Id="{8644950d-6572-0c21-1ab0-fa5ee03dc8b2}">
+    <Method Name="ScrewInHalfTurn" Id="{5fa348bd-1075-03c4-1b24-c33696dba93e}">
       <Declaration><![CDATA[
-METHOD PRIVATE RotateToFaceTransferArm
+METHOD PRIVATE ScrewInHalfTurn
 VAR_IN_OUT
     stSDS : ST_SDS;
 END_VAR
@@ -969,15 +1328,13 @@ END_VAR
         <ST><![CDATA[
 stSDS.bSuccess := FALSE;
 
-stSDS.sStatusMsg := 'Rotating garage so that the selected slot faces the transfer arm.';
-
-stSDS.eFaceState := E_SDSFaceState.FACE_TRANSFER_ARM;
+stSDS.sStatusMsg := 'Screwing transfer arm a half turn to catch the sample pin.';
 
 SetPositionStateWaitForArrivalQuitIfError(
-    eStateGet := stSDS.eGarageRStateGet,
-    stMotionStage := stSDS.stGarageRStage,
-    eStateSet := stSDS.eGarageRStateSet,
-    eEnumSet := stSDS.eSelectedGarageSlot,
+    eStateGet := stSDS.eTransferArmRStateGet,
+    stMotionStage := stSDS.stTransferArmRStage,
+    eStateSet := stSDS.eTransferArmRStateSet,
+    eEnumSet := E_SDSTransferArmRStates.SCREW_IN_HALF_TURN,
     bError := stSDS.bError,
     sErrorMsg := stSDS.sErrorMsg,
     bArrived => stSDS.bSuccess
@@ -1184,7 +1541,37 @@ END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[
+IF stSDS.bError THEN
+    stSDS.eState := E_SDSState.Error;
+END_IF
 
+IF stSDS.bCancel THEN
+    stSDS.eState := E_SDSState.Standby;
+END_IF
+
+CASE stSDS.eState OF
+    E_SDSState.Standby:
+        IF stSDS.bEnable THEN
+            stSDS.eState := E_SDSState.Operating;
+        END_IF
+        stSDS.eSubState := E_SDSSubState.Inactive;
+        stSDS.eSeqState := E_SDSSeqState.Inactive;
+    E_SDSState.Operating:
+        IF NOT stSDS.bEnable THEN
+            stSDS.eState := E_SDSState.Standby;
+        ELSE
+            SubStateMachine(
+                stSDS := stSDS,
+                stSDSP := stSDSP
+            );
+        END_IF
+    E_SDSState.Error:
+        IF NOT stSDS.bError THEN
+            stSDS.eState := E_SDSState.Standby;
+        END_IF
+        stSDS.eSubState := E_SDSSubState.Inactive;
+        stSDS.eSeqState := E_SDSSeqState.Inactive;
+END_CASE
 ]]></ST>
       </Implementation>
     </Method>
@@ -3363,6 +3750,325 @@ ChoiceElement1:INT:=47;
         </StateChart>
       </Implementation>
     </Method>
+    <Method Name="SubStateMachine" Id="{9fc31863-5b4e-030f-0acf-49219a215983}">
+      <Declaration><![CDATA[
+METHOD PRIVATE SubStateMachine
+VAR_IN_OUT
+    stSDS : ST_SDS;
+    stSDSP : ST_SDSPersistent;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[
+CASE stSDS.eSubState OF
+    E_SDSSubState.Inactive:
+        ; // Do nothing
+    E_SDSSubState.Select_Desired_Action:
+        IF stSDS.stUISelect.bHomeGarage THEN
+            stSDS.eSubState := E_SDSSubstate.Check_Can_Home_Garage;
+        ELSIF stSDS.stUISelect.bHomeTransferArm THEN
+            stSDS.eSubState := E_SDSSubstate.Check_Can_Home_Transfer_Arm;
+        ELSIF stSDS.stUISelect.bLoadArmFromGarage THEN
+            stSDS.eSubState := E_SDSSubstate.Check_Can_Load_Arm_from_Garage;
+        ELSIF stSDS.stUISelect.bUnloadArmToGarage THEN
+            stSDS.eSubState := E_SDSSubstate.Check_Can_Unload_Arm_to_Garage;
+        ELSIF stSDS.stUISelect.bLoadUnloadGarageFromPort THEN
+            stSDS.eSubState := E_SDSSubstate.Check_Can_Load_Unload_Garage_from_Port;
+        ELSIF stSDS.stUISelect.bLoadDiffractometerFromArm THEN
+            stSDS.eSubState := E_SDSSubstate.Check_Can_Load_Diffractometer_from_Arm;
+        ELSIF stSDS.stUISelect.bUnloadDiffractometerToArm THEN
+            stSDS.eSubState := E_SDSSubstate.Check_Can_Unload_Diffractometer_to_Arm;
+        ELSIF stSDS.stUISelect.bManualControl THEN
+            stSDS.eSubState := E_SDSSubstate.Check_Can_Manual_Control;
+        END_IF
+    E_SDSSubState.Check_Can_Home_Garage:
+        CheckCanHomeGarage(
+            stSDS := stSDS,
+            stSDSP := stSDSPersistent
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSubState := E_SDSSubstate.Home_Garage;
+        END_IF
+    E_SDSSubState.Home_Garage:
+        HomeGarage(
+            stSDS := stSDS
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eState := E_SDSState.Standby;
+        END_IF
+    E_SDSSubState.Check_Can_Home_Transfer_Arm:
+        CheckCanHomeTransferArm(
+            stSDS := stSDS,
+            stSDSP := stSDSPersistent
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSubState := E_SDSSubstate.Home_Transfer_Arm;
+        END_IF
+    E_SDSSubState.Home_Transfer_Arm:
+        HomeTransferArm(
+            stSDS := stSDS
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eState := E_SDSstate.Standby;
+        END_IF
+    E_SDSSubState.Check_Can_Load_Arm_From_Garage:
+        CheckCanLoadArmFromGarage(
+            stSDS := stSDS,
+            stSDSP := stSDSPersistent
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSubState := E_SDSSubstate.Load_Arm_from_Garage;
+        END_IF
+    E_SDSSubState.Load_Arm_from_Garage:
+        LoadArmFromGarage(
+            stSDS := stSDS,
+            stSDSP := stSDSPersistent
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eState := E_SDSstate.Standby;
+        END_IF
+    E_SDSSubState.Check_Can_Load_Diffractometer_from_Arm:
+        CheckCanLoadDiffractometerFromArm(
+            stSDS := stSDS,
+            stSDSP := stSDSPersistent
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSubState := E_SDSSubstate.Load_Diffractometer_from_Arm;
+        END_IF
+    E_SDSSubState.Load_Diffractometer_from_Arm:
+        LoadDiffractometerFromArm(
+            stSDS := stSDS,
+            stSDSP := stSDSPersistent
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eState := E_SDSstate.Standby;
+        END_IF
+    E_SDSSubState.Check_Can_Load_Unload_Garage_from_Port:
+        CheckCanLoadUnloadGarageFromPort(
+            stSDS := stSDS,
+            stSDSP := stSDSPersistent
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSubState := E_SDSSubstate.Load_Unload_Garage_from_Port;
+        END_IF
+    E_SDSSubState.Load_Unload_Garage_from_Port:
+        LoadUnloadGarageFromPort(
+            stSDS := stSDS,
+            stSDSP := stSDSPersistent
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eState := E_SDSstate.Standby;
+        END_IF
+    E_SDSSubState.Check_Can_Unload_Arm_to_Garage:
+        CheckCanUnloadArmToGarage(
+            stSDS := stSDS,
+            stSDSP := stSDSPersistent
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSubState := E_SDSSubstate.Unload_Arm_to_Garage;
+        END_IF
+    E_SDSSubState.Unload_Arm_to_Garage:
+        UnloadArmToGarage(
+            stSDS := stSDS,
+            stSDSP := stSDSPersistent
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eState := E_SDSstate.Standby;
+        END_IF
+    E_SDSSubState.Check_Can_Unload_Diffractometer_to_Arm:
+        CheckCanUnloadDiffractometerToArm(
+            stSDS := stSDS,
+            stSDSP := stSDSPersistent
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSubState := E_SDSSubstate.Unload_Diffractometer_to_Arm;
+        END_IF
+    E_SDSSubState.Unload_Diffractometer_to_Arm:
+        UnloadDiffractometerToArm(
+            stSDS := stSDS,
+            stSDSP := stSDSPersistent
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eState := E_SDSstate.Standby;
+        END_IF
+    E_SDSSubState.Check_Can_Manual_Control:
+        CheckCanManualControl(
+            stSDS := stSDS,
+            stSDSP := stSDSPersistent
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSubState := E_SDSSubstate.Manual_Control;
+        END_IF
+    E_SDSSubState.Manual_Control:
+        ManualControl(
+            stSDS := stSDS,
+            stSDSP := stSDSPersistent
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eState := E_SDSstate.Standby;
+        END_IF
+END_CASE
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="UnloadArmToGarage" Id="{b0d67d1f-c7d6-0992-2fbf-713efb0b4c20}">
+      <Declaration><![CDATA[
+METHOD PRIVATE UnloadArmToGarage
+VAR_IN_OUT
+    stSDS : ST_SDS;
+    stSDSP : ST_SDSPersistent;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[
+CASE stSDS.eSeqState OF
+    E_SDSSeqState.Inactive:
+        ; // Do nothing
+    E_SDSSeqState.Home_Transfer_Arm:
+        HomeTransferArm(
+            stSDS := stSDS
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSeqState := E_SDSSeqState.Check_Garage_Height;
+        END_IF
+    E_SDSSeqState.Check_Garage_Height:
+        IF stSDS.bGarageAboveCollisionHeight THEN
+            stSDS.eSeqState := E_SDSSeqState.Home_Garage;
+        ELSE
+            stSDS.eSeqState := E_SDSSeqState.Manually_Rotate_Garage_for_Clearance_to_Raise;
+        END_IF
+    E_SDSSeqState.Manually_Rotate_Garage_for_Clearance_to_Raise:
+        RotateGarageForClearanceManual(
+            stSDS := stSDS
+        );
+        IF stSDS.stUISelect.bProceed THEN
+            stSDS.eSeqState := E_SDSSeqState.Retract_Garage_1;
+        END_IF
+    E_SDSSeqState.Retract_Garage_1:
+        RetractGarage(
+            stSDS := stSDS
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSeqState := E_SDSSeqState.Home_Garage;
+        END_IF
+    E_SDSSeqState.Home_Garage:
+        HomeGarage(
+            stSDS := stSDS
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSeqState := E_SDSSeqState.Select_Garage_Slot_for_Loading;
+        END_IF
+    E_SDSSeqState.Select_Garage_Slot_for_Loading:
+        SelectGarageSlotForLoading(
+            stSDS := stSDS,
+            stSDSP := stSDSP
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSeqState := E_SDSSeqState.Garage_Face_Transfer_Arm;
+        END_IF
+    E_SDSSeqState.Garage_Face_Transfer_Arm:
+        GarageFaceTransferArm(
+            stSDS := stSDS
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSeqState := E_SDSSeqState.Rotate_Garage_for_Clearance_to_Lower;
+        END_IF
+    E_SDSSeqState.Rotate_Garage_for_Clearance_to_Lower:
+        RotateGarageForClearance(
+            stSDS := stSDS
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSeqState := E_SDSSeqState.Move_Garage_to_Slot_Height;
+        END_IF
+    E_SDSSeqState.Move_Garage_to_Slot_Height:
+        MoveGarageToSlotHeight(
+            stSDS := stSDS
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSeqState := E_SDSSeqState.Extend_Transfer_Arm_for_Insertion;
+        END_IF
+    E_SDSSeqState.Extend_Transfer_Arm_for_Insertion:
+        ExtendTransferArmForInsertion(
+            stSDS := stSDS
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSeqState := E_SDSSeqState.Fine_Adjustment;
+        END_IF
+    E_SDSSeqState.Fine_Adjustment:
+        FineAdjustment(
+            stSDS := stSDS
+        );
+        IF stSDS.stUISelect.bProceed THEN
+            stSDS.eSeqState := E_SDSSeqState.Screw_Sample_into_Garage;
+        END_IF
+    E_SDSSeqState.Screw_Sample_into_Garage:
+        ScrewSampleIntoGarage(
+            stSDS := stSDS
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSeqState := E_SDSSeqState.Confirm_Insertion;
+        END_IF
+    E_SDSSeqState.Confirm_Insertion:
+        ConfirmInsertion(
+            stSDS := stSDS
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSeqState := E_SDSSeqState.Update_Sample_Database;
+        END_IF
+    E_SDSSeqState.Update_Sample_Database:
+        UpdateSampleLocationDatabaseGarageToArm(
+            stSDS := stSDS,
+            stSDSP := stSDSP
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSeqState := E_SDSSeqState.Retract_Transfer_Arm;
+        END_IF
+    E_SDSSeqState.Retract_Transfer_Arm:
+        HomeTransferArm(
+            stSDS := stSDS
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSeqState := E_SDSSeqState.Rotate_Garage_for_Clearance_to_Raise;
+        END_IF
+    E_SDSSeqState.Rotate_Garage_for_Clearance_to_Raise:
+        RotateGarageForClearance(
+            stSDS := stSDS
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSeqState := E_SDSSeqState.Retract_Garage_2;
+        END_IF
+    E_SDSSeqState.Retract_Garage_2:
+        RetractGarage(
+            stSDS := stSDS
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSeqState := E_SDSSeqState.Return_Garage_to_Home;
+        END_IF
+    E_SDSSeqState.Return_Garage_to_Home:
+        HomeGarage(
+            stSDS := stSDS
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eState := E_SDSState.Standby;
+        END_IF
+END_CASE
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="UnloadDiffractometerToArm" Id="{2f8ca672-813e-009c-2356-1e14c976bafa}">
+      <Declaration><![CDATA[
+METHOD PRIVATE UnloadDiffractometerToArm
+VAR_IN_OUT
+    stSDS : ST_SDS;
+    stSDSP : ST_SDSPersistent;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[
+
+]]></ST>
+      </Implementation>
+    </Method>
     <Method Name="UnscrewSampleFromGarage" Id="{3464dcca-0819-0f26-0b96-1ede58811e89}">
       <Declaration><![CDATA[
 METHOD PRIVATE UnscrewSampleFromGarage
@@ -3490,14 +4196,28 @@ fbStateSetup(stPositionState:=stSDS.astTransferArmRPosState[E_SDSTransferArmRSta
     fVelocity:=stSDS.fGarageRotationSpeed,
     fDelta := 5.0
 );
-fbStateSetup(stPositionState:=stSDS.astTransferArmRPosState[E_SDSTransferArmRStates.PREROTATE_SAMPLE_REMOVAL], sName:='PREROTATE_SAMPLE_REMOVAL',
-    fPosition:=2000,
-    fVelocity:=stSDS.fGarageRotationSpeed
-);
-fbStateSetup(stPositionState:=stSDS.astTransferArmRPosState[E_SDSTransferArmRStates.PREROTATE_SAMPLE_INSERTION], sName:='PREROTATE_SAMPLE_INSERTION',
-    fPosition:=0,
-    fVelocity:=stSDS.fGarageRotationSpeed
-);
+IF NOT stSDS.stTransferArmRStage.bLimitForwardEnable THEN
+    fbStateSetup(stPositionState:=stSDS.astTransferArmRPosState[E_SDSTransferArmRStates.PREROTATE_SAMPLE_REMOVAL], sName:='PREROTATE_SAMPLE_REMOVAL',
+        fPosition:=stSDS.stTransferArmRStage.Axis.NcToPlc.ActPos,
+        fVelocity:=stSDS.fGarageRotationSpeed
+    );
+ELSE
+    fbStateSetup(stPositionState:=stSDS.astTransferArmRPosState[E_SDSTransferArmRStates.PREROTATE_SAMPLE_REMOVAL], sName:='PREROTATE_SAMPLE_REMOVAL',
+        fPosition:=20000,
+        fVelocity:=stSDS.fGarageRotationSpeed
+    );
+END_IF
+IF NOT stSDS.stTransferArmRStage.bLimitBackwardEnable THEN
+    fbStateSetup(stPositionState:=stSDS.astTransferArmRPosState[E_SDSTransferArmRStates.PREROTATE_SAMPLE_INSERTION], sName:='PREROTATE_SAMPLE_INSERTION',
+        fPosition:=stSDS.stTransferArmRStage.Axis.NcToPlc.ActPos,
+        fVelocity:=stSDS.fGarageRotationSpeed
+    );
+ELSE
+    fbStateSetup(stPositionState:=stSDS.astTransferArmRPosState[E_SDSTransferArmRStates.PREROTATE_SAMPLE_INSERTION], sName:='PREROTATE_SAMPLE_INSERTION',
+        fPosition:=-20000,
+        fVelocity:=stSDS.fGarageRotationSpeed
+    );
+END_IF
 fbStateSetup(stPositionState:=stSDS.astTransferArmRPosState[E_SDSTransferArmRStates.UNSCREW_FROM_GARAGE], sName:='UNSCREW_FROM_GARAGE',
     fPosition:=0,
     fVelocity:=stSDS.fGarageRotationSpeed

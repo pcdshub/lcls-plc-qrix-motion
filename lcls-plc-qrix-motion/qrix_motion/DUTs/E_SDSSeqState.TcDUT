@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="E_SDSSeqState" Id="{f9d11688-3081-47d2-9c3b-e9dffa282e49}">
+    <Declaration><![CDATA[
+{attribute 'qualified_only'}
+TYPE E_SDSSeqState :
+(
+    Inactive,
+    Home_Transfer_Arm,
+    Check_Garage_Height,
+    Manually_Rotate_Garage_for_Clearance_to_Raise,
+    Retract_Garage_1,
+    Home_Garage,
+    Select_Garage_Slot_for_Removal,
+    Select_Garage_Slot_for_Loading,
+    Garage_Face_Transfer_Arm,
+    Rotate_Garage_for_Clearance_to_Lower,
+    Move_Garage_to_Slot_Height,
+    Prerotate_Transfer_Arm_for_Extraction,
+    Prerotate_Transfer_Arm_for_Insertion,
+    Extend_Transfer_Arm_for_Extraction,
+    Extend_Transfer_Arm_for_Insertion,
+    Screw_in_Half_Turn,
+    Fine_Adjustment,
+    Unscrew_Sample_from_Garage,
+    Screw_Sample_into_Garage,
+    Confirm_Extraction,
+    Confirm_Insertion,
+    Update_Sample_Database,
+    Retract_Transfer_Arm,
+    Rotate_Garage_for_Clearance_to_Raise,
+    Retract_Garage_2,
+    Return_Garage_to_Home
+) UINT;
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

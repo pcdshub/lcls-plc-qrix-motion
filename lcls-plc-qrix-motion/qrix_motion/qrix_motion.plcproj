@@ -77,13 +77,16 @@
     <Compile Include="DUTs\E_SDSGarageRStates.TcDUT">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DUTs\E_SDSSubstate.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="DUTs\E_SDSTransferArmHStates.TcDUT">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DUTs\E_SDSHomingState.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DUTs\E_SDSSequenceStates.TcDUT">
+    <Compile Include="DUTs\E_SDSSeqState.TcDUT">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DUTs\E_SDSState.TcDUT">

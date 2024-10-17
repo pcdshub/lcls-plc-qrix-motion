@@ -6,29 +6,9 @@
 {attribute 'strict'}
 TYPE E_SDSState :
 (
-    Standby := 0,
+    Standby,
     Error,
-    Operating,
-    Select_Desired_Action,
-    Manual_Control,
-    Load_Arm_from_Garage,
-    Unload_Arm_to_Garage,
-    Load_Unload_Garage_from_Port,
-    Load_Diffractometer_from_Arm,
-    Unload_Diffractometer_to_Arm,
-    Home_Transfer_Arm,
-    Home_Garage,
-    Confirm_Garage_Free_to_Rotate,
-    Rotate_Garage_45deg_to_Lower,
-    Select_Garage_Slot_for_Removal,
-    Move_to_Garage_Slot_Height,
-    Rotate_to_Face_Transfer_Arm,
-    Extend_Transfer_Arm_for_Extraction,
-    Fine_Adjustment,
-    Unscrew_Sample_from_Garage,
-    Retract_Transfer_Arm,
-    Rotate_Garage_45deg_to_Raise,
-    Retract_Garage
+    Operating
 ) UINT;
 END_TYPE
 ]]></Declaration>

@@ -207,13 +207,13 @@ STRUCT
         pv: SubState
         field: DESC Present sub-state for sample delivery system.
     '}
-    eSubState : E_SDSState;
+    eSubState : E_SDSSubState;
 
     {attribute 'pytmc' := '
         pv: SeqState
         field: DESC Present sequence state for sample delivery system.
     '}
-    eSeqState: E_SDSState;
+    eSeqState: E_SDSSeqState;
 
     {attribute 'pytmc' := '
         pv: SecRemaining
