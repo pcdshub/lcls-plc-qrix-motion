@@ -5532,8 +5532,6 @@ QRIX:OPT:Y_REQ_RBV.VAL	1	scan
 QRIX:OPT:Y_REQ.VAL	1	scan
 QRIX:OPT:ROLL_REQ_RBV.VAL	1	scan
 QRIX:OPT:ROLL_REQ.VAL	1	scan
-QRIX:SDS:NP:Cancel_RBV.VAL	1	scan
-QRIX:SDS:NP:Cancel.VAL	1	scan
 QRIX:SDS:NP:DiffLoadable_RBV.VAL	1	scan
 QRIX:SDS:NP:DiffUnloadable_RBV.VAL	1	scan
 QRIX:SDS:NP:Enable_RBV.VAL	1	scan
@@ -5546,8 +5544,6 @@ QRIX:SDS:NP:Initialized_RBV.VAL	1	scan
 QRIX:SDS:NP:LoadingSel_RBV.VAL	1	scan
 QRIX:SDS:NP:Maint_RBV.VAL	1	scan
 QRIX:SDS:NP:Maint.VAL	1	scan
-QRIX:SDS:NP:Repeat_RBV.VAL	1	scan
-QRIX:SDS:NP:Retry_RBV.VAL	1	scan
 QRIX:SDS:NP:Success_RBV.VAL	1	scan
 QRIX:SDS:NP:ArmLoadable_RBV.VAL	1	scan
 QRIX:SDS:NP:ArmUnloadable_RBV.VAL	1	scan
@@ -6035,6 +6031,8 @@ QRIX:SDS:NP:NumGarSlots_RBV.VAL	1	scan
 QRIX:SDS:NP:ErrorMsg_RBV.VAL	1	scan
 QRIX:SDS:NP:StatusMsg_RBV.VAL	1	scan
 QRIX:SDS:NP:StatusMsg.VAL	1	scan
+QRIX:SDS:NP:Sel:Cancel_RBV.VAL	1	scan
+QRIX:SDS:NP:Sel:Cancel.VAL	1	scan
 QRIX:SDS:NP:Sel:ExitManualControl_RBV.VAL	1	scan
 QRIX:SDS:NP:Sel:ExitManualControl.VAL	1	scan
 QRIX:SDS:NP:Sel:HomeGar_RBV.VAL	1	scan
@@ -6059,8 +6057,8 @@ QRIX:SDS:NP:Sel:Retry_RBV.VAL	1	scan
 QRIX:SDS:NP:Sel:Retry.VAL	1	scan
 QRIX:SDS:NP:Sel:Unload_RBV.VAL	1	scan
 QRIX:SDS:NP:Sel:Unload.VAL	1	scan
-QRIX:SDS:NP:Sel:UnloadArmFromGar_RBV.VAL	1	scan
-QRIX:SDS:NP:Sel:UnloadArmFromGar.VAL	1	scan
+QRIX:SDS:NP:Sel:UnloadArmToGar_RBV.VAL	1	scan
+QRIX:SDS:NP:Sel:UnloadArmToGar.VAL	1	scan
 QRIX:SDS:NP:Sel:UnloadDiffToArm_RBV.VAL	1	scan
 QRIX:SDS:NP:Sel:UnloadDiffToArm.VAL	1	scan
 QRIX:SDS:NP:Sel:GarSlot_RBV.VAL	1	scan

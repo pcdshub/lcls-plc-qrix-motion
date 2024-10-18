@@ -36,6 +36,17 @@ IF NOT stSDSPersistent.bInitialized THEN
     END_FOR
 
     stSDSPersistent.astGarageSlot[E_SDSGarageYStates.T1].sTag := 'T1';
+    stSDSPersistent.astGarageSlot[E_SDSGarageYStates.T2].sTag := 'T2';
+    stSDSPersistent.astGarageSlot[E_SDSGarageYStates.T3].sTag := 'T3';
+    stSDSPersistent.astGarageSlot[E_SDSGarageYStates.T4].sTag := 'T4';
+    stSDSPersistent.astGarageSlot[E_SDSGarageYStates.M1].sTag := 'M1';
+    stSDSPersistent.astGarageSlot[E_SDSGarageYStates.M2].sTag := 'M2';
+    stSDSPersistent.astGarageSlot[E_SDSGarageYStates.M3].sTag := 'M3';
+    stSDSPersistent.astGarageSlot[E_SDSGarageYStates.M4].sTag := 'M4';
+    stSDSPersistent.astGarageSlot[E_SDSGarageYStates.B1].sTag := 'B1';
+    stSDSPersistent.astGarageSlot[E_SDSGarageYStates.B2].sTag := 'B2';
+    stSDSPersistent.astGarageSlot[E_SDSGarageYStates.B3].sTag := 'B3';
+    stSDSPersistent.astGarageSlot[E_SDSGarageYStates.B4].sTag := 'B4';
 
     stSDSPersistent.astGarageSlot[E_SDSGarageYStates.T1].fDeg := 0.0;
     stSDSPersistent.astGarageSlot[E_SDSGarageYStates.M1].fDeg := 0.0;
@@ -1134,7 +1145,7 @@ CASE stSDS.eSeqState OF
         );
         IF stSDS.bSuccess AND stSDS.stUISelect.bProceed THEN
             stSDS.eSeqState := E_SDSSeqState.Update_Sample_Database;
-        ELSIF stSDS.bRetry THEN
+        ELSIF stSDS.stUISelect.bRetry THEN
             stSDS.eSeqState := E_SDSSeqState.Fine_Adjustment;
         END_IF
     E_SDSSeqState.Update_Sample_Database:
@@ -1272,7 +1283,7 @@ CASE stSDS.eSeqState OF
         );
         IF stSDS.bSuccess AND stSDS.stUISelect.bProceed THEN
             stSDS.eSeqState := E_SDSSeqState.Update_Sample_Database;
-        ELSIF stSDS.bRetry THEN
+        ELSIF stSDS.stUISelect.bRetry THEN
             stSDS.eSeqState := E_SDSSeqState.Fine_Adjustment;
         END_IF
     E_SDSSeqState.Update_Sample_Database:
@@ -1904,7 +1915,7 @@ END_VAR
 //    stSDS.eState := E_SDSState.Error;
 //END_IF
 
-IF stSDS.bCancel THEN
+IF stSDS.stUISelect.bCancel THEN
     stSDS.eState := E_SDSState.Standby;
 END_IF
 
@@ -4373,7 +4384,7 @@ CASE stSDS.eSeqState OF
         );
         IF stSDS.bSuccess AND stSDS.stUISelect.bProceed THEN
             stSDS.eSeqState := E_SDSSeqState.Update_Sample_Database;
-        ELSIF stSDS.bRetry THEN
+        ELSIF stSDS.stUISelect.bRetry THEN
             stSDS.eSeqState := E_SDSSeqState.Fine_Adjustment;
         END_IF
     E_SDSSeqState.Update_Sample_Database:
@@ -4511,7 +4522,7 @@ CASE stSDS.eSeqState OF
         );
         IF stSDS.bSuccess AND stSDS.stUISelect.bProceed THEN
             stSDS.eSeqState := E_SDSSeqState.Update_Sample_Database;
-        ELSIF stSDS.bRetry THEN
+        ELSIF stSDS.stUISelect.bRetry THEN
             stSDS.eSeqState := E_SDSSeqState.Fine_Adjustment;
         END_IF
     E_SDSSeqState.Update_Sample_Database:

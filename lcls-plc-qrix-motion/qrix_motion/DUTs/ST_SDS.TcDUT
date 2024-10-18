@@ -50,27 +50,6 @@ STRUCT
     '}
     bSuccess : BOOL;
 
-    {attribute 'pytmc' := '
-        pv: Retry
-        io: i
-        field: DESC TRUE if retrying state machine step.
-    '}
-    bRetry : BOOL;
-
-    {attribute 'pytmc' := '
-        pv: Repeat
-        io: i
-        field: DESC TRUE if repeating state machine step.
-    '}
-    bRepeat : BOOL;
-
-    {attribute 'pytmc' := '
-        pv: Cancel
-        io: io
-        field: DESC TRUE to cancel next sequence step.
-    '}
-    bCancel: BOOL;
-
     // Variables used for homing
     {attribute 'pytmc' := '
         pv: HomeReq

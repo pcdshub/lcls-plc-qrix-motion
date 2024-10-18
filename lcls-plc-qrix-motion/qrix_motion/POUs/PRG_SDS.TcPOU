@@ -78,43 +78,6 @@ IF bInit THEN
     Main.M44.fHomePosition := 0;//1.176; distance from home switch trigger to lower limit trigger
 
     fSDSYEPSOverride := -40;
-
-    stSDS.stGarageYStage := Main.M40;
-    stSDS.stGarageRStage := Main.M42;
-    stSDS.stTransferArmHStage := Main.M44;
-    stSDS.stTransferArmRStage := Main.M43;
-
-    stSDS.eDiffXStateGet := PRG_Diffractometer.eDiffXStateGet;
-    stSDS.eDiffXStateSet := PRG_Diffractometer.eDiffXStateSet;
-    stSDS.stDiffXStage := Main.M28;
-
-    stSDS.eDiffYStateGet := PRG_Diffractometer.eDiffYStateGet;
-    stSDS.eDiffYStateSet := PRG_Diffractometer.eDiffYStateSet;
-    stSDS.stDiffYStage := Main.M29;
-
-    stSDS.eDiffZStateGet := PRG_Diffractometer.eDiffZStateGet;
-    stSDS.eDiffZStateSet := PRG_Diffractometer.eDiffZStateSet;
-    stSDS.stDiffZStage := Main.M30;
-
-    stSDS.eDiff2ThetaYStateGet := PRG_Diffractometer.eDiff2ThetaYStateGet;
-    stSDS.eDiff2ThetaYStateSet := PRG_Diffractometer.eDiff2ThetaYStateSet;
-    stSDS.stDiff2ThetaYStage := Main.M31;
-
-    stSDS.eDiffPhiStateGet := PRG_Diffractometer.eDiffPhiStateGet;
-    stSDS.eDiffPhiStateSet := PRG_Diffractometer.eDiffPhiStateSet;
-    stSDS.stDiffPhiStage := Main.M32;
-
-    stSDS.eDiffChiStateGet := PRG_Diffractometer.eDiffChiStateGet;
-    stSDS.eDiffChiStateSet := PRG_Diffractometer.eDiffChiStateSet;
-    stSDS.stDiffChiStage := Main.M33;
-
-    stSDS.eDiff2ThetaStateGet := PRG_Diffractometer.eDiff2ThetaStateGet;
-    stSDS.eDiff2ThetaStateSet := PRG_Diffractometer.eDiff2ThetaStateSet;
-    stSDS.stDiff2ThetaStage := Main.M34;
-
-    stSDS.eDiffThetaStateGet := PRG_Diffractometer.eDiffThetaStateGet;
-    stSDS.eDiffThetaStateSet := PRG_Diffractometer.eDiffThetaStateSet;
-    stSDS.stDiffThetaStage := Main.M35;
 END_IF
 
 GVL_Interface.QRIX_MOT_SDS_MMS_H_RAW_ENC_CNTS := Main.M44.nRawEncoderUINT;
@@ -159,6 +122,43 @@ Main.M42.bHome := NOT Main.M42.bHome;
 fb_SDS_ROT_V(stMotionStage:=Main.M42);
 fb_SDS_ROT_H(stMotionStage:=Main.M43);
 fb_SDS_H(stMotionStage:=Main.M44);
+
+stSDS.stGarageYStage REF= Main.M40;
+stSDS.stGarageRStage REF= Main.M42;
+stSDS.stTransferArmHStage REF= Main.M44;
+stSDS.stTransferArmRStage REF= Main.M43;
+
+stSDS.eDiffXStateGet REF= PRG_Diffractometer.eDiffXStateGet;
+stSDS.eDiffXStateSet REF= PRG_Diffractometer.eDiffXStateSet;
+stSDS.stDiffXStage REF= Main.M28;
+
+stSDS.eDiffYStateGet REF= PRG_Diffractometer.eDiffYStateGet;
+stSDS.eDiffYStateSet REF= PRG_Diffractometer.eDiffYStateSet;
+stSDS.stDiffYStage REF= Main.M29;
+
+stSDS.eDiffZStateGet REF= PRG_Diffractometer.eDiffZStateGet;
+stSDS.eDiffZStateSet REF= PRG_Diffractometer.eDiffZStateSet;
+stSDS.stDiffZStage REF= Main.M30;
+
+stSDS.eDiff2ThetaYStateGet REF= PRG_Diffractometer.eDiff2ThetaYStateGet;
+stSDS.eDiff2ThetaYStateSet REF= PRG_Diffractometer.eDiff2ThetaYStateSet;
+stSDS.stDiff2ThetaYStage REF= Main.M31;
+
+stSDS.eDiffPhiStateGet REF= PRG_Diffractometer.eDiffPhiStateGet;
+stSDS.eDiffPhiStateSet REF= PRG_Diffractometer.eDiffPhiStateSet;
+stSDS.stDiffPhiStage REF= Main.M32;
+
+stSDS.eDiffChiStateGet REF= PRG_Diffractometer.eDiffChiStateGet;
+stSDS.eDiffChiStateSet REF= PRG_Diffractometer.eDiffChiStateSet;
+stSDS.stDiffChiStage REF= Main.M33;
+
+stSDS.eDiff2ThetaStateGet REF= PRG_Diffractometer.eDiff2ThetaStateGet;
+stSDS.eDiff2ThetaStateSet REF= PRG_Diffractometer.eDiff2ThetaStateSet;
+stSDS.stDiff2ThetaStage REF= Main.M34;
+
+stSDS.eDiffThetaStateGet REF= PRG_Diffractometer.eDiffThetaStateGet;
+stSDS.eDiffThetaStateSet REF= PRG_Diffractometer.eDiffThetaStateSet;
+stSDS.stDiffThetaStage REF= Main.M35;
 
 // Function block containing logic for sample delivery system motion automation.
 fbSDS(

@@ -41,7 +41,7 @@ STRUCT
     bLoadArmFromGarage : BOOL;
 
     {attribute 'pytmc' := '
-        pv: UnloadArmFromGar
+        pv: UnloadArmToGar
         io: io
         field: DESC Write True to command unload arm from garage.
     '}
@@ -109,6 +109,13 @@ STRUCT
         field: DESC Write True when prompted to retry a defined previous step, if applicable.
     '}
     bRetry: BOOL;
+
+    {attribute 'pytmc' := '
+        pv: Cancel
+        io: io
+        field: DESC TRUE to cancel next sequence step.
+    '}
+    bCancel: BOOL;
 
     {attribute 'pytmc' := '
         pv: TextInput

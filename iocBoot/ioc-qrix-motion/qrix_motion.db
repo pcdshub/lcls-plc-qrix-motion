@@ -70965,30 +70965,6 @@ record(ao, "QRIX:OPT:ROLL_REQ") {
   info(archive, "VAL")
 }
 
-record(bi, "QRIX:SDS:NP:Cancel_RBV") {
-  field(DESC, "TRUE to cancel next sequence step.")
-  field(SCAN, "I/O Intr")
-  field(PINI, "1")
-  field(TSE, "-2")
-  field(DTYP, "asynInt32")
-  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_SDS.stSDS.bCancel?")
-  field(ZNAM, "FALSE")
-  field(ONAM, "TRUE")
-  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
-  info(archive, "VAL")
-}
-
-record(bo, "QRIX:SDS:NP:Cancel") {
-  field(DESC, "TRUE to cancel next sequence step.")
-  field(DTYP, "asynInt32")
-  field(UDFS, "0")
-  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_SDS.stSDS.bCancel=")
-  field(ZNAM, "FALSE")
-  field(ONAM, "TRUE")
-  info(autosaveFields_pass0, "COSV DESC DISS OSV SIMS UDFS VAL ZSV")
-  info(archive, "VAL")
-}
-
 record(bi, "QRIX:SDS:NP:DiffLoadable_RBV") {
   # True if it is currently possible to load the diffractometer slot. False if the diffractometer slot is full or disabled.
   field(DESC, "True if it is curren...full or disabled.")
@@ -71150,32 +71126,6 @@ record(bo, "QRIX:SDS:NP:Maint") {
   field(ZNAM, "FALSE")
   field(ONAM, "TRUE")
   info(autosaveFields_pass0, "COSV DESC DISS OSV SIMS UDFS VAL ZSV")
-  info(archive, "VAL")
-}
-
-record(bi, "QRIX:SDS:NP:Repeat_RBV") {
-  field(DESC, "TRUE if repeating state machine step.")
-  field(SCAN, "I/O Intr")
-  field(PINI, "1")
-  field(TSE, "-2")
-  field(DTYP, "asynInt32")
-  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_SDS.stSDS.bRepeat?")
-  field(ZNAM, "FALSE")
-  field(ONAM, "TRUE")
-  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
-  info(archive, "VAL")
-}
-
-record(bi, "QRIX:SDS:NP:Retry_RBV") {
-  field(DESC, "TRUE if retrying state machine step.")
-  field(SCAN, "I/O Intr")
-  field(PINI, "1")
-  field(TSE, "-2")
-  field(DTYP, "asynInt32")
-  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_SDS.stSDS.bRetry?")
-  field(ZNAM, "FALSE")
-  field(ONAM, "TRUE")
-  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
   info(archive, "VAL")
 }
 
@@ -77496,6 +77446,30 @@ record(waveform, "QRIX:SDS:NP:StatusMsg") {
   info(archive, "VAL")
 }
 
+record(bi, "QRIX:SDS:NP:Sel:Cancel_RBV") {
+  field(DESC, "TRUE to cancel next sequence step.")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_SDS.stSDS.stUISelect.bCancel?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
+record(bo, "QRIX:SDS:NP:Sel:Cancel") {
+  field(DESC, "TRUE to cancel next sequence step.")
+  field(DTYP, "asynInt32")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_SDS.stSDS.stUISelect.bCancel=")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "COSV DESC DISS OSV SIMS UDFS VAL ZSV")
+  info(archive, "VAL")
+}
+
 record(bi, "QRIX:SDS:NP:Sel:ExitManualControl_RBV") {
   # Write True to command exit manual control.
   field(DESC, "Write True to comman...t manual control.")
@@ -77802,7 +77776,7 @@ record(bo, "QRIX:SDS:NP:Sel:Unload") {
   info(archive, "VAL")
 }
 
-record(bi, "QRIX:SDS:NP:Sel:UnloadArmFromGar_RBV") {
+record(bi, "QRIX:SDS:NP:Sel:UnloadArmToGar_RBV") {
   # Write True to command unload arm from garage.
   field(DESC, "Write True to comman... arm from garage.")
   field(SCAN, "I/O Intr")
@@ -77816,7 +77790,7 @@ record(bi, "QRIX:SDS:NP:Sel:UnloadArmFromGar_RBV") {
   info(archive, "VAL")
 }
 
-record(bo, "QRIX:SDS:NP:Sel:UnloadArmFromGar") {
+record(bo, "QRIX:SDS:NP:Sel:UnloadArmToGar") {
   # Write True to command unload arm from garage.
   field(DESC, "Write True to comman... arm from garage.")
   field(DTYP, "asynInt32")
