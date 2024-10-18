@@ -56,6 +56,9 @@
     <Compile Include="DUTs\ENUM_LAS_VIS_States.TcDUT">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DUTs\E_DiffState.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="DUTs\E_GantryEnableState.TcDUT">
       <SubType>Code</SubType>
     </Compile>

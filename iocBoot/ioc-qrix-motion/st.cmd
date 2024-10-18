@@ -22,7 +22,7 @@
 #   Tc2_Standard: * -> 3.3.3.0 (Beckhoff Automation GmbH)
 #   Tc2_System: * -> 3.4.24.0 (Beckhoff Automation GmbH)
 #   Tc3_Module: * -> 3.3.21.0 (Beckhoff Automation GmbH)
-#   UML Statechart Types: 4.1.1.0 (3S - Smart Software Solutions GmbH)
+#   UML Statechart Types: 4.1.1.0 -> 4.1.1.0 (3S - Smart Software Solutions GmbH)
 #
 ################### AUTO-GENERATED DO NOT EDIT ###################
 < envPaths
@@ -45,7 +45,7 @@ epicsEnvSet("ASYN_PORT",        "ASYN_PLC")
 epicsEnvSet("IPADDR",           "172.21.140.101")
 epicsEnvSet("AMSID",            "172.21.140.101.1.1")
 epicsEnvSet("AMS_PORT",         "851")
-epicsEnvSet("ADS_MAX_PARAMS",   "7203")
+epicsEnvSet("ADS_MAX_PARAMS",   "7204")
 epicsEnvSet("ADS_SAMPLE_MS",    "50")
 epicsEnvSet("ADS_MAX_DELAY_MS", "100")
 epicsEnvSet("ADS_TIMEOUT_MS",   "1000")
@@ -879,7 +879,7 @@ dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:QRIX:MOT,DEPENDENCY=Tc2_Stand
 dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:QRIX:MOT,DEPENDENCY=Tc2_System,VERSION=3.4.24.0,VENDOR=Beckhoff Automation GmbH")
 #   Tc3_Module: * -> 3.3.21.0 (Beckhoff Automation GmbH)
 dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:QRIX:MOT,DEPENDENCY=Tc3_Module,VERSION=3.3.21.0,VENDOR=Beckhoff Automation GmbH")
-#   UML Statechart Types: 4.1.1.0 (3S - Smart Software Solutions GmbH)
+#   UML Statechart Types: 4.1.1.0 -> 4.1.1.0 (3S - Smart Software Solutions GmbH)
 dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:QRIX:MOT,DEPENDENCY=UML_Statechart_Types,VERSION=4.1.1.0,VENDOR=3S - Smart Software Solutions GmbH")
 
 cd "$(IOC_TOP)"
@@ -887,8 +887,8 @@ cd "$(IOC_TOP)"
 ## PLC Project Database files ##
 dbLoadRecords("qrix_motion.db", "PORT=$(ASYN_PORT),PREFIX=PLC:QRIX:MOT:,IOCNAME=$(IOC),IOC=$(IOC)")
 
-# Total records: 6203
-callbackSetQueueSize(14406)
+# Total records: 6204
+callbackSetQueueSize(14408)
 
 # Autosave and archive settings:
 save_restoreSet_status_prefix("PLC:QRIX:MOT:")

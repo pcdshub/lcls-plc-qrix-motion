@@ -47,11 +47,59 @@ VAR
     GantryDiff:REAL;
 
     fb_Diff_2Theta_Encoder : FB_MotionStage;
+
+    eDiffXStateGet: E_DiffState;
+    eDiffXStateSet: E_DiffState;
+    astDiffXPosState: ARRAY[1..GeneralConstants.MAX_STATES] OF ST_PositionState;
+    fbDiffXStage1D : FB_PositionState1D;
+
+    eDiffYStateGet: E_DiffState;
+    eDiffYStateSet: E_DiffState;
+    astDiffYPosState: ARRAY[1..GeneralConstants.MAX_STATES] OF ST_PositionState;
+    fbDiffYStage1D : FB_PositionState1D;
+
+    eDiffZStateGet: E_DiffState;
+    eDiffZStateSet: E_DiffState;
+    astDiffZPosState: ARRAY[1..GeneralConstants.MAX_STATES] OF ST_PositionState;
+    fbDiffZStage1D : FB_PositionState1D;
+
+    eDiff2ThetaYStateGet: E_DiffState;
+    eDiff2ThetaYStateSet: E_DiffState;
+    astDiff2ThetaYPosState: ARRAY[1..GeneralConstants.MAX_STATES] OF ST_PositionState;
+    fbDiff2ThetaYStage1D : FB_PositionState1D;
+
+    eDiffPhiStateGet: E_DiffState;
+    eDiffPhiStateSet: E_DiffState;
+    astDiffPhiPosState: ARRAY[1..GeneralConstants.MAX_STATES] OF ST_PositionState;
+    fbDiffPhiStage1D : FB_PositionState1D;
+
+    eDiffChiStateGet: E_DiffState;
+    eDiffChiStateSet: E_DiffState;
+    astDiffChiPosState: ARRAY[1..GeneralConstants.MAX_STATES] OF ST_PositionState;
+    fbDiffChiStage1D : FB_PositionState1D;
+
+    eDiff2ThetaStateGet: E_DiffState;
+    eDiff2ThetaStateSet: E_DiffState;
+    astDiff2ThetaPosState: ARRAY[1..GeneralConstants.MAX_STATES] OF ST_PositionState;
+    fbDiff2ThetaStage1D : FB_PositionState1D;
+
+    eDiffThetaStateGet: E_DiffState;
+    eDiffThetaStateSet: E_DiffState;
+    astDiffThetaPosState: ARRAY[1..GeneralConstants.MAX_STATES] OF ST_PositionState;
+    fbDiffThetaStage1D : FB_PositionState1D;
+
+    fbStateSetup: FB_StateSetupHelper;
+    stDefault: ST_PositionState := (
+        fDelta := 0.5,
+        fVelocity := 0.5,
+        bMoveOk := TRUE,
+        bValid := TRUE
+    );
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[
-IF ( bInit) THEN
+IF (bInit) THEN
     bInit := FALSE;
     Main.M28.bHardwareEnable := TRUE;
     Main.M28.bPowerSelf := TRUE;
@@ -101,6 +149,58 @@ IF ( bInit) THEN
     Main.M35.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
     Main.M35.fVelocity := 0.1;
 
+    fbStateSetup(stPositionState:=stDefault, bSetDefault:=TRUE);
+
+    fbStateSetup(stPositionState:=astDiffXPosState[E_DiffState.TRANSFER_ARM_INTERFACE], sName:='TRANSFER_ARM_INTERFACE',
+        fPosition := 0
+    );
+    fbStateSetup(stPositionState:=astDiffYPosState[E_DiffState.TRANSFER_ARM_INTERFACE], sName:='TRANSFER_ARM_INTERFACE',
+        fPosition := 0
+    );
+    fbStateSetup(stPositionState:=astDiffZPosState[E_DiffState.TRANSFER_ARM_INTERFACE], sName:='TRANSFER_ARM_INTERFACE',
+        fPosition := 0
+    );
+    fbStateSetup(stPositionState:=astDiff2ThetaYPosState[E_DiffState.TRANSFER_ARM_INTERFACE], sName:='TRANSFER_ARM_INTERFACE',
+        fPosition := 0
+    );
+    fbStateSetup(stPositionState:=astDiffPhiPosState[E_DiffState.TRANSFER_ARM_INTERFACE], sName:='TRANSFER_ARM_INTERFACE',
+        fPosition := 0
+    );
+    fbStateSetup(stPositionState:=astDiffChiPosState[E_DiffState.TRANSFER_ARM_INTERFACE], sName:='TRANSFER_ARM_INTERFACE',
+        fPosition := 0
+    );
+    fbStateSetup(stPositionState:=astDiff2ThetaPosState[E_DiffState.TRANSFER_ARM_INTERFACE], sName:='TRANSFER_ARM_INTERFACE',
+        fPosition := 0
+    );
+    fbStateSetup(stPositionState:=astDiffThetaPosState[E_DiffState.TRANSFER_ARM_INTERFACE], sName:='TRANSFER_ARM_INTERFACE',
+        fPosition := 0
+    );
+
+
+    fbStateSetup(stPositionState:=astDiffXPosState[E_DiffState.NOMINAL_POSITION], sName:='NOMINAL_POSITION',
+        fPosition := 0
+    );
+    fbStateSetup(stPositionState:=astDiffYPosState[E_DiffState.NOMINAL_POSITION], sName:='NOMINAL_POSITION',
+        fPosition := 0
+    );
+    fbStateSetup(stPositionState:=astDiffZPosState[E_DiffState.NOMINAL_POSITION], sName:='NOMINAL_POSITION',
+        fPosition := 0
+    );
+    fbStateSetup(stPositionState:=astDiff2ThetaYPosState[E_DiffState.NOMINAL_POSITION], sName:='NOMINAL_POSITION',
+        fPosition := 0
+    );
+    fbStateSetup(stPositionState:=astDiffPhiPosState[E_DiffState.NOMINAL_POSITION], sName:='NOMINAL_POSITION',
+        fPosition := 0
+    );
+    fbStateSetup(stPositionState:=astDiffChiPosState[E_DiffState.NOMINAL_POSITION], sName:='NOMINAL_POSITION',
+        fPosition := 0
+    );
+    fbStateSetup(stPositionState:=astDiff2ThetaPosState[E_DiffState.NOMINAL_POSITION], sName:='NOMINAL_POSITION',
+        fPosition := 0
+    );
+    fbStateSetup(stPositionState:=astDiffThetaPosState[E_DiffState.NOMINAL_POSITION], sName:='NOMINAL_POSITION',
+        fPosition := 0
+    );
 END_IF
 
 //EPS

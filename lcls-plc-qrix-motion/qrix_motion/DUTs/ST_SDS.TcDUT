@@ -276,10 +276,42 @@ STRUCT
 
     tonForwardHomingLimit: TON;
 
-    stGarageYStage: ST_MotionStage;
-    stGarageRStage: ST_MotionStage;
-    stTransferArmHStage: ST_MotionStage;
-    stTransferArmRStage: ST_MotionStage;
+    stGarageYStage : REFERENCE TO ST_MotionStage;
+    stGarageRStage : REFERENCE TO ST_MotionStage;
+    stTransferArmHStage : REFERENCE TO ST_MotionStage;
+    stTransferArmRStage : REFERENCE TO ST_MotionStage;
+
+    eDiffXStateGet : REFERENCE TO E_DiffState;
+    eDiffXStateSet : REFERENCE TO E_DiffState;
+    stDiffXStage : REFERENCE TO ST_MotionStage;
+
+    eDiffYStateGet : REFERENCE TO E_DiffState;
+    eDiffYStateSet : REFERENCE TO E_DiffState;
+    stDiffYStage : REFERENCE TO ST_MotionStage;
+
+    eDiffZStateGet : REFERENCE TO E_DiffState;
+    eDiffZStateSet : REFERENCE TO E_DiffState;
+    stDiffZStage : REFERENCE TO ST_MotionStage;
+
+    eDiff2ThetaYStateGet : REFERENCE TO E_DiffState;
+    eDiff2ThetaYStateSet : REFERENCE TO E_DiffState;
+    stDiff2ThetaYStage : REFERENCE TO ST_MotionStage;
+
+    eDiffPhiStateGet : REFERENCE TO E_DiffState;
+    eDiffPhiStateSet : REFERENCE TO E_DiffState;
+    stDiffPhiStage : REFERENCE TO ST_MotionStage;
+
+    eDiffChiStateGet : REFERENCE TO E_DiffState;
+    eDiffChiStateSet : REFERENCE TO E_DiffState;
+    stDiffChiStage : REFERENCE TO ST_MotionStage;
+
+    eDiff2ThetaStateGet : REFERENCE TO E_DiffState;
+    eDiff2ThetaStateSet : REFERENCE TO E_DiffState;
+    stDiff2ThetaStage : REFERENCE TO ST_MotionStage;
+
+    eDiffThetaStateGet : REFERENCE TO E_DiffState;
+    eDiffThetaStateSet : REFERENCE TO E_DiffState;
+    stDiffThetaStage : REFERENCE TO ST_MotionStage;
 
     {attribute 'pytmc' := '
         pv: GarAboveColl
@@ -315,6 +347,13 @@ STRUCT
         field: DESC Garage rotational speed.
     '}
     fGarageRotationSpeed : LREAL := 10.0;
+
+    {attribute 'pytmc' := '
+        pv: TARotSpeed
+        io: i
+        field: DESC Garage rotational speed.
+    '}
+    fTransferArmRotationSpeed : LREAL := 10.0;
 
     {attribute 'pytmc' := '
         pv: GarRotClearancePos

@@ -117,6 +117,7 @@ stSDS.fbTransferArmHPos1D(
     stEpicsToPlc:=stSDS.stTransferArmHEpicsToPlc,
     stPlcToEpics=>stSDS.stTransferArmHPlcToEpics
 );
+
 stSDS.fbTransferArmRPos1D(
     stMotionStage:=stSDS.stTransferArmRStage,
     astPositionState:=stSDS.astTransferArmRPosState,
@@ -437,6 +438,56 @@ CheckCanDo2Criteria(
 ]]></ST>
       </Implementation>
     </Method>
+    <Method Name="ConfirmDiffractometerExtraction" Id="{d6fa0bd2-2cc3-0c14-25e1-d6269dfc6e95}">
+      <Declaration><![CDATA[
+METHOD PRIVATE ConfirmDiffractometerExtraction
+VAR_IN_OUT
+    stSDS : ST_SDS;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[
+stSDS.bSuccess := FALSE;
+
+stSDS.sStatusMsg := 'Moving transfer arm back a few mm. Please confirm the sample is held by the diffractometer and then click "proceed". If the sample is still in the transfer arm, click "retry" to go back to fine adjustment.';
+
+SetPositionStateWaitForArrivalQuitIfError(
+    eStateGet := stSDS.eTransferArmHStateGet,
+    stMotionStage := stSDS.stTransferArmHStage,
+    eStateSet := stSDS.eTransferArmHStateSet,
+    eEnumSet := E_SDSTransferArmHStates.CONFIRM_DIFF_EXTRACTION,
+    bError := stSDS.bError,
+    sErrorMsg := stSDS.sErrorMsg,
+    bArrived => stSDS.bSuccess
+);
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="ConfirmDiffractometerInsertion" Id="{b514667a-7a6b-084f-26ed-c3670ae3eeb5}">
+      <Declaration><![CDATA[
+METHOD PRIVATE ConfirmDiffractometerInsertion
+VAR_IN_OUT
+    stSDS : ST_SDS;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[
+stSDS.bSuccess := FALSE;
+
+stSDS.sStatusMsg := 'Moving transfer arm back a few mm. Please confirm the sample is held by the diffractometer and then click "proceed". If the sample is still in the transfer arm, click "retry" to go back to fine adjustment.';
+
+SetPositionStateWaitForArrivalQuitIfError(
+    eStateGet := stSDS.eTransferArmHStateGet,
+    stMotionStage := stSDS.stTransferArmHStage,
+    eStateSet := stSDS.eTransferArmHStateSet,
+    eEnumSet := E_SDSTransferArmHStates.CONFIRM_DIFF_INSERTION,
+    bError := stSDS.bError,
+    sErrorMsg := stSDS.sErrorMsg,
+    bArrived => stSDS.bSuccess
+);
+]]></ST>
+      </Implementation>
+    </Method>
     <Method Name="ConfirmExtraction" Id="{daf24cc7-3887-03b2-0501-848224111e75}">
       <Declaration><![CDATA[
 METHOD PRIVATE ConfirmExtraction
@@ -535,6 +586,22 @@ END_VAR
 ]]></ST>
       </Implementation>
     </Method>
+    <Method Name="ConfirmVacuumValveOpen" Id="{7edf6b8d-5100-0c75-373c-38d8169bb405}">
+      <Declaration><![CDATA[
+METHOD PRIVATE ConfirmVacuumValveOpen
+VAR_IN_OUT
+    stSDS : ST_SDS;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[
+stSDS.sStatusMsg := 'Verifying that the vacuum valve between SDS and Diff is open.';
+
+stSDS.bSuccess := GVL_Interface.QRIX_VAC_VGC_03_OPEN_LIMIT_SWITCH AND
+    NOT GVL_Interface.QRIX_VAC_VGC_03_CLOSED_LIMIT_SWITCH;
+]]></ST>
+      </Implementation>
+    </Method>
     <Method Name="ExtendPrerotateTransferArmForLoading" Id="{b432a359-f29f-08b6-14e5-baa64277214a}">
       <Declaration><![CDATA[
 METHOD PRIVATE ExtendPrerotateTransferArmForLoading
@@ -578,6 +645,56 @@ END_IF
 ]]></ST>
       </Implementation>
     </Method>
+    <Method Name="ExtendTransferArmForDiffractometerExtraction" Id="{edd7395a-4155-067c-0fcb-47033a9c8bad}">
+      <Declaration><![CDATA[
+METHOD PRIVATE ExtendTransferArmForDiffractometerExtraction
+VAR_IN_OUT
+    stSDS : ST_SDS;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[
+stSDS.bSuccess := FALSE;
+
+stSDS.sStatusMsg := 'Moving transfer arm to nominal sample unloading position for diffractometer.';
+
+SetPositionStateWaitForArrivalQuitIfError(
+    eStateGet := stSDS.eTransferArmHStateGet,
+    stMotionStage := stSDS.stTransferArmHStage,
+    eStateSet := stSDS.eTransferArmHStateSet,
+    eEnumSet := E_SDSTransferArmHStates.DIFF_SAMPLE_EXTRACTION,
+    bError := stSDS.bError,
+    sErrorMsg := stSDS.sErrorMsg,
+    bArrived => stSDS.bSuccess
+);
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="ExtendTransferArmForDiffractometerInsertion" Id="{af2f7013-604e-0acd-15bc-e4b8aeba16d6}">
+      <Declaration><![CDATA[
+METHOD PRIVATE ExtendTransferArmForDiffractometerInsertion
+VAR_IN_OUT
+    stSDS : ST_SDS;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[
+stSDS.bSuccess := FALSE;
+
+stSDS.sStatusMsg := 'Moving transfer arm to nominal sample loading position for diffractometer.';
+
+SetPositionStateWaitForArrivalQuitIfError(
+    eStateGet := stSDS.eTransferArmHStateGet,
+    stMotionStage := stSDS.stTransferArmHStage,
+    eStateSet := stSDS.eTransferArmHStateSet,
+    eEnumSet := E_SDSTransferArmHStates.DIFF_SAMPLE_INSERTION,
+    bError := stSDS.bError,
+    sErrorMsg := stSDS.sErrorMsg,
+    bArrived => stSDS.bSuccess
+);
+]]></ST>
+      </Implementation>
+    </Method>
     <Method Name="ExtendTransferArmForExtraction" Id="{571dc7b2-1f9e-05ae-158e-96ba0d810ede}">
       <Declaration><![CDATA[
 METHOD PRIVATE ExtendTransferArmForExtraction
@@ -589,7 +706,7 @@ END_VAR
         <ST><![CDATA[
 stSDS.bSuccess := FALSE;
 
-stSDS.sStatusMsg := 'Moving transfer arm to nominal sample extraction position.';
+stSDS.sStatusMsg := 'Moving transfer arm to nominal sample extraction position for garage.';
 
 SetPositionStateWaitForArrivalQuitIfError(
     eStateGet := stSDS.eTransferArmHStateGet,
@@ -618,7 +735,7 @@ END_VAR
         <ST><![CDATA[
 stSDS.bSuccess := FALSE;
 
-stSDS.sStatusMsg := 'Moving transfer arm to nominal sample loading position.';
+stSDS.sStatusMsg := 'Moving transfer arm to nominal sample loading position for garage.';
 
 SetPositionStateWaitForArrivalQuitIfError(
     eStateGet := stSDS.eTransferArmHStateGet,
@@ -1015,15 +1132,17 @@ CASE stSDS.eSeqState OF
         ConfirmExtraction(
             stSDS := stSDS
         );
-        IF stSDS.bSuccess THEN
+        IF stSDS.bSuccess AND stSDS.stUISelect.bProceed THEN
             stSDS.eSeqState := E_SDSSeqState.Update_Sample_Database;
+        ELSIF stSDS.bRetry THEN
+            stSDS.eSeqState := E_SDSSeqState.Fine_Adjustment;
         END_IF
     E_SDSSeqState.Update_Sample_Database:
         UpdateSampleLocationDatabaseGarageToArm(
             stSDS := stSDS,
             stSDSP := stSDSP
         );
-        IF stSDS.bSuccess THEN
+        IF stSDS.bSuccess OR stSDS.stUISelect.bProceed THEN
             stSDS.eSeqState := E_SDSSeqState.Retract_Transfer_Arm;
         END_IF
     E_SDSSeqState.Retract_Transfer_Arm:
@@ -1068,7 +1187,110 @@ END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[
-
+CASE stSDS.eSeqState OF
+    E_SDSSeqState.Inactive:
+        ; // Do nothing
+    E_SDSSeqState.Home_Transfer_Arm:
+        HomeTransferArm(
+            stSDS := stSDS
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSeqState := E_SDSSeqState.Check_Garage_Height;
+        END_IF
+    E_SDSSeqState.Check_Garage_Height:
+        IF stSDS.bGarageAboveCollisionHeight THEN
+            stSDS.eSeqState := E_SDSSeqState.Home_Garage;
+        ELSE
+            stSDS.eSeqState := E_SDSSeqState.Manually_Rotate_Garage_for_Clearance_to_Raise;
+        END_IF
+    E_SDSSeqState.Manually_Rotate_Garage_for_Clearance_to_Raise:
+        RotateGarageForClearanceManual(
+            stSDS := stSDS
+        );
+        IF stSDS.stUISelect.bProceed THEN
+            stSDS.eSeqState := E_SDSSeqState.Retract_Garage_1;
+        END_IF
+    E_SDSSeqState.Retract_Garage_1:
+        RetractGarage(
+            stSDS := stSDS
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSeqState := E_SDSSeqState.Home_Garage;
+        END_IF
+    E_SDSSeqState.Home_Garage:
+        HomeGarage(
+            stSDS := stSDS
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSeqState := E_SDSSeqState.Move_Diffractometer_to_Load_Unload_Position;
+        END_IF
+    E_SDSSeqState.Move_Diffractometer_to_Load_Unload_Position:
+        MoveDiffractometerToLoadUnloadPosition(
+            stSDS := stSDS
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSeqState := E_SDSSeqState.Confirm_Vacuum_Valve_Open;
+        END_IF
+    E_SDSSeqState.Confirm_Vacuum_Valve_Open:
+        ConfirmVacuumValveOpen(
+            stSDS := stSDS
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSeqState := E_SDSSeqState.Prerotate_Transfer_Arm_for_Insertion;
+        END_IF
+    E_SDSSeqState.Prerotate_Transfer_Arm_for_Insertion:
+        PrerotateTransferArmForInsertion(
+            stSDS := stSDS
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSeqState := E_SDSSeqState.Extend_Transfer_Arm_for_Diffractometer_Insertion;
+        END_IF
+    E_SDSSeqState.Extend_Transfer_Arm_for_Diffractometer_Insertion:
+        ExtendTransferArmForDiffractometerInsertion(
+            stSDS := stSDS
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSeqState := E_SDSSeqState.Fine_Adjustment;
+        END_IF
+    E_SDSSeqState.Fine_Adjustment:
+        FineAdjustment(
+            stSDS := stSDS
+        );
+        IF stSDS.stUISelect.bProceed THEN
+            stSDS.eSeqState := E_SDSSeqState.Screw_Sample_into_Diffractometer;
+        END_IF
+    E_SDSSeqState.Screw_Sample_into_Diffractometer:
+        ScrewSampleIntoDiffractometer(
+            stSDS := stSDS
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSeqState := E_SDSSeqState.Confirm_Diffractometer_Insertion;
+        END_IF
+    E_SDSSeqState.Confirm_Diffractometer_Insertion:
+        ConfirmDiffractometerInsertion(
+            stSDS := stSDS
+        );
+        IF stSDS.bSuccess AND stSDS.stUISelect.bProceed THEN
+            stSDS.eSeqState := E_SDSSeqState.Update_Sample_Database;
+        ELSIF stSDS.bRetry THEN
+            stSDS.eSeqState := E_SDSSeqState.Fine_Adjustment;
+        END_IF
+    E_SDSSeqState.Update_Sample_Database:
+        UpdateSampleLocationDatabaseDiffToArm(
+            stSDS := stSDS,
+            stSDSP := stSDSP
+        );
+        IF stSDS.bSuccess OR stSDS.stUISelect.bProceed THEN
+            stSDS.eSeqState := E_SDSSeqState.Retract_Transfer_Arm;
+        END_IF
+    E_SDSSeqState.Retract_Transfer_Arm:
+        HomeTransferArm(
+            stSDS := stSDS
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSeqState := E_SDSSeqState.Rotate_Garage_for_Clearance_to_Raise;
+        END_IF
+END_CASE
 ]]></ST>
       </Implementation>
     </Method>
@@ -1097,6 +1319,122 @@ END_VAR
       <Implementation>
         <ST><![CDATA[
 
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="MoveDiffractometerToLoadUnloadPosition" Id="{ed7736de-2c6b-05db-2338-695f78bda22f}">
+      <Declaration><![CDATA[
+METHOD PRIVATE MoveDiffractometerToLoadUnloadPosition
+VAR_IN_OUT
+    stSDS : ST_SDS;
+END_VAR
+VAR
+    bXArrived : BOOL;
+    bYArrived : BOOL;
+    bZArrived : BOOL;
+    b2ThetaYArrived : BOOL;
+    bPhiArrived : BOOL;
+    bChiArrived : BOOL;
+    b2ThetaArrived : BOOL;
+    bThetaArrived : BOOL;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[
+stSDS.bSuccess := FALSE;
+
+stSDS.sStatusMsg := 'Moving the diffractometer to load/unload position.';
+
+SetPositionStateWaitForArrivalQuitIfError(
+    eStateGet := stSDS.eDiffXStateGet,
+    stMotionStage := stSDS.stDiffXStage,
+    eStateSet := stSDS.eDiffXStateSet,
+    eEnumSet := E_DiffState.TRANSFER_ARM_INTERFACE,
+    bError := stSDS.bError,
+    sErrorMsg := stSDS.sErrorMsg,
+    bArrived => bXArrived
+);
+
+SetPositionStateWaitForArrivalQuitIfError(
+    eStateGet := stSDS.eDiffYStateGet,
+    stMotionStage := stSDS.stDiffYStage,
+    eStateSet := stSDS.eDiffYStateSet,
+    eEnumSet := E_DiffState.TRANSFER_ARM_INTERFACE,
+    bError := stSDS.bError,
+    sErrorMsg := stSDS.sErrorMsg,
+    bArrived => bYArrived
+);
+
+SetPositionStateWaitForArrivalQuitIfError(
+    eStateGet := stSDS.eDiffZStateGet,
+    stMotionStage := stSDS.stDiffZStage,
+    eStateSet := stSDS.eDiffZStateSet,
+    eEnumSet := E_DiffState.TRANSFER_ARM_INTERFACE,
+    bError := stSDS.bError,
+    sErrorMsg := stSDS.sErrorMsg,
+    bArrived => bZArrived
+);
+
+SetPositionStateWaitForArrivalQuitIfError(
+    eStateGet := stSDS.eDiff2ThetaYStateGet,
+    stMotionStage := stSDS.stDiff2ThetaYStage,
+    eStateSet := stSDS.eDiff2ThetaYStateSet,
+    eEnumSet := E_DiffState.TRANSFER_ARM_INTERFACE,
+    bError := stSDS.bError,
+    sErrorMsg := stSDS.sErrorMsg,
+    bArrived => b2ThetaYArrived
+);
+
+SetPositionStateWaitForArrivalQuitIfError(
+    eStateGet := stSDS.eDiffPhiStateGet,
+    stMotionStage := stSDS.stDiffPhiStage,
+    eStateSet := stSDS.eDiffPhiStateSet,
+    eEnumSet := E_DiffState.TRANSFER_ARM_INTERFACE,
+    bError := stSDS.bError,
+    sErrorMsg := stSDS.sErrorMsg,
+    bArrived => bPhiArrived
+);
+
+SetPositionStateWaitForArrivalQuitIfError(
+    eStateGet := stSDS.eDiffChiStateGet,
+    stMotionStage := stSDS.stDiffChiStage,
+    eStateSet := stSDS.eDiffChiStateSet,
+    eEnumSet := E_DiffState.TRANSFER_ARM_INTERFACE,
+    bError := stSDS.bError,
+    sErrorMsg := stSDS.sErrorMsg,
+    bArrived => bChiArrived
+);
+
+SetPositionStateWaitForArrivalQuitIfError(
+    eStateGet := stSDS.eDiff2ThetaStateGet,
+    stMotionStage := stSDS.stDiff2ThetaStage,
+    eStateSet := stSDS.eDiff2ThetaStateSet,
+    eEnumSet := E_DiffState.TRANSFER_ARM_INTERFACE,
+    bError := stSDS.bError,
+    sErrorMsg := stSDS.sErrorMsg,
+    bArrived => b2ThetaArrived
+);
+
+SetPositionStateWaitForArrivalQuitIfError(
+    eStateGet := stSDS.eDiffThetaStateGet,
+    stMotionStage := stSDS.stDiffThetaStage,
+    eStateSet := stSDS.eDiffThetaStateSet,
+    eEnumSet := E_DiffState.TRANSFER_ARM_INTERFACE,
+    bError := stSDS.bError,
+    sErrorMsg := stSDS.sErrorMsg,
+    bArrived => bThetaArrived
+);
+
+IF bXArrived AND
+   bYArrived AND
+   bZArrived AND
+   b2ThetaYArrived AND
+   bPhiArrived AND
+   bChiArrived AND
+   b2ThetaArrived AND
+   bThetaArrived THEN
+    stSDS.bSuccess := TRUE;
+END_IF
 ]]></ST>
       </Implementation>
     </Method>
@@ -1201,10 +1539,6 @@ METHOD PRIVATE PrerotateTransferArmForInsertion
 VAR_IN_OUT
     stSDS : ST_SDS;
 END_VAR
-VAR
-    bHArrived : BOOL;
-    bRArrived : BOOL;
-END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[
@@ -1286,7 +1620,7 @@ END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[
-stSDS.sStatusMsg := 'Please manually rotate the garage to 45 degrees, to prevent it from colliding with the sample on the transfer arm when raising it up. Click "proceed" when complete.';
+stSDS.sStatusMsg := 'Please manually rotate the garage to 45 degrees to prevent it from colliding with the sample on the transfer arm when raising it up. Click "proceed" when complete.';
 ]]></ST>
       </Implementation>
     </Method>
@@ -1342,6 +1676,31 @@ SetPositionStateWaitForArrivalQuitIfError(
 ]]></ST>
       </Implementation>
     </Method>
+    <Method Name="ScrewSampleIntoDiffractometer" Id="{eecf80f7-1382-0e29-0a9d-52d1e59af79e}">
+      <Declaration><![CDATA[
+METHOD PRIVATE ScrewSampleIntoDiffractometer
+VAR_IN_OUT
+    stSDS : ST_SDS;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[
+stSDS.bSuccess := FALSE;
+
+stSDS.sStatusMsg := 'Screwing sample into diffractometer.';
+
+SetPositionStateWaitForArrivalQuitIfError(
+    eStateGet := stSDS.eTransferArmRStateGet,
+    stMotionStage := stSDS.stTransferArmRStage,
+    eStateSet := stSDS.eTransferArmRStateSet,
+    eEnumSet := E_SDSTransferArmRStates.SCREW_INTO_DIFF,
+    bError := stSDS.bError,
+    sErrorMsg := stSDS.sErrorMsg,
+    bArrived => stSDS.bSuccess
+);
+]]></ST>
+      </Implementation>
+    </Method>
     <Method Name="ScrewSampleIntoGarage" Id="{709b251d-e374-03ca-14e4-1fe775d4a50f}">
       <Declaration><![CDATA[
 METHOD PRIVATE ScrewSampleIntoGarage
@@ -1353,7 +1712,7 @@ END_VAR
         <ST><![CDATA[
 stSDS.bSuccess := FALSE;
 
-stSDS.sStatusMsg := 'Screwing sample into garage. Click "proceed" when complete. To go back and retry fine adjustment, click "retry".';
+stSDS.sStatusMsg := 'Screwing sample into garage.';
 
 SetPositionStateWaitForArrivalQuitIfError(
     eStateGet := stSDS.eTransferArmRStateGet,
@@ -1541,9 +1900,9 @@ END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[
-IF stSDS.bError THEN
-    stSDS.eState := E_SDSState.Error;
-END_IF
+//IF stSDS.bError THEN
+//    stSDS.eState := E_SDSState.Error;
+//END_IF
 
 IF stSDS.bCancel THEN
     stSDS.eState := E_SDSState.Standby;
@@ -4012,15 +4371,17 @@ CASE stSDS.eSeqState OF
         ConfirmInsertion(
             stSDS := stSDS
         );
-        IF stSDS.bSuccess THEN
+        IF stSDS.bSuccess AND stSDS.stUISelect.bProceed THEN
             stSDS.eSeqState := E_SDSSeqState.Update_Sample_Database;
+        ELSIF stSDS.bRetry THEN
+            stSDS.eSeqState := E_SDSSeqState.Fine_Adjustment;
         END_IF
     E_SDSSeqState.Update_Sample_Database:
         UpdateSampleLocationDatabaseGarageToArm(
             stSDS := stSDS,
             stSDSP := stSDSP
         );
-        IF stSDS.bSuccess THEN
+        IF stSDS.bSuccess OR stSDS.stUISelect.bProceed THEN
             stSDS.eSeqState := E_SDSSeqState.Retract_Transfer_Arm;
         END_IF
     E_SDSSeqState.Retract_Transfer_Arm:
@@ -4065,7 +4426,135 @@ END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[
+CASE stSDS.eSeqState OF
+    E_SDSSeqState.Inactive:
+        ; // Do nothing
+    E_SDSSeqState.Home_Transfer_Arm:
+        HomeTransferArm(
+            stSDS := stSDS
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSeqState := E_SDSSeqState.Check_Garage_Height;
+        END_IF
+    E_SDSSeqState.Check_Garage_Height:
+        IF stSDS.bGarageAboveCollisionHeight THEN
+            stSDS.eSeqState := E_SDSSeqState.Home_Garage;
+        ELSE
+            stSDS.eSeqState := E_SDSSeqState.Manually_Rotate_Garage_for_Clearance_to_Raise;
+        END_IF
+    E_SDSSeqState.Manually_Rotate_Garage_for_Clearance_to_Raise:
+        RotateGarageForClearanceManual(
+            stSDS := stSDS
+        );
+        IF stSDS.stUISelect.bProceed THEN
+            stSDS.eSeqState := E_SDSSeqState.Retract_Garage_1;
+        END_IF
+    E_SDSSeqState.Retract_Garage_1:
+        RetractGarage(
+            stSDS := stSDS
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSeqState := E_SDSSeqState.Home_Garage;
+        END_IF
+    E_SDSSeqState.Home_Garage:
+        HomeGarage(
+            stSDS := stSDS
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSeqState := E_SDSSeqState.Move_Diffractometer_to_Load_Unload_Position;
+        END_IF
+    E_SDSSeqState.Move_Diffractometer_to_Load_Unload_Position:
+        MoveDiffractometerToLoadUnloadPosition(
+            stSDS := stSDS
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSeqState := E_SDSSeqState.Confirm_Vacuum_Valve_Open;
+        END_IF
+    E_SDSSeqState.Confirm_Vacuum_Valve_Open:
+        ConfirmVacuumValveOpen(
+            stSDS := stSDS
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSeqState := E_SDSSeqState.Prerotate_Transfer_Arm_for_Extraction;
+        END_IF
+    E_SDSSeqState.Prerotate_Transfer_Arm_for_Extraction:
+        PrerotateTransferArmForExtraction(
+            stSDS := stSDS
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSeqState := E_SDSSeqState.Extend_Transfer_Arm_for_Diffractometer_Extraction;
+        END_IF
+    E_SDSSeqState.Extend_Transfer_Arm_for_Diffractometer_Extraction:
+        ExtendTransferArmForDiffractometerExtraction(
+            stSDS := stSDS
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSeqState := E_SDSSeqState.Fine_Adjustment;
+        END_IF
+    E_SDSSeqState.Fine_Adjustment:
+        FineAdjustment(
+            stSDS := stSDS
+        );
+        IF stSDS.stUISelect.bProceed THEN
+            stSDS.eSeqState := E_SDSSeqState.Unscrew_Sample_from_Diffractometer;
+        END_IF
+    E_SDSSeqState.Unscrew_Sample_from_Diffractometer:
+        UnscrewSampleFromDiffractometer(
+            stSDS := stSDS
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSeqState := E_SDSSeqState.Confirm_Diffractometer_Extraction;
+        END_IF
+    E_SDSSeqState.Confirm_Diffractometer_Extraction:
+        ConfirmDiffractometerExtraction(
+            stSDS := stSDS
+        );
+        IF stSDS.bSuccess AND stSDS.stUISelect.bProceed THEN
+            stSDS.eSeqState := E_SDSSeqState.Update_Sample_Database;
+        ELSIF stSDS.bRetry THEN
+            stSDS.eSeqState := E_SDSSeqState.Fine_Adjustment;
+        END_IF
+    E_SDSSeqState.Update_Sample_Database:
+        UpdateSampleLocationDatabaseDiffToArm(
+            stSDS := stSDS,
+            stSDSP := stSDSP
+        );
+        IF stSDS.bSuccess OR stSDS.stUISelect.bProceed THEN
+            stSDS.eSeqState := E_SDSSeqState.Retract_Transfer_Arm;
+        END_IF
+    E_SDSSeqState.Retract_Transfer_Arm:
+        HomeTransferArm(
+            stSDS := stSDS
+        );
+        IF stSDS.bSuccess THEN
+            stSDS.eSeqState := E_SDSSeqState.Rotate_Garage_for_Clearance_to_Raise;
+        END_IF
+END_CASE
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="UnscrewSampleFromDiffractometer" Id="{87e1f71d-9b53-09ef-2eb4-a9381b5c29a8}">
+      <Declaration><![CDATA[
+METHOD PRIVATE UnscrewSampleFromDiffractometer
+VAR_IN_OUT
+    stSDS : ST_SDS;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[
+stSDS.bSuccess := FALSE;
 
+stSDS.sStatusMsg := 'Unscrewing sample from diffractometer.';
+
+SetPositionStateWaitForArrivalQuitIfError(
+    eStateGet := stSDS.eTransferArmRStateGet,
+    stMotionStage := stSDS.stTransferArmRStage,
+    eStateSet := stSDS.eTransferArmRStateSet,
+    eEnumSet := E_SDSTransferArmRStates.UNSCREW_FROM_DIFF,
+    bError := stSDS.bError,
+    sErrorMsg := stSDS.sErrorMsg,
+    bArrived => stSDS.bSuccess
+);
 ]]></ST>
       </Implementation>
     </Method>
@@ -4080,7 +4569,7 @@ END_VAR
         <ST><![CDATA[
 stSDS.bSuccess := FALSE;
 
-stSDS.sStatusMsg := 'Unscrewing sample from garage. Click "proceed" when complete. To go back and retry fine adjustment, click "retry".';
+stSDS.sStatusMsg := 'Unscrewing sample from garage.';
 
 SetPositionStateWaitForArrivalQuitIfError(
     eStateGet := stSDS.eTransferArmRStateGet,
@@ -4189,6 +4678,22 @@ fbStateSetup(stPositionState:=stSDS.astTransferArmHPosState[E_SDSTransferArmHSta
     fPosition:=25,
     fVelocity:=2
 );
+fbStateSetup(stPositionState:=stSDS.astTransferArmHPosState[E_SDSTransferArmHStates.DIFF_SAMPLE_INSERTION], sName:='DIFF_SAMPLE_INSERTION',
+    fPosition:=100,
+    fVelocity:=2
+);
+fbStateSetup(stPositionState:=stSDS.astTransferArmHPosState[E_SDSTransferArmHStates.DIFF_SAMPLE_EXTRACTION], sName:='DIFF_SAMPLE_EXTRACTION',
+    fPosition:=100,
+    fVelocity:=2
+);
+fbStateSetup(stPositionState:=stSDS.astTransferArmHPosState[E_SDSTransferArmHStates.CONFIRM_DIFF_INSERTION], sName:='CONFIRM_DIFF_INSERTION',
+    fPosition:=75,
+    fVelocity:=2
+);
+fbStateSetup(stPositionState:=stSDS.astTransferArmHPosState[E_SDSTransferArmHStates.CONFIRM_DIFF_EXTRACTION], sName:='CONFIRM_DIFF_EXTRACTION',
+    fPosition:=75,
+    fVelocity:=2
+);
 
 // Rotational axis states
 fbStateSetup(stPositionState:=stSDS.astTransferArmRPosState[E_SDSTransferArmRStates.FULLY_CCW], sName:='FULLY_CCW',
@@ -4199,32 +4704,44 @@ fbStateSetup(stPositionState:=stSDS.astTransferArmRPosState[E_SDSTransferArmRSta
 IF NOT stSDS.stTransferArmRStage.bLimitForwardEnable THEN
     fbStateSetup(stPositionState:=stSDS.astTransferArmRPosState[E_SDSTransferArmRStates.PREROTATE_SAMPLE_REMOVAL], sName:='PREROTATE_SAMPLE_REMOVAL',
         fPosition:=stSDS.stTransferArmRStage.Axis.NcToPlc.ActPos,
-        fVelocity:=stSDS.fGarageRotationSpeed
+        fVelocity:=stSDS.fTransferArmRotationSpeed
     );
 ELSE
     fbStateSetup(stPositionState:=stSDS.astTransferArmRPosState[E_SDSTransferArmRStates.PREROTATE_SAMPLE_REMOVAL], sName:='PREROTATE_SAMPLE_REMOVAL',
         fPosition:=20000,
-        fVelocity:=stSDS.fGarageRotationSpeed
+        fVelocity:=stSDS.fTransferArmRotationSpeed
     );
 END_IF
 IF NOT stSDS.stTransferArmRStage.bLimitBackwardEnable THEN
     fbStateSetup(stPositionState:=stSDS.astTransferArmRPosState[E_SDSTransferArmRStates.PREROTATE_SAMPLE_INSERTION], sName:='PREROTATE_SAMPLE_INSERTION',
         fPosition:=stSDS.stTransferArmRStage.Axis.NcToPlc.ActPos,
-        fVelocity:=stSDS.fGarageRotationSpeed
+        fVelocity:=stSDS.fTransferArmRotationSpeed
     );
 ELSE
     fbStateSetup(stPositionState:=stSDS.astTransferArmRPosState[E_SDSTransferArmRStates.PREROTATE_SAMPLE_INSERTION], sName:='PREROTATE_SAMPLE_INSERTION',
         fPosition:=-20000,
-        fVelocity:=stSDS.fGarageRotationSpeed
+        fVelocity:=stSDS.fTransferArmRotationSpeed
     );
 END_IF
 fbStateSetup(stPositionState:=stSDS.astTransferArmRPosState[E_SDSTransferArmRStates.UNSCREW_FROM_GARAGE], sName:='UNSCREW_FROM_GARAGE',
     fPosition:=0,
-    fVelocity:=stSDS.fGarageRotationSpeed
+    fVelocity:=stSDS.fTransferArmRotationSpeed
+);
+fbStateSetup(stPositionState:=stSDS.astTransferArmRPosState[E_SDSTransferArmRStates.UNSCREW_FROM_DIFF], sName:='UNSCREW_FROM_DIFF',
+    fPosition:=0,
+    fVelocity:=stSDS.fTransferArmRotationSpeed
 );
 fbStateSetup(stPositionState:=stSDS.astTransferArmRPosState[E_SDSTransferArmRStates.SCREW_INTO_GARAGE], sName:='SCREW_INTO_GARAGE',
     fPosition:=1700,
-    fVelocity:=stSDS.fGarageRotationSpeed
+    fVelocity:=stSDS.fTransferArmRotationSpeed
+);
+fbStateSetup(stPositionState:=stSDS.astTransferArmRPosState[E_SDSTransferArmRStates.SCREW_INTO_DIFF], sName:='SCREW_INTO_DIFF',
+    fPosition:=1700,
+    fVelocity:=stSDS.fTransferArmRotationSpeed
+);
+fbStateSetup(stPositionState:=stSDS.astTransferArmRPosState[E_SDSTransferArmRStates.SCREW_IN_HALF_TURN], sName:='SCREW_IN_HALF_TURN',
+    fPosition:=stSDS.stTransferArmRStage.Axis.NcToPlc.ActPos + 180,
+    fVelocity:=stSDS.fTransferArmRotationSpeed
 );
 
 // Update parameters for garage states.
@@ -4272,6 +4789,39 @@ FOR nIndex := E_SDSGarageYStates.T1 TO E_SDSGarageYStates.B4 BY 1 DO
         );
     END_CASE
 END_FOR
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="UpdateSampleLocationDatabaseDiffToArm" Id="{a4d1bec6-765a-06fe-338e-81497e18cf7d}">
+      <Declaration><![CDATA[
+METHOD PRIVATE UpdateSampleLocationDatabaseDiffToArm
+VAR_IN_OUT
+    stSDS : ST_SDS;
+    stSDSP : ST_SDSPersistent;
+END_VAR
+VAR
+    stTempSlot : ST_SampleSlot;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[
+stSDS.bSuccess := FALSE;
+
+stTempSlot := stSDSP.stTransferArmSlot;
+
+stSDS.sStatusMsg := 'Updating the sample database.';
+
+IF stSDS.eSelectedGarageSlot >= E_SDSGarageYStates.T1 AND stSDS.eSelectedGarageSlot <= E_SDSGarageYStates.B4 THEN
+    stSDSP.stTransferArmSlot.eState := stSDSP.stDiffractometerSlot.eState;
+    stSDSP.stTransferArmSlot.sDesc := stSDSP.stDiffractometerSlot.sDesc;
+
+    stSDSP.stDiffractometerSlot.eState := stTempSlot.eState;
+    stSDSP.stDiffractometerSlot.sDesc := stTempSlot.sDesc;
+
+    stSDS.bSuccess := TRUE;
+ELSE
+    stSDS.sErrorMsg := 'Failed to automatically update sample position in database. Invalid slot selected. Sequence will continue, but please manually update the database from the interface. After manually updating the database, click "proceed" to continue.';
+END_IF
 ]]></ST>
       </Implementation>
     </Method>
