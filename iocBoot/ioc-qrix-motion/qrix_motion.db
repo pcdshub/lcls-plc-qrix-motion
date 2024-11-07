@@ -65244,6 +65244,28 @@ record(bo, "QRIX:SA:bStopAxes") {
   info(archive, "VAL")
 }
 
+record(ai, "QRIX:SA:fRollTarget_RBV") {
+  field(DESC, "PRG_DET_FRAME.fRollTarget")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynFloat64")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/PRG_DET_FRAME.fRollTarget?")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
+  info(archive, "VAL")
+}
+
+record(ao, "QRIX:SA:fRollTarget") {
+  field(DESC, "PRG_DET_FRAME.fRollTarget")
+  field(DTYP, "asynFloat64")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_DET_FRAME.fRollTarget=")
+  field(PREC, "3")
+  info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS VAL")
+  info(archive, "VAL")
+}
+
 record(bi, "QRIX:F:Home_RBV") {
   field(DESC, "PRG_DET_FRAME.fbYDFMotion.bHome")
   field(SCAN, "I/O Intr")
@@ -71004,6 +71026,18 @@ record(bi, "QRIX:SDS:NP:Enable_RBV") {
   field(ZNAM, "FALSE")
   field(ONAM, "TRUE")
   info(autosaveFields_pass0, "DESC DISS OSV SIMS UDFS ZSV")
+  info(archive, "VAL")
+}
+
+record(bo, "QRIX:SDS:NP:Enable") {
+  # TRUE to enable SDS system. FALSE to disable.
+  field(DESC, "TRUE to enable SDS s...FALSE to disable.")
+  field(DTYP, "asynInt32")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_SDS.stSDS.bEnable=")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "COSV DESC DISS OSV SIMS UDFS VAL ZSV")
   info(archive, "VAL")
 }
 

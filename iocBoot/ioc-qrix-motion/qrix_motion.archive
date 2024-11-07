@@ -5065,6 +5065,8 @@ QRIX:SA:bResetError_RBV.VAL	1	scan
 QRIX:SA:bResetError.VAL	1	scan
 QRIX:SA:bStopAxes_RBV.VAL	1	scan
 QRIX:SA:bStopAxes.VAL	1	scan
+QRIX:SA:fRollTarget_RBV.VAL	1	scan
+QRIX:SA:fRollTarget.VAL	1	scan
 QRIX:F:Home_RBV.VAL	1	scan
 QRIX:F:HOME_READY_RBV.VAL	1	scan
 QRIX:F:PMPS_OK_RBV.VAL	1	scan
@@ -5535,6 +5537,7 @@ QRIX:OPT:ROLL_REQ.VAL	1	scan
 QRIX:SDS:NP:DiffLoadable_RBV.VAL	1	scan
 QRIX:SDS:NP:DiffUnloadable_RBV.VAL	1	scan
 QRIX:SDS:NP:Enable_RBV.VAL	1	scan
+QRIX:SDS:NP:Enable.VAL	1	scan
 QRIX:SDS:NP:Error_RBV.VAL	1	scan
 QRIX:SDS:NP:GarAboveColl_RBV.VAL	1	scan
 QRIX:SDS:NP:GarLoadable_RBV.VAL	1	scan

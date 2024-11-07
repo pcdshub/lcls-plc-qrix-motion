@@ -52,10 +52,16 @@ VAR
     fDistanceX: LREAL := 2.114; // in m
     fDistanceZ: LREAL := 2.142; // in m
 
-    fPositionThreshold: LREAL := 0.05; // mm
+    fPositionThreshold: LREAL := 0.02; // mm
     fPositionMaxDeviation: LREAL := 10.0; // mm
-    fPitchThreshold: LREAL := 0.05; // mrad
-    fRollThreshold: LREAL := 0.05; // mrad
+    fPitchThreshold: LREAL := 0.02; // mrad
+    fRollThreshold: LREAL := 0.02; // mrad
+
+    {attribute 'pytmc' := '
+        pv: QRIX:SA:fRollTarget
+        io: io
+    '}
+    fRollTarget : LREAL;
 
     {attribute 'pytmc' := 'pv: QRIX:F'}
     fbYDFMotion: FB_3AxesJack;
@@ -91,6 +97,18 @@ VAR
         io: io
     '}
     bStopAxes: BOOL;
+
+    {attribute 'TcLinkTo' := 'TIIB[Rack#2D LinearGaugeAmp (SC-HG1-ETC)]^Process Data(In)  TxPDO-Map^Sensor Warning}
+    bLinearGaugeWarning AT %I* : BOOL;
+    {attribute 'TcLinkTo' := 'TIIB[Rack#2D LinearGaugeAmp (SC-HG1-ETC)]^Process Data(In)  TxPDO-Map^Sensor Error}
+    bLinearGaugeError AT %I* : BOOL;
+
+    {attribute 'TcLinkToOSO' := '<0,1,2>TINC^NC-Task 1 SAF^Axes^M15 - YDF1^Enc^Inputs^In^nState1'}
+    bLinearGaugeYDF1Ready AT %Q* : BOOL;
+    {attribute 'TcLinkToOSO' := '<0,1,2>TINC^NC-Task 1 SAF^Axes^M16 - YDF2^Enc^Inputs^In^nState1'}
+    bLinearGaugeYDF2Ready AT %Q* : BOOL;
+    {attribute 'TcLinkToOSO' := '<0,1,2>TINC^NC-Task 1 SAF^Axes^M17 - YDF3^Enc^Inputs^In^nState1'}
+    bLinearGaugeYDF3Ready AT %Q* : BOOL;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -192,6 +210,10 @@ ACT_4_AdjustingRoll();
 ACT_5_AdjustingPitch();
 ACT_6_AdjustingHeight();
 ACT_ResetError();
+
+bLinearGaugeYDF1Ready := NOT bLinearGaugeError;
+bLinearGaugeYDF2Ready := NOT bLinearGaugeError;
+bLinearGaugeYDF3Ready := NOT bLinearGaugeError;
 
 fbYDFMotion(
     bMoveOk			  := GVL_EPS.bESTOP,
@@ -348,10 +370,10 @@ CASE iStepAdjustingRoll OF
         END_IF;
     2:
         // Step3 set target roll
-        IF abs(GVL_Sensor.stFrameR.fValue) > fRollThreshold THEN
+        IF abs(GVL_Sensor.stFrameR.fValue - fRollTarget) > fRollThreshold THEN
             fbYDFMotion.bMoveToRoll := TRUE;
             iStepAdjustingRoll := 3;
-            fbYDFMotion.rReqRoll := fbYDFMotion.rActRoll - GVL_Sensor.stFrameR.fValue * 0.5;
+            fbYDFMotion.rReqRoll := fbYDFMotion.rActRoll - (GVL_Sensor.stFrameR.fValue - fRollTarget) * 0.5;
         ELSE
             // Already at goal.
             iStepAdjustingRoll := 4;
@@ -367,7 +389,7 @@ CASE iStepAdjustingRoll OF
         IF nActiveSequenceIterationCount > nSequenceIterationCount THEN
             // Exceeded maximum allowable number of iterations. Something is wrong.
             iStepAdjustingRoll := -1;
-        ELSIF abs(GVL_Sensor.stFrameR.fValue) > fRollThreshold THEN
+        ELSIF abs(GVL_Sensor.stFrameR.fValue - fRollTarget) > fRollThreshold THEN
             // Iteration
             iStepAdjustingRoll := 2;
             fbYDFMotion.bMoveToRoll := FALSE;

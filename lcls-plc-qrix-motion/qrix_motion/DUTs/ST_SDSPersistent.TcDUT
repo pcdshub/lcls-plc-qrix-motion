@@ -29,14 +29,14 @@ STRUCT
         io: i
         field: DESC Height at which garage consider safe from collisions.
     '}
-    fGarageHeightSafeFromCollision : LREAL;
+    fGarageHeightSafeFromCollision : LREAL := -10;
 
     {attribute 'pytmc' := '
         pv: GarRClearOff
         io: i
         field: DESC Garage rotational offset for clearance when moving up and down with loading transfer arm.
     '}
-    fGarageRotationClearanceOffset : LREAL;
+    fGarageRotationClearanceOffset : LREAL := 45;
 END_STRUCT
 END_TYPE
 ]]></Declaration>

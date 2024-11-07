@@ -4,7 +4,7 @@
     <Declaration><![CDATA[
 FUNCTION_BLOCK FB_SDS
 VAR_IN_OUT
-    stSDS : ST_SDS;
+    stSDSin : ST_SDS;
     stSDSPersistent : ST_SDSPersistent;
 END_VAR
 VAR
@@ -85,97 +85,98 @@ IF NOT stSDSPersistent.bInitialized THEN
     stSDSPersistent.bInitialized := TRUE;
 END_IF
 
-IF NOT stSDS.bInitialized THEN
+IF NOT stSDSin.bInitialized THEN
     // Do all the required initialization for the non-persistent data of the sample delivery system.
-    stSDS.bHomingRequired := TRUE;
+    stSDSin.bHomingRequired := TRUE;
 
     fbStateSetup(stPositionState:=stDefault, bSetDefault:=TRUE);
 
-    stSDS.bInitialized := TRUE;
+    stSDSin.bInitialized := TRUE;
 END_IF
 
 // Update load/unloadable statuses for the garage, transfer arm, and the diffractometer.
 UpdateLoadUnloadAbleStatuses(
-    stSDS := stSDS,
+    stSDS := stSDSin,
     stSDSP := stSDSPersistent
 );
 
 // Check if garage is above the threshold to rotate freely without fear of hitting the transfer arm.
 ConfirmGarageFreeToRotate(
-    stSDS := stSDS,
+    stSDS := stSDSin,
     stSDSP := stSDSPersistent
 );
 
 // Control the sequencing of the sample delivery system.
 StateMachine(
-    stSDS := stSDS,
+    stSDS := stSDSin,
     stSDSP := stSDSPersistent
 );
 
 // Update the position states
 UpdatePositionStates(
-    stSDS := stSDS,
+    stSDS := stSDSin,
     stSDSP := stSDSPersistent
 );
 
 // Call state position function blocks.
-stSDS.fbTransferArmHPos1D(
-    stMotionStage:=stSDS.stTransferArmHStage,
-    astPositionState:=stSDS.astTransferArmHPosState,
-    eEnumSet:=stSDS.eTransferArmHStateSet,
-    eEnumGet:=stSDS.eTransferArmHStateGet,
+stSDSin.fbTransferArmHPos1D(
+    stMotionStage:=stSDSin.stTransferArmHStage,
+    astPositionState:=stSDSin.astTransferArmHPosState,
+    eEnumSet:=stSDSin.eTransferArmHStateSet,
+    eEnumGet:=stSDSin.eTransferArmHStateGet,
     bEnable:=TRUE,
-    stEpicsToPlc:=stSDS.stTransferArmHEpicsToPlc,
-    stPlcToEpics=>stSDS.stTransferArmHPlcToEpics
+    stEpicsToPlc:=stSDSin.stTransferArmHEpicsToPlc,
+    stPlcToEpics=>stSDSin.stTransferArmHPlcToEpics
 );
 
-stSDS.fbTransferArmRPos1D(
-    stMotionStage:=stSDS.stTransferArmRStage,
-    astPositionState:=stSDS.astTransferArmRPosState,
-    eEnumSet:=stSDS.eTransferArmRStateSet,
-    eEnumGet:=stSDS.eTransferArmRStateGet,
+stSDSin.fbTransferArmRPos1D(
+    stMotionStage:=stSDSin.stTransferArmRStage,
+    astPositionState:=stSDSin.astTransferArmRPosState,
+    eEnumSet:=stSDSin.eTransferArmRStateSet,
+    eEnumGet:=stSDSin.eTransferArmRStateGet,
     bEnable:=TRUE,
-    stEpicsToPlc:=stSDS.stTransferArmREpicsToPlc,
-    stPlcToEpics=>stSDS.stTransferArmRPlcToEpics
+    stEpicsToPlc:=stSDSin.stTransferArmREpicsToPlc,
+    stPlcToEpics=>stSDSin.stTransferArmRPlcToEpics
 );
 
-stSDS.fbGarageYPos1D(
-    stMotionStage:=stSDS.stGarageYStage,
-    astPositionState:=stSDS.astGarageYPosState,
-    eEnumSet:=stSDS.eGarageYStateSet,
-    eEnumGet:=stSDS.eGarageYStateGet,
+stSDSin.fbGarageYPos1D(
+    stMotionStage:=stSDSin.stGarageYStage,
+    astPositionState:=stSDSin.astGarageYPosState,
+    eEnumSet:=stSDSin.eGarageYStateSet,
+    eEnumGet:=stSDSin.eGarageYStateGet,
     bEnable:=TRUE,
-    stEpicsToPlc:=stSDS.stGarageYEpicsToPlc,
-    stPlcToEpics=>stSDS.stGarageYPlcToEpics
+    stEpicsToPlc:=stSDSin.stGarageYEpicsToPlc,
+    stPlcToEpics=>stSDSin.stGarageYPlcToEpics
 );
 
-stSDS.fbGarageRPos1D(
-    stMotionStage:=stSDS.stGarageRStage,
-    astPositionState:=stSDS.astGarageRPosState,
-    eEnumSet:=stSDS.eGarageRStateSet,
-    eEnumGet:=stSDS.eGarageRStateGet,
+stSDSin.fbGarageRPos1D(
+    stMotionStage:=stSDSin.stGarageRStage,
+    astPositionState:=stSDSin.astGarageRPosState,
+    eEnumSet:=stSDSin.eGarageRStateSet,
+    eEnumGet:=stSDSin.eGarageRStateGet,
     bEnable:=TRUE,
-    stEpicsToPlc:=stSDS.stGarageREpicsToPlc,
-    stPlcToEpics=>stSDS.stGarageRPlcToEpics
+    stEpicsToPlc:=stSDSin.stGarageREpicsToPlc,
+    stPlcToEpics=>stSDSin.stGarageRPlcToEpics
 );
 
 // Ensure UI boolean commands are cleared after holding for one second.
-HoldThenClear(b1 := stSDS.stUISelect.bExitManualControl, tHoldDuration := T#1s);
-HoldThenClear(b1 := stSDS.stUISelect.bHomeGarage, tHoldDuration := T#1s);
-HoldThenClear(b1 := stSDS.stUISelect.bHomeTransferArm, tHoldDuration := T#1s);
-HoldThenClear(b1 := stSDS.stUISelect.bLoad, tHoldDuration := T#1s);
-HoldThenClear(b1 := stSDS.stUISelect.bLoadArmFromGarage, tHoldDuration := T#1s);
-HoldThenClear(b1 := stSDS.stUISelect.bLoadDiffractometerFromArm, tHoldDuration := T#1s);
-HoldThenClear(b1 := stSDS.stUISelect.bLoadGarageFromPort, tHoldDuration := T#1s);
-HoldThenClear(b1 := stSDS.stUISelect.bLoadUnloadGarageFromPort, tHoldDuration := T#1s);
-HoldThenClear(b1 := stSDS.stUISelect.bManualControl, tHoldDuration := T#1s);
-HoldThenClear(b1 := stSDS.stUISelect.bProceed, tHoldDuration := T#1s);
-HoldThenClear(b1 := stSDS.stUISelect.bUnload, tHoldDuration := T#1s);
-HoldThenClear(b1 := stSDS.stUISelect.bUnloadArmToGarage, tHoldDuration := T#1s);
-HoldThenClear(b1 := stSDS.stUISelect.bUnloadDiffractometerToArm, tHoldDuration := T#1s);
+stSDSin.stUISelect.bExitManualControl := FALSE;
+stSDSin.stUISelect.bHomeGarage := FALSE;
+stSDSin.stUISelect.bHomeTransferArm := FALSE;
+stSDSin.stUISelect.bLoad := FALSE;
+stSDSin.stUISelect.bLoadArmFromGarage := FALSE;
+stSDSin.stUISelect.bLoadDiffractometerFromArm := FALSE;
+stSDSin.stUISelect.bLoadGarageFromPort := FALSE;
+stSDSin.stUISelect.bLoadUnloadGarageFromPort := FALSE;
+stSDSin.stUISelect.bManualControl := FALSE;
+stSDSin.stUISelect.bProceed := FALSE;
+stSDSin.stUISelect.bCancel := FALSE;
+stSDSin.stUISelect.bUnload := FALSE;
+stSDSin.stUISelect.bUnloadArmToGarage := FALSE;
+stSDSin.stUISelect.bUnloadDiffractometerToArm := FALSE;
 
 // Align with the saved selection at the end of each cycle.
-stSDS.stUISelect.eGarageSlot := stSDS.eSelectedGarageSlot;
+stSDSin.stUISelect.eGarageSlot := stSDSin.eSelectedGarageSlot;
 ]]></ST>
     </Implementation>
     <Action Name="ACT_CheckHomeStatus" Id="{2164ae39-f7d0-4dc9-a63c-01d4fb087899}">
@@ -183,52 +184,60 @@ stSDS.stUISelect.eGarageSlot := stSDS.eSelectedGarageSlot;
         <ST><![CDATA[
 // ACTION - Check home status
 
-CASE stSDS.nHomingState OF
+CASE stSDSin.nHomingState OF
     0: // Initialization
-        stSDS.tonForwardHomingLimit(IN:=FALSE);
-        IF stSDS.stTransferArmHStage.nCommand = E_EpicsMotorCmd.HOME AND stSDS.stTransferArmHStage.bBusy THEN
-            stSDS.nHomingState := stSDS.nHomingState + 1;
+        stSDSin.tonForwardHomingLimit(IN:=FALSE);
+        IF stSDSin.stTransferArmHStage.nCommand = E_EpicsMotorCmd.HOME AND stSDSin.stTransferArmHStage.bBusy THEN
+            stSDSin.nHomingState := stSDSin.nHomingState + 1;
         END_IF
     1: // Homing Sequence Triggered
-        stSDS.tonForwardHomingLimit(IN:=stSDS.stTransferArmHStage.Axis.NcToPlc.SetVelo > 0,PT:=T#1s);
-        IF stSDS.stTransferArmHStage.nCommand = E_EpicsMotorCmd.HOME AND stSDS.stTransferArmHStage.bHome THEN
-            stSDS.nHomingState := stSDS.nHomingState + 1;
-            stSDS.tonHomingStateTimeout(IN:=FALSE);
-            stSDS.tonForwardHomingLimit(IN:=FALSE);
-        ELSIF NOT stSDS.stTransferArmHStage.bBusy THEN
-            stSDS.tonHomingStateTimeout(IN:=TRUE,PT:=T#5s);
-            stSDS.tonForwardHomingLimit(IN:=FALSE);
-            IF stSDS.tonHomingStateTimeout.Q THEN
-                stSDS.nHomingState := -1;
+        stSDSin.tonForwardHomingLimit(IN:=stSDSin.stTransferArmHStage.Axis.NcToPlc.SetVelo > 0,PT:=T#1s);
+        IF stSDSin.stTransferArmHStage.nCommand = E_EpicsMotorCmd.HOME AND stSDSin.stTransferArmHStage.bHome THEN
+            stSDSin.nHomingState := stSDSin.nHomingState + 1;
+            stSDSin.tonHomingStateTimeout(IN:=FALSE);
+            stSDSin.tonForwardHomingLimit(IN:=FALSE);
+        ELSIF NOT stSDSin.stTransferArmHStage.bBusy THEN
+            stSDSin.tonHomingStateTimeout(IN:=TRUE,PT:=T#5s);
+            stSDSin.tonForwardHomingLimit(IN:=FALSE);
+            IF stSDSin.tonHomingStateTimeout.Q THEN
+                stSDSin.nHomingState := -1;
             END_IF
         END_IF
     2: // Homing Sequence Successful
-        IF F_Limit(stSDS.stTransferArmHStage.stAxisStatus.fActPosition, stSDS.stTransferArmHStage.fHomePosition-0.1, stSDS.stTransferArmHStage.fHomePosition+0.1, TRUE) THEN
-            stSDS.bHomingRequired := FALSE;
-            stSDS.nHomingState := 0;
-            stSDS.tonHomingRequiredTimeout(IN:=FALSE);
-            stSDS.tonHomingStateTimeout(IN:=FALSE);
-        ELSIF NOT stSDS.stTransferArmHStage.bBusy THEN
-            stSDS.tonHomingStateTimeout(IN:=TRUE,PT:=T#5s);
-            IF stSDS.tonHomingStateTimeout.Q THEN
-                stSDS.nHomingState := -1;
+        IF F_Limit(stSDSin.stTransferArmHStage.stAxisStatus.fActPosition, stSDSin.stTransferArmHStage.fHomePosition-0.1, stSDSin.stTransferArmHStage.fHomePosition+0.1, TRUE) THEN
+            stSDSin.bHomingRequired := FALSE;
+            stSDSin.nHomingState := 0;
+            stSDSin.tonHomingRequiredTimeout(IN:=FALSE);
+            stSDSin.tonHomingStateTimeout(IN:=FALSE);
+        ELSIF NOT stSDSin.stTransferArmHStage.bBusy THEN
+            stSDSin.tonHomingStateTimeout(IN:=TRUE,PT:=T#5s);
+            IF stSDSin.tonHomingStateTimeout.Q THEN
+                stSDSin.nHomingState := -1;
             END_IF
         END_IF
     -1: // Error Handling
-        stSDS.nHomingState := 0;
+        stSDSin.nHomingState := 0;
 END_CASE
 
-stSDS.tonHomingRequiredTimeout(IN:=NOT stSDS.bHomingRequired,PT:=stSDS.tHomingRequiredTimeoutTime);
-IF stSDS.tonHomingRequiredTimeout.Q THEN
-    stSDS.bHomingRequired := TRUE;
+stSDSin.tonHomingRequiredTimeout(IN:=NOT stSDSin.bHomingRequired,PT:=stSDSin.tHomingRequiredTimeoutTime);
+IF stSDSin.tonHomingRequiredTimeout.Q THEN
+    stSDSin.bHomingRequired := TRUE;
 END_IF
-stSDS.fMinUntilHomingRequired := TIME_TO_REAL(stSDS.tonHomingRequiredTimeout.PT - stSDS.tonHomingRequiredTimeout.ET) / 60000;
+IF stSDSin.stTransferArmHStage.bHome AND F_Limit(
+    fVal := stSDSin.stTransferArmHStage.Axis.NcToPlc.ActPos,
+    fLLim := -0.01,
+    fHLim := 0.01,
+    bInclusive := TRUE) THEN
+    stSDSin.bHomingRequired := FALSE;
+END_IF
 
-IF stSDS.stTransferArmHStage.bExecute AND stSDS.bHomingRequired AND stSDS.stTransferArmHStage.fPosition > stSDS.stTransferArmHStage.stAxisStatus.fActPosition AND
-    stSDS.stTransferArmHStage.nCommand <> E_EpicsMotorCmd.HOME THEN
+stSDSin.fMinUntilHomingRequired := TIME_TO_REAL(stSDSin.tonHomingRequiredTimeout.PT - stSDSin.tonHomingRequiredTimeout.ET) / 60000;
 
-    stSDS.stTransferArmHStage.bError := TRUE;
-    stSDS.stTransferArmHStage.sCustomErrorMessage := 'Axis homing status overdue. Please home the axis.';
+IF stSDSin.stTransferArmHStage.bExecute AND stSDSin.bHomingRequired AND stSDSin.stTransferArmHStage.fPosition > stSDSin.stTransferArmHStage.stAxisStatus.fActPosition AND
+    stSDSin.stTransferArmHStage.nCommand <> E_EpicsMotorCmd.HOME THEN
+
+    stSDSin.stTransferArmHStage.bError := TRUE;
+    stSDSin.stTransferArmHStage.sCustomErrorMessage := 'Axis homing status overdue. Please home the axis.';
 END_IF
 ]]></ST>
       </Implementation>
@@ -282,6 +291,10 @@ stSDS.bSuccess := FALSE;
 
 stSDS.sStatusMsg := 'Checking if garage can be homed.';
 
+InitHomeGarage(
+    stSDS := stSDS
+);
+
 IF stSDS.bGarageAboveCollisionHeight THEN
     stSDS.bSuccess := TRUE;
 ELSE
@@ -303,7 +316,13 @@ END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[
+stSDS.bSuccess := FALSE;
+
 stSDS.sStatusMsg := 'Checking if transfer arm can be homed.';
+
+InitHomeTransferArm(
+    stSDS := stSDS
+);
 
 stSDS.bSuccess := TRUE;
 ]]></ST>
@@ -373,6 +392,8 @@ END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[
+stSDS.bSuccess := FALSE;
+
 stSDS.sStatusMsg := 'Checking if the garage can be loaded or unloaded from the port.';
 
 stSDS.bSuccess := TRUE;
@@ -389,6 +410,8 @@ END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[
+stSDS.bSuccess := FALSE;
+
 stSDS.sStatusMsg := 'Checking if we can switch to manual control.';
 
 stSDS.bSuccess := TRUE;
@@ -570,30 +593,6 @@ SetPositionStateWaitForArrivalQuitIfError(
     sErrorMsg := stSDS.sErrorMsg,
     bArrived => stSDS.bSuccess
 );
-]]></ST>
-      </Implementation>
-    </Method>
-    <Method Name="ConfirmSampleLoaded" Id="{59212a0a-1d84-0106-05ab-0993ad636ffe}">
-      <Declaration><![CDATA[
-METHOD PRIVATE ConfirmSampleLoaded
-VAR_INPUT
-END_VAR
-]]></Declaration>
-      <Implementation>
-        <ST><![CDATA[
-
-]]></ST>
-      </Implementation>
-    </Method>
-    <Method Name="ConfirmSampleUnloaded" Id="{a0f2d941-1761-0fd5-2fd9-ad0713111335}">
-      <Declaration><![CDATA[
-METHOD PRIVATE ConfirmSampleUnloaded
-VAR_INPUT
-END_VAR
-]]></Declaration>
-      <Implementation>
-        <ST><![CDATA[
-
 ]]></ST>
       </Implementation>
     </Method>
@@ -830,7 +829,7 @@ END_IF
     <Method Name="HomeGarage" Id="{e7f9863f-7463-0f7b-2f0f-b96d98c66a5a}">
       <Declaration><![CDATA[
 METHOD PRIVATE HomeGarage
-VAR_INPUT
+VAR_IN_OUT
     stSDS : ST_SDS;
 END_VAR
 ]]></Declaration>
@@ -872,6 +871,14 @@ END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[
+IF stMotionStage.bHome AND F_Limit(
+    fVal := stMotionStage.Axis.NcToPlc.ActPos,
+    fLLim := -0.01,
+    fHLim := 0.01,
+    bInclusive := TRUE) THEN
+    eHomingState := E_SDSHomingState.HOMED;
+END_IF
+
 CASE eHomingState OF
     E_SDSHomingState.INIT:
         eHomingState := E_SDSHomingState.WAIT_NOT_BUSY;
@@ -1040,7 +1047,7 @@ END_VAR
         <ST><![CDATA[
 CASE stSDS.eSeqState OF
     E_SDSSeqState.Inactive:
-        ; // Do nothing
+        stSDS.eSeqState := E_SDSSeqState.Home_Transfer_Arm;
     E_SDSSeqState.Home_Transfer_Arm:
         HomeTransferArm(
             stSDS := stSDS
@@ -1200,7 +1207,7 @@ END_VAR
         <ST><![CDATA[
 CASE stSDS.eSeqState OF
     E_SDSSeqState.Inactive:
-        ; // Do nothing
+        stSDS.eSeqState := E_SDSSeqState.Home_Transfer_Arm;
     E_SDSSeqState.Home_Transfer_Arm:
         HomeTransferArm(
             stSDS := stSDS
@@ -1917,15 +1924,24 @@ END_VAR
 
 IF stSDS.stUISelect.bCancel THEN
     stSDS.eState := E_SDSState.Standby;
+    stSDS.eSubState := E_SDSSubState.Inactive;
+    stSDS.eSeqState := E_SDSSeqState.Inactive;
+    stSDS.bError := FALSE;
+    stSDS.sErrorMsg := '';
 END_IF
+
+stSDS.sStatusMsg := '';
 
 CASE stSDS.eState OF
     E_SDSState.Standby:
         IF stSDS.bEnable THEN
             stSDS.eState := E_SDSState.Operating;
+            stSDS.eSubState := E_SDSSubstate.Select_Desired_Action;
+            stSDS.eSeqState := E_SDSSeqState.Inactive;
+        ELSE
+            stSDS.eSubState := E_SDSSubState.Inactive;
+            stSDS.eSeqState := E_SDSSeqState.Inactive;
         END_IF
-        stSDS.eSubState := E_SDSSubState.Inactive;
-        stSDS.eSeqState := E_SDSSeqState.Inactive;
     E_SDSState.Operating:
         IF NOT stSDS.bEnable THEN
             stSDS.eState := E_SDSState.Standby;
@@ -2245,15 +2261,15 @@ ChoiceElement1:INT:=47;
                 </d>
                 <n n="BreakPointGuids"/>
                 <v n="UmlEditorRestrictions" t="EditorRestrictions">None</v>
-                <v n="DUTObjectGuid">{6618a086-9af1-4770-9c70-589628849fcb}</v>
-                <v n="DUTNamesObjectGuid">{21aa2734-a69b-4ca5-8f30-b676d1cc0345}</v>
+                <v n="DUTObjectGuid">{d219d9e9-725a-463b-8385-63d2c1905473}</v>
+                <v n="DUTNamesObjectGuid">{5cb4fee8-5040-4b56-8e70-e6ab877f9339}</v>
                 <v n="TraceObject">{00000000-0000-0000-0000-000000000000}</v>
                 <v n="IsCompiling">false</v>
                 <v n="HideLanguageModel">false</v>
                 <v n="DefaultStateSizeX">62</v>
                 <v n="DefaultStateSizeY">32</v>
                 <v n="SuppressAutomaticLibraryLoading">false</v>
-                <v n="DiagramName">"StateMachine"</v>
+                <v n="DiagramName">"StateMachine_statechart"</v>
                 <v n="DiagramGuid">{cb6fa6d3-32a0-42cc-bd7f-c1fbccc32a26}</v>
                 <v n="IsActionRemoving">false</v>
                 <v n="ForceRepaintDiagram">false</v>
@@ -4130,6 +4146,8 @@ END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[
+stSDS.bSuccess := FALSE;
+
 CASE stSDS.eSubState OF
     E_SDSSubState.Inactive:
         ; // Do nothing
@@ -4154,9 +4172,10 @@ CASE stSDS.eSubState OF
     E_SDSSubState.Check_Can_Home_Garage:
         CheckCanHomeGarage(
             stSDS := stSDS,
-            stSDSP := stSDSPersistent
+            stSDSP := stSDSP
         );
         IF stSDS.bSuccess THEN
+            stSDS.bSuccess := FALSE;
             stSDS.eSubState := E_SDSSubstate.Home_Garage;
         END_IF
     E_SDSSubState.Home_Garage:
@@ -4164,14 +4183,16 @@ CASE stSDS.eSubState OF
             stSDS := stSDS
         );
         IF stSDS.bSuccess THEN
+            stSDS.bSuccess := FALSE;
             stSDS.eState := E_SDSState.Standby;
         END_IF
     E_SDSSubState.Check_Can_Home_Transfer_Arm:
         CheckCanHomeTransferArm(
             stSDS := stSDS,
-            stSDSP := stSDSPersistent
+            stSDSP := stSDSP
         );
         IF stSDS.bSuccess THEN
+            stSDS.bSuccess := FALSE;
             stSDS.eSubState := E_SDSSubstate.Home_Transfer_Arm;
         END_IF
     E_SDSSubState.Home_Transfer_Arm:
@@ -4179,102 +4200,115 @@ CASE stSDS.eSubState OF
             stSDS := stSDS
         );
         IF stSDS.bSuccess THEN
+            stSDS.bSuccess := FALSE;
             stSDS.eState := E_SDSstate.Standby;
         END_IF
     E_SDSSubState.Check_Can_Load_Arm_From_Garage:
         CheckCanLoadArmFromGarage(
             stSDS := stSDS,
-            stSDSP := stSDSPersistent
+            stSDSP := stSDSP
         );
         IF stSDS.bSuccess THEN
+            stSDS.bSuccess := FALSE;
             stSDS.eSubState := E_SDSSubstate.Load_Arm_from_Garage;
         END_IF
     E_SDSSubState.Load_Arm_from_Garage:
         LoadArmFromGarage(
             stSDS := stSDS,
-            stSDSP := stSDSPersistent
+            stSDSP := stSDSP
         );
         IF stSDS.bSuccess THEN
+            stSDS.bSuccess := FALSE;
             stSDS.eState := E_SDSstate.Standby;
         END_IF
     E_SDSSubState.Check_Can_Load_Diffractometer_from_Arm:
         CheckCanLoadDiffractometerFromArm(
             stSDS := stSDS,
-            stSDSP := stSDSPersistent
+            stSDSP := stSDSP
         );
         IF stSDS.bSuccess THEN
+            stSDS.bSuccess := FALSE;
             stSDS.eSubState := E_SDSSubstate.Load_Diffractometer_from_Arm;
         END_IF
     E_SDSSubState.Load_Diffractometer_from_Arm:
         LoadDiffractometerFromArm(
             stSDS := stSDS,
-            stSDSP := stSDSPersistent
+            stSDSP := stSDSP
         );
         IF stSDS.bSuccess THEN
+            stSDS.bSuccess := FALSE;
             stSDS.eState := E_SDSstate.Standby;
         END_IF
     E_SDSSubState.Check_Can_Load_Unload_Garage_from_Port:
         CheckCanLoadUnloadGarageFromPort(
             stSDS := stSDS,
-            stSDSP := stSDSPersistent
+            stSDSP := stSDSP
         );
         IF stSDS.bSuccess THEN
+            stSDS.bSuccess := FALSE;
             stSDS.eSubState := E_SDSSubstate.Load_Unload_Garage_from_Port;
         END_IF
     E_SDSSubState.Load_Unload_Garage_from_Port:
         LoadUnloadGarageFromPort(
             stSDS := stSDS,
-            stSDSP := stSDSPersistent
+            stSDSP := stSDSP
         );
         IF stSDS.bSuccess THEN
+            stSDS.bSuccess := FALSE;
             stSDS.eState := E_SDSstate.Standby;
         END_IF
     E_SDSSubState.Check_Can_Unload_Arm_to_Garage:
         CheckCanUnloadArmToGarage(
             stSDS := stSDS,
-            stSDSP := stSDSPersistent
+            stSDSP := stSDSP
         );
         IF stSDS.bSuccess THEN
+            stSDS.bSuccess := FALSE;
             stSDS.eSubState := E_SDSSubstate.Unload_Arm_to_Garage;
         END_IF
     E_SDSSubState.Unload_Arm_to_Garage:
         UnloadArmToGarage(
             stSDS := stSDS,
-            stSDSP := stSDSPersistent
+            stSDSP := stSDSP
         );
         IF stSDS.bSuccess THEN
+            stSDS.bSuccess := FALSE;
             stSDS.eState := E_SDSstate.Standby;
         END_IF
     E_SDSSubState.Check_Can_Unload_Diffractometer_to_Arm:
         CheckCanUnloadDiffractometerToArm(
             stSDS := stSDS,
-            stSDSP := stSDSPersistent
+            stSDSP := stSDSP
         );
         IF stSDS.bSuccess THEN
+            stSDS.bSuccess := FALSE;
             stSDS.eSubState := E_SDSSubstate.Unload_Diffractometer_to_Arm;
         END_IF
     E_SDSSubState.Unload_Diffractometer_to_Arm:
         UnloadDiffractometerToArm(
             stSDS := stSDS,
-            stSDSP := stSDSPersistent
+            stSDSP := stSDSP
         );
         IF stSDS.bSuccess THEN
+            stSDS.bSuccess := FALSE;
             stSDS.eState := E_SDSstate.Standby;
         END_IF
     E_SDSSubState.Check_Can_Manual_Control:
         CheckCanManualControl(
             stSDS := stSDS,
-            stSDSP := stSDSPersistent
+            stSDSP := stSDSP
         );
         IF stSDS.bSuccess THEN
+            stSDS.bSuccess := FALSE;
             stSDS.eSubState := E_SDSSubstate.Manual_Control;
         END_IF
     E_SDSSubState.Manual_Control:
         ManualControl(
             stSDS := stSDS,
-            stSDSP := stSDSPersistent
+            stSDSP := stSDSP
         );
         IF stSDS.bSuccess THEN
+            stSDS.bSuccess := FALSE;
             stSDS.eState := E_SDSstate.Standby;
         END_IF
 END_CASE
@@ -4291,14 +4325,17 @@ END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[
+stSDS.bSuccess := FALSE;
+
 CASE stSDS.eSeqState OF
     E_SDSSeqState.Inactive:
-        ; // Do nothing
+        stSDS.eSeqState := E_SDSSeqState.Home_Transfer_Arm;
     E_SDSSeqState.Home_Transfer_Arm:
         HomeTransferArm(
             stSDS := stSDS
         );
         IF stSDS.bSuccess THEN
+            stSDS.bSuccess := FALSE;
             stSDS.eSeqState := E_SDSSeqState.Check_Garage_Height;
         END_IF
     E_SDSSeqState.Check_Garage_Height:
@@ -4312,6 +4349,7 @@ CASE stSDS.eSeqState OF
             stSDS := stSDS
         );
         IF stSDS.stUISelect.bProceed THEN
+            stSDS.stUISelect.bProceed := FALSE;
             stSDS.eSeqState := E_SDSSeqState.Retract_Garage_1;
         END_IF
     E_SDSSeqState.Retract_Garage_1:
@@ -4439,7 +4477,7 @@ END_VAR
         <ST><![CDATA[
 CASE stSDS.eSeqState OF
     E_SDSSeqState.Inactive:
-        ; // Do nothing
+        stSDS.eSeqState := E_SDSSeqState.Home_Transfer_Arm;
     E_SDSSeqState.Home_Transfer_Arm:
         HomeTransferArm(
             stSDS := stSDS
@@ -4760,7 +4798,7 @@ fbStateSetup(stPositionState:=stSDS.astTransferArmRPosState[E_SDSTransferArmRSta
 fbStateSetup(
     stPositionState := stSDS.astGarageYPosState[E_SDSGarageYStates.RETRACTED], sName:='RETRACTED',
     fPosition := 0.0,
-    fVelocity := 2.0,
+    fVelocity := 1.0,
     fDelta := 10.0
 );
 
@@ -4769,7 +4807,7 @@ FOR nIndex := E_SDSGarageYStates.T1 TO E_SDSGarageYStates.B4 BY 1 DO
         stPositionState := stSDS.astGarageYPosState[nIndex],
         sName := stSDSP.astGarageSlot[nIndex].sTag,
         fPosition := stSDSP.astGarageSlot[nIndex].fYPos,
-        fVelocity := 2.0,
+        fVelocity := 1.0,
     );
 END_FOR
 

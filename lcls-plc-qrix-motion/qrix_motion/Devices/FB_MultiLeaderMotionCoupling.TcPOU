@@ -28,6 +28,7 @@ VAR
     GetCurrentTaskIndex    : GETCURTASKINDEX;
     fSecPerScan            : LREAL;
     fDistanceThisScan      : LREAL;
+    fPosSetpoint           : LREAL;
 
     EnableSetPointGenerator  : MC_ExtSetPointGenEnable;
     DisableSetPointGenerator : MC_ExtSetPointGenDisable;
@@ -241,6 +242,15 @@ END_IF
 ACT_ComputeTargets();
 
 tonTimeout(IN:=TRUE,PT:=tTimeout);
+
+MC_ExtSetPointGenFeed(
+    Position     := stMotionStageFollow.Axis.NcToPlc.ActPos,
+    Velocity     := 0.0,
+    Acceleration := 0.0,
+    Direction    := 1,
+    Axis         := stMotionStageFollow.Axis
+);
+
 EnableSetPointGenerator(
     Axis         := stMotionStageFollow.Axis,
     Execute      := TRUE,
@@ -346,8 +356,14 @@ ELSE
         ELSE
             fDistanceThisScan := 0;
         END_IF
+        fPosSetpoint := stMotionStageFollow.Axis.NcToPlc.ActPos + fDistanceThisScan;
+        IF WORD_TO_BOOL(stMotionStageFollow.stAxisParameters.bEncEnableSoftEndMaxControl) AND fPosSetpoint > stMotionStageFollow.stAxisParameters.fEncSoftEndMax THEN
+            fPosSetpoint := stMotionStageFollow.stAxisParameters.fEncSoftEndMax;
+        ELSIF WORD_TO_BOOL(stMotionStageFollow.stAxisParameters.bEncEnableSoftEndMinControl) AND fPosSetpoint < stMotionStageFollow.stAxisParameters.fEncSoftEndMin THEN
+            fPosSetpoint := stMotionStageFollow.stAxisParameters.fEncSoftEndMin;
+        END_IF
         MC_ExtSetPointGenFeed(
-            Position     := stMotionStageFollow.Axis.NcToPlc.ActPos + fDistanceThisScan,
+            Position     := fPosSetpoint,
             Velocity     := stMultiLeaderMotionCoupling.stVel.fOut,
             Acceleration := stMultiLeaderMotionCoupling.stAcc.fOut,
             Direction    := stMultiLeaderMotionCoupling.nDir,

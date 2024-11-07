@@ -17,10 +17,10 @@ STRUCT
 
     {attribute 'pytmc' := '
         pv: Enable
-        io: i
+        io: io
         field: DESC TRUE to enable SDS system. FALSE to disable.
     '}
-    bEnable : BOOL;
+    bEnable : BOOL := TRUE;
 
     {attribute 'pytmc' := '
         pv: Maint

@@ -45,7 +45,7 @@ epicsEnvSet("ASYN_PORT",        "ASYN_PLC")
 epicsEnvSet("IPADDR",           "172.21.140.101")
 epicsEnvSet("AMSID",            "172.21.140.101.1.1")
 epicsEnvSet("AMS_PORT",         "851")
-epicsEnvSet("ADS_MAX_PARAMS",   "7202")
+epicsEnvSet("ADS_MAX_PARAMS",   "7205")
 epicsEnvSet("ADS_SAMPLE_MS",    "50")
 epicsEnvSet("ADS_MAX_DELAY_MS", "100")
 epicsEnvSet("ADS_TIMEOUT_MS",   "1000")
@@ -887,8 +887,8 @@ cd "$(IOC_TOP)"
 ## PLC Project Database files ##
 dbLoadRecords("qrix_motion.db", "PORT=$(ASYN_PORT),PREFIX=PLC:QRIX:MOT:,IOCNAME=$(IOC),IOC=$(IOC)")
 
-# Total records: 6202
-callbackSetQueueSize(14404)
+# Total records: 6205
+callbackSetQueueSize(14410)
 
 # Autosave and archive settings:
 save_restoreSet_status_prefix("PLC:QRIX:MOT:")

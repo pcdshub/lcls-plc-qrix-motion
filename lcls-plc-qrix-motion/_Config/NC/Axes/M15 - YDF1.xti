@@ -1324,7 +1324,7 @@ External Setpoint Generation:
 			<OtherSettings AllowMotionCmdToSlave="true"/>
 		</AxisPara>
 		<Encoder Name="Enc" EncType="29">
-			<EncPara Offset="-1" MaxCount="#xffffffff">
+			<EncPara Offset="-1" MaxCount="#xffffffff" MaxCountHighDWord="#x0000001f">
 				<SoftEndMinControl Enable="true" Range="-0.5"/>
 				<SoftEndMaxControl Enable="true" Range="21.5"/>
 				<Inc RefSoftSyncMask="#x0000ffff"/>
@@ -1364,7 +1364,7 @@ External Setpoint Generation:
 		</Encoder>
 		<Drive Name="Drive" DrvType="24">
 			<DrvPara>
-				<Analog VeloReferenz="0.333336" ScaleFactorActTorque="0.1"/>
+				<Analog VeloReferenz="0.333336" TorqueSetpointScale="10" ScaleFactorActTorque="0.1"/>
 				<TimeComp TaskDelayCycles="1"/>
 			</DrvPara>
 			<Vars VarGrpType="1">
@@ -1476,6 +1476,10 @@ External Setpoint Generation:
 				<Link VarA="Drive^Outputs^Out^nCtrl1" VarB="STM Control^Control^Reduce torque" Size="1" OffsA="2"/>
 				<Link VarA="Drive^Outputs^Out^nCtrl1" VarB="STM Control^Control^Reset" Size="1" OffsA="1"/>
 				<Link VarA="Drive^Outputs^Out^nDataOut2[0]" VarB="STM Velocity^Velocity"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 2 (EtherCAT)^Rack#2D LinearGaugeAmp (SC-HG1-ETC)">
+				<Link VarA="Enc^Inputs^In^nComState" VarB="WcState^InputToggle" Size="1" OffsA="1"/>
+				<Link VarA="Enc^Inputs^In^nComState" VarB="WcState^WcState" Size="1"/>
 			</OwnerB>
 		</OwnerA>
 	</Mappings>

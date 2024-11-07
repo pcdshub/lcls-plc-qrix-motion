@@ -162,7 +162,7 @@ stSDS.stDiffThetaStage REF= Main.M35;
 
 // Function block containing logic for sample delivery system motion automation.
 fbSDS(
-    stSDS := stSDS,
+    stSDSin := stSDS,
     stSDSPersistent := stSDSPersistent
 );
 ]]></ST>
