@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="./">
 <head>
@@ -5,22 +7,18 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NC Settings &mdash; pcdshub/lcls-plc-qrix-motion  documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/tree.css?v=837a00b9" />
       <link rel="stylesheet" type="text/css" href="_static/width.css?v=ab210c7a" />
 
   
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="_static/jquery.js?v=5d32c60e"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=5929fcd5"></script>
-        <script src="_static/doctools.js?v=888ff710"></script>
-        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="_static/docs-versions-menu.js?v=3d6a1aea"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/docs-versions-menu.js?v=3d6a1aea"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -335,7 +333,7 @@
 <td><p>#xffffffff</p></td>
 </tr>
 <tr class="row-even"><td><p>Enc:Offset</p></td>
-<td><p>35.8</p></td>
+<td><p>35.5</p></td>
 </tr>
 <tr class="row-odd"><td><p>Enc:ScaleFactorNumerator</p></td>
 <td><p>4.881027e-06</p></td>
@@ -344,13 +342,13 @@
 <td><p>true</p></td>
 </tr>
 <tr class="row-odd"><td><p>Enc:SoftEndMaxControl:Range</p></td>
-<td><p>150</p></td>
+<td><p>147.7</p></td>
 </tr>
 <tr class="row-even"><td><p>Enc:SoftEndMinControl:Enable</p></td>
 <td><p>true</p></td>
 </tr>
 <tr class="row-odd"><td><p>Enc:SoftEndMinControl:Range</p></td>
-<td><p>40.1</p></td>
+<td><p>39.8</p></td>
 </tr>
 <tr class="row-even"><td><p>General:UnitName</p></td>
 <td><p>Degree</p></td>
@@ -358,10 +356,19 @@
 <tr class="row-odd"><td><p>Id</p></td>
 <td><p>1</p></td>
 </tr>
-<tr class="row-even"><td><p>OtherSettings:AllowMotionCmdToSlave</p></td>
+<tr class="row-even"><td><p>OtherSettings:AllowMotionCmdToExtSetGenAxis</p></td>
 <td><p>true</p></td>
 </tr>
-<tr class="row-odd"><td><p>Velo:Maximum</p></td>
+<tr class="row-odd"><td><p>OtherSettings:AllowMotionCmdToSlave</p></td>
+<td><p>true</p></td>
+</tr>
+<tr class="row-even"><td><p>OtherSettings:NoMotionWindow</p></td>
+<td><p>0.1</p></td>
+</tr>
+<tr class="row-odd"><td><p>OtherSettings:SwitchToActValuesIfDisabled</p></td>
+<td><p>true</p></td>
+</tr>
+<tr class="row-even"><td><p>Velo:Maximum</p></td>
 <td><p>3</p></td>
 </tr>
 </tbody>
@@ -392,16 +399,16 @@
 <td><p>true</p></td>
 </tr>
 <tr class="row-odd"><td><p>Dynamic:Acceleration</p></td>
-<td><p>0.01</p></td>
+<td><p>1</p></td>
 </tr>
 <tr class="row-even"><td><p>Dynamic:AccelerationMaximum</p></td>
-<td><p>0.01</p></td>
+<td><p>1</p></td>
 </tr>
 <tr class="row-odd"><td><p>Dynamic:Deceleration</p></td>
-<td><p>0.01</p></td>
+<td><p>1</p></td>
 </tr>
 <tr class="row-even"><td><p>Dynamic:DecelerationMaximum</p></td>
-<td><p>0.01</p></td>
+<td><p>1</p></td>
 </tr>
 <tr class="row-odd"><td><p>Dynamic:Jerk</p></td>
 <td><p>2.8</p></td>
@@ -448,8 +455,14 @@
 <tr class="row-odd"><td><p>TargetPosControl:Range</p></td>
 <td><p>0.1</p></td>
 </tr>
-<tr class="row-even"><td><p>Velo:Maximum</p></td>
-<td><p>0.25</p></td>
+<tr class="row-even"><td><p>Velo:FastManual</p></td>
+<td><p>0.499</p></td>
+</tr>
+<tr class="row-odd"><td><p>Velo:Maximum</p></td>
+<td><p>0.1</p></td>
+</tr>
+<tr class="row-even"><td><p>Velo:SlowManual</p></td>
+<td><p>0.025</p></td>
 </tr>
 </tbody>
 </table>
@@ -965,7 +978,7 @@
 <td><p>0.5</p></td>
 </tr>
 <tr class="row-even"><td><p>TargetPosControl:Range</p></td>
-<td><p>0.05</p></td>
+<td><p>0.01</p></td>
 </tr>
 <tr class="row-odd"><td><p>Velo:Maximum</p></td>
 <td><p>0.1</p></td>
@@ -1049,7 +1062,7 @@
 <td><p>0.1</p></td>
 </tr>
 <tr class="row-even"><td><p>TargetPosControl:Range</p></td>
-<td><p>0.05</p></td>
+<td><p>0.01</p></td>
 </tr>
 <tr class="row-odd"><td><p>Velo:Maximum</p></td>
 <td><p>0.1</p></td>
@@ -1106,7 +1119,7 @@
 <td><p>#xffffffff</p></td>
 </tr>
 <tr class="row-odd"><td><p>Enc:Offset</p></td>
-<td><p>2351.695</p></td>
+<td><p>2352.4301</p></td>
 </tr>
 <tr class="row-even"><td><p>Enc:ScaleFactorDenominator</p></td>
 <td><p>1000000</p></td>
@@ -1118,13 +1131,13 @@
 <td><p>true</p></td>
 </tr>
 <tr class="row-odd"><td><p>Enc:SoftEndMaxControl:Range</p></td>
-<td><p>87.5</p></td>
+<td><p>88.2</p></td>
 </tr>
 <tr class="row-even"><td><p>Enc:SoftEndMinControl:Enable</p></td>
 <td><p>true</p></td>
 </tr>
 <tr class="row-odd"><td><p>Enc:SoftEndMinControl:Range</p></td>
-<td><p>-17.5</p></td>
+<td><p>-16.8</p></td>
 </tr>
 <tr class="row-even"><td><p>General:UnitName</p></td>
 <td><p>mrad</p></td>
@@ -1193,7 +1206,7 @@
 <td><p>#xffffffff</p></td>
 </tr>
 <tr class="row-odd"><td><p>Enc:Offset</p></td>
-<td><p>-123.91085</p></td>
+<td><p>-123.52065</p></td>
 </tr>
 <tr class="row-even"><td><p>Enc:ScaleFactorNumerator</p></td>
 <td><p>5e-05</p></td>
@@ -1202,13 +1215,13 @@
 <td><p>true</p></td>
 </tr>
 <tr class="row-even"><td><p>Enc:SoftEndMaxControl:Range</p></td>
-<td><p>95</p></td>
+<td><p>94.4</p></td>
 </tr>
 <tr class="row-odd"><td><p>Enc:SoftEndMinControl:Enable</p></td>
 <td><p>true</p></td>
 </tr>
 <tr class="row-even"><td><p>Enc:SoftEndMinControl:Range</p></td>
-<td><p>-95</p></td>
+<td><p>-93.6</p></td>
 </tr>
 <tr class="row-odd"><td><p>Id</p></td>
 <td><p>11</p></td>
@@ -1478,7 +1491,7 @@
 <td><p>#xffffffff</p></td>
 </tr>
 <tr class="row-odd"><td><p>Enc:Offset</p></td>
-<td><p>-205.8664</p></td>
+<td><p>-203.9704</p></td>
 </tr>
 <tr class="row-even"><td><p>Enc:ScaleFactorDenominator</p></td>
 <td><p>1000</p></td>
@@ -1490,13 +1503,13 @@
 <td><p>true</p></td>
 </tr>
 <tr class="row-odd"><td><p>Enc:SoftEndMaxControl:Range</p></td>
-<td><p>60</p></td>
+<td><p>60.9</p></td>
 </tr>
 <tr class="row-even"><td><p>Enc:SoftEndMinControl:Enable</p></td>
 <td><p>true</p></td>
 </tr>
 <tr class="row-odd"><td><p>Enc:SoftEndMinControl:Range</p></td>
-<td><p>-60</p></td>
+<td><p>-58.1</p></td>
 </tr>
 <tr class="row-even"><td><p>General:UnitName</p></td>
 <td><p>mrad</p></td>
@@ -1556,52 +1569,64 @@
 <td><p>true</p></td>
 </tr>
 <tr class="row-odd"><td><p>Dynamic:Acceleration</p></td>
-<td><p>0.8</p></td>
+<td><p>0.05</p></td>
 </tr>
 <tr class="row-even"><td><p>Dynamic:AccelerationMaximum</p></td>
-<td><p>1</p></td>
+<td><p>0.05</p></td>
 </tr>
 <tr class="row-odd"><td><p>Dynamic:Deceleration</p></td>
-<td><p>0.8</p></td>
+<td><p>0.05</p></td>
 </tr>
 <tr class="row-even"><td><p>Dynamic:DecelerationMaximum</p></td>
-<td><p>1</p></td>
+<td><p>0.05</p></td>
 </tr>
 <tr class="row-odd"><td><p>Dynamic:Jerk</p></td>
 <td><p>3.2</p></td>
 </tr>
 <tr class="row-even"><td><p>Enc:EncType</p></td>
-<td><p>1</p></td>
+<td><p>29</p></td>
 </tr>
 <tr class="row-odd"><td><p>Enc:Inc:RefSoftSyncMask</p></td>
 <td><p>#x0000ffff</p></td>
 </tr>
-<tr class="row-even"><td><p>Enc:ScaleFactorNumerator</p></td>
-<td><p>1</p></td>
+<tr class="row-even"><td><p>Enc:MaxCount</p></td>
+<td><p>#xffffffff</p></td>
 </tr>
-<tr class="row-odd"><td><p>Enc:SoftEndMaxControl:Range</p></td>
+<tr class="row-odd"><td><p>Enc:MaxCountHighDWord</p></td>
+<td><p>#x0000001f</p></td>
+</tr>
+<tr class="row-even"><td><p>Enc:Offset</p></td>
+<td><p>-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Enc:SoftEndMaxControl:Enable</p></td>
+<td><p>true</p></td>
+</tr>
+<tr class="row-even"><td><p>Enc:SoftEndMaxControl:Range</p></td>
 <td><p>21.5</p></td>
 </tr>
-<tr class="row-even"><td><p>Enc:SoftEndMinControl:Enable</p></td>
+<tr class="row-odd"><td><p>Enc:SoftEndMinControl:Enable</p></td>
 <td><p>true</p></td>
 </tr>
-<tr class="row-odd"><td><p>Enc:SoftEndMinControl:Range</p></td>
+<tr class="row-even"><td><p>Enc:SoftEndMinControl:Range</p></td>
 <td><p>-0.5</p></td>
 </tr>
-<tr class="row-even"><td><p>Id</p></td>
+<tr class="row-odd"><td><p>Id</p></td>
 <td><p>15</p></td>
 </tr>
-<tr class="row-odd"><td><p>OtherSettings:AllowMotionCmdToSlave</p></td>
+<tr class="row-even"><td><p>OtherSettings:AllowMotionCmdToSlave</p></td>
 <td><p>true</p></td>
 </tr>
-<tr class="row-even"><td><p>PositionAreaControl:Range</p></td>
+<tr class="row-odd"><td><p>PositionAreaControl:Range</p></td>
 <td><p>0.5</p></td>
 </tr>
-<tr class="row-odd"><td><p>Velo:FastManual</p></td>
-<td><p>0</p></td>
-</tr>
-<tr class="row-even"><td><p>Velo:Maximum</p></td>
+<tr class="row-even"><td><p>Velo:FastManual</p></td>
 <td><p>0.05</p></td>
+</tr>
+<tr class="row-odd"><td><p>Velo:Maximum</p></td>
+<td><p>0.075</p></td>
+</tr>
+<tr class="row-even"><td><p>Velo:SlowManual</p></td>
+<td><p>0.025</p></td>
 </tr>
 </tbody>
 </table>
@@ -1631,52 +1656,64 @@
 <td><p>true</p></td>
 </tr>
 <tr class="row-odd"><td><p>Dynamic:Acceleration</p></td>
-<td><p>0.8</p></td>
+<td><p>0.05</p></td>
 </tr>
 <tr class="row-even"><td><p>Dynamic:AccelerationMaximum</p></td>
-<td><p>1</p></td>
+<td><p>0.05</p></td>
 </tr>
 <tr class="row-odd"><td><p>Dynamic:Deceleration</p></td>
-<td><p>0.8</p></td>
+<td><p>0.05</p></td>
 </tr>
 <tr class="row-even"><td><p>Dynamic:DecelerationMaximum</p></td>
-<td><p>1</p></td>
+<td><p>0.05</p></td>
 </tr>
 <tr class="row-odd"><td><p>Dynamic:Jerk</p></td>
 <td><p>3.2</p></td>
 </tr>
 <tr class="row-even"><td><p>Enc:EncType</p></td>
-<td><p>1</p></td>
+<td><p>29</p></td>
 </tr>
 <tr class="row-odd"><td><p>Enc:Inc:RefSoftSyncMask</p></td>
 <td><p>#x0000ffff</p></td>
 </tr>
-<tr class="row-even"><td><p>Enc:ScaleFactorNumerator</p></td>
-<td><p>4.2e-05</p></td>
+<tr class="row-even"><td><p>Enc:MaxCount</p></td>
+<td><p>#xffffffff</p></td>
 </tr>
-<tr class="row-odd"><td><p>Enc:SoftEndMaxControl:Range</p></td>
+<tr class="row-odd"><td><p>Enc:MaxCountHighDWord</p></td>
+<td><p>#x0000001f</p></td>
+</tr>
+<tr class="row-even"><td><p>Enc:Offset</p></td>
+<td><p>-1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Enc:SoftEndMaxControl:Enable</p></td>
+<td><p>true</p></td>
+</tr>
+<tr class="row-even"><td><p>Enc:SoftEndMaxControl:Range</p></td>
 <td><p>21.5</p></td>
 </tr>
-<tr class="row-even"><td><p>Enc:SoftEndMinControl:Enable</p></td>
+<tr class="row-odd"><td><p>Enc:SoftEndMinControl:Enable</p></td>
 <td><p>true</p></td>
 </tr>
-<tr class="row-odd"><td><p>Enc:SoftEndMinControl:Range</p></td>
+<tr class="row-even"><td><p>Enc:SoftEndMinControl:Range</p></td>
 <td><p>-0.5</p></td>
 </tr>
-<tr class="row-even"><td><p>Id</p></td>
+<tr class="row-odd"><td><p>Id</p></td>
 <td><p>16</p></td>
 </tr>
-<tr class="row-odd"><td><p>OtherSettings:AllowMotionCmdToSlave</p></td>
+<tr class="row-even"><td><p>OtherSettings:AllowMotionCmdToSlave</p></td>
 <td><p>true</p></td>
 </tr>
-<tr class="row-even"><td><p>PositionAreaControl:Range</p></td>
+<tr class="row-odd"><td><p>PositionAreaControl:Range</p></td>
 <td><p>0.5</p></td>
 </tr>
-<tr class="row-odd"><td><p>Velo:FastManual</p></td>
-<td><p>0</p></td>
-</tr>
-<tr class="row-even"><td><p>Velo:Maximum</p></td>
+<tr class="row-even"><td><p>Velo:FastManual</p></td>
 <td><p>0.05</p></td>
+</tr>
+<tr class="row-odd"><td><p>Velo:Maximum</p></td>
+<td><p>0.075</p></td>
+</tr>
+<tr class="row-even"><td><p>Velo:SlowManual</p></td>
+<td><p>0.025</p></td>
 </tr>
 </tbody>
 </table>
@@ -1706,28 +1743,34 @@
 <td><p>true</p></td>
 </tr>
 <tr class="row-odd"><td><p>Dynamic:Acceleration</p></td>
-<td><p>0.8</p></td>
+<td><p>0.05</p></td>
 </tr>
 <tr class="row-even"><td><p>Dynamic:AccelerationMaximum</p></td>
-<td><p>1</p></td>
+<td><p>0.05</p></td>
 </tr>
 <tr class="row-odd"><td><p>Dynamic:Deceleration</p></td>
-<td><p>0.8</p></td>
+<td><p>0.05</p></td>
 </tr>
 <tr class="row-even"><td><p>Dynamic:DecelerationMaximum</p></td>
-<td><p>1</p></td>
+<td><p>0.05</p></td>
 </tr>
 <tr class="row-odd"><td><p>Dynamic:Jerk</p></td>
 <td><p>3.2</p></td>
 </tr>
 <tr class="row-even"><td><p>Enc:EncType</p></td>
-<td><p>1</p></td>
+<td><p>29</p></td>
 </tr>
 <tr class="row-odd"><td><p>Enc:Inc:RefSoftSyncMask</p></td>
 <td><p>#x0000ffff</p></td>
 </tr>
-<tr class="row-even"><td><p>Enc:ScaleFactorNumerator</p></td>
-<td><p>4.2e-05</p></td>
+<tr class="row-even"><td><p>Enc:MaxCount</p></td>
+<td><p>#xffffffff</p></td>
+</tr>
+<tr class="row-odd"><td><p>Enc:MaxCountHighDWord</p></td>
+<td><p>#x0000001f</p></td>
+</tr>
+<tr class="row-even"><td><p>Enc:Offset</p></td>
+<td><p>-1</p></td>
 </tr>
 <tr class="row-odd"><td><p>Enc:SoftEndMaxControl:Enable</p></td>
 <td><p>true</p></td>
@@ -1751,10 +1794,13 @@
 <td><p>0.5</p></td>
 </tr>
 <tr class="row-even"><td><p>Velo:FastManual</p></td>
-<td><p>0</p></td>
+<td><p>0.05</p></td>
 </tr>
 <tr class="row-odd"><td><p>Velo:Maximum</p></td>
-<td><p>0.05</p></td>
+<td><p>0.075</p></td>
+</tr>
+<tr class="row-even"><td><p>Velo:SlowManual</p></td>
+<td><p>0.025</p></td>
 </tr>
 </tbody>
 </table>
@@ -2731,44 +2777,50 @@
 <tr class="row-even"><td><p>CreateSymbols</p></td>
 <td><p>true</p></td>
 </tr>
-<tr class="row-odd"><td><p>Dynamic:AccelerationMaximum</p></td>
+<tr class="row-odd"><td><p>Dynamic:Acceleration</p></td>
 <td><p>15</p></td>
 </tr>
-<tr class="row-even"><td><p>Dynamic:Deceleration</p></td>
+<tr class="row-even"><td><p>Dynamic:AccelerationMaximum</p></td>
 <td><p>15</p></td>
 </tr>
-<tr class="row-odd"><td><p>Dynamic:DecelerationMaximum</p></td>
+<tr class="row-odd"><td><p>Dynamic:Deceleration</p></td>
 <td><p>15</p></td>
 </tr>
-<tr class="row-even"><td><p>Dynamic:Jerk</p></td>
+<tr class="row-even"><td><p>Dynamic:DecelerationMaximum</p></td>
+<td><p>15</p></td>
+</tr>
+<tr class="row-odd"><td><p>Dynamic:Jerk</p></td>
 <td><p>22</p></td>
 </tr>
-<tr class="row-odd"><td><p>Enc:EncType</p></td>
+<tr class="row-even"><td><p>Enc:EncType</p></td>
 <td><p>29</p></td>
 </tr>
-<tr class="row-even"><td><p>Enc:Inc:RefSoftSyncMask</p></td>
+<tr class="row-odd"><td><p>Enc:Inc:RefSoftSyncMask</p></td>
 <td><p>#x0000ffff</p></td>
 </tr>
-<tr class="row-odd"><td><p>Enc:MaxCount</p></td>
+<tr class="row-even"><td><p>Enc:MaxCount</p></td>
 <td><p>#xffffffff</p></td>
 </tr>
-<tr class="row-even"><td><p>Enc:Offset</p></td>
+<tr class="row-odd"><td><p>Enc:Offset</p></td>
 <td><p>-213997.3723</p></td>
 </tr>
-<tr class="row-odd"><td><p>Enc:ScaleFactorNumerator</p></td>
+<tr class="row-even"><td><p>Enc:ScaleFactorNumerator</p></td>
 <td><p>5e-05</p></td>
 </tr>
-<tr class="row-even"><td><p>Enc:SoftEndMaxControl:Enable</p></td>
+<tr class="row-odd"><td><p>Enc:SoftEndMaxControl:Enable</p></td>
 <td><p>true</p></td>
 </tr>
-<tr class="row-odd"><td><p>Enc:SoftEndMaxControl:Range</p></td>
+<tr class="row-even"><td><p>Enc:SoftEndMaxControl:Range</p></td>
 <td><p>18.5</p></td>
 </tr>
-<tr class="row-even"><td><p>Enc:SoftEndMinControl:Enable</p></td>
+<tr class="row-odd"><td><p>Enc:SoftEndMinControl:Enable</p></td>
 <td><p>true</p></td>
 </tr>
-<tr class="row-odd"><td><p>Enc:SoftEndMinControl:Range</p></td>
+<tr class="row-even"><td><p>Enc:SoftEndMinControl:Range</p></td>
 <td><p>-18.5</p></td>
+</tr>
+<tr class="row-odd"><td><p>GroupId</p></td>
+<td><p>50</p></td>
 </tr>
 <tr class="row-even"><td><p>Id</p></td>
 <td><p>28</p></td>
@@ -2776,8 +2828,14 @@
 <tr class="row-odd"><td><p>OtherSettings:AllowMotionCmdToSlave</p></td>
 <td><p>true</p></td>
 </tr>
-<tr class="row-even"><td><p>Velo:Maximum</p></td>
+<tr class="row-even"><td><p>Velo:FastManual</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Velo:Maximum</p></td>
 <td><p>9</p></td>
+</tr>
+<tr class="row-even"><td><p>Velo:SlowManual</p></td>
+<td><p>0.5</p></td>
 </tr>
 </tbody>
 </table>
@@ -2806,52 +2864,55 @@
 <tr class="row-even"><td><p>CreateSymbols</p></td>
 <td><p>true</p></td>
 </tr>
-<tr class="row-odd"><td><p>Dynamic:AccelerationMaximum</p></td>
+<tr class="row-odd"><td><p>Dynamic:Acceleration</p></td>
 <td><p>15</p></td>
 </tr>
-<tr class="row-even"><td><p>Dynamic:Deceleration</p></td>
+<tr class="row-even"><td><p>Dynamic:AccelerationMaximum</p></td>
 <td><p>15</p></td>
 </tr>
-<tr class="row-odd"><td><p>Dynamic:DecelerationMaximum</p></td>
+<tr class="row-odd"><td><p>Dynamic:Deceleration</p></td>
 <td><p>15</p></td>
 </tr>
-<tr class="row-even"><td><p>Dynamic:Jerk</p></td>
+<tr class="row-even"><td><p>Dynamic:DecelerationMaximum</p></td>
+<td><p>15</p></td>
+</tr>
+<tr class="row-odd"><td><p>Dynamic:Jerk</p></td>
 <td><p>22</p></td>
 </tr>
-<tr class="row-odd"><td><p>Enc:EncType</p></td>
+<tr class="row-even"><td><p>Enc:EncType</p></td>
 <td><p>29</p></td>
 </tr>
-<tr class="row-even"><td><p>Enc:Inc:RefSoftSyncMask</p></td>
+<tr class="row-odd"><td><p>Enc:Inc:RefSoftSyncMask</p></td>
 <td><p>#x0000ffff</p></td>
 </tr>
-<tr class="row-odd"><td><p>Enc:MaxCount</p></td>
+<tr class="row-even"><td><p>Enc:MaxCount</p></td>
 <td><p>#xffffffff</p></td>
 </tr>
-<tr class="row-even"><td><p>Enc:Offset</p></td>
+<tr class="row-odd"><td><p>Enc:Offset</p></td>
 <td><p>-213937.6404</p></td>
 </tr>
-<tr class="row-odd"><td><p>Enc:ScaleFactorNumerator</p></td>
+<tr class="row-even"><td><p>Enc:ScaleFactorNumerator</p></td>
 <td><p>5e-05</p></td>
 </tr>
-<tr class="row-even"><td><p>Enc:SoftEndMaxControl:Enable</p></td>
+<tr class="row-odd"><td><p>Enc:SoftEndMaxControl:Enable</p></td>
 <td><p>true</p></td>
 </tr>
-<tr class="row-odd"><td><p>Enc:SoftEndMaxControl:Range</p></td>
+<tr class="row-even"><td><p>Enc:SoftEndMaxControl:Range</p></td>
 <td><p>21</p></td>
 </tr>
-<tr class="row-even"><td><p>Enc:SoftEndMinControl:Enable</p></td>
+<tr class="row-odd"><td><p>Enc:SoftEndMinControl:Enable</p></td>
 <td><p>true</p></td>
 </tr>
-<tr class="row-odd"><td><p>Enc:SoftEndMinControl:Range</p></td>
+<tr class="row-even"><td><p>Enc:SoftEndMinControl:Range</p></td>
 <td><p>-21</p></td>
 </tr>
-<tr class="row-even"><td><p>Id</p></td>
+<tr class="row-odd"><td><p>Id</p></td>
 <td><p>29</p></td>
 </tr>
-<tr class="row-odd"><td><p>OtherSettings:AllowMotionCmdToSlave</p></td>
+<tr class="row-even"><td><p>OtherSettings:AllowMotionCmdToSlave</p></td>
 <td><p>true</p></td>
 </tr>
-<tr class="row-even"><td><p>Velo:Maximum</p></td>
+<tr class="row-odd"><td><p>Velo:Maximum</p></td>
 <td><p>9</p></td>
 </tr>
 </tbody>
@@ -2881,44 +2942,44 @@
 <tr class="row-even"><td><p>CreateSymbols</p></td>
 <td><p>true</p></td>
 </tr>
-<tr class="row-odd"><td><p>Dynamic:AccelerationMaximum</p></td>
+<tr class="row-odd"><td><p>Dynamic:Acceleration</p></td>
 <td><p>15</p></td>
 </tr>
-<tr class="row-even"><td><p>Dynamic:Deceleration</p></td>
+<tr class="row-even"><td><p>Dynamic:AccelerationMaximum</p></td>
 <td><p>15</p></td>
 </tr>
-<tr class="row-odd"><td><p>Dynamic:DecelerationMaximum</p></td>
+<tr class="row-odd"><td><p>Dynamic:Deceleration</p></td>
 <td><p>15</p></td>
 </tr>
-<tr class="row-even"><td><p>Dynamic:Jerk</p></td>
+<tr class="row-even"><td><p>Dynamic:DecelerationMaximum</p></td>
+<td><p>15</p></td>
+</tr>
+<tr class="row-odd"><td><p>Dynamic:Jerk</p></td>
 <td><p>22</p></td>
 </tr>
-<tr class="row-odd"><td><p>Enc:EncType</p></td>
+<tr class="row-even"><td><p>Enc:EncType</p></td>
 <td><p>29</p></td>
 </tr>
-<tr class="row-even"><td><p>Enc:Inc:RefSoftSyncMask</p></td>
+<tr class="row-odd"><td><p>Enc:Inc:RefSoftSyncMask</p></td>
 <td><p>#x0000ffff</p></td>
 </tr>
-<tr class="row-odd"><td><p>Enc:MaxCount</p></td>
+<tr class="row-even"><td><p>Enc:MaxCount</p></td>
 <td><p>#xffffffff</p></td>
 </tr>
-<tr class="row-even"><td><p>Enc:Offset</p></td>
+<tr class="row-odd"><td><p>Enc:Offset</p></td>
 <td><p>-214411.4526</p></td>
 </tr>
-<tr class="row-odd"><td><p>Enc:ScaleFactorNumerator</p></td>
+<tr class="row-even"><td><p>Enc:ScaleFactorNumerator</p></td>
 <td><p>5e-05</p></td>
 </tr>
-<tr class="row-even"><td><p>Enc:SoftEndMaxControl:Enable</p></td>
+<tr class="row-odd"><td><p>Enc:SoftEndMaxControl:Enable</p></td>
 <td><p>true</p></td>
 </tr>
-<tr class="row-odd"><td><p>Enc:SoftEndMaxControl:Range</p></td>
+<tr class="row-even"><td><p>Enc:SoftEndMaxControl:Range</p></td>
 <td><p>45</p></td>
 </tr>
-<tr class="row-even"><td><p>Enc:SoftEndMinControl:Enable</p></td>
+<tr class="row-odd"><td><p>Enc:SoftEndMinControl:Enable</p></td>
 <td><p>true</p></td>
-</tr>
-<tr class="row-odd"><td><p>Enc:SoftEndMinControl:Range</p></td>
-<td><p>-0.3</p></td>
 </tr>
 <tr class="row-even"><td><p>Id</p></td>
 <td><p>30</p></td>
@@ -2956,40 +3017,55 @@
 <tr class="row-even"><td><p>CreateSymbols</p></td>
 <td><p>true</p></td>
 </tr>
-<tr class="row-odd"><td><p>Dynamic:AccelerationMaximum</p></td>
+<tr class="row-odd"><td><p>Dynamic:Acceleration</p></td>
 <td><p>15</p></td>
 </tr>
-<tr class="row-even"><td><p>Dynamic:Deceleration</p></td>
+<tr class="row-even"><td><p>Dynamic:AccelerationMaximum</p></td>
 <td><p>15</p></td>
 </tr>
-<tr class="row-odd"><td><p>Dynamic:DecelerationMaximum</p></td>
+<tr class="row-odd"><td><p>Dynamic:Deceleration</p></td>
 <td><p>15</p></td>
 </tr>
-<tr class="row-even"><td><p>Dynamic:Jerk</p></td>
+<tr class="row-even"><td><p>Dynamic:DecelerationMaximum</p></td>
+<td><p>15</p></td>
+</tr>
+<tr class="row-odd"><td><p>Dynamic:Jerk</p></td>
 <td><p>22</p></td>
 </tr>
-<tr class="row-odd"><td><p>Enc:EncType</p></td>
+<tr class="row-even"><td><p>Enc:EncType</p></td>
 <td><p>29</p></td>
 </tr>
-<tr class="row-even"><td><p>Enc:Inc:RefSoftSyncMask</p></td>
+<tr class="row-odd"><td><p>Enc:Inc:RefSoftSyncMask</p></td>
 <td><p>#x0000ffff</p></td>
 </tr>
-<tr class="row-odd"><td><p>Enc:MaxCount</p></td>
+<tr class="row-even"><td><p>Enc:MaxCount</p></td>
 <td><p>#xffffffff</p></td>
 </tr>
-<tr class="row-even"><td><p>Enc:Offset</p></td>
+<tr class="row-odd"><td><p>Enc:Offset</p></td>
 <td><p>-560.9808</p></td>
 </tr>
-<tr class="row-odd"><td><p>Enc:ScaleFactorNumerator</p></td>
+<tr class="row-even"><td><p>Enc:ScaleFactorNumerator</p></td>
 <td><p>5e-05</p></td>
 </tr>
-<tr class="row-even"><td><p>Id</p></td>
-<td><p>31</p></td>
-</tr>
-<tr class="row-odd"><td><p>OtherSettings:AllowMotionCmdToSlave</p></td>
+<tr class="row-odd"><td><p>Enc:SoftEndMaxControl:Enable</p></td>
 <td><p>true</p></td>
 </tr>
-<tr class="row-even"><td><p>Velo:Maximum</p></td>
+<tr class="row-even"><td><p>Enc:SoftEndMaxControl:Range</p></td>
+<td><p>50</p></td>
+</tr>
+<tr class="row-odd"><td><p>Enc:SoftEndMinControl:Enable</p></td>
+<td><p>true</p></td>
+</tr>
+<tr class="row-even"><td><p>Enc:SoftEndMinControl:Range</p></td>
+<td><p>-50</p></td>
+</tr>
+<tr class="row-odd"><td><p>Id</p></td>
+<td><p>31</p></td>
+</tr>
+<tr class="row-even"><td><p>OtherSettings:AllowMotionCmdToSlave</p></td>
+<td><p>true</p></td>
+</tr>
+<tr class="row-odd"><td><p>Velo:Maximum</p></td>
 <td><p>9</p></td>
 </tr>
 </tbody>
@@ -3019,55 +3095,58 @@
 <tr class="row-even"><td><p>CreateSymbols</p></td>
 <td><p>true</p></td>
 </tr>
-<tr class="row-odd"><td><p>Dynamic:AccelerationMaximum</p></td>
+<tr class="row-odd"><td><p>Dynamic:Acceleration</p></td>
 <td><p>15</p></td>
 </tr>
-<tr class="row-even"><td><p>Dynamic:Deceleration</p></td>
+<tr class="row-even"><td><p>Dynamic:AccelerationMaximum</p></td>
 <td><p>15</p></td>
 </tr>
-<tr class="row-odd"><td><p>Dynamic:DecelerationMaximum</p></td>
+<tr class="row-odd"><td><p>Dynamic:Deceleration</p></td>
 <td><p>15</p></td>
 </tr>
-<tr class="row-even"><td><p>Dynamic:Jerk</p></td>
+<tr class="row-even"><td><p>Dynamic:DecelerationMaximum</p></td>
+<td><p>15</p></td>
+</tr>
+<tr class="row-odd"><td><p>Dynamic:Jerk</p></td>
 <td><p>22</p></td>
 </tr>
-<tr class="row-odd"><td><p>Enc:EncType</p></td>
+<tr class="row-even"><td><p>Enc:EncType</p></td>
 <td><p>29</p></td>
 </tr>
-<tr class="row-even"><td><p>Enc:Inc:RefSoftSyncMask</p></td>
+<tr class="row-odd"><td><p>Enc:Inc:RefSoftSyncMask</p></td>
 <td><p>#x0000ffff</p></td>
 </tr>
-<tr class="row-odd"><td><p>Enc:MaxCount</p></td>
+<tr class="row-even"><td><p>Enc:MaxCount</p></td>
 <td><p>#xffffffff</p></td>
 </tr>
-<tr class="row-even"><td><p>Enc:Offset</p></td>
+<tr class="row-odd"><td><p>Enc:Offset</p></td>
 <td><p>-180.9182</p></td>
 </tr>
-<tr class="row-odd"><td><p>Enc:ScaleFactorNumerator</p></td>
+<tr class="row-even"><td><p>Enc:ScaleFactorNumerator</p></td>
 <td><p>8.3819e-08</p></td>
 </tr>
-<tr class="row-even"><td><p>Enc:SoftEndMaxControl:Enable</p></td>
+<tr class="row-odd"><td><p>Enc:SoftEndMaxControl:Enable</p></td>
 <td><p>true</p></td>
 </tr>
-<tr class="row-odd"><td><p>Enc:SoftEndMaxControl:Range</p></td>
+<tr class="row-even"><td><p>Enc:SoftEndMaxControl:Range</p></td>
 <td><p>105</p></td>
 </tr>
-<tr class="row-even"><td><p>Enc:SoftEndMinControl:Enable</p></td>
+<tr class="row-odd"><td><p>Enc:SoftEndMinControl:Enable</p></td>
 <td><p>true</p></td>
 </tr>
-<tr class="row-odd"><td><p>Enc:SoftEndMinControl:Range</p></td>
+<tr class="row-even"><td><p>Enc:SoftEndMinControl:Range</p></td>
 <td><p>-105</p></td>
 </tr>
-<tr class="row-even"><td><p>General:UnitName</p></td>
+<tr class="row-odd"><td><p>General:UnitName</p></td>
 <td><p>Degree</p></td>
 </tr>
-<tr class="row-odd"><td><p>Id</p></td>
+<tr class="row-even"><td><p>Id</p></td>
 <td><p>32</p></td>
 </tr>
-<tr class="row-even"><td><p>OtherSettings:AllowMotionCmdToSlave</p></td>
+<tr class="row-odd"><td><p>OtherSettings:AllowMotionCmdToSlave</p></td>
 <td><p>true</p></td>
 </tr>
-<tr class="row-odd"><td><p>Velo:Maximum</p></td>
+<tr class="row-even"><td><p>Velo:Maximum</p></td>
 <td><p>0.9</p></td>
 </tr>
 </tbody>
@@ -3097,55 +3176,58 @@
 <tr class="row-even"><td><p>CreateSymbols</p></td>
 <td><p>true</p></td>
 </tr>
-<tr class="row-odd"><td><p>Dynamic:AccelerationMaximum</p></td>
+<tr class="row-odd"><td><p>Dynamic:Acceleration</p></td>
 <td><p>15</p></td>
 </tr>
-<tr class="row-even"><td><p>Dynamic:Deceleration</p></td>
+<tr class="row-even"><td><p>Dynamic:AccelerationMaximum</p></td>
 <td><p>15</p></td>
 </tr>
-<tr class="row-odd"><td><p>Dynamic:DecelerationMaximum</p></td>
+<tr class="row-odd"><td><p>Dynamic:Deceleration</p></td>
 <td><p>15</p></td>
 </tr>
-<tr class="row-even"><td><p>Dynamic:Jerk</p></td>
+<tr class="row-even"><td><p>Dynamic:DecelerationMaximum</p></td>
+<td><p>15</p></td>
+</tr>
+<tr class="row-odd"><td><p>Dynamic:Jerk</p></td>
 <td><p>22</p></td>
 </tr>
-<tr class="row-odd"><td><p>Enc:EncType</p></td>
+<tr class="row-even"><td><p>Enc:EncType</p></td>
 <td><p>29</p></td>
 </tr>
-<tr class="row-even"><td><p>Enc:Inc:RefSoftSyncMask</p></td>
+<tr class="row-odd"><td><p>Enc:Inc:RefSoftSyncMask</p></td>
 <td><p>#x0000ffff</p></td>
 </tr>
-<tr class="row-odd"><td><p>Enc:MaxCount</p></td>
+<tr class="row-even"><td><p>Enc:MaxCount</p></td>
 <td><p>#xffffffff</p></td>
 </tr>
-<tr class="row-even"><td><p>Enc:Offset</p></td>
+<tr class="row-odd"><td><p>Enc:Offset</p></td>
 <td><p>-69.9043</p></td>
 </tr>
-<tr class="row-odd"><td><p>Enc:ScaleFactorNumerator</p></td>
+<tr class="row-even"><td><p>Enc:ScaleFactorNumerator</p></td>
 <td><p>8.681775e-06</p></td>
 </tr>
-<tr class="row-even"><td><p>Enc:SoftEndMaxControl:Enable</p></td>
+<tr class="row-odd"><td><p>Enc:SoftEndMaxControl:Enable</p></td>
 <td><p>true</p></td>
 </tr>
-<tr class="row-odd"><td><p>Enc:SoftEndMaxControl:Range</p></td>
+<tr class="row-even"><td><p>Enc:SoftEndMaxControl:Range</p></td>
 <td><p>10</p></td>
 </tr>
-<tr class="row-even"><td><p>Enc:SoftEndMinControl:Enable</p></td>
+<tr class="row-odd"><td><p>Enc:SoftEndMinControl:Enable</p></td>
 <td><p>true</p></td>
 </tr>
-<tr class="row-odd"><td><p>Enc:SoftEndMinControl:Range</p></td>
+<tr class="row-even"><td><p>Enc:SoftEndMinControl:Range</p></td>
 <td><p>-10</p></td>
 </tr>
-<tr class="row-even"><td><p>General:UnitName</p></td>
+<tr class="row-odd"><td><p>General:UnitName</p></td>
 <td><p>Degree</p></td>
 </tr>
-<tr class="row-odd"><td><p>Id</p></td>
+<tr class="row-even"><td><p>Id</p></td>
 <td><p>33</p></td>
 </tr>
-<tr class="row-even"><td><p>OtherSettings:AllowMotionCmdToSlave</p></td>
+<tr class="row-odd"><td><p>OtherSettings:AllowMotionCmdToSlave</p></td>
 <td><p>true</p></td>
 </tr>
-<tr class="row-odd"><td><p>Velo:Maximum</p></td>
+<tr class="row-even"><td><p>Velo:Maximum</p></td>
 <td><p>0.4</p></td>
 </tr>
 </tbody>
@@ -3175,26 +3257,32 @@
 <tr class="row-even"><td><p>CreateSymbols</p></td>
 <td><p>true</p></td>
 </tr>
-<tr class="row-odd"><td><p>Dynamic:AccelerationMaximum</p></td>
+<tr class="row-odd"><td><p>Dynamic:Acceleration</p></td>
 <td><p>15</p></td>
 </tr>
-<tr class="row-even"><td><p>Dynamic:Deceleration</p></td>
+<tr class="row-even"><td><p>Dynamic:AccelerationMaximum</p></td>
 <td><p>15</p></td>
 </tr>
-<tr class="row-odd"><td><p>Dynamic:DecelerationMaximum</p></td>
+<tr class="row-odd"><td><p>Dynamic:Deceleration</p></td>
 <td><p>15</p></td>
 </tr>
-<tr class="row-even"><td><p>Dynamic:Jerk</p></td>
+<tr class="row-even"><td><p>Dynamic:DecelerationMaximum</p></td>
+<td><p>15</p></td>
+</tr>
+<tr class="row-odd"><td><p>Dynamic:Jerk</p></td>
 <td><p>22</p></td>
 </tr>
-<tr class="row-odd"><td><p>Enc:EncType</p></td>
+<tr class="row-even"><td><p>Enc:EncType</p></td>
 <td><p>29</p></td>
 </tr>
-<tr class="row-even"><td><p>Enc:Inc:RefSoftSyncMask</p></td>
+<tr class="row-odd"><td><p>Enc:Inc:RefSoftSyncMask</p></td>
 <td><p>#xffffffff</p></td>
 </tr>
-<tr class="row-odd"><td><p>Enc:MaxCount</p></td>
+<tr class="row-even"><td><p>Enc:MaxCount</p></td>
 <td><p>#xffffffff</p></td>
+</tr>
+<tr class="row-odd"><td><p>Enc:Offset</p></td>
+<td><p>-90</p></td>
 </tr>
 <tr class="row-even"><td><p>Enc:ScaleFactorNumerator</p></td>
 <td><p>8.3819e-08</p></td>
@@ -3217,7 +3305,10 @@
 <tr class="row-even"><td><p>OtherSettings:AllowMotionCmdToSlave</p></td>
 <td><p>true</p></td>
 </tr>
-<tr class="row-odd"><td><p>Velo:Maximum</p></td>
+<tr class="row-odd"><td><p>TargetPosControl:Range</p></td>
+<td><p>0.1</p></td>
+</tr>
+<tr class="row-even"><td><p>Velo:Maximum</p></td>
 <td><p>9</p></td>
 </tr>
 </tbody>
@@ -3247,55 +3338,58 @@
 <tr class="row-even"><td><p>CreateSymbols</p></td>
 <td><p>true</p></td>
 </tr>
-<tr class="row-odd"><td><p>Dynamic:AccelerationMaximum</p></td>
+<tr class="row-odd"><td><p>Dynamic:Acceleration</p></td>
 <td><p>15</p></td>
 </tr>
-<tr class="row-even"><td><p>Dynamic:Deceleration</p></td>
+<tr class="row-even"><td><p>Dynamic:AccelerationMaximum</p></td>
 <td><p>15</p></td>
 </tr>
-<tr class="row-odd"><td><p>Dynamic:DecelerationMaximum</p></td>
+<tr class="row-odd"><td><p>Dynamic:Deceleration</p></td>
 <td><p>15</p></td>
 </tr>
-<tr class="row-even"><td><p>Dynamic:Jerk</p></td>
+<tr class="row-even"><td><p>Dynamic:DecelerationMaximum</p></td>
+<td><p>15</p></td>
+</tr>
+<tr class="row-odd"><td><p>Dynamic:Jerk</p></td>
 <td><p>22</p></td>
 </tr>
-<tr class="row-odd"><td><p>Enc:EncType</p></td>
+<tr class="row-even"><td><p>Enc:EncType</p></td>
 <td><p>29</p></td>
 </tr>
-<tr class="row-even"><td><p>Enc:Inc:RefSoftSyncMask</p></td>
+<tr class="row-odd"><td><p>Enc:Inc:RefSoftSyncMask</p></td>
 <td><p>#x0000ffff</p></td>
 </tr>
-<tr class="row-odd"><td><p>Enc:MaxCount</p></td>
+<tr class="row-even"><td><p>Enc:MaxCount</p></td>
 <td><p>#xffffffff</p></td>
 </tr>
-<tr class="row-even"><td><p>Enc:ScaleFactorNumerator</p></td>
+<tr class="row-odd"><td><p>Enc:ScaleFactorNumerator</p></td>
 <td><p>8.3819e-08</p></td>
 </tr>
-<tr class="row-odd"><td><p>Enc:SoftEndMaxControl:Enable</p></td>
+<tr class="row-even"><td><p>Enc:SoftEndMaxControl:Enable</p></td>
 <td><p>true</p></td>
 </tr>
-<tr class="row-even"><td><p>Enc:SoftEndMaxControl:Range</p></td>
-<td><p>162.4</p></td>
+<tr class="row-odd"><td><p>Enc:SoftEndMaxControl:Range</p></td>
+<td><p>162</p></td>
 </tr>
-<tr class="row-odd"><td><p>Enc:SoftEndMinControl:Enable</p></td>
+<tr class="row-even"><td><p>Enc:SoftEndMinControl:Enable</p></td>
 <td><p>true</p></td>
 </tr>
-<tr class="row-even"><td><p>Enc:SoftEndMinControl:Range</p></td>
-<td><p>-24.2</p></td>
+<tr class="row-odd"><td><p>Enc:SoftEndMinControl:Range</p></td>
+<td><p>-24</p></td>
 </tr>
-<tr class="row-odd"><td><p>Enc:ToleranceWndModuloStart</p></td>
+<tr class="row-even"><td><p>Enc:ToleranceWndModuloStart</p></td>
 <td><p>20</p></td>
 </tr>
-<tr class="row-even"><td><p>General:UnitName</p></td>
+<tr class="row-odd"><td><p>General:UnitName</p></td>
 <td><p>Degree</p></td>
 </tr>
-<tr class="row-odd"><td><p>Id</p></td>
+<tr class="row-even"><td><p>Id</p></td>
 <td><p>35</p></td>
 </tr>
-<tr class="row-even"><td><p>OtherSettings:AllowMotionCmdToSlave</p></td>
+<tr class="row-odd"><td><p>OtherSettings:AllowMotionCmdToSlave</p></td>
 <td><p>true</p></td>
 </tr>
-<tr class="row-odd"><td><p>Velo:Maximum</p></td>
+<tr class="row-even"><td><p>Velo:Maximum</p></td>
 <td><p>9</p></td>
 </tr>
 </tbody>
@@ -3325,7 +3419,13 @@
 <tr class="row-even"><td><p>CreateSymbols</p></td>
 <td><p>true</p></td>
 </tr>
-<tr class="row-odd"><td><p>Dynamic:AccelerationMaximum</p></td>
+<tr class="row-odd"><td><p>Dynamic:Acceleration</p></td>
+<td><p>15</p></td>
+</tr>
+<tr class="row-even"><td><p>Dynamic:AccelerationMaximum</p></td>
+<td><p>15</p></td>
+</tr>
+<tr class="row-odd"><td><p>Dynamic:Deceleration</p></td>
 <td><p>15</p></td>
 </tr>
 <tr class="row-even"><td><p>Dynamic:DecelerationMaximum</p></td>
@@ -3391,7 +3491,13 @@
 <tr class="row-even"><td><p>CreateSymbols</p></td>
 <td><p>true</p></td>
 </tr>
-<tr class="row-odd"><td><p>Dynamic:AccelerationMaximum</p></td>
+<tr class="row-odd"><td><p>Dynamic:Acceleration</p></td>
+<td><p>15</p></td>
+</tr>
+<tr class="row-even"><td><p>Dynamic:AccelerationMaximum</p></td>
+<td><p>15</p></td>
+</tr>
+<tr class="row-odd"><td><p>Dynamic:Deceleration</p></td>
 <td><p>15</p></td>
 </tr>
 <tr class="row-even"><td><p>Dynamic:DecelerationMaximum</p></td>
@@ -3457,7 +3563,13 @@
 <tr class="row-even"><td><p>CreateSymbols</p></td>
 <td><p>true</p></td>
 </tr>
-<tr class="row-odd"><td><p>Dynamic:AccelerationMaximum</p></td>
+<tr class="row-odd"><td><p>Dynamic:Acceleration</p></td>
+<td><p>15</p></td>
+</tr>
+<tr class="row-even"><td><p>Dynamic:AccelerationMaximum</p></td>
+<td><p>15</p></td>
+</tr>
+<tr class="row-odd"><td><p>Dynamic:Deceleration</p></td>
 <td><p>15</p></td>
 </tr>
 <tr class="row-even"><td><p>Dynamic:DecelerationMaximum</p></td>
@@ -3559,8 +3671,14 @@
 <tr class="row-odd"><td><p>OtherSettings:AllowMotionCmdToSlave</p></td>
 <td><p>true</p></td>
 </tr>
+<tr class="row-even"><td><p>TargetPosControl:Range</p></td>
+<td><p>0.1</p></td>
+</tr>
+<tr class="row-odd"><td><p>TargetPosControl:Time</p></td>
+<td><p>0.1</p></td>
+</tr>
 <tr class="row-even"><td><p>Velo:Maximum</p></td>
-<td><p>6</p></td>
+<td><p>1</p></td>
 </tr>
 </tbody>
 </table>
@@ -3614,13 +3732,25 @@
 <td><p>true</p></td>
 </tr>
 <tr class="row-odd"><td><p>Enc:SoftEndMinControl:Range</p></td>
-<td><p>-110</p></td>
+<td><p>-260</p></td>
 </tr>
 <tr class="row-even"><td><p>Id</p></td>
 <td><p>40</p></td>
 </tr>
 <tr class="row-odd"><td><p>OtherSettings:AllowMotionCmdToSlave</p></td>
 <td><p>true</p></td>
+</tr>
+<tr class="row-even"><td><p>PEHControl:Enable</p></td>
+<td><p>true</p></td>
+</tr>
+<tr class="row-odd"><td><p>TargetPosControl:Range</p></td>
+<td><p>0.1</p></td>
+</tr>
+<tr class="row-even"><td><p>TargetPosControl:Time</p></td>
+<td><p>0.1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Velo:Maximum</p></td>
+<td><p>4</p></td>
 </tr>
 </tbody>
 </table>
@@ -3649,7 +3779,13 @@
 <tr class="row-even"><td><p>CreateSymbols</p></td>
 <td><p>true</p></td>
 </tr>
-<tr class="row-odd"><td><p>Dynamic:AccelerationMaximum</p></td>
+<tr class="row-odd"><td><p>Dynamic:Acceleration</p></td>
+<td><p>10</p></td>
+</tr>
+<tr class="row-even"><td><p>Dynamic:AccelerationMaximum</p></td>
+<td><p>10</p></td>
+</tr>
+<tr class="row-odd"><td><p>Dynamic:Deceleration</p></td>
 <td><p>10</p></td>
 </tr>
 <tr class="row-even"><td><p>Dynamic:DecelerationMaximum</p></td>
@@ -3692,7 +3828,7 @@
 <td><p>true</p></td>
 </tr>
 <tr class="row-odd"><td><p>Velo:Maximum</p></td>
-<td><p>6</p></td>
+<td><p>1</p></td>
 </tr>
 </tbody>
 </table>
@@ -3717,6 +3853,12 @@
 </tr>
 <tr class="row-odd"><td><p>AxisType</p></td>
 <td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>BacklashCompensation:Enable</p></td>
+<td><p>true</p></td>
+</tr>
+<tr class="row-odd"><td><p>BacklashCompensation:Range</p></td>
+<td><p>0.1</p></td>
 </tr>
 <tr class="row-even"><td><p>CreateSymbols</p></td>
 <td><p>true</p></td>
@@ -3754,6 +3896,12 @@
 <tr class="row-odd"><td><p>Enc:ScaleFactorNumerator</p></td>
 <td><p>0.00719942</p></td>
 </tr>
+<tr class="row-even"><td><p>Enc:ToleranceWndModuloStart</p></td>
+<td><p>0.5</p></td>
+</tr>
+<tr class="row-odd"><td><p>General:UnitFlags</p></td>
+<td><p>#x00000004</p></td>
+</tr>
 <tr class="row-even"><td><p>General:UnitName</p></td>
 <td><p>Degree</p></td>
 </tr>
@@ -3763,8 +3911,20 @@
 <tr class="row-even"><td><p>OtherSettings:AllowMotionCmdToSlave</p></td>
 <td><p>true</p></td>
 </tr>
-<tr class="row-odd"><td><p>Velo:Maximum</p></td>
+<tr class="row-odd"><td><p>Velo:FastManual</p></td>
+<td><p>15</p></td>
+</tr>
+<tr class="row-even"><td><p>Velo:Maximum</p></td>
 <td><p>50</p></td>
+</tr>
+<tr class="row-odd"><td><p>Velo:RefSearch</p></td>
+<td><p>15</p></td>
+</tr>
+<tr class="row-even"><td><p>Velo:RefSync</p></td>
+<td><p>15</p></td>
+</tr>
+<tr class="row-odd"><td><p>Velo:SlowManual</p></td>
+<td><p>7</p></td>
 </tr>
 </tbody>
 </table>
@@ -3877,8 +4037,20 @@
 <tr class="row-odd"><td><p>OtherSettings:AllowMotionCmdToSlave</p></td>
 <td><p>true</p></td>
 </tr>
-<tr class="row-even"><td><p>Velo:Maximum</p></td>
+<tr class="row-even"><td><p>Velo:FastManual</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Velo:Maximum</p></td>
 <td><p>5</p></td>
+</tr>
+<tr class="row-even"><td><p>Velo:RefSearch</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Velo:RefSync</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>Velo:SlowManual</p></td>
+<td><p>0.5</p></td>
 </tr>
 </tbody>
 </table>
@@ -3916,19 +4088,40 @@
 <tr class="row-odd"><td><p>Enc:MaxCount</p></td>
 <td><p>#xffffffff</p></td>
 </tr>
-<tr class="row-even"><td><p>Enc:ScaleFactorNumerator</p></td>
+<tr class="row-even"><td><p>Enc:Offset</p></td>
+<td><p>-6.991</p></td>
+</tr>
+<tr class="row-odd"><td><p>Enc:ScaleFactorNumerator</p></td>
 <td><p>8.319e-08</p></td>
 </tr>
-<tr class="row-odd"><td><p>General:UnitName</p></td>
-<td><p>Degree</p></td>
-</tr>
-<tr class="row-even"><td><p>Id</p></td>
-<td><p>45</p></td>
-</tr>
-<tr class="row-odd"><td><p>OtherSettings:AllowMotionCmdToSlave</p></td>
+<tr class="row-even"><td><p>Enc:SoftEndMaxControl:Enable</p></td>
 <td><p>true</p></td>
 </tr>
-<tr class="row-even"><td><p>Velo:Maximum</p></td>
+<tr class="row-odd"><td><p>Enc:SoftEndMaxControl:Range</p></td>
+<td><p>90</p></td>
+</tr>
+<tr class="row-even"><td><p>Enc:SoftEndMinControl:Enable</p></td>
+<td><p>true</p></td>
+</tr>
+<tr class="row-odd"><td><p>Enc:SoftEndMinControl:Range</p></td>
+<td><p>10</p></td>
+</tr>
+<tr class="row-even"><td><p>General:UnitName</p></td>
+<td><p>Degree</p></td>
+</tr>
+<tr class="row-odd"><td><p>Id</p></td>
+<td><p>45</p></td>
+</tr>
+<tr class="row-even"><td><p>OtherSettings:AllowMotionCmdToSlave</p></td>
+<td><p>true</p></td>
+</tr>
+<tr class="row-odd"><td><p>TargetPosControl:Range</p></td>
+<td><p>0.02</p></td>
+</tr>
+<tr class="row-even"><td><p>TargetPosControl:Time</p></td>
+<td><p>0.1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Velo:Maximum</p></td>
 <td><p>10</p></td>
 </tr>
 </tbody>
@@ -3958,6 +4151,18 @@
 <tr class="row-even"><td><p>CreateSymbols</p></td>
 <td><p>true</p></td>
 </tr>
+<tr class="row-odd"><td><p>Dynamic:Acceleration</p></td>
+<td><p>10</p></td>
+</tr>
+<tr class="row-even"><td><p>Dynamic:AccelerationMaximum</p></td>
+<td><p>10</p></td>
+</tr>
+<tr class="row-odd"><td><p>Dynamic:Deceleration</p></td>
+<td><p>10</p></td>
+</tr>
+<tr class="row-even"><td><p>Dynamic:DecelerationMaximum</p></td>
+<td><p>10</p></td>
+</tr>
 <tr class="row-odd"><td><p>Enc:EncType</p></td>
 <td><p>29</p></td>
 </tr>
@@ -3967,17 +4172,44 @@
 <tr class="row-odd"><td><p>Enc:MaxCount</p></td>
 <td><p>#xffffffff</p></td>
 </tr>
-<tr class="row-even"><td><p>Enc:ScaleFactorNumerator</p></td>
+<tr class="row-even"><td><p>Enc:Offset</p></td>
+<td><p>-53.622</p></td>
+</tr>
+<tr class="row-odd"><td><p>Enc:ScaleFactorNumerator</p></td>
 <td><p>5e-05</p></td>
 </tr>
-<tr class="row-odd"><td><p>Id</p></td>
+<tr class="row-even"><td><p>Enc:SoftEndMaxControl:Enable</p></td>
+<td><p>true</p></td>
+</tr>
+<tr class="row-odd"><td><p>Enc:SoftEndMaxControl:Range</p></td>
+<td><p>6.1</p></td>
+</tr>
+<tr class="row-even"><td><p>Enc:SoftEndMinControl:Enable</p></td>
+<td><p>true</p></td>
+</tr>
+<tr class="row-odd"><td><p>Enc:SoftEndMinControl:Range</p></td>
+<td><p>-6</p></td>
+</tr>
+<tr class="row-even"><td><p>Id</p></td>
 <td><p>46</p></td>
+</tr>
+<tr class="row-odd"><td><p>OtherSettings:AllowMotionCmdToExtSetGenAxis</p></td>
+<td><p>true</p></td>
 </tr>
 <tr class="row-even"><td><p>OtherSettings:AllowMotionCmdToSlave</p></td>
 <td><p>true</p></td>
 </tr>
+<tr class="row-odd"><td><p>TargetPosControl:Range</p></td>
+<td><p>0.1</p></td>
+</tr>
+<tr class="row-even"><td><p>Velo:FastManual</p></td>
+<td><p>1</p></td>
+</tr>
 <tr class="row-odd"><td><p>Velo:Maximum</p></td>
-<td><p>12.7</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-even"><td><p>Velo:SlowManual</p></td>
+<td><p>0.5</p></td>
 </tr>
 </tbody>
 </table>
@@ -4006,7 +4238,13 @@
 <tr class="row-even"><td><p>CreateSymbols</p></td>
 <td><p>true</p></td>
 </tr>
-<tr class="row-odd"><td><p>Dynamic:AccelerationMaximum</p></td>
+<tr class="row-odd"><td><p>Dynamic:Acceleration</p></td>
+<td><p>15</p></td>
+</tr>
+<tr class="row-even"><td><p>Dynamic:AccelerationMaximum</p></td>
+<td><p>15</p></td>
+</tr>
+<tr class="row-odd"><td><p>Dynamic:Deceleration</p></td>
 <td><p>15</p></td>
 </tr>
 <tr class="row-even"><td><p>Dynamic:DecelerationMaximum</p></td>
@@ -4039,8 +4277,14 @@
 <tr class="row-odd"><td><p>Id</p></td>
 <td><p>47</p></td>
 </tr>
-<tr class="row-even"><td><p>OtherSettings:AllowMotionCmdToSlave</p></td>
+<tr class="row-even"><td><p>OtherSettings:AllowMotionCmdToExtSetGenAxis</p></td>
 <td><p>true</p></td>
+</tr>
+<tr class="row-odd"><td><p>OtherSettings:AllowMotionCmdToSlave</p></td>
+<td><p>true</p></td>
+</tr>
+<tr class="row-even"><td><p>TargetPosControl:Range</p></td>
+<td><p>0.1</p></td>
 </tr>
 <tr class="row-odd"><td><p>Velo:Maximum</p></td>
 <td><p>5.08</p></td>
@@ -4072,7 +4316,13 @@
 <tr class="row-even"><td><p>CreateSymbols</p></td>
 <td><p>true</p></td>
 </tr>
-<tr class="row-odd"><td><p>Dynamic:AccelerationMaximum</p></td>
+<tr class="row-odd"><td><p>Dynamic:Acceleration</p></td>
+<td><p>10</p></td>
+</tr>
+<tr class="row-even"><td><p>Dynamic:AccelerationMaximum</p></td>
+<td><p>10</p></td>
+</tr>
+<tr class="row-odd"><td><p>Dynamic:Deceleration</p></td>
 <td><p>10</p></td>
 </tr>
 <tr class="row-even"><td><p>Dynamic:DecelerationMaximum</p></td>
@@ -4087,17 +4337,44 @@
 <tr class="row-odd"><td><p>Enc:MaxCount</p></td>
 <td><p>#xffffffff</p></td>
 </tr>
-<tr class="row-even"><td><p>Enc:ScaleFactorNumerator</p></td>
+<tr class="row-even"><td><p>Enc:Offset</p></td>
+<td><p>-46.2536</p></td>
+</tr>
+<tr class="row-odd"><td><p>Enc:ScaleFactorNumerator</p></td>
 <td><p>5e-05</p></td>
 </tr>
-<tr class="row-odd"><td><p>Id</p></td>
+<tr class="row-even"><td><p>Enc:SoftEndMaxControl:Enable</p></td>
+<td><p>true</p></td>
+</tr>
+<tr class="row-odd"><td><p>Enc:SoftEndMaxControl:Range</p></td>
+<td><p>25</p></td>
+</tr>
+<tr class="row-even"><td><p>Enc:SoftEndMinControl:Enable</p></td>
+<td><p>true</p></td>
+</tr>
+<tr class="row-odd"><td><p>Enc:SoftEndMinControl:Range</p></td>
+<td><p>-25</p></td>
+</tr>
+<tr class="row-even"><td><p>Id</p></td>
 <td><p>48</p></td>
+</tr>
+<tr class="row-odd"><td><p>OtherSettings:AllowMotionCmdToExtSetGenAxis</p></td>
+<td><p>true</p></td>
 </tr>
 <tr class="row-even"><td><p>OtherSettings:AllowMotionCmdToSlave</p></td>
 <td><p>true</p></td>
 </tr>
+<tr class="row-odd"><td><p>TargetPosControl:Range</p></td>
+<td><p>0.1</p></td>
+</tr>
+<tr class="row-even"><td><p>Velo:FastManual</p></td>
+<td><p>1</p></td>
+</tr>
 <tr class="row-odd"><td><p>Velo:Maximum</p></td>
-<td><p>12.7</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-even"><td><p>Velo:SlowManual</p></td>
+<td><p>0.5</p></td>
 </tr>
 </tbody>
 </table>
@@ -4127,27 +4404,42 @@
 <td><p>true</p></td>
 </tr>
 <tr class="row-odd"><td><p>Enc:EncType</p></td>
-<td><p>4</p></td>
+<td><p>29</p></td>
 </tr>
 <tr class="row-even"><td><p>Enc:Inc:RefSoftSyncMask</p></td>
-<td><p>#x0000ffff</p></td>
+<td><p>#xffffffff</p></td>
 </tr>
 <tr class="row-odd"><td><p>Enc:MaxCount</p></td>
-<td><p>#x0000ffff</p></td>
+<td><p>#xffffffff</p></td>
 </tr>
-<tr class="row-even"><td><p>Enc:ScaleFactorNumerator</p></td>
+<tr class="row-even"><td><p>Enc:Offset</p></td>
+<td><p>-80</p></td>
+</tr>
+<tr class="row-odd"><td><p>Enc:ScaleFactorNumerator</p></td>
 <td><p>8.3819e-08</p></td>
 </tr>
-<tr class="row-odd"><td><p>General:UnitName</p></td>
-<td><p>Degree</p></td>
-</tr>
-<tr class="row-even"><td><p>Id</p></td>
-<td><p>49</p></td>
-</tr>
-<tr class="row-odd"><td><p>OtherSettings:AllowMotionCmdToSlave</p></td>
+<tr class="row-even"><td><p>Enc:SoftEndMaxControl:Enable</p></td>
 <td><p>true</p></td>
 </tr>
-<tr class="row-even"><td><p>Velo:Maximum</p></td>
+<tr class="row-odd"><td><p>Enc:SoftEndMaxControl:Range</p></td>
+<td><p>250</p></td>
+</tr>
+<tr class="row-even"><td><p>Enc:SoftEndMinControl:Enable</p></td>
+<td><p>true</p></td>
+</tr>
+<tr class="row-odd"><td><p>Enc:SoftEndMinControl:Range</p></td>
+<td><p>-1</p></td>
+</tr>
+<tr class="row-even"><td><p>General:UnitName</p></td>
+<td><p>Degree</p></td>
+</tr>
+<tr class="row-odd"><td><p>Id</p></td>
+<td><p>49</p></td>
+</tr>
+<tr class="row-even"><td><p>OtherSettings:AllowMotionCmdToSlave</p></td>
+<td><p>true</p></td>
+</tr>
+<tr class="row-odd"><td><p>Velo:Maximum</p></td>
 <td><p>36</p></td>
 </tr>
 </tbody>
@@ -4166,7 +4458,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024, SLAC National Accelerator Laboratory.</p>
+    <p>&#169; Copyright 2025, SLAC National Accelerator Laboratory.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

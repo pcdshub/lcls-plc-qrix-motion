@@ -73,15 +73,18 @@ Axis 1: M1 - SSL Sliding seal
     Enc:EncType, 29
     Enc:Inc:RefSoftSyncMask, #x0000ffff
     Enc:MaxCount, #xffffffff
-    Enc:Offset, 35.8
+    Enc:Offset, 35.5
     Enc:ScaleFactorNumerator, 4.881027e-06
     Enc:SoftEndMaxControl:Enable, true
-    Enc:SoftEndMaxControl:Range, 150
+    Enc:SoftEndMaxControl:Range, 147.7
     Enc:SoftEndMinControl:Enable, true
-    Enc:SoftEndMinControl:Range, 40.1
+    Enc:SoftEndMinControl:Range, 39.8
     General:UnitName, Degree
     Id, 1
+    OtherSettings:AllowMotionCmdToExtSetGenAxis, true
     OtherSettings:AllowMotionCmdToSlave, true
+    OtherSettings:NoMotionWindow, 0.1
+    OtherSettings:SwitchToActValuesIfDisabled, true
     Velo:Maximum, 3
 
 
@@ -98,10 +101,10 @@ Axis 2: M2 - 2Theta Stepper
     AxisFolder, 2 Theta Arm
     AxisType, 1
     CreateSymbols, true
-    Dynamic:Acceleration, 0.01
-    Dynamic:AccelerationMaximum, 0.01
-    Dynamic:Deceleration, 0.01
-    Dynamic:DecelerationMaximum, 0.01
+    Dynamic:Acceleration, 1
+    Dynamic:AccelerationMaximum, 1
+    Dynamic:Deceleration, 1
+    Dynamic:DecelerationMaximum, 1
     Dynamic:Jerk, 2.8
     Enc:EncType, 29
     Enc:Inc:RefSoftSyncMask, #x0000ffff
@@ -117,7 +120,9 @@ Axis 2: M2 - 2Theta Stepper
     OtherSettings:AllowMotionCmdToSlave, true
     PositionAreaControl:Range, 0.5
     TargetPosControl:Range, 0.1
-    Velo:Maximum, 0.25
+    Velo:FastManual, 0.499
+    Velo:Maximum, 0.1
+    Velo:SlowManual, 0.025
 
 
 
@@ -325,7 +330,7 @@ Axis 8: M8 - YG2
     Id, 8
     OtherSettings:AllowMotionCmdToSlave, true
     PositionAreaControl:Range, 0.5
-    TargetPosControl:Range, 0.05
+    TargetPosControl:Range, 0.01
     Velo:Maximum, 0.1
 
 
@@ -359,7 +364,7 @@ Axis 9: M9 - YG3
     Id, 9
     OtherSettings:AllowMotionCmdToSlave, true
     PositionAreaControl:Range, 0.1
-    TargetPosControl:Range, 0.05
+    TargetPosControl:Range, 0.01
     Velo:Maximum, 0.1
 
 
@@ -384,13 +389,13 @@ Axis 10: M10 - RxG
     Enc:EncType, 19
     Enc:Inc:RefSoftSyncMask, #x0000ffff
     Enc:MaxCount, #xffffffff
-    Enc:Offset, 2351.695
+    Enc:Offset, 2352.4301
     Enc:ScaleFactorDenominator, 1000000
     Enc:ScaleFactorNumerator, 1.462918079
     Enc:SoftEndMaxControl:Enable, true
-    Enc:SoftEndMaxControl:Range, 87.5
+    Enc:SoftEndMaxControl:Range, 88.2
     Enc:SoftEndMinControl:Enable, true
-    Enc:SoftEndMinControl:Range, -17.5
+    Enc:SoftEndMinControl:Range, -16.8
     General:UnitName, mrad
     Id, 10
     OtherSettings:AllowMotionCmdToSlave, true
@@ -419,12 +424,12 @@ Axis 11: M11 - XG
     Enc:EncType, 29
     Enc:Inc:RefSoftSyncMask, #x0000ffff
     Enc:MaxCount, #xffffffff
-    Enc:Offset, -123.91085
+    Enc:Offset, -123.52065
     Enc:ScaleFactorNumerator, 5e-05
     Enc:SoftEndMaxControl:Enable, true
-    Enc:SoftEndMaxControl:Range, 95
+    Enc:SoftEndMaxControl:Range, 94.4
     Enc:SoftEndMinControl:Enable, true
-    Enc:SoftEndMinControl:Range, -95
+    Enc:SoftEndMinControl:Range, -93.6
     Id, 11
     OtherSettings:AllowMotionCmdToSlave, true
     TargetPosControl:Range, 0.1
@@ -532,13 +537,13 @@ Axis 14: M14 - RzPM
     Enc:EncType, 29
     Enc:Inc:RefSoftSyncMask, #x0000ffff
     Enc:MaxCount, #xffffffff
-    Enc:Offset, -205.8664
+    Enc:Offset, -203.9704
     Enc:ScaleFactorDenominator, 1000
     Enc:ScaleFactorNumerator, 0.299580587
     Enc:SoftEndMaxControl:Enable, true
-    Enc:SoftEndMaxControl:Range, 60
+    Enc:SoftEndMaxControl:Range, 60.9
     Enc:SoftEndMinControl:Enable, true
-    Enc:SoftEndMinControl:Range, -60
+    Enc:SoftEndMinControl:Range, -58.1
     General:UnitName, mrad
     Id, 14
     OtherSettings:AllowMotionCmdToSlave, true
@@ -564,22 +569,26 @@ Axis 15: M15 - YDF1
     AxisFolder, DET_FRAME
     AxisType, 1
     CreateSymbols, true
-    Dynamic:Acceleration, 0.8
-    Dynamic:AccelerationMaximum, 1
-    Dynamic:Deceleration, 0.8
-    Dynamic:DecelerationMaximum, 1
+    Dynamic:Acceleration, 0.05
+    Dynamic:AccelerationMaximum, 0.05
+    Dynamic:Deceleration, 0.05
+    Dynamic:DecelerationMaximum, 0.05
     Dynamic:Jerk, 3.2
-    Enc:EncType, 1
+    Enc:EncType, 29
     Enc:Inc:RefSoftSyncMask, #x0000ffff
-    Enc:ScaleFactorNumerator, 1
+    Enc:MaxCount, #xffffffff
+    Enc:MaxCountHighDWord, #x0000001f
+    Enc:Offset, -1
+    Enc:SoftEndMaxControl:Enable, true
     Enc:SoftEndMaxControl:Range, 21.5
     Enc:SoftEndMinControl:Enable, true
     Enc:SoftEndMinControl:Range, -0.5
     Id, 15
     OtherSettings:AllowMotionCmdToSlave, true
     PositionAreaControl:Range, 0.5
-    Velo:FastManual, 0
-    Velo:Maximum, 0.05
+    Velo:FastManual, 0.05
+    Velo:Maximum, 0.075
+    Velo:SlowManual, 0.025
 
 
 
@@ -595,22 +604,26 @@ Axis 16: M16 - YDF2
     AxisFolder, DET_FRAME
     AxisType, 1
     CreateSymbols, true
-    Dynamic:Acceleration, 0.8
-    Dynamic:AccelerationMaximum, 1
-    Dynamic:Deceleration, 0.8
-    Dynamic:DecelerationMaximum, 1
+    Dynamic:Acceleration, 0.05
+    Dynamic:AccelerationMaximum, 0.05
+    Dynamic:Deceleration, 0.05
+    Dynamic:DecelerationMaximum, 0.05
     Dynamic:Jerk, 3.2
-    Enc:EncType, 1
+    Enc:EncType, 29
     Enc:Inc:RefSoftSyncMask, #x0000ffff
-    Enc:ScaleFactorNumerator, 4.2e-05
+    Enc:MaxCount, #xffffffff
+    Enc:MaxCountHighDWord, #x0000001f
+    Enc:Offset, -1
+    Enc:SoftEndMaxControl:Enable, true
     Enc:SoftEndMaxControl:Range, 21.5
     Enc:SoftEndMinControl:Enable, true
     Enc:SoftEndMinControl:Range, -0.5
     Id, 16
     OtherSettings:AllowMotionCmdToSlave, true
     PositionAreaControl:Range, 0.5
-    Velo:FastManual, 0
-    Velo:Maximum, 0.05
+    Velo:FastManual, 0.05
+    Velo:Maximum, 0.075
+    Velo:SlowManual, 0.025
 
 
 
@@ -626,14 +639,16 @@ Axis 17: M17 - YDF3
     AxisFolder, DET_FRAME
     AxisType, 1
     CreateSymbols, true
-    Dynamic:Acceleration, 0.8
-    Dynamic:AccelerationMaximum, 1
-    Dynamic:Deceleration, 0.8
-    Dynamic:DecelerationMaximum, 1
+    Dynamic:Acceleration, 0.05
+    Dynamic:AccelerationMaximum, 0.05
+    Dynamic:Deceleration, 0.05
+    Dynamic:DecelerationMaximum, 0.05
     Dynamic:Jerk, 3.2
-    Enc:EncType, 1
+    Enc:EncType, 29
     Enc:Inc:RefSoftSyncMask, #x0000ffff
-    Enc:ScaleFactorNumerator, 4.2e-05
+    Enc:MaxCount, #xffffffff
+    Enc:MaxCountHighDWord, #x0000001f
+    Enc:Offset, -1
     Enc:SoftEndMaxControl:Enable, true
     Enc:SoftEndMaxControl:Range, 21.5
     Enc:SoftEndMinControl:Enable, true
@@ -641,8 +656,9 @@ Axis 17: M17 - YDF3
     Id, 17
     OtherSettings:AllowMotionCmdToSlave, true
     PositionAreaControl:Range, 0.5
-    Velo:FastManual, 0
-    Velo:Maximum, 0.05
+    Velo:FastManual, 0.05
+    Velo:Maximum, 0.075
+    Velo:SlowManual, 0.025
 
 
 
@@ -1034,6 +1050,7 @@ Axis 28: M28 - Diff X
     AxisFolder, Diffractometer
     AxisType, 1
     CreateSymbols, true
+    Dynamic:Acceleration, 15
     Dynamic:AccelerationMaximum, 15
     Dynamic:Deceleration, 15
     Dynamic:DecelerationMaximum, 15
@@ -1047,9 +1064,12 @@ Axis 28: M28 - Diff X
     Enc:SoftEndMaxControl:Range, 18.5
     Enc:SoftEndMinControl:Enable, true
     Enc:SoftEndMinControl:Range, -18.5
+    GroupId, 50
     Id, 28
     OtherSettings:AllowMotionCmdToSlave, true
+    Velo:FastManual, 1
     Velo:Maximum, 9
+    Velo:SlowManual, 0.5
 
 
 
@@ -1065,6 +1085,7 @@ Axis 29: M29 - Diff Y
     AxisFolder, Diffractometer
     AxisType, 1
     CreateSymbols, true
+    Dynamic:Acceleration, 15
     Dynamic:AccelerationMaximum, 15
     Dynamic:Deceleration, 15
     Dynamic:DecelerationMaximum, 15
@@ -1096,6 +1117,7 @@ Axis 30: M30 - Diff Z
     AxisFolder, Diffractometer
     AxisType, 1
     CreateSymbols, true
+    Dynamic:Acceleration, 15
     Dynamic:AccelerationMaximum, 15
     Dynamic:Deceleration, 15
     Dynamic:DecelerationMaximum, 15
@@ -1108,7 +1130,6 @@ Axis 30: M30 - Diff Z
     Enc:SoftEndMaxControl:Enable, true
     Enc:SoftEndMaxControl:Range, 45
     Enc:SoftEndMinControl:Enable, true
-    Enc:SoftEndMinControl:Range, -0.3
     Id, 30
     OtherSettings:AllowMotionCmdToSlave, true
     Velo:Maximum, 9
@@ -1127,6 +1148,7 @@ Axis 31: M31 - Diff 2Theta Y
     AxisFolder, Diffractometer
     AxisType, 1
     CreateSymbols, true
+    Dynamic:Acceleration, 15
     Dynamic:AccelerationMaximum, 15
     Dynamic:Deceleration, 15
     Dynamic:DecelerationMaximum, 15
@@ -1136,6 +1158,10 @@ Axis 31: M31 - Diff 2Theta Y
     Enc:MaxCount, #xffffffff
     Enc:Offset, -560.9808
     Enc:ScaleFactorNumerator, 5e-05
+    Enc:SoftEndMaxControl:Enable, true
+    Enc:SoftEndMaxControl:Range, 50
+    Enc:SoftEndMinControl:Enable, true
+    Enc:SoftEndMinControl:Range, -50
     Id, 31
     OtherSettings:AllowMotionCmdToSlave, true
     Velo:Maximum, 9
@@ -1154,6 +1180,7 @@ Axis 32: M32 - Diff Phi
     AxisFolder, Diffractometer
     AxisType, 1
     CreateSymbols, true
+    Dynamic:Acceleration, 15
     Dynamic:AccelerationMaximum, 15
     Dynamic:Deceleration, 15
     Dynamic:DecelerationMaximum, 15
@@ -1186,6 +1213,7 @@ Axis 33: M33 - Diff Chi
     AxisFolder, Diffractometer
     AxisType, 1
     CreateSymbols, true
+    Dynamic:Acceleration, 15
     Dynamic:AccelerationMaximum, 15
     Dynamic:Deceleration, 15
     Dynamic:DecelerationMaximum, 15
@@ -1218,6 +1246,7 @@ Axis 34: M34 - Diff Theta
     AxisFolder, Diffractometer
     AxisType, 1
     CreateSymbols, true
+    Dynamic:Acceleration, 15
     Dynamic:AccelerationMaximum, 15
     Dynamic:Deceleration, 15
     Dynamic:DecelerationMaximum, 15
@@ -1225,6 +1254,7 @@ Axis 34: M34 - Diff Theta
     Enc:EncType, 29
     Enc:Inc:RefSoftSyncMask, #xffffffff
     Enc:MaxCount, #xffffffff
+    Enc:Offset, -90
     Enc:ScaleFactorNumerator, 8.3819e-08
     Enc:SoftEndMaxControl:Enable, true
     Enc:SoftEndMaxControl:Range, 190
@@ -1232,6 +1262,7 @@ Axis 34: M34 - Diff Theta
     General:UnitName, Degree
     Id, 34
     OtherSettings:AllowMotionCmdToSlave, true
+    TargetPosControl:Range, 0.1
     Velo:Maximum, 9
 
 
@@ -1248,6 +1279,7 @@ Axis 35: M35 - Diff 2Theta
     AxisFolder, Diffractometer
     AxisType, 1
     CreateSymbols, true
+    Dynamic:Acceleration, 15
     Dynamic:AccelerationMaximum, 15
     Dynamic:Deceleration, 15
     Dynamic:DecelerationMaximum, 15
@@ -1257,9 +1289,9 @@ Axis 35: M35 - Diff 2Theta
     Enc:MaxCount, #xffffffff
     Enc:ScaleFactorNumerator, 8.3819e-08
     Enc:SoftEndMaxControl:Enable, true
-    Enc:SoftEndMaxControl:Range, 162.4
+    Enc:SoftEndMaxControl:Range, 162
     Enc:SoftEndMinControl:Enable, true
-    Enc:SoftEndMinControl:Range, -24.2
+    Enc:SoftEndMinControl:Range, -24
     Enc:ToleranceWndModuloStart, 20
     General:UnitName, Degree
     Id, 35
@@ -1280,7 +1312,9 @@ Axis 36: M36 - LAS VIS
     AxisFolder, Lasers
     AxisType, 1
     CreateSymbols, true
+    Dynamic:Acceleration, 15
     Dynamic:AccelerationMaximum, 15
+    Dynamic:Deceleration, 15
     Dynamic:DecelerationMaximum, 15
     Enc:EncType, 29
     Enc:Inc:RefSoftSyncMask, #x0000ffff
@@ -1308,7 +1342,9 @@ Axis 37: M37 - LAS D H
     AxisFolder, Lasers
     AxisType, 1
     CreateSymbols, true
+    Dynamic:Acceleration, 15
     Dynamic:AccelerationMaximum, 15
+    Dynamic:Deceleration, 15
     Dynamic:DecelerationMaximum, 15
     Enc:EncType, 29
     Enc:Inc:RefSoftSyncMask, #x0000ffff
@@ -1336,7 +1372,9 @@ Axis 38: M38 - LAS D V
     AxisFolder, Lasers
     AxisType, 1
     CreateSymbols, true
+    Dynamic:Acceleration, 15
     Dynamic:AccelerationMaximum, 15
+    Dynamic:Deceleration, 15
     Dynamic:DecelerationMaximum, 15
     Enc:EncType, 29
     Enc:Inc:RefSoftSyncMask, #x0000ffff
@@ -1376,7 +1414,9 @@ Axis 39: M39 - SDS X
     Enc:SoftEndMinControl:Range, -10
     Id, 39
     OtherSettings:AllowMotionCmdToSlave, true
-    Velo:Maximum, 6
+    TargetPosControl:Range, 0.1
+    TargetPosControl:Time, 0.1
+    Velo:Maximum, 1
 
 
 
@@ -1400,9 +1440,13 @@ Axis 40: M40 - SDS Y
     Enc:ScaleFactorNumerator, 0.0005
     Enc:SoftEndMaxControl:Enable, true
     Enc:SoftEndMinControl:Enable, true
-    Enc:SoftEndMinControl:Range, -110
+    Enc:SoftEndMinControl:Range, -260
     Id, 40
     OtherSettings:AllowMotionCmdToSlave, true
+    PEHControl:Enable, true
+    TargetPosControl:Range, 0.1
+    TargetPosControl:Time, 0.1
+    Velo:Maximum, 4
 
 
 
@@ -1418,7 +1462,9 @@ Axis 41: M41 - SDS Z
     AxisFolder, SDS
     AxisType, 1
     CreateSymbols, true
+    Dynamic:Acceleration, 10
     Dynamic:AccelerationMaximum, 10
+    Dynamic:Deceleration, 10
     Dynamic:DecelerationMaximum, 10
     Enc:EncType, 29
     Enc:Inc:RefSoftSyncMask, #x0000ffff
@@ -1432,7 +1478,7 @@ Axis 41: M41 - SDS Z
     Enc:SoftEndMinControl:Range, -10
     Id, 41
     OtherSettings:AllowMotionCmdToSlave, true
-    Velo:Maximum, 6
+    Velo:Maximum, 1
 
 
 
@@ -1447,6 +1493,8 @@ Axis 42: M42 - SDS Rot Garage
     Name, M42 - SDS Rot Garage
     AxisFolder, SDS
     AxisType, 1
+    BacklashCompensation:Enable, true
+    BacklashCompensation:Range, 0.1
     CreateSymbols, true
     Dynamic:Acceleration, 50
     Dynamic:AccelerationMaximum, 100
@@ -1459,10 +1507,16 @@ Axis 42: M42 - SDS Rot Garage
     Enc:Inverse, true
     Enc:MaxCount, #x0000ffff
     Enc:ScaleFactorNumerator, 0.00719942
+    Enc:ToleranceWndModuloStart, 0.5
+    General:UnitFlags, #x00000004
     General:UnitName, Degree
     Id, 42
     OtherSettings:AllowMotionCmdToSlave, true
+    Velo:FastManual, 15
     Velo:Maximum, 50
+    Velo:RefSearch, 15
+    Velo:RefSync, 15
+    Velo:SlowManual, 7
 
 
 
@@ -1512,7 +1566,11 @@ Axis 44: M44 - SDS Linear Horizontal
     Enc:ScaleFactorNumerator, 0.0007194
     Id, 44
     OtherSettings:AllowMotionCmdToSlave, true
+    Velo:FastManual, 1
     Velo:Maximum, 5
+    Velo:RefSearch, 1
+    Velo:RefSync, 1
+    Velo:SlowManual, 0.5
 
 
 
@@ -1531,10 +1589,17 @@ Axis 45: M45 - DET ROT
     Enc:EncType, 29
     Enc:Inc:RefSoftSyncMask, #x0000ffff
     Enc:MaxCount, #xffffffff
+    Enc:Offset, -6.991
     Enc:ScaleFactorNumerator, 8.319e-08
+    Enc:SoftEndMaxControl:Enable, true
+    Enc:SoftEndMaxControl:Range, 90
+    Enc:SoftEndMinControl:Enable, true
+    Enc:SoftEndMinControl:Range, 10
     General:UnitName, Degree
     Id, 45
     OtherSettings:AllowMotionCmdToSlave, true
+    TargetPosControl:Range, 0.02
+    TargetPosControl:Time, 0.1
     Velo:Maximum, 10
 
 
@@ -1551,13 +1616,26 @@ Axis 46: M46 - CRYO X
     AxisFolder, Cryo
     AxisType, 1
     CreateSymbols, true
+    Dynamic:Acceleration, 10
+    Dynamic:AccelerationMaximum, 10
+    Dynamic:Deceleration, 10
+    Dynamic:DecelerationMaximum, 10
     Enc:EncType, 29
     Enc:Inc:RefSoftSyncMask, #x0000ffff
     Enc:MaxCount, #xffffffff
+    Enc:Offset, -53.622
     Enc:ScaleFactorNumerator, 5e-05
+    Enc:SoftEndMaxControl:Enable, true
+    Enc:SoftEndMaxControl:Range, 6.1
+    Enc:SoftEndMinControl:Enable, true
+    Enc:SoftEndMinControl:Range, -6
     Id, 46
+    OtherSettings:AllowMotionCmdToExtSetGenAxis, true
     OtherSettings:AllowMotionCmdToSlave, true
-    Velo:Maximum, 12.7
+    TargetPosControl:Range, 0.1
+    Velo:FastManual, 1
+    Velo:Maximum, 5
+    Velo:SlowManual, 0.5
 
 
 
@@ -1573,7 +1651,9 @@ Axis 47: M47 - CRYO Y
     AxisFolder, Cryo
     AxisType, 1
     CreateSymbols, true
+    Dynamic:Acceleration, 15
     Dynamic:AccelerationMaximum, 15
+    Dynamic:Deceleration, 15
     Dynamic:DecelerationMaximum, 15
     Enc:EncType, 29
     Enc:Inc:RefSoftSyncMask, #x0000ffff
@@ -1584,7 +1664,9 @@ Axis 47: M47 - CRYO Y
     Enc:SoftEndMaxControl:Range, 150
     Enc:SoftEndMinControl:Enable, true
     Id, 47
+    OtherSettings:AllowMotionCmdToExtSetGenAxis, true
     OtherSettings:AllowMotionCmdToSlave, true
+    TargetPosControl:Range, 0.1
     Velo:Maximum, 5.08
 
 
@@ -1601,15 +1683,26 @@ Axis 48: M48 - CRYO Z
     AxisFolder, Cryo
     AxisType, 1
     CreateSymbols, true
+    Dynamic:Acceleration, 10
     Dynamic:AccelerationMaximum, 10
+    Dynamic:Deceleration, 10
     Dynamic:DecelerationMaximum, 10
     Enc:EncType, 29
     Enc:Inc:RefSoftSyncMask, #x0000ffff
     Enc:MaxCount, #xffffffff
+    Enc:Offset, -46.2536
     Enc:ScaleFactorNumerator, 5e-05
+    Enc:SoftEndMaxControl:Enable, true
+    Enc:SoftEndMaxControl:Range, 25
+    Enc:SoftEndMinControl:Enable, true
+    Enc:SoftEndMinControl:Range, -25
     Id, 48
+    OtherSettings:AllowMotionCmdToExtSetGenAxis, true
     OtherSettings:AllowMotionCmdToSlave, true
-    Velo:Maximum, 12.7
+    TargetPosControl:Range, 0.1
+    Velo:FastManual, 1
+    Velo:Maximum, 5
+    Velo:SlowManual, 0.5
 
 
 
@@ -1625,10 +1718,15 @@ Axis 49: M49 - CRYO ROT
     AxisFolder, Cryo
     AxisType, 1
     CreateSymbols, true
-    Enc:EncType, 4
-    Enc:Inc:RefSoftSyncMask, #x0000ffff
-    Enc:MaxCount, #x0000ffff
+    Enc:EncType, 29
+    Enc:Inc:RefSoftSyncMask, #xffffffff
+    Enc:MaxCount, #xffffffff
+    Enc:Offset, -80
     Enc:ScaleFactorNumerator, 8.3819e-08
+    Enc:SoftEndMaxControl:Enable, true
+    Enc:SoftEndMaxControl:Range, 250
+    Enc:SoftEndMinControl:Enable, true
+    Enc:SoftEndMinControl:Range, -1
     General:UnitName, Degree
     Id, 49
     OtherSettings:AllowMotionCmdToSlave, true
