@@ -95,12 +95,14 @@ EtherCAT Terminals
 
 
             <li>
-                  <table width="100%">
+              <details open>
+                <summary>
+                      <table width="100%">
                 <tr>
                   <td width="10%">
-                    ID=5:
+                    ID=140:
                   </td>
-                  <td width="75%">EK1521_00_05
+                  <td width="75%">Term 140 (EK1521-0010)
                   </td>
                   <td>        </td>
                 </tr>
@@ -109,6 +111,121 @@ EtherCAT Terminals
                             </td>
                   <td colspan="2">
                     EK1521-0010 1 port EtherCAT junction (FX-SingleMode)
+                  </td>
+                </tr>
+              </table>
+                </summary>
+                <ul>
+
+                      <li>
+                        <details open>
+                          <summary>
+                                <table width="100%">
+                          <tr>
+                            <td width="10%">
+                              ID=142:
+                            </td>
+                            <td width="75%">Term 142 (EK1501-0010)
+                            </td>
+                            <td>        </td>
+                          </tr>
+                          <tr>
+                            <td>
+                                      </td>
+                            <td colspan="2">
+                              EK1501-0010 EtherCAT Coupler (2A E-Bus, FX-SingleMode, ID switch)
+                            </td>
+                          </tr>
+                        </table>
+                          </summary>
+                          <ul>
+
+                                <li>
+                                      <table width="100%">
+                                    <tr>
+                                      <td width="10%">
+                                        ID=143:
+                                      </td>
+                                      <td width="75%">Term 143 (EL2202)
+                                      </td>
+                                      <td>        </td>
+                                    </tr>
+                                    <tr>
+                                      <td>
+                                                </td>
+                                      <td colspan="2">
+                                        EL2202 2Ch. Dig. Output 24V, 0.5A
+                                      </td>
+                                    </tr>
+                                  </table>
+                                </li>
+
+
+                                <li>
+                                      <table width="100%">
+                                    <tr>
+                                      <td width="10%">
+                                        ID=144:
+                                      </td>
+                                      <td width="75%">Term 144 (EL6695)
+                                      </td>
+                                      <td>        </td>
+                                    </tr>
+                                    <tr>
+                                      <td>
+                                                </td>
+                                      <td colspan="2">
+                                        EL6695 EtherCAT Bridge terminal (Primary)
+                                      </td>
+                                    </tr>
+                                  </table>
+                                </li>
+
+
+                                <li>
+                                      <table width="100%">
+                                    <tr>
+                                      <td width="10%">
+                                        ID=278:
+                                      </td>
+                                      <td width="75%">Term 278 (EL9011)
+                                      </td>
+                                      <td>        </td>
+                                    </tr>
+                                    <tr>
+                                      <td>
+                                                </td>
+                                      <td colspan="2">
+                                        EL9011 End Terminal
+                                      </td>
+                                    </tr>
+                                  </table>
+                                </li>
+
+                          </ul>
+                        </details>
+                      </li>
+
+                </ul>
+              </details>
+            </li>
+
+
+            <li>
+                  <table width="100%">
+                <tr>
+                  <td width="10%">
+                    ID=141:
+                  </td>
+                  <td width="75%">Term 141 (EL6692)
+                  </td>
+                  <td>        </td>
+                </tr>
+                <tr>
+                  <td>
+                            </td>
+                  <td colspan="2">
+                    EL6692 EtherCAT Bridge terminal (Primary)
                   </td>
                 </tr>
               </table>
