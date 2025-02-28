@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<TcSmItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmItem" TcSmVersion="1.0" TcVersion="3.1.4022.30" ClassName="CNcSafTaskDef" SubType="0">
+<?xml version="1.0"?>
+<TcSmItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.35" ClassName="CNcSafTaskDef" SubType="0">
 	<NC>
-		<SafTask Priority="4" CycleTime="20000" AmsPort="501" IoAtBegin="true">
+		<SafTask Priority="4" CycleTime="20000" AmsPort="501" Affinity="#x00000004" IoAtBegin="true">
 			<Name>NC-Task 1 SAF</Name>
 			<Vars VarGrpType="1" InsertType="1">
 				<Name>Inputs</Name>
@@ -13,7 +13,7 @@
 				<Name>Image</Name>
 			</Image>
 		</SafTask>
-		<SvbTask Priority="8" CycleTime="100000" AmsPort="511">
+		<SvbTask Priority="8" CycleTime="100000" AmsPort="511" Affinity="#x00000004">
 			<Name>NC-Task 1 SVB</Name>
 		</SvbTask>
 		<AxisFolder Name="SSL-ARM"/>
@@ -54,7 +54,6 @@
 		<Axis File="M25 - YF1.xti" Id="25"/>
 		<Axis File="M26 - YF2.xti" Id="26"/>
 		<Axis File="M27 - ZF.xti" Id="27"/>
-		<Axis File="M28 - Diff X.xti" Id="28"/>
 		<Axis File="M29 - Diff Y.xti" Id="29"/>
 		<Axis File="M30 - Diff Z.xti" Id="30"/>
 		<Axis File="M31 - Diff 2Theta Y.xti" Id="31"/>
@@ -62,6 +61,7 @@
 		<Axis File="M33 - Diff Chi.xti" Id="33"/>
 		<Axis File="M35 - Diff 2Theta.xti" Id="35"/>
 		<Axis File="M34 - Diff Theta.xti" Id="34"/>
+		<Axis File="M28 - Diff X.xti" Id="28"/>
 		<Axis File="M36 - LAS VIS.xti" Id="36"/>
 		<Axis File="M37 - LAS D H.xti" Id="37"/>
 		<Axis File="M38 - LAS D V.xti" Id="38"/>

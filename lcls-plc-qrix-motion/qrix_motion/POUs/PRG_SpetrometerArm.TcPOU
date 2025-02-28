@@ -1,7 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<?xml version='1.0' encoding='UTF-8'?>
+<TcPlcObject Version="1.1.0.1">
   <POU Name="PRG_SpetrometerArm" Id="{eed80c44-a4f8-44e5-b6b2-59148c825f2f}" SpecialFunc="None">
-    <Declaration><![CDATA[PROGRAM PRG_SpetrometerArm
+    <Declaration><![CDATA[
+PROGRAM PRG_SpetrometerArm
 VAR
         {attribute 'TcLinkTo' := 'TIIB[Rack#1A-01 Coupler (EK1100)]^Rack#1A-02 SFIN (EL1918)^StandardOutputs^Standard In Var 2'}
     bEnaIclk AT %Q*: BOOL := TRUE;
@@ -16,10 +17,15 @@ VAR
     fbPower_AxisM12: MC_Power;
     fbPower_AxisM13: MC_Power;
     fbPower_AxisM14: MC_Power;
+
+    rtESTOPDeactivated: R_TRIG;
+
+    tonTurnoffCBReset: TON;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[ACT_ESTOP();
+      <ST><![CDATA[
+ACT_ESTOP();
 
 PRG_2Theta();
 PRG_DET_ARM();
@@ -30,7 +36,30 @@ PRG_OPT_SLITS();
 PRG_OPT_YG();
 PRG_OPT_XPM();
 PRG_OPT();
-PRG_Sensor();]]></ST>
+PRG_Sensor();
+
+tonTurnOffCBReset(IN:=
+    GVL_VAR.bCircuitBreakerB0108Reset OR
+    GVL_VAR.bCircuitBreakerB0113Reset OR
+    GVL_VAR.bCircuitBreakerB0118Reset OR
+    GVL_VAR.bCircuitBreakerR2A02Reset OR
+    GVL_VAR.bCircuitBreakerR2A07Reset OR
+    GVL_VAR.bCircuitBreakerR2A13Reset OR
+    GVL_VAR.bCircuitBreakerR2B14Reset OR
+    GVL_VAR.bCircuitBreakerR2B17Reset,
+    PT:=T#2s
+);
+IF tonTurnOffCBReset.Q THEN
+    GVL_VAR.bCircuitBreakerB0108Reset := FALSE;
+    GVL_VAR.bCircuitBreakerB0113Reset := FALSE;
+    GVL_VAR.bCircuitBreakerB0118Reset := FALSE;
+    GVL_VAR.bCircuitBreakerR2A02Reset := FALSE;
+    GVL_VAR.bCircuitBreakerR2A07Reset := FALSE;
+    GVL_VAR.bCircuitBreakerR2A13Reset := FALSE;
+    GVL_VAR.bCircuitBreakerR2B14Reset := FALSE;
+    GVL_VAR.bCircuitBreakerR2B17Reset := FALSE;
+END_IF
+]]></ST>
     </Implementation>
     <Action Name="ACT_ESTOP" Id="{7f369682-d550-4605-a510-2370c6ba3316}">
       <Implementation>
@@ -53,33 +82,33 @@ IF NOT GVL_EPS.bESTOP THEN
     GVL_EPS.bOpenSV1 := FALSE;
     GVL_EPS.bOpenSV2 := FALSE;
 
-    Main.M1.bEnable := FALSE; // SSL Sliding Seal // QRIX:SSL:MMS
-    Main.M2.bEnable := FALSE; // 2Theta Arm // QRIX:SA:MMS:2Theta
-    //Main.M3.bEnable := FALSE; // Optics Slits XS1 // QRIX:OPTSL:MMS:NORTH
-    //Main.M4.bEnable := FALSE; // Optics Slits XS2 // QRIX:OPTSL:MMS:SOUTH
-    //Main.M5.bEnable := FALSE; // Optics Slits YS1 // QRIX:OPTSL:MMS:TOP
-    //Main.M6.bEnable := FALSE; // Optics Slits YS2 // QRIX:OPTSL:MMS:BOTTOM
-    Main.M7.bEnable := FALSE; // Optics Base YG1 // QRIX:OPT:MMS:Y1
-    Main.M8.bEnable := FALSE; // Optics Base YG2 // QRIX:OPT:MMS:Y2
-    Main.M9.bEnable := FALSE; // Optics Base YG3 // QRIX:OPT:MMS:Y3
-    //Main.M10.bEnable := FALSE; // Optics Grating RxG // QRIX:G:MMS:Rx
-    //Main.M11.bEnable := FALSE; // Optics Grating XG // QRIX:G:MMS:X
-    //Main.M12.bEnable := FALSE; // Optics Mirror XPM1 // QRIX:PM:MMS:X1
-    //Main.M13.bEnable := FALSE; // Optics Mirror XPM2 // QRIX:PM:MMS:X2
-    //Main.M14.bEnable := FALSE; // Optics Mirror RzPM // QRIX:PM:MMS:Rz
-    Main.M15.bEnable := FALSE; // Detector Frame YDF1 // QRIX:DF:MMS:Y1
-    Main.M16.bEnable := FALSE; // Detector Frame YDF2 // QRIX:DF:MMS:Y2
-    Main.M17.bEnable := FALSE; // Detector Frame YDF3 // QRIX:DF:MMS:Y3
-    //Main.M18.bEnable := FALSE; // Detector Slits XSDC1 // QRIX:DETSL:MMS:NORTH
-    //Main.M19.bEnable := FALSE; // Detector Slits XSDC2 // QRIX:DETSL:MMS:SOUTH
-    //Main.M20.bEnable := FALSE; // Detector Slits YSDC1 // QRIX:DETSL:MMS:TOP
-    //Main.M21.bEnable := FALSE; // Detector Slits YSDC2 // QRIX:DETSL:MMS:BOTTOM
-    //Main.M22.bEnable := FALSE; // Detector Chamber XDC // QRIX:DC:MMS:X
-    //Main.M23.bEnable := FALSE; // Detector Chamber RyDC // QRIX:DC:MMS:Ry
-    //Main.M24.bEnable := FALSE; // Detector Chamber ZDC // QRIX:DC:MMS:Z
-    Main.M25.bEnable := FALSE; // Detector Arm YF1 // QRIX:DA:MMS:Y1
-    Main.M26.bEnable := FALSE; // Detector Arm YF2 // QRIX:DA:MMS:Y2
-    Main.M27.bEnable := FALSE; // Detector Arm ZF // QRIX:DA:MMS:Z
+    Main.M1.bHardwareEnable := FALSE; // SSL Sliding Seal // QRIX:SSL:MMS
+    Main.M2.bHardwareEnable := FALSE; // 2Theta Arm // QRIX:SA:MMS:2Theta
+    //Main.M3.bHardwareEnable := FALSE; // Optics Slits XS1 // QRIX:OPTSL:MMS:NORTH
+    //Main.M4.bHardwareEnable := FALSE; // Optics Slits XS2 // QRIX:OPTSL:MMS:SOUTH
+    //Main.M5.bHardwareEnable := FALSE; // Optics Slits YS1 // QRIX:OPTSL:MMS:TOP
+    //Main.M6.bHardwareEnable := FALSE; // Optics Slits YS2 // QRIX:OPTSL:MMS:BOTTOM
+    Main.M7.bHardwareEnable := FALSE; // Optics Base YG1 // QRIX:OPT:MMS:Y1
+    Main.M8.bHardwareEnable := FALSE; // Optics Base YG2 // QRIX:OPT:MMS:Y2
+    Main.M9.bHardwareEnable := FALSE; // Optics Base YG3 // QRIX:OPT:MMS:Y3
+    //Main.M10.bHardwareEnable := FALSE; // Optics Grating RxG // QRIX:G:MMS:Rx
+    //Main.M11.bHardwareEnable := FALSE; // Optics Grating XG // QRIX:G:MMS:X
+    //Main.M12.bHardwareEnable := FALSE; // Optics Mirror XPM1 // QRIX:PM:MMS:X1
+    //Main.M13.bHardwareEnable := FALSE; // Optics Mirror XPM2 // QRIX:PM:MMS:X2
+    //Main.M14.bHardwareEnable := FALSE; // Optics Mirror RzPM // QRIX:PM:MMS:Rz
+    Main.M15.bHardwareEnable := FALSE; // Detector Frame YDF1 // QRIX:DF:MMS:Y1
+    Main.M16.bHardwareEnable := FALSE; // Detector Frame YDF2 // QRIX:DF:MMS:Y2
+    Main.M17.bHardwareEnable := FALSE; // Detector Frame YDF3 // QRIX:DF:MMS:Y3
+    //Main.M18.bHardwareEnable := FALSE; // Detector Slits XSDC1 // QRIX:DETSL:MMS:NORTH
+    //Main.M19.bHardwareEnable := FALSE; // Detector Slits XSDC2 // QRIX:DETSL:MMS:SOUTH
+    //Main.M20.bHardwareEnable := FALSE; // Detector Slits YSDC1 // QRIX:DETSL:MMS:TOP
+    //Main.M21.bHardwareEnable := FALSE; // Detector Slits YSDC2 // QRIX:DETSL:MMS:BOTTOM
+    //Main.M22.bHardwareEnable := FALSE; // Detector Chamber XDC // QRIX:DC:MMS:X
+    //Main.M23.bHardwareEnable := FALSE; // Detector Chamber RyDC // QRIX:DC:MMS:Ry
+    //Main.M24.bHardwareEnable := FALSE; // Detector Chamber ZDC // QRIX:DC:MMS:Z
+    Main.M25.bHardwareEnable := FALSE; // Detector Arm YF1 // QRIX:DA:MMS:Y1
+    Main.M26.bHardwareEnable := FALSE; // Detector Arm YF2 // QRIX:DA:MMS:Y2
+    Main.M27.bHardwareEnable := FALSE; // Detector Arm ZF // QRIX:DA:MMS:Z
 
     bDoneJackOff := FALSE;
     bDoneLevitation := FALSE;
@@ -88,12 +117,41 @@ IF NOT GVL_EPS.bESTOP THEN
     bDoneAdjustingPitch := FALSE;
     bDoneAdjustingHeight := FALSE;
 END_IF
-
+rtESTOPDeactivated(CLK:=GVL_EPS.bESTOP);
+IF rtESTOPDeactivated.Q THEN
+    Main.M1.bHardwareEnable := TRUE; // SSL Sliding Seal // QRIX:SSL:MMS
+    Main.M2.bHardwareEnable := TRUE; // 2Theta Arm // QRIX:SA:MMS:2Theta
+    //Main.M3.bHardwareEnable := TRUE; // Optics Slits XS1 // QRIX:OPTSL:MMS:NORTH
+    //Main.M4.bHardwareEnable := TRUE; // Optics Slits XS2 // QRIX:OPTSL:MMS:SOUTH
+    //Main.M5.bHardwareEnable := TRUE; // Optics Slits YS1 // QRIX:OPTSL:MMS:TOP
+    //Main.M6.bHardwareEnable := TRUE; // Optics Slits YS2 // QRIX:OPTSL:MMS:BOTTOM
+    Main.M7.bHardwareEnable := TRUE; // Optics Base YG1 // QRIX:OPT:MMS:Y1
+    Main.M8.bHardwareEnable := TRUE; // Optics Base YG2 // QRIX:OPT:MMS:Y2
+    Main.M9.bHardwareEnable := TRUE; // Optics Base YG3 // QRIX:OPT:MMS:Y3
+    //Main.M10.bHardwareEnable := TRUE; // Optics Grating RxG // QRIX:G:MMS:Rx
+    //Main.M11.bHardwareEnable := TRUE; // Optics Grating XG // QRIX:G:MMS:X
+    //Main.M12.bHardwareEnable := TRUE; // Optics Mirror XPM1 // QRIX:PM:MMS:X1
+    //Main.M13.bHardwareEnable := TRUE; // Optics Mirror XPM2 // QRIX:PM:MMS:X2
+    //Main.M14.bHardwareEnable := TRUE; // Optics Mirror RzPM // QRIX:PM:MMS:Rz
+    Main.M15.bHardwareEnable := TRUE; // Detector Frame YDF1 // QRIX:DF:MMS:Y1
+    Main.M16.bHardwareEnable := TRUE; // Detector Frame YDF2 // QRIX:DF:MMS:Y2
+    Main.M17.bHardwareEnable := TRUE; // Detector Frame YDF3 // QRIX:DF:MMS:Y3
+    //Main.M18.bHardwareEnable := TRUE; // Detector Slits XSDC1 // QRIX:DETSL:MMS:NORTH
+    //Main.M19.bHardwareEnable := TRUE; // Detector Slits XSDC2 // QRIX:DETSL:MMS:SOUTH
+    //Main.M20.bHardwareEnable := TRUE; // Detector Slits YSDC1 // QRIX:DETSL:MMS:TOP
+    //Main.M21.bHardwareEnable := TRUE; // Detector Slits YSDC2 // QRIX:DETSL:MMS:BOTTOM
+    //Main.M22.bHardwareEnable := TRUE; // Detector Chamber XDC // QRIX:DC:MMS:X
+    //Main.M23.bHardwareEnable := TRUE; // Detector Chamber RyDC // QRIX:DC:MMS:Ry
+    //Main.M24.bHardwareEnable := TRUE; // Detector Chamber ZDC // QRIX:DC:MMS:Z
+    Main.M25.bHardwareEnable := TRUE; // Detector Arm YF1 // QRIX:DA:MMS:Y1
+    Main.M26.bHardwareEnable := TRUE; // Detector Arm YF2 // QRIX:DA:MMS:Y2
+    Main.M27.bHardwareEnable := TRUE; // Detector Arm ZF // QRIX:DA:MMS:Z
+END_IF
 
 // Disable M1(Servo) and M2(Stepper) if the frame is landing...
 IF NOT GVL_Sensor.bFloating THEN
-    Main.M1.bEnable := FALSE;
-    Main.M2.bEnable := FALSE;
+    //Main.M1.bEnable := FALSE;
+    //Main.M2.bEnable := FALSE;
 END_IF
 
 

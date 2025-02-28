@@ -1,7 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<?xml version='1.0' encoding='UTF-8'?>
+<TcPlcObject Version="1.1.0.1">
   <POU Name="PRG_Questar" Id="{a13b4cbe-0334-43ca-a474-80a981d3c693}" SpecialFunc="None">
-    <Declaration><![CDATA[PROGRAM PRG_Questar
+    <Declaration><![CDATA[
+PROGRAM PRG_Questar
 VAR
     fb_Ques_01 : FB_MotionStage;
     fb_Ques_02: FB_MotionStage;
@@ -9,7 +10,8 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[IF ( bInit) THEN
+      <ST><![CDATA[
+IF ( bInit) THEN
     bInit := FALSE;
     Main.M17.bHardwareEnable := TRUE;
     Main.M17.bPowerSelf := TRUE;
@@ -29,7 +31,8 @@ END_IF
 
 
 fb_Ques_01(stMotionStage:=Main.M17);
-fb_Ques_02(stMotionStage:=Main.M18);]]></ST>
+fb_Ques_02(stMotionStage:=Main.M18);
+]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

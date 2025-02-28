@@ -1,7 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<?xml version='1.0' encoding='UTF-8'?>
+<TcPlcObject Version="1.1.0.1">
   <GVL Name="Main" Id="{2b6c7284-966c-4508-b749-c66dc5cfc539}">
-    <Declaration><![CDATA[{attribute 'qualified_only'}
+    <Declaration><![CDATA[
+{attribute 'qualified_only'}
 VAR_GLOBAL
 
 (*
@@ -12,8 +13,6 @@ VAR_GLOBAL
     This should be refactored once the IOC
     supports arbitrary ads paths for motors
 *)
-
-
     // Sample Chamber Sliding Seal - 1 axis
     //connect EPS limits
     {attribute 'pytmc' := 'pv: QRIX:SC:SSL:MMS'}
@@ -134,21 +133,24 @@ VAR_GLOBAL
     // YDF1
     {attribute 'pytmc' := 'pv: QRIX:DF:MMS:Y1'}
     {attribute 'TcLinkTo' := '	.bLimitForwardEnable  	:= TIIB[Rack#2B-15 DR_YDF1 (EL7041-0052)]^STM Status^Status^Digital input 1;
-                                .bLimitBackwardEnable 	:= TIIB[Rack#2B-15 DR_YDF1 (EL7041-0052)]^STM Status^Status^Digital input 2
+                                .bLimitBackwardEnable 	:= TIIB[Rack#2B-15 DR_YDF1 (EL7041-0052)]^STM Status^Status^Digital input 2;
+                                .nRawEncoderULINT		:= TIID^Device 2 (EtherCAT)^Rack#2D LinearGaugeAmp (SC-HG1-ETC)^Process Data(In)  TxPDO-Map^Response Data Unit1
     '}
     M15: ST_MotionStage :=(sName := 'QRIX:DF:MMS:Y1');
 
     // YDF2
     {attribute 'pytmc' := 'pv: QRIX:DF:MMS:Y2'}
     {attribute 'TcLinkTo' := '	.bLimitForwardEnable  	:= TIIB[Rack#2B-16 DR_YDF2 (EL7041-0052)]^STM Status^Status^Digital input 1;
-                                .bLimitBackwardEnable 	:= TIIB[Rack#2B-16 DR_YDF2 (EL7041-0052)]^STM Status^Status^Digital input 2
+                                .bLimitBackwardEnable 	:= TIIB[Rack#2B-16 DR_YDF2 (EL7041-0052)]^STM Status^Status^Digital input 2;
+                                .nRawEncoderULINT		:= TIID^Device 2 (EtherCAT)^Rack#2D LinearGaugeAmp (SC-HG1-ETC)^Process Data(In)  TxPDO-Map^Response Data Unit2
     '}
     M16: ST_MotionStage:=(sName := 'QRIX:DF:MMS:Y2');
 
     // YDF3
     {attribute 'pytmc' := 'pv: QRIX:DF:MMS:Y3'}
     {attribute 'TcLinkTo' := '	.bLimitForwardEnable  	:= TIIB[Rack#2B-19 DR_YDF3 (EL7041-0052)]^STM Status^Status^Digital input 1;
-                                .bLimitBackwardEnable 	:= TIIB[Rack#2B-19 DR_YDF3 (EL7041-0052)]^STM Status^Status^Digital input 2
+                                .bLimitBackwardEnable 	:= TIIB[Rack#2B-19 DR_YDF3 (EL7041-0052)]^STM Status^Status^Digital input 2;
+                                .nRawEncoderULINT		:= TIID^Device 2 (EtherCAT)^Rack#2D LinearGaugeAmp (SC-HG1-ETC)^Process Data(In)  TxPDO-Map^Response Data Unit3
     '}
     M17: ST_MotionStage :=(sName := 'QRIX:DF:MMS:Y3');
 
@@ -354,7 +356,7 @@ VAR_GLOBAL
     {attribute 'pytmc' := 'pv: QRIX:SDS:MMS:H'}
     {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL7047_04_12]^STM Status^Status^Digital input 1;
                               .bLimitBackwardEnable := TIIB[EL7047_04_12]^STM Status^Status^Digital input 2;
-                              .bHome 				:= TIIB[EL1004_04_09]^Channel 2^Input;
+                              .bHome 				:= TIIB[EL1004_04_09]^Channel 3^Input;
                               .nRawEncoderUINT     := TIIB[EL5101_05_03]^ENC Status compact^Counter value'}
     M44: ST_MotionStage := (sName := 'QRIX:SDS:MMS:H');
 
@@ -384,9 +386,7 @@ VAR_GLOBAL
     M48: ST_MotionStage := (sName := 'QRIX:CRYO:MMS:Z');
     // CRYO-ROT
     {attribute 'pytmc' := 'pv: QRIX:CRYO:MMS:ROT'}
-    {attribute 'TcLinkTo' := '.bLimitForwardEnable  := TIIB[EL7047_02_11]^STM Status^Status^Digital input 1;
-                              .bLimitBackwardEnable := TIIB[EL7047_02_11]^STM Status^Status^Digital input 2;
-                              .nRawEncoderULINT     := TIIB[EL5042_02_16]^FB Inputs Channel 2^Position'}
+    {attribute 'TcLinkTo' := '.nRawEncoderULINT     := TIIB[EL5042_02_16]^FB Inputs Channel 2^Position'}
     M49: ST_MotionStage := (sName := 'QRIX:CRYO:MMS:ROT');
 
 (*
@@ -404,6 +404,7 @@ VAR_GLOBAL
     M50: ST_MotionStage := (sName := 'QRIX:QUESTAR:MMS:02');
 *)
 
-END_VAR]]></Declaration>
+END_VAR
+]]></Declaration>
   </GVL>
 </TcPlcObject>

@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="E_GantryEnableState" Id="{509640a3-744b-4403-b62a-82a2cbf17ee1}">
+    <Declaration><![CDATA[
+{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE E_GantryEnableState :
+(
+    STANDBY,
+    ERROR,
+    WAIT_FOR_FULLY_ENABLED,
+    WAIT_FOR_READY_STATE,
+    DELAY_FOR_MOVE_START
+);
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="E_MultiLeaderMotionCoupling" Id="{e6e7a0f8-0633-42c7-ae5d-0eeddeeb492d}">
+    <Declaration><![CDATA[
+{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE E_MultiLeaderMotionCoupling :
+(
+    STATE_STANDBY,
+    STATE_WAIT_FOR_FOLLOWER_NOT_BUSY,
+    STATE_WAIT_FOR_FOLLOWER_ENABLED,
+    STATE_WAIT_FOR_FOLLOWER_READY,
+    STATE_ENABLE_EXTERNAL_SETPOINT_GENERATOR,
+    STATE_FOLLOWING_ACTIVE,
+    STATE_DISABLE_EXTERNAL_SETPOINT_GENERATOR,
+    STATE_ERROR,
+    STATE_MONITOR_TARGET_WINDOW,
+    STATE_HALT_MOTION
+) UDINT;
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

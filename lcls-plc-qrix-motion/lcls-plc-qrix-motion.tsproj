@@ -1,14 +1,90 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4022.30" TcVersionFixed="true">
-	<Project ProjectGUID="{32AC45EB-466B-4A24-9780-13410D68D88C}" TargetNetId="172.21.140.101.1.1" RelativeTargetNetId="true" RelativeIpAddresses="true" ShowHideConfigurations="#x306">
+<?xml version="1.0"?>
+<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.35" TcVersionFixed="true">
+	<DataTypes>
+		<DataType>
+			<Name GUID="{76EB036C-07A7-446B-91CB-CECCF6977DF3}" TcBaseType="true" HideType="true">UINTARR2_2</Name>
+			<BitSize>32</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000005}">UINT</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>2</Elements>
+			</ArrayInfo>
+			<Format>
+				<Printf>0x%08X (%d)</Printf>
+				<Parameter>.</Parameter>
+				<Parameter>.</Parameter>
+			</Format>
+		</DataType>
+		<DataType>
+			<Name GUID="{F1BC1285-B2E8-442A-9549-1FD625108D56}" TcBaseType="true" HideType="true">UDINTARR2_2</Name>
+			<BitSize>64</BitSize>
+			<BaseType GUID="{76EB036C-07A7-446B-91CB-CECCF6977DF3}">UINTARR2_2</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>2</Elements>
+			</ArrayInfo>
+			<Format>
+				<Printf>0x%016I64X (%I64d)</Printf>
+				<Parameter>.</Parameter>
+				<Parameter>.</Parameter>
+			</Format>
+		</DataType>
+		<DataType>
+			<Name GUID="{77EDDF16-3443-4ABA-948F-E670FE9D3EC9}" Namespace="SLAC" PersistentType="true">NCENCODERETHERCAT</Name>
+			<BitSize>96</BitSize>
+			<SubItem>
+				<Name>nDataIn1</Name>
+				<Type GUID="{F1BC1285-B2E8-442A-9549-1FD625108D56}">UDINTARR2_2</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>nState1</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>64</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>nState2</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>72</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>nState3</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>80</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>nState4</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>88</BitOffs>
+			</SubItem>
+			<Hides>
+				<Hide GUID="{89D802D1-D3BA-4571-96F9-E292987E19F2}"/>
+				<Hide GUID="{8F44CE0F-998C-4F6D-B7C4-5B43B1DB2AFD}"/>
+				<Hide GUID="{F534D456-7C6B-4157-8903-72A4D843B721}"/>
+				<Hide GUID="{48434634-4DF8-4327-AC49-F32333660CFA}"/>
+			</Hides>
+		</DataType>
+	</DataTypes>
+	<Project ProjectGUID="{32AC45EB-466B-4A24-9780-13410D68D88C}" TargetNetId="172.21.140.101.1.1" Target64Bit="true" RelativeTargetNetId="true" RelativeIpAddresses="true" ShowHideConfigurations="#x306">
 		<System>
+			<Settings MaxCpus="4" NonWinCpus="2" RouterMemory="67108864">
+				<Cpu CpuId="1" RtLimit="50" LatencyWarning="1000"/>
+				<Cpu CpuId="2" LatencyWarning="1000"/>
+				<Cpu CpuId="3" LatencyWarning="1000"/>
+				<IoIdleTask Affinity="#x00000008"/>
+			</Settings>
 			<Licenses>
 				<Target>
 					<ManualSelect>{3EBB9639-5FF3-42B6-8847-35C70DC013C8}</ManualSelect>
 				</Target>
 			</Licenses>
 			<Tasks>
-				<Task Id="3" Priority="20" CycleTime="100000" AmsPort="350" AdtTasks="true">
+				<Task Id="3" Priority="20" CycleTime="100000" AmsPort="350" Affinity="#x00000008" AdtTasks="true">
 					<Name>PlcTask</Name>
 				</Task>
 			</Tasks>
@@ -18,20 +94,23 @@
 		</Motion>
 		<Plc>
 			<Project File="qrix_motion.xti"/>
+			<PlcAuxTask Affinity="#x00000002"/>
 		</Plc>
 		<Safety>
 			<Project File="qrixs-safety.xti"/>
 		</Safety>
 		<Io>
-			<Device File="Device 1 (EtherCAT).xti" Id="1"/>
+			<Device File="Device 2 (EtherCAT).xti" Id="2"/>
 		</Io>
 	</Project>
 	<Mappings>
-		<MappingInfo Identifier="{03040040-0040-0304-4000-040340000403}" Id="#x02030030" Watchdog="04000000040000000400000004000000"/>
+		<MappingInfo Identifier="{00000000-2001-0850-0020-500800205008}" Id="#x02030070"/>
+		<MappingInfo Identifier="{00000000-2001-0850-0020-500841000403}" Id="#x02030090"/>
+		<MappingInfo Identifier="{00000000-0020-0304-1000-040320000403}" Id="#x02030020"/>
+		<MappingInfo Identifier="{00000000-0060-0304-1000-040362000403}" Id="#x020300a0"/>
 		<MappingInfo Identifier="{08502001-0020-0304-0020-500820000403}" Id="#x02030010" Watchdog="00000000000000000000000000000000"/>
 		<MappingInfo Identifier="{05000010-2001-0850-1000-040300205008}" Id="#x02030060" Watchdog="14000000040000000400000004000000"/>
-		<MappingInfo Identifier="{00000000-0030-0304-1000-040332000403}" Id="#x02030050"/>
-		<MappingInfo Identifier="{00000000-0020-0304-1000-040320000403}" Id="#x02030020"/>
-		<MappingInfo Identifier="{00000000-2001-0850-0020-500841000403}" Id="#x02030040"/>
+		<MappingInfo Identifier="{05000010-0040-0304-1000-040340000403}" Id="#x02030040" Watchdog="00000000000000000000000000000000"/>
+		<MappingInfo Identifier="{03040040-0040-0304-4000-040340000403}" Id="#x02030030" Watchdog="04000000040000000400000004000000"/>
 	</Mappings>
 </TcSmProject>

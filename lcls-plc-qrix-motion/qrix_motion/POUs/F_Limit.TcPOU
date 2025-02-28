@@ -1,7 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<?xml version='1.0' encoding='UTF-8'?>
+<TcPlcObject Version="1.1.0.1">
   <POU Name="F_Limit" Id="{110c4ed8-1696-490e-8f8e-19d67e06929f}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION F_Limit : BOOL
+    <Declaration><![CDATA[
+FUNCTION F_Limit : BOOL
 VAR_INPUT
     fVal : LREAL;
     fLLim : LREAL;
@@ -12,7 +13,8 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[IF bInclusive THEN
+      <ST><![CDATA[
+IF bInclusive THEN
     IF fLLim <= fHLim THEN
         F_Limit := fLLim <= fVal AND fHLim >= fVal;
     ELSE
@@ -24,7 +26,8 @@ ELSE
     ELSE
         F_Limit := fLLim > fVal OR fHLim < fVal;
     END_IF
-END_IF]]></ST>
+END_IF
+]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

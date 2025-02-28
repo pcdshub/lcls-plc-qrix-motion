@@ -1,7 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<?xml version='1.0' encoding='UTF-8'?>
+<TcPlcObject Version="1.1.0.1">
   <GVL Name="GVL_EPS" Id="{d80bcb88-755c-4636-a81b-aa32affdb6ed}">
-    <Declaration><![CDATA[VAR_GLOBAL
+    <Declaration><![CDATA[
+VAR_GLOBAL
     {attribute 'pytmc' := 'pv: QRIX:SA:ESTOP_RST'}
     bResetIClk: BOOL;
     {attribute 'pytmc' := 'pv: QRIX:SA:ESTOP'}
@@ -21,6 +22,7 @@
     {attribute 'TcLinkTo' := 'TIIB[Rack#1C_ServoDR (NCR-HD Series)]^260th receive PDO Mapping^Negative torque limit value'}
     iServoTorqueLimitNegative AT %Q*: UINT;
 
-END_VAR]]></Declaration>
+END_VAR
+]]></Declaration>
   </GVL>
 </TcPlcObject>

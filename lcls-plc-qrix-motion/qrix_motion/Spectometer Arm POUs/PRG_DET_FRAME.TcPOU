@@ -1,7 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<?xml version='1.0' encoding='UTF-8'?>
+<TcPlcObject Version="1.1.0.1">
   <POU Name="PRG_DET_FRAME" Id="{ae792a1e-17b4-441d-8662-87ba0956d9c2}" SpecialFunc="None">
-    <Declaration><![CDATA[PROGRAM PRG_DET_FRAME
+    <Declaration><![CDATA[
+PROGRAM PRG_DET_FRAME
 VAR
     bInit: BOOL := TRUE;
     {attribute 'pytmc' := '
@@ -14,23 +15,13 @@ VAR
         io: i
     '}
     bBusy: BOOL;
+    {attribute 'pytmc' := '
+        pv: QRIX:SA:bMotorsBusy
+        io: i
+    '}
+    bMotorsBusy: BOOL;
     {attribute 'pytmc' := 'pv: QRIX:SA:bResetError'}
     bResetError: BOOL := FALSE;
-    {attribute 'pytmc' := '
-        pv: QRIX:SA:bEnableMotion
-        io: i
-    '}
-    bEnableMotion : BOOL;
-    {attribute 'pytmc' := '
-        pv: QRIX:SA:bEnableSetGaugeValue
-        io: i
-    '}
-    bEnableSetGaugeValue: BOOL;
-    {attribute 'pytmc' := '
-        pv: QRIX:SA:bEnableMoveRelative
-        io: i
-    '}
-    bEnableMoveRelative: BOOL;
     {attribute 'pytmc' := 'pv: QRIX:SA:EnableJackOff'}
     bEnableJackOff: BOOL;
     {attribute 'pytmc' := 'pv: QRIX:SA:EnableLevitation'}
@@ -44,8 +35,6 @@ VAR
     {attribute 'pytmc' := 'pv: QRIX:DF:EnableAdjustingHeight'}
     bEnableAdjustingHeight: BOOL;
 
-    bDone_M15, bDone_M16, bDone_M17: BOOL;
-
     tonWaitToStabilize: TON;
 
     tonSV2Open: TON;
@@ -55,8 +44,6 @@ VAR
 
     iStepJackOff: INT := 1;
     iStepAdjustingRoll : INT := 1;
-    iStepSetGaugeValue : INT := 1;
-    iStepMoveRelative : INT := 1;
     iStepAdjustingPitch : INT := 1;
     iStepAdjustingHeight : INT := 1;
 
@@ -65,70 +52,156 @@ VAR
     fDistanceX: LREAL := 2.114; // in m
     fDistanceZ: LREAL := 2.142; // in m
 
-    fbPower_AxisM15: MC_Power;
-    fbPower_AxisM16: MC_Power;
-    fbPower_AxisM17: MC_Power;
+    fPositionThreshold: LREAL := 0.02; // mm
+    fPositionMaxDeviation: LREAL := 10.0; // mm
+    fPitchThreshold: LREAL := 0.02; // mrad
+    fRollThreshold: LREAL := 0.02; // mrad
 
-    fbSetPosition_M15: MC_SetPosition;
-    fbSetPosition_M16: MC_SetPosition;
-    fbSetPosition_M17: MC_SetPosition;
+    {attribute 'pytmc' := '
+        pv: QRIX:SA:fRollTarget
+        io: io
+    '}
+    fRollTarget : LREAL;
 
-    fTargetPos_M15, fTargetPos_M16, fTargetPos_M17: LREAL;
+    {attribute 'pytmc' := 'pv: QRIX:F'}
+    fbYDFMotion: FB_3AxesJack;
 
-    fbMoveRelative_M15: MC_MoveRelative;
-    fbMoveRelative_M16: MC_MoveRelative;
-    fbMoveRelative_M17: MC_MoveRelative;
+    fbReset_M15: MC_RESET;
+    fbReset_M16: MC_RESET;
+    fbReset_M17: MC_RESET;
 
-    fbReset_M15: MC_Reset;
-    fbReset_M16: MC_Reset;
-    fbReset_M17: MC_Reset;
+    nActiveSequenceIterationCount: UINT := 1;
+    nSequenceIterationCount: UINT := 3;
+
+    // EPS settings to prevent jacks from moving too far out of range of each other.
+    EPS_YDF1_Up   : FB_EPS;
+    EPS_YDF1_Down : FB_EPS;
+    EPS_YDF2_Up   : FB_EPS;
+    EPS_YDF2_Down : FB_EPS;
+    EPS_YDF3_Up   : FB_EPS;
+    EPS_YDF3_Down : FB_EPS;
+
+    {attribute 'pytmc' := '
+        pv: QRIX:SA:rJackingSpeed
+        io: io
+    '}
+    rJackingSpeed: LREAL := 0.05;
+    {attribute 'pytmc' := '
+        pv: QRIX:SA:rJackingAccel
+        io: io
+    '}
+    rJackingAccel: LREAL := 0.005;
+
+    {attribute 'pytmc' := '
+        pv: QRIX:SA:bStopAxes
+        io: io
+    '}
+    bStopAxes: BOOL;
+
+    {attribute 'TcLinkTo' := 'TIIB[Rack#2D LinearGaugeAmp (SC-HG1-ETC)]^Process Data(In)  TxPDO-Map^Sensor Warning}
+    bLinearGaugeWarning AT %I* : BOOL;
+    {attribute 'TcLinkTo' := 'TIIB[Rack#2D LinearGaugeAmp (SC-HG1-ETC)]^Process Data(In)  TxPDO-Map^Sensor Error}
+    bLinearGaugeError AT %I* : BOOL;
+
+    {attribute 'TcLinkToOSO' := '<0,1,2>TINC^NC-Task 1 SAF^Axes^M15 - YDF1^Enc^Inputs^In^nState1'}
+    bLinearGaugeYDF1Ready AT %Q* : BOOL;
+    {attribute 'TcLinkToOSO' := '<0,1,2>TINC^NC-Task 1 SAF^Axes^M16 - YDF2^Enc^Inputs^In^nState1'}
+    bLinearGaugeYDF2Ready AT %Q* : BOOL;
+    {attribute 'TcLinkToOSO' := '<0,1,2>TINC^NC-Task 1 SAF^Axes^M17 - YDF3^Enc^Inputs^In^nState1'}
+    bLinearGaugeYDF3Ready AT %Q* : BOOL;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[IF bInit THEN
+      <ST><![CDATA[
+IF bInit THEN
     bInit := FALSE;
 
-    // Read linear gauge value
-    bEnableSetGaugeValue := TRUE;
-END_IF
+    Main.M15.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+    Main.M15.bHardwareEnable := TRUE;
+    Main.M15.bPowerSelf := TRUE;
 
-//Main.M15.bEnable := bEnableJackOff OR bEnableLevitation OR bEnableLanding OR
-//    bEnableAdjustingRoll OR bEnableAdjustingPitch OR bEnableAdjustingHeight
-//    OR bEnableMoveRelative OR bEnableMotion;
-Main.M15.bEnable := TRUE;
-Main.M16.bEnable := Main.M15.bEnable;
-Main.M17.bEnable := Main.M16.bEnable;
+    Main.M16.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+    Main.M16.bHardwareEnable := TRUE;
+    Main.M16.bPowerSelf := TRUE;
 
-// Read axis status
-Main.M15.Axis.ReadStatus();
-Main.M16.Axis.ReadStatus();
-Main.M17.Axis.ReadStatus();
+    Main.M17.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
+    Main.M17.bHardwareEnable := TRUE;
+    Main.M17.bPowerSelf := TRUE;
 
-fbPower_AxisM15(
-    Enable :=Main.M15.bEnable,
-    Enable_Positive := Main.M15.bLimitForwardEnable,
-    Enable_Negative := Main.M15.bLimitBackwardEnable,
-    Override := 100.000,
-    Axis := Main.M15.Axis
-);
+    Main.M15.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+    Main.M16.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+    Main.M17.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+END_IF;
 
-fbPower_AxisM16(
-    Enable := Main.M16.bEnable,
-    Enable_Positive := Main.M16.bLimitForwardEnable,
-    Enable_Negative := Main.M16.bLimitBackwardEnable,
-    Override := 100.000,
-    Axis := Main.M16.Axis
-);
+// FRAME JACKS EPS RESTRICTIONS
+// YDF1 Disable movement in upward (positive/forward) direction.
+EPS_YDF1_Up(eps:=Main.M15.stEPSForwardEnable);
+EPS_YDF1_Up.setDescription('UPWARD MOVEMENT ALLOWED IF: YDF1 - YDF2 < 10mm AND YDF1 - YDF3 < 10mm |'); // SET DESCRIPTION FOR BYTE INDICATOR LABELS
+// Prevent YDF1 from rising any more if it is more than fPositionMaxDeviation above YDF2
+EPS_YDF1_Up.setBit(nBits:= 1, bValue:= Main.M15.stAxisStatus.fActPosition - Main.M16.stAxisStatus.fActPosition < fPositionMaxDeviation);
+// Prevent YDF1 from rising any more if it is more than fPositionMaxDeviation above YDF3
+EPS_YDF1_Up.setBit(nBits:= 0, bValue:= Main.M15.stAxisStatus.fActPosition - Main.M17.stAxisStatus.fActPosition < fPositionMaxDeviation);
 
-fbPower_AxisM17(
-    Enable := Main.M17.bEnable,
-    Enable_Positive := Main.M17.bLimitForwardEnable,
-    Enable_Negative := Main.M17.bLimitBackwardEnable,
-    Override := 100.000,
-    Axis := Main.M17.Axis
-);
+// YDF1 Disable movement in downward (negative/downward) direction.
+EPS_YDF1_Down(eps:=Main.M15.stEPSBackwardEnable);
+EPS_YDF1_Down.setDescription('DOWNWARD MOVEMENT ALLOWED IF: YDF1 - YDF2 > -10mm AND YDF1 - YDF3 > -10mm |'); // SET DESCRIPTION FOR BYTE INDICATOR LABELS
+// Prevent YDF1 from lowering any more if it is more than fPositionMaxDeviation below YDF2
+EPS_YDF1_Down.setBit(nBits:= 1, bValue:= Main.M15.stAxisStatus.fActPosition - Main.M16.stAxisStatus.fActPosition > -fPositionMaxDeviation);
+// Prevent YDF1 from lowering any more if it is more than fPositionMaxDeviation below YDF3
+EPS_YDF1_Down.setBit(nBits:= 0, bValue:= Main.M15.stAxisStatus.fActPosition - Main.M17.stAxisStatus.fActPosition > -fPositionMaxDeviation);
+
+// YDF2 Disable movement in upward (positive/forward) direction.
+EPS_YDF2_Up(eps:=Main.M16.stEPSForwardEnable);
+EPS_YDF2_Up.setDescription('UPWARD MOVEMENT ALLOWED IF:  YDF2 - YDF1 < 10mm AND YDF2 - YDF3 < 10mm |'); // SET DESCRIPTION FOR BYTE INDICATOR LABELS
+// Prevent YDF2 from rising any more if it is more than fPositionMaxDeviation above YDF1
+EPS_YDF2_Up.setBit(nBits:= 1, bValue:= Main.M16.stAxisStatus.fActPosition - Main.M15.stAxisStatus.fActPosition < fPositionMaxDeviation);
+// Prevent YDF2 from rising any more if it is more than fPositionMaxDeviation above YDF3
+EPS_YDF2_Up.setBit(nBits:= 0, bValue:= Main.M16.stAxisStatus.fActPosition - Main.M17.stAxisStatus.fActPosition < fPositionMaxDeviation);
+
+// YDF2 Disable movement in downward (negative/downward) direction.
+EPS_YDF2_Down(eps:=Main.M16.stEPSBackwardEnable);
+EPS_YDF2_Down.setDescription('DOWNWARD MOVEMENT ALLOWED IF: YDF2 - YDF1 > -10mm AND YDF2 - YDF3 > -10mm |'); // SET DESCRIPTION FOR BYTE INDICATOR LABELS
+// Prevent YDF2 from lowering any more if it is more than fPositionMaxDeviation below YDF1
+EPS_YDF2_Down.setBit(nBits:= 1, bValue:= Main.M16.stAxisStatus.fActPosition - Main.M15.stAxisStatus.fActPosition > -fPositionMaxDeviation);
+// Prevent YDF2 from lowering any more if it is more than fPositionMaxDeviation below YDF3
+EPS_YDF2_Down.setBit(nBits:= 0, bValue:= Main.M16.stAxisStatus.fActPosition - Main.M17.stAxisStatus.fActPosition > -fPositionMaxDeviation);
+
+// YDF3 Disable movement in upward (positive/forward) direction.
+EPS_YDF3_Up(eps:=Main.M17.stEPSForwardEnable);
+EPS_YDF3_Up.setDescription('UPWARD MOVEMENT ALLOWED IF: YDF3 - YDF2 < 10mm AND YDF3 - YDF1 < 10mm |'); // SET DESCRIPTION FOR BYTE INDICATOR LABELS
+// Prevent YDF3 from rising any more if it is more than fPositionMaxDeviation above YDF2
+EPS_YDF3_Up.setBit(nBits:= 1, bValue:= Main.M17.stAxisStatus.fActPosition - Main.M16.stAxisStatus.fActPosition < fPositionMaxDeviation);
+// Prevent YDF3 from rising any more if it is more than fPositionMaxDeviation above YDF1
+EPS_YDF3_Up.setBit(nBits:= 0, bValue:= Main.M17.stAxisStatus.fActPosition - Main.M15.stAxisStatus.fActPosition < fPositionMaxDeviation);
+
+// YDF3 Disable movement in downward (negative/downward) direction.
+EPS_YDF3_Down(eps:=Main.M17.stEPSBackwardEnable);
+EPS_YDF3_Down.setDescription('DOWNWARD MOVEMENT ALLOWED IF: YDF3 - YDF2 > -10mm AND YDF3 - YDF1 > -10mm |'); // SET DESCRIPTION FOR BYTE INDICATOR LABELS
+// Prevent YDF3 from lowering any more if it is more than fPositionMaxDeviation below YDF2
+EPS_YDF3_Down.setBit(nBits:= 1, bValue:= Main.M17.stAxisStatus.fActPosition - Main.M16.stAxisStatus.fActPosition > -fPositionMaxDeviation);
+// Prevent YDF3 from lowering any more if it is more than fPositionMaxDeviation below YDF1
+EPS_YDF3_Down.setBit(nBits:= 0, bValue:= Main.M17.stAxisStatus.fActPosition - Main.M15.stAxisStatus.fActPosition > -fPositionMaxDeviation);
 
 GVL_Sensor.bFloating := GVL_Sensor.stPS1.fValue > 0.3 AND GVL_Sensor.stPS2.fValue > 0.18 AND GVL_Sensor.stPS3.fValue > 0.15;
+
+bMotorsBusy := Main.M15.bBusy OR Main.M16.bBusy OR Main.M17.bBusy;
+
+IF Main.M15.bError OR Main.M16.bError OR Main.M17.bError THEN
+    bError := TRUE;
+    iStepJackOff := -1;
+    iStepAdjustingRoll := -1;
+    iStepAdjustingPitch := -1;
+    iStepAdjustingHeight := -1;
+    IF NOT Main.M15.bError THEN
+        Main.M15.bReset := TRUE;
+    END_IF;
+    IF NOT Main.M16.bError THEN
+        Main.M16.bReset := TRUE;
+    END_IF;
+    IF NOT Main.M17.bError THEN
+        Main.M17.bReset := TRUE;
+    END_IF;
+END_IF
 
 ACT_1_JACK_OFF();
 ACT_2_Levitation();
@@ -136,68 +209,87 @@ ACT_3_Landing();
 ACT_4_AdjustingRoll();
 ACT_5_AdjustingPitch();
 ACT_6_AdjustingHeight();
-ACT_INIT();
-ACT_SetGaugeValue();
-ACT_MoveRelative();
 ACT_ResetError();
+
+bLinearGaugeYDF1Ready := NOT bLinearGaugeError;
+bLinearGaugeYDF2Ready := NOT bLinearGaugeError;
+bLinearGaugeYDF3Ready := NOT bLinearGaugeError;
+
+fbYDFMotion(
+    bMoveOk			  := GVL_EPS.bESTOP,
+    stJack1Axis		  := Main.M16,
+    stJack2Axis		  := Main.M15,
+    stJack3Axis		  := Main.M17,
+    rDistanceX        := fDistanceX,
+    rDistanceZ        := fDistanceZ,
+    bJack3DoesPitch   :=  TRUE,
+    rLimitPositionMax :=  21.5,
+    rLimitPositionMin := -0.5,
+    rLimitPitchMin    := -10,
+    rLimitPitchMax    :=  10,
+    rLimitRollMin     := -10,
+    rLimitRollMax     :=  10,
+    fMaxVelocity      :=  rJackingSpeed,
+    fHighAccel        :=  rJackingAccel
+);
+
+IF bStopAxes THEN
+    Main.M1.bExecute := FALSE;
+    Main.M2.bExecute := FALSE;
+    Main.M7.bExecute := FALSE;
+    Main.M8.bExecute := FALSE;
+    Main.M9.bExecute := FALSE;
+    Main.M15.bExecute := FALSE;
+    Main.M16.bExecute := FALSE;
+    Main.M17.bExecute := FALSE;
+    bStopAxes := FALSE;
+END_IF
 ]]></ST>
     </Implementation>
     <Action Name="ACT_1_JACK_OFF" Id="{09afe1fc-0e24-49bc-b799-7093c0737ca7}">
       <Implementation>
-        <ST><![CDATA[CASE iStepJackOff OF
+        <ST><![CDATA[
+CASE iStepJackOff OF
     1:
         IF bEnableJackOff AND NOT(bBusy AND bError) THEN
-            // Step1 read and apply gauge value
-            bEnableSetGaugeValue := TRUE;
             iStepJackOff := 2;
             bDoneJackOff := FALSE;
-            Main.M15.bEnable := TRUE;
-            Main.M16.bEnable := TRUE;
-            Main.M17.bEnable := TRUE;
+            bBusy := TRUE;
+            fbYDFMotion.bMoveToPosition := FALSE;
+            fbYDFMotion.bMoveToPitch := FALSE;
+            fbYDFMotion.bMoveToRoll := FALSE;
         ELSE
             bEnableJackOff := FALSE;
         END_IF;
     2:
-        // Step2 wait until done
-        IF NOT bEnableSetGaugeValue THEN
-            // read latest status
-            Main.M15.Axis.ReadStatus();
-            Main.M16.Axis.ReadStatus();
-            Main.M17.Axis.ReadStatus();
-            IF abs(Main.M15.Axis.NcToPlc.ActPos) < 0.1 AND abs(Main.M16.Axis.NcToPlc.ActPos) < 0.1 AND abs(Main.M17.Axis.NcToPlc.ActPos) < 0.1 THEN
-                // We dont need to move any more....
-                iStepJackOFF := 5;
-            ELSIF max(Main.M15.Axis.NcToPlc.ActPos, Main.M16.Axis.NcToPlc.ActPos, Main.M17.Axis.NcToPlc.ActPos)
-                - min(Main.M15.Axis.NcToPlc.ActPos, Main.M16.Axis.NcToPlc.ActPos, Main.M17.Axis.NcToPlc.ActPos) > 10.0 THEN
-                // Some axis may be step-out...
-                iStepJackOFF := -1;
-            ELSE
-                iStepJackOff := 3;
-            END_IF;
+        // Step2 check if we are already at position or if we are in an error position.
+        IF abs(Main.M15.stAxisStatus.fActPosition) < fPositionThreshold AND
+           abs(Main.M16.stAxisStatus.fActPosition) < fPositionThreshold AND
+           abs(Main.M17.stAxisStatus.fActPosition) < fPositionThreshold THEN
+            // We dont need to move any more....
+            iStepJackOff := 4;
+        ELSE
+            iStepJackOff := 3;
         END_IF;
     3:
-        // Step3 calcurate motion distance
-        fTargetPos_M15 := -1 * Main.M15.Axis.NcToPlc.ActPos;
-        fTargetPos_M16 := -1 * Main.M16.Axis.NcToPlc.ActPos;
-        fTargetPos_M17 := -1 * Main.M17.Axis.NcToPlc.ActPos;
+        // Step3 set target position
+        fbYDFMotion.rReqPosition := 0.0;
+        fbYDFMotion.bMoveToPosition := TRUE;
+        fbYDFMotion.rReqRoll := 0.0;
+        fbYDFMotion.bMoveToRoll := TRUE;
+        fbYDFMotion.rReqPitch := 0.0;
+        fbYDFMotion.bMoveToPitch := TRUE;
 
-        // Enable Relative Motion Act
-        bEnableMoveRelative := TRUE;
-
-        iStepJackOff := 4;
+        iStepJackOff := 2;
     4:
-        // Wait until Done.
-        IF NOT bEnableMoveRelative THEN
-            // read and apply gauge value
-            bEnableSetGaugeValue := TRUE;
-            iStepJackOff := 2;
-        END_IF;
-    5:
         // End
         bEnableJackOff:= FALSE;
         bBusy := FALSE;
         iStepJackOff:=1;
         bDoneJackOff := TRUE;
+        fbYDFMotion.bMoveToPosition := FALSE;
+        fbYDFMotion.bMoveToPitch := FALSE;
+        fbYDFMotion.bMoveToRoll := FALSE;
     -1:
         // Error
         bError:= TRUE;
@@ -205,19 +297,24 @@ ACT_ResetError();
         bBusy := FALSE;
         iStepJackOff:=1;
         bDoneJackOff := FALSE;
-END_CASE;]]></ST>
+        fbYDFMotion.bMoveToPosition := FALSE;
+        fbYDFMotion.bMoveToPitch := FALSE;
+        fbYDFMotion.bMoveToRoll := FALSE;
+
+END_CASE;
+]]></ST>
       </Implementation>
     </Action>
     <Action Name="ACT_2_Levitation" Id="{1a03c01c-79f3-40e9-8f85-fa3729e0ff5d}">
       <Implementation>
         <ST><![CDATA[
-IF bEnableLevitation THEN
+IF bEnableLevitation AND NOT (bBusy OR bError) THEN
+    bBusy := TRUE;
     IF GVL_Sensor.stPS1.fValue > 0.15 AND GVL_Sensor.stPS2.fValue > 0.15 THEN
         GVL_EPS.bOpenSV1 := TRUE;
     END_IF;
     bDoneLevitation := FALSE;
 END_IF;
-
 
 // SV2 will open after 3 secounds from SV1 opened...
 tonSV2Open(
@@ -229,13 +326,14 @@ IF tonSV2Open.Q THEN
     GVL_EPS.bOpenSV2 := TRUE;
     bEnableLevitation := FALSE;
     bDoneLevitation := TRUE;
-END_IF;]]></ST>
+    bBusy := FALSE;
+END_IF;
+]]></ST>
       </Implementation>
     </Action>
     <Action Name="ACT_3_Landing" Id="{3bd8bb9a-fa83-47b4-b111-8c64a2c33f1d}">
       <Implementation>
         <ST><![CDATA[
-
 IF bEnableLanding AND NOT (bBusy OR bError) THEN
     GVL_EPS.bOpenSV2 := FALSE;
     bBusy:= TRUE;
@@ -252,302 +350,187 @@ IF tonSV1Close.Q THEN
     bEnableLanding := FALSE;
     bBusy:= FALSE;
     bDoneLanding := TRUE;
-END_IF;]]></ST>
+END_IF;
+]]></ST>
       </Implementation>
     </Action>
     <Action Name="ACT_4_AdjustingRoll" Id="{f84b9517-e50c-4b86-bce7-a61f7bf2814f}">
       <Implementation>
-        <ST><![CDATA[CASE iStepAdjustingRoll OF
+        <ST><![CDATA[
+CASE iStepAdjustingRoll OF
     1:
         IF bEnableAdjustingRoll AND NOT(bBusy AND bError) THEN
-            // Step1 read and apply gauge value
-            bEnableSetGaugeValue := TRUE;
             iStepAdjustingRoll := 2;
             bDoneAdjustingRoll := FALSE;
+            bBusy := TRUE;
+            fbYDFMotion.bMoveToRoll := FALSE;
+            nActiveSequenceIterationCount := 0;
         ELSE
             bEnableAdjustingRoll := FALSE;
         END_IF;
     2:
-        // Step2 wait until done
-        IF NOT bEnableSetGaugeValue THEN
+        // Step3 set target roll
+        IF abs(GVL_Sensor.stFrameR.fValue - fRollTarget) > fRollThreshold THEN
+            fbYDFMotion.bMoveToRoll := TRUE;
             iStepAdjustingRoll := 3;
+            fbYDFMotion.rReqRoll := fbYDFMotion.rActRoll - (GVL_Sensor.stFrameR.fValue - fRollTarget) * 0.5;
+        ELSE
+            // Already at goal.
+            iStepAdjustingRoll := 4;
         END_IF;
     3:
-        // Step3 calcurate motion distance
-        // read latest status
-        Main.M15.Axis.ReadStatus();
-        Main.M16.Axis.ReadStatus();
-        Main.M17.Axis.ReadStatus();
-
-        IF GVL_Sensor.stFrameR.fValue > 0 THEN
-            // Need to up YDF1
-            fTargetPos_M15 := abs(REAL_TO_LREAL(GVL_Sensor.stFrameR.fValue)) * fDistanceX / 2 * 0.9;
-            fTargetPos_M16 := 0;
-            fTargetPos_M17 := 0;
-            // Enable Relative Motion Act
-            bEnableMoveRelative := TRUE;
-            iStepAdjustingRoll := 4;
-        ELSE
-            // Need to up YDF2
-            fTargetPos_M15 := 0;
-            fTargetPos_M16 := abs(REAL_TO_LREAL(GVL_Sensor.stFrameR.fValue)) * fDistanceX / 2 * 0.9;
-            fTargetPos_M17 := 0;
-            // Enable Relative Motion Act
-            bEnableMoveRelative := TRUE;
-            iStepAdjustingRoll := 4;
-        END_IF;
-    4:
         // Wait until Done. and wait tilt sensor stabilization.
-        tonWaitToStabilize(IN:=NOT bEnableMoveRelative, PT:=T#5s);
+        tonWaitToStabilize(IN:=NOT bMotorsBusy, PT:=T#5s);
         IF tonWaitToStabilize.Q THEN
-            iStepAdjustingRoll := 5;
+            iStepAdjustingRoll := 4;
             tonWaitToStabilize(IN:=FALSE);
         END_IF;
-    5:
-        IF abs(GVL_Sensor.stFrameR.fValue) > 0.05 THEN
-            // Iterartion
-            bEnableSetGaugeValue := TRUE;
+    4:
+        IF nActiveSequenceIterationCount > nSequenceIterationCount THEN
+            // Exceeded maximum allowable number of iterations. Something is wrong.
+            iStepAdjustingRoll := -1;
+        ELSIF abs(GVL_Sensor.stFrameR.fValue - fRollTarget) > fRollThreshold THEN
+            // Iteration
             iStepAdjustingRoll := 2;
+            fbYDFMotion.bMoveToRoll := FALSE;
+            nActiveSequenceIterationCount := nActiveSequenceIterationCount + 1;
         ELSE
             // End
             bEnableAdjustingRoll:= FALSE;
+            bBusy := FALSE;
             iStepAdjustingRoll:=1;
             bDoneAdjustingRoll := TRUE;
+            fbYDFMotion.bMoveToRoll := FALSE;
         END_IF;
     -1:
         // Error
         bError:= TRUE;
+        bBusy := FALSE;
         bEnableAdjustingRoll:= FALSE;
         iStepAdjustingRoll:=1;
         bDoneAdjustingRoll := FALSE;
-END_CASE;]]></ST>
+        fbYDFMotion.bMoveToRoll := FALSE;
+END_CASE;
+]]></ST>
       </Implementation>
     </Action>
     <Action Name="ACT_5_AdjustingPitch" Id="{96ae706d-13dc-4d26-978b-353a0e965687}">
       <Implementation>
-        <ST><![CDATA[CASE iStepAdjustingPitch OF
+        <ST><![CDATA[
+CASE iStepAdjustingPitch OF
     1:
         IF bEnableAdjustingPitch AND NOT(bBusy AND bError) THEN
-            // Step1 read and apply gauge value
-            bEnableSetGaugeValue := TRUE;
             iStepAdjustingPitch := 2;
             bDoneAdjustingPitch := FALSE;
+            bBusy := TRUE;
+            fbYDFMotion.bMoveToPitch := FALSE;
+            nActiveSequenceIterationCount := 0;
         ELSE
             bEnableAdjustingPitch := FALSE;
         END_IF;
     2:
-        // Step2 wait until done
-        IF NOT bEnableSetGaugeValue THEN
+        // Step2 set target pitch
+        IF abs(GVL_Sensor.stFrameP.fValue) > fPitchThreshold THEN
+            fbYDFMotion.bMoveToPitch := TRUE;
             iStepAdjustingPitch := 3;
+            fbYDFMotion.rReqPitch := fbYDFMotion.rActPitch - GVL_Sensor.stFrameP.fValue * 0.5;
+        ELSE
+            // Already at goal.
+            iStepAdjustingPitch := 4;
         END_IF;
     3:
-        // Step3 calcurate motion distance
-        // read latest status
-        Main.M15.Axis.ReadStatus();
-        Main.M16.Axis.ReadStatus();
-        Main.M17.Axis.ReadStatus();
-
-        IF GVL_Sensor.stFrameP.fValue > 0 THEN
-            // Need to up YDF1 AND 2
-            fTargetPos_M15 := abs(REAL_TO_LREAL(GVL_Sensor.stFrameP.fValue)) * fDistanceZ / 2 * 0.9;
-            fTargetPos_M16 := abs(REAL_TO_LREAL(GVL_Sensor.stFrameP.fValue)) * fDistanceZ / 2 * 0.9;;
-            fTargetPos_M17 := 0;
-            // Enable Relative Motion Act
-            bEnableMoveRelative := TRUE;
+        // Wait until Done. and wait tilt sensor stabilization.
+        tonWaitToStabilize(IN:=NOT bMotorsBusy, PT:=T#5s);
+        IF tonWaitToStabilize.Q THEN
             iStepAdjustingPitch := 4;
-        ELSE
-            // Need to up YDF3
-            fTargetPos_M15 := 0;
-            fTargetPos_M16 := 0;
-            fTargetPos_M17 := abs(REAL_TO_LREAL(GVL_Sensor.stFrameP.fValue)) * fDistanceZ / 2 * 0.9;
-            // Enable Relative Motion Act
-            bEnableMoveRelative := TRUE;
-            iStepAdjustingPitch := 4;
+            tonWaitToStabilize(IN:=FALSE);
         END_IF;
     4:
-        // Wait until Done. and wait tilt sensor stabilization.
-        tonWaitToStabilize(IN:=NOT bEnableMoveRelative, PT:=T#5s);
-        IF tonWaitToStabilize.Q THEN
-            iStepAdjustingPitch := 5;
-        END_IF;
-    5:
-        IF abs(GVL_Sensor.stFrameP.fValue) > 0.05 THEN
+        IF nActiveSequenceIterationCount > nSequenceIterationCount THEN
+            // Exceeded maximum allowable number of iterations. Something is wrong.
+            iStepAdjustingPitch := -1;
+        ELSIF abs(GVL_Sensor.stFrameP.fValue) > fPitchThreshold THEN
             // Iteration
-            bEnableSetGaugeValue := TRUE;
             iStepAdjustingPitch := 2;
+            fbYDFMotion.bMoveToPitch := FALSE;
+            nActiveSequenceIterationCount := nActiveSequenceIterationCount + 1;
         ELSE
             // End
             bEnableAdjustingPitch:= FALSE;
+            bBusy := FALSE;
             iStepAdjustingPitch:=1;
             bDoneAdjustingPitch := TRUE;
+            fbYDFMotion.bMoveToPitch := FALSE;
         END_IF;
     -1:
         // Error
         bError:= TRUE;
+        bBusy := FALSE;
         bEnableAdjustingPitch:= FALSE;
         iStepAdjustingPitch:=1;
         bDoneAdjustingPitch := FALSE;
-END_CASE;]]></ST>
+        fbYDFMotion.bMoveToPitch := FALSE;
+END_CASE;
+]]></ST>
       </Implementation>
     </Action>
     <Action Name="ACT_6_AdjustingHeight" Id="{ecff2fe2-4916-403e-be1d-379dbc38b465}">
       <Implementation>
-        <ST><![CDATA[CASE iStepAdjustingHeight OF
+        <ST><![CDATA[
+CASE iStepAdjustingHeight OF
     1:
         IF bEnableAdjustingHeight AND NOT(bBusy AND bError) THEN
-            // Step1 read and apply gauge value
-            bEnableSetGaugeValue := TRUE;
             iStepAdjustingHeight := 2;
             bDoneAdjustingHeight := FALSE;
+            bBusy := TRUE;
+            fbYDFMotion.bMoveToPosition := FALSE;
+            nActiveSequenceIterationCount := 0;
         ELSE
             bEnableAdjustingHeight := FALSE;
         END_IF;
     2:
-        // Step2 wait until done
-        IF NOT bEnableSetGaugeValue THEN
+        // Step2 set target position
+        IF abs(GVL_Sensor.stHDF.fValue) > fPositionThreshold THEN
+            fbYDFMotion.bMoveToPosition := TRUE;
             iStepAdjustingHeight := 3;
+            fbYDFMotion.rReqPosition := fbYDFMotion.rActPosition - GVL_Sensor.stHDF.fValue;
+        ELSE
+            // Already at goal.
+            iStepAdjustingHeight := 4;
         END_IF;
     3:
-        // Step3 calcurate motion distance
-        // read latest status
-        Main.M15.Axis.ReadStatus();
-        Main.M16.Axis.ReadStatus();
-        Main.M17.Axis.ReadStatus();
-
-        // Need to move YDF 1~3
-        fTargetPos_M15 := -1 * REAL_TO_LREAL(GVL_Sensor.stHDF.fValue) * 0.9;
-        fTargetPos_M16 := -1 * REAL_TO_LREAL(GVL_Sensor.stHDF.fValue) * 0.9;
-        fTargetPos_M17 := -1 * REAL_TO_LREAL(GVL_Sensor.stHDF.fValue) * 0.9;
-        // Enable Relative Motion Act
-        bEnableMoveRelative := TRUE;
-        iStepAdjustingHeight := 4;
-
-    4:
         // Wait until Done. and wait tilt sensor stabilization.
-        tonWaitToStabilize(IN:=NOT bEnableMoveRelative, PT:=T#5s);
+        tonWaitToStabilize(IN:=NOT bMotorsBusy, PT:=T#5s);
         IF tonWaitToStabilize.Q THEN
-            iStepAdjustingHeight := 5;
+            iStepAdjustingHeight := 4;
+            tonWaitToStabilize(IN:=FALSE);
         END_IF;
-    5:
-        // check pitch and roll (if some axis is step-out)
-        IF abs(GVL_Sensor.stFrameP.fValue) > 0.5 OR abs(GVL_Sensor.stFrameR.fValue) > 0.5 THEN
-            bError := TRUE;
-        END_IF;
-
-        IF abs(GVL_Sensor.stHDF.fValue) > 0.05 AND NOT bError THEN
+    4:
+        IF nActiveSequenceIterationCount > nSequenceIterationCount THEN
+            // Exceeded maximum allowable number of iterations. Something is wrong.
+            iStepAdjustingHeight := -1;
+        ELSIF abs(GVL_Sensor.stHDF.fValue) > fPositionThreshold THEN
             // Iteration
-            bEnableAdjustingHeight := FALSE;
             iStepAdjustingHeight := 2;
+            fbYDFMotion.bMoveToPosition := FALSE;
+            nActiveSequenceIterationCount := nActiveSequenceIterationCount + 1;
         ELSE
             // End
             bEnableAdjustingHeight:= FALSE;
+            bBusy := FALSE;
             iStepAdjustingHeight:=1;
-            bDoneAdjustingHeight := FALSE;
+            bDoneAdjustingHeight := TRUE;
+            fbYDFMotion.bMoveToPosition := FALSE;
         END_IF;
     -1:
         // Error
         bError:= TRUE;
+        bBusy := FALSE;
         bEnableAdjustingHeight:= FALSE;
         iStepAdjustingHeight:=1;
         bDoneAdjustingHeight := FALSE;
-END_CASE;]]></ST>
-      </Implementation>
-    </Action>
-    <Action Name="ACT_INIT" Id="{a7e3d801-6d68-4b0b-889c-1ba1f5c3c9e2}">
-      <Implementation>
-        <ST><![CDATA[IF bINIT THEN
-    bINIT := FALSE;
-
-    Main.M15.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
-    Main.M15.bHardwareEnable := TRUE;
-    Main.M15.bPowerSelf := TRUE;
-    Main.M16.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
-    Main.M16.bHardwareEnable := TRUE;
-    Main.M16.bPowerSelf := TRUE;
-    Main.M17.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
-    Main.M17.bHardwareEnable := TRUE;
-    Main.M17.bPowerSelf := TRUE;
-
-    // Read linear gauge value
-    bEnableSetGaugeValue := TRUE;
-
-END_IF;]]></ST>
-      </Implementation>
-    </Action>
-    <Action Name="ACT_MoveRelative" Id="{d0a5870f-543e-4e78-9fac-0018c88574b5}">
-      <Implementation>
-        <ST><![CDATA[CASE iStepMoveRelative OF
-    1:
-        IF bEnableMoveRelative AND NOT (bBusy OR bError) THEN
-            bBusy:= TRUE;
-            bEnableMotion := TRUE;
-            bDone_M15 := bDone_M16 := bDone_M17 := FALSE;
-            iStepMoveRelative:= 2;
-        ELSE
-            bEnableMoveRelative:= FALSE;
-        END_IF;
-    2:
-        // Step2 Execute motion
-        IF fbMoveRelative_M15.Error OR fbMoveRelative_M16.Error OR fbMoveRelative_M17.Error THEN
-            iStepMoveRelative:= -1;
-            bError := 1;
-        END_IF;
-
-        IF (bDone_M15 AND bDone_M16 AND bDone_M17) AND NOT(fbMoveRelative_M15.Execute OR fbMoveRelative_M16.Execute OR fbMoveRelative_M17.Execute) THEN
-            iStepMoveRelative:= 3;
-        END_IF;
-
-        IF fbMoveRelative_M15.Done THEN
-            bDone_M15 := TRUE;
-        END_IF;
-        IF fbMoveRelative_M16.Done THEN
-            bDone_M16 := TRUE;
-        END_IF;
-        IF fbMoveRelative_M17.Done THEN
-            bDone_M17 := TRUE;
-        END_IF;
-
-        fbMoveRelative_M15(	Axis		:= Main.M15.Axis,
-                            Execute		:= bEnableMotion AND NOT (bDone_M15 OR bError),
-                            Distance	:= fTargetPos_M15,
-                            Velocity	:= 0.05,
-                            Acceleration:= 0.8,
-                            Deceleration:= 0.8,
-                            Jerk		:= 32
-        );
-        fbMoveRelative_M16(	Axis		:= Main.M16.Axis,
-                            Execute		:= bEnableMotion AND NOT (bDone_M16 OR bError),
-                            Distance	:= fTargetPos_M16,
-                            Velocity	:= 0.05,
-                            Acceleration:= 0.8,
-                            Deceleration:= 0.8,
-                            Jerk		:= 32
-        );
-        fbMoveRelative_M17(	Axis		:= Main.M17.Axis,
-                            Execute		:= bEnableMotion AND NOT (bDone_M17 OR bError),
-                            Distance	:= fTargetPos_M17,
-                            Velocity	:= 0.05,
-                            Acceleration:= 0.8,
-                            Deceleration:= 0.8,
-                            Jerk		:= 32
-        );
-    3:
-        // End
-        bEnableMotion:= FALSE;
-        bEnableMoveRelative:= FALSE;
-        bBusy := FALSE;
-        iStepMoveRelative:=1;
-    -1:
-        // Error
-        fbMoveRelative_M15.Execute:= FALSE;
-        fbMoveRelative_M16.Execute:= FALSE;
-        fbMoveRelative_M17.Execute:= FALSE;
-        bError:= TRUE;
-        bEnableMotion:= FALSE;
-        bEnableMoveRelative:= FALSE;
-        bBusy := FALSE;
-        iStepMoveRelative:=1;
-END_CASE;]]></ST>
+END_CASE;
+]]></ST>
       </Implementation>
     </Action>
     <Action Name="ACT_ResetError" Id="{06590c9c-35f1-44d5-8e2b-6f518c77179c}">
@@ -557,9 +540,6 @@ IF bResetError THEN
     bResetError := FALSE;
     bError:= FALSE;
     bBusy:=FALSE;
-    bEnableMotion := FALSE;
-    bEnableSetGaugeValue := FALSE;
-    bEnableMoveRelative := FALSE;
     bEnableJackOff := FALSE;
     bEnableLevitation := FALSE;
     bEnableLanding := FALSE;
@@ -593,70 +573,21 @@ IF bResetError THEN
         Error=> ,
         ErrorID=> );
 
-    bDone_M15 := bDone_M16 := bDone_M17 := FALSE;
-
     iStepJackOff := 1;
     iStepAdjustingRoll := 1;
-    iStepSetGaugeValue := 1;
-    iStepMoveRelative := 1;
     iStepAdjustingPitch := 1;
     iStepAdjustingHeight := 1;
-END_IF;]]></ST>
-      </Implementation>
-    </Action>
-    <Action Name="ACT_SetGaugeValue" Id="{ee83972d-b817-4ea9-8e0b-2d34f416c583}">
-      <Implementation>
-        <ST><![CDATA[
-CASE iStepSetGaugeValue OF
-    1:
-        IF bEnableSetGaugeValue AND NOT (bBusy OR bError) THEN
-            fTargetPos_M15 := GVL_Sensor.stYDF1.fValue;
-            fTargetPos_M16 := GVL_Sensor.stYDF2.fValue;
-            fTargetPos_M17 := GVL_Sensor.stYDF3.fValue;
 
-            iStepSetGaugeValue:=2;
-        ELSE
-            bEnableSetGaugeValue := FALSE;
-        END_IF;
-    2:
-        fbSetPosition_M15(	Axis :=		Main.M15.Axis,
-                            Execute :=	NOT fbSetPosition_M15.Done,
-                            Position :=	fTargetPos_M15
-        );
+    fbYDFMotion.bMoveToPosition := FALSE;
+    fbYDFMotion.bMoveToPitch := FALSE;
+    fbYDFMotion.bMoveToRoll := FALSE;
+    fbYDFMotion.rReqPosition := fbYDFMotion.rActPosition;
+    fbYDFMotion.rReqPitch := fbYDFMotion.rActPitch;
+    fbYDFMotion.rReqRoll := fbYDFMotion.rActRoll;
 
-        fbSetPosition_M16(	Axis :=		Main.M16.Axis,
-                            Execute :=	NOT fbSetPosition_M16.Done,
-                            Position :=	fTargetPos_M16
-        );
-
-        fbSetPosition_M17(	Axis :=		Main.M17.Axis,
-                            Execute :=	NOT fbSetPosition_M17.Done,
-                            Position :=	fTargetPos_M17
-        );
-        IF fbSetPosition_M15.Done OR fbSetPosition_M15.Error THEN
-            fbSetPosition_M15(	Axis :=		Main.M15.Axis,
-                                Execute :=	FALSE
-            );
-        END_IF;
-        IF fbSetPosition_M16.Done OR fbSetPosition_M16.Error THEN
-            fbSetPosition_M16(	Axis :=		Main.M16.Axis,
-                                Execute :=	FALSE
-            );
-        END_IF;
-        IF fbSetPosition_M17.Done OR fbSetPosition_M17.Error THEN
-            fbSetPosition_M17(	Axis :=		Main.M17.Axis,
-                                Execute :=	FALSE
-            );
-        END_IF;
-
-        IF NOT(fbSetPosition_M15.Execute OR fbSetPosition_M16.Execute OR fbSetPosition_M17.Execute) THEN
-            iStepSetGaugeValue:=3;
-        END_IF;
-
-    3:
-        bEnableSetGaugeValue := FALSE;
-        iStepSetGaugeValue:=1;
-END_CASE;]]></ST>
+    bStopAxes := TRUE;
+END_IF;
+]]></ST>
       </Implementation>
     </Action>
   </POU>

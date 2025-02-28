@@ -1,0 +1,713 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<safetyApplication Crc="2006183743" xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.1.0.0" Id="8d26f474-3705-4fef-8287-87728bcd08af" name="" mapState="false" mapDiag="false" groupOrderId="0" passificationAllowed="false" temporaryDeactivationAllowed="false" permamentDeactivationAllowed="false" xmlid="0" analogFBOutputReplacementValues="Zero" verifyAnalogFBInputsIfStart="false" xmlns="http://schemas.microsoft.com/dsltools/SafetyApplicationLanguage">
+  <networks>
+    <safetyApplicationHasNetworks Id="5f1fee9e-ef9b-4855-a17e-b7d503cbe927">
+      <Network Id="4d0a8a40-b8f0-4c28-9955-d3028250817f" name="Network2" networkName="Network1" intId="2" networkOrderId="0">
+        <functionBlocks>
+          <networkHasFunctionBlocks Id="e865a501-c76d-4368-be9d-274115d1975d">
+            <fBAnd Id="2447d51a-9938-4478-bcca-7832ae130399" name="FBAnd1" instanceName="FBAnd1" orderOfExecution="1" mapState="false" mapDiag="false" xmlid="0" functionName="safeAnd">
+              <inPorts>
+                <functioBlockHasInPorts Id="fa6b65d5-e18f-4609-bd17-3892b826d903">
+                  <inPort Id="ab0e6502-ca16-4c00-97d2-0a1f7d69dcd7" name="AndIn1" portName="AndIn1" assignedVariable="LSwNegZF" portNum="2" objectIndex="8" varId="2" filter="3" portDataType="1" channelInterface="Activated" deactivate1="Break Contact (NC)" maxDeviation="0" resetTime="0">
+                    <portMappings>
+                      <functionBlockPortHasPortMappings Id="b3858c35-bb2e-47bb-8308-51a4de8ca6fd">
+                        <portMapping Id="dfde9f87-af51-403e-8e71-a53b7bb85e60" name="FBAnd1_AndIn1_mapping" direction="input" dataType="safeBool" assignedVariable="LSwNegZF" physicalPorts="6.FSIN Module 8.Input">
+                          <aliasPorts>
+                            <portMappingHasAliasPorts Id="70053818-a99c-4410-b054-90a6439f616d">
+                              <aliasPort Id="16182d95-f292-45af-a2db-6cc976353314" name="SdsId6.ChannelId15" sdsId="6" channelId="15" channelName="FSIN Module 8.Input" functionId="1618018561" />
+                            </portMappingHasAliasPorts>
+                          </aliasPorts>
+                        </portMapping>
+                      </functionBlockPortHasPortMappings>
+                    </portMappings>
+                  </inPort>
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="8737f9bf-05c6-403b-b37a-ab92cf0690d0">
+                  <inPort Id="c5da7156-396d-48b5-b57a-828611b5b968" name="AndIn2" portName="AndIn2" portNum="3" objectIndex="9" varId="3" filter="2" portDataType="1" channelInterface="Activated" deactivate1="Break Contact (NC)" maxDeviation="0" resetTime="0" />
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="3e14fa7e-4bb9-4300-baaf-b85f80c4beaa">
+                  <inPort Id="fececed6-995d-479a-9b18-4eab12ef192c" name="AndIn3" portName="AndIn3" portNum="4" objectIndex="10" varId="4" filter="2" portDataType="1" channelInterface="Activated" deactivate1="Break Contact (NC)" maxDeviation="0" resetTime="0">
+                    <targetFunctionBlockPorts>
+                      <wiredLink Id="c1a42eb9-0c89-4a5d-909b-e57f0be300d6">
+                        <outPortMoniker name="//Network2/FBAnd3/AndOut" />
+                      </wiredLink>
+                    </targetFunctionBlockPorts>
+                  </inPort>
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="908cc9d1-6f27-4851-af95-90889b2b0628">
+                  <inPort Id="c9e5104b-811d-4626-b459-3bdceee4e161" name="AndIn4" portName="AndIn4" portNum="5" objectIndex="11" varId="5" filter="2" portDataType="1" channelInterface="Deactivated" maxDeviation="0" resetTime="0" />
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="1ddb6230-2df4-4e02-aae7-dbf537456fb1">
+                  <inPort Id="1c4bc11c-f8eb-4d01-a8de-7972d055d7d9" name="AndIn5" portName="AndIn5" portNum="6" objectIndex="12" varId="6" filter="2" portDataType="1" channelInterface="Deactivated" maxDeviation="0" resetTime="0" />
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="43ac905a-bd45-4b22-851c-505584bf3803">
+                  <inPort Id="3f348fc3-8fde-484b-a9ae-1af3396c65c9" name="AndIn6" portName="AndIn6" portNum="7" objectIndex="13" varId="7" filter="2" portDataType="1" channelInterface="Deactivated" maxDeviation="0" resetTime="0" />
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="8666d3fe-e00d-476e-a68e-b8c336a788ae">
+                  <inPort Id="039789d6-ab05-4988-a442-2eefc374ea47" name="AndIn7" portName="AndIn7" portNum="8" objectIndex="14" varId="8" filter="2" portDataType="1" channelInterface="Deactivated" maxDeviation="0" resetTime="0" />
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="f9c2f209-ec54-455c-bc9b-4bee9c4bbacb">
+                  <inPort Id="b084a9d3-043e-4e4c-9b58-4d63e83ba416" name="AndIn8" portName="AndIn8" portNum="9" objectIndex="15" varId="9" filter="2" portDataType="1" channelInterface="Deactivated" maxDeviation="0" resetTime="0" />
+                </functioBlockHasInPorts>
+              </inPorts>
+              <outPorts>
+                <functionBlockHasOutPorts Id="894903ea-45f2-4bec-a6af-8571736974c3">
+                  <outPort Id="7ed5045d-c6bd-46c0-a387-e09422372c9b" name="AndOut" portName="AndOut" assignedVariable="bBwdEnaZF" portNum="8" objectIndex="1" varId="20" filter="7" portDataType="1" replacementValue="0">
+                    <portMappings>
+                      <functionBlockPortHasPortMappings Id="68d3df42-7561-41d6-ba6d-b7978849ec8d">
+                        <portMapping Id="97759e88-2a41-460a-9178-cdab64fe5b3e" name="FBAnd1_AndOut_mapping" direction="output" dataType="safeBool" assignedVariable="bBwdEnaZF" physicalPorts="bBwdEnaZF.Out">
+                          <aliasPorts>
+                            <portMappingHasAliasPorts Id="bef09058-6d7b-49e9-a950-7a3cd8461383">
+                              <aliasPort Id="3891c8bf-b12c-4a6a-bd68-e2127a5e4068" name="SdsId15.ChannelId1" sdsId="15" channelId="1" channelName="Out" functionId="1131179972" />
+                            </portMappingHasAliasPorts>
+                          </aliasPorts>
+                        </portMapping>
+                      </functionBlockPortHasPortMappings>
+                    </portMappings>
+                  </outPort>
+                </functionBlockHasOutPorts>
+              </outPorts>
+            </fBAnd>
+          </networkHasFunctionBlocks>
+          <networkHasFunctionBlocks Id="aafabf63-1965-41bc-9736-5feab96b830b">
+            <fBAnd Id="51914e5d-dd3d-41a3-8c1a-afac1d54a59c" name="FBAnd2" instanceName="FBAnd2" orderOfExecution="2" mapState="false" mapDiag="false" xmlid="0" functionName="safeAnd">
+              <inPorts>
+                <functioBlockHasInPorts Id="d2906ea2-e6b9-47c9-84a2-40b8e392fd03">
+                  <inPort Id="954e9bd6-4f8b-4d47-b84b-e72e547406e3" name="AndIn1" portName="AndIn1" assignedVariable="LSwPosYF1" portNum="2" objectIndex="8" varId="2" filter="3" portDataType="1" channelInterface="Activated" deactivate1="Break Contact (NC)" maxDeviation="0" resetTime="0">
+                    <portMappings>
+                      <functionBlockPortHasPortMappings Id="e829a187-1350-48c8-9ea4-9089d345a544">
+                        <portMapping Id="68abb279-47bf-40ed-9348-fdab690fb132" name="FBAnd2_AndIn1_mapping" direction="input" dataType="safeBool" assignedVariable="LSwPosYF1" physicalPorts="4.InputChannel1">
+                          <aliasPorts>
+                            <portMappingHasAliasPorts Id="1fb2654d-916e-40ec-bb5f-4b826bf13cf1">
+                              <aliasPort Id="b29664c6-6396-4368-bce1-605fc9c842f7" name="SdsId4.ChannelId1" sdsId="4" channelId="1" channelName="InputChannel1" functionId="1610678529" />
+                            </portMappingHasAliasPorts>
+                          </aliasPorts>
+                        </portMapping>
+                      </functionBlockPortHasPortMappings>
+                    </portMappings>
+                  </inPort>
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="a884dd96-f9ec-42e7-811e-3ad7f421022d">
+                  <inPort Id="60423987-22fe-48ff-bb9f-1efc93b53756" name="AndIn2" portName="AndIn2" portNum="3" objectIndex="9" varId="3" filter="2" portDataType="1" channelInterface="Activated" deactivate1="Break Contact (NC)" maxDeviation="0" resetTime="0" />
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="a0ad522e-bd51-4a98-a7dc-cf1f8883d658">
+                  <inPort Id="7f22d5bc-678c-49f9-96ec-9c2fc793d502" name="AndIn3" portName="AndIn3" portNum="4" objectIndex="10" varId="4" filter="2" portDataType="1" channelInterface="Deactivated" maxDeviation="0" resetTime="0" />
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="7e9a5914-7524-413d-97f7-a842a9241867">
+                  <inPort Id="1e5a9b83-d006-4c10-826c-79b8e2b184ba" name="AndIn4" portName="AndIn4" portNum="5" objectIndex="11" varId="5" filter="2" portDataType="1" channelInterface="Deactivated" maxDeviation="0" resetTime="0" />
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="39d0efc7-01b1-4c2d-bd58-0fca137f596a">
+                  <inPort Id="d163a1d4-e34b-499b-b9c0-8212de3131ce" name="AndIn5" portName="AndIn5" portNum="6" objectIndex="12" varId="6" filter="2" portDataType="1" channelInterface="Deactivated" maxDeviation="0" resetTime="0" />
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="42f18c2e-8efa-49db-a46b-66842ac2553f">
+                  <inPort Id="3b46eafb-90c5-4498-9761-df8022aade69" name="AndIn6" portName="AndIn6" portNum="7" objectIndex="13" varId="7" filter="2" portDataType="1" channelInterface="Deactivated" maxDeviation="0" resetTime="0" />
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="4cf1723d-a155-4f45-90b8-f946488c77f0">
+                  <inPort Id="82da3572-83cd-47dd-8444-fed9105438a3" name="AndIn7" portName="AndIn7" portNum="8" objectIndex="14" varId="8" filter="2" portDataType="1" channelInterface="Deactivated" maxDeviation="0" resetTime="0" />
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="7548b32f-64d2-4ff1-8156-b10bf900edc8">
+                  <inPort Id="7f2020fe-bf69-478a-9d43-319544ec8fd5" name="AndIn8" portName="AndIn8" portNum="9" objectIndex="15" varId="9" filter="2" portDataType="1" channelInterface="Deactivated" maxDeviation="0" resetTime="0" />
+                </functioBlockHasInPorts>
+              </inPorts>
+              <outPorts>
+                <functionBlockHasOutPorts Id="199bccf1-daf4-4887-9a14-f58ffbefd966">
+                  <outPort Id="5d06fe52-2d82-445a-b571-60cb22607872" name="AndOut" portName="AndOut" assignedVariable="bFwdEnaYF1" portNum="8" objectIndex="1" varId="20" filter="7" portDataType="1" replacementValue="0">
+                    <portMappings>
+                      <functionBlockPortHasPortMappings Id="eed0b046-b561-4c8f-b06d-0116326b1f81">
+                        <portMapping Id="eae094e5-1aad-4d4c-9b87-541953e6de8a" name="FBAnd2_AndOut_mapping" direction="output" dataType="safeBool" assignedVariable="bFwdEnaYF1" physicalPorts="bFwdEnaYF1.Out">
+                          <aliasPorts>
+                            <portMappingHasAliasPorts Id="3007e7e4-98c1-4f28-ada8-3b86acb1409f">
+                              <aliasPort Id="1a4aa157-984f-423f-8705-e31a3997c956" name="SdsId10.ChannelId1" sdsId="10" channelId="1" channelName="Out" functionId="1131179972" />
+                            </portMappingHasAliasPorts>
+                          </aliasPorts>
+                        </portMapping>
+                      </functionBlockPortHasPortMappings>
+                    </portMappings>
+                  </outPort>
+                </functionBlockHasOutPorts>
+              </outPorts>
+            </fBAnd>
+          </networkHasFunctionBlocks>
+          <networkHasFunctionBlocks Id="d50ea398-f9b0-4401-8268-0296c0e4ba71">
+            <fBAnd Id="aee4a24f-20a9-4b11-8421-e15c2390f3b2" name="FBAnd3" instanceName="FBAnd3" orderOfExecution="3" mapState="false" mapDiag="false" xmlid="0" functionName="safeAnd">
+              <inPorts>
+                <functioBlockHasInPorts Id="4bde720b-d163-4f84-a9c6-9d0715737e14">
+                  <inPort Id="bc85bbb7-0c15-4887-9d7f-5c287f191288" name="AndIn1" portName="AndIn1" assignedVariable="LSwProtectionInnerA" portNum="2" objectIndex="8" varId="2" filter="3" portDataType="1" channelInterface="Activated" deactivate1="Break Contact (NC)" maxDeviation="0" resetTime="0">
+                    <portMappings>
+                      <functionBlockPortHasPortMappings Id="ae4b5c0c-6b65-49fd-bdf6-1d52c16b66de">
+                        <portMapping Id="538c3f93-fd17-485d-8579-283832c1011b" name="FBAnd3_AndIn1_mapping" direction="input" dataType="safeBool" assignedVariable="LSwProtectionInnerA" physicalPorts="6.FSIN Module 5.Input">
+                          <aliasPorts>
+                            <portMappingHasAliasPorts Id="6baab756-c71d-4b89-8885-8fb6e9e135a3">
+                              <aliasPort Id="b285ff02-56d3-4945-b88b-64dd3af2e417" name="SdsId6.ChannelId9" sdsId="6" channelId="9" channelName="FSIN Module 5.Input" functionId="1614872833" />
+                            </portMappingHasAliasPorts>
+                          </aliasPorts>
+                        </portMapping>
+                      </functionBlockPortHasPortMappings>
+                    </portMappings>
+                  </inPort>
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="14b231f7-67b0-4cfc-bb3f-70a87fe11b8d">
+                  <inPort Id="b9397bad-7dab-4c49-b3ab-89165de1af48" name="AndIn2" portName="AndIn2" assignedVariable="LSwProtectionInnerB" portNum="3" objectIndex="9" varId="3" filter="2" portDataType="1" channelInterface="Activated" deactivate1="Break Contact (NC)" maxDeviation="0" resetTime="0">
+                    <portMappings>
+                      <functionBlockPortHasPortMappings Id="878069b9-c493-4018-9740-1e55932adbab">
+                        <portMapping Id="f864186f-52b3-4a1f-a318-b1f174bb097e" name="FBAnd3_AndIn2_mapping" direction="input" dataType="safeBool" assignedVariable="LSwProtectionInnerB" physicalPorts="6.FSIN Module 6.Input">
+                          <aliasPorts>
+                            <portMappingHasAliasPorts Id="2ffa6ddc-fa81-4e23-941e-df411eff1e90">
+                              <aliasPort Id="0ee374f9-ef24-4714-bd92-0652c775a4b6" name="SdsId6.ChannelId11" sdsId="6" channelId="11" channelName="FSIN Module 6.Input" functionId="1615921409" />
+                            </portMappingHasAliasPorts>
+                          </aliasPorts>
+                        </portMapping>
+                      </functionBlockPortHasPortMappings>
+                    </portMappings>
+                  </inPort>
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="15ca24b6-a4d7-4bc3-8f53-62a030e8bb7a">
+                  <inPort Id="3b6a8ea8-e4c2-4dda-bf6f-15346a13e9e9" name="AndIn3" portName="AndIn3" portNum="4" objectIndex="10" varId="4" filter="2" portDataType="1" channelInterface="Deactivated" maxDeviation="0" resetTime="0" />
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="a385c3c4-3403-46db-aba5-0b86ea026c01">
+                  <inPort Id="43f8a1c2-482c-4e0a-8a23-2acd83a2004f" name="AndIn4" portName="AndIn4" portNum="5" objectIndex="11" varId="5" filter="2" portDataType="1" channelInterface="Deactivated" maxDeviation="0" resetTime="0" />
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="ecce51ed-48e9-4430-97b2-549f6454fac2">
+                  <inPort Id="c6a3bf10-73fd-4025-9b03-425145c6c30f" name="AndIn5" portName="AndIn5" portNum="6" objectIndex="12" varId="6" filter="2" portDataType="1" channelInterface="Deactivated" maxDeviation="0" resetTime="0" />
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="5cd694b9-1137-4c97-96fa-ac885d4badfc">
+                  <inPort Id="63b5764d-16de-409b-a381-9aeb25ccc27e" name="AndIn6" portName="AndIn6" portNum="7" objectIndex="13" varId="7" filter="2" portDataType="1" channelInterface="Deactivated" maxDeviation="0" resetTime="0" />
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="aee5a10b-8fa1-4e5e-9f6e-16d3bfaad2e1">
+                  <inPort Id="56a3fc44-d30c-4afe-80f6-5d3ee971148a" name="AndIn7" portName="AndIn7" portNum="8" objectIndex="14" varId="8" filter="2" portDataType="1" channelInterface="Deactivated" maxDeviation="0" resetTime="0" />
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="2db176b6-1feb-44e4-a0b8-ed9be3f78ee2">
+                  <inPort Id="3f9a7601-f485-4190-8e23-8da69b2fa7d2" name="AndIn8" portName="AndIn8" portNum="9" objectIndex="15" varId="9" filter="2" portDataType="1" channelInterface="Activated" deactivate1="Break Contact (NC)" maxDeviation="0" resetTime="0" />
+                </functioBlockHasInPorts>
+              </inPorts>
+              <outPorts>
+                <functionBlockHasOutPorts Id="04bcfc3f-557a-470a-a2a5-21e0b7c7bcb5">
+                  <outPort Id="959b6b25-c503-4a6e-8d9b-b055e63878fc" name="AndOut" portName="AndOut" portNum="8" objectIndex="1" varId="20" filter="7" portDataType="1" replacementValue="0">
+                    <targetFunctionBlockPorts>
+                      <wiredLink Id="e34cb130-415f-48c3-b81d-80373d5cd8f8">
+                        <inPortMoniker name="//Network2/FBAnd2/AndIn2" />
+                      </wiredLink>
+                      <wiredLink Id="0695833c-59c7-4d68-9f36-78eee506fb1b">
+                        <inPortMoniker name="//Network2/FBAnd5/AndIn2" />
+                      </wiredLink>
+                    </targetFunctionBlockPorts>
+                  </outPort>
+                </functionBlockHasOutPorts>
+              </outPorts>
+            </fBAnd>
+          </networkHasFunctionBlocks>
+          <networkHasFunctionBlocks Id="2312f223-8ba3-42dd-8ed5-564658dcf94c">
+            <fBAnd Id="f24d9673-f8ce-4b49-9e4f-5e5ee6142d95" name="FBAnd4" instanceName="FBAnd4" orderOfExecution="4" mapState="false" mapDiag="false" xmlid="0" functionName="safeAnd">
+              <inPorts>
+                <functioBlockHasInPorts Id="aee14442-9a2c-4a63-83f2-2691f0e6ca37">
+                  <inPort Id="b06862b1-6b68-4df8-b845-69f98cb8960d" name="AndIn1" portName="AndIn1" assignedVariable="LSwProtectionBottomA" portNum="2" objectIndex="8" varId="2" filter="3" portDataType="1" channelInterface="Activated" deactivate1="Break Contact (NC)" maxDeviation="0" resetTime="0">
+                    <portMappings>
+                      <functionBlockPortHasPortMappings Id="fe4cbb27-195e-4c04-bdc6-054cb84c94f4">
+                        <portMapping Id="d98ae4ad-cbbc-4cbe-9645-ecf2e699cea3" name="FBAnd4_AndIn1_mapping" direction="input" dataType="safeBool" assignedVariable="LSwProtectionBottomA" physicalPorts="6.FSIN Module 3.Input">
+                          <aliasPorts>
+                            <portMappingHasAliasPorts Id="79c77fbb-964a-4e2e-9d54-8df4b48545a4">
+                              <aliasPort Id="faab3beb-3515-49e3-a830-a01d673f804c" name="SdsId6.ChannelId5" sdsId="6" channelId="5" channelName="FSIN Module 3.Input" functionId="1612775681" />
+                            </portMappingHasAliasPorts>
+                          </aliasPorts>
+                        </portMapping>
+                      </functionBlockPortHasPortMappings>
+                    </portMappings>
+                  </inPort>
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="4efff38f-5d76-49f7-9770-62b72fcfabca">
+                  <inPort Id="2ae084d8-2cd2-4d9d-bf9b-766db2342255" name="AndIn2" portName="AndIn2" assignedVariable="LSwProtectionBottomB" portNum="3" objectIndex="9" varId="3" filter="2" portDataType="1" channelInterface="Activated" deactivate1="Break Contact (NC)" maxDeviation="0" resetTime="0">
+                    <portMappings>
+                      <functionBlockPortHasPortMappings Id="699854ce-7d6c-4c92-9ae2-ac373a05e522">
+                        <portMapping Id="d94e7e79-7653-4c35-8115-dec97d931120" name="FBAnd4_AndIn2_mapping" direction="input" dataType="safeBool" assignedVariable="LSwProtectionBottomB" physicalPorts="6.FSIN Module 4.Input">
+                          <aliasPorts>
+                            <portMappingHasAliasPorts Id="e9cd8ab1-c17a-48e9-9250-9003e56303bb">
+                              <aliasPort Id="816af313-5c4e-4fff-8aa0-cbd7bf07c328" name="SdsId6.ChannelId7" sdsId="6" channelId="7" channelName="FSIN Module 4.Input" functionId="1613824257" />
+                            </portMappingHasAliasPorts>
+                          </aliasPorts>
+                        </portMapping>
+                      </functionBlockPortHasPortMappings>
+                    </portMappings>
+                  </inPort>
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="4e2afa1e-23d7-4dff-bb5b-86048a7985fd">
+                  <inPort Id="0e0f2fbb-ee87-42c8-9892-4d5007f35d89" name="AndIn3" portName="AndIn3" portNum="4" objectIndex="10" varId="4" filter="2" portDataType="1" channelInterface="Deactivated" maxDeviation="0" resetTime="0" />
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="587e2d01-be37-4160-81fb-a5864b7af258">
+                  <inPort Id="ef88ea9c-f13b-4d9b-9fb3-be222c71603f" name="AndIn4" portName="AndIn4" portNum="5" objectIndex="11" varId="5" filter="2" portDataType="1" channelInterface="Deactivated" maxDeviation="0" resetTime="0" />
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="c387f4e4-d136-4a11-bf94-047bc13a4526">
+                  <inPort Id="d92dfa49-366c-4391-8a9c-7def826e3997" name="AndIn5" portName="AndIn5" portNum="6" objectIndex="12" varId="6" filter="2" portDataType="1" channelInterface="Deactivated" maxDeviation="0" resetTime="0" />
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="013662fe-9843-4c2a-b102-26bb01dac22e">
+                  <inPort Id="23be9475-f33d-4a70-acfc-485cc7df7d99" name="AndIn6" portName="AndIn6" portNum="7" objectIndex="13" varId="7" filter="2" portDataType="1" channelInterface="Deactivated" maxDeviation="0" resetTime="0" />
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="d8257ace-2c19-4b64-b3c2-76ac0c30324a">
+                  <inPort Id="41831dc4-fcaf-4f05-a657-02d911e1bb8b" name="AndIn7" portName="AndIn7" portNum="8" objectIndex="14" varId="8" filter="2" portDataType="1" channelInterface="Deactivated" maxDeviation="0" resetTime="0" />
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="59df497a-d0c6-4844-b4f1-69d5c5f7ca00">
+                  <inPort Id="72a1674a-7bd2-42d1-bf02-2fae8534c298" name="AndIn8" portName="AndIn8" portNum="9" objectIndex="15" varId="9" filter="2" portDataType="1" channelInterface="Activated" deactivate1="Break Contact (NC)" maxDeviation="0" resetTime="0" />
+                </functioBlockHasInPorts>
+              </inPorts>
+              <outPorts>
+                <functionBlockHasOutPorts Id="e2645a6b-8d36-425c-89e5-eb63c265d241">
+                  <outPort Id="801c6aa5-9dee-495b-8b23-32b2fb23cfee" name="AndOut" portName="AndOut" portNum="8" objectIndex="1" varId="20" filter="7" portDataType="1" replacementValue="0">
+                    <targetFunctionBlockPorts>
+                      <wiredLink Id="8293cd3f-c65a-47f5-aae4-ed3767c0077d">
+                        <inPortMoniker name="//Network2/FBAnd1/AndIn2" />
+                      </wiredLink>
+                      <wiredLink Id="fbe9a510-5d2e-4687-9d4e-4e0f572e210b">
+                        <inPortMoniker name="//Network2/FBAnd7/AndIn2" />
+                      </wiredLink>
+                    </targetFunctionBlockPorts>
+                  </outPort>
+                </functionBlockHasOutPorts>
+              </outPorts>
+            </fBAnd>
+          </networkHasFunctionBlocks>
+          <networkHasFunctionBlocks Id="8da98c39-077e-4de3-8bdb-22db25c160ac">
+            <fBAnd Id="dd298efd-7592-46fa-8d08-86eb9baef29e" name="FBAnd5" instanceName="FBAnd5" orderOfExecution="5" mapState="false" mapDiag="false" xmlid="0" functionName="safeAnd">
+              <inPorts>
+                <functioBlockHasInPorts Id="489fe312-099f-40e2-a4fd-dd2de35fe2fe">
+                  <inPort Id="a7c7f421-5f27-4fbe-9d20-0a530c478637" name="AndIn1" portName="AndIn1" assignedVariable="LSwPosYF2" portNum="2" objectIndex="8" varId="2" filter="3" portDataType="1" channelInterface="Activated" deactivate1="Break Contact (NC)" maxDeviation="0" resetTime="0">
+                    <portMappings>
+                      <functionBlockPortHasPortMappings Id="35ac805f-d3c3-4d6b-8cfe-2113d5fe1b7b">
+                        <portMapping Id="1c700f68-2308-486f-a52d-0eae3874cebc" name="FBAnd5_AndIn1_mapping" direction="input" dataType="safeBool" assignedVariable="LSwPosYF2" physicalPorts="4.InputChannel3">
+                          <aliasPorts>
+                            <portMappingHasAliasPorts Id="e7e67ed5-8126-42da-9b0f-cfdaf9c12ef8">
+                              <aliasPort Id="07d663c7-8f0c-4eb2-aeca-3fcee6f66a55" name="SdsId4.ChannelId3" sdsId="4" channelId="3" channelName="InputChannel3" functionId="1610679041" />
+                            </portMappingHasAliasPorts>
+                          </aliasPorts>
+                        </portMapping>
+                      </functionBlockPortHasPortMappings>
+                    </portMappings>
+                  </inPort>
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="26dca760-c652-49a0-837d-afbcc748d5f4">
+                  <inPort Id="bc9aaccb-43a4-4034-8281-f4a5ff660e21" name="AndIn2" portName="AndIn2" portNum="3" objectIndex="9" varId="3" filter="2" portDataType="1" channelInterface="Activated" deactivate1="Break Contact (NC)" maxDeviation="0" resetTime="0" />
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="88d016bb-8796-4a7b-81bc-318a2c326ada">
+                  <inPort Id="943933d7-570e-41be-ae7b-a07d20c2c06b" name="AndIn3" portName="AndIn3" portNum="4" objectIndex="10" varId="4" filter="2" portDataType="1" channelInterface="Deactivated" maxDeviation="0" resetTime="0" />
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="04a45f3f-203c-4834-83da-f9997f3e2298">
+                  <inPort Id="49325b92-f61a-45ce-a377-bd5f62a42f5c" name="AndIn4" portName="AndIn4" portNum="5" objectIndex="11" varId="5" filter="2" portDataType="1" channelInterface="Deactivated" maxDeviation="0" resetTime="0" />
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="1fb4abf7-edaa-47f3-8374-cee5f8b5931a">
+                  <inPort Id="2d7d90a8-e548-4848-8761-ba31227503e1" name="AndIn5" portName="AndIn5" portNum="6" objectIndex="12" varId="6" filter="2" portDataType="1" channelInterface="Deactivated" maxDeviation="0" resetTime="0" />
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="498c4c53-f46a-4108-b428-60ce4feed44b">
+                  <inPort Id="56d2ea3a-c892-463c-9d16-84c949dfc2e0" name="AndIn6" portName="AndIn6" portNum="7" objectIndex="13" varId="7" filter="2" portDataType="1" channelInterface="Deactivated" maxDeviation="0" resetTime="0" />
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="82a0142d-9736-4ab7-a5ae-5c79f0840d5b">
+                  <inPort Id="b347a6b2-883a-49c8-962d-62172cf89470" name="AndIn7" portName="AndIn7" portNum="8" objectIndex="14" varId="8" filter="2" portDataType="1" channelInterface="Deactivated" maxDeviation="0" resetTime="0" />
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="8b170742-4878-499d-9f30-00a9db955a7f">
+                  <inPort Id="b16a0354-8937-478c-bf5e-4cd9eccfd972" name="AndIn8" portName="AndIn8" portNum="9" objectIndex="15" varId="9" filter="2" portDataType="1" channelInterface="Deactivated" maxDeviation="0" resetTime="0" />
+                </functioBlockHasInPorts>
+              </inPorts>
+              <outPorts>
+                <functionBlockHasOutPorts Id="e0d70025-b7ec-4f4c-b81f-fc2a58a2a0e9">
+                  <outPort Id="53bf1cd6-6675-4a31-b9a4-9e7093fef62a" name="AndOut" portName="AndOut" assignedVariable="bFwdEnaYF2" portNum="8" objectIndex="1" varId="20" filter="7" portDataType="1" replacementValue="0">
+                    <portMappings>
+                      <functionBlockPortHasPortMappings Id="2513d467-8ae2-42d5-b03d-9d35abf582c1">
+                        <portMapping Id="ea03b690-2137-49d1-9217-8d7e394aae2a" name="FBAnd5_AndOut_mapping" direction="output" dataType="safeBool" assignedVariable="bFwdEnaYF2" physicalPorts="bFwdEnaYF2.Out">
+                          <aliasPorts>
+                            <portMappingHasAliasPorts Id="9ada085b-9886-435a-afe7-78c8751c4bb0">
+                              <aliasPort Id="392bffb1-7129-4b77-a35d-f8e6da55ab3c" name="SdsId12.ChannelId1" sdsId="12" channelId="1" channelName="Out" functionId="1131179972" />
+                            </portMappingHasAliasPorts>
+                          </aliasPorts>
+                        </portMapping>
+                      </functionBlockPortHasPortMappings>
+                    </portMappings>
+                  </outPort>
+                </functionBlockHasOutPorts>
+              </outPorts>
+            </fBAnd>
+          </networkHasFunctionBlocks>
+          <networkHasFunctionBlocks Id="d7192ecb-bebc-4f06-8774-a4faae4a2881">
+            <fBAnd Id="ed405b7b-d9ad-4b91-ad2b-e705e4e113e7" name="FBAnd6" instanceName="FBAnd6" orderOfExecution="6" mapState="false" mapDiag="false" xmlid="0" functionName="safeAnd">
+              <inPorts>
+                <functioBlockHasInPorts Id="cf50e6b0-ee23-447d-8d1b-5ae719867e52">
+                  <inPort Id="97a4d8fe-28d5-406a-82f0-a35a2e0a4e0f" name="AndIn1" portName="AndIn1" assignedVariable="LSwNegYF2" portNum="2" objectIndex="8" varId="2" filter="3" portDataType="1" channelInterface="Activated" deactivate1="Break Contact (NC)" maxDeviation="0" resetTime="0">
+                    <portMappings>
+                      <functionBlockPortHasPortMappings Id="4da032cf-1b6c-4161-9a2e-2fb5cde054a3">
+                        <portMapping Id="639b8023-8940-42c3-bd11-87d869aaf61f" name="FBAnd6_AndIn1_mapping" direction="input" dataType="safeBool" assignedVariable="LSwNegYF2" physicalPorts="4.InputChannel4">
+                          <aliasPorts>
+                            <portMappingHasAliasPorts Id="8df30022-4b35-44b9-b5af-6021918381d4">
+                              <aliasPort Id="d769ab39-cf08-4e15-8550-ce90e7a18fa0" name="SdsId4.ChannelId4" sdsId="4" channelId="4" channelName="InputChannel4" functionId="1610679297" />
+                            </portMappingHasAliasPorts>
+                          </aliasPorts>
+                        </portMapping>
+                      </functionBlockPortHasPortMappings>
+                    </portMappings>
+                  </inPort>
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="26db53f8-69b6-4ab8-96ee-c267c438e6d7">
+                  <inPort Id="b176c501-369b-4f37-ad8b-3f8fc5fcfb61" name="AndIn2" portName="AndIn2" portNum="3" objectIndex="9" varId="3" filter="2" portDataType="1" channelInterface="Activated" deactivate1="Break Contact (NC)" maxDeviation="0" resetTime="0">
+                    <targetFunctionBlockPorts>
+                      <wiredLink Id="7d866e41-a982-433e-a8c5-7437d1474369">
+                        <outPortMoniker name="//Network2/FBAnd4/AndOut" />
+                      </wiredLink>
+                    </targetFunctionBlockPorts>
+                  </inPort>
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="ea2a48c4-5ea5-45b0-8006-bdc4c4ba7204">
+                  <inPort Id="e072d882-62c6-48f9-81fa-f78eb2353645" name="AndIn3" portName="AndIn3" portNum="4" objectIndex="10" varId="4" filter="2" portDataType="1" channelInterface="Deactivated" maxDeviation="0" resetTime="0" />
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="fa0e7c7d-d6e9-4c06-81dd-9c10f5101499">
+                  <inPort Id="084588ac-79c3-4d1d-b424-830bbca97d42" name="AndIn4" portName="AndIn4" portNum="5" objectIndex="11" varId="5" filter="2" portDataType="1" channelInterface="Deactivated" maxDeviation="0" resetTime="0" />
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="f14ec651-4d8f-48cb-81fc-37819cdbb37e">
+                  <inPort Id="36a70775-1b95-423d-bd27-8d6d810c8400" name="AndIn5" portName="AndIn5" portNum="6" objectIndex="12" varId="6" filter="2" portDataType="1" channelInterface="Deactivated" maxDeviation="0" resetTime="0" />
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="fe814e77-40e3-4a50-a90a-5d454b33b4ee">
+                  <inPort Id="4e0bb003-6d1e-41f0-9760-b7195c4d2d90" name="AndIn6" portName="AndIn6" portNum="7" objectIndex="13" varId="7" filter="2" portDataType="1" channelInterface="Deactivated" maxDeviation="0" resetTime="0" />
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="de493131-5a7f-4441-91d8-c71032a67e19">
+                  <inPort Id="61680f47-3315-48b9-8f90-ef8c8ac94b30" name="AndIn7" portName="AndIn7" portNum="8" objectIndex="14" varId="8" filter="2" portDataType="1" channelInterface="Deactivated" maxDeviation="0" resetTime="0" />
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="4edb22dd-cebd-4ea3-b183-0a35f89b15e4">
+                  <inPort Id="4e454736-e893-4d60-bed5-9f8eaec1559f" name="AndIn8" portName="AndIn8" portNum="9" objectIndex="15" varId="9" filter="2" portDataType="1" channelInterface="Deactivated" maxDeviation="0" resetTime="0" />
+                </functioBlockHasInPorts>
+              </inPorts>
+              <outPorts>
+                <functionBlockHasOutPorts Id="b9a276f0-fcf1-43d0-8c7a-895b23db4a0b">
+                  <outPort Id="86ac89f6-9efd-4bd3-8518-db3201890bf1" name="AndOut" portName="AndOut" assignedVariable="bBwdEnaYF2" portNum="8" objectIndex="1" varId="20" filter="7" portDataType="1" replacementValue="0">
+                    <portMappings>
+                      <functionBlockPortHasPortMappings Id="bd2dd55b-8a32-46c3-83c8-7a44dc65d577">
+                        <portMapping Id="7d22d8a6-306d-4e6d-b6da-f1dd82cc0b81" name="FBAnd6_AndOut_mapping" direction="output" dataType="safeBool" assignedVariable="bBwdEnaYF2" physicalPorts="bBwdEnaYF2.Out">
+                          <aliasPorts>
+                            <portMappingHasAliasPorts Id="ee20bf35-83fe-444a-bd2d-037f4eb50e79">
+                              <aliasPort Id="eb18120c-b85d-412f-8d6e-6478c58d4948" name="SdsId13.ChannelId1" sdsId="13" channelId="1" channelName="Out" functionId="1131179972" />
+                            </portMappingHasAliasPorts>
+                          </aliasPorts>
+                        </portMapping>
+                      </functionBlockPortHasPortMappings>
+                    </portMappings>
+                  </outPort>
+                </functionBlockHasOutPorts>
+              </outPorts>
+            </fBAnd>
+          </networkHasFunctionBlocks>
+          <networkHasFunctionBlocks Id="2c53cbc1-7a66-4f94-888d-e9e18cff5964">
+            <fBAnd Id="4558817a-3b19-4691-a878-05a80ea61c0c" name="FBAnd7" instanceName="FBAnd7" orderOfExecution="7" mapState="false" mapDiag="false" xmlid="0" functionName="safeAnd">
+              <inPorts>
+                <functioBlockHasInPorts Id="77a728ff-abc9-4b02-bbde-e96367dd0f43">
+                  <inPort Id="ea12c4c4-c03f-4a45-809b-871e2a1f536f" name="AndIn1" portName="AndIn1" assignedVariable="LSwNegYF1" portNum="2" objectIndex="8" varId="2" filter="3" portDataType="1" channelInterface="Activated" deactivate1="Break Contact (NC)" maxDeviation="0" resetTime="0">
+                    <portMappings>
+                      <functionBlockPortHasPortMappings Id="11f38e56-9728-4761-9b17-40bfba78fb3d">
+                        <portMapping Id="d36bb8a1-36ea-42a3-9320-aab3c9b80f01" name="FBAnd7_AndIn1_mapping" direction="input" dataType="safeBool" assignedVariable="LSwNegYF1" physicalPorts="4.InputChannel2">
+                          <aliasPorts>
+                            <portMappingHasAliasPorts Id="e24cf9f2-506b-4337-a666-ba5a8fd36b8c">
+                              <aliasPort Id="1b549d26-2297-4a75-a29e-008f972d420d" name="SdsId4.ChannelId2" sdsId="4" channelId="2" channelName="InputChannel2" functionId="1610678785" />
+                            </portMappingHasAliasPorts>
+                          </aliasPorts>
+                        </portMapping>
+                      </functionBlockPortHasPortMappings>
+                    </portMappings>
+                  </inPort>
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="640b8387-b4cb-4f77-a508-5216a524d27b">
+                  <inPort Id="465bc759-2587-4a9b-8642-de3278e3277e" name="AndIn2" portName="AndIn2" portNum="3" objectIndex="9" varId="3" filter="2" portDataType="1" channelInterface="Activated" deactivate1="Break Contact (NC)" maxDeviation="0" resetTime="0" />
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="e797c621-4608-4795-a3c0-dae3a9d30b18">
+                  <inPort Id="6883da4b-6629-4a61-b779-358877fc6ffe" name="AndIn3" portName="AndIn3" portNum="4" objectIndex="10" varId="4" filter="2" portDataType="1" channelInterface="Deactivated" maxDeviation="0" resetTime="0" />
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="2a4513fb-7f2d-4e67-b4b0-6a6d240c42ae">
+                  <inPort Id="c519b120-ff6d-4e48-9916-471956abec8d" name="AndIn4" portName="AndIn4" portNum="5" objectIndex="11" varId="5" filter="2" portDataType="1" channelInterface="Deactivated" maxDeviation="0" resetTime="0" />
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="8115d62d-259a-4f32-8933-0836b0a33c16">
+                  <inPort Id="e8e96734-d807-44cf-a8be-e08dcb026bad" name="AndIn5" portName="AndIn5" portNum="6" objectIndex="12" varId="6" filter="2" portDataType="1" channelInterface="Deactivated" maxDeviation="0" resetTime="0" />
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="793eea7e-3ee1-472d-b3fe-1ba89c66a231">
+                  <inPort Id="0873f987-aa86-4944-a4dc-42b065eb68c2" name="AndIn6" portName="AndIn6" portNum="7" objectIndex="13" varId="7" filter="2" portDataType="1" channelInterface="Deactivated" maxDeviation="0" resetTime="0" />
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="a537a661-d3ee-4b6b-bce4-41b542ddef2d">
+                  <inPort Id="a3d34b68-eb02-4092-a6f7-4018b9675c6b" name="AndIn7" portName="AndIn7" portNum="8" objectIndex="14" varId="8" filter="2" portDataType="1" channelInterface="Deactivated" maxDeviation="0" resetTime="0" />
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="554bdf3b-3414-43d1-a4d5-75f0e933524e">
+                  <inPort Id="e70a70a7-2979-4b81-a8e7-c938d7138b03" name="AndIn8" portName="AndIn8" portNum="9" objectIndex="15" varId="9" filter="2" portDataType="1" channelInterface="Deactivated" maxDeviation="0" resetTime="0" />
+                </functioBlockHasInPorts>
+              </inPorts>
+              <outPorts>
+                <functionBlockHasOutPorts Id="1932ca50-90c7-4a90-a334-371f7e6f63a3">
+                  <outPort Id="4f38d6bb-6b1f-4035-ba9e-dead16c2f0b0" name="AndOut" portName="AndOut" assignedVariable="bBwdEnaYF1" portNum="8" objectIndex="1" varId="20" filter="7" portDataType="1" replacementValue="0">
+                    <portMappings>
+                      <functionBlockPortHasPortMappings Id="d51f101f-c65e-4d90-b7d0-d843b4706b4d">
+                        <portMapping Id="7836a74e-74db-4298-901c-9f34e4f2c7da" name="FBAnd7_AndOut_mapping" direction="output" dataType="safeBool" assignedVariable="bBwdEnaYF1" physicalPorts="bBwdEnaYF1.Out">
+                          <aliasPorts>
+                            <portMappingHasAliasPorts Id="e01036e3-a67e-4d77-acf5-0592a20485d4">
+                              <aliasPort Id="975467c7-941e-4c04-96cc-8b6c7f37b55d" name="SdsId11.ChannelId1" sdsId="11" channelId="1" channelName="Out" functionId="1131179972" />
+                            </portMappingHasAliasPorts>
+                          </aliasPorts>
+                        </portMapping>
+                      </functionBlockPortHasPortMappings>
+                    </portMappings>
+                  </outPort>
+                </functionBlockHasOutPorts>
+              </outPorts>
+            </fBAnd>
+          </networkHasFunctionBlocks>
+          <networkHasFunctionBlocks Id="130dff4d-4dc6-4d6c-bc93-4aa0b2176ad8">
+            <fBEstop Id="be578e98-76b3-4b06-ab1a-5925f9bf32ab" name="FBEstop1" instanceName="FBEstop1" orderOfExecution="8" mapState="false" mapDiag="false" xmlid="0" functionName="safeEstop" safeInputsAfterDiscError="false">
+              <inPorts>
+                <functioBlockHasInPorts Id="bccf9840-0664-49d9-8719-24d5cda6a1a8">
+                  <inPort Id="a7a07f47-e1dd-478d-947a-9c72f2f49638" name="Restart" portName="Restart" assignedVariable="Restart" portNum="2" objectIndex="0" varId="1" filter="3" portDataType="1" maxDeviation="0" resetTime="0">
+                    <portMappings>
+                      <functionBlockPortHasPortMappings Id="17047840-c15c-4ccf-acbd-41df62bbc5ff">
+                        <portMapping Id="8bad35b3-7ef9-4420-8203-ee65bff525e7" name="FBEstop1_Restart_mapping" direction="input" dataType="safeBool" assignedVariable="Restart" physicalPorts="9.In">
+                          <aliasPorts>
+                            <portMappingHasAliasPorts Id="367683bb-a1a3-4578-a7b4-d4c9faf4f892">
+                              <aliasPort Id="692226f5-25d4-424f-82ee-bde8ca75fd65" name="SdsId9.ChannelId1" sdsId="9" channelId="1" channelName="In" functionId="1131179973" />
+                            </portMappingHasAliasPorts>
+                          </aliasPorts>
+                        </portMapping>
+                      </functionBlockPortHasPortMappings>
+                    </portMappings>
+                  </inPort>
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="da62d71a-fee5-4252-bf4e-a7dface5ef94">
+                  <inPort Id="3c439847-8b5f-4a09-81a2-c4be8608e336" name="EStopIn1" portName="EStopIn1" assignedVariable="EStopInA1" portNum="4" objectIndex="8" varId="3" filter="2" portDataType="1" channelInterface="Two-Channel" discrepancyTime="100" deactivate1="Break Contact (NC)" deactivate2="Break Contact (NC)" maxDeviation="0" resetTime="0">
+                    <portMappings>
+                      <functionBlockPortHasPortMappings Id="b08a1331-0590-4ecd-a0e8-1ff7f5d61bfd">
+                        <portMapping Id="2652a6d7-6616-4b17-8e40-cccc697ea6d5" name="FBEstop1_EStopIn1_mapping" direction="input" dataType="safeBool" assignedVariable="EStopInA1" physicalPorts="8.FSIN Module 7.Input">
+                          <aliasPorts>
+                            <portMappingHasAliasPorts Id="c2d994a3-6b8e-46d7-bcd9-655007f261b3">
+                              <aliasPort Id="f15702ff-20d9-44c8-922c-19fddb5e75fd" name="SdsId8.ChannelId13" sdsId="8" channelId="13" channelName="FSIN Module 7.Input" functionId="1616969985" />
+                            </portMappingHasAliasPorts>
+                          </aliasPorts>
+                        </portMapping>
+                      </functionBlockPortHasPortMappings>
+                    </portMappings>
+                  </inPort>
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="32d423ab-4202-4d83-ac74-55bfc15b0fcb">
+                  <inPort Id="507a2892-fad2-4f84-ae14-1ac92f865f30" name="EStopIn2" portName="EStopIn2" assignedVariable="EStopInA2" portNum="5" objectIndex="9" varId="4" filter="2" portDataType="1" channelInterface="Both Deactivated" maxDeviation="0" resetTime="0">
+                    <portMappings>
+                      <functionBlockPortHasPortMappings Id="179ee481-b777-4b1c-b802-db98921831c6">
+                        <portMapping Id="fc2e87f7-3981-4962-b41e-1515dc51624e" name="FBEstop1_EStopIn2_mapping" direction="input" dataType="safeBool" assignedVariable="EStopInA2" physicalPorts="8.FSIN Module 8.Input">
+                          <aliasPorts>
+                            <portMappingHasAliasPorts Id="1e2a8415-b5fb-4bbd-9ca1-3cfb9f2aa384">
+                              <aliasPort Id="b980db1e-86d7-440c-900c-f83c03f0549c" name="SdsId8.ChannelId15" sdsId="8" channelId="15" channelName="FSIN Module 8.Input" functionId="1618018561" />
+                            </portMappingHasAliasPorts>
+                          </aliasPorts>
+                        </portMapping>
+                      </functionBlockPortHasPortMappings>
+                    </portMappings>
+                  </inPort>
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="6b44b983-4be1-45ce-bc91-f9501cb5be93">
+                  <inPort Id="4ec6d0b8-cf4d-4c5c-98a8-988836b03b6a" name="EStopIn3" portName="EStopIn3" assignedVariable="EStopInB1" portNum="6" objectIndex="10" varId="5" filter="2" portDataType="1" channelInterface="Two-Channel" discrepancyTime="100" deactivate1="Break Contact (NC)" deactivate2="Break Contact (NC)" maxDeviation="0" resetTime="0">
+                    <portMappings>
+                      <functionBlockPortHasPortMappings Id="0ac0e115-f881-48f0-a5e8-09725927e577">
+                        <portMapping Id="d97b0a52-ae75-468c-9133-7e92ddbfb6e0" name="FBEstop1_EStopIn3_mapping" direction="input" dataType="safeBool" assignedVariable="EStopInB1" physicalPorts="6.FSIN Module 1.Input">
+                          <aliasPorts>
+                            <portMappingHasAliasPorts Id="fc6555b5-28d5-45e6-9a6f-3e56f4a9aab9">
+                              <aliasPort Id="8eaf10a9-fcfe-4e4f-9b50-2e1f4e2faace" name="SdsId6.ChannelId1" sdsId="6" channelId="1" channelName="FSIN Module 1.Input" functionId="1610678529" />
+                            </portMappingHasAliasPorts>
+                          </aliasPorts>
+                        </portMapping>
+                      </functionBlockPortHasPortMappings>
+                    </portMappings>
+                  </inPort>
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="820e0e39-094e-490e-826a-eab41120b12b">
+                  <inPort Id="94b343f4-f8a5-436b-9c8f-87cab0f996c0" name="EStopIn4" portName="EStopIn4" assignedVariable="EStopInB2" portNum="7" objectIndex="11" varId="6" filter="2" portDataType="1" channelInterface="Both Deactivated" maxDeviation="0" resetTime="0">
+                    <portMappings>
+                      <functionBlockPortHasPortMappings Id="5132d6e6-85bd-4212-b915-3b4019b53e63">
+                        <portMapping Id="faecd789-fad4-4aca-b612-ac41f1e8542a" name="FBEstop1_EStopIn4_mapping" direction="input" dataType="safeBool" assignedVariable="EStopInB2" physicalPorts="6.FSIN Module 2.Input">
+                          <aliasPorts>
+                            <portMappingHasAliasPorts Id="249809a4-69c1-4641-9d3c-a591018b7ec4">
+                              <aliasPort Id="171c67b6-2432-47fa-8cf1-3230fa54e481" name="SdsId6.ChannelId3" sdsId="6" channelId="3" channelName="FSIN Module 2.Input" functionId="1611727105" />
+                            </portMappingHasAliasPorts>
+                          </aliasPorts>
+                        </portMapping>
+                      </functionBlockPortHasPortMappings>
+                    </portMappings>
+                  </inPort>
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="e12f2560-2066-489c-b7c8-fb7d5810b522">
+                  <inPort Id="b8822879-c41b-4489-ab3f-a298a1a25e37" name="EStopIn5" portName="EStopIn5" assignedVariable="EStopInC1" portNum="8" objectIndex="12" varId="7" filter="2" portDataType="1" channelInterface="Two-Channel" discrepancyTime="100" deactivate1="Break Contact (NC)" deactivate2="Break Contact (NC)" maxDeviation="0" resetTime="0">
+                    <portMappings>
+                      <functionBlockPortHasPortMappings Id="50d78609-1409-49df-a9af-5a2952cb16b0">
+                        <portMapping Id="c638082d-1b94-4549-9e31-2c012b22ef4b" name="FBEstop1_EStopIn5_mapping" direction="input" dataType="safeBool" assignedVariable="EStopInC1" physicalPorts="8.FSIN Module 1.Input">
+                          <aliasPorts>
+                            <portMappingHasAliasPorts Id="bb274ff3-d728-4c8d-bdcf-dc4b0a07b9f3">
+                              <aliasPort Id="2a1b2316-0452-4233-9d5a-9a406987b2fa" name="SdsId8.ChannelId1" sdsId="8" channelId="1" channelName="FSIN Module 1.Input" functionId="1610678529" />
+                            </portMappingHasAliasPorts>
+                          </aliasPorts>
+                        </portMapping>
+                      </functionBlockPortHasPortMappings>
+                    </portMappings>
+                  </inPort>
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="118e05ee-d658-4427-8939-7f6c6dea396a">
+                  <inPort Id="b1b1d79a-c8a6-4b5d-a1f2-a1228a2d73ec" name="EStopIn6" portName="EStopIn6" assignedVariable="EStopInC2" portNum="9" objectIndex="13" varId="8" filter="2" portDataType="1" channelInterface="Both Deactivated" maxDeviation="0" resetTime="0">
+                    <portMappings>
+                      <functionBlockPortHasPortMappings Id="41b473e4-505b-4449-995b-4310d072caf2">
+                        <portMapping Id="bae1652b-35da-4d4d-b0b9-1e4be1b99f45" name="FBEstop1_EStopIn6_mapping" direction="input" dataType="safeBool" assignedVariable="EStopInC2" physicalPorts="8.FSIN Module 2.Input">
+                          <aliasPorts>
+                            <portMappingHasAliasPorts Id="439bf93c-bb08-4559-9ff9-ba97bd6b4751">
+                              <aliasPort Id="97b3785e-49b6-4074-8bd7-af5d7d992c80" name="SdsId8.ChannelId3" sdsId="8" channelId="3" channelName="FSIN Module 2.Input" functionId="1611727105" />
+                            </portMappingHasAliasPorts>
+                          </aliasPorts>
+                        </portMapping>
+                      </functionBlockPortHasPortMappings>
+                    </portMappings>
+                  </inPort>
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="790d5648-95e7-4e78-872f-b6a7137ea201">
+                  <inPort Id="e0757617-6bce-49a4-bae9-ed02e5baf847" name="EStopIn7" portName="EStopIn7" assignedVariable="EStopInD1" portNum="10" objectIndex="14" varId="9" filter="2" portDataType="1" channelInterface="Two-Channel" discrepancyTime="100" deactivate1="Break Contact (NC)" deactivate2="Break Contact (NC)" maxDeviation="0" resetTime="0">
+                    <portMappings>
+                      <functionBlockPortHasPortMappings Id="ad12980b-40d8-43f8-88d0-ea6a946a3bfb">
+                        <portMapping Id="7fe71053-f500-4289-b374-3f13c7f1062b" name="FBEstop1_EStopIn7_mapping" direction="input" dataType="safeBool" assignedVariable="EStopInD1" physicalPorts="8.FSIN Module 3.Input">
+                          <aliasPorts>
+                            <portMappingHasAliasPorts Id="0cb60405-c4be-45bf-a99f-85fc3a159f4b">
+                              <aliasPort Id="eca53b97-e982-4e34-b45e-ec836d8d7c9d" name="SdsId8.ChannelId5" sdsId="8" channelId="5" channelName="FSIN Module 3.Input" functionId="1612775681" />
+                            </portMappingHasAliasPorts>
+                          </aliasPorts>
+                        </portMapping>
+                      </functionBlockPortHasPortMappings>
+                    </portMappings>
+                  </inPort>
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="9dba6ef2-048d-48e2-9e4b-e61f106a7f89">
+                  <inPort Id="a6995372-2f4f-4438-afbb-3a7f82c95b5b" name="EStopIn8" portName="EStopIn8" assignedVariable="EStopInD2" portNum="11" objectIndex="15" varId="10" filter="2" portDataType="1" channelInterface="Both Deactivated" maxDeviation="0" resetTime="0">
+                    <portMappings>
+                      <functionBlockPortHasPortMappings Id="6c4e464c-33e5-4657-97b1-9061b2acd4cc">
+                        <portMapping Id="0fca3538-7081-4a05-b6aa-2553a6f3d6e6" name="FBEstop1_EStopIn8_mapping" direction="input" dataType="safeBool" assignedVariable="EStopInD2" physicalPorts="8.FSIN Module 4.Input">
+                          <aliasPorts>
+                            <portMappingHasAliasPorts Id="0a102e8c-faf4-4587-a366-6ba54d4f8137">
+                              <aliasPort Id="01a6564c-3497-4b20-a612-8fab918d35d9" name="SdsId8.ChannelId7" sdsId="8" channelId="7" channelName="FSIN Module 4.Input" functionId="1613824257" />
+                            </portMappingHasAliasPorts>
+                          </aliasPorts>
+                        </portMapping>
+                      </functionBlockPortHasPortMappings>
+                    </portMappings>
+                  </inPort>
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="f81e4f0d-8dc3-48b9-b458-98f8194238f4">
+                  <inPort Id="840226b7-076f-4049-a3d6-bfb2a19671ef" name="EDM1" portName="EDM1" portNum="13" objectIndex="1" varId="12" filter="3" portDataType="1" maxDeviation="0" resetTime="0" />
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="16bcb98c-ae95-4b38-97d9-ea148df8f98d">
+                  <inPort Id="a576e758-b704-4d75-a490-95f51ba7e8ef" name="EDM2" portName="EDM2" portNum="14" objectIndex="2" varId="13" filter="3" portDataType="1" maxDeviation="0" resetTime="0" />
+                </functioBlockHasInPorts>
+              </inPorts>
+              <outPorts>
+                <functionBlockHasOutPorts Id="ac951eb6-60d7-44a6-b0d7-a2d5d31f396d">
+                  <outPort Id="866fae18-5a31-4e7f-ad18-726e01932c87" name="Error" portName="Error" portNum="4" objectIndex="0" varId="16" filter="7" portDataType="1" replacementValue="0" />
+                </functionBlockHasOutPorts>
+                <functionBlockHasOutPorts Id="38a4b6bd-0d77-4e91-9fdb-4d61e363c3b5">
+                  <outPort Id="42c3980a-ca81-4789-9666-60dc1c0a380d" name="EStopOut" portName="EStopOut" assignedVariable="EStopOut" portNum="11" objectIndex="1" varId="23" filter="7" portDataType="1" replacementValue="0">
+                    <targetFunctionBlockPorts>
+                      <wiredLink Id="d78a3540-b80f-45b8-a973-9e56542178d0">
+                        <inPortMoniker name="//Network2/FBAnd8/AndIn8" />
+                      </wiredLink>
+                      <wiredLink Id="945a6f38-94ab-40a8-970f-73d9e2c43d4e">
+                        <inPortMoniker name="//Network2/FBAnd4/AndIn8" />
+                      </wiredLink>
+                      <wiredLink Id="2a17b7f9-c14c-4202-8969-3518e385209b">
+                        <inPortMoniker name="//Network2/FBAnd3/AndIn8" />
+                      </wiredLink>
+                    </targetFunctionBlockPorts>
+                    <portMappings>
+                      <functionBlockPortHasPortMappings Id="d8f3986d-3c8a-44cd-a05b-338c51b33ba7">
+                        <portMapping Id="2feb933f-bcfd-41de-8afd-b98406515e4d" name="FBEstop1_EStopOut_mapping" direction="output" dataType="safeBool" assignedVariable="EStopOut" physicalPorts="18.Out;3.FSOUT Module 1.Output;3.FSOUT Module 2.Output">
+                          <aliasPorts>
+                            <portMappingHasAliasPorts Id="d3b8d46d-e24e-41e3-a4a5-2c3de1219559">
+                              <aliasPort Id="6f9b48ac-18eb-4693-b368-cc429316024c" name="SdsId18.ChannelId1" sdsId="18" channelId="1" channelName="Out" functionId="1131179972" />
+                            </portMappingHasAliasPorts>
+                            <portMappingHasAliasPorts Id="7a780462-44aa-4176-b8e2-58ace22a3583">
+                              <aliasPort Id="a4cd17b4-cb89-4bfe-837a-f2130f2c60c2" name="SdsId3.ChannelId1" sdsId="3" channelId="1" channelName="FSOUT Module 1.Output" functionId="1879113985" />
+                            </portMappingHasAliasPorts>
+                            <portMappingHasAliasPorts Id="c405f77e-0eb1-46c3-9a65-c66a13eb8324">
+                              <aliasPort Id="cdd681e8-abb4-4a1d-ac98-d64ae722460a" name="SdsId3.ChannelId3" sdsId="3" channelId="3" channelName="FSOUT Module 2.Output" functionId="1880162561" />
+                            </portMappingHasAliasPorts>
+                          </aliasPorts>
+                        </portMapping>
+                      </functionBlockPortHasPortMappings>
+                    </portMappings>
+                  </outPort>
+                </functionBlockHasOutPorts>
+                <functionBlockHasOutPorts Id="1e275d1b-d35b-417c-b121-8f2ba4ba1d86">
+                  <outPort Id="800903ac-9fe1-4c69-8c18-889f1c13fe52" name="EStopDelOut" portName="EStopDelOut" portNum="12" objectIndex="2" varId="26" filter="7" portDataType="1" replacementValue="0" />
+                </functionBlockHasOutPorts>
+              </outPorts>
+              <parameterPorts>
+                <functionBlockHasParamPorts Id="a1cbe1b5-a9a7-48f4-a9f9-527bc9af0a15">
+                  <parameterPort Id="e41215ef-5eb4-41e0-8d82-1fda9d919128" name="Delay Time (ms)" portName="Delay Time (ms)" portNum="8" objectIndex="0" varId="0" filter="0" portDataType="0" timing="100" />
+                </functionBlockHasParamPorts>
+              </parameterPorts>
+            </fBEstop>
+          </networkHasFunctionBlocks>
+          <networkHasFunctionBlocks Id="7bb4fc2b-ef53-4945-8cfa-9b00b08fe0ac">
+            <fBAnd Id="66bf3ffa-3fca-4d3e-b3a7-7d9765975254" name="FBAnd8" instanceName="FBAnd8" orderOfExecution="9" mapState="false" mapDiag="false" xmlid="0" functionName="safeAnd">
+              <inPorts>
+                <functioBlockHasInPorts Id="c7b6317e-5a16-476a-82bc-0ee33cfce795">
+                  <inPort Id="ce04df6e-ca65-4998-b0dd-b957411feb99" name="AndIn1" portName="AndIn1" assignedVariable="LSwPosZF" portNum="2" objectIndex="8" varId="2" filter="3" portDataType="1" channelInterface="Activated" deactivate1="Break Contact (NC)" maxDeviation="0" resetTime="0">
+                    <portMappings>
+                      <functionBlockPortHasPortMappings Id="a8b22bb1-b5f0-48de-a439-20c90810d0eb">
+                        <portMapping Id="cc0ec438-f8d6-4467-9253-091555351cd4" name="FBAnd8_AndIn1_mapping" direction="input" dataType="safeBool" assignedVariable="LSwPosZF" physicalPorts="6.FSIN Module 7.Input">
+                          <aliasPorts>
+                            <portMappingHasAliasPorts Id="590fd001-1fb5-4395-83fd-e2939a9ec5c3">
+                              <aliasPort Id="80171182-429f-4cb0-b208-4e93470057c8" name="SdsId6.ChannelId13" sdsId="6" channelId="13" channelName="FSIN Module 7.Input" functionId="1616969985" />
+                            </portMappingHasAliasPorts>
+                          </aliasPorts>
+                        </portMapping>
+                      </functionBlockPortHasPortMappings>
+                    </portMappings>
+                  </inPort>
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="3fb09d33-06e6-4f26-ba8d-7cc22049a8bd">
+                  <inPort Id="f1f92ddf-e825-4b04-90a5-af5a06ce6f1e" name="AndIn2" portName="AndIn2" portNum="3" objectIndex="9" varId="3" filter="2" portDataType="1" channelInterface="Deactivated" maxDeviation="0" resetTime="0" />
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="df558f69-79be-4ade-8f39-d4af414300b2">
+                  <inPort Id="cc6455a1-1f68-4564-835d-b0586c31c6de" name="AndIn3" portName="AndIn3" portNum="4" objectIndex="10" varId="4" filter="2" portDataType="1" channelInterface="Deactivated" maxDeviation="0" resetTime="0" />
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="481f5d9a-1524-46e5-b3be-76756d2edcd0">
+                  <inPort Id="2c2b240f-22a1-4768-8cbc-61bbc770a79c" name="AndIn4" portName="AndIn4" portNum="5" objectIndex="11" varId="5" filter="2" portDataType="1" channelInterface="Deactivated" maxDeviation="0" resetTime="0" />
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="476b8f0f-1665-45d3-8daf-bc322ae5067a">
+                  <inPort Id="c49326e9-15da-4682-a6dc-809147ee0902" name="AndIn5" portName="AndIn5" portNum="6" objectIndex="12" varId="6" filter="2" portDataType="1" channelInterface="Deactivated" maxDeviation="0" resetTime="0" />
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="bf24844a-d611-4bd2-aef6-bdd419a90333">
+                  <inPort Id="475dbff9-b738-4062-ba4d-38b0fbdcf5bf" name="AndIn6" portName="AndIn6" portNum="7" objectIndex="13" varId="7" filter="2" portDataType="1" channelInterface="Deactivated" maxDeviation="0" resetTime="0" />
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="22aca5af-67c2-48be-8c6a-547b65f90b55">
+                  <inPort Id="71a6f706-edaf-4df9-8e3d-684be9b4b176" name="AndIn7" portName="AndIn7" portNum="8" objectIndex="14" varId="8" filter="2" portDataType="1" channelInterface="Deactivated" maxDeviation="0" resetTime="0" />
+                </functioBlockHasInPorts>
+                <functioBlockHasInPorts Id="886fee7d-75f7-48bf-92e8-c1ea3f84cc6d">
+                  <inPort Id="ec00b22f-0c50-4fc9-bad9-d09c991e966b" name="AndIn8" portName="AndIn8" portNum="9" objectIndex="15" varId="9" filter="2" portDataType="1" channelInterface="Activated" deactivate1="Break Contact (NC)" maxDeviation="0" resetTime="0" />
+                </functioBlockHasInPorts>
+              </inPorts>
+              <outPorts>
+                <functionBlockHasOutPorts Id="c274f31e-19fd-4209-945f-f0aace032dc3">
+                  <outPort Id="ce04a1bf-be77-4d91-940d-6f3e6ba11fa3" name="AndOut" portName="AndOut" assignedVariable="bFwdEnaZF" portNum="8" objectIndex="1" varId="20" filter="7" portDataType="1" replacementValue="0">
+                    <portMappings>
+                      <functionBlockPortHasPortMappings Id="dceb1207-d336-4bc3-bcb4-e9158404aa3a">
+                        <portMapping Id="758306e5-0a30-496b-a959-27f64a34fbc1" name="FBAnd8_AndOut_mapping" direction="output" dataType="safeBool" assignedVariable="bFwdEnaZF" physicalPorts="bFwdEnaZF.Out">
+                          <aliasPorts>
+                            <portMappingHasAliasPorts Id="e37ccacb-aa8a-436b-bb02-2d2330892fe4">
+                              <aliasPort Id="adabe013-f1d5-4669-9143-204f1d2f293f" name="SdsId14.ChannelId1" sdsId="14" channelId="1" channelName="Out" functionId="1131179972" />
+                            </portMappingHasAliasPorts>
+                          </aliasPorts>
+                        </portMapping>
+                      </functionBlockPortHasPortMappings>
+                    </portMappings>
+                  </outPort>
+                </functionBlockHasOutPorts>
+              </outPorts>
+            </fBAnd>
+          </networkHasFunctionBlocks>
+        </functionBlocks>
+      </Network>
+    </safetyApplicationHasNetworks>
+  </networks>
+  <twinSAFEGroupAliasPorts>
+    <safetyApplicationHasTwinSAFEGroupAliasPort Id="02327b4e-6ddb-4f8d-8b74-3604d9b4c5bd">
+      <twinSAFEGroupAliasPort Id="c47782bf-e320-45a2-b2f7-a94e6c85980b" name="ErrAck.SdsId1.channelId1" sdsId="1" channelId="1" portName="ErrAck" functionId="0" />
+    </safetyApplicationHasTwinSAFEGroupAliasPort>
+    <safetyApplicationHasTwinSAFEGroupAliasPort Id="a2a33e5a-8a79-46e5-88e4-0d8c972788c2">
+      <twinSAFEGroupAliasPort Id="e4185965-6011-4862-bbbc-e4f7d673c26a" name="RunStop.SdsId2.channelId1" sdsId="2" channelId="1" portName="RunStop" functionId="0" />
+    </safetyApplicationHasTwinSAFEGroupAliasPort>
+  </twinSAFEGroupAliasPorts>
+</safetyApplication>

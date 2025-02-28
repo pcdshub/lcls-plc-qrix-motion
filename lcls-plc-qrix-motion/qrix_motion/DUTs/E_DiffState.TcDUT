@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="E_DiffState" Id="{85889ec6-0695-00d5-2ace-16e5654de6c6}">
+    <Declaration><![CDATA[
+{attribute 'qualified_only'}
+TYPE E_DiffState :
+(
+    UNKNOWN := 0,
+    TRANSFER_ARM_INTERFACE,
+    NOMINAL_POSITION
+) UINT;
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

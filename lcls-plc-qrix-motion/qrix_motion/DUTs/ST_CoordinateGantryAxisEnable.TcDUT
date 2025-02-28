@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_CoordinateGantryAxisEnable" Id="{3ee64b0d-3a58-4c57-bae6-b5d229b498af}">
+    <Declaration><![CDATA[
+TYPE ST_CoordinateGantryAxisEnable :
+STRUCT
+    {attribute 'pytmc' := '
+        pv: bEnable
+        io: i
+        field: DESC Set false to prevent this function block from allowing the motors to enable.
+    '}
+    bEnable: BOOL; // Set false to prevent this function block from allowing the motors to enable.
+    {attribute 'pytmc' := '
+        pv: bLeaderDriveReady
+        io: i
+        field: DESC Intended to be linked to the leader drive ready status.
+    '}
+    bLeaderDriveReady AT %I*: BOOL; // Intended to be linked to the leader drive ready status.
+    {attribute 'pytmc' := '
+        pv: bFollowDriveReady
+        io: i
+        field: DESC Intended to be linked to the follow drive ready status.
+    '}
+    bFollowDriveReady AT %I*: BOOL; // Intended to be linked to the follow drive ready status.
+    tTimeout: TIME := T#5s; // Timeout before giving up on a state.
+    {attribute 'pytmc' := '
+        pv: eState
+        io: i
+        field: DESC Present enable sequence state.
+    '}
+    eState: E_GantryEnableState; // Present enable sequence state.
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

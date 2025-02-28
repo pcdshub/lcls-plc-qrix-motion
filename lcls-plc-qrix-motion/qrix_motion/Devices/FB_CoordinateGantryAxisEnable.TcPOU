@@ -1,0 +1,197 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="FB_CoordinateGantryAxisEnable" Id="{91dabd2d-6f24-4e77-b8b3-8a1bfcd3f76e}" SpecialFunc="None">
+    <Declaration><![CDATA[
+FUNCTION_BLOCK FB_CoordinateGantryAxisEnable
+VAR_IN_OUT
+    stMotionStageLeader: ST_MotionStage;
+    stMotionStageFollow: ST_MotionStage;
+    stCoordinateGantryAxisEnable: ST_CoordinateGantryAxisEnable;
+END_VAR
+VAR
+    bInit: BOOL := TRUE;
+    rtExecuteMove: R_TRIG;
+    tonTimeout: TON;
+    bMovePos: BOOL;
+    bMoveNeg: BOOL;
+    bMovePosAndOK: BOOL;
+    bMoveNegAndOK: BOOL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+IF bInit THEN
+    bInit := FALSE;
+    stCoordinateGantryAxisEnable.eState := E_GantryEnableState.STANDBY;
+END_IF
+
+CASE stCoordinateGantryAxisEnable.eState OF
+
+    E_GantryEnableState.STANDBY:
+        IF stMotionStageLeader.bExecute AND stCoordinateGantryAxisEnable.bEnable THEN
+            rtExecuteMove(CLK:=FALSE);
+            stMotionStageLeader.bExecute := FALSE;
+            stMotionStageLeader.bEnable := TRUE;
+            stMotionStageFollow.bEnable := TRUE;
+            stCoordinateGantryAxisEnable.eState := E_GantryEnableState.WAIT_FOR_FULLY_ENABLED;
+        ELSIF stMotionStageLeader.bExecute AND NOT stCoordinateGantryAxisEnable.bEnable THEN
+            stMotionStageLeader.bExecute := FALSE;
+            stMotionStageLeader.bError := TRUE;
+            stMotionStageFollow.bError := TRUE;
+            stMotionStageLeader.sCustomErrorMessage := 'Move Failed. The gantry is currently disabled.';
+            stMotionStageFollow.sCustomErrorMessage := stMotionStageLeader.sCustomErrorMessage;
+        ELSE
+            stMotionStageLeader.bEnable := FALSE;
+            stMotionStageFollow.bEnable := FALSE;
+        END_IF
+        tonTimeout(IN:=FALSE);
+
+    E_GantryEnableState.WAIT_FOR_FULLY_ENABLED:
+        // Wait until the logic confirms both motors are fully enabled
+        tonTimeout(IN:=NOT stMotionStageLeader.bAllEnable OR NOT stMotionStageFollow.bAllEnable,PT:=stCoordinateGantryAxisEnable.tTimeout);
+
+        // Check which direction we are moving, and if the directional enables will allow that move.
+        bMovePos        := stMotionStageLeader.stAxisStatus.fActPosition < stMotionStageLeader.fPosition;
+        bMoveNeg        := stMotionStageLeader.stAxisStatus.fActPosition > stMotionStageLeader.fPosition;
+        bMovePosAndOK   := bMovePos AND stMotionStageLeader.bAllForwardEnable AND stMotionStageFollow.bAllForwardEnable;
+        bMoveNegAndOK   := bMoveNeg AND stMotionStageLeader.bAllBackwardEnable AND stMotionStageFollow.bAllBackwardEnable;
+
+        // Check for fully enabled
+        IF stMotionStageLeader.bAllEnable AND stMotionStageFollow.bAllEnable THEN
+            // Check direction of motion and if that direction is enabled
+            IF bMovePosAndOK OR bMoveNegAndOK THEN
+                stCoordinateGantryAxisEnable.eState := E_GantryEnableState.WAIT_FOR_READY_STATE;
+                tonTimeout(IN:=FALSE);
+            ELSE
+                // Direction of motion is not enabled, so let's report the error and give a helpful error message.
+                stMotionStageLeader.bError := TRUE;
+                stMotionStageFollow.bError := TRUE;
+                IF bMovePos THEN
+                    IF NOT stMotionStageLeader.bLimitForwardEnable THEN
+                        stMotionStageLeader.sCustomErrorMessage := 'Move forward failed due to forward limit switch.';
+                        stMotionStageFollow.sCustomErrorMessage := CONCAT('Move forward failed due to forward limit switch for ',stMotionStageLeader.sName);
+                    ELSIF NOT stMotionStageFollow.bLimitForwardEnable THEN
+                        stMotionStageFollow.sCustomErrorMessage := 'Move forward failed due to forward limit switch.';
+                        stMotionStageLeader.sCustomErrorMessage := CONCAT('Move forward failed due to forward limit switch for ',stMotionStageFollow.sName);
+                    ELSIF NOT stMotionStageLeader.bGantryForwardEnable AND stMotionStageLeader.bGantryAxis THEN
+                        stMotionStageLeader.sCustomErrorMessage := 'Move forward failed due to gantry motion tolerance limit.';
+                        stMotionStageFollow.sCustomErrorMessage := CONCAT('Move forward failed due to gantry motion tolerance limit for ',stMotionStageLeader.sName);
+                    ELSIF NOT stMotionStageFollow.bGantryForwardEnable AND stMotionStageFollow.bGantryAxis THEN
+                        stMotionStageFollow.sCustomErrorMessage := 'Move forward failed due to gantry motion tolerance limit.';
+                        stMotionStageLeader.sCustomErrorMessage := CONCAT('Move forward failed due to gantry motion tolerance limit for ',stMotionStageFollow.sName);
+                    ELSIF NOT stMotionStageLeader.stEPSForwardEnable.bEPS_OK THEN
+                        stMotionStageLeader.sCustomErrorMessage := 'Move forward failed due to EPS condition.';
+                        stMotionStageFollow.sCustomErrorMessage := CONCAT('Move forward failed due to EPS condition for ',stMotionStageLeader.sName);
+                    ELSIF NOT stMotionStageFollow.stEPSForwardEnable.bEPS_OK THEN
+                        stMotionStageFollow.sCustomErrorMessage := 'Move forward failed due to EPS condition.';
+                        stMotionStageLeader.sCustomErrorMessage := CONCAT('Move forward failed due to EPS condition for ',stMotionStageFollow.sName);
+                    ELSE
+                        stMotionStageFollow.sCustomErrorMessage := 'Move forward failed for unspecified reason.';
+                        stMotionStageLeader.sCustomErrorMessage := 'Move forward failed for unspecified reason.';
+                    END_IF
+                ELSIF bMoveNeg THEN
+                    IF NOT stMotionStageLeader.bLimitBackwardEnable THEN
+                        stMotionStageLeader.sCustomErrorMessage := 'Move backward failed due to forward limit switch.';
+                        stMotionStageFollow.sCustomErrorMessage := CONCAT('Move backward failed due to forward limit switch for ',stMotionStageLeader.sName);
+                    ELSIF NOT stMotionStageFollow.bLimitBackwardEnable THEN
+                        stMotionStageFollow.sCustomErrorMessage := 'Move backward failed due to forward limit switch.';
+                        stMotionStageLeader.sCustomErrorMessage := CONCAT('Move backward failed due to forward limit switch for ',stMotionStageFollow.sName);
+                    ELSIF NOT stMotionStageLeader.bGantryBackwardEnable AND stMotionStageLeader.bGantryAxis THEN
+                        stMotionStageLeader.sCustomErrorMessage := 'Move backward failed due to gantry motion tolerance limit.';
+                        stMotionStageFollow.sCustomErrorMessage := CONCAT('Move backward failed due to gantry motion tolerance limit for ',stMotionStageLeader.sName);
+                    ELSIF NOT stMotionStageFollow.bGantryBackwardEnable AND stMotionStageFollow.bGantryAxis THEN
+                        stMotionStageFollow.sCustomErrorMessage := 'Move backward failed due to gantry motion tolerance limit.';
+                        stMotionStageLeader.sCustomErrorMessage := CONCAT('Move backward failed due to gantry motion tolerance limit for ',stMotionStageFollow.sName);
+                    ELSIF NOT stMotionStageLeader.stEPSBackwardEnable.bEPS_OK THEN
+                        stMotionStageLeader.sCustomErrorMessage := 'Move backward failed due to EPS condition.';
+                        stMotionStageFollow.sCustomErrorMessage := CONCAT('Move backward failed due to EPS condition for ',stMotionStageLeader.sName);
+                    ELSIF NOT stMotionStageFollow.stEPSBackwardEnable.bEPS_OK THEN
+                        stMotionStageFollow.sCustomErrorMessage := 'Move backward failed due to EPS condition.';
+                        stMotionStageLeader.sCustomErrorMessage := CONCAT('Move backward failed due to EPS condition for ',stMotionStageFollow.sName);
+                    ELSE
+                        stMotionStageLeader.sCustomErrorMessage := 'Move backward failed for unspecified reason.';
+                        stMotionStageFollow.sCustomErrorMessage := 'Move backward failed for unspecified reason.';
+                    END_IF
+                ELSE
+                    stMotionStageLeader.sCustomErrorMessage := 'Move failed because it was not large enough to register.';
+                    stMotionStageFollow.sCustomErrorMessage := 'Move failed because it was not large enough to register.';
+                END_IF
+            stCoordinateGantryAxisEnable.eState := E_GantryEnableState.ERROR;
+            END_IF
+        ELSIF tonTimeout.Q THEN
+            stMotionStageLeader.bError := TRUE;
+            stMotionStageFollow.bError := TRUE;
+            IF NOT stMotionStageLeader.bEnable THEN
+                stMotionStageLeader.sCustomErrorMessage := 'Move never enabled because bEnable never received.';
+                stMotionStageFollow.sCustomErrorMessage := CONCAT('Move never enabled because bEnable never received on ',stMotionStageLeader.sName);
+            ELSIF NOT stMotionStageFollow.bEnable THEN
+                stMotionStageFollow.sCustomErrorMessage := 'Move never enabled because bEnable never received.';
+                stMotionStageLeader.sCustomErrorMessage := CONCAT('Move never enabled because bEnable never received on ',stMotionStageFollow.sName);
+            ELSIF NOT stMotionStageLeader.bHardwareEnable THEN
+                stMotionStageLeader.sCustomErrorMessage := 'Move never enabled because bHardwareEnable set false.';
+                stMotionStageFollow.sCustomErrorMessage := CONCAT('Move never enabled because bHardwareEnable set false on ',stMotionStageLeader.sName);
+            ELSIF NOT stMotionStageFollow.bHardwareEnable THEN
+                stMotionStageFollow.sCustomErrorMessage := 'Move never enabled because bHardwareEnable set false.';
+                stMotionStageLeader.sCustomErrorMessage := CONCAT('Move never enabled because bHardwareEnable set false on ',stMotionStageFollow.sName);
+            ELSIF NOT stMotionStageLeader.stEPSPowerEnable.bEPS_OK THEN
+                stMotionStageLeader.sCustomErrorMessage := 'Move never enabled because of EPS condition.';
+                stMotionStageFollow.sCustomErrorMessage := CONCAT('Move never enabled because of EPS condition on ',stMotionStageLeader.sName);
+            ELSIF NOT stMotionStageFollow.stEPSPowerEnable.bEPS_OK THEN
+                stMotionStageFollow.sCustomErrorMessage := 'Move never enabled because of EPS condition.';
+                stMotionStageLeader.sCustomErrorMessage := CONCAT('Move never enabled because of EPS condition on ',stMotionStageFollow.sName);
+            ELSIF NOT stMotionStageLeader.bUserEnable THEN
+                stMotionStageLeader.sCustomErrorMessage := 'Move never enabled because user enable is set to false.';
+                stMotionStageFollow.sCustomErrorMessage := CONCAT('Move never enabled because user enable is set to false on ',stMotionStageLeader.sName);
+            ELSIF NOT stMotionStageFollow.bUserEnable THEN
+                stMotionStageFollow.sCustomErrorMessage := 'Move never enabled because user enable is set to false.';
+                stMotionStageLeader.sCustomErrorMessage := CONCAT('Move never enabled because user enable is set to false on ',stMotionStageFollow.sName);
+            ELSE
+                stMotionStageLeader.sCustomErrorMessage := 'Move never enabled in the timeout duration.';
+                stMotionStageFollow.sCustomErrorMessage := 'Move never enabled in the timeout duration.';
+            END_IF
+            stCoordinateGantryAxisEnable.eState := E_GantryEnableState.ERROR;
+        END_IF
+
+    E_GantryEnableState.WAIT_FOR_READY_STATE:
+        // Wait for the motor drives to switch to the ready state before commanding the move.
+        tonTimeout(IN:=NOT stCoordinateGantryAxisEnable.bLeaderDriveReady OR NOT stCoordinateGantryAxisEnable.bFollowDriveReady,PT:=stCoordinateGantryAxisEnable.tTimeout);
+
+        // Are both drives reporting that they are ready?
+        IF stCoordinateGantryAxisEnable.bLeaderDriveReady AND stCoordinateGantryAxisEnable.bFollowDriveReady THEN
+            stCoordinateGantryAxisEnable.eState := E_GantryEnableState.DELAY_FOR_MOVE_START;
+            tonTimeout(IN:=FALSE);
+        ELSIF tonTimeout.Q THEN
+            stMotionStageLeader.bError := TRUE;
+            stMotionStageFollow.bError := TRUE;
+            IF NOT stCoordinateGantryAxisEnable.bLeaderDriveReady THEN
+                stMotionStageLeader.sCustomErrorMessage := 'Move failed because motor drive did not get ready status before timeout.';
+                stMotionStageFollow.sCustomErrorMessage := CONCAT('Move failed because ',CONCAT(stMotionStageLeader.sName,' drive did not get ready status before timeout.'));
+            ELSE
+                stMotionStageFollow.sCustomErrorMessage := 'Move failed because motor drive did not get ready status before timeout.';
+                stMotionStageLeader.sCustomErrorMessage := CONCAT('Move failed because ',CONCAT(stMotionStageFollow.sName,' did not get ready status before timeout.'));
+            END_IF
+            stCoordinateGantryAxisEnable.eState := E_GantryEnableState.ERROR;
+        END_IF
+
+    E_GantryEnableState.DELAY_FOR_MOVE_START:
+        // Allow the move execution to begin
+        rtExecuteMove(CLK:=TRUE);
+        IF rtExecuteMove.Q THEN
+            stMotionStageLeader.bExecute := TRUE;
+        END_IF
+        tonTimeout(IN:=NOT stMotionStageLeader.bBusy,PT:=T#100ms);
+        IF tonTimeout.Q THEN
+            stCoordinateGantryAxisEnable.eState := E_GantryEnableState.STANDBY;
+        END_IF
+
+    E_GantryEnableState.ERROR:
+        // Error handling
+        stCoordinateGantryAxisEnable.eState := E_GantryEnableState.STANDBY;
+
+ELSE
+    stCoordinateGantryAxisEnable.eState := E_GantryEnableState.ERROR;
+END_CASE
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

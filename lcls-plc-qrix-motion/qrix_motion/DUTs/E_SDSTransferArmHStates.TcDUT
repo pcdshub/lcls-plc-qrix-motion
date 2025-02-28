@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="E_SDSTransferArmHStates" Id="{9eac08e5-b916-49f2-b996-f36b11fb0296}">
+    <Declaration><![CDATA[
+{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE E_SDSTransferArmHStates :
+(
+    UNKNOWN := 0,
+    RETRACTED,
+    GARAGE_SAMPLE_REMOVAL,
+    CONFIRM_GARAGE_EXTRACTION,
+    CONFIRM_DIFF_EXTRACTION,
+    DIFF_SAMPLE_EXTRACTION,
+    GARAGE_SAMPLE_INSERTION,
+    CONFIRM_GARAGE_INSERTION,
+    CONFIRM_DIFF_INSERTION,
+    DIFF_SAMPLE_INSERTION
+) UINT;
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

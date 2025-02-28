@@ -1,7 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<?xml version='1.0' encoding='UTF-8'?>
+<TcPlcObject Version="1.1.0.1">
   <GVL Name="GVL_Sensor" Id="{1e8c8953-d9ec-471b-85fd-d0dbdbf1215b}">
-    <Declaration><![CDATA[{attribute 'qualified_only'}
+    <Declaration><![CDATA[
+{attribute 'qualified_only'}
 VAR_GLOBAL
     {attribute 'pytmc' := '
         pv: QRIX:SA:FLOATING
@@ -16,6 +17,7 @@ VAR_GLOBAL
     '}
     {attribute 'TcLinkTo' := '	.iRawCnts	:= TIIB[Rack#2D LinearGaugeAmp (SC-HG1-ETC)]^Process Data(In)  TxPDO-Map^Response Data Unit1'}
     stYDF1: DUT_SensorHGS;
+    nYDF1 AT %Q*: UDINT;
 
     // YDF2
     {attribute 'pytmc' := '
@@ -24,6 +26,7 @@ VAR_GLOBAL
     '}
     {attribute 'TcLinkTo' := '	.iRawCnts	:= TIIB[Rack#2D LinearGaugeAmp (SC-HG1-ETC)]^Process Data(In)  TxPDO-Map^Response Data Unit2'}
     stYDF2: DUT_SensorHGS;
+    nYDF2 AT %Q*: UDINT;
 
     // YDF3
     {attribute 'pytmc' := '
@@ -32,6 +35,7 @@ VAR_GLOBAL
     '}
     {attribute 'TcLinkTo' := '	.iRawCnts	:= TIIB[Rack#2D LinearGaugeAmp (SC-HG1-ETC)]^Process Data(In)  TxPDO-Map^Response Data Unit3'}
     stYDF3: DUT_SensorHGS;
+    nYDF3 AT %Q*: UDINT;
 
     // Height difference btw granite shelf and detector frame.
     {attribute 'pytmc' := '
@@ -88,6 +92,7 @@ VAR_GLOBAL
     '}
     {attribute 'TcLinkTo' := '	.iRawCnts	:= TIIB[Rack#2B-04 PS_P (EL3064)]^AI Standard Channel 3^Value'}
     stPS3: DUT_Sensor;
-END_VAR]]></Declaration>
+END_VAR
+]]></Declaration>
   </GVL>
 </TcPlcObject>

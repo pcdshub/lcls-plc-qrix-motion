@@ -1,7 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<?xml version='1.0' encoding='UTF-8'?>
+<TcPlcObject Version="1.1.0.1">
   <POU Name="PRG_OPT_SLITS" Id="{87d69d5e-6db8-4f14-b5ec-7224a0a8195a}" SpecialFunc="None">
-    <Declaration><![CDATA[PROGRAM PRG_OPT_SLITS
+    <Declaration><![CDATA[
+PROGRAM PRG_OPT_SLITS
 VAR
     {attribute 'pytmc' := 'pv: QRIX:OPTSL'}
     fbSlits_Opt: FB_Slits;
@@ -11,7 +12,8 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[// 4 jaws slit
+      <ST><![CDATA[
+// 4 jaws slit
 
 
 

@@ -1,7 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<?xml version='1.0' encoding='UTF-8'?>
+<TcPlcObject Version="1.1.0.1">
   <POU Name="FB_2AxesTrans" Id="{5b698e71-3212-478a-9e14-3b925bebfd39}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION_BLOCK FB_2AxesTrans
+    <Declaration><![CDATA[
+FUNCTION_BLOCK FB_2AxesTrans
 VAR_IN_OUT
     stFirstAxis: ST_MotionStage;
     stSecondAxis: ST_MotionStage;
@@ -24,7 +25,7 @@ VAR_INPUT
     rEncoderOffsetSecound: REAL;
 
     (*Distance between 1st stage and 2nd stage*)
-    rDistance: REAL := 0.40;
+    rDistance: REAL := 0.48;
 
     i_DevName : STRING; //device name for FFO and PMPS diagnostics
 
@@ -127,18 +128,21 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[// Initialize
+      <ST><![CDATA[
+// Initialize
 ACT_init();
 
 // Instantiate Function block for all the blades
 ACT_Motion();
 
 //SET and GET the requested and Actual values
-ACT_CalculatePositions();]]></ST>
+ACT_CalculatePositions();
+]]></ST>
     </Implementation>
     <Action Name="ACT_CalculatePositions" Id="{55e06c41-872d-43fc-87d8-d7122841e56b}">
       <Implementation>
-        <ST><![CDATA[//check if requested center or gap has changed
+        <ST><![CDATA[
+//check if requested center or gap has changed
 //check that the requested values are within acceptable motion range
 IF (rOldReqPosition <> rReqPosition) THEN
         rOldReqPosition := rReqPosition;
@@ -178,13 +182,13 @@ IF ( bInit) THEN
     stSecondAxis.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
     FFO.i_DevName := i_DevName;
 END_IF
-
 ]]></ST>
       </Implementation>
     </Action>
     <Action Name="ACT_Motion" Id="{bce85a8d-5e94-4f5d-92c8-0506733fc012}">
       <Implementation>
-        <ST><![CDATA[// Instantiate Function block for all the blades
+        <ST><![CDATA[
+// Instantiate Function block for all the blades
 fbFirstStage(stMotionStage:=stFirstAxis);
 fbSecondStage(stMotionStage:=stSecondAxis);
 
@@ -222,7 +226,6 @@ fbSecond(
     stPositionState:=stSecond,
     bMoveOk:=bMoveOk,
     stMotionStage:=stSecondAxis);
-
 ]]></ST>
       </Implementation>
     </Action>

@@ -1,0 +1,166 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="FB_MeasureReferenceVelocity" Id="{283aa282-b0de-4899-8324-d2ba2762fbcc}" SpecialFunc="None">
+    <Declaration><![CDATA[
+FUNCTION_BLOCK FB_MeasureReferenceVelocity
+VAR_IN_OUT
+    stMotionStage: ST_MotionStage;
+END_VAR
+VAR_INPUT
+    nMicrostepsPerStep: UINT := 64; // 64 for Beckhoff stepper drives EL7047, EL7037, EL7041, EL7031
+END_VAR
+VAR_OUTPUT
+    bBusy: BOOL;
+    fMeasuredReferenceVelocity: LREAL;
+END_VAR
+VAR
+    nState: INT := -1;
+    fbReadDriveAddress: MC_ReadDriveAddress;
+    nMicrostepCounter AT %I*: UINT; // In microsteps (64 microsteps per step)
+    bCounterOverflow AT %I*: BOOL;
+    bCounterUnderflow AT %I*: BOOL;
+    nMaxStepFrequencyBuffer: BYTE; // An enum corresponding to max step frequency
+    fbReadCoEMaxStepFrequency: FB_ReadCoE;
+    nMaxStepFrequency: UINT; // Fullsteps per Second
+    fStartingInternalPosition: DINT;
+    fEndingInternalPosition: DINT;
+    fStartingEUPosition: LREAL;
+    fEndingEUPosition: LREAL;
+    fDeltaEUPosition: LREAL;
+    fDeltaInternalPosition: LREAL;
+    fDeltaSteps: LREAL;
+    fEUPerStep: LREAL;
+
+    rtOverflow: R_TRIG;
+    rtUnderflow: R_TRIG;
+
+    nDriveAddressReadState: INT := -1;
+    bDriveAddressValid: BOOL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+CASE nDriveAddressReadState OF
+-1:
+    IF NOT bDriveAddressValid THEN
+        nDriveAddressReadState := nDriveAddressReadState + 1;
+        fbReadDriveAddress(
+            Axis:=stMotionStage.Axis,
+            Execute:=FALSE
+        );
+    END_IF
+0: // Read drive address
+    fbReadDriveAddress(
+        Axis:=stMotionStage.Axis,
+        Execute:=TRUE
+    );
+    IF NOT fbReadDriveAddress.Busy THEN
+        nDriveAddressReadState := -1;
+        bDriveAddressValid := TRUE;
+    ELSIF fbReadDriveAddress.Error THEN
+        nDriveAddressReadState := 100;
+    END_IF
+100:
+    nDriveAddressReadState := -1;
+END_CASE
+
+CASE nState OF
+-1:
+    IF stMotionStage.bBusy AND bDriveAddressValid THEN
+        nState := 0;
+        fStartingInternalPosition := 0;
+        fEndingInternalPosition := 0;
+        rtOverflow(CLK:=bCounterOverflow);
+        rtUnderflow(CLK:=bCounterUnderflow);
+        fbReadCoEMaxStepFrequency(
+            bExecute:=FALSE,
+            pBuffer:=ADR(nMaxStepFrequencyBuffer)
+        );
+    ELSIF NOT bDriveAddressValid THEN
+        nState := 100;
+    END_IF
+0: // A move has started so read the starting position information
+    fbReadCoEMaxStepFrequency(
+        bExecute:=TRUE,
+        pBuffer:=ADR(nMaxStepFrequencyBuffer),
+        sNetId:=stMotionStage.Axis.DriveAddress.NetID,
+        nSlaveAddr:=stMotionStage.Axis.DriveAddress.SlaveAddress,
+        nDesiredCoEIndex:=16#8012,
+        nDesiredCoESubIndex:=5,
+        nBufferLength:=1,
+        bBusy=>,
+        bError=>
+    );
+    IF fbReadCoEMaxStepFrequency.bBusy THEN
+        nState := nState + 1;
+    ELSIF fbReadCoEMaxStepFrequency.bError THEN
+        nState := 100;
+    END_IF
+1:
+    fbReadCoEMaxStepFrequency(
+        bExecute:=TRUE,
+        pBuffer:=ADR(nMaxStepFrequencyBuffer),
+        sNetId:=stMotionStage.Axis.DriveAddress.NetID,
+        nSlaveAddr:=stMotionStage.Axis.DriveAddress.SlaveAddress,
+        nDesiredCoEIndex:=16#8012,
+        nDesiredCoESubIndex:=5,
+        nBufferLength:=1,
+        bBusy=>,
+        bError=>
+    );
+    IF NOT fbReadCoEMaxStepFrequency.bBusy THEN
+        nState := nState + 1;
+        fStartingEUPosition := stMotionStage.stAxisStatus.fActPosition;
+        fStartingInternalPosition := nMicrostepCounter;
+
+        CASE nMaxStepFrequencyBuffer OF
+        0:
+            nMaxStepFrequency := 1000;
+        1:
+            nMaxStepFrequency := 2000;
+        2:
+            nMaxStepFrequency := 4000;
+        3:
+            nMaxStepFrequency := 8000;
+        4:
+            nMaxStepFrequency := 16000;
+        5:
+            nMaxStepFrequency := 32000;
+        END_CASE
+    ELSIF fbReadCoEMaxStepFrequency.bError THEN
+        nState := 100;
+    END_IF
+2: // Wait until the move ends and then read the last position information
+    rtOverflow(CLK:=bCounterOverflow);
+    rtUnderflow(CLK:=bCounterUnderflow);
+    IF rtOverflow.Q THEN
+        fEndingInternalPosition := fEndingInternalPosition + 65535;
+    ELSIF rtUnderflow.Q THEN
+        fEndingInternalPosition := fEndingInternalPosition - 65535;
+    END_IF
+    IF NOT stMotionStage.bBusy THEN
+        nState := nState + 1;
+        fEndingEUPosition := stMotionStage.stAxisStatus.fActPosition;
+        fEndingInternalPosition := fEndingInternalPosition + nMicrostepCounter;
+    END_IF
+3: // Calculate the reference velocity from the measured move
+    fDeltaEUPosition := fEndingEUPosition - fStartingEUPosition;
+    fDeltaInternalPosition := fEndingInternalPosition - fStartingInternalPosition;
+    fDeltaSteps := fDeltaInternalPosition / UINT_TO_LREAL(nMicrostepsPerStep);
+
+    IF fDeltaSteps <> 0 THEN
+        fEUPerStep := fDeltaEUPosition / fDeltaSteps;
+
+        fMeasuredReferenceVelocity := UINT_TO_LREAL(nMaxStepFrequency) * fEUPerStep;
+        nState := -1;
+    ELSE
+        nState := 100;
+        fMeasuredReferenceVelocity := 0;
+    END_IF
+100: // Reserve for error handling
+    nState := -1;
+END_CASE
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

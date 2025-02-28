@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_SDSPersistent" Id="{ed2c355c-17e8-495a-9e76-3484d89c2199}">
+    <Declaration><![CDATA[
+TYPE ST_SDSPersistent :
+(*
+    Structure to represent the data used for the sample delivery system that is
+    needed to be persistent.
+*)
+STRUCT
+    {attribute 'pytmc' := '
+        pv: bInitialized
+        io: i
+        field: DESC TRUE if the persistent data has been initialized. FALSE if it has not.
+    '}
+    bInitialized: BOOL;
+
+    {attribute 'pytmc' := 'pv: Garage:Slot'}
+    astGarageSlot: ARRAY[E_SDSGarageYStates.T1..E_SDSGarageYStates.B4] OF ST_GarageSlot;
+
+    {attribute 'pytmc' := 'pv: Transfer:Slot'}
+    stTransferArmSlot: ST_TransferSlot;
+
+    {attribute 'pytmc' := 'pv: Diff:Slot'}
+    stDiffractometerSlot: ST_DiffractometerSlot;
+
+    {attribute 'pytmc' := '
+        pv: GarHSafeFromCol
+        io: i
+        field: DESC Height at which garage consider safe from collisions.
+    '}
+    fGarageHeightSafeFromCollision : LREAL := -10;
+
+    {attribute 'pytmc' := '
+        pv: GarRClearOff
+        io: i
+        field: DESC Garage rotational offset for clearance when moving up and down with loading transfer arm.
+    '}
+    fGarageRotationClearanceOffset : LREAL := 45;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

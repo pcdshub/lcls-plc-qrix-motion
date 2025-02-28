@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_UISelect" Id="{7c707383-7238-0889-1b55-cb6970ab6672}">
+    <Declaration><![CDATA[
+TYPE ST_UISelect :
+STRUCT
+    // Booleans to allow operator to choose what they want to do.
+    {attribute 'pytmc' := '
+        pv: Load
+        io: io
+        field: DESC Write True to command a loading sequence.
+    '}
+    bLoad: BOOL;
+
+    {attribute 'pytmc' := '
+        pv: Unload
+        io: io
+        field: DESC Write True to command a unloading sequence.
+    '}
+    bUnload: BOOL;
+
+    {attribute 'pytmc' := '
+        pv: ManualControl
+        io: io
+        field: DESC Write True to command manual control.
+    '}
+    bManualControl : BOOL;
+
+    {attribute 'pytmc' := '
+        pv: ExitManualControl
+        io: io
+        field: DESC Write True to command exit manual control.
+    '}
+    bExitManualControl : BOOL;
+
+    {attribute 'pytmc' := '
+        pv: LoadArmFromGar
+        io: io
+        field: DESC Write True to command load arm from garage.
+    '}
+    bLoadArmFromGarage : BOOL;
+
+    {attribute 'pytmc' := '
+        pv: UnloadArmToGar
+        io: io
+        field: DESC Write True to command unload arm from garage.
+    '}
+    bUnloadArmToGarage : BOOL;
+
+    {attribute 'pytmc' := '
+        pv: LoadGarFromPort
+        io: io
+        field: DESC Write True to command load garage from port.
+    '}
+    bLoadGarageFromPort : BOOL;
+
+    {attribute 'pytmc' := '
+        pv: UnloadGarFromPort
+        io: io
+        field: DESC Write True to command load garage from port.
+    '}
+    bLoadUnloadGarageFromPort : BOOL;
+
+    {attribute 'pytmc' := '
+        pv: LoadDiffFromArm
+        io: io
+        field: DESC Write True to command load diffractometer from arm.
+    '}
+    bLoadDiffractometerFromArm : BOOL;
+
+    {attribute 'pytmc' := '
+        pv: UnloadDiffToArm
+        io: io
+        field: DESC Write True to command unload diffractometer to arm.
+    '}
+    bUnloadDiffractometerToArm : BOOL;
+
+    {attribute 'pytmc' := '
+        pv: HomeArm
+        io: io
+        field: DESC Write True to command home transfer arm.
+    '}
+    bHomeTransferArm : BOOL;
+
+    {attribute 'pytmc' := '
+        pv: HomeGar
+        io: io
+        field: DESC Write True to command home garage.
+    '}
+    bHomeGarage : BOOL;
+
+    {attribute 'pytmc' := '
+        pv: GarSlot
+        io: io
+        field: DESC Select garage slot to unload or load.
+    '}
+    eGarageSlot : E_SDSGarageYStates;
+
+    {attribute 'pytmc' := '
+        pv: Proceed
+        io: io
+        field: DESC Write True to proceed to next sequence step, if applicable.
+    '}
+    bProceed: BOOL;
+
+    {attribute 'pytmc' := '
+        pv: Retry
+        io: io
+        field: DESC Write True when prompted to retry a defined previous step, if applicable.
+    '}
+    bRetry: BOOL;
+
+    {attribute 'pytmc' := '
+        pv: Cancel
+        io: io
+        field: DESC TRUE to cancel next sequence step.
+    '}
+    bCancel: BOOL;
+
+    {attribute 'pytmc' := '
+        pv: TextInput
+        io: io
+        field: DESC General purpose text input field.
+    '}
+    sTextInput: T_MaxString;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

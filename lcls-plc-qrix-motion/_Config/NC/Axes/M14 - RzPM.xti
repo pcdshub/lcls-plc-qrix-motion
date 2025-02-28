@@ -1332,9 +1332,9 @@ External Setpoint Generation:
 			<OtherSettings AllowMotionCmdToSlave="true"/>
 		</AxisPara>
 		<Encoder Name="Enc" EncType="29">
-			<EncPara ScaleFactorNumerator="0.299580587" ScaleFactorDenominator="1000" Offset="-205.8664" MaxCount="#xffffffff">
-				<SoftEndMinControl Enable="true" Range="-60"/>
-				<SoftEndMaxControl Enable="true" Range="60"/>
+			<EncPara ScaleFactorNumerator="0.299580587" ScaleFactorDenominator="1000" Offset="-203.9704" MaxCount="#xffffffff">
+				<SoftEndMinControl Enable="true" Range="-58.1"/>
+				<SoftEndMaxControl Enable="true" Range="60.9"/>
 				<Inc RefSoftSyncMask="#x0000ffff"/>
 			</EncPara>
 			<Vars VarGrpType="1">
@@ -1537,7 +1537,7 @@ External Setpoint Generation:
 	</Axis>
 	<Mappings>
 		<OwnerA>
-			<OwnerB Name="TIID^Device 1 (EtherCAT)^Rack#2A-01 Coupler (EK1100)^Rack#2A-16 DR_RzPM (EL7041-0052)">
+			<OwnerB Name="TIID^Device 2 (EtherCAT)^Rack#2A-01 Coupler (EK1100)^Rack#2A-16 DR_RzPM (EL7041-0052)">
 				<Link VarA="Drive^Inputs^In^nDcOutputTime" VarB="InfoData^DcOutputShift"/>
 				<Link VarA="Drive^Inputs^In^nState1" VarB="STM Status^Status^Error" Size="1" OffsA="3"/>
 				<Link VarA="Drive^Inputs^In^nState1" VarB="STM Status^Status^Moving negative" Size="1" OffsA="5"/>
@@ -1557,7 +1557,7 @@ External Setpoint Generation:
 				<Link VarA="Drive^Outputs^Out^nCtrl1" VarB="STM Control^Control^Reset" Size="1" OffsA="1"/>
 				<Link VarA="Drive^Outputs^Out^nDataOut2[0]" VarB="STM Velocity^Velocity"/>
 			</OwnerB>
-			<OwnerB Name="TIID^Device 1 (EtherCAT)^Rack#2B-01 Coupler (EK1100)^Rack#2B-12 ENC_X2PM_RzPM (EL5042)">
+			<OwnerB Name="TIID^Device 2 (EtherCAT)^Rack#2B-01 Coupler (EK1100)^Rack#2B-12 ENC_X2PM_RzPM (EL5042)">
 				<Link VarA="Enc^Inputs^In^nComState" VarB="WcState^InputToggle" Size="1" OffsA="1"/>
 				<Link VarA="Enc^Inputs^In^nComState" VarB="WcState^WcState"/>
 				<Link VarA="Enc^Inputs^In^nDataIn1" VarB="FB Inputs Channel 2^Position"/>

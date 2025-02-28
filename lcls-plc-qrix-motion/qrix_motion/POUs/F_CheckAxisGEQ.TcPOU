@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="F_CheckAxisGEQ" Id="{7634f106-b007-474f-8820-62f9e7a6a689}" SpecialFunc="None">
+    <Declaration><![CDATA[
+FUNCTION F_CheckAxisGEQ : BOOL
+VAR_INPUT
+    stMotionStage: ST_MotionStage;
+    fQueryValue: LREAL;
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+F_CheckAxisGEQ := F_CheckAxis(stMotionStage, 3, fQueryValue);
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

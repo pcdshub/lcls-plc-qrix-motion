@@ -1,17 +1,20 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<?xml version='1.0' encoding='UTF-8'?>
+<TcPlcObject Version="1.1.0.1">
   <POU Name="PRG_2_PMPS" Id="{b84dea55-5b52-40eb-8f1a-0d90375bdbc2}" SpecialFunc="None">
-    <Declaration><![CDATA[PROGRAM PRG_2_PMPS
+    <Declaration><![CDATA[
+PROGRAM PRG_2_PMPS
 VAR
     fbArbiterIO: FB_SubSysToArbiter_IO;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[GVL_PMPS.fbFastFaultOutput1.Execute();
+      <ST><![CDATA[
+GVL_PMPS.fbFastFaultOutput1.Execute();
 GVL_PMPS.fbFastFaultOutput2.Execute();
 fbArbiterIO(
     Arbiter:=GVL_PMPS.fbArbiter,
-    fbFFHWO:=GVL_PMPS.fbFastFaultOutput1);]]></ST>
+    fbFFHWO:=GVL_PMPS.fbFastFaultOutput1);
+]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

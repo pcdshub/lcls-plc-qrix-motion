@@ -1,7 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<?xml version='1.0' encoding='UTF-8'?>
+<TcPlcObject Version="1.1.0.1">
   <POU Name="PRG_OPT_XPM" Id="{22739f85-3eea-4d07-957d-370832f3ada0}" SpecialFunc="None">
-    <Declaration><![CDATA[PROGRAM PRG_OPT_XPM
+    <Declaration><![CDATA[
+PROGRAM PRG_OPT_XPM
 VAR
     bInit: BOOL :=TRUE;
     {attribute 'pytmc' := 'pv: QRIX:PM'}
@@ -12,13 +13,10 @@ END_VAR
 
 VAR CONSTANT
     rDistance	:REAL	:=	0.4;
-END_VAR]]></Declaration>
+END_VAR
+]]></Declaration>
     <Implementation>
-      <ST><![CDATA[//Lock stages until they are tested
-Main.M12.nEnableMode := ENUM_StageEnableMode.NEVER ;
-Main.M13.nEnableMode := ENUM_StageEnableMode.NEVER ;
-
-
+      <ST><![CDATA[
 IF bINIT THEN
 
     Main.M12.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
@@ -43,7 +41,7 @@ fb2AxesXPM(	i_DevName		:=	'OPT_XPM',
             bExecuteMotion	:=	bExecuteMotionXPM,
             io_fbFFHWO		:=	GVL_PMPS.fbFastFaultOutput1,
             fbArbiter		:=	GVL_PMPS.fbArbiter,
-            rDistance		:=	rDistance,//0.4, // 0.4m
+            rDistance		:=	rDistance,//actually 0.48m?? //0.4, // 0.4m
             bMoveOk			:= bMoveOkXPM
 );
 ]]></ST>

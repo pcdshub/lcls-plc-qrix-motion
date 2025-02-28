@@ -1,7 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<?xml version='1.0' encoding='UTF-8'?>
+<TcPlcObject Version="1.1.0.1">
   <POU Name="PRG_OPT_YG" Id="{173d90db-406f-4d99-a17e-cb9894f5d5de}" SpecialFunc="None">
-    <Declaration><![CDATA[PROGRAM PRG_OPT_YG
+    <Declaration><![CDATA[
+PROGRAM PRG_OPT_YG
 VAR
     bDebug: BOOL;
     bExecuteMotion: BOOL := TRUE;
@@ -10,12 +11,12 @@ VAR
     fbYGMotion: FB_3AxesJack;
 
     bInit: BOOL :=TRUE;
+
+    tonDelayUpdate: TON;
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[
-
-
 IF bInit THEN
     bInit := FALSE;
 
@@ -36,16 +37,23 @@ IF bInit THEN
     Main.M9.nEnableMode := ENUM_StageEnableMode.DURING_MOTION ;
 END_IF
 
-
-
 fbYGMotion(
-    bExecuteMotion	:= bExecuteMotion,
     bMoveOk			:= bMoveOk,
-    stJack1Axis		:= Main.M7,
-    stJack2Axis		:= Main.M8,
-    stJack3Axis		:= Main.M9,
-    i_DevName		:= 'OPT_YG'
-);]]></ST>
+    stJack1Axis		:= Main.M9,
+    stJack2Axis		:= Main.M7,
+    stJack3Axis		:= Main.M8,
+    rDistanceX        := 0.24,
+    rDistanceZ        := 0.88,
+    bJack3DoesPitch   :=  FALSE,
+    rLimitPositionMax :=  8.0,
+    rLimitPositionMin := -8.0,
+    rLimitPitchMin    := -18,
+    rLimitPitchMax    :=  18,
+    rLimitRollMin     := -18,
+    rLimitRollMax     :=  18,
+    fMaxVelocity      :=  0.1,
+);
+]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

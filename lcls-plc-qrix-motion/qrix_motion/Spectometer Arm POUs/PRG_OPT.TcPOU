@@ -1,7 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<?xml version='1.0' encoding='UTF-8'?>
+<TcPlcObject Version="1.1.0.1">
   <POU Name="PRG_OPT" Id="{9fd4ef96-d0b3-4d92-a155-89dc0eb4c6d2}" SpecialFunc="None">
-    <Declaration><![CDATA[PROGRAM PRG_OPT
+    <Declaration><![CDATA[
+PROGRAM PRG_OPT
 VAR
     bInit: BOOL := TRUE;
     fbMotionRxG: FB_MotionStage;

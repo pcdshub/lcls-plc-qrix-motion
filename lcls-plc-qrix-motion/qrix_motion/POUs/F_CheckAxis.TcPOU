@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="F_CheckAxis" Id="{232c0f12-fd8c-465a-b1e6-0c8fb0998c29}" SpecialFunc="None">
+    <Declaration><![CDATA[
+FUNCTION F_CheckAxis : BOOL
+VAR_INPUT
+    stMotionStage: ST_MotionStage;
+    nComparisonCode: UINT;
+    fQueryValue: LREAL;
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+CASE nComparisonCode OF
+    0: F_CheckAxis := stMotionStage.stAxisStatus.fActPosition <  fQueryValue AND stMotionStage.fPosition <  fQueryValue; // <
+    1: F_CheckAxis := stMotionStage.stAxisStatus.fActPosition <= fQueryValue AND stMotionStage.fPosition <= fQueryValue; // <=
+    2: F_CheckAxis := stMotionStage.stAxisStatus.fActPosition >  fQueryValue AND stMotionStage.fPosition >  fQueryValue; // >
+    3: F_CheckAxis := stMotionStage.stAxisStatus.fActPosition >= fQueryValue AND stMotionStage.fPosition >= fQueryValue; // <=
+ELSE
+    return;
+END_CASE;
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

@@ -14,13 +14,15 @@
 # Libraries:
 #
 #   LCLS General: * -> 2.10.0 (SLAC)
-#   lcls-twincat-motion: * -> 4.0.5 (SLAC)
-#   lcls-twincat-optics: * -> 0.6.1 (SLAC)
+#   lcls-twincat-motion: * -> 4.1.1 (SLAC)
+#   lcls-twincat-optics: * -> 0.8.0 (SLAC)
 #   PMPS: * -> 3.0.14 (SLAC - LCLS)
+#   Tc2_EtherCAT: * -> 3.3.15.0 (Beckhoff Automation GmbH)
 #   Tc2_MC2: * -> 3.3.42.0 (Beckhoff Automation GmbH)
 #   Tc2_Standard: * -> 3.3.3.0 (Beckhoff Automation GmbH)
 #   Tc2_System: * -> 3.4.24.0 (Beckhoff Automation GmbH)
 #   Tc3_Module: * -> 3.3.21.0 (Beckhoff Automation GmbH)
+#   UML Statechart Types: 4.1.1.0 -> 4.1.1.0 (3S - Smart Software Solutions GmbH)
 #
 ################### AUTO-GENERATED DO NOT EDIT ###################
 < envPaths
@@ -43,7 +45,7 @@ epicsEnvSet("ASYN_PORT",        "ASYN_PLC")
 epicsEnvSet("IPADDR",           "172.21.140.101")
 epicsEnvSet("AMSID",            "172.21.140.101.1.1")
 epicsEnvSet("AMS_PORT",         "851")
-epicsEnvSet("ADS_MAX_PARAMS",   "5683")
+epicsEnvSet("ADS_MAX_PARAMS",   "7205")
 epicsEnvSet("ADS_SAMPLE_MS",    "50")
 epicsEnvSet("ADS_MAX_DELAY_MS", "100")
 epicsEnvSet("ADS_TIMEOUT_MS",   "1000")
@@ -861,12 +863,14 @@ dbLoadRecords("TwinCAT_Project.db", "PREFIX=PLC:QRIX:MOT,PROJECT=lcls-plc-qrix-m
 
 #   LCLS General: * -> 2.10.0 (SLAC)
 dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:QRIX:MOT,DEPENDENCY=LCLS_General,VERSION=2.10.0,VENDOR=SLAC")
-#   lcls-twincat-motion: * -> 4.0.5 (SLAC)
-dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:QRIX:MOT,DEPENDENCY=lcls-twincat-motion,VERSION=4.0.5,VENDOR=SLAC")
-#   lcls-twincat-optics: * -> 0.6.1 (SLAC)
-dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:QRIX:MOT,DEPENDENCY=lcls-twincat-optics,VERSION=0.6.1,VENDOR=SLAC")
+#   lcls-twincat-motion: * -> 4.1.1 (SLAC)
+dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:QRIX:MOT,DEPENDENCY=lcls-twincat-motion,VERSION=4.1.1,VENDOR=SLAC")
+#   lcls-twincat-optics: * -> 0.8.0 (SLAC)
+dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:QRIX:MOT,DEPENDENCY=lcls-twincat-optics,VERSION=0.8.0,VENDOR=SLAC")
 #   PMPS: * -> 3.0.14 (SLAC - LCLS)
 dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:QRIX:MOT,DEPENDENCY=PMPS,VERSION=3.0.14,VENDOR=SLAC - LCLS")
+#   Tc2_EtherCAT: * -> 3.3.15.0 (Beckhoff Automation GmbH)
+dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:QRIX:MOT,DEPENDENCY=Tc2_EtherCAT,VERSION=3.3.15.0,VENDOR=Beckhoff Automation GmbH")
 #   Tc2_MC2: * -> 3.3.42.0 (Beckhoff Automation GmbH)
 dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:QRIX:MOT,DEPENDENCY=Tc2_MC2,VERSION=3.3.42.0,VENDOR=Beckhoff Automation GmbH")
 #   Tc2_Standard: * -> 3.3.3.0 (Beckhoff Automation GmbH)
@@ -875,14 +879,16 @@ dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:QRIX:MOT,DEPENDENCY=Tc2_Stand
 dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:QRIX:MOT,DEPENDENCY=Tc2_System,VERSION=3.4.24.0,VENDOR=Beckhoff Automation GmbH")
 #   Tc3_Module: * -> 3.3.21.0 (Beckhoff Automation GmbH)
 dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:QRIX:MOT,DEPENDENCY=Tc3_Module,VERSION=3.3.21.0,VENDOR=Beckhoff Automation GmbH")
+#   UML Statechart Types: 4.1.1.0 -> 4.1.1.0 (3S - Smart Software Solutions GmbH)
+dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:QRIX:MOT,DEPENDENCY=UML_Statechart_Types,VERSION=4.1.1.0,VENDOR=3S - Smart Software Solutions GmbH")
 
 cd "$(IOC_TOP)"
 
 ## PLC Project Database files ##
 dbLoadRecords("qrix_motion.db", "PORT=$(ASYN_PORT),PREFIX=PLC:QRIX:MOT:,IOCNAME=$(IOC),IOC=$(IOC)")
 
-# Total records: 4683
-callbackSetQueueSize(11366)
+# Total records: 6205
+callbackSetQueueSize(14410)
 
 # Autosave and archive settings:
 save_restoreSet_status_prefix("PLC:QRIX:MOT:")

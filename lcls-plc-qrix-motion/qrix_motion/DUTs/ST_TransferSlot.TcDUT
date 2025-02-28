@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_TransferSlot" Id="{64529594-a50b-4e21-b212-dc33dc478be7}">
+    <Declaration><![CDATA[
+TYPE ST_TransferSlot EXTENDS ST_SampleSlot :
+(*
+    Represents a slot in the SDS transfer arm.
+*)
+STRUCT
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

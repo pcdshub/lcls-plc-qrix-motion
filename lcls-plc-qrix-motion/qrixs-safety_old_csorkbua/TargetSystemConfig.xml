@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TargetSystemConfig Crc="943496675" Version="1.4">
+  <TargetSystemType>HSafetyPLC</TargetSystemType>
+  <TargetSystemSubType>EL1918</TargetSystemSubType>
+  <IsExternalDevice>false</IsExternalDevice>
+  <TargetSystemObjectId>50462819</TargetSystemObjectId>
+  <TargetSystemObjectName>Rack#1A-02 SFIN (EL1918)</TargetSystemObjectName>
+  <SoftwareVersion>01 (V01.03)     </SoftwareVersion>
+  <SerialNumber>2413545</SerialNumber>
+  <ProjectCRC>39413</ProjectCRC>
+  <MapProjectCRC>false</MapProjectCRC>
+  <MapSerialNumber>false</MapSerialNumber>
+  <VersionNumber>1</VersionNumber>
+  <FSOEAddress>1</FSOEAddress>
+  <DipSwitch>1</DipSwitch>
+  <AmsNetID>0.0.0.0.2.1</AmsNetID>
+  <AmsPort>1061</AmsPort>
+  <ConnectionInfoDataConfigOld>false</ConnectionInfoDataConfigOld>
+  <TakeOverSafetyAliasDeviceNamesInProcessImage>false</TakeOverSafetyAliasDeviceNamesInProcessImage>
+  <TakeOverStandardAliasDeviceNamesInProcessImage>false</TakeOverStandardAliasDeviceNamesInProcessImage>
+  <BackupRestore Needed="0" Activated="false" RestoreUserAdministration="false"/>
+</TargetSystemConfig>

@@ -1,0 +1,735 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="FB_MultiLeaderMotionCoupling" Id="{7a6ad094-6232-44ec-af8d-1b0e9853827f}" SpecialFunc="None">
+    <Declaration><![CDATA[
+FUNCTION_BLOCK FB_MultiLeaderMotionCoupling
+VAR_IN_OUT
+    stMotionStageFollow: ST_MotionStage;
+    stMultiLeaderMotionCoupling: ST_MultiLeaderMotionCoupling;
+END_VAR
+VAR_INPUT
+    fTargetPos : LREAL;
+    fTargetVel : LREAL;
+    fTargetAcc : LREAL;
+    bError     : BOOL;
+    tTimeout   :   TIME  := T#5s;
+END_VAR
+VAR
+    bInit        : BOOL := TRUE;
+    nTimeout     : ULINT;
+    tonTimeout   : TON;
+    tonHaltDelay : TON;
+
+    tonTargetPositionTimer: TON;
+
+    fMoveTime              : LREAL; // in seconds
+    tMove                  : TIME;
+    tonMoveProgressCounter : TON;
+    GetCurrentTaskIndex    : GETCURTASKINDEX;
+    fSecPerScan            : LREAL;
+    fDistanceThisScan      : LREAL;
+    fPosSetpoint           : LREAL;
+
+    EnableSetPointGenerator  : MC_ExtSetPointGenEnable;
+    DisableSetPointGenerator : MC_ExtSetPointGenDisable;
+    mcHalt                   : MC_Halt;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+// During initialization or reset, restore state values to defaults.
+IF bInit OR stMultiLeaderMotionCoupling.bReset THEN
+    bInit := FALSE;
+    stMotionStageFollow.bReset             := TRUE;
+    stMultiLeaderMotionCoupling.bReset     := FALSE;
+    stMultiLeaderMotionCoupling.bBusy      := FALSE;
+    stMultiLeaderMotionCoupling.sStatusMsg := '';
+    stMultiLeaderMotionCoupling.bError     := FALSE;
+    stMultiLeaderMotionCoupling.sErrorMsg  := '';
+    stMultiLeaderMotionCoupling.sErrorHelp := '';
+    stMultiLeaderMotionCoupling.eState     := E_MultiLeaderMotionCoupling.STATE_STANDBY;
+
+    METH_Init(
+        stMotionStage     := stMotionStageFollow,
+        stMultiLeader     := stMultiLeaderMotionCoupling,
+        bEnableByDefault  := stMultiLeaderMotionCoupling.bEnable,
+        bUseDynamicLimits := stMultiLeaderMotionCoupling.bUseDynamicLimits
+    );
+END_IF
+
+stMultiLeaderMotionCoupling.fTargetPos := fTargetPos;
+stMultiLeaderMotionCoupling.fTargetVel := ABS(fTargetVel);
+stMultiLeaderMotionCoupling.fTargetAcc := fTargetAcc;
+
+stMultiLeaderMotionCoupling.fPosDelta := stMultiLeaderMotionCoupling.stPos.fOut - stMotionStageFollow.Axis.NcToPlc.ActPos;
+
+nTimeout := TIME_TO_ULINT(tTimeout - tonTimeout.ET); // Get the remaining timeout time in ms.
+
+CASE stMultiLeaderMotionCoupling.eState OF
+
+    E_MultiLeaderMotionCoupling.STATE_STANDBY:
+        // Wait here for multi-leader mode to be enabled.
+        // If we get here and there is an active error, request the user to clear the error.
+        ACT_01_STATE_STANDBY();
+
+    E_MultiLeaderMotionCoupling.STATE_WAIT_FOR_FOLLOWER_NOT_BUSY:
+        // The external setpoint generator cannot be activated when the axis is currently busy.
+        // Give the duration of the timeout to wait for the axis to stop being busy.
+        // If the timeout duration expires, give a helpful error message and give up.
+        ACT_02_STATE_WAIT_FOR_FOLLOWER_NOT_BUSY();
+
+    E_MultiLeaderMotionCoupling.STATE_WAIT_FOR_FOLLOWER_ENABLED:
+        // The external setpoint generator cannot be activated until the axis is enabled.
+        // Give the duration of the timeout to wait for the axis to be enabled.
+        // If the timeout duration expires, give a helpful error message and give up.
+        ACT_03_STATE_WAIT_FOR_FOLLOWER_ENABLED();
+
+    E_MultiLeaderMotionCoupling.STATE_WAIT_FOR_FOLLOWER_READY:
+        // The external setpoint generator cannot be activated until the motor drive ready status is received.
+        // Give the duration of the timeout to wait for the motor drive to report its ready status.
+        // If the timeout duration expires, give a helpful error message and give up.
+        ACT_04_STATE_WAIT_FOR_FOLLOWER_READY();
+
+    E_MultiLeaderMotionCoupling.STATE_ENABLE_EXTERNAL_SETPOINT_GENERATOR:
+        // With all the prerequisites satisfied, we can attempt to enable the external setpoint generator.
+        // Give the duration of the timeout to wait for the external setpoint generator to enable.
+        // If the timeout duration expires, give a helpful error message and give up.
+        ACT_05_STATE_ENABLE_EXTERNAL_SETPOINT_GENERATOR();
+
+    E_MultiLeaderMotionCoupling.STATE_FOLLOWING_ACTIVE:
+        // The external setpoint generator allows us to feed arbitrary setpoint, velocity, acceleration, and direction
+        // commands to the follower axis. This is the backbone of the multi-leader control logic.
+        // The position and velocity inputs will be able to be used to control the position of an axis based on the
+        // positions of one or more other axes by feeding the desired position output of an arbitrary function or
+        // multi-dimensional lookup table into this function block.
+        // In this state, any other position commands to the follower axis will be overwritten every time
+        // this function block is executed. The function block can be disabled to allow manual commands to
+        // be used by this axis.
+        // On a manual disable command or an error in the follower axis, this state will move into the
+        // disable external setpoint generator state or the error state respectively.
+        ACT_06_STATE_FOLLOWING_ACTIVE();
+
+    E_MultiLeaderMotionCoupling.STATE_DISABLE_EXTERNAL_SETPOINT_GENERATOR:
+        // Attempt to disable the external setpoint generator.
+        // Give the duration of the timeout to wait for the external setpoint generator to disable.
+        // If the timeout duration expires, give a helpful error message and give up.
+        ACT_07_STATE_DISABLE_EXTERNAL_SETPOINT_GENERATOR();
+
+    E_MultiLeaderMotionCoupling.STATE_ERROR:
+        // Allow a state for handling errors.
+        // First, try to disable the external setpoint generator.
+        // If the timeout duration expires, give a helpful error message and give up.
+        ACT_08_STATE_ERROR();
+
+    E_MultiLeaderMotionCoupling.STATE_MONITOR_TARGET_WINDOW:
+        // Check to see if the axis leaves the target window. If it does,
+        // switch back to enabling the external setpoint generator.
+        ACT_09_STATE_MONITOR_TARGET_WINDOW();
+
+    E_MultiLeaderMotionCoupling.STATE_HALT_MOTION:
+        // Stop the motion on the axis so that it doesn't sit there using full current
+        // when it can be using holding current.
+        ACT_10_STATE_HALT_MOTION();
+
+ELSE
+    // Catch-all for invalid states. Report the number of the invalid state and move into error state.
+    stMultiLeaderMotionCoupling.bError     := TRUE;
+    stMultiLeaderMotionCoupling.sErrorMsg  := CONCAT('Attempted to enter invalid state with ID: ', UDINT_TO_STRING(stMultiLeaderMotionCoupling.eState));
+    stMultiLeaderMotionCoupling.sErrorHelp := 'Contact ECS to investigate.';
+    stMultiLeaderMotionCoupling.eState     := E_MultiLeaderMotionCoupling.STATE_ERROR;
+
+END_CASE
+]]></ST>
+    </Implementation>
+    <Action Name="ACT_01_STATE_STANDBY" Id="{f8540365-10a6-4edc-8dfe-c9cb72dbd4df}">
+      <Implementation>
+        <ST><![CDATA[
+(* ACTION - STATE STANDBY *)
+
+stMotionStageFollow.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+
+IF stMultiLeaderMotionCoupling.bEnable AND NOT stMultiLeaderMotionCoupling.bError THEN
+    stMultiLeaderMotionCoupling.bBusy      := TRUE;
+    stMultiLeaderMotionCoupling.sStatusMsg := 'Moving from STANDBY to WAIT_FOR_FOLLOWER_NOT_BUSY.';
+    stMultiLeaderMotionCoupling.eState     := E_MultiLeaderMotionCoupling.STATE_WAIT_FOR_FOLLOWER_NOT_BUSY;
+ELSIF NOT stMultiLeaderMotionCoupling.bEnable THEN
+    stMultiLeaderMotionCoupling.bBusy      := FALSE;
+    stMultiLeaderMotionCoupling.sStatusMsg := 'Waiting to be enabled.';
+ELSIF stMultiLeaderMotionCoupling.bError THEN
+    stMultiLeaderMotionCoupling.bBusy      := FALSE;
+    stMultiLeaderMotionCoupling.sStatusMsg := 'Waiting for reset button to be pressed to clear the error.';
+ELSE
+    stMultiLeaderMotionCoupling.sStatusMsg := 'STATE_STANDBY: Unexpected condition.';
+END_IF
+]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="ACT_02_STATE_WAIT_FOR_FOLLOWER_NOT_BUSY" Id="{a7f071ee-a4ae-4db0-85c6-fd248b963766}">
+      <Implementation>
+        <ST><![CDATA[
+(* ACTION - STATE WAIT FOR FOLLOWER NOT BUSY *)
+
+tonTimeout(IN:=TRUE,PT:=tTimeout);
+IF NOT stMotionStageFollow.bBusy THEN
+    stMultiLeaderMotionCoupling.sStatusMsg := 'Moving from WAIT_FOR_FOLLOWER_NOT_BUSY to WAIT_FOR_FOLLOWER_ENABLED.';
+    stMultiLeaderMotionCoupling.eState     := E_MultiLeaderMotionCoupling.STATE_WAIT_FOR_FOLLOWER_ENABLED;
+    tonTimeout(IN:=FALSE);
+ELSIF tonTimeout.Q THEN
+    stMultiLeaderMotionCoupling.bError     := TRUE;
+    stMultiLeaderMotionCoupling.sErrorMsg  := 'Timeout occured during STATE_WAIT_FOR_FOLLOWER_NOT_BUSY.';
+    stMultiLeaderMotionCoupling.sErrorHelp := 'Make sure the axis is not busy before enabling multi-leader mode.';
+    stMultiLeaderMotionCoupling.eState     := E_MultiLeaderMotionCoupling.STATE_ERROR;
+    tonTimeout(IN:=FALSE);
+ELSE
+    stMultiLeaderMotionCoupling.sStatusMsg := 'Waiting for follower to not be busy.';
+END_IF
+]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="ACT_03_STATE_WAIT_FOR_FOLLOWER_ENABLED" Id="{e55d0c51-7997-4d7e-bb47-56edf56e5e4f}">
+      <Implementation>
+        <ST><![CDATA[
+(* ACTION - STATE WAIT FOR FOLLOWER ENABLED *)
+
+tonTimeout(IN:=TRUE,PT:=tTimeout);
+
+stMotionStageFollow.nEnableMode := ENUM_StageEnableMode.NEVER;
+stMotionStageFollow.bEnable     := TRUE;
+
+// NEED TO ADD IN DIRECTIONAL ENABLES TOO.
+// Make function that handles directional enables and gives proper error messages for them.
+IF stMotionStageFollow.bAllEnable THEN
+    stMultiLeaderMotionCoupling.eState := E_MultiLeaderMotionCoupling.STATE_WAIT_FOR_FOLLOWER_READY;
+    tonTimeout(IN:=FALSE);
+ELSIF tonTimeout.Q THEN
+    stMultiLeaderMotionCoupling.bError     := TRUE;
+    stMultiLeaderMotionCoupling.sErrorMsg  := 'Timeout occured during STATE_WAIT_FOR_FOLLOWER_ENABLED.';
+    stMultiLeaderMotionCoupling.sErrorHelp := 'Check to see what condition is preventing the axis from enabling.';
+    stMultiLeaderMotionCoupling.eState     := E_MultiLeaderMotionCoupling.STATE_ERROR;
+    tonTimeout(IN:=FALSE);
+ELSE
+    stMultiLeaderMotionCoupling.sStatusMsg := 'Waiting for follower to be enabled.';
+END_IF
+]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="ACT_04_STATE_WAIT_FOR_FOLLOWER_READY" Id="{5c6da3a8-46d5-4190-9f6d-82cfe440c4a1}">
+      <Implementation>
+        <ST><![CDATA[
+(* ACTION - STATE WAIT FOR FOLLOWER READY *)
+
+tonTimeout(IN:=TRUE,PT:=tTimeout);
+IF stMultiLeaderMotionCoupling.bFollowerDriveReady THEN
+    stMultiLeaderMotionCoupling.eState := E_MultiLeaderMotionCoupling.STATE_ENABLE_EXTERNAL_SETPOINT_GENERATOR;
+    tonTimeout(IN:=FALSE);
+ELSIF tonTimeout.Q THEN
+    stMultiLeaderMotionCoupling.bError     := TRUE;
+    stMultiLeaderMotionCoupling.sErrorMsg  := 'Timeout occured during STATE_WAIT_FOR_FOLLOWER_READY.';
+    stMultiLeaderMotionCoupling.sErrorHelp := 'Something is preventing the motor drive from giving the ready status.';
+    stMultiLeaderMotionCoupling.eState     := E_MultiLeaderMotionCoupling.STATE_ERROR;
+    tonTimeout(IN:=FALSE);
+ELSE
+    stMultiLeaderMotionCoupling.sStatusMsg := 'Waiting for follower drive to give ready status.';
+END_IF
+]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="ACT_05_STATE_ENABLE_EXTERNAL_SETPOINT_GENERATOR" Id="{acf8507b-e215-4f3a-9f82-0795e274c351}">
+      <Implementation>
+        <ST><![CDATA[
+(* ACTION - STATE ENABLE EXTERNAL SETPOINT GENERATOR *)
+
+ACT_ComputeTargets();
+
+tonTimeout(IN:=TRUE,PT:=tTimeout);
+
+MC_ExtSetPointGenFeed(
+    Position     := stMotionStageFollow.Axis.NcToPlc.ActPos,
+    Velocity     := 0.0,
+    Acceleration := 0.0,
+    Direction    := 1,
+    Axis         := stMotionStageFollow.Axis
+);
+
+EnableSetPointGenerator(
+    Axis         := stMotionStageFollow.Axis,
+    Execute      := TRUE,
+    PositionType := E_PositionType.POSITIONTYPE_ABSOLUTE,
+    Done=>,
+    Busy=>,
+    Error=>,
+    ErrorID=>,
+    Enabled=>
+);
+
+// See: https://infosys.beckhoff.com/english.php?content=../content/1033/tcplclib_tc2_mc2/70136971.html&id=
+// StateDWord.14 gives a boolean for the enable/disable state of the external setpoint generator.
+// TRUE = ENABLED. FALSE = DISABLED.
+IF stMotionStageFollow.Axis.NcToPlc.StateDWord.14 THEN
+    EnableSetPointGenerator(
+        Axis:=stMotionStageFollow.Axis,
+        Execute:=FALSE
+    );
+    stMultiLeaderMotionCoupling.eState := E_MultiLeaderMotionCoupling.STATE_FOLLOWING_ACTIVE;
+    tonTimeout(IN:=FALSE);
+ELSIF EnableSetPointGenerator.Error THEN
+    EnableSetPointGenerator(
+        Axis:=stMotionStageFollow.Axis,
+        Execute:=FALSE
+    );
+    stMultiLeaderMotionCoupling.bError     := TRUE;
+    stMultiLeaderMotionCoupling.sErrorMsg  := CONCAT('EnableSetPointGenerator returned error code: ', UDINT_TO_STRING(EnableSetPointGenerator.ErrorID));
+    CASE EnableSetPointGenerator.ErrorID OF
+        ELSE
+            stMultiLeaderMotionCoupling.sErrorHelp := 'This error code is missing explanation from Beckhoff.';
+    END_CASE
+    stMultiLeaderMotionCoupling.eState := E_MultiLeaderMotionCoupling.STATE_ERROR;
+    tonTimeout(IN:=FALSE);
+ELSIF tonTimeout.Q THEN
+    EnableSetPointGenerator(
+        Axis:=stMotionStageFollow.Axis,
+        Execute:=FALSE
+    );
+    stMultiLeaderMotionCoupling.bError     := TRUE;
+    stMultiLeaderMotionCoupling.sErrorMsg  := 'Timeout occured during STATE_ENABLE_EXTERNAL_SETPOINT_GENERATOR.';
+    stMultiLeaderMotionCoupling.sErrorHelp := 'Failed to enable setpoint generator. Check enable and ready statuses.';
+    stMultiLeaderMotionCoupling.eState     := E_MultiLeaderMotionCoupling.STATE_ERROR;
+    tonTimeout(IN:=FALSE);
+ELSE
+    stMultiLeaderMotionCoupling.sStatusMsg := 'Waiting for setpoint generator to be enabled.';
+END_IF
+]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="ACT_06_STATE_FOLLOWING_ACTIVE" Id="{ddd18e68-6112-4c5d-a92c-50a6a08b0e5a}">
+      <Implementation>
+        <ST><![CDATA[
+(* ACTION - STATE FOLLOWING ACTIVE *)
+
+ACT_ComputeTargets();
+
+stMultiLeaderMotionCoupling.fPosDelta := stMultiLeaderMotionCoupling.stPos.fOut - stMotionStageFollow.Axis.NcToPlc.ActPos;
+
+IF stMultiLeaderMotionCoupling.stVel.fOut <> 0 THEN
+    fMoveTime := ABS(stMultiLeaderMotionCoupling.fPosDelta / stMultiLeaderMotionCoupling.stVel.fOut);
+ELSE
+    fMoveTime := 0;
+END_IF
+tMove := LREAL_TO_TIME(fMoveTime * 1000);
+
+// Determine the direction in which the axis is being commanded.
+IF stMultiLeaderMotionCoupling.stVel.fOut = 0 AND stMultiLeaderMotionCoupling.stAcc.fOut = 0 THEN
+    stMultiLeaderMotionCoupling.nDir := 0;	(* stand still *)
+ELSIF stMultiLeaderMotionCoupling.stPos.fOut >= stMotionStageFollow.Axis.NcToPlc.ActPos THEN
+    stMultiLeaderMotionCoupling.nDir := 1;	(* positive motion *)
+ELSE
+    stMultiLeaderMotionCoupling.nDir := -1; (* negative motion *)
+END_IF
+
+stMultiLeaderMotionCoupling.stVel.fOut := stMultiLeaderMotionCoupling.stVel.fOut * stMultiLeaderMotionCoupling.nDir;
+
+IF ABS(stMultiLeaderMotionCoupling.fPosDelta) < stMotionStageFollow.stAxisParameters.fTargetPosControlRange THEN
+    tonTargetPositionTimer(IN:=TRUE,PT:=LREAL_TO_TIME(stMotionStageFollow.stAxisParameters.fTargetPosControlTime * 1000));
+ELSE
+    tonTargetPositionTimer(IN:=FALSE);
+END_IF
+
+IF NOT stMultiLeaderMotionCoupling.bEnable THEN
+    stMultiLeaderMotionCoupling.eState := E_MultiLeaderMotionCoupling.STATE_DISABLE_EXTERNAL_SETPOINT_GENERATOR;
+ELSIF stMotionStageFollow.bError THEN
+    stMultiLeaderMotionCoupling.bError     := TRUE;
+    stMultiLeaderMotionCoupling.sErrorMsg  := 'MultiLeaderMotionCoupling suspended due to follower axis error.';
+    stMultiLeaderMotionCoupling.sErrorHelp := stMotionStageFollow.sErrorMessage;
+    stMultiLeaderMotionCoupling.eState     := E_MultiLeaderMotionCoupling.STATE_ERROR;
+ELSE
+    stMultiLeaderMotionCoupling.sStatusMsg := CONCAT('Actively controlling [', CONCAT(stMotionStageFollow.sName,'] in multi-leader mode.'));
+
+    IF NOT tonTargetPositionTimer.Q THEN
+        // Feed the dynamic parameters into the external setpoint generator interface of the follower axis
+        IF GetCurrentTaskIndex.index = 0 THEN
+            (* get cycle time *)
+            GetCurrentTaskIndex();
+        END_IF
+        fSecPerScan := UDINT_TO_LREAL(TwinCAT_SystemInfoVarList._TaskInfo[GetCurrentTaskIndex.index].cycleTime) / 1E7;
+        IF fMoveTime <> 0 THEN
+            fDistanceThisScan := stMultiLeaderMotionCoupling.fPosDelta / fMoveTime * stMultiLeaderMotionCoupling.nDir * fSecPerScan;
+        ELSE
+            fDistanceThisScan := 0;
+        END_IF
+        fPosSetpoint := stMotionStageFollow.Axis.NcToPlc.ActPos + fDistanceThisScan;
+        IF WORD_TO_BOOL(stMotionStageFollow.stAxisParameters.bEncEnableSoftEndMaxControl) AND fPosSetpoint > stMotionStageFollow.stAxisParameters.fEncSoftEndMax THEN
+            fPosSetpoint := stMotionStageFollow.stAxisParameters.fEncSoftEndMax;
+        ELSIF WORD_TO_BOOL(stMotionStageFollow.stAxisParameters.bEncEnableSoftEndMinControl) AND fPosSetpoint < stMotionStageFollow.stAxisParameters.fEncSoftEndMin THEN
+            fPosSetpoint := stMotionStageFollow.stAxisParameters.fEncSoftEndMin;
+        END_IF
+        MC_ExtSetPointGenFeed(
+            Position     := fPosSetpoint,
+            Velocity     := stMultiLeaderMotionCoupling.stVel.fOut,
+            Acceleration := stMultiLeaderMotionCoupling.stAcc.fOut,
+            Direction    := stMultiLeaderMotionCoupling.nDir,
+            Axis         := stMotionStageFollow.Axis
+        );
+        tonTimeout(IN:=FALSE);
+        tonHaltDelay(IN:=FALSE);
+    ELSE
+        MC_ExtSetPointGenFeed(
+            Position     := stMultiLeaderMotionCoupling.stPos.fOut, // stMotionStageFollow.Axis.NcToPlc.ActPos,
+            Velocity     := stMultiLeaderMotionCoupling.fPosDelta * stMultiLeaderMotionCoupling.fTargetTrackingGain, // 0,
+            Acceleration := stMultiLeaderMotionCoupling.stAcc.fOut,
+            Direction    := stMultiLeaderMotionCoupling.nDir,
+            Axis         := stMotionStageFollow.Axis
+        );
+        tonHaltDelay(IN:=TRUE,PT:=tTimeout);
+        IF tonHaltDelay.Q THEN
+            stMultiLeaderMotionCoupling.eState := E_MultiLeaderMotionCoupling.STATE_HALT_MOTION;
+            tonHaltDelay(IN:=FALSE);
+        END_IF
+    END_IF
+END_IF
+]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="ACT_07_STATE_DISABLE_EXTERNAL_SETPOINT_GENERATOR" Id="{cbdbc51b-e9a6-47d1-b973-53f78571dc0e}">
+      <Implementation>
+        <ST><![CDATA[
+(* ACTION - STATE DISABLE EXTERNAL SETPOINT GENERATOR *)
+
+tonTimeout(IN:=TRUE,PT:=tTimeout);
+DisableSetPointGenerator(
+    Axis         := stMotionStageFollow.Axis,
+    Execute      := TRUE,
+    Done=>,
+    Busy=>,
+    Error=>,
+    ErrorID=>,
+    Enabled=>
+);
+
+stMotionStageFollow.bEnable     := FALSE;
+
+// See: https://infosys.beckhoff.com/english.php?content=../content/1033/tcplclib_tc2_mc2/70136971.html&id=
+// StateDWord.14 gives a boolean for the enable/disable state of the external setpoint generator.
+// TRUE = ENABLED. FALSE = DISABLED.
+IF NOT stMotionStageFollow.Axis.NcToPlc.StateDWord.14 THEN
+    DisableSetPointGenerator(
+        Axis:=stMotionStageFollow.Axis,
+        Execute:=FALSE
+    );
+    stMultiLeaderMotionCoupling.eState := E_MultiLeaderMotionCoupling.STATE_STANDBY;
+    tonTimeout(IN:=FALSE);
+ELSIF DisableSetPointGenerator.Error THEN
+    DisableSetPointGenerator(
+        Axis:=stMotionStageFollow.Axis,
+        Execute:=FALSE
+    );
+    stMultiLeaderMotionCoupling.bError     := TRUE;
+    stMultiLeaderMotionCoupling.sErrorMsg  := CONCAT('DisableSetPointGenerator returned error code: ', UDINT_TO_STRING(DisableSetPointGenerator.ErrorID));
+    CASE DisableSetPointGenerator.ErrorID OF
+        ELSE
+            stMultiLeaderMotionCoupling.sErrorHelp := 'This error code is missing explanation from Beckhoff.';
+    END_CASE
+    stMultiLeaderMotionCoupling.eState := E_MultiLeaderMotionCoupling.STATE_ERROR;
+    tonTimeout(IN:=FALSE);
+ELSIF tonTimeout.Q THEN
+    DisableSetPointGenerator(
+        Axis:=stMotionStageFollow.Axis,
+        Execute:=FALSE
+    );
+    stMultiLeaderMotionCoupling.bError     := TRUE;
+    stMultiLeaderMotionCoupling.sErrorMsg  := 'Timeout occured during STATE_DISABLE_EXTERNAL_SETPOINT_GENERATOR.';
+    stMultiLeaderMotionCoupling.sErrorHelp := 'Failed to disable setpoint generator.';
+    stMultiLeaderMotionCoupling.eState     := E_MultiLeaderMotionCoupling.STATE_ERROR;
+    tonTimeout(IN:=FALSE);
+ELSE
+    stMultiLeaderMotionCoupling.sStatusMsg := 'Waiting for setpoint generator to be disabled.';
+END_IF
+]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="ACT_08_STATE_ERROR" Id="{259346b7-7de7-4d7d-804d-d3eb1c57e8b0}">
+      <Implementation>
+        <ST><![CDATA[
+(* ACTION - STATE ERROR *)
+
+tonTimeout(IN:=TRUE,PT:=tTimeout);
+
+stMultiLeaderMotionCoupling.bBusy := FALSE;
+
+DisableSetPointGenerator(
+    Axis         := stMotionStageFollow.Axis,
+    Execute      := TRUE,
+    Done=>,
+    Busy=>,
+    Error=>,
+    ErrorID=>,
+    Enabled=>
+);
+
+stMotionStageFollow.bEnable     := FALSE;
+
+// See: https://infosys.beckhoff.com/english.php?content=../content/1033/tcplclib_tc2_mc2/70136971.html&id=
+// StateDWord.14 gives a boolean for the enable/disable state of the external setpoint generator.
+// TRUE = ENABLED. FALSE = DISABLED.
+IF NOT stMotionStageFollow.Axis.NcToPlc.StateDWord.14 THEN
+    DisableSetPointGenerator(
+        Axis:=stMotionStageFollow.Axis,
+        Execute:=FALSE
+    );
+    tonTimeout(IN:=FALSE);
+    IF NOT stMultiLeaderMotionCoupling.bError THEN
+        stMultiLeaderMotionCoupling.eState := E_MultiLeaderMotionCoupling.STATE_STANDBY;
+    ELSE
+        stMultiLeaderMotionCoupling.sStatusMsg := 'Waiting for reset button to be pressed to clear error.';
+    END_IF
+ELSIF tonTimeout.Q THEN
+    // Timeout would occur if the disable setpoint generator function block failed to complete.
+    stMultiLeaderMotionCoupling.bError     := TRUE;
+    stMultiLeaderMotionCoupling.sErrorMsg  := 'Timeout occured during STATE_ERROR.';
+    stMultiLeaderMotionCoupling.sErrorHelp := 'Failed to disable setpoint generator.';
+    stMultiLeaderMotionCoupling.eState     := E_MultiLeaderMotionCoupling.STATE_ERROR;
+    tonTimeout(IN:=FALSE);
+ELSE
+    stMultiLeaderMotionCoupling.sStatusMsg := 'Waiting setpoint generator to be disabled [STATE_ERROR].';
+END_IF
+]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="ACT_09_STATE_MONITOR_TARGET_WINDOW" Id="{62ec9eb2-1b09-45e8-b847-e5b8f6cfd8fa}">
+      <Implementation>
+        <ST><![CDATA[
+(* ACTION - STATE MONITOR TARGET WINDOW *)
+
+ACT_ComputeTargets();
+
+stMotionStageFollow.bEnable := FALSE;
+
+stMultiLeaderMotionCoupling.fPosDelta := stMultiLeaderMotionCoupling.stPos.fOut - stMultiLeaderMotionCoupling.fHaltPos;
+
+IF NOT stMultiLeaderMotionCoupling.bEnable THEN
+    stMultiLeaderMotionCoupling.eState := E_MultiLeaderMotionCoupling.STATE_STANDBY;
+ELSIF ABS(stMultiLeaderMotionCoupling.fPosDelta) >= stMotionStageFollow.stAxisParameters.fTargetPosControlRange THEN
+    stMultiLeaderMotionCoupling.eState := E_MultiLeaderMotionCoupling.STATE_WAIT_FOR_FOLLOWER_ENABLED;
+ELSE
+    stMultiLeaderMotionCoupling.sStatusMsg := 'Holding mode active. Monitoring target position window for changes.';
+END_IF
+]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="ACT_10_STATE_HALT_MOTION" Id="{b078d0e3-e07d-4bb5-8fe6-a0ec9650c291}">
+      <Implementation>
+        <ST><![CDATA[
+(* ACTION - STATE HALT MOTION *)
+
+// Halt and switch to waiting state.
+tonTimeout(IN:=TRUE,PT:=tTimeout);
+mcHalt(
+    Axis:=stMotionStageFollow.Axis,
+    Execute:=TRUE,
+    Deceleration:=stMultiLeaderMotionCoupling.stAcc.fOut,
+    BufferMode:=MC_BufferMode.MC_Aborting,
+    Done=>,
+    Busy=>,
+    Active=>,
+    CommandAborted=>,
+    Error=>,
+    ErrorID=>
+);
+
+IF NOT stMultiLeaderMotionCoupling.bEnable THEN
+    mcHalt(
+        Axis:=stMotionStageFollow.Axis,
+        Execute:=FALSE,
+        Deceleration:=stMultiLeaderMotionCoupling.stAcc.fOut,
+        BufferMode:=MC_BufferMode.MC_Aborting
+    );
+    stMultiLeaderMotionCoupling.eState := E_MultiLeaderMotionCoupling.STATE_DISABLE_EXTERNAL_SETPOINT_GENERATOR;
+ELSIF mcHalt.Done THEN
+    mcHalt(
+        Axis:=stMotionStageFollow.Axis,
+        Execute:=FALSE,
+        Deceleration:=stMultiLeaderMotionCoupling.stAcc.fOut,
+        BufferMode:=MC_BufferMode.MC_Aborting
+    );
+    stMultiLeaderMotionCoupling.fHaltPos := stMotionStageFollow.Axis.NcToPlc.ActPos;
+    stMultiLeaderMotionCoupling.eState   := E_MultiLeaderMotionCoupling.STATE_MONITOR_TARGET_WINDOW;
+    tonTimeout(IN:=FALSE);
+ELSIF mcHalt.Error THEN
+    mcHalt(
+        Axis:=stMotionStageFollow.Axis,
+        Execute:=FALSE,
+        Deceleration:=stMultiLeaderMotionCoupling.stAcc.fOut,
+        BufferMode:=MC_BufferMode.MC_Aborting
+    );
+    stMultiLeaderMotionCoupling.bError    := TRUE;
+    stMultiLeaderMotionCoupling.sErrorMsg := CONCAT('MC_HALT returned error code: ', UDINT_TO_STRING(mcHalt.ErrorID));
+    CASE DisableSetPointGenerator.ErrorID OF
+        ELSE
+            stMultiLeaderMotionCoupling.sErrorHelp := 'This error code is missing explanation from Beckhoff.';
+    END_CASE
+    stMultiLeaderMotionCoupling.eState := E_MultiLeaderMotionCoupling.STATE_ERROR;
+    tonTimeout(IN:=FALSE);
+ELSIF tonTimeout.Q THEN
+    mcHalt(
+        Axis:=stMotionStageFollow.Axis,
+        Execute:=FALSE,
+        Deceleration:=stMultiLeaderMotionCoupling.stAcc.fOut,
+        BufferMode:=MC_BufferMode.MC_Aborting
+    );
+    stMultiLeaderMotionCoupling.bError     := TRUE;
+    stMultiLeaderMotionCoupling.sErrorMsg  := 'Timeout occured during STATE_HALT_MOTION.';
+    stMultiLeaderMotionCoupling.sErrorHelp := 'Failed to halt the axis within the timeout duration.';
+    stMultiLeaderMotionCoupling.eState     := E_MultiLeaderMotionCoupling.STATE_ERROR;
+    tonTimeout(IN:=FALSE);
+ELSE
+    stMultiLeaderMotionCoupling.sStatusMsg := 'Halting axis.';
+END_IF
+]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="ACT_ComputeTargets" Id="{ea77277a-d78e-4f7f-8596-ef0025ddc352}">
+      <Implementation>
+        <ST><![CDATA[
+// ACTION - Compute Targets
+
+// Clip the commanded speed and position to the same limits
+// set for the axis. The purpose of this is to allow an axis to automatically ignore commands that
+// would otherwise lead to errors from the axis being commanded. Flags are set to indicate if one
+// of the limiters is active.
+
+stMultiLeaderMotionCoupling.stAcc.fMax := stMotionStageFollow.stAxisParameters.fAccelerationMax;
+stMultiLeaderMotionCoupling.stAcc.fMin := -stMotionStageFollow.stAxisParameters.fDecelerationMax;
+
+stMultiLeaderMotionCoupling.stVel.fMax := stMotionStageFollow.stAxisParameters.fVeloMaximum;
+stMultiLeaderMotionCoupling.stVel.fMin := -stMotionStageFollow.stAxisParameters.fVeloMaximum;
+
+stMultiLeaderMotionCoupling.stPos.fMax := stMotionStageFollow.stAxisParameters.fEncSoftEndMax;
+stMultiLeaderMotionCoupling.stPos.fMin := stMotionStageFollow.stAxisParameters.fEncSoftEndMin;
+
+stMultiLeaderMotionCoupling.stAcc.fIn := stMultiLeaderMotionCoupling.fTargetAcc;
+stMultiLeaderMotionCoupling.stVel.fIn := stMultiLeaderMotionCoupling.fTargetVel;
+stMultiLeaderMotionCoupling.stPos.fIn := stMultiLeaderMotionCoupling.fTargetPos;
+
+IF stMultiLeaderMotionCoupling.bUseDynamicLimits THEN
+    METH_ApplyKinematicLimits(
+        bEnable:=TRUE,
+        stAcc:=stMultiLeaderMotionCoupling.stAcc,
+        stVel:=stMultiLeaderMotionCoupling.stVel,
+        stPos:=stMultiLeaderMotionCoupling.stPos
+    );
+ELSE
+    METH_ApplyKinematicLimits(
+        bEnable:=FALSE,
+        stAcc:=stMultiLeaderMotionCoupling.stAcc,
+        stVel:=stMultiLeaderMotionCoupling.stVel,
+        stPos:=stMultiLeaderMotionCoupling.stPos
+    );
+END_IF
+]]></ST>
+      </Implementation>
+    </Action>
+    <Method Name="METH_ApplyKinematicLimits" Id="{c077e887-7e5c-4f37-98ac-42a0544d9b12}">
+      <Declaration><![CDATA[
+METHOD METH_ApplyKinematicLimits : BOOL
+VAR_IN_OUT
+    stAcc: ST_BoundedValue;
+    stVel: ST_BoundedValue;
+    stPos: ST_BoundedValue;
+END_VAR
+VAR_INPUT
+    bEnable: BOOL;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[
+IF bEnable THEN
+    METH_MaxMinLim(stVal:=stAcc);
+    METH_MaxMinLim(stVal:=stVel);
+    METH_MaxMinLim(stVal:=stPos);
+ELSE
+    stAcc.fOut := stAcc.fIn;
+    stVel.fOut := stVel.fIn;
+    stPos.fOut := stPos.fIn;
+END_IF
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="METH_Init" Id="{b11fedd0-22c9-4b4d-ac6d-a13ac4344499}">
+      <Declaration><![CDATA[
+METHOD METH_Init : BOOL
+VAR_IN_OUT
+    stMotionStage : ST_MotionStage;
+    stMultiLeader : ST_MultiLeaderMotionCoupling;
+END_VAR
+VAR_INPUT
+    bEnableByDefault  : BOOL;
+    bUseDynamicLimits : BOOL;
+END_VAR
+VAR
+    mcReadParams: MC_ReadParameterSet;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[
+mcReadParams(
+    Parameter := stMotionStage.stAxisParameters,
+    Axis := stMotionStage.Axis,
+    Execute := TRUE,
+    Error =>
+);
+
+IF NOT mcReadParams.Error THEN
+    stMultiLeader.stAcc.fMax := stMotionStage.stAxisParameters.fAccelerationMax;
+    stMultiLeader.stAcc.fMin := -stMotionStage.stAxisParameters.fDecelerationMax;
+
+    stMultiLeader.stVel.fMax := stMotionStage.stAxisParameters.fVeloMaximum;
+    stMultiLeader.stVel.fMin := -stMotionStage.stAxisParameters.fVeloMaximum;
+
+    stMultiLeader.stPos.fMax := stMotionStage.stAxisParameters.fEncSoftEndMax;
+    stMultiLeader.stPos.fMin := stMotionStage.stAxisParameters.fEncSoftEndMin;
+ELSE
+    stMultiLeader.bError     := TRUE;
+    stMultiLeader.sErrorMsg  := 'MultiLeaderMotionCoupling failed to load axis parameters.';
+    stMultiLeader.sErrorHelp := stMotionStageFollow.sErrorMessage;
+    stMultiLeader.eState     := E_MultiLeaderMotionCoupling.STATE_ERROR;
+END_IF
+
+mcReadParams(
+    Parameter := stMotionStage.stAxisParameters,
+    Axis := stMotionStage.Axis,
+    Execute := FALSE,
+    Error =>
+);
+
+stMultiLeader.fTargetPos := stMotionStage.Axis.NcToPlc.ActPos;
+
+stMultiLeader.bEnable           := bEnableByDefault;
+stMultiLeader.bUseDynamicLimits := bUseDynamicLimits;
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="METH_MaxMinLim" Id="{5ac570dd-8c8c-453c-b6bf-dcad760beb05}">
+      <Declaration><![CDATA[
+METHOD METH_MaxMinLim : BOOL
+VAR_IN_OUT
+    stVal: ST_BoundedValue;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[
+stVal.bMaxLim := FALSE;
+stVal.bMinLim := FALSE;
+
+IF stVal.fIn > stVal.fMax THEN
+    stVal.fOut    := stVal.fMax;
+    stVal.bMaxLim := TRUE;
+ELSIF stVal.fIn < stVal.fMin THEN
+    stVal.fOut    := stVal.fMin;
+    stVal.bMinLim := TRUE;
+ELSE
+    stVal.fOut := stVal.fIn;
+END_IF
+]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>

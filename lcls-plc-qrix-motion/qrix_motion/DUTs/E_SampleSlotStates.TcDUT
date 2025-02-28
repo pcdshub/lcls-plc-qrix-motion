@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="E_SampleSlotStates" Id="{57679c10-1d31-446b-ab2d-82c03a214142}">
+    <Declaration><![CDATA[
+{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE E_SampleSlotStates :
+(
+    EMPTY,
+    FULL,
+    DISABLED
+);
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_BoundedValue" Id="{ac9281ab-dbe3-459d-8b08-f4f3bccd7e40}">
+    <Declaration><![CDATA[
+TYPE ST_BoundedValue :
+STRUCT
+    {attribute 'pytmc' := '
+        pv: fIn
+        io: io
+        field: DESC The input value before bounds are applied.
+    '}
+    fIn    : LREAL; // The input value before bounds are applied.
+    {attribute 'pytmc' := '
+        pv: fMax
+        io: io
+        field: DESC The maximum bound for the output value.
+    '}
+    fMax   : LREAL; // The maximum bound for the output value.
+    {attribute 'pytmc' := '
+        pv: fMin
+        io: io
+        field: DESC The minimum bound for the output value.
+    '}
+    fMin   : LREAL; // The minimum bound for the output value.
+    {attribute 'pytmc' := '
+        pv: fOut
+        io: i
+        field: DESC The output value after bounds are applied.
+    '}
+    fOut   : LREAL; // The output value after bounds are applied.
+    {attribute 'pytmc' := '
+        pv: bMaxLim
+        io: i
+        field: DESC TRUE if the output value has been limited by the upper bound.
+    '}
+    bMaxLim: BOOL; // TRUE if the output value has been limited by the upper bound.
+    {attribute 'pytmc' := '
+        pv: bMinLim
+        io: i
+        field: DESC TRUE if the output value has been limited by the lower bound.
+    '}
+    bMinLim: BOOL; // TRUE if the output value has been limited by the lower bound.
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

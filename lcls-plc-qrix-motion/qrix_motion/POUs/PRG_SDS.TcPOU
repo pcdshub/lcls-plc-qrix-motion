@@ -1,7 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<?xml version='1.0' encoding='UTF-8'?>
+<TcPlcObject Version="1.1.0.1">
   <POU Name="PRG_SDS" Id="{e8b6628f-8c08-4322-8d03-c947275863d3}" SpecialFunc="None">
-    <Declaration><![CDATA[PROGRAM PRG_SDS
+    <Declaration><![CDATA[
+PROGRAM PRG_SDS
 VAR
     fb_SDS_ROT_V : FB_MotionStage;
     fb_SDS_X : FB_MotionStage;
@@ -10,10 +11,34 @@ VAR
     fb_SDS_ROT_H : FB_MotionStage;
     fb_SDS_H : FB_MotionStage;
     bInit : BOOl := TRUE;
+
+    EPS_SDS_H_Backward : FB_EPS;
+    EPS_SDS_H_Forward : FB_EPS;
+    fSDSYEPSOverride: REAL;
+
+    EPS_SDS_Y_Backward : FB_EPS;
+    EPS_SDS_Y_Forward : FB_EPS;
+
+    fMaxSampleDeliveryArmPositionWithValveClosed : REAL := 50;
+
+    {attribute 'pytmc' := '
+        pv: QRIX:SDS:NP
+        field: DESC Structure defining qrixs sample delivery system non-persistent data.
+    '}
+    stSDS: ST_SDS;
+    fbSDS: FB_SDS;
+END_VAR
+VAR PERSISTENT
+    {attribute 'pytmc' := '
+        pv: QRIX:SDS:P
+        field: DESC Structure defining qrixs sample delivery system persistent data.
+    '}
+    stSDSPersistent: ST_SDSPersistent;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[IF ( bInit) THEN
+      <ST><![CDATA[
+IF bInit THEN
     bInit := FALSE;
     Main.M39.bHardwareEnable := TRUE;
     Main.M39.bPowerSelf := TRUE;
@@ -34,6 +59,7 @@ END_VAR
     Main.M42.bPowerSelf := TRUE;
     Main.M42.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
     Main.M42.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+    Main.M42.nHomingMode := ENUM_EpicsHomeCmd.HOME_VIA_LOW;
     Main.M42.bLimitBackwardEnable := TRUE;
     Main.M42.bLimitForwardEnable := TRUE;
 
@@ -41,21 +67,105 @@ END_VAR
     Main.M43.bPowerSelf := TRUE;
     Main.M43.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
     Main.M43.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+    Main.M43.nHomingMode := ENUM_EpicsHomeCmd.LOW_LIMIT;
+    Main.M43.fHomePosition := 0.0;
 
     Main.M44.bHardwareEnable := TRUE;
     Main.M44.bPowerSelf := TRUE;
     Main.M44.nBrakeMode := ENUM_StageBrakeMode.NO_BRAKE;
     Main.M44.nEnableMode := ENUM_StageEnableMode.DURING_MOTION;
+    Main.M44.nHomingMode := ENUM_EpicsHomeCmd.HOME_VIA_LOW;
+    Main.M44.fHomePosition := 0;//1.176; distance from home switch trigger to lower limit trigger
 
+    fSDSYEPSOverride := -40;
 END_IF
-//EPS??
+
+GVL_Interface.QRIX_MOT_SDS_MMS_H_RAW_ENC_CNTS := Main.M44.nRawEncoderUINT;
+GVL_Interface.QRIX_MOT_SDS_MMS_H_FORWARD_EN := Main.M44.bLimitForwardEnable;
+GVL_Interface.QRIX_MOT_SDS_MMS_H_BACKWARD_EN := Main.M44.bLimitBackwardEnable;
+
+//EPS
+
+// Sample Delivery System
+// Disable movement in negative direction.
+EPS_SDS_H_Backward(eps:=Main.M44.stEPSBackwardEnable);
+EPS_SDS_H_Backward.setDescription('NEGATIVE MOTION ALLOWED UNTIL LIMIT'); // SET DESCRIPTION FOR BYTE INDICATOR LABELS
+
+// Disable movement in positive direction.
+EPS_SDS_H_Forward(eps:=Main.M44.stEPSForwardEnable);
+EPS_SDS_H_Forward.setDescription('POS MOTION IF VGC_03 closed: (cmd<50mm | pos<50mm | Homing Valid | SDS Y<-45mm)'); // SET DESCRIPTION FOR BYTE INDICATOR LABELS
+// Sample Delivery Arm can Extend if the VGC valve is open and not closed, and it has been homed.
+EPS_SDS_H_Forward.setBit(nBits:= 4, bValue:= NOT stSDS.tonForwardHomingLimit.Q);
+EPS_SDS_H_Forward.setBit(nBits:= 3, bValue:=(NOT GVL_Interface.QRIX_VAC_VGC_03_CLOSED_LIMIT_SWITCH AND
+    GVL_Interface.QRIX_VAC_VGC_03_OPEN_LIMIT_SWITCH) OR Main.M44.stAxisStatus.fPosition < fMaxSampleDeliveryArmPositionWithValveClosed);
+EPS_SDS_H_Forward.setBit(nBits:= 2, bValue:=(NOT GVL_Interface.QRIX_VAC_VGC_03_CLOSED_LIMIT_SWITCH AND
+    GVL_Interface.QRIX_VAC_VGC_03_OPEN_LIMIT_SWITCH) OR Main.M44.stAxisStatus.fActPosition < fMaxSampleDeliveryArmPositionWithValveClosed);
+EPS_SDS_H_Forward.setBit(nBits:= 1, bValue:=(NOT GVL_Interface.QRIX_VAC_VGC_03_CLOSED_LIMIT_SWITCH AND
+    GVL_Interface.QRIX_VAC_VGC_03_OPEN_LIMIT_SWITCH) OR NOT stSDS.bHomingRequired);
+EPS_SDS_H_Forward.setBit(nBits:= 0, bValue:=(NOT GVL_Interface.QRIX_VAC_VGC_03_CLOSED_LIMIT_SWITCH AND
+    GVL_Interface.QRIX_VAC_VGC_03_OPEN_LIMIT_SWITCH) OR Main.M40.stAxisStatus.fActPosition < fSDSYEPSOverride);
+
+// Disable movement in negative direction.
+EPS_SDS_Y_Backward(eps:=Main.M40.stEPSBackwardEnable);
+EPS_SDS_Y_Backward.setDescription('POSITIVE MOTION ALLOWED UNTIL LIMIT'); // SET DESCRIPTION FOR BYTE INDICATOR LABELS
+
+// Disable movement in positive direction.
+EPS_SDS_Y_Forward(eps:=Main.M40.stEPSForwardEnable);
+EPS_SDS_Y_Forward.setDescription('POSITIVE MOTION ALLOWED UNTIL LIMIT'); // SET DESCRIPTION FOR BYTE INDICATOR LABELS
 
 fb_SDS_X(stMotionStage:=Main.M39);
 fb_SDS_Y(stMotionStage:=Main.M40);
 fb_SDS_Z(stMotionStage:=Main.M41);
+
+Main.M42.bHome := NOT Main.M42.bHome;
+
 fb_SDS_ROT_V(stMotionStage:=Main.M42);
 fb_SDS_ROT_H(stMotionStage:=Main.M43);
-fb_SDS_H(stMotionStage:=Main.M44);]]></ST>
+fb_SDS_H(stMotionStage:=Main.M44);
+
+stSDS.stGarageYStage REF= Main.M40;
+stSDS.stGarageRStage REF= Main.M42;
+stSDS.stTransferArmHStage REF= Main.M44;
+stSDS.stTransferArmRStage REF= Main.M43;
+
+stSDS.eDiffXStateGet REF= PRG_Diffractometer.eDiffXStateGet;
+stSDS.eDiffXStateSet REF= PRG_Diffractometer.eDiffXStateSet;
+stSDS.stDiffXStage REF= Main.M28;
+
+stSDS.eDiffYStateGet REF= PRG_Diffractometer.eDiffYStateGet;
+stSDS.eDiffYStateSet REF= PRG_Diffractometer.eDiffYStateSet;
+stSDS.stDiffYStage REF= Main.M29;
+
+stSDS.eDiffZStateGet REF= PRG_Diffractometer.eDiffZStateGet;
+stSDS.eDiffZStateSet REF= PRG_Diffractometer.eDiffZStateSet;
+stSDS.stDiffZStage REF= Main.M30;
+
+stSDS.eDiff2ThetaYStateGet REF= PRG_Diffractometer.eDiff2ThetaYStateGet;
+stSDS.eDiff2ThetaYStateSet REF= PRG_Diffractometer.eDiff2ThetaYStateSet;
+stSDS.stDiff2ThetaYStage REF= Main.M31;
+
+stSDS.eDiffPhiStateGet REF= PRG_Diffractometer.eDiffPhiStateGet;
+stSDS.eDiffPhiStateSet REF= PRG_Diffractometer.eDiffPhiStateSet;
+stSDS.stDiffPhiStage REF= Main.M32;
+
+stSDS.eDiffChiStateGet REF= PRG_Diffractometer.eDiffChiStateGet;
+stSDS.eDiffChiStateSet REF= PRG_Diffractometer.eDiffChiStateSet;
+stSDS.stDiffChiStage REF= Main.M33;
+
+stSDS.eDiff2ThetaStateGet REF= PRG_Diffractometer.eDiff2ThetaStateGet;
+stSDS.eDiff2ThetaStateSet REF= PRG_Diffractometer.eDiff2ThetaStateSet;
+stSDS.stDiff2ThetaStage REF= Main.M34;
+
+stSDS.eDiffThetaStateGet REF= PRG_Diffractometer.eDiffThetaStateGet;
+stSDS.eDiffThetaStateSet REF= PRG_Diffractometer.eDiffThetaStateSet;
+stSDS.stDiffThetaStage REF= Main.M35;
+
+// Function block containing logic for sample delivery system motion automation.
+fbSDS(
+    stSDSin := stSDS,
+    stSDSPersistent := stSDSPersistent
+);
+]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>
