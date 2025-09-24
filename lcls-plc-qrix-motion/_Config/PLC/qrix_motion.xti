@@ -1260,7 +1260,7 @@ External Setpoint Generation:
 		</DataType>
 	</DataTypes>
 	<Project GUID="{B169396F-2A5D-41C0-BAA5-19CF2205D20A}" Name="qrix_motion" PrjFilePath="..\..\qrix_motion\qrix_motion.plcproj" TmcFilePath="..\..\qrix_motion\qrix_motion.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-		<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="qrix_motion\qrix_motion.tmc" TmcHash="{8D95F3B6-5F2D-C557-46B8-E3906FAC7081}">
+		<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="qrix_motion\qrix_motion.tmc" TmcHash="{0A094A2A-6030-BD8F-09D2-5FEC50AF11F1}">
 			<Name>qrix_motion Instance</Name>
 			<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 			<Vars VarGrpType="1">
@@ -2418,11 +2418,6 @@ External Setpoint Generation:
 					<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 				</Var>
 				<Var>
-					<Name>PRG_SSL.bLimitBackwardEnable</Name>
-					<Comment><![CDATA[EPS Limit switches]]></Comment>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
 					<Name>PRG_SDS.stSDS.fbTransferArmHPos1D.astMotionStageMax[1].Axis.NcToPlc</Name>
 					<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 				</Var>
@@ -2895,12 +2890,17 @@ External Setpoint Generation:
 					<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 				</Var>
 				<Var>
-					<Name>PRG_SSL.fb_SSL_Motor.fbDriveVirtual.MasterAxis.NcToPlc</Name>
-					<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
+					<Name>PRG_SSL.bLimitBackwardEnable</Name>
+					<Comment><![CDATA[EPS Limit switches]]></Comment>
+					<Type>BOOL</Type>
 				</Var>
 				<Var>
 					<Name>PRG_SSL.bLimitForwardEnable</Name>
 					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_SSL.fb_SSL_Motor.fbDriveVirtual.MasterAxis.NcToPlc</Name>
+					<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 				</Var>
 				<Var>
 					<Name>PRG_SSL.fbSSLTo2ThetaCoupling.gantry_diff_limit.PEnc.Count</Name>
@@ -3134,6 +3134,10 @@ External Setpoint Generation:
 					<Type GUID="{67AC048F-B785-4A4D-B941-B11E2213F502}">ST_PMPS_Aperture_IO</Type>
 				</Var>
 				<Var>
+					<Name>PRG_DET_FRAME.bLinearGaugeWarning</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
 					<Name>PRG_DET_FRAME.fbYDFMotion.fbJack1Stage.fbDriveVirtual.MasterAxis.NcToPlc</Name>
 					<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 				</Var>
@@ -3144,6 +3148,10 @@ External Setpoint Generation:
 				<Var>
 					<Name>PRG_DET_FRAME.fbYDFMotion.fbJack3Stage.fbDriveVirtual.MasterAxis.NcToPlc</Name>
 					<Type GUID="{25521FAA-EA5F-4C7F-8864-BBCCDACD2E98}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
+				</Var>
+				<Var>
+					<Name>PRG_DET_FRAME.bLinearGaugeError</Name>
+					<Type>BOOL</Type>
 				</Var>
 				<Var>
 					<Name>PRG_OPT_SLITS.fbSlits_Opt.fbTopBlade.fbDriveVirtual.MasterAxis.NcToPlc</Name>
@@ -5213,14 +5221,6 @@ External Setpoint Generation:
 					<Comment><![CDATA[ Raw encoder IO for INT (LVDT)]]></Comment>
 					<Type>INT</Type>
 				</Var>
-				<Var>
-					<Name>PRG_DET_FRAME.bLinearGaugeWarning</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>PRG_DET_FRAME.bLinearGaugeError</Name>
-					<Type>BOOL</Type>
-				</Var>
 			</Vars>
 			<Vars VarGrpType="2" AreaNo="1">
 				<Name>PlcTask Outputs</Name>
@@ -5552,18 +5552,6 @@ External Setpoint Generation:
 					<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 				</Var>
 				<Var>
-					<Name>PRG_SpetrometerArm.bEnaIclk</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>PRG_SpetrometerArm.bEnaIclkErrAck</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>PRG_SpetrometerArm.bEnaIclkRestartESTOP</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
 					<Name>PRG_SDS.stSDS.fbTransferArmHPos1D.astMotionStageMax[1].Axis.PlcToNc</Name>
 					<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 				</Var>
@@ -5676,6 +5664,18 @@ External Setpoint Generation:
 					<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 				</Var>
 				<Var>
+					<Name>PRG_SpetrometerArm.bEnaIclk</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_SpetrometerArm.bEnaIclkErrAck</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_SpetrometerArm.bEnaIclkRestartESTOP</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
 					<Name>PRG_SSL.fb_SSL_Motor.fbDriveVirtual.MasterAxis.PlcToNc</Name>
 					<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 				</Var>
@@ -5768,6 +5768,18 @@ External Setpoint Generation:
 					<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 				</Var>
 				<Var>
+					<Name>PRG_DET_FRAME.bLinearGaugeYDF1Ready</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_DET_FRAME.bLinearGaugeYDF2Ready</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>PRG_DET_FRAME.bLinearGaugeYDF3Ready</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
 					<Name>PRG_OPT_SLITS.fbSlits_Opt.fbTopBlade.fbDriveVirtual.MasterAxis.PlcToNc</Name>
 					<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 				</Var>
@@ -5786,10 +5798,6 @@ External Setpoint Generation:
 				<Var>
 					<Name>PRG_OPT_SLITS.fbSlits_Opt.AptArrayStatus</Name>
 					<Type GUID="{67AC048F-B785-4A4D-B941-B11E2213F502}">ST_PMPS_Aperture_IO</Type>
-				</Var>
-				<Var>
-					<Name>PRG_Sensor.bSensorHeadValueMode</Name>
-					<Type>BOOL</Type>
 				</Var>
 				<Var>
 					<Name>PRG_OPT_YG.fbYGMotion.fbJack1Stage.fbDriveVirtual.MasterAxis.PlcToNc</Name>
@@ -5816,12 +5824,12 @@ External Setpoint Generation:
 					<Type GUID="{67AC048F-B785-4A4D-B941-B11E2213F502}">ST_PMPS_Aperture_IO</Type>
 				</Var>
 				<Var>
-					<Name>PRG_Sensor.bSensorHeadNormalValueMode</Name>
+					<Name>PRG_Sensor.bSensorHeadValueMode</Name>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
-					<Name>PRG_Sensor.uintTest</Name>
-					<Type>UINT</Type>
+					<Name>PRG_Sensor.bSensorHeadNormalValueMode</Name>
+					<Type>BOOL</Type>
 				</Var>
 				<Var>
 					<Name>PRG_OPT.fbMotionRxG.fbDriveVirtual.MasterAxis.PlcToNc</Name>
@@ -5836,11 +5844,19 @@ External Setpoint Generation:
 					<Type GUID="{96B75FEB-2D84-43BE-A3EC-D9A681F27D52}" Namespace="MC">PLCTONC_AXIS_REF</Type>
 				</Var>
 				<Var>
+					<Name>PRG_Sensor.uintTest</Name>
+					<Type>UINT</Type>
+				</Var>
+				<Var>
 					<Name>GVL_EPS.bOpenSV1</Name>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
 					<Name>GVL_EPS.bOpenSV2</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>GVL_Interface.QRIX_MOT_SDS_MMS_H_FORWARD_EN</Name>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
@@ -5857,12 +5873,12 @@ External Setpoint Generation:
 					<Type>UINT</Type>
 				</Var>
 				<Var>
-					<Name>GVL_Interface.QRIX_MOT_SDS_MMS_H_FORWARD_EN</Name>
+					<Name>GVL_Interface.QRIX_MOT_SDS_MMS_H_BACKWARD_EN</Name>
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
-					<Name>GVL_Interface.QRIX_MOT_SDS_MMS_H_BACKWARD_EN</Name>
-					<Type>BOOL</Type>
+					<Name>GVL_Sensor.nYDF1</Name>
+					<Type>UDINT</Type>
 				</Var>
 				<Var>
 					<Name>GVL_PMPS.fbFastFaultOutput1.q_xFastFaultOut</Name>
@@ -5871,10 +5887,6 @@ External Setpoint Generation:
 				<Var>
 					<Name>GVL_PMPS.fbFastFaultOutput2.q_xFastFaultOut</Name>
 					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>GVL_Sensor.nYDF1</Name>
-					<Type>UDINT</Type>
 				</Var>
 				<Var>
 					<Name>GVL_Sensor.nYDF2</Name>
@@ -6364,18 +6376,6 @@ External Setpoint Generation:
 				<Var>
 					<Name>Main.M49.bBrakeRelease</Name>
 					<Comment><![CDATA[ NC Brake Output: TRUE to release brake]]></Comment>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>PRG_DET_FRAME.bLinearGaugeYDF1Ready</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>PRG_DET_FRAME.bLinearGaugeYDF2Ready</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
-					<Name>PRG_DET_FRAME.bLinearGaugeYDF3Ready</Name>
 					<Type>BOOL</Type>
 				</Var>
 			</Vars>
