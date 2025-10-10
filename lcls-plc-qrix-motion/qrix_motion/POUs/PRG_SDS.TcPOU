@@ -33,6 +33,7 @@ VAR
         field: DESC Allow SDS Y backward limit to be user defined for 1h.
     '}
 	bEPS_SDS_Y_Backward_Override : BOOL;
+	fbEPS_SDS_Y_Backward_Override_Start : R_TRIG;
 	tEPS_SDS_Y_Backward_Override_Time : TIME := T#1h;
 	fbEPS_SDS_Y_EPS_BACK_OVRD_TIMER : TON;
 	
@@ -45,6 +46,13 @@ VAR
 	{attribute 'pytmc' := '
         pv: QRIX:SDS:Y:EPS:BACK:OVRD_LIM
         field: DESC Allow SDS Y backward limit to be user defined for 1h.
+		io: i
+    '}
+	fSDS_Y_NEGATIVE_LIM_USR : LREAL;
+	{attribute 'pytmc' := '
+        pv: QRIX:SDS:Y:EPS:BACK:OVRD_LIM_RBV
+        field: DESC Allow SDS Y backward limit to be user defined for 1h.
+		io: o
     '}
 	fSDS_Y_NEGATIVE_LIM : LREAL;
 	fSDS_Y_NEGATIVE_LIM_DEFAULT  : LREAL := -110;
@@ -138,15 +146,14 @@ EPS_SDS_Y_Backward.setBit(nBits:=0, bValue:= Main.M40.stAxisStatus.fActPosition 
 fbEPS_SDS_Y_EPS_BACK_OVRD_TIMER(IN:=bEPS_SDS_Y_Backward_Override, PT:= tEPS_SDS_Y_Backward_Override_Time);
 tSDS_Y_EPS_BACK_OVRD_TimerCountDown := TIME_TO_STRING(tEPS_SDS_Y_Backward_Override_Time - fbEPS_SDS_Y_EPS_BACK_OVRD_TIMER.ET);
 
-// STOP Users From writing to Limit unless EPS override flag is set.
-// Also resets back to default value once EPS override timer is reset
-IF NOT bEPS_SDS_Y_Backward_Override THEN
-	fSDS_Y_NEGATIVE_LIM := fSDS_Y_NEGATIVE_LIM_DEFAULT;
+IF bEPS_SDS_Y_Backward_Override THEN
+	fSDS_Y_NEGATIVE_LIM := fSDS_Y_NEGATIVE_LIM_USR;
 END_IF
 
 // Resets timer when EPS timer has expired; 1hr default
 IF fbEPS_SDS_Y_EPS_BACK_OVRD_TIMER.Q THEN
 	bEPS_SDS_Y_Backward_Override := FALSE;
+	fSDS_Y_NEGATIVE_LIM := fSDS_Y_NEGATIVE_LIM_DEFAULT;
 END_IF
 
 
