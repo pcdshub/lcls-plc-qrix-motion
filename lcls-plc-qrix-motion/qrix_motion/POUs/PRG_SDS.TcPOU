@@ -47,11 +47,12 @@ VAR
         pv: QRIX:SDS:Y:EPS:BACK:OVRD_LIM
         field: DESC Allow SDS Y backward limit to be user defined for 1h.
 		io: i
+        autosave_pass0: VAL DESC
     '}
 	fSDS_Y_NEGATIVE_LIM_USR : LREAL;
 	{attribute 'pytmc' := '
         pv: QRIX:SDS:Y:EPS:BACK:OVRD_LIM_RBV
-        field: DESC Allow SDS Y backward limit to be user defined for 1h.
+        field: DESC Readback from Actual Soft Limit.
 		io: o
     '}
 	fSDS_Y_NEGATIVE_LIM : LREAL;
