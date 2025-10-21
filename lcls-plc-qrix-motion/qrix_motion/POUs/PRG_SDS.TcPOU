@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <TcPlcObject Version="1.1.0.1">
   <POU Name="PRG_SDS" Id="{e8b6628f-8c08-4322-8d03-c947275863d3}" SpecialFunc="None">
     <Declaration><![CDATA[
@@ -27,38 +27,38 @@ VAR
     '}
     stSDS: ST_SDS;
     fbSDS: FB_SDS;
-	
-	{attribute 'pytmc' := '
+
+    {attribute 'pytmc' := '
         pv: QRIX:SDS:Y:EPS:BACK:OVRD
         field: DESC Allow SDS Y backward limit to be user defined for 1h.
     '}
-	bEPS_SDS_Y_Backward_Override : BOOL;
-	fbEPS_SDS_Y_Backward_Override_Start : R_TRIG;
-	tEPS_SDS_Y_Backward_Override_Time : TIME := T#1h;
-	fbEPS_SDS_Y_EPS_BACK_OVRD_TIMER : TON;
-	
-	{attribute 'pytmc' := '
-		pv: QRIX:SDS:Y:EPS:BACK:OVRD_COUNTDOWN
-		field: DESC Time Remaining Untill Override resets.
-	'}
+    bEPS_SDS_Y_Backward_Override : BOOL;
+    fbEPS_SDS_Y_Backward_Override_Start : R_TRIG;
+    tEPS_SDS_Y_Backward_Override_Time : TIME := T#1h;
+    fbEPS_SDS_Y_EPS_BACK_OVRD_TIMER : TON;
+
+    {attribute 'pytmc' := '
+        pv: QRIX:SDS:Y:EPS:BACK:OVRD_COUNTDOWN
+        field: DESC Time Remaining Untill Override resets.
+    '}
     tSDS_Y_EPS_BACK_OVRD_TimerCountDown : STRING := TIME_TO_STRING(T#0s);
-	
-	{attribute 'pytmc' := '
+
+    {attribute 'pytmc' := '
         pv: QRIX:SDS:Y:EPS:BACK:USR:OVRD_LIM
         field: DESC Allow SDS Y backward limit to be user defined for 1h.
-		io: io
+        io: io
         autosave_pass1: VAL DESC
     '}
-	fSDS_Y_NEGATIVE_LIM_USR : LREAL;
-	{attribute 'pytmc' := '
+    fSDS_Y_NEGATIVE_LIM_USR : LREAL;
+    {attribute 'pytmc' := '
         pv: QRIX:SDS:Y:EPS:BACK:OVRD_LIM
         field: DESC Readback from Actual Soft Limit.
-		io: i
+        io: i
     '}
-	fSDS_Y_NEGATIVE_LIM : LREAL;
-	fSDS_Y_NEGATIVE_LIM_DEFAULT  : LREAL := -110;
+    fSDS_Y_NEGATIVE_LIM : LREAL;
+    fSDS_Y_NEGATIVE_LIM_DEFAULT  : LREAL := -110;
 
-	
+
 END_VAR
 VAR PERSISTENT
     {attribute 'pytmc' := '
@@ -110,7 +110,7 @@ IF bInit THEN
     Main.M44.fHomePosition := 0;//1.176; distance from home switch trigger to lower limit trigger
 
     fSDSYEPSOverride := -40;
-	fSDS_Y_NEGATIVE_LIM := fSDS_Y_NEGATIVE_LIM_DEFAULT;
+    fSDS_Y_NEGATIVE_LIM := fSDS_Y_NEGATIVE_LIM_DEFAULT;
 END_IF
 
 GVL_Interface.QRIX_MOT_SDS_MMS_H_RAW_ENC_CNTS := Main.M44.nRawEncoderUINT;
@@ -138,10 +138,10 @@ EPS_SDS_H_Forward.setBit(nBits:= 1, bValue:=(NOT GVL_Interface.QRIX_VAC_VGC_03_C
 EPS_SDS_H_Forward.setBit(nBits:= 0, bValue:=(NOT GVL_Interface.QRIX_VAC_VGC_03_CLOSED_LIMIT_SWITCH AND
     GVL_Interface.QRIX_VAC_VGC_03_OPEN_LIMIT_SWITCH) OR Main.M40.stAxisStatus.fActPosition < fSDSYEPSOverride);
 
-	
+
 // Disable movement in negative direction.
 EPS_SDS_Y_Backward(eps:=Main.M40.stEPSBackwardEnable);
-EPS_SDS_Y_Backward.setDescription('NEGATIVE MOTION ALLOWED UNTIL LIMIT'); // SET DESCRIPTION FOR BYTE INDICATOR LABELS	
+EPS_SDS_Y_Backward.setDescription('NEGATIVE MOTION ALLOWED UNTIL LIMIT'); // SET DESCRIPTION FOR BYTE INDICATOR LABELS
 
 EPS_SDS_Y_Backward.setBit(nBits:=0, bValue:= Main.M40.stAxisStatus.fActPosition > fSDS_Y_NEGATIVE_LIM);
 
@@ -149,13 +149,13 @@ fbEPS_SDS_Y_EPS_BACK_OVRD_TIMER(IN:=bEPS_SDS_Y_Backward_Override, PT:= tEPS_SDS_
 tSDS_Y_EPS_BACK_OVRD_TimerCountDown := TIME_TO_STRING(tEPS_SDS_Y_Backward_Override_Time - fbEPS_SDS_Y_EPS_BACK_OVRD_TIMER.ET);
 
 IF bEPS_SDS_Y_Backward_Override THEN
-	fSDS_Y_NEGATIVE_LIM := fSDS_Y_NEGATIVE_LIM_USR;
+    fSDS_Y_NEGATIVE_LIM := fSDS_Y_NEGATIVE_LIM_USR;
 END_IF
 
 // Resets timer when EPS timer has expired; 1hr default
 IF fbEPS_SDS_Y_EPS_BACK_OVRD_TIMER.Q THEN
-	bEPS_SDS_Y_Backward_Override := FALSE;
-	fSDS_Y_NEGATIVE_LIM := fSDS_Y_NEGATIVE_LIM_DEFAULT;
+    bEPS_SDS_Y_Backward_Override := FALSE;
+    fSDS_Y_NEGATIVE_LIM := fSDS_Y_NEGATIVE_LIM_DEFAULT;
 END_IF
 
 
