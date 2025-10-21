@@ -79,7 +79,8 @@
 				<IoIdleTask Affinity="#x00000008"/>
 			</Settings>
 			<Licenses>
-				<Target>
+				<Target BkhfOrder="0162728">
+					<ManualSelect>{57BD9670-089D-434A-85CF-90A857EE0EFF}</ManualSelect>
 					<ManualSelect>{3EBB9639-5FF3-42B6-8847-35C70DC013C8}</ManualSelect>
 				</Target>
 			</Licenses>
