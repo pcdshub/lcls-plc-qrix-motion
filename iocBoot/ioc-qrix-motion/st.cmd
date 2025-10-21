@@ -1,9 +1,9 @@
-#!c:/Repos/ads-ioc/R0.6.1///bin/rhel7-x86_64/adsIoc
+#!c:/Repos/ads-ioc/R0.8.0///bin/rhel7-x86_64/adsIoc
 ################### AUTO-GENERATED DO NOT EDIT ###################
 #
 #         Project: lcls-plc-qrix-motion.tsproj
 #        PLC name: qrix_motion (qrix_motion Instance)
-# Generated using: pytmc 2.15.2.dev0+g73bd2d9.d20230727
+# Generated using: pytmc 2.18.2
 # Project version: unknown
 #    Project hash: unknown
 #     PLC IP/host: 172.21.140.101
@@ -45,7 +45,7 @@ epicsEnvSet("ASYN_PORT",        "ASYN_PLC")
 epicsEnvSet("IPADDR",           "172.21.140.101")
 epicsEnvSet("AMSID",            "172.21.140.101.1.1")
 epicsEnvSet("AMS_PORT",         "851")
-epicsEnvSet("ADS_MAX_PARAMS",   "7205")
+epicsEnvSet("ADS_MAX_PARAMS",   "7212")
 epicsEnvSet("ADS_SAMPLE_MS",    "50")
 epicsEnvSet("ADS_MAX_DELAY_MS", "100")
 epicsEnvSet("ADS_TIMEOUT_MS",   "1000")
@@ -856,10 +856,10 @@ dbLoadRecords("save_restoreStatus.db", "P=PLC:QRIX:MOT:")
 dbLoadRecords("caPutLog.db", "IOC=$(IOC)")
 
 ## TwinCAT task, application, and project information databases ##
-dbLoadRecords("TwinCAT_TaskInfo.db", "PORT=$(ASYN_PORT),PREFIX=PLC:QRIX:MOT,IDX=1")
+dbLoadRecords("TwinCAT_TaskInfo.db", "PORT=$(ASYN_PORT),PREFIX=PLC:QRIX:MOT,IDX=1,TASK_PORT=350")
 dbLoadRecords("TwinCAT_AppInfo.db", "PORT=$(ASYN_PORT), PREFIX=PLC:QRIX:MOT")
 
-dbLoadRecords("TwinCAT_Project.db", "PREFIX=PLC:QRIX:MOT,PROJECT=lcls-plc-qrix-motion.tsproj,HASH=unknown,VERSION=unknown,PYTMC=2.15.2.dev0+g73bd2d9.d20230727,PLC_HOST=172.21.140.101")
+dbLoadRecords("TwinCAT_Project.db", "PREFIX=PLC:QRIX:MOT,PROJECT=lcls-plc-qrix-motion.tsproj,HASH=unknown,VERSION=unknown,PYTMC=2.18.2,PLC_HOST=172.21.140.101")
 
 #   LCLS General: * -> 2.10.0 (SLAC)
 dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:QRIX:MOT,DEPENDENCY=LCLS_General,VERSION=2.10.0,VENDOR=SLAC")
@@ -887,8 +887,8 @@ cd "$(IOC_TOP)"
 ## PLC Project Database files ##
 dbLoadRecords("qrix_motion.db", "PORT=$(ASYN_PORT),PREFIX=PLC:QRIX:MOT:,IOCNAME=$(IOC),IOC=$(IOC)")
 
-# Total records: 6205
-callbackSetQueueSize(14410)
+# Total records: 6212
+callbackSetQueueSize(14424)
 
 # Autosave and archive settings:
 save_restoreSet_status_prefix("PLC:QRIX:MOT:")

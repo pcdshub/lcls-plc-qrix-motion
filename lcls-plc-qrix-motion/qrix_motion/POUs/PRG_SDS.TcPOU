@@ -51,7 +51,7 @@ VAR
     '}
 	fSDS_Y_NEGATIVE_LIM_USR : LREAL;
 	{attribute 'pytmc' := '
-        pv: QRIX:SDS:Y:EPS:BACK:OVRD_LIM_RBV
+        pv: QRIX:SDS:Y:EPS:BACK:OVRD_LIM
         field: DESC Readback from Actual Soft Limit.
 		io: o
     '}
