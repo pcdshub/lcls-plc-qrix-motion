@@ -75553,16 +75553,6 @@ record(ai, "QRIX:SDS:Y:EPS:BACK:OVRD_LIM_RBV") {
   field(ASG, "NO_WRITE")
 }
 
-record(ao, "QRIX:SDS:Y:EPS:BACK:OVRD_LIM") {
-  field(DESC, "Readback from Actual Soft Limit.")
-  field(DTYP, "asynFloat64")
-  field(UDFS, "0")
-  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_SDS.fSDS_Y_NEGATIVE_LIM=")
-  field(PREC, "3")
-  info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS VAL")
-  info(archive, "VAL")
-}
-
 record(ai, "QRIX:SDS:Y:EPS:BACK:USR:OVRD_LIM_RBV") {
   # Allow SDS Y backward limit to be user defined for 1h.
   field(DESC, "Allow SDS Y backward...r defined for 1h.")
@@ -75576,6 +75566,19 @@ record(ai, "QRIX:SDS:Y:EPS:BACK:USR:OVRD_LIM_RBV") {
   info(autosaveFields_pass0, "DESC DISS HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS")
   info(archive, "VAL")
   field(ASG, "NO_WRITE")
+}
+
+record(ao, "QRIX:SDS:Y:EPS:BACK:USR:OVRD_LIM") {
+  # Allow SDS Y backward limit to be user defined for 1h.
+  field(DESC, "Allow SDS Y backward...r defined for 1h.")
+  field(PINI, "1")
+  field(DTYP, "asynFloat64")
+  field(UDFS, "0")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/PRG_SDS.fSDS_Y_NEGATIVE_LIM_USR=")
+  field(PREC, "3")
+  info(autosaveFields, "DESC VAL")
+  info(autosaveFields_pass0, "DESC DISS DRVH DRVL HHSV HIGH HIHI HSV LLSV LOLO LOW LSV PREC SIMS UDFS VAL")
+  info(archive, "VAL")
 }
 
 record(bi, "QRIX:SDS:NP:DiffLoadable_RBV") {
