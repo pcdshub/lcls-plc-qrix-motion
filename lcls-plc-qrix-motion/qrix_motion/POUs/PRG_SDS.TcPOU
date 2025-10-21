@@ -44,7 +44,7 @@ VAR
     tSDS_Y_EPS_BACK_OVRD_TimerCountDown : STRING := TIME_TO_STRING(T#0s);
 	
 	{attribute 'pytmc' := '
-        pv: QRIX:SDS:Y:EPS:BACK:OVRD_LIM
+        pv: QRIX:SDS:Y:EPS:BACK:USR:OVRD_LIM
         field: DESC Allow SDS Y backward limit to be user defined for 1h.
 		io: i
         autosave_pass1: VAL DESC
